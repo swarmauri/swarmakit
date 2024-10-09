@@ -33,7 +33,7 @@ RUN chmod -R 755 /usr/share/nginx/html
 RUN chown -R nginx:nginx /usr/share/nginx/html
 
 # Expose port 80 for the Nginx server
-EXPOSE 8080
+EXPOSE 80
 
 # Start Nginx to serve Storybook
 CMD ["nginx", "-g", "daemon off;"]
