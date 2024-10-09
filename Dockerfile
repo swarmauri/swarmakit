@@ -26,6 +26,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/storybook-static /usr/share/nginx/html
 
 # Change ownership of the files to the nginx user
+RUN chmod -R 755 /usr/share/nginx/html
 RUN chown -R nginx:nginx /usr/share/nginx/html
 
 # Expose port 80 for the Nginx server
