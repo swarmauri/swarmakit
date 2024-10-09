@@ -12,8 +12,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "storybook start -p 9001 -c .storybook",
-    "build": "storybook -c .storybook -o .out",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
