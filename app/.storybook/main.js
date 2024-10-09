@@ -13,6 +13,6 @@ const config = {
     name: "@storybook/react-webpack5",
     options: {},
   },
-  staticDirs: ["..\\public"],
+  staticDirs: ["../public"],  // Change to forward slashes for compatibility
 };
 export default config;
