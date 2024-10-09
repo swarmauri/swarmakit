@@ -1,5 +1,5 @@
 # Stage 1: Build the Storybook
-FROM node:latest as build
+FROM node:18-alpine as build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -16,26 +16,26 @@ COPY app/ ./
 # Build Storybook to generate static files
 RUN npm run build-storybook
 
-RUN ls /app/storybook-static
+# Stage 2: Set up the Python FastAPI App
+FROM python:3.10-slim
 
-# Stage 2: Serve the Storybook with Nginx
-FROM nginx:latest
+# Set the working directory
+WORKDIR /app
 
-# Remove default Nginx website files
-RUN rm -rf /usr/share/nginx/html/*
+# Copy the requirements.txt into the container
+COPY requirements.txt .
 
-# Copy the Storybook static build from the previous stage to the Nginx public directory
-COPY --from=build /app/storybook-static /usr/share/nginx/html
+# Install the required Python packages
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy the built Storybook static files from the previous stage
+COPY --from=build /app/storybook-static /app/storybook-static
 
-# Ensure proper permissions for Nginx to serve the files
-RUN chmod -R 755 /usr/share/nginx/html
-RUN chown -R nginx:nginx /usr/share/nginx/html
+# Copy your FastAPI app code (ensure you have a Python file that serves the static files)
+COPY app/ /app
 
-# Expose port 80 for the Nginx server
-EXPOSE 80
+# Expose the port on which FastAPI will run
+EXPOSE 8000
 
-# Start Nginx to serve Storybook
-CMD ["nginx", "-g", "daemon off;"]
+# Command to run the FastAPI app
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
