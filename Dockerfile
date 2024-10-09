@@ -19,11 +19,13 @@ RUN npm run build-storybook
 # Stage 2: Set up the Python FastAPI App
 FROM python:3.10-slim
 
+# Set the working directory
+WORKDIR /app
+
 # Copy the Storybook static build from the previous stage to the nginx public directory
 COPY --from=build /app/storybook-static .
 
-# Set the working directory
-WORKDIR /app
+
 
 # Copy the requirements.txt into the container
 COPY requirements.txt .
