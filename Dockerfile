@@ -19,8 +19,6 @@ RUN npm run build-storybook
 
 RUN ls /app
 
-RUN npm run storybook
-
 # Stage 2: Set up the Python FastAPI App
 FROM python:3.10-slim
 
