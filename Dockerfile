@@ -16,6 +16,8 @@ COPY app/ ./
 # Build Storybook to generate static files
 RUN npm run build-storybook
 
+RUN ls /app
+
 # Stage 2: Set up the Python FastAPI App
 FROM python:3.10-slim
 
