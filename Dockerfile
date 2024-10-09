@@ -16,6 +16,8 @@ COPY app/ ./
 # Build Storybook to generate static files
 RUN npm run build-storybook
 
+RUN ls /app/storybook-static
+
 # Stage 2: Serve the Storybook with Nginx
 FROM nginx:alpine
 
