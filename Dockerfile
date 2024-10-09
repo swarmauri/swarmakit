@@ -19,6 +19,8 @@ RUN npm run build-storybook
 
 RUN ls /app
 
+RUN npm run storybook
+
 # Stage 2: Set up the Python FastAPI App
 FROM python:3.10-slim
 
@@ -46,5 +48,6 @@ chmod -R 755 /app/public
 EXPOSE 80
 
 # Command to run the FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 
+CMD ["npm", "run", "storybook"]
