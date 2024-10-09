@@ -26,7 +26,6 @@ WORKDIR /app
 COPY --from=build /app/storybook-static .
 
 
-
 # Copy the requirements.txt into the container
 COPY requirements.txt .
 
