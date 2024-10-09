@@ -39,6 +39,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy your FastAPI app code (ensure you have a Python file that serves the static files)
 COPY app/ /app
 
+chmod -R 755 /app/storybook-static
+chmod -R 755 /app/public
+
 # Expose the port on which FastAPI will run
 EXPOSE 80
 
