@@ -25,7 +25,10 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy the Storybook static build from the previous stage to the Nginx public directory
 COPY --from=build /app/storybook-static /usr/share/nginx/html
 
-# Change ownership of the files to the nginx user
+# Copy custom nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Ensure proper permissions for Nginx to serve the files
 RUN chmod -R 755 /usr/share/nginx/html
 RUN chown -R nginx:nginx /usr/share/nginx/html
 
