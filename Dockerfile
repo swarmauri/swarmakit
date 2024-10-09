@@ -13,6 +13,7 @@ RUN npm install
 # Copy the rest of the application from the my-storybook-app directory into the container
 COPY app/ ./
 
+
 # Build Storybook to generate static files
 RUN npm run build-storybook
 
@@ -25,14 +26,10 @@ WORKDIR /app
 # Copy the requirements.txt into the container
 COPY requirements.txt .
 
+
 # Install the required Python packages
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the built Storybook static files from the previous stage
-COPY --from=build /app/storybook-static /app/storybook-static
-
-# Copy your FastAPI app code (ensure you have a Python file that serves the static files)
-COPY app/ /app
 
 # Expose the port on which FastAPI will run
 EXPOSE 80
