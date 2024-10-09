@@ -1,5 +1,5 @@
 # Stage 1: Build the Storybook
-FROM node:18-alpine as build
+FROM node:18 as build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -10,8 +10,9 @@ COPY app/package.json app/package-lock.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application from the my-storybook-app directory into the container
+# Copy the rest of the application from the app directory into the container
 COPY app/ ./
+COPY app/.storybook ./app/.storybook
 
 # Build Storybook to generate static files
 RUN npm run build-storybook
@@ -27,7 +28,7 @@ WORKDIR /app
 # Copy the Storybook static build from the previous stage to the nginx public directory
 COPY --from=build /app/storybook-static /app/storybook-static
 
-COPY app/ /app
+COPY app/ ./
 
 # Copy the requirements.txt into the container
 COPY requirements.txt .
