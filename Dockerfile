@@ -19,5 +19,7 @@ RUN npm run build-storybook
 
 RUN ls /app
 
+EXPOSE 80
+
 CMD ["npm", "run", "storybook"]
 
