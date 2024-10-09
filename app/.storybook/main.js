@@ -8,8 +8,6 @@ const config = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    '@storybook/addon-actions',   // Add-on for action logging
-    '@storybook/addon-a11y',      // Add-on for accessibility
   ],
   framework: {
     name: "@storybook/react-webpack5",
