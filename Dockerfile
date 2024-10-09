@@ -1,5 +1,5 @@
 # Stage 1: Build the Storybook
-FROM node:18-alpine as build
+FROM node:latest as build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -19,7 +19,7 @@ RUN npm run build-storybook
 RUN ls /app/storybook-static
 
 # Stage 2: Serve the Storybook with Nginx
-FROM nginx:alpine
+FROM nginx:latest
 
 # Remove default Nginx website files
 RUN rm -rf /usr/share/nginx/html/*
