@@ -13,7 +13,7 @@
   },
   "scripts": {
     "storybook": "storybook dev -p 8080",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -o storybook-static"
   },
   "eslintConfig": {
     "extends": [
