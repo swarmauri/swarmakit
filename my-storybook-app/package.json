@@ -20,7 +20,6 @@
     "build-storybook": "storybook build"
   },
   "eslintConfig": {
-    "plugins": ["storybook"],
     "extends": [
       "react-app",
       "react-app/jest",
