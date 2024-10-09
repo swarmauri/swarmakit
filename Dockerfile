@@ -25,6 +25,9 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy the Storybook static build from the previous stage to the Nginx public directory
 COPY --from=build /app/storybook-static /usr/share/nginx/html
 
+# Change ownership of the files to the nginx user
+RUN chown -R nginx:nginx /usr/share/nginx/html
+
 # Expose port 80 for the Nginx server
 EXPOSE 80
 
