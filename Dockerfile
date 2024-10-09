@@ -23,8 +23,9 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy the Storybook static build from the previous stage to the nginx public directory
-COPY --from=build /app/storybook-static .
+COPY --from=build /app/storybook-static /app/storybook-static
 
+COPY app/ /app
 
 # Copy the requirements.txt into the container
 COPY requirements.txt .
