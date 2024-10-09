@@ -23,7 +23,6 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the Storybook static build from the previous stage to the Nginx public directory
-RUN chmod -R 755 /app/storybook-static
 COPY --from=build /app/storybook-static /usr/share/nginx/html
 
 # Copy custom nginx configuration
