@@ -14,7 +14,7 @@ RUN npm install
 COPY app/ ./
 
 # Build Storybook to generate static files
-RUN npm run build
+RUN npm run build-storybook
 
 # Stage 2: Serve the Storybook with Nginx
 FROM nginx:alpine
@@ -33,7 +33,7 @@ RUN chmod -R 755 /usr/share/nginx/html
 RUN chown -R nginx:nginx /usr/share/nginx/html
 
 # Expose port 80 for the Nginx server
-EXPOSE 80
+EXPOSE 8080
 
 # Start Nginx to serve Storybook
 CMD ["nginx", "-g", "daemon off;"]
