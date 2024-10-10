@@ -1,0 +1,49 @@
+/** @jsx css */
+.followers-following-count {
+  display: flex;
+  gap: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.followers-following-count__item {
+  text-align: center;
+}
+
+.count {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 0.875em;
+  color: #666;
+}
+
+@media (max-width: 576px) {
+  /* Small mobile devices */
+  .followers-following-count {
+    gap: 12px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  /* Large mobile devices */
+  .followers-following-count {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  /* Tablets */
+  .followers-following-count {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 993px) {
+  /* Desktops */
+  .followers-following-count {
+    gap: 24px;
+  }
+}

@@ -1,0 +1,91 @@
+/** @jsx css */
+.user-avatar {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-avatar__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.user-avatar--small {
+  width: 40px;
+  height: 40px;
+}
+
+.user-avatar--medium {
+  width: 80px;
+  height: 80px;
+}
+
+.user-avatar--large {
+  width: 120px;
+  height: 120px;
+}
+
+@media (max-width: 576px) {
+  /* Small mobile devices */
+  .user-avatar--small {
+    width: 30px;
+    height: 30px;
+  }
+  .user-avatar--medium {
+    width: 60px;
+    height: 60px;
+  }
+  .user-avatar--large {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  /* Large mobile devices */
+  .user-avatar--small {
+    width: 35px;
+    height: 35px;
+  }
+  .user-avatar--medium {
+    width: 70px;
+    height: 70px;
+  }
+  .user-avatar--large {
+    width: 105px;
+    height: 105px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  /* Tablets */
+  .user-avatar--small {
+    width: 40px;
+    height: 40px;
+  }
+  .user-avatar--medium {
+    width: 80px;
+    height: 80px;
+  }
+  .user-avatar--large {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (min-width: 993px) {
+  /* Desktops */
+  .user-avatar--small {
+    width: 50px;
+    height: 50px;
+  }
+  .user-avatar--medium {
+    width: 100px;
+    height: 100px;
+  }
+  .user-avatar--large {
+    width: 150px;
+    height: 150px;
+  }
+}
