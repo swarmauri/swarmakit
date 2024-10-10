@@ -2,23 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BodyTextParagraphs.css';
 
-const BodyTextParagraphs = ({ paragraphs, className }) => {
+const BodyTextParagraphs = ({ text, color, fontSize }) => {
   return (
-    <div className={`body-text-paragraphs ${className}`}>
-      {paragraphs.map((paragraph, index) => (
-        <p key={index}>{paragraph}</p>
-      ))}
-    </div>
+    <p className="body-text-paragraph" style={{ color, fontSize }}>
+      {text}
+    </p>
   );
 };
 
 BodyTextParagraphs.propTypes = {
-  paragraphs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  className: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  fontSize: PropTypes.string,
 };
 
 BodyTextParagraphs.defaultProps = {
-  className: '',
+  color: '#333',
+  fontSize: '16px',
 };
 
 export default BodyTextParagraphs;
