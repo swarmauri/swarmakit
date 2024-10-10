@@ -1,0 +1,27 @@
+.sidebar-menu {
+  width: 250px;
+  background-color: #f4f4f4;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-menu.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar-menu.open {
+  transform: translateX(0);
+}
+
+.menu-items {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-items li {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.menu-items li:hover {
+  background-color: #ddd;
+}
