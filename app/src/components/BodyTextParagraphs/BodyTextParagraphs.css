@@ -1,15 +1,41 @@
 .body-text-paragraphs {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
+  margin: 1em 0;
+  padding: 0;
 }
 
 .body-text-paragraphs p {
-  margin-bottom: 16px;
+  margin: 0.5em 0;
+  line-height: 1.6;
 }
 
-.custom-paragraph-style {
-  color: #007bff;
-  font-weight: bold;
+@media (max-width: 599px) {
+  /* Small Mobile */
+  .body-text-paragraphs p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  /* Large Mobile */
+  .body-text-paragraphs p {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet */
+  .body-text-paragraphs p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop */
+  .body-text-paragraphs p {
+    font-size: 20px;
+  }
+}
+
+.custom-class {
+  color: #3498db;
 }

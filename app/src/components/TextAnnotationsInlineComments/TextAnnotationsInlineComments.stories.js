@@ -5,7 +5,18 @@ export default {
   title: 'Components/TextAnnotationsInlineComments',
   component: TextAnnotationsInlineComments,
   argTypes: {
-    className: { control: 'text' },
+    text: {
+      control: 'text',
+      description: 'The text to display with inline comments',
+    },
+    comments: {
+      control: 'object',
+      description: 'An array of objects representing words and their comments',
+    },
+    className: {
+      control: 'text',
+      description: 'Custom CSS classes',
+    },
   },
 };
 
@@ -13,24 +24,24 @@ const Template = (args) => <TextAnnotationsInlineComments {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Inline comments are useful for providing additional context.',
-  annotations: [
-    {
-      start: 0,
-      end: 12,
-      comment: 'This part refers to comments within the text.',
-    },
-    {
-      start: 37,
-      end: 52,
-      comment: 'Provides extra information.',
-    },
+  text: 'This is a sample text to demonstrate inline comments.',
+  comments: [
+    { word: 'sample', comment: 'This is a sample comment.' },
+    { word: 'inline', comment: 'Comments appear inline.' },
   ],
-  className: '',
 };
 
-export const WithCustomClassName = Template.bind({});
-WithCustomClassName.args = {
-  ...Default.args,
-  className: 'custom-annotation-style',
+export const NoComments = Template.bind({});
+NoComments.args = {
+  text: 'This text has no inline comments.',
+  comments: [],
+};
+
+export const CustomClassName = Template.bind({});
+CustomClassName.args = {
+  text: 'Custom styling is applied to this text.',
+  comments: [
+    { word: 'Custom', comment: 'This is a custom styled comment.' },
+  ],
+  className: 'custom-text-class',
 };

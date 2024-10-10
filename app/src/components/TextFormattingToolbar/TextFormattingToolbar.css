@@ -1,24 +1,29 @@
 .text-formatting-toolbar {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .toolbar-button {
-  padding: 8px 16px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .toolbar-button:hover {
-  background-color: #0056b3;
+  background-color: #e0e0e0;
 }
 
 .toolbar-button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
+}
+
+.custom-toolbar-class .toolbar-button {
+  border-color: #28a745;
+  background-color: #e9f7ef;
 }

@@ -1,21 +1,26 @@
 .ghost-button-outline {
-  background-color: transparent;
-  color: #007bff;
-  border: 2px solid #007bff;
   padding: 10px 20px;
-  border-radius: 4px;
   font-size: 16px;
+  color: #343a40;
+  background-color: transparent;
+  border: 2px solid #343a40;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .ghost-button-outline:hover {
-  background-color: #007bff;
-  color: white;
+  background-color: #343a40;
+  color: #fff;
 }
 
 .ghost-button-outline:disabled {
   border-color: #cccccc;
   color: #cccccc;
   cursor: not-allowed;
+}
+
+.custom-ghost-button-outline {
+  border-color: #17a2b8;
+  color: #17a2b8;
 }

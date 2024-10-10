@@ -2,33 +2,35 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './RichTextEditor.css';
 
-const RichTextEditor = ({ initialValue, onChange }) => {
-  const [value, setValue] = useState(initialValue);
+const RichTextEditor = ({ initialValue, placeholder, className }) => {
+  const [content, setContent] = useState(initialValue);
 
-  const handleInputChange = (event) => {
-    const newValue = event.target.innerHTML;
-    setValue(newValue);
-    onChange(newValue);
+  const handleChange = (event) => {
+    setContent(event.target.value);
   };
 
   return (
-    <div
-      className="rich-text-editor"
-      contentEditable
-      onInput={handleInputChange}
-      dangerouslySetInnerHTML={{ __html: value }}
-    />
+    <div className={`rich-text-editor ${className}`}>
+      <textarea
+        value={content}
+        onChange={handleChange}
+        placeholder={placeholder}
+        className="rich-text-editor__textarea"
+      />
+    </div>
   );
 };
 
 RichTextEditor.propTypes = {
   initialValue: PropTypes.string,
-  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
 };
 
 RichTextEditor.defaultProps = {
   initialValue: '',
-  onChange: () => {},
+  placeholder: 'Start typing...',
+  className: '',
 };
 
 export default RichTextEditor;

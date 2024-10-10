@@ -1,37 +1,32 @@
-.text-annotations {
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.annotation {
+.commented-word {
   position: relative;
   cursor: pointer;
   color: blue;
-  text-decoration: underline;
+  font-weight: bold;
 }
 
-.inline-comment {
-  display: none;
+.commented-word:hover .comment-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.comment-tooltip {
+  visibility: hidden;
+  opacity: 0;
   position: absolute;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
   padding: 5px;
-  font-size: 12px;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s;
   white-space: nowrap;
-  z-index: 10;
-  left: 0;
-  top: 100%;
+  z-index: 1;
 }
 
-.annotation:hover .inline-comment {
-  display: block;
-}
-
-.custom-annotation-style .annotation {
-  color: darkgreen;
-  text-decoration: none;
-}
-
-.custom-annotation-style .annotation:hover .inline-comment {
-  background-color: #e0f7fa;
+.custom-text-class .commented-word {
+  color: #ff5733;
 }

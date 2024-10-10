@@ -5,8 +5,8 @@ import './BodyTextParagraphs.css';
 const BodyTextParagraphs = ({ paragraphs, className }) => {
   return (
     <div className={`body-text-paragraphs ${className}`}>
-      {paragraphs.map((text, index) => (
-        <p key={index}>{text}</p>
+      {paragraphs.map((paragraph, index) => (
+        <p key={index}>{paragraph}</p>
       ))}
     </div>
   );

@@ -5,19 +5,24 @@ export default {
   title: 'Components/Tooltips',
   component: Tooltips,
   argTypes: {
-    position: {
-      control: {
-        type: 'select',
-        options: ['top', 'right', 'bottom', 'left'],
-      },
+    text: {
+      control: 'text',
+      description: 'The text to display inside the tooltip',
     },
-    className: { control: 'text' },
+    position: {
+      control: { type: 'select', options: ['top', 'right', 'bottom', 'left'] },
+      description: 'Position of the tooltip relative to the children',
+    },
+    className: {
+      control: 'text',
+      description: 'Custom CSS classes',
+    },
   },
 };
 
 const Template = (args) => (
   <Tooltips {...args}>
-    <button>Hover over me</button>
+    <button>Hover me</button>
   </Tooltips>
 );
 
@@ -25,17 +30,16 @@ export const Default = Template.bind({});
 Default.args = {
   text: 'This is a tooltip',
   position: 'top',
-  className: '',
 };
 
-export const BottomPosition = Template.bind({});
-BottomPosition.args = {
+export const RightPosition = Template.bind({});
+RightPosition.args = {
   ...Default.args,
-  position: 'bottom',
+  position: 'right',
 };
 
 export const WithCustomClassName = Template.bind({});
 WithCustomClassName.args = {
   ...Default.args,
-  className: 'custom-tooltip',
+  className: 'custom-tooltip-class',
 };

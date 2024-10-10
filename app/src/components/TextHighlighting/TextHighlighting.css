@@ -1,14 +1,10 @@
-.text-highlighting {
-  font-size: 16px;
-  line-height: 1.5;
-}
-
 .highlight {
   background-color: yellow;
   font-weight: bold;
 }
 
-.custom-text-highlight .highlight {
-  background-color: lightgreen;
-  font-style: italic;
+.custom-text-class .highlight {
+  background-color: #ff5733;
+  color: white;
+  border-radius: 3px;
 }

@@ -5,7 +5,14 @@ export default {
   title: 'Components/Hyperlinks',
   component: Hyperlinks,
   argTypes: {
-    className: { control: 'text' },
+    links: {
+      control: 'object',
+      description: 'An array of objects representing hyperlink URLs and text',
+    },
+    className: {
+      control: 'text',
+      description: 'Custom CSS classes',
+    },
   },
 };
 
@@ -14,14 +21,17 @@ const Template = (args) => <Hyperlinks {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   links: [
-    { href: 'https://www.example.com', text: 'Example' },
-    { href: 'https://www.google.com', text: 'Google' },
+    { url: 'https://www.example.com', text: 'Example' },
+    { url: 'https://www.google.com', text: 'Google' },
+    { url: 'https://www.github.com', text: 'GitHub' },
   ],
-  className: '',
 };
 
-export const WithCustomClassName = Template.bind({});
-WithCustomClassName.args = {
-  ...Default.args,
-  className: 'custom-link-style',
+export const CustomClassName = Template.bind({});
+CustomClassName.args = {
+  links: [
+    { url: 'https://www.example.com', text: 'Example' },
+    { url: 'https://www.google.com', text: 'Google' },
+  ],
+  className: 'custom-hyperlinks-class',
 };

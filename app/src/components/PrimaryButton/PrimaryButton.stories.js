@@ -4,6 +4,14 @@ import PrimaryButton from './PrimaryButton';
 export default {
   title: 'Components/PrimaryButton',
   component: PrimaryButton,
+  argTypes: {
+    label: { control: 'text' },
+    disabled: { control: 'boolean' },
+    className: {
+      control: 'text',
+      description: 'Custom CSS classes for styling',
+    },
+  },
 };
 
 const Template = (args) => <PrimaryButton {...args} />;
@@ -11,13 +19,20 @@ const Template = (args) => <PrimaryButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: 'Click Me',
-  onClick: () => alert('Button Clicked!'),
   disabled: false,
+  className: '',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Click Me',
-  onClick: () => alert('Button Clicked!'),
+  label: 'Disabled',
   disabled: true,
+  className: '',
+};
+
+export const CustomClassName = Template.bind({});
+CustomClassName.args = {
+  label: 'Custom Style',
+  disabled: false,
+  className: 'custom-primary-button',
 };

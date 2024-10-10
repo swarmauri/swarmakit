@@ -1,16 +1,16 @@
 .tooltip-container {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .tooltip-text {
   visibility: hidden;
-  width: 120px;
-  background-color: #555;
+  background-color: black;
   color: #fff;
   text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
+  border-radius: 4px;
+  padding: 5px;
   position: absolute;
   z-index: 1;
   opacity: 0;
@@ -25,27 +25,31 @@
 .tooltip-top {
   bottom: 100%;
   left: 50%;
-  margin-left: -60px;
+  transform: translateX(-50%);
+  margin-bottom: 5px;
 }
 
 .tooltip-right {
   top: 50%;
   left: 100%;
-  margin-top: -16px;
+  transform: translateY(-50%);
+  margin-left: 5px;
 }
 
 .tooltip-bottom {
   top: 100%;
   left: 50%;
-  margin-left: -60px;
+  transform: translateX(-50%);
+  margin-top: 5px;
 }
 
 .tooltip-left {
   top: 50%;
   right: 100%;
-  margin-top: -16px;
+  transform: translateY(-50%);
+  margin-right: 5px;
 }
 
-.custom-tooltip {
-  background-color: #007bff;
+.custom-tooltip-class {
+  background-color: #3498db;
 }

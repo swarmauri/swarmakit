@@ -3,16 +3,22 @@ import PropTypes from 'prop-types';
 import './TextHighlighting.css';
 
 const TextHighlighting = ({ text, highlight, className }) => {
-  const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+  if (!highlight.trim()) {
+    return <span className={className}>{text}</span>;
+  }
+
+  const regex = new RegExp(`(${highlight})`, 'gi');
+  const parts = text.split(regex);
+
   return (
-    <span className={`text-highlighting ${className}`}>
+    <span className={className}>
       {parts.map((part, index) =>
         part.toLowerCase() === highlight.toLowerCase() ? (
-          <span key={index} className="highlight">
+          <mark key={index} className="highlight">
             {part}
-          </span>
+          </mark>
         ) : (
-          <span key={index}>{part}</span>
+          part
         )
       )}
     </span>
@@ -21,11 +27,12 @@ const TextHighlighting = ({ text, highlight, className }) => {
 
 TextHighlighting.propTypes = {
   text: PropTypes.string.isRequired,
-  highlight: PropTypes.string.isRequired,
+  highlight: PropTypes.string,
   className: PropTypes.string,
 };
 
 TextHighlighting.defaultProps = {
+  highlight: '',
   className: '',
 };
 

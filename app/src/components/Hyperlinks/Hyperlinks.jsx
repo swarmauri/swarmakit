@@ -4,20 +4,22 @@ import './Hyperlinks.css';
 
 const Hyperlinks = ({ links, className }) => {
   return (
-    <div className={`hyperlinks-container ${className}`}>
+    <ul className={`hyperlinks-list ${className}`}>
       {links.map((link, index) => (
-        <a key={index} href={link.href} target="_blank" rel="noopener noreferrer" className="hyperlink">
-          {link.text}
-        </a>
+        <li key={index}>
+          <a href={link.url} target="_blank" rel="noopener noreferrer">
+            {link.text}
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
 Hyperlinks.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      href: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
     })
   ).isRequired,

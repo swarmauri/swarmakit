@@ -2,22 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MarkdownEditor.css';
 
-const MarkdownEditor = ({ content, onChange }) => {
+const MarkdownEditor = ({ value, onChange, placeholder, className }) => {
   return (
-    <div className="markdown-editor">
-      <textarea
-        className="editor-textarea"
-        value={content}
-        onChange={onChange}
-        placeholder="Write your markdown here..."
-      />
-    </div>
+    <textarea
+      className={`markdown-editor ${className}`}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      aria-label="Markdown Editor"
+    />
   );
 };
 
 MarkdownEditor.propTypes = {
-  content: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+};
+
+MarkdownEditor.defaultProps = {
+  placeholder: 'Enter your markdown here...',
+  className: '',
 };
 
 export default MarkdownEditor;

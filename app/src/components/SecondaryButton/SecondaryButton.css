@@ -1,19 +1,26 @@
 .secondary-button {
-  background-color: #6c757d;
-  color: white;
-  border: none;
   padding: 10px 20px;
-  border-radius: 4px;
   font-size: 16px;
+  color: #007bff;
+  background-color: transparent;
+  border: 2px solid #007bff;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .secondary-button:hover {
-  background-color: #5a6268;
+  background-color: #007bff;
+  color: #fff;
 }
 
 .secondary-button:disabled {
-  background-color: #cccccc;
+  border-color: #cccccc;
+  color: #cccccc;
   cursor: not-allowed;
+}
+
+.custom-secondary-button {
+  border-color: #28a745;
+  color: #28a745;
 }

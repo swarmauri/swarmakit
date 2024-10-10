@@ -5,7 +5,18 @@ export default {
   title: 'Components/RichTextEditor',
   component: RichTextEditor,
   argTypes: {
-    initialValue: { control: 'text' },
+    initialValue: {
+      control: 'text',
+      description: 'The initial content of the editor',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text for the editor',
+    },
+    className: {
+      control: 'text',
+      description: 'Custom CSS classes for styling',
+    },
   },
 };
 
@@ -13,10 +24,19 @@ const Template = (args) => <RichTextEditor {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  initialValue: '<p>Edit this text</p>',
+  initialValue: '',
+  placeholder: 'Start typing...',
 };
 
 export const WithInitialContent = Template.bind({});
 WithInitialContent.args = {
-  initialValue: '<h1>Welcome to the Editor</h1><p>This is some initial content.</p>',
+  initialValue: 'This is some initial content in the editor.',
+  placeholder: 'Start typing...',
+};
+
+export const CustomClassName = Template.bind({});
+CustomClassName.args = {
+  initialValue: '',
+  placeholder: 'Type your content here...',
+  className: 'custom-editor-class',
 };

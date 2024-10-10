@@ -1,23 +1,22 @@
-.hyperlinks-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.hyperlinks-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-.hyperlink {
-  color: blue;
+.hyperlinks-list li {
+  margin-bottom: 8px;
+}
+
+.hyperlinks-list a {
+  color: #1a0dab;
   text-decoration: none;
-  font-size: 16px;
+  transition: color 0.3s;
 }
 
-.hyperlink:hover {
-  text-decoration: underline;
+.hyperlinks-list a:hover {
+  color: #d93025;
 }
 
-.custom-link-style .hyperlink {
-  color: darkred;
-}
-
-.custom-link-style .hyperlink:hover {
-  color: darkorange;
+.custom-hyperlinks-class a {
+  color: #ff5733;
 }

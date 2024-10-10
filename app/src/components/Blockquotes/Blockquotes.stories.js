@@ -5,7 +5,18 @@ export default {
   title: 'Components/Blockquotes',
   component: Blockquotes,
   argTypes: {
-    className: { control: 'text' },
+    quote: {
+      control: 'text',
+      description: 'The quote text to be displayed',
+    },
+    author: {
+      control: 'text',
+      description: 'The author of the quote',
+    },
+    className: {
+      control: 'text',
+      description: 'Custom CSS classes for styling',
+    },
   },
 };
 
@@ -13,19 +24,18 @@ const Template = (args) => <Blockquotes {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'The only limit to our realization of tomorrow is our doubts of today.',
+  quote: 'The only limit to our realization of tomorrow is our doubts of today.',
   author: 'Franklin D. Roosevelt',
-  className: '',
 };
 
-export const WithoutAuthor = Template.bind({});
-WithoutAuthor.args = {
-  text: 'Life is 10% what happens to us and 90% how we react to it.',
-  className: '',
+export const NoAuthor = Template.bind({});
+NoAuthor.args = {
+  quote: 'In the middle of every difficulty lies opportunity.',
 };
 
-export const WithCustomClassName = Template.bind({});
-WithCustomClassName.args = {
-  ...Default.args,
-  className: 'custom-blockquote-style',
+export const CustomClassName = Template.bind({});
+CustomClassName.args = {
+  quote: 'The best way to predict the future is to invent it.',
+  author: 'Alan Kay',
+  className: 'custom-blockquote-class',
 };
