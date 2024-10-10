@@ -1,70 +1,68 @@
-/** @jsx css */
 .user-badge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
+  padding: 5px;
   border-radius: 4px;
-  background-color: #f0f0f0;
 }
 
-.user-badge__username {
+.user-badge__role {
+  margin-right: 10px;
   font-weight: bold;
 }
 
 .user-badge__status {
-  padding: 2px 6px;
-  border-radius: 12px;
-  font-size: 0.875em;
+  font-size: 0.8em;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.user-badge--small .user-badge__role,
+.user-badge--small .user-badge__status {
+  font-size: 0.8em;
+}
+
+.user-badge--medium .user-badge__role,
+.user-badge--medium .user-badge__status {
+  font-size: 1em;
+}
+
+.user-badge--large .user-badge__role,
+.user-badge--large .user-badge__status {
+  font-size: 1.2em;
+}
+
+.user-badge--online .user-badge__status {
+  background-color: green;
   color: white;
 }
 
-.user-badge__status--online {
-  background-color: green;
-}
-
-.user-badge__status--offline {
+.user-badge--offline .user-badge__status {
   background-color: gray;
+  color: white;
 }
 
-.user-badge__status--busy {
+.user-badge--busy .user-badge__status {
   background-color: red;
+  color: white;
 }
 
-.user-badge__status--away {
-  background-color: orange;
-}
-
-.user-badge__role {
-  font-style: italic;
-  color: #555;
-}
-
-@media (max-width: 576px) {
-  /* Small mobile devices */
-  .user-badge {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 480px) {
+  .user-badge--small .user-badge__role,
+  .user-badge--small .user-badge__status {
+    font-size: 0.7em;
   }
 }
 
-@media (min-width: 577px) and (max-width: 768px) {
-  /* Large mobile devices */
-  .user-badge {
-    gap: 6px;
+@media (min-width: 481px) and (max-width: 768px) {
+  .user-badge--medium .user-badge__role,
+  .user-badge--medium .user-badge__status {
+    font-size: 0.9em;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
-  /* Tablets */
-  .user-badge {
-    gap: 10px;
-  }
-}
-
-@media (min-width: 993px) {
-  /* Desktops */
-  .user-badge {
-    gap: 12px;
+@media (min-width: 769px) {
+  .user-badge--large .user-badge__role,
+  .user-badge--large .user-badge__status {
+    font-size: 1.1em;
   }
 }

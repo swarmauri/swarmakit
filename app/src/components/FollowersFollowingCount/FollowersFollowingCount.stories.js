@@ -1,13 +1,9 @@
-/** @jsx js */
 import React from 'react';
 import FollowersFollowingCount from './FollowersFollowingCount';
 
 export default {
   title: 'Components/FollowersFollowingCount',
   component: FollowersFollowingCount,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     followers: { control: 'number' },
     following: { control: 'number' },
@@ -18,18 +14,18 @@ const Template = (args) => <FollowersFollowingCount {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  followers: 1200,
-  following: 300,
+  followers: 120,
+  following: 80,
 };
 
-export const ZeroFollowers = Template.bind({});
-ZeroFollowers.args = {
-  followers: 0,
-  following: 300,
+export const HighFollowersLowFollowing = Template.bind({});
+HighFollowersLowFollowing.args = {
+  followers: 1000,
+  following: 50,
 };
 
-export const ZeroFollowing = Template.bind({});
-ZeroFollowing.args = {
-  followers: 1200,
-  following: 0,
+export const LowFollowersHighFollowing = Template.bind({});
+LowFollowersHighFollowing.args = {
+  followers: 50,
+  following: 300,
 };

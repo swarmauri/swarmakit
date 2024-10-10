@@ -1,55 +1,76 @@
-/** @jsx css */
 .update-notification {
-  position: relative;
-  padding: 10px 15px;
-  color: #ffffff;
-  background-color: #28a745;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 16px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  max-width: 300px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-.close-button {
-  background: none;
+.notification-message {
+  margin-right: 10px;
+}
+
+.dismiss-button {
+  background-color: #f44336;
+  color: white;
   border: none;
-  color: #ffffff;
-  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 3px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.close-button:hover {
-  color: #cccccc;
+.dismiss-button:hover {
+  background-color: #d32f2f;
 }
 
-@media (max-width: 576px) {
-  /* Small mobile devices */
+@media (max-width: 480px) {
   .update-notification {
+    width: 90%;
+    bottom: 10px;
+    right: 5%;
+    padding: 8px 15px;
+  }
+  .notification-message {
     font-size: 14px;
   }
+  .dismiss-button {
+    padding: 4px 8px;
+  }
 }
 
-@media (min-width: 577px) and (max-width: 768px) {
-  /* Large mobile devices */
+@media (min-width: 481px) and (max-width: 768px) {
   .update-notification {
+    width: 80%;
+    bottom: 15px;
+    right: 10%;
+    padding: 9px 18px;
+  }
+  .notification-message {
     font-size: 15px;
   }
-}
-
-@media (min-width: 769px) and (max-width: 992px) {
-  /* Tablets */
-  .update-notification {
-    font-size: 16px;
+  .dismiss-button {
+    padding: 5px 9px;
   }
 }
 
-@media (min-width: 993px) {
-  /* Desktops */
+@media (min-width: 769px) {
   .update-notification {
-    font-size: 17px;
+    width: auto;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+  }
+  .notification-message {
+    font-size: 16px;
+  }
+  .dismiss-button {
+    padding: 5px 10px;
   }
 }

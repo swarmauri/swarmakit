@@ -1,38 +1,27 @@
-/** @jsx css */
 .inline-error-notification {
+  color: #d8000c;
+  background-color: #ffbaba;
   padding: 10px;
-  color: #721c24;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
   border-radius: 4px;
-  margin: 5px 0;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@media (max-width: 576px) {
-  /* Small mobile devices */
+@media (max-width: 480px) {
   .inline-error-notification {
     font-size: 12px;
   }
 }
 
-@media (min-width: 577px) and (max-width: 768px) {
-  /* Large mobile devices */
+@media (min-width: 481px) and (max-width: 768px) {
   .inline-error-notification {
     font-size: 13px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
-  /* Tablets */
+@media (min-width: 769px) {
   .inline-error-notification {
     font-size: 14px;
-  }
-}
-
-@media (min-width: 993px) {
-  /* Desktops */
-  .inline-error-notification {
-    font-size: 15px;
   }
 }

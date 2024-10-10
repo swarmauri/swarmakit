@@ -1,24 +1,26 @@
-/** @jsx jsx */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './UserAvatar.css';
 
-const UserAvatar = ({ src, alt, size }) => {
+const UserAvatar = ({ imageUrl, size, altText }) => {
   return (
-    <div className={`user-avatar user-avatar--${size}`}>
-      <img src={src} alt={alt} className="user-avatar__image" />
-    </div>
+    <img 
+      className={`user-avatar user-avatar--${size}`} 
+      src={imageUrl} 
+      alt={altText} 
+    />
   );
 };
 
 UserAvatar.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  altText: PropTypes.string,
 };
 
 UserAvatar.defaultProps = {
   size: 'medium',
+  altText: 'User Avatar',
 };
 
 export default UserAvatar;

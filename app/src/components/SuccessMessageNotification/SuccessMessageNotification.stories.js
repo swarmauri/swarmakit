@@ -1,16 +1,9 @@
-/** @jsx js */
-import React, { useState } from 'react';
+import React from 'react';
 import SuccessMessageNotification from './SuccessMessageNotification';
 
 export default {
   title: 'Components/SuccessMessageNotification',
   component: SuccessMessageNotification,
-  parameters: {
-    layout: 'centered',
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
   argTypes: {
     message: { control: 'text' },
     isVisible: { control: 'boolean' },
@@ -18,29 +11,16 @@ export default {
   },
 };
 
-const Template = (args) => {
-  const [isVisible, setIsVisible] = useState(args.isVisible);
-
-  return (
-    <SuccessMessageNotification
-      {...args}
-      isVisible={isVisible}
-      onClose={() => {
-        setIsVisible(false);
-        args.onClose();
-      }}
-    />
-  );
-};
+const Template = (args) => <SuccessMessageNotification {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  message: 'Operation completed successfully!',
+  message: 'Your action was successful!',
   isVisible: true,
 };
 
 export const Hidden = Template.bind({});
 Hidden.args = {
-  message: 'Operation completed successfully!',
+  message: 'This notification should not be visible.',
   isVisible: false,
 };

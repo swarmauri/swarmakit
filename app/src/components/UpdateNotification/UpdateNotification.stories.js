@@ -1,37 +1,17 @@
-/** @jsx js */
-import React, { useState } from 'react';
+import React from 'react';
 import UpdateNotification from './UpdateNotification';
 
 export default {
   title: 'Components/UpdateNotification',
   component: UpdateNotification,
-  parameters: {
-    layout: 'centered',
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
   argTypes: {
     message: { control: 'text' },
     isVisible: { control: 'boolean' },
-    onClose: { action: 'closed' },
+    onDismiss: { action: 'dismissed' },
   },
 };
 
-const Template = (args) => {
-  const [isVisible, setIsVisible] = useState(args.isVisible);
-
-  return (
-    <UpdateNotification
-      {...args}
-      isVisible={isVisible}
-      onClose={() => {
-        setIsVisible(false);
-        args.onClose();
-      }}
-    />
-  );
-};
+const Template = (args) => <UpdateNotification {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -41,6 +21,6 @@ Default.args = {
 
 export const Hidden = Template.bind({});
 Hidden.args = {
-  message: 'A new update is available!',
+  message: 'This notification should not be visible.',
   isVisible: false,
 };

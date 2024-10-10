@@ -1,17 +1,13 @@
-/** @jsx js */
 import React from 'react';
 import UserBadgeStatusRole from './UserBadgeStatusRole';
 
 export default {
   title: 'Components/UserBadgeStatusRole',
   component: UserBadgeStatusRole,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
-    username: { control: 'text' },
-    status: { control: { type: 'select', options: ['Online', 'Offline', 'Busy', 'Away'] } },
-    role: { control: { type: 'select', options: ['Admin', 'Moderator', 'User'] } },
+    status: { control: { type: 'select', options: ['online', 'offline', 'busy'] } },
+    role: { control: 'text' },
+    size: { control: { type: 'select', options: ['small', 'medium', 'large'] } },
   },
 };
 
@@ -19,28 +15,21 @@ const Template = (args) => <UserBadgeStatusRole {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  username: 'JohnDoe',
-  status: 'Online',
+  status: 'offline',
   role: 'User',
+  size: 'medium',
 };
 
-export const AdminOnline = Template.bind({});
-AdminOnline.args = {
-  ...Default.args,
+export const Online = Template.bind({});
+Online.args = {
+  status: 'online',
   role: 'Admin',
-  status: 'Online',
+  size: 'medium',
 };
 
-export const ModeratorBusy = Template.bind({});
-ModeratorBusy.args = {
-  ...Default.args,
+export const Busy = Template.bind({});
+Busy.args = {
+  status: 'busy',
   role: 'Moderator',
-  status: 'Busy',
-};
-
-export const UserAway = Template.bind({});
-UserAway.args = {
-  ...Default.args,
-  role: 'User',
-  status: 'Away',
+  size: 'large',
 };

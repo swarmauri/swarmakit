@@ -1,25 +1,20 @@
-/** @jsx jsx */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ValidationErrorTooltip.css';
 
 const ValidationErrorTooltip = ({ message, isVisible }) => {
+  if (!isVisible) return null;
+
   return (
-    isVisible && (
-      <div className="validation-error-tooltip">
-        {message}
-      </div>
-    )
+    <div className="validation-error-tooltip">
+      <span className="tooltip-text">{message}</span>
+    </div>
   );
 };
 
 ValidationErrorTooltip.propTypes = {
   message: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool
-};
-
-ValidationErrorTooltip.defaultProps = {
-  isVisible: false
+  isVisible: PropTypes.bool.isRequired,
 };
 
 export default ValidationErrorTooltip;

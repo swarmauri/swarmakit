@@ -1,52 +1,55 @@
-/** @jsx css */
 .profile-overview {
-  padding: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #fafafa;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
 }
 
 .profile-overview__name {
   font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .profile-overview__bio {
   font-size: 1em;
-  margin-bottom: 8px;
-  color: #333;
+  margin-bottom: 5px;
 }
 
 .profile-overview__location {
-  font-size: 0.875em;
-  color: #777;
+  font-size: 0.9em;
+  color: gray;
 }
 
-@media (max-width: 576px) {
-  /* Small mobile devices */
+@media (max-width: 480px) {
   .profile-overview {
-    padding: 12px;
+    padding: 8px;
+  }
+  .profile-overview__name {
+    font-size: 1.2em;
+  }
+  .profile-overview__bio,
+  .profile-overview__location {
+    font-size: 0.8em;
   }
 }
 
-@media (min-width: 577px) and (max-width: 768px) {
-  /* Large mobile devices */
-  .profile-overview {
-    padding: 16px;
+@media (min-width: 481px) and (max-width: 768px) {
+  .profile-overview__name {
+    font-size: 1.4em;
+  }
+  .profile-overview__bio,
+  .profile-overview__location {
+    font-size: 0.9em;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
-  /* Tablets */
-  .profile-overview {
-    padding: 20px;
+@media (min-width: 769px) {
+  .profile-overview__name {
+    font-size: 1.6em;
   }
-}
-
-@media (min-width: 993px) {
-  /* Desktops */
-  .profile-overview {
-    padding: 24px;
+  .profile-overview__bio,
+  .profile-overview__location {
+    font-size: 1em;
   }
 }

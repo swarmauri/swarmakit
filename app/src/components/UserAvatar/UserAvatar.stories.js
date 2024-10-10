@@ -1,20 +1,13 @@
-/** @jsx js */
 import React from 'react';
 import UserAvatar from './UserAvatar';
 
 export default {
   title: 'Components/UserAvatar',
   component: UserAvatar,
-  parameters: {
-    layout: 'centered',
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
   argTypes: {
-    src: { control: 'text' },
-    alt: { control: 'text' },
+    imageUrl: { control: 'text' },
     size: { control: { type: 'select', options: ['small', 'medium', 'large'] } },
+    altText: { control: 'text' },
   },
 };
 
@@ -22,19 +15,21 @@ const Template = (args) => <UserAvatar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'https://via.placeholder.com/150',
-  alt: 'User Avatar',
+  imageUrl: 'https://via.placeholder.com/150',
   size: 'medium',
+  altText: 'Default Avatar',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  ...Default.args,
+  imageUrl: 'https://via.placeholder.com/150',
   size: 'small',
+  altText: 'Small Avatar',
 };
 
 export const Large = Template.bind({});
 Large.args = {
-  ...Default.args,
+  imageUrl: 'https://via.placeholder.com/150',
   size: 'large',
+  altText: 'Large Avatar',
 };

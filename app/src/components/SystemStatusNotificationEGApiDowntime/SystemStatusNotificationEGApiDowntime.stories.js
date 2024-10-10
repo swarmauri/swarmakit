@@ -1,46 +1,26 @@
-/** @jsx js */
-import React, { useState } from 'react';
+import React from 'react';
 import SystemStatusNotificationEGApiDowntime from './SystemStatusNotificationEGApiDowntime';
 
 export default {
   title: 'Components/SystemStatusNotificationEGApiDowntime',
   component: SystemStatusNotificationEGApiDowntime,
-  parameters: {
-    layout: 'centered',
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
   argTypes: {
     message: { control: 'text' },
     isVisible: { control: 'boolean' },
-    onClose: { action: 'closed' },
+    onAcknowledge: { action: 'acknowledged' },
   },
 };
 
-const Template = (args) => {
-  const [isVisible, setIsVisible] = useState(args.isVisible);
-
-  return (
-    <SystemStatusNotificationEGApiDowntime
-      {...args}
-      isVisible={isVisible}
-      onClose={() => {
-        setIsVisible(false);
-        args.onClose();
-      }}
-    />
-  );
-};
+const Template = (args) => <SystemStatusNotificationEGApiDowntime {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  message: 'The EG API is currently experiencing downtime.',
+  message: 'The EG API is currently down. Our team is working on it.',
   isVisible: true,
 };
 
 export const Hidden = Template.bind({});
 Hidden.args = {
-  message: 'The EG API is currently experiencing downtime.',
+  message: 'This notification should not be visible.',
   isVisible: false,
 };

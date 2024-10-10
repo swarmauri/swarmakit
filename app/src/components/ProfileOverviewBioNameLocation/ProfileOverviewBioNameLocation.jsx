@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ProfileOverviewBioNameLocation.css';
@@ -16,7 +15,11 @@ const ProfileOverviewBioNameLocation = ({ name, bio, location }) => {
 ProfileOverviewBioNameLocation.propTypes = {
   name: PropTypes.string.isRequired,
   bio: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.string,
+};
+
+ProfileOverviewBioNameLocation.defaultProps = {
+  location: 'Unknown',
 };
 
 export default ProfileOverviewBioNameLocation;

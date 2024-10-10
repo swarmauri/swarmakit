@@ -1,29 +1,22 @@
-/** @jsx jsx */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './UpdateNotification.css';
 
-const UpdateNotification = ({ message, isVisible, onClose }) => {
+const UpdateNotification = ({ message, isVisible, onDismiss }) => {
+  if (!isVisible) return null;
+
   return (
-    isVisible && (
-      <div className="update-notification">
-        <span>{message}</span>
-        <button className="close-button" onClick={onClose} aria-label="Close Notification">
-          &times;
-        </button>
-      </div>
-    )
+    <div className="update-notification">
+      <span className="notification-message">{message}</span>
+      <button className="dismiss-button" onClick={onDismiss}>Dismiss</button>
+    </div>
   );
 };
 
 UpdateNotification.propTypes = {
   message: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool,
-  onClose: PropTypes.func.isRequired
-};
-
-UpdateNotification.defaultProps = {
-  isVisible: false
+  isVisible: PropTypes.bool.isRequired,
+  onDismiss: PropTypes.func.isRequired,
 };
 
 export default UpdateNotification;

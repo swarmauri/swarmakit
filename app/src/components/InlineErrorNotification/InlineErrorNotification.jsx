@@ -1,25 +1,20 @@
-/** @jsx jsx */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './InlineErrorNotification.css';
 
 const InlineErrorNotification = ({ message, isVisible }) => {
+  if (!isVisible) return null;
+
   return (
-    isVisible && (
-      <div className="inline-error-notification">
-        {message}
-      </div>
-    )
+    <div className="inline-error-notification">
+      <p>{message}</p>
+    </div>
   );
 };
 
 InlineErrorNotification.propTypes = {
   message: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool
-};
-
-InlineErrorNotification.defaultProps = {
-  isVisible: false
+  isVisible: PropTypes.bool.isRequired,
 };
 
 export default InlineErrorNotification;

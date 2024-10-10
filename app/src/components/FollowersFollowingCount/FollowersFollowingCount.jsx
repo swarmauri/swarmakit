@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './FollowersFollowingCount.css';
@@ -6,13 +5,13 @@ import './FollowersFollowingCount.css';
 const FollowersFollowingCount = ({ followers, following }) => {
   return (
     <div className="followers-following-count">
-      <div className="followers-following-count__item">
-        <span className="count">{followers}</span>
-        <span className="label">Followers</span>
+      <div className="count">
+        <span className="count__number">{followers}</span>
+        <span className="count__label">Followers</span>
       </div>
-      <div className="followers-following-count__item">
-        <span className="count">{following}</span>
-        <span className="label">Following</span>
+      <div className="count">
+        <span className="count__number">{following}</span>
+        <span className="count__label">Following</span>
       </div>
     </div>
   );

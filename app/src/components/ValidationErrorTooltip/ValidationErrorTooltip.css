@@ -1,50 +1,43 @@
-/** @jsx css */
 .validation-error-tooltip {
   position: relative;
-  padding: 8px;
-  color: #ffffff;
-  background-color: #dc3545;
-  border-radius: 4px;
-  font-size: 14px;
   display: inline-block;
-  margin: 5px 0;
+  cursor: pointer;
 }
 
-.validation-error-tooltip::after {
-  content: '';
+.tooltip-text {
+  visibility: visible;
+  width: 120px;
+  background-color: #f44336;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
   position: absolute;
-  top: 100%;
+  z-index: 1;
+  bottom: 125%;
   left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #dc3545 transparent transparent transparent;
+  margin-left: -60px;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 
-@media (max-width: 576px) {
-  /* Small mobile devices */
-  .validation-error-tooltip {
+@media (max-width: 480px) {
+  .tooltip-text {
+    width: 100px;
     font-size: 12px;
   }
 }
 
-@media (min-width: 577px) and (max-width: 768px) {
-  /* Large mobile devices */
-  .validation-error-tooltip {
+@media (min-width: 481px) and (max-width: 768px) {
+  .tooltip-text {
+    width: 110px;
     font-size: 13px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
-  /* Tablets */
-  .validation-error-tooltip {
+@media (min-width: 769px) {
+  .tooltip-text {
+    width: 120px;
     font-size: 14px;
-  }
-}
-
-@media (min-width: 993px) {
-  /* Desktops */
-  .validation-error-tooltip {
-    font-size: 15px;
   }
 }
