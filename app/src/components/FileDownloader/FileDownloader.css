@@ -1,0 +1,41 @@
+/* FileDownloader.css */
+.file-downloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.download-button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 480px) {
+  .download-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .download-button {
+    font-size: 15px;
+    padding: 9px 18px;
+  }
+}
+
+@media (min-width: 769px) {
+  .download-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}

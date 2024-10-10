@@ -1,0 +1,37 @@
+/* ImageAnnotator.css */
+.image-annotator {
+  position: relative;
+  display: inline-block;
+}
+
+.annotator-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.annotation {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .annotation {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .annotation {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 769px) {
+  .annotation {
+    font-size: 16px;
+  }
+}

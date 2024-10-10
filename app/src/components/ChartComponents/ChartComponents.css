@@ -1,0 +1,23 @@
+/* ChartComponents.css */
+.chart-components {
+  max-width: 100%;
+  margin: 16px 0;
+}
+
+@media (max-width: 480px) {
+  .chart-components {
+    height: 300px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .chart-components {
+    height: 400px;
+  }
+}
+
+@media (min-width: 769px) {
+  .chart-components {
+    height: 500px;
+  }
+}

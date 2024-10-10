@@ -1,0 +1,44 @@
+/* EditableDataTable.css */
+.editable-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.editable-data-table th,
+.editable-data-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.editable-data-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.editable-data-table input {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .editable-data-table input {
+    padding: 3px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .editable-data-table input {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 769px) {
+  .editable-data-table input {
+    font-size: 16px;
+  }
+}
