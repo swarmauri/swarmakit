@@ -1,0 +1,27 @@
+/* WebcamFeed.css */
+.webcam-feed {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+@media (max-width: 480px) {
+  .webcam-feed {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .webcam-feed {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .webcam-feed {
+    width: 100%;
+    height: auto;
+  }
+}

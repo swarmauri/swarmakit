@@ -1,0 +1,43 @@
+/* MarkdownRenderer.css */
+.markdown-renderer {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.markdown-renderer h1,
+.markdown-renderer h2 {
+  color: #333;
+}
+
+.markdown-renderer p {
+  color: #555;
+}
+
+.markdown-renderer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.markdown-renderer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .markdown-renderer {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .markdown-renderer {
+    padding: 18px;
+  }
+}
+
+@media (min-width: 769px) {
+  .markdown-renderer {
+    padding: 20px;
+  }
+}
