@@ -4,6 +4,9 @@ import Tabs from './Tabs';
 export default {
   title: 'Lists/Tabs',
   component: Tabs,
+  parameters: {
+    layout: 'centered',
+  },
 };
 
 const Template = (args) => <Tabs {...args} />;
@@ -11,29 +14,49 @@ const Template = (args) => <Tabs {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   tabs: [
-    { id: '1', label: 'Tab 1', content: 'Content 1' },
-    { id: '2', label: 'Tab 2', content: 'Content 2' },
-    { id: '3', label: 'Tab 3', content: 'Content 3' },
+    { id: 1, label: 'Tab 1' },
+    { id: 2, label: 'Tab 2' },
+    { id: 3, label: 'Tab 3' },
   ],
+  disabled: false,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  ...Default.args,
+  tabs: [
+    { id: 1, label: 'Tab 1' },
+    { id: 2, label: 'Tab 2' },
+    { id: 3, label: 'Tab 3' },
+  ],
+  disabled: false,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  ...Default.args,
+  tabs: [
+    { id: 1, label: 'Tab 1' },
+    { id: 2, label: 'Tab 2' },
+    { id: 3, label: 'Tab 3' },
+  ],
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  ...Default.args,
-  isDisabled: true,
+  tabs: [
+    { id: 1, label: 'Tab 1' },
+    { id: 2, label: 'Tab 2' },
+    { id: 3, label: 'Tab 3' },
+  ],
+  disabled: true,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  ...Default.args,
+  tabs: [
+    { id: 1, label: 'Tab 1' },
+    { id: 2, label: 'Tab 2' },
+    { id: 3, label: 'Tab 3' },
+  ],
+  disabled: false,
 };

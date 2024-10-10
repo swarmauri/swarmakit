@@ -1,15 +1,15 @@
 import React from 'react';
-import Textarea from './Textarea';
+import TextArea from './TextArea';
 
 export default {
-  title: 'Forms/Textarea',
+  title: 'Forms/TextArea',
   component: Textarea,
   argTypes: {
     onChange: { action: 'text changed' },
   },
 };
 
-const Template = (args) => <Textarea {...args} />;
+const Template = (args) => <TextArea {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

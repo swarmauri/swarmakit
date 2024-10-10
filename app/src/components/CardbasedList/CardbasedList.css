@@ -1,0 +1,27 @@
+.CardListWrapper .Card:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 480px) {
+  .CardListWrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .CardListWrapper {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .CardListWrapper {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .CardListWrapper {
+    width: 60%;
+  }
+}

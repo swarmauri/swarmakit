@@ -1,0 +1,54 @@
+.ListContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.ListItem:hover {
+  background-color: #f9f9f9;
+}
+
+.ListItem[selected] {
+  background-color: #e0f3ff;
+}
+
+.ItemDetail {
+  margin-top: 5px;
+  background-color: #f3f3f3;
+  padding: 10px;
+}
+
+.ItemDetail[expanded='false'] {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .ListContainer {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ListContainer {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ListContainer {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ListContainer {
+    width: 60%;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Textarea.css';
+import './TextArea.css';
 
 const Textarea = ({ value, onChange, disabled }) => {
   return (

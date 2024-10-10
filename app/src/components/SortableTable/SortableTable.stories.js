@@ -4,6 +4,9 @@ import SortableTable from './SortableTable';
 export default {
   title: 'Lists/SortableTable',
   component: SortableTable,
+  parameters: {
+    layout: 'centered',
+  },
 };
 
 const Template = (args) => <SortableTable {...args} />;
@@ -13,26 +16,53 @@ Default.args = {
   columns: [
     { key: 'name', label: 'Name' },
     { key: 'age', label: 'Age' },
-    { key: 'location', label: 'Location' },
+    { key: 'email', label: 'Email' },
   ],
   data: [
-    { name: 'Alice', age: 30, location: 'New York' },
-    { name: 'Bob', age: 25, location: 'San Francisco' },
-    { name: 'Charlie', age: 35, location: 'London' },
+    { name: 'John Doe', age: 28, email: 'john@example.com' },
+    { name: 'Jane Smith', age: 32, email: 'jane@example.com' },
+    { name: 'Sam Green', age: 45, email: 'sam@example.com' },
   ],
 };
 
 export const Sorting = Template.bind({});
 Sorting.args = {
-  ...Default.args,
+  columns: [
+    { key: 'name', label: 'Name' },
+    { key: 'age', label: 'Age' },
+    { key: 'email', label: 'Email' },
+  ],
+  data: [
+    { name: 'John Doe', age: 28, email: 'john@example.com' },
+    { name: 'Jane Smith', age: 32, email: 'jane@example.com' },
+    { name: 'Sam Green', age: 45, email: 'sam@example.com' },
+  ],
 };
 
 export const Filtering = Template.bind({});
 Filtering.args = {
-  ...Default.args,
+  columns: [
+    { key: 'name', label: 'Name' },
+    { key: 'age', label: 'Age' },
+    { key: 'email', label: 'Email' },
+  ],
+  data: [
+    { name: 'John Doe', age: 28, email: 'john@example.com' },
+    { name: 'Jane Smith', age: 32, email: 'jane@example.com' },
+    { name: 'Sam Green', age: 45, email: 'sam@example.com' },
+  ],
 };
 
 export const RowSelection = Template.bind({});
 RowSelection.args = {
-  ...Default.args,
+  columns: [
+    { key: 'name', label: 'Name' },
+    { key: 'age', label: 'Age' },
+    { key: 'email', label: 'Email' },
+  ],
+  data: [
+    { name: 'John Doe', age: 28, email: 'john@example.com' },
+    { name: 'Jane Smith', age: 32, email: 'jane@example.com' },
+    { name: 'Sam Green', age: 45, email: 'sam@example.com' },
+  ],
 };

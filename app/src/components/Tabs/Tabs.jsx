@@ -4,65 +4,57 @@ import styled from 'styled-components';
 
 const TabsContainer = styled.div`
   display: flex;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
 `;
 
 const Tab = styled.button`
   padding: 10px 20px;
-  background-color: ${props => (props.isActive ? '#fff' : '#f9f9f9')};
   border: none;
-  border-bottom: ${props => (props.isActive ? '2px solid #007bff' : 'none')};
-  cursor: ${props => (props.isDisabled ? 'not-allowed' : 'pointer')};
-  color: ${props => (props.isDisabled ? '#999' : '#333')};
-  transition: background-color 0.3s;
-
+  background-color: ${({ isActive }) => (isActive ? '#e0f7fa' : 'transparent')};
+  cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
+  opacity: ${({ isDisabled }) => (isDisabled ? 0.5 : 1)};
   &:hover {
-    background-color: ${props => (props.isDisabled ? '#f9f9f9' : '#e9ecef')};
+    background-color: ${({ isActive, isDisabled }) => (!isActive && !isDisabled ? '#f0f0f0' : '')};
   }
 `;
 
-const Content = styled.div`
-  padding: 20px;
-  background-color: #fff;
-`;
-
-const Tabs = ({ tabs, isDisabled }) => {
+const Tabs = ({ tabs, disabled }) => {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
 
+  const handleTabClick = (id) => {
+    if (!disabled) {
+      setActiveTab(id);
+    }
+  };
+
   return (
-    <>
-      <TabsContainer>
-        {tabs.map(tab => (
-          <Tab
-            key={tab.id}
-            isActive={activeTab === tab.id}
-            onClick={() => !isDisabled && setActiveTab(tab.id)}
-            isDisabled={isDisabled}
-          >
-            {tab.label}
-          </Tab>
-        ))}
-      </TabsContainer>
-      <Content>
-        {tabs.find(tab => tab.id === activeTab)?.content}
-      </Content>
-    </>
+    <TabsContainer>
+      {tabs.map((tab) => (
+        <Tab
+          key={tab.id}
+          isActive={activeTab === tab.id}
+          isDisabled={disabled}
+          onClick={() => handleTabClick(tab.id)}
+        >
+          {tab.label}
+        </Tab>
+      ))}
+    </TabsContainer>
   );
 };
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       label: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
     })
   ).isRequired,
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Tabs.defaultProps = {
-  isDisabled: false,
+  disabled: false,
 };
 
 export default Tabs;

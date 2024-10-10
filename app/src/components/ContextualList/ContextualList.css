@@ -1,0 +1,58 @@
+.ListWrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.ListItem {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ListItem:hover {
+  background-color: #f5f5f5;
+}
+
+.ListItem.active {
+  background-color: #f0f9ff;
+}
+
+.ActionButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.ActionButton:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 480px) {
+  .ListWrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ListWrapper {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ListWrapper {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ListWrapper {
+    width: 60%;
+  }
+}

@@ -1,0 +1,50 @@
+.Container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.Input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.ListContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+@media (max-width: 480px) {
+  .Container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .Container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .Container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .Container {
+    width: 60%;
+  }
+}

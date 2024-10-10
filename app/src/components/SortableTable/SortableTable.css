@@ -1,6 +1,4 @@
 .TableContainer {
-  border: 1px solid #ccc;
-  border-radius: 5px;
   overflow-x: auto;
 }
 
@@ -10,25 +8,52 @@
 }
 
 .TableHeader {
-  padding: 10px;
-  border-bottom: 2px solid #ddd;
-  background-color: #f4f4f4;
+  background-color: #f5f5f5;
   cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
 }
 
 .TableRow {
-  background-color: #fff;
+  background-color: white;
+  cursor: pointer;
 }
 
 .TableRow:hover {
-  background-color: #f1f1f1;
+  background-color: #f0f0f0;
 }
 
-.TableRow.selected {
-  background-color: #d3f4ff;
+.TableRow.isSelected {
+  background-color: #e0f7fa;
 }
 
 .TableCell {
   padding: 10px;
-  border-bottom: 1px solid #eee;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 480px) {
+  .TableCell {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .TableCell {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .TableCell {
+    padding: 12px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .TableCell {
+    padding: 14px;
+  }
 }

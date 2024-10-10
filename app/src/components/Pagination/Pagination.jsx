@@ -4,48 +4,44 @@ import styled from 'styled-components';
 
 const PaginationContainer = styled.div`
   display: flex;
-  list-style-type: none;
-  padding: 0;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 `;
 
-const PageItem = styled.button`
+const PageNumber = styled.button`
+  border: none;
+  background-color: ${({ active }) => (active ? '#007bff' : 'white')};
+  color: ${({ active }) => (active ? 'white' : '#007bff')};
   margin: 0 5px;
   padding: 10px 15px;
-  border: 1px solid #ccc;
-  background-color: ${props => (props.active ? '#007bff' : '#fff')};
-  color: ${props => (props.active ? '#fff' : '#000')};
   cursor: pointer;
-  &:disabled {
-    cursor: not-allowed;
-    background-color: #e9ecef;
-  }
-  &:hover:not(:disabled) {
-    background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${({ active }) => (active ? '#0056b3' : '#f0f0f0')};
   }
 `;
 
-const Pagination = ({ totalPages, currentPage, onPageChange }) => {
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-
+const Pagination = ({ pages, activePage, onPageChange }) => {
   return (
     <PaginationContainer>
-      {pages.map(page => (
-        <PageItem
-          key={page}
-          active={currentPage === page}
-          onClick={() => onPageChange(page)}
-          disabled={currentPage === page}
+      {Array.from({ length: pages }, (_, index) => (
+        <PageNumber
+          key={index}
+          active={index + 1 === activePage}
+          onClick={() => onPageChange(index + 1)}
         >
-          {page}
-        </PageItem>
+          {index + 1}
+        </PageNumber>
       ))}
     </PaginationContainer>
   );
 };
 
 Pagination.propTypes = {
-  totalPages: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
+  pages: PropTypes.number.isRequired,
+  activePage: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
 };
 

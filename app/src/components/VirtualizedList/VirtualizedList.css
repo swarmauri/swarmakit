@@ -1,0 +1,38 @@
+.ListContainer {
+  overflow-y: auto;
+  height: 400px;
+}
+
+.ListItem {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.LoadingMessage {
+  padding: 10px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .ListItem {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ListItem {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ListItem {
+    padding: 12px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ListItem {
+    padding: 14px;
+  }
+}

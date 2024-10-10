@@ -1,0 +1,50 @@
+.ListContainer {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: white;
+  border-left: 5px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ListItem:hover {
+  background-color: #f0f0f0;
+}
+
+.ListItem.pinned {
+  background-color: #f0f8ff;
+}
+
+.ListItem.selected {
+  border-left: 5px solid #007bff;
+}
+
+@media (max-width: 480px) {
+  .ListItem {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ListItem {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ListItem {
+    padding: 12px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ListItem {
+    padding: 14px;
+  }
+}

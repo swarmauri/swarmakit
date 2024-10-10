@@ -1,15 +1,32 @@
-.GridContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
+.GridWrapper {
+  overflow-x: auto;
+  margin: 20px 0;
 }
 
-.GridItem {
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.TableHeader,
+.TableCell {
   padding: 10px;
-  border-bottom: 1px solid #eee;
+  border: 1px solid #ddd;
+}
+
+.TableHeader {
+  background-color: #f9f9f9;
+}
+
+.TableHeader[resizable] {
+  cursor: col-resize;
+}
+
+.SearchInput {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .Pagination {
@@ -18,25 +35,39 @@
   margin-top: 10px;
 }
 
-button {
+.PageButton {
   padding: 5px 10px;
   margin: 0 5px;
-  border: none;
   background-color: #007bff;
   color: white;
-  border-radius: 3px;
+  border: none;
   cursor: pointer;
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.PageButton:hover {
+  background-color: #0056b3;
 }
 
-input[type="text"] {
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+@media (max-width: 480px) {
+  .GridWrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .GridWrapper {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .GridWrapper {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .GridWrapper {
+    width: 60%;
+  }
 }

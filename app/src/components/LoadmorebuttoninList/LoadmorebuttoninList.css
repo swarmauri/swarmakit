@@ -1,0 +1,61 @@
+.Container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.List {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+.LoadMoreButton {
+  padding: 10px 20px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.LoadMoreButton:hover {
+  background-color: #0056b3;
+}
+
+.LoadMoreButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .Container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .Container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .Container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .Container {
+    width: 60%;
+  }
+}

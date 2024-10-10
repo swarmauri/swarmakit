@@ -1,0 +1,31 @@
+.ListWrapper .ListItem:hover {
+  background-color: #f0f0f0;
+}
+
+.ListWrapper .ActionButton:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 480px) {
+  .ListWrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ListWrapper {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ListWrapper {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ListWrapper {
+    width: 60%;
+  }
+}

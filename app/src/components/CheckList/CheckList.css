@@ -1,0 +1,33 @@
+.ListWrapper .ListItem {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.ListWrapper .ListItem:hover {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 480px) {
+  .ListWrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ListWrapper {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ListWrapper {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ListWrapper {
+    width: 60%;
+  }
+}

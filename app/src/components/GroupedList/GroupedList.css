@@ -1,0 +1,59 @@
+.Container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.GroupHeader {
+  padding: 10px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.GroupContent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.ListItem:hover {
+  background-color: #f5f5f5;
+}
+
+.ListItem[selected="true"] {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 480px) {
+  .Container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .Container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .Container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .Container {
+    width: 60%;
+  }
+}

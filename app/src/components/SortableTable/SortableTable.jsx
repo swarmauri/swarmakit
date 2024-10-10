@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const TableContainer = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 5px;
   overflow-x: auto;
 `;
 
@@ -14,48 +12,57 @@ const Table = styled.table`
 `;
 
 const TableHeader = styled.th`
-  padding: 10px;
-  border-bottom: 2px solid #ddd;
-  background-color: #f4f4f4;
+  background-color: #f5f5f5;
   cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
 `;
 
 const TableRow = styled.tr`
-  background-color: ${props => (props.selected ? '#d3f4ff' : '#fff')};
+  background-color: ${({ isSelected }) => (isSelected ? '#e0f7fa' : 'white')};
+  cursor: pointer;
+
   &:hover {
-    background-color: #f1f1f1;
+    background-color: #f0f0f0;
   }
 `;
 
 const TableCell = styled.td`
   padding: 10px;
-  border-bottom: 1px solid #eee;
+  border: 1px solid #ddd;
 `;
 
 const SortableTable = ({ columns, data }) => {
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [sortConfig, setSortConfig] = useState(null);
   const [selectedRow, setSelectedRow] = useState(null);
 
   const sortedData = React.useMemo(() => {
-    if (!sortConfig.key) return data;
-    const sorted = [...data].sort((a, b) => {
-      if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === 'asc' ? -1 : 1;
-      if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === 'asc' ? 1 : -1;
-      return 0;
-    });
-    return sorted;
+    if (sortConfig !== null) {
+      return [...data].sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return data;
   }, [data, sortConfig]);
 
-  const handleSort = key => {
-    let direction = 'asc';
-    if (sortConfig.key === key && sortConfig.direction === 'asc') {
-      direction = 'desc';
+  const requestSort = (key) => {
+    let direction = 'ascending';
+    if (
+      sortConfig &&
+      sortConfig.key === key &&
+      sortConfig.direction === 'ascending'
+    ) {
+      direction = 'descending';
     }
     setSortConfig({ key, direction });
-  };
-
-  const handleRowClick = index => {
-    setSelectedRow(selectedRow === index ? null : index);
   };
 
   return (
@@ -63,8 +70,11 @@ const SortableTable = ({ columns, data }) => {
       <Table>
         <thead>
           <tr>
-            {columns.map(column => (
-              <TableHeader key={column.key} onClick={() => handleSort(column.key)}>
+            {columns.map((column) => (
+              <TableHeader
+                key={column.key}
+                onClick={() => requestSort(column.key)}
+              >
                 {column.label}
               </TableHeader>
             ))}
@@ -74,10 +84,10 @@ const SortableTable = ({ columns, data }) => {
           {sortedData.map((row, index) => (
             <TableRow
               key={index}
-              selected={selectedRow === index}
-              onClick={() => handleRowClick(index)}
+              isSelected={selectedRow === index}
+              onClick={() => setSelectedRow(index)}
             >
-              {columns.map(column => (
+              {columns.map((column) => (
                 <TableCell key={column.key}>{row[column.key]}</TableCell>
               ))}
             </TableRow>

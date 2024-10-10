@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Accordion from './Accordion';
+import Accordion from '../Accordion';
 
 const AccordionListWrapper = styled.div`
   width: 100%;

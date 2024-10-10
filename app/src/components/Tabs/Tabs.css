@@ -1,31 +1,48 @@
 .TabsContainer {
   display: flex;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
 }
 
 .Tab {
   padding: 10px 20px;
-  background-color: #f9f9f9;
   border: none;
+  background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .Tab.isActive {
-  background-color: #fff;
-  border-bottom: 2px solid #007bff;
+  background-color: #e0f7fa;
 }
 
 .Tab.isDisabled {
   cursor: not-allowed;
-  color: #999;
+  opacity: 0.5;
 }
 
 .Tab:hover {
-  background-color: #e9ecef;
+  background-color: #f0f0f0;
 }
 
-.Content {
-  padding: 20px;
-  background-color: #fff;
+@media (max-width: 480px) {
+  .Tab {
+    padding: 8px 16px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .Tab {
+    padding: 10px 18px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .Tab {
+    padding: 12px 20px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .Tab {
+    padding: 14px 22px;
+  }
 }
