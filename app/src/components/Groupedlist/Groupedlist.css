@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+}
+
+.group-container {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.group-header {
+  padding: 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.group-content {
+  display: none;
+  background-color: #fff;
+}
+
+.group-content.expanded {
+  display: block;
+}
+
+.item {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.item.selected {
+  background-color: #e0f7fa;
+}
+
+.item:hover {
+  background-color: #f0f0f0;
+}

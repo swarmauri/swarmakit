@@ -1,23 +1,26 @@
-/* AudioPlayer.css */
-.audio-player {
+.PlayerContainer {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media (max-width: 480px) {
-  .audio-player {
-    max-width: 100%;
-  }
+.ControlsContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  .audio-player {
-    max-width: 80%;
-  }
+.ControlButton {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
-@media (min-width: 769px) {
-  .audio-player {
-    max-width: 600px;
-  }
+.VolumeSlider {
+  width: 100px;
 }

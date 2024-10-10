@@ -1,0 +1,22 @@
+.alert-bar {
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.alert-bar.success {
+  background-color: #4caf50;
+}
+
+.alert-bar.error {
+  background-color: #f44336;
+}
+
+.alert-bar.warning {
+  background-color: #ff9800;
+}
+
+.alert-bar.info {
+  background-color: #2196f3;
+}

@@ -1,0 +1,33 @@
+.actionable-list-container {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+}
+
+.list-item:hover {
+  background-color: #e0e0e0;
+}
+
+.list-item.disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.action-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.action-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}

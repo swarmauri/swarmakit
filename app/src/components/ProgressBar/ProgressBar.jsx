@@ -1,30 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ProgressBar.css';
+import styled from 'styled-components';
 
-const ProgressBar = ({ progress, height, color, backgroundColor }) => (
-  <div className="progress-bar-container" style={{ height, backgroundColor }}>
-    <div
-      className="progress-bar"
-      style={{
-        width: `${progress}%`,
-        backgroundColor: color,
-      }}
-    />
-  </div>
-);
+const ProgressBarContainer = styled.div`
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  height: 10px;
+`;
+
+const Progress = styled.div`
+  height: 100%;
+  background-color: ${({ isComplete, isDisabled }) =>
+    isDisabled ? '#c0c0c0' : isComplete ? '#4caf50' : '#2196f3'};
+  width: ${({ progress }) => progress}%;
+  transition: width 0.3s;
+`;
+
+const ProgressBar = ({ progress, isComplete, isDisabled }) => {
+  return (
+    <ProgressBarContainer>
+      <Progress progress={progress} isComplete={isComplete} isDisabled={isDisabled} />
+    </ProgressBarContainer>
+  );
+};
 
 ProgressBar.propTypes = {
   progress: PropTypes.number.isRequired,
-  height: PropTypes.string,
-  color: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  isComplete: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 ProgressBar.defaultProps = {
-  height: '20px',
-  color: '#4caf50', // Default to green
-  backgroundColor: '#e0e0e0', // Default to light gray
+  isComplete: false,
+  isDisabled: false,
 };
 
 export default ProgressBar;

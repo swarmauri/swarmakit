@@ -1,0 +1,28 @@
+.PlayerContainer {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  background-color: #000;
+}
+
+.Video {
+  width: 100%;
+  height: 450px;
+  background-color: #000;
+}
+
+.Controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.Button {
+  background: none;
+  border: none;
+  color: #fff;
+  margin-right: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,26 @@
+.accordion-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.accordion-header {
+  background: #f1f1f1;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+
+.accordion-header:hover {
+  background: #e0e0e0;
+}
+
+.accordion-content {
+  padding: 0.75rem;
+  display: none;
+}
+
+.accordion-content.open {
+  display: block;
+}

@@ -1,0 +1,31 @@
+.circle-container {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.circle-background {
+  fill: none;
+  stroke: #e0e0e0;
+}
+
+.circle-progress {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.circle-progress.complete {
+  stroke: #4caf50;
+}
+
+.circle-progress.paused {
+  stroke: #ff9800;
+}
+
+.circle-progress.active {
+  stroke: #2196f3;
+}

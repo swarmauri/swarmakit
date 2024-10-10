@@ -1,0 +1,27 @@
+.poll-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.option {
+  margin-bottom: 10px;
+}
+
+.bar {
+  height: 20px;
+  transition: width 0.3s ease;
+}
+
+.bar.live-results {
+  background-color: #3498db;
+}
+
+.bar.completed {
+  background-color: #2ecc71;
+}
+
+.bar.closed {
+  background-color: #e74c3c;
+}

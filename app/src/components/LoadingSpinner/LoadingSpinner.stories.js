@@ -2,30 +2,23 @@ import React from 'react';
 import LoadingSpinner from './LoadingSpinner';
 
 export default {
-  title: 'Components/LoadingSpinner',
+  title: 'Indicators/LoadingSpinner',
   component: LoadingSpinner,
-  argTypes: {
-    size: { control: 'text' },
-    color: { control: 'color' },
-  },
 };
 
 const Template = (args) => <LoadingSpinner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  size: '40px',
-  color: '#000',
+  inactive: false,
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  size: '80px',
-  color: '#007BFF',
+export const Active = Template.bind({});
+Active.args = {
+  inactive: false,
 };
 
-export const Small = Template.bind({});
-Small.args = {
-  size: '20px',
-  color: '#FF5733',
+export const Inactive = Template.bind({});
+Inactive.args = {
+  inactive: true,
 };

@@ -1,0 +1,26 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  flex: 1 1 calc(25% - 16px);
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #e0e0e0;
+}
+
+.card.disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.card.selected {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

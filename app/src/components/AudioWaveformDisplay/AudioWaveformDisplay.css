@@ -1,0 +1,13 @@
+.WaveformContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100px;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.WaveformCanvas {
+  width: 100%;
+  height: 100%;
+}

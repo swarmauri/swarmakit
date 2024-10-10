@@ -1,0 +1,28 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-number {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.page-number.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.page-number:hover {
+  background-color: #f1f1f1;
+}
+
+.page-number.disabled {
+  pointer-events: none;
+  color: #ccc;
+}

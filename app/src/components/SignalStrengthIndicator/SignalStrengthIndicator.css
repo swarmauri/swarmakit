@@ -1,0 +1,15 @@
+.signal-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.signal-bar {
+  width: 0.5rem;
+  background-color: #d3d3d3;
+  transition: background-color 0.3s;
+}
+
+.signal-bar.active {
+  background-color: #4caf50;
+}

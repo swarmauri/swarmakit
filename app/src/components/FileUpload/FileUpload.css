@@ -1,0 +1,38 @@
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.file-upload .drag-drop-area {
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file-upload .file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.file-upload .file-item {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.file-upload .progress-bar {
+  height: 5px;
+  background-color: #4caf50;
+  border-radius: 2px;
+  transition: width 0.2s;
+}

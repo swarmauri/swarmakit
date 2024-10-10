@@ -1,0 +1,22 @@
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+input[type="range"]:hover {
+  opacity: 1;
+}
+
+input[type="range"]:active {
+  background: #bbb;
+}
+
+input[type="range"]:disabled {
+  background: #f5f5f5;
+}

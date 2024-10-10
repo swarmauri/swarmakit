@@ -1,32 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './TextArea.css';
+import styled from 'styled-components';
 
-const TextArea = ({ label, placeholder, value, onChange, rows }) => {
+const StyledTextarea = styled.textarea`
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  background-color: ${(props) => (props.disabled ? '#f5f5f5' : '#fff')};
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+`;
+
+const Textarea = ({ placeholder, disabled, value, onChange }) => {
   return (
-    <div className="text-area-field">
-      {label && <label className="area-label">{label}</label>}
-      <textarea
-        className="area-text"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        rows={rows}
-      />
-    </div>
+    <StyledTextarea
+      placeholder={placeholder}
+      disabled={disabled}
+      value={value}
+      onChange={onChange}
+    />
   );
 };
 
-TextArea.propTypes = {
-  label: PropTypes.string,
+Textarea.propTypes = {
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  rows: PropTypes.number,
 };
 
-TextArea.defaultProps = {
-  rows: 5,
+Textarea.defaultProps = {
+  placeholder: 'Enter text...',
+  disabled: false,
+  value: '',
 };
 
-export default TextArea;
+export default Textarea;

@@ -1,0 +1,17 @@
+.CarouselContainer {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.CarouselTrack {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.CarouselSlide {
+  min-width: 100%;
+  box-sizing: border-box;
+}

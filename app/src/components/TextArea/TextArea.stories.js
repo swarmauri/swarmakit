@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import TextArea from './TextArea';
+import Textarea from './Textarea';
 
 export default {
-  title: 'Components/TextArea',
-  component: TextArea,
+  title: 'Forms/Textarea',
+  component: Textarea,
 };
 
 const Template = (args) => {
   const [value, setValue] = useState('');
-  return <TextArea {...args} value={value} onChange={(e) => setValue(e.target.value)} />;
+  return <Textarea {...args} value={value} onChange={(e) => setValue(e.target.value)} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Description',
-  placeholder: 'Enter your description',
+  placeholder: 'Enter text...',
+  disabled: false,
 };
 
-export const WithCustomRows = Template.bind({});
-WithCustomRows.args = {
-  label: 'Feedback',
-  placeholder: 'Enter your feedback',
-  rows: 10,
+export const Disabled = Template.bind({});
+Disabled.args = {
+  placeholder: 'Textarea is disabled',
+  disabled: true,
 };

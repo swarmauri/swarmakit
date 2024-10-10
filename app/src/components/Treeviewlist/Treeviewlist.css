@@ -1,0 +1,24 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: #cce5ff;
+}
+
+li.selected {
+  background-color: #e2e3e5;
+}
+
+span {
+  margin-left: 10px;
+}

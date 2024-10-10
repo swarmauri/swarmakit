@@ -1,0 +1,22 @@
+.checklist-container {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.checklist-item.disabled {
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.checkbox {
+  margin-right: 8px;
+}

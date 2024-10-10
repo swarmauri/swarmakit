@@ -2,35 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './DatePicker.css';
 
-const DatePicker = ({ selectedDate, onChange, minDate, maxDate, disabled }) => {
-  const handleDateChange = (event) => {
-    onChange(event.target.value);
-  };
-
+const DatePicker = ({ type, selectedDate, onSelect, disabled }) => {
   return (
-    <input
-      type="date"
-      className="date-picker"
-      value={selectedDate}
-      onChange={handleDateChange}
-      min={minDate}
-      max={maxDate}
-      disabled={disabled}
-    />
+    <div className={`date-picker ${disabled ? 'disabled' : ''}`}>
+      <input
+        type={type === 'time' ? 'time' : 'date'}
+        value={selectedDate}
+        onChange={(e) => !disabled && onSelect(e.target.value)}
+        disabled={disabled}
+      />
+    </div>
   );
 };
 
 DatePicker.propTypes = {
-  selectedDate: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  minDate: PropTypes.string,
-  maxDate: PropTypes.string,
+  type: PropTypes.oneOf(['single', 'range', 'time']),
+  selectedDate: PropTypes.string,
+  onSelect: PropTypes.func,
   disabled: PropTypes.bool,
 };
 
 DatePicker.defaultProps = {
-  minDate: '',
-  maxDate: '',
+  type: 'single',
+  selectedDate: '',
+  onSelect: () => {},
   disabled: false,
 };
 

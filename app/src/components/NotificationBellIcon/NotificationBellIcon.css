@@ -1,0 +1,29 @@
+.bell-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: #bdc3c7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bell-icon.has-notifications {
+  background-color: #ff7979;
+}
+
+.bell-icon::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.bell-icon.has-notifications::after {
+  background-color: #ffbe76;
+}

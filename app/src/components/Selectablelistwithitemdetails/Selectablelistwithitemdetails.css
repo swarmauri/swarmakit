@@ -1,0 +1,30 @@
+.list-container {
+  max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.list-item {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+.list-item.selected {
+  background-color: #e6f7ff;
+}
+
+.list-item:hover {
+  background-color: #f1f1f1;
+}
+
+.details {
+  padding: 10px;
+  background-color: #f9f9f9;
+  display: none;
+}
+
+.details.open {
+  display: block;
+}

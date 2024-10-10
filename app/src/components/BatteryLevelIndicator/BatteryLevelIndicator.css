@@ -1,0 +1,41 @@
+.battery-container {
+  width: 50px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.battery-level {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.battery-tip {
+  width: 6px;
+  height: 12px;
+  background-color: #333;
+  position: absolute;
+  right: -8px;
+  top: 3px;
+}
+
+.battery-level.low {
+  background-color: #f39c12;
+}
+
+.battery-level.critical {
+  background-color: #e74c3c;
+}
+
+.battery-level.full {
+  background-color: #2ecc71;
+}
+
+.battery-level.default {
+  background-color: #3498db;
+}

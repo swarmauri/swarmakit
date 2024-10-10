@@ -1,0 +1,22 @@
+.dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.dot.online {
+  background-color: #4caf50;
+}
+
+.dot.offline {
+  background-color: #d3d3d3;
+}
+
+.dot.busy {
+  background-color: #f44336;
+}
+
+.dot.idle {
+  background-color: #ffeb3b;
+}

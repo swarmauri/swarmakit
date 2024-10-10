@@ -1,0 +1,19 @@
+.badge-with-counts-container {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 12px;
+  font-size: 0.75em;
+  color: white;
+}
+
+.badge-with-counts-container.zero {
+  background-color: #e0e0e0;
+}
+
+.badge-with-counts-container.active {
+  background-color: #3498db;
+}
+
+.badge-with-counts-container.overflow {
+  background-color: #e74c3c;
+}

@@ -1,0 +1,9 @@
+input[type='range'] {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+input[type='range'][disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

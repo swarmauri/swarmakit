@@ -1,0 +1,28 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+tr {
+  background-color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+tr.selected {
+  background-color: #e6f7ff;
+}

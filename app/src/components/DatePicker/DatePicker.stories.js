@@ -1,33 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from './DatePicker';
 
 export default {
-  title: 'Components/DatePicker',
+  title: 'Forms/DatePicker',
   component: DatePicker,
+  argTypes: {
+    onSelect: { action: 'date selected' },
+  },
 };
 
-const Template = (args) => {
-  const [selectedDate, setSelectedDate] = useState('');
+const Template = (args) => <DatePicker {...args} />;
 
-  return (
-    <DatePicker
-      {...args}
-      selectedDate={selectedDate}
-      onChange={(newDate) => setSelectedDate(newDate)}
-    />
-  );
+export const SingleDate = Template.bind({});
+SingleDate.args = {
+  type: 'single',
+  selectedDate: '2023-10-01',
 };
 
-export const Default = Template.bind({});
-Default.args = {};
-
-export const WithMinMaxDate = Template.bind({});
-WithMinMaxDate.args = {
-  minDate: '2022-01-01',
-  maxDate: '2023-12-31',
+export const DateRange = Template.bind({});
+DateRange.args = {
+  type: 'range',
+  selectedDate: '',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  disabled: true,
+export const TimePicker = Template.bind({});
+TimePicker.args = {
+  type: 'time',
+  selectedDate: '12:00',
 };

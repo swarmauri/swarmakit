@@ -1,47 +1,41 @@
-// AudioPlayer.stories.js
 import React from 'react';
 import AudioPlayer from './AudioPlayer';
 
 export default {
-  title: 'Components/AudioPlayer',
+  title: 'Media/AudioPlayer',
   component: AudioPlayer,
-  parameters: {
-    layout: 'fullscreen',
-  },
-  argTypes: {
-    src: { control: 'text' },
-    controls: { control: 'boolean' },
-    autoPlay: { control: 'boolean' },
-    loop: { control: 'boolean' },
-    muted: { control: 'boolean' },
-  },
 };
 
 const Template = (args) => <AudioPlayer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'https://www.example.com/audio.mp3',
-  controls: true,
-  autoPlay: false,
-  loop: false,
-  muted: false,
+  src: 'audio.mp3',
+  isPlaying: false,
+  isMuted: false,
+  volume: 0.5,
 };
 
-export const AutoPlay = Template.bind({});
-AutoPlay.args = {
+export const Play = Template.bind({});
+Play.args = {
   ...Default.args,
-  autoPlay: true,
+  isPlaying: true,
 };
 
-export const Loop = Template.bind({});
-Loop.args = {
+export const Pause = Template.bind({});
+Pause.args = {
   ...Default.args,
-  loop: true,
+  isPlaying: false,
 };
 
-export const Muted = Template.bind({});
-Muted.args = {
+export const Mute = Template.bind({});
+Mute.args = {
   ...Default.args,
-  muted: true,
+  isMuted: true,
+};
+
+export const VolumeControl = Template.bind({});
+VolumeControl.args = {
+  ...Default.args,
+  volume: 0.8,
 };

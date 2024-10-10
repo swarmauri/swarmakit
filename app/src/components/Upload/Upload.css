@@ -1,0 +1,36 @@
+.upload-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+}
+
+.upload-container.uploading {
+  background-color: #e8f7ff;
+  color: #0277bd;
+}
+
+.upload-container.downloading {
+  background-color: #e0f7fa;
+  color: #00838f;
+}
+
+.upload-container.completed {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+.upload-container.paused {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.upload-container.failed {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.status-message {
+  margin-left: 1rem;
+}

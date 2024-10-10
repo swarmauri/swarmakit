@@ -1,0 +1,21 @@
+.grid-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}

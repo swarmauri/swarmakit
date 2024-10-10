@@ -1,14 +1,8 @@
-.toggle-switch {
+.switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
 }
 
 .slider {
@@ -25,7 +19,7 @@
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;
@@ -36,18 +30,14 @@
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #4caf50;
 }
 
 input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-.toggle-switch.disabled .slider {
+input:disabled + .slider {
   background-color: #e6e6e6;
   cursor: not-allowed;
-}
-
-.toggle-switch.disabled .slider:before {
-  background-color: #b3b3b3;
 }

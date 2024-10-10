@@ -1,0 +1,22 @@
+.scroll-container {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.scroll-container.disabled {
+  background-color: #f5f5f5;
+  pointer-events: none;
+}
+
+.list-item {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+}
+
+.list-item:hover {
+  background-color: #f1f1f1;
+}

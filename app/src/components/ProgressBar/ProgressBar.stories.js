@@ -2,14 +2,8 @@ import React from 'react';
 import ProgressBar from './ProgressBar';
 
 export default {
-  title: 'Components/ProgressBar',
+  title: 'Indicators/ProgressBar',
   component: ProgressBar,
-  argTypes: {
-    progress: { control: { type: 'range', min: 0, max: 100 } },
-    height: { control: 'text' },
-    color: { control: 'color' },
-    backgroundColor: { control: 'color' },
-  },
 };
 
 const Template = (args) => <ProgressBar {...args} />;
@@ -17,31 +11,34 @@ const Template = (args) => <ProgressBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   progress: 50,
-  height: '20px',
-  color: '#4caf50',
-  backgroundColor: '#e0e0e0',
-};
-
-export const FiftyPercent = Template.bind({});
-FiftyPercent.args = {
-  progress: 50,
-  height: '20px',
-  color: '#2196f3',
-  backgroundColor: '#f0f0f0',
+  isComplete: false,
+  isDisabled: false,
 };
 
 export const Complete = Template.bind({});
 Complete.args = {
   progress: 100,
-  height: '20px',
-  color: '#4caf50',
-  backgroundColor: '#e0e0e0',
+  isComplete: true,
+  isDisabled: false,
 };
 
-export const CustomHeight = Template.bind({});
-CustomHeight.args = {
+export const Incomplete = Template.bind({});
+Incomplete.args = {
+  progress: 50,
+  isComplete: false,
+  isDisabled: false,
+};
+
+export const Hover = Template.bind({});
+Hover.args = {
   progress: 75,
-  height: '30px',
-  color: '#ff9800',
-  backgroundColor: '#f5f5f5',
+  isComplete: false,
+  isDisabled: false,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  progress: 50,
+  isComplete: false,
+  isDisabled: true,
 };

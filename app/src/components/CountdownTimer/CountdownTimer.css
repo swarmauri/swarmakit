@@ -1,0 +1,22 @@
+.timer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.timer-container.running {
+  color: #27ae60;
+}
+
+.timer-container.paused {
+  color: #f39c12;
+}
+
+.timer-container.completed {
+  color: #e74c3c;
+}

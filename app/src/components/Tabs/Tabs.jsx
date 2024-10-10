@@ -1,32 +1,50 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './Tabs.css';
+import styled from 'styled-components';
 
-const Tabs = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(tabs[0]?.label);
+const TabContainer = styled.div`
+  display: flex;
+  border-bottom: 2px solid #ddd;
+`;
 
-  const handleTabClick = (label) => {
-    setActiveTab(label);
-  };
+const Tab = styled.button`
+  padding: 10px 20px;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  background-color: ${(props) =>
+    props.active ? '#fff' : props.hover ? '#f9f9f9' : '#efefef'};
+  border: none;
+  border-bottom: ${(props) => (props.active ? '2px solid #007bff' : 'none')};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: ${(props) => (!props.disabled && !props.active ? '#f9f9f9' : '')};
+  }
+`;
+
+const TabContent = styled.div`
+  padding: 20px;
+  border: 1px solid #ddd;
+`;
+
+const Tabs = ({ tabs, initialActiveIndex, disabled }) => {
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
   return (
-    <div className="tabs">
-      <ul className="tab-list">
-        {tabs.map((tab) => (
-          <li
-            key={tab.label}
-            className={`tab-item ${activeTab === tab.label ? 'active' : ''}`}
-            onClick={() => handleTabClick(tab.label)}
+    <div>
+      <TabContainer>
+        {tabs.map((tab, index) => (
+          <Tab
+            key={tab.id}
+            active={activeIndex === index}
+            disabled={disabled}
+            onClick={() => !disabled && setActiveIndex(index)}
           >
             {tab.label}
-          </li>
+          </Tab>
         ))}
-      </ul>
-      <div className="tab-content">
-        {tabs.map((tab) =>
-          activeTab === tab.label ? <div key={tab.label}>{tab.content}</div> : null
-        )}
-      </div>
+      </TabContainer>
+      <TabContent>{tabs[activeIndex].content}</TabContent>
     </div>
   );
 };
@@ -34,14 +52,18 @@ const Tabs = ({ tabs }) => {
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       content: PropTypes.node.isRequired,
     })
   ).isRequired,
+  initialActiveIndex: PropTypes.number,
+  disabled: PropTypes.bool,
 };
 
 Tabs.defaultProps = {
-  tabs: [],
+  initialActiveIndex: 0,
+  disabled: false,
 };
 
 export default Tabs;

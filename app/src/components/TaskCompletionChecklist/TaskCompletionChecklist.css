@@ -1,0 +1,22 @@
+.checklist-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.checklist-item.checked {
+  background-color: #e0f7fa;
+}
+
+.checklist-item.unchecked {
+  background-color: #fbe9e7;
+}
+
+.checklist-item.partially {
+  background-color: #fff3e0;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+}

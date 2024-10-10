@@ -4,44 +4,54 @@ import Button from './Button';
 export default {
   title: 'Buttons/Button',
   component: Button,
-  argTypes: { onClick: { action: 'clicked' } },
+  argTypes: {
+    variant: {
+      control: { type: 'radio' },
+      options: ['primary', 'secondary'],
+    },
+    disabled: { control: 'boolean' },
+  },
 };
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <Button {...args}>Button</Button>;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Button',
   variant: 'primary',
+  disabled: false,
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'Primary Button',
   variant: 'primary',
+  disabled: false,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  children: 'Secondary Button',
   variant: 'secondary',
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  children: 'Disabled Button',
-  variant: 'primary',
   disabled: true,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  children: 'Hover Button',
   variant: 'primary',
+  disabled: false,
+};
+Hover.parameters = {
+  pseudo: { hover: true },
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  children: 'Active Button',
   variant: 'primary',
+  disabled: false,
+};
+Active.parameters = {
+  pseudo: { active: true },
 };

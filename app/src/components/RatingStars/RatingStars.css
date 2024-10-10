@@ -1,0 +1,21 @@
+.stars-container {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  font-size: 2rem;
+  color: #757575;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star.selected,
+.star.hovered {
+  color: #ff9800;
+}
+
+.star.inactive {
+  color: #d3d3d3;
+  cursor: default;
+}

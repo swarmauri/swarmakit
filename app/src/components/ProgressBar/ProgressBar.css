@@ -1,11 +1,22 @@
 .progress-bar-container {
   width: 100%;
-  border-radius: 4px;
+  background-color: #e0e0e0;
+  border-radius: 25px;
   overflow: hidden;
+  position: relative;
+  height: 10px;
 }
 
-.progress-bar {
+.progress {
   height: 100%;
-  transition: width 0.3s ease-in-out;
-  border-radius: inherit;
+  background-color: #2196f3;
+  transition: width 0.3s;
+}
+
+.progress.complete {
+  background-color: #4caf50;
+}
+
+.progress.disabled {
+  background-color: #c0c0c0;
 }

@@ -1,0 +1,15 @@
+.accordion-list-container {
+  width: 100%;
+}
+
+.accordion-item {
+  margin-bottom: 0.5rem;
+}
+
+.accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-item-header:hover {
+  background-color: #e0e0e0;
+}

@@ -1,0 +1,27 @@
+.step-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.step {
+  flex: 1;
+  height: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.step.active {
+  background-color: #3498db;
+}
+
+.step.completed {
+  background-color: #2ecc71;
+}
+
+.step.inactive {
+  background-color: #bdc3c7;
+}
+
+.step:not(:last-child) {
+  margin-right: 5px;
+}
