@@ -1,0 +1,45 @@
+.drawer-off-canvas-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  overflow-x: hidden;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.drawer-off-canvas-menu.left {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.drawer-off-canvas-menu.right {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.drawer-off-canvas-menu.open.left {
+  transform: translateX(0);
+}
+
+.drawer-off-canvas-menu.open.right {
+  transform: translateX(0);
+}
+
+.toggle-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.menu-content {
+  padding: 20px;
+  height: 100%;
+}
