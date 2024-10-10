@@ -1,0 +1,27 @@
+/* MessageOptionsMenu.css */
+.message-options-menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.message-options-menu.visible {
+  display: flex;
+}
+
+.message-options-menu.clicked .option {
+  background-color: #e0e0e0;
+}
+
+.option {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}

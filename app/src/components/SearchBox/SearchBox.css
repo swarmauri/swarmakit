@@ -1,0 +1,18 @@
+/* SearchBox.css */
+.search-box {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.search-box.focused {
+  border-color: #007BFF;
+}
+
+.search-box.unfocused {
+  border-color: #ccc;
+}

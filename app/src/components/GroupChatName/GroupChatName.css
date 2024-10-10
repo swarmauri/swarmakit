@@ -1,0 +1,13 @@
+/* GroupChatName.css */
+.group-chat-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.group-chat-name.hidden span {
+  display: none;
+}
+
+.group-chat-name.edited span {
+  font-style: italic;
+}

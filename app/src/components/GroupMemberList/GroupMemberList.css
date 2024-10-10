@@ -1,0 +1,33 @@
+/* GroupMemberList.css */
+.group-member-list {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.group-member-list button {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.group-member-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.group-member-list li {
+  padding: 5px 0;
+}
+
+.group-member-list.expanded {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.group-member-list.collapsed {
+  border: none;
+}

@@ -1,0 +1,18 @@
+/* MessageReactions.css */
+.message-reactions {
+  display: flex;
+  gap: 8px;
+}
+
+.message-reactions.available .reaction {
+  cursor: pointer;
+}
+
+.message-reactions.hovered .reaction {
+  color: #007bff;
+}
+
+.message-reactions.clicked .reaction {
+  font-weight: bold;
+  color: #ff4500;
+}
