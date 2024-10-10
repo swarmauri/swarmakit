@@ -1,39 +1,51 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './ExpandableList.css';
+import styled from 'styled-components';
+
+const ListContainer = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const ListItem = styled.li`
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  cursor: pointer;
+  background-color: ${({ expanded }) => (expanded ? '#e0f7fa' : '#fff')};
+  &:hover {
+    background-color: #f1f1f1;
+  }
+`;
+
+const Content = styled.div`
+  display: ${({ expanded }) => (expanded ? 'block' : 'none')};
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ccc;
+`;
 
 const ExpandableList = ({ items }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const handleExpand = (index) => {
+  const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  const handleSelect = (index) => {
-    setSelectedIndex(index);
-  };
-
   return (
-    <ul className="expandable-list">
+    <ListContainer>
       {items.map((item, index) => (
-        <li
+        <ListItem
           key={index}
-          className={`list-item ${
-            expandedIndex === index ? 'expanded' : ''
-          } ${selectedIndex === index ? 'selected' : ''}`}
-          onClick={() => handleSelect(index)}
+          expanded={expandedIndex === index}
+          onClick={() => toggleExpand(index)}
         >
-          <div
-            className="item-header"
-            onClick={() => handleExpand(index)}
-          >
-            {item.title}
-          </div>
-          {expandedIndex === index && <div className="item-content">{item.content}</div>}
-        </li>
+          {item.title}
+          <Content expanded={expandedIndex === index}>{item.content}</Content>
+        </ListItem>
       ))}
-    </ul>
+    </ListContainer>
   );
 };
 

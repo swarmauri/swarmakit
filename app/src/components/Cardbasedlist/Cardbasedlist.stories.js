@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CardBasedList from './CardBasedList';
 
 export default {
@@ -6,34 +6,40 @@ export default {
   component: CardBasedList,
 };
 
-const Template = (args) => <CardBasedList {...args} />;
+const Template = (args) => {
+  const [selectedCard, setSelectedCard] = useState(null);
+  
+  return (
+    <CardBasedList
+      {...args}
+      selectedCard={selectedCard}
+      onSelect={(card) => setSelectedCard(card)}
+    />
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { title: 'Card Item 1' },
-    { title: 'Card Item 2' },
-    { title: 'Card Item 3' },
+  cards: [
+    { content: 'Card 1' },
+    { content: 'Card 2' },
+    { content: 'Card 3' },
   ],
-  onSelect: (item) => alert(`Selected ${item.title}`),
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   ...Default.args,
 };
-Hover.parameters = {
-  pseudo: { hover: true },
-};
 
 export const Selected = Template.bind({});
 Selected.args = {
   ...Default.args,
-  selectedItem: { title: 'Card Item 2' },
+  selectedCard: { content: 'Card 1' },
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   ...Default.args,
-  isDisabled: true,
+  disabled: true,
 };

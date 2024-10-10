@@ -1,43 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './CardBasedList.css';
+import styled from 'styled-components';
 
-const CardBasedList = ({ items, onSelect, selectedItem, isDisabled }) => {
-  const handleSelect = (item) => {
-    if (!isDisabled) {
-      onSelect(item);
-    }
-  };
+const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+`;
 
-  return (
-    <div className={`card-based-list ${isDisabled ? 'disabled' : ''}`}>
-      {items.map((item, index) => (
-        <div
-          key={index}
-          className={`card-item ${selectedItem === item ? 'selected' : ''}`}
-          onClick={() => handleSelect(item)}
-        >
-          <div className="card-item-content">{item.title}</div>
-        </div>
-      ))}
-    </div>
-  );
-};
+const Card = styled.div`
+  background-color: ${({ selected }) => (selected ? '#e0f7fa' : '#fff')};
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: calc(33.3333% - 16px);
+  box-sizing: border-box;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  &:hover {
+    background-color: ${({ disabled }) => (disabled ? '#fff' : '#f0f0f0')};
+  }
+`;
+
+const CardContent = styled.div`
+  margin-bottom: 10px;
+`;
+
+const CardBasedList = ({ cards, onSelect, selectedCard, disabled }) => (
+  <CardContainer>
+    {cards.map((card, index) => (
+      <Card
+        key={index}
+        onClick={() => !disabled && onSelect(card)}
+        selected={selectedCard === card}
+        disabled={disabled}
+      >
+        <CardContent>{card.content}</CardContent>
+      </Card>
+    ))}
+  </CardContainer>
+);
 
 CardBasedList.propTypes = {
-  items: PropTypes.arrayOf(
+  cards: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
     })
   ).isRequired,
   onSelect: PropTypes.func.isRequired,
-  selectedItem: PropTypes.object,
-  isDisabled: PropTypes.bool,
+  selectedCard: PropTypes.object,
+  disabled: PropTypes.bool,
 };
 
 CardBasedList.defaultProps = {
-  selectedItem: null,
-  isDisabled: false,
+  selectedCard: null,
+  disabled: false,
 };
 
 export default CardBasedList;

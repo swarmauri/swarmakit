@@ -1,0 +1,25 @@
+.ListContainer {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.ListItem {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ListItem.isDragging {
+  background-color: #f4f7f9;
+}
+
+.ListItemText {
+  flex-grow: 1;
+}

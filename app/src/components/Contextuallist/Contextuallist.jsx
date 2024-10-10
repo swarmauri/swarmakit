@@ -1,36 +1,48 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './Contextuallist.css';
+import styled from 'styled-components';
+
+const ListContainer = styled.div`
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  background-color: #fff;
+`;
+
+const ListItem = styled.div`
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  background-color: ${({ active }) => (active ? '#f0f0f0' : '#fff')};
+  &:hover {
+    background-color: #f9f9f9;
+  }
+`;
 
 const ContextualList = ({ items, onAction }) => {
   const [dismissed, setDismissed] = useState(false);
 
-  const handleAction = (item) => {
-    onAction(item);
-    setDismissed(true);
-  };
-
   return (
-    <ul className={`contextual-list ${dismissed ? 'dismissed' : ''}`}>
-      {items.map((item, index) => (
-        <li key={index} className="list-item">
-          <span>{item.label}</span>
-          <button onClick={() => handleAction(item)} className="action-button">
-            {item.actionLabel}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <ListContainer>
+      {!dismissed && 
+        items.map((item, index) => (
+          <ListItem
+            key={index}
+            onClick={() => {
+              onAction(item);
+              setDismissed(true);
+            }}
+          >
+            {item}
+          </ListItem>
+        ))
+      }
+    </ListContainer>
   );
 };
 
 ContextualList.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      actionLabel: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
   onAction: PropTypes.func.isRequired,
 };
 

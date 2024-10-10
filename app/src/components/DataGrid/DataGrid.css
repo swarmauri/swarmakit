@@ -1,44 +1,27 @@
-.data-grid {
+.GridContainer {
   width: 100%;
   overflow-x: auto;
 }
 
-.search-input {
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-table {
+.Table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+.Th {
   padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-  position: relative;
-}
-
-th .resize-handle {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 5px;
-  height: 100%;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
   cursor: col-resize;
-  background-color: transparent;
 }
 
-.pagination-controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+.Td {
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 
-.pagination-controls button {
-  padding: 5px 10px;
-  cursor: pointer;
+input[type="text"] {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
 }

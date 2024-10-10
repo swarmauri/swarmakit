@@ -1,0 +1,29 @@
+.ListContainer {
+  width: 100%;
+}
+
+.Input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.List {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+.Message {
+  padding: 10px;
+  color: #666;
+}

@@ -1,0 +1,35 @@
+.ListContainer {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.ListItem.selected {
+  background-color: #e0f7fa;
+}
+
+.ListItem:hover {
+  background-color: #f1f1f1;
+}
+
+.PinButton {
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.PinButton.pinned {
+  background-color: #007bff;
+}

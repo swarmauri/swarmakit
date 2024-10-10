@@ -1,0 +1,30 @@
+.ListContainer {
+  width: 100%;
+}
+
+.GroupHeader {
+  padding: 10px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.List {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+.ListItem:hover {
+  background-color: #e6f7ff;
+}
+
+.ListItem[selected='true'] {
+  background-color: #d0eaff;
+}

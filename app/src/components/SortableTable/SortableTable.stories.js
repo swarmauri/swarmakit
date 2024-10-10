@@ -11,14 +11,14 @@ const Template = (args) => <SortableTable {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   columns: [
-    { label: 'Name', accessor: 'name' },
-    { label: 'Age', accessor: 'age' },
-    { label: 'Country', accessor: 'country' },
+    { key: 'name', label: 'Name' },
+    { key: 'age', label: 'Age' },
+    { key: 'location', label: 'Location' },
   ],
   data: [
-    { name: 'Alice', age: 30, country: 'UK' },
-    { name: 'Bob', age: 25, country: 'USA' },
-    { name: 'Charlie', age: 35, country: 'Canada' },
+    { name: 'Alice', age: 30, location: 'New York' },
+    { name: 'Bob', age: 25, location: 'San Francisco' },
+    { name: 'Charlie', age: 35, location: 'London' },
   ],
 };
 

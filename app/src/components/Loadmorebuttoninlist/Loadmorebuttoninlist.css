@@ -1,0 +1,29 @@
+.ListContainer {
+  width: 100%;
+}
+
+.List {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+.LoadMoreButton {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.LoadMoreButton:disabled {
+  background-color: #d0d0d0;
+  cursor: not-allowed;
+}

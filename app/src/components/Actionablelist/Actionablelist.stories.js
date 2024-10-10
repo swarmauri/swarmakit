@@ -10,20 +10,13 @@ const Template = (args) => <ActionableList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { label: 'Action Item 1' },
-    { label: 'Action Item 2' },
-    { label: 'Action Item 3' },
-  ],
-  onAction: (item) => alert(`Action triggered for ${item.label}`),
+  items: ['Task 1', 'Task 2', 'Task 3'],
+  onAction: (item) => alert(`Action triggered on ${item}`),
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   ...Default.args,
-};
-Hover.parameters = {
-  pseudo: { hover: true },
 };
 
 export const ActionTriggered = Template.bind({});
@@ -34,11 +27,11 @@ ActionTriggered.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   ...Default.args,
-  isDisabled: true,
+  disabled: true,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
   ...Default.args,
-  isLoading: true,
+  loading: true,
 };

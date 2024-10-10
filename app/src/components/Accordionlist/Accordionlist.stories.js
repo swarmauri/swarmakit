@@ -10,46 +10,24 @@ const Template = (args) => <AccordionList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-    { title: 'Item 3', content: 'Content for item 3' },
-  ],
+  header: 'List Header',
+  items: ['Item 1', 'Item 2', 'Item 3'],
 };
 
 export const Expanded = Template.bind({});
 Expanded.args = {
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-    { title: 'Item 3', content: 'Content for item 3' },
-  ],
+  ...Default.args,
+  items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
 };
-Expanded.decorators = [
-  (Story) => {
-    const Component = Story();
-    Component.props.children.props.expandedIndex = 0;
-    return Component;
-  },
-];
 
 export const Collapsed = Template.bind({});
 Collapsed.args = {
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-    { title: 'Item 3', content: 'Content for item 3' },
-  ],
+  ...Default.args,
+  items: ['Item 1', 'Item 2'],
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  items: [
-    { title: 'Hover over me', content: 'This content is revealed on hover.' },
-    { title: 'Item 2', content: 'Content for item 2' },
-    { title: 'Item 3', content: 'Content for item 3' },
-  ],
-};
-Hover.parameters = {
-  pseudo: { hover: true },
+  ...Default.args,
+  items: ['Hovered Item 1', 'Hovered Item 2'],
 };

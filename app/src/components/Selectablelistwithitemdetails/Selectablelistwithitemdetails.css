@@ -1,0 +1,34 @@
+.ListContainer {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ListItem {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.ListItem:hover {
+  background-color: #f1f1f1;
+}
+
+.ListItem:last-child {
+  border-bottom: none;
+}
+
+.ListItem.selected {
+  background-color: #d3f4ff;
+}
+
+.ItemDetails {
+  padding: 10px;
+  background-color: #f9f9f9;
+  display: none;
+}
+
+.ItemDetails.open {
+  display: block;
+}

@@ -1,36 +1,48 @@
-.actionable-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.actionable-item {
+.ListContainer {
   border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ListItem {
+  padding: 10px 15px;
+  background-color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.actionable-item:hover {
-  background-color: #e2e2e2;
+.ListItem:hover {
+  background-color: #f0f0f0;
 }
 
-.actionable-item-content {
-  display: flex;
-  align-items: center;
-}
-
-.actionable-item.loading {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.actionable-list.disabled .actionable-item {
+.ListItem.disabled {
+  background-color: #f5f5f5;
   cursor: not-allowed;
-  background-color: #f5f5f5;
 }
 
-.actionable-list.disabled .actionable-item:hover {
-  background-color: #f5f5f5;
+.ActionButton {
+  margin-left: auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.ActionButton:hover {
+  background-color: #0056b3;
+}
+
+.LoadingSpinner {
+  border: 2px solid #ccc;
+  border-top: 2px solid #007bff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  margin-left: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

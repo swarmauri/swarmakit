@@ -1,0 +1,28 @@
+.ListContainer {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ListItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.ListItem.disabled {
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.Checkbox {
+  margin-right: 10px;
+}
+
+.Label {
+  flex-grow: 1;
+}

@@ -1,83 +1,98 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './SortableTable.css';
+import styled from 'styled-components';
+
+const TableContainer = styled.div`
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow-x: auto;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableHeader = styled.th`
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+  background-color: #f4f4f4;
+  cursor: pointer;
+`;
+
+const TableRow = styled.tr`
+  background-color: ${props => (props.selected ? '#d3f4ff' : '#fff')};
+  &:hover {
+    background-color: #f1f1f1;
+  }
+`;
+
+const TableCell = styled.td`
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+`;
 
 const SortableTable = ({ columns, data }) => {
-  const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
-  const [filterText, setFilterText] = useState('');
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [selectedRow, setSelectedRow] = useState(null);
 
   const sortedData = React.useMemo(() => {
-    let sortableData = [...data];
-    if (sortConfig.key) {
-      sortableData.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortableData;
+    if (!sortConfig.key) return data;
+    const sorted = [...data].sort((a, b) => {
+      if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === 'asc' ? -1 : 1;
+      if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === 'asc' ? 1 : -1;
+      return 0;
+    });
+    return sorted;
   }, [data, sortConfig]);
 
-  const filteredData = sortedData.filter(item =>
-    columns.some(column => item[column.accessor].toString().toLowerCase().includes(filterText.toLowerCase()))
-  );
-
-  const requestSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
+  const handleSort = key => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
     }
     setSortConfig({ key, direction });
   };
 
+  const handleRowClick = index => {
+    setSelectedRow(selectedRow === index ? null : index);
+  };
+
   return (
-    <div className="sortable-table-container">
-      <input
-        type="text"
-        placeholder="Filter..."
-        value={filterText}
-        onChange={(e) => setFilterText(e.target.value)}
-        className="filter-input"
-      />
-      <table className="sortable-table">
+    <TableContainer>
+      <Table>
         <thead>
           <tr>
-            {columns.map((column) => (
-              <th key={column.accessor} onClick={() => requestSort(column.accessor)}>
+            {columns.map(column => (
+              <TableHeader key={column.key} onClick={() => handleSort(column.key)}>
                 {column.label}
-                {sortConfig.key === column.accessor ? (sortConfig.direction === 'ascending' ? ' 🔼' : ' 🔽') : null}
-              </th>
+              </TableHeader>
             ))}
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((row, index) => (
-            <tr
+          {sortedData.map((row, index) => (
+            <TableRow
               key={index}
-              className={selectedRow === index ? 'selected-row' : ''}
-              onClick={() => setSelectedRow(selectedRow === index ? null : index)}
+              selected={selectedRow === index}
+              onClick={() => handleRowClick(index)}
             >
-              {columns.map((column) => (
-                <td key={column.accessor}>{row[column.accessor]}</td>
+              {columns.map(column => (
+                <TableCell key={column.key}>{row[column.key]}</TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </TableContainer>
   );
 };
 
 SortableTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
+      key: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      accessor: PropTypes.string.isRequired,
     })
   ).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,

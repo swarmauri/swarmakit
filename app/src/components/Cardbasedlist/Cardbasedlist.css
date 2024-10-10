@@ -1,36 +1,28 @@
-.card-based-list {
+.CardContainer {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.card-item {
+.Card {
+  background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 15px;
+  border-radius: 8px;
+  padding: 20px;
+  width: calc(33.3333% - 16px);
+  box-sizing: border-box;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.card-item:hover {
+.Card:hover {
   background-color: #f0f0f0;
 }
 
-.card-item.selected {
-  background-color: #d0e6f7;
-  border-color: #007bff;
+.Card.selected {
+  background-color: #e0f7fa;
 }
 
-.card-item-content {
-  display: flex;
-  align-items: center;
-}
-
-.card-based-list.disabled .card-item {
+.Card.disabled {
   cursor: not-allowed;
-  background-color: #f9f9f9;
-}
-
-.card-based-list.disabled .card-item:hover {
-  background-color: #f9f9f9;
+  opacity: 0.5;
 }

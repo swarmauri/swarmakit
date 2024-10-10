@@ -10,23 +10,18 @@ const Template = (args) => <ContextualList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { label: 'Item 1', actionLabel: 'Action 1' },
-    { label: 'Item 2', actionLabel: 'Action 2' },
-    { label: 'Item 3', actionLabel: 'Action 3' },
-  ],
-  onAction: (item) => alert(`Action triggered on ${item.label}`),
+  items: ['Option 1', 'Option 2', 'Option 3'],
+  onAction: (item) => console.log(`Action triggered on ${item}`),
 };
 
 export const ActionTriggered = Template.bind({});
 ActionTriggered.args = {
-  ...Default.args,
+  items: ['Option 1', 'Option 2', 'Option 3'],
+  onAction: (item) => console.log(`Action triggered on ${item}`),
 };
 
 export const Dismissed = Template.bind({});
 Dismissed.args = {
-  ...Default.args,
-  onAction: (item) => {
-    alert(`Action triggered on ${item.label}`);
-  },
+  items: [],
+  onAction: (item) => console.log(`Action triggered on ${item}`),
 };
