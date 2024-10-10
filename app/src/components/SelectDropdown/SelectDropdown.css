@@ -1,0 +1,19 @@
+.select-dropdown {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+
+.select-dropdown:focus {
+  border-color: #66afe9;
+}
+
+.select-dropdown:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}

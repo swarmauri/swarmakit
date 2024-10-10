@@ -1,0 +1,25 @@
+.text-area-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.area-label {
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.area-text {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.area-text:focus {
+  border-color: #66afe9;
+  resize: vertical;
+}
