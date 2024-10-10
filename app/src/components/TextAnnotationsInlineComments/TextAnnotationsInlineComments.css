@@ -1,0 +1,37 @@
+.text-annotations {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.annotation {
+  position: relative;
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.inline-comment {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  left: 0;
+  top: 100%;
+}
+
+.annotation:hover .inline-comment {
+  display: block;
+}
+
+.custom-annotation-style .annotation {
+  color: darkgreen;
+  text-decoration: none;
+}
+
+.custom-annotation-style .annotation:hover .inline-comment {
+  background-color: #e0f7fa;
+}
