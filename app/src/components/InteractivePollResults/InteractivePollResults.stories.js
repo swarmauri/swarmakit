@@ -10,40 +10,40 @@ const Template = (args) => <InteractivePollResults {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  options: [
-    { label: 'Option A', votes: 50, color: '#3498db' },
-    { label: 'Option B', votes: 30, color: '#2ecc71' },
+  results: [
+    { option: 'Option A', percentage: 40 },
+    { option: 'Option B', percentage: 35 },
+    { option: 'Option C', percentage: 25 },
   ],
-  totalVotes: 80,
   status: 'Live Results',
 };
 
 export const LiveResults = Template.bind({});
 LiveResults.args = {
-  options: [
-    { label: 'Option A', votes: 60, color: '#3498db' },
-    { label: 'Option B', votes: 40, color: '#2ecc71' },
+  results: [
+    { option: 'Option A', percentage: 50 },
+    { option: 'Option B', percentage: 30 },
+    { option: 'Option C', percentage: 20 },
   ],
-  totalVotes: 100,
   status: 'Live Results',
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  options: [
-    { label: 'Option A', votes: 70, color: '#3498db' },
-    { label: 'Option B', votes: 30, color: '#2ecc71' },
+  results: [
+    { option: 'Option A', percentage: 45 },
+    { option: 'Option B', percentage: 40 },
+    { option: 'Option C', percentage: 15 },
   ],
-  totalVotes: 100,
   status: 'Completed',
 };
 
 export const Closed = Template.bind({});
 Closed.args = {
-  options: [
-    { label: 'Option A', votes: 50, color: '#3498db' },
-    { label: 'Option B', votes: 50, color: '#2ecc71' },
+  results: [
+    { option: 'Option A', percentage: 40 },
+    { option: 'Option B', percentage: 35 },
+    { option: 'Option C', percentage: 25 },
   ],
-  totalVotes: 100,
   status: 'Closed',
 };

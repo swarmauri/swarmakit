@@ -1,0 +1,44 @@
+.navigation-bar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+.nav-links.expanded {
+  max-height: 500px;
+}
+
+.nav-links.collapsed {
+  max-height: 0;
+}
+
+.nav-link {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background-color: #444;
+}
+
+.nav-link.active {
+  background-color: #555;
+}

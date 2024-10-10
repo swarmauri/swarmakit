@@ -1,48 +1,46 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './Video.css';
 
-const VideoContainer = styled.div`
-  position: relative;
-  width: 640px;
-  height: 360px;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-`;
+const Video = ({ videoSrc }) => {
+  const [uploadStatus, setUploadStatus] = useState('idle'); // idle, uploading, paused, completed, error
 
-const VideoElement = styled.video`
-  width: 100%;
-  height: 100%;
-`;
+  const handleUpload = () => {
+    setUploadStatus('uploading');
+    // Simulate an upload process
+    setTimeout(() => {
+      setUploadStatus('completed');
+    }, 3000);
+  };
 
-const StatusMessage = styled.div`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  border-radius: 3px;
-`;
+  const handlePause = () => {
+    setUploadStatus('paused');
+  };
 
-const Video = ({ src, status }) => {
-  const [videoStatus, setVideoStatus] = useState(status);
+  const handleError = () => {
+    setUploadStatus('error');
+  };
 
   return (
-    <VideoContainer>
-      {videoStatus !== 'Completed' && (
-        <StatusMessage>{videoStatus}</StatusMessage>
-      )}
-      <VideoElement src={src} controls />
-    </VideoContainer>
+    <div className="video-container">
+      <video src={videoSrc} controls />
+      <div className="status-controls">
+        {uploadStatus === 'uploading' && <span>Uploading...</span>}
+        {uploadStatus === 'paused' && <span>Paused</span>}
+        {uploadStatus === 'completed' && <span>Completed</span>}
+        {uploadStatus === 'error' && <span>Error in uploading</span>}
+      </div>
+      <div className="upload-controls">
+        <button onClick={handleUpload}>Upload</button>
+        <button onClick={handlePause}>Pause</button>
+        <button onClick={handleError}>Simulate Error</button>
+      </div>
+    </div>
   );
 };
 
 Video.propTypes = {
-  src: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(['Uploading', 'Paused', 'Completed', 'Error']),
+  videoSrc: PropTypes.string.isRequired,
 };
 
 export default Video;

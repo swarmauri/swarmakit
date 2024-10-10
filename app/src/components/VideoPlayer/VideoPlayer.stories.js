@@ -10,7 +10,7 @@ const Template = (args) => <VideoPlayer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'sample-video.mp4',
+  videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
 };
 
 export const Play = Template.bind({});

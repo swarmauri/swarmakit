@@ -1,19 +1,26 @@
-.badge-container {
+.badge {
   display: inline-block;
-  padding: 0.5em 1em;
-  border-radius: 12px;
-  font-size: 0.75em;
+  padding: 0.25em 0.5em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.default {
+  background-color: #6c757d;
   color: white;
 }
 
-.badge-container.default {
-  background-color: #7f8c8d;
+.notification {
+  background-color: #007bff;
+  color: white;
 }
 
-.badge-container.notification {
-  background-color: #3498db;
-}
-
-.badge-container.status {
-  background-color: #4caf50;
+.status {
+  background-color: #28a745;
+  color: white;
 }

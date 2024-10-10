@@ -1,15 +1,35 @@
-.accordion-list-container {
-  width: 100%;
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .accordion-item {
-  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-.accordion-item:last-child {
-  margin-bottom: 0;
+.accordion-item-header {
+  background-color: #f7f7f7;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .accordion-item-header:hover {
-  background-color: #e0e0e0;
+  background-color: #e2e2e2;
+}
+
+.accordion-item-content {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.accordion-item.expanded .accordion-item-content {
+  display: block;
+}
+
+.accordion-item.collapsed .accordion-item-content {
+  display: none;
 }

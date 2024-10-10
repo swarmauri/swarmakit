@@ -34,6 +34,6 @@ LowBattery.args = {
 
 export const Critical = Template.bind({});
 Critical.args = {
-  level: 5,
+  level: 10,
   isCharging: false,
 };

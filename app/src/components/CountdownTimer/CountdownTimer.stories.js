@@ -11,23 +11,23 @@ const Template = (args) => <CountdownTimer {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   initialTime: 60,
-  isRunning: true,
+  isPaused: false,
 };
 
 export const Running = Template.bind({});
 Running.args = {
   initialTime: 30,
-  isRunning: true,
+  isPaused: false,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
   initialTime: 30,
-  isRunning: false,
+  isPaused: true,
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
   initialTime: 0,
-  isRunning: false,
+  isPaused: false,
 };

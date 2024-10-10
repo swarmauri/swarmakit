@@ -1,19 +1,13 @@
-.badge-with-counts-container {
+.badge-with-counts {
   display: inline-block;
-  padding: 0.5em 1em;
-  border-radius: 12px;
-  font-size: 0.75em;
+  padding: 0.25em 0.5em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #dc3545;
   color: white;
-}
-
-.badge-with-counts-container.zero {
-  background-color: #e0e0e0;
-}
-
-.badge-with-counts-container.active {
-  background-color: #3498db;
-}
-
-.badge-with-counts-container.overflow {
-  background-color: #e74c3c;
 }

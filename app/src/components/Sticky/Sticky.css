@@ -1,0 +1,32 @@
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: #f0f0f0;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.sticky.scrolled {
+  background-color: #e0e0e0;
+}
+
+.expand-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.sticky-content {
+  display: none;
+}
+
+.sticky.expanded .sticky-content {
+  display: block;
+}
+
+.sticky.collapsed .sticky-content {
+  display: none;
+}

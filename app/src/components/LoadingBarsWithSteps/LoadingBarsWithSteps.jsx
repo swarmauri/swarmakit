@@ -1,42 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './LoadingBarsWithSteps.css';
 
-const StepContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-const Step = styled.div`
-  flex: 1;
-  height: 10px;
-  background-color: ${({ active, completed }) => 
-    completed ? '#2ecc71' : active ? '#3498db' : '#bdc3c7'};
-  transition: background-color 0.3s ease;
-
-  &:not(:last-child) {
-    margin-right: 5px;
-  }
-`;
-
-const LoadingBarsWithSteps = ({ steps, activeStep }) => {
+const LoadingBarsWithSteps = ({ steps, currentStep }) => {
   return (
-    <StepContainer>
-      {steps.map((step, index) => (
-        <Step 
-          key={index} 
-          active={index === activeStep} 
-          completed={index < activeStep} 
-        />
-      ))}
-    </StepContainer>
+    <div className="loading-steps">
+      {steps.map((step, index) => {
+        const stepStatus = index < currentStep ? 'completed' : index === currentStep ? 'active' : 'inactive';
+        return (
+          <div key={index} className={`step ${stepStatus}`}>
+            <div className="step-label">{step.label}</div>
+            <div className="step-bar" />
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
 LoadingBarsWithSteps.propTypes = {
-  steps: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeStep: PropTypes.number.isRequired,
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  currentStep: PropTypes.number.isRequired,
 };
 
 export default LoadingBarsWithSteps;

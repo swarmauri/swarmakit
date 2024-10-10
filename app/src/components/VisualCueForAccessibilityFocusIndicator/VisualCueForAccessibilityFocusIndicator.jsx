@@ -1,34 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './VisualCueForAccessibilityFocusIndicator.css';
 
-const FocusIndicator = styled.div`
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 4px;
-  border: 2px solid transparent;
-  background-color: #f5f5f5;
-  outline: none;
-  transition: border-color 0.3s ease;
-
-  ${({ isFocused }) =>
-    isFocused &&
-    `
-    border-color: #1976d2;
-  `}
-`;
-
-const VisualCueForAccessibilityFocusIndicator = ({ content, isFocused }) => {
+const VisualCueForAccessibilityFocusIndicator = ({ isFocused, label }) => {
   return (
-    <FocusIndicator tabIndex={0} isFocused={isFocused}>
-      {content}
-    </FocusIndicator>
+    <div className={`visual-cue ${isFocused ? 'focused' : 'unfocused'}`}>
+      {label}
+    </div>
   );
 };
 
 VisualCueForAccessibilityFocusIndicator.propTypes = {
-  content: PropTypes.string.isRequired,
   isFocused: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+};
+
+VisualCueForAccessibilityFocusIndicator.defaultProps = {
+  isFocused: false,
+  label: 'Focus indicator',
 };
 
 export default VisualCueForAccessibilityFocusIndicator;

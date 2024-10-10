@@ -1,36 +1,28 @@
-.upload-container {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  margin: 0.5rem;
+.upload {
+  padding: 15px;
   border-radius: 4px;
+  color: #fff;
+  min-width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.upload-container.uploading {
-  background-color: #e8f7ff;
-  color: #0277bd;
+.uploading {
+  background-color: #2196f3;
 }
 
-.upload-container.downloading {
-  background-color: #e0f7fa;
-  color: #00838f;
+.downloading {
+  background-color: #3f51b5;
 }
 
-.upload-container.completed {
-  background-color: #e8f5e9;
-  color: #388e3c;
+.completed {
+  background-color: #4caf50;
 }
 
-.upload-container.paused {
-  background-color: #fff3e0;
-  color: #f57c00;
+.paused {
+  background-color: #ff9800;
 }
 
-.upload-container.failed {
-  background-color: #ffebee;
-  color: #d32f2f;
-}
-
-.status-message {
-  margin-left: 1rem;
+.failed {
+  background-color: #f44336;
 }

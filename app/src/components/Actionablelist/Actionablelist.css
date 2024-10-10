@@ -1,33 +1,36 @@
-.actionable-list-container {
-  list-style-type: none;
-  padding: 0;
-}
-
-.list-item {
+.actionable-list {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.actionable-item {
+  border: 1px solid #ccc;
+  border-radius: 4px;
   padding: 10px;
-  background-color: white;
-}
-
-.list-item:hover {
-  background-color: #e0e0e0;
-}
-
-.list-item.disabled {
-  background-color: #f0f0f0;
-  cursor: not-allowed;
-}
-
-.action-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.action-button:disabled {
-  background-color: #a0a0a0;
+.actionable-item:hover {
+  background-color: #e2e2e2;
+}
+
+.actionable-item-content {
+  display: flex;
+  align-items: center;
+}
+
+.actionable-item.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.actionable-list.disabled .actionable-item {
   cursor: not-allowed;
+  background-color: #f5f5f5;
+}
+
+.actionable-list.disabled .actionable-item:hover {
+  background-color: #f5f5f5;
 }

@@ -1,41 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './EmbeddedMediaIframe.css';
 
-const IframeContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-  overflow: hidden;
-`;
-
-const ResponsiveIframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-`;
-
-const EmbeddedMediaIframe = ({ src, allowFullscreen }) => (
-  <IframeContainer>
-    <ResponsiveIframe
-      src={src}
-      allowFullScreen={allowFullscreen}
-      loading="lazy"
-    />
-  </IframeContainer>
-);
+const EmbeddedMediaIframe = ({ src, title, allowFullScreen, isBuffering }) => {
+  return (
+    <div className={`iframe-container ${isBuffering ? 'buffering' : ''}`}>
+      <iframe
+        src={src}
+        title={title}
+        allowFullScreen={allowFullScreen}
+        className="embedded-media-iframe"
+        frameBorder="0"
+      />
+      {isBuffering && <div className="buffering-overlay">Buffering...</div>}
+    </div>
+  );
+};
 
 EmbeddedMediaIframe.propTypes = {
   src: PropTypes.string.isRequired,
-  allowFullscreen: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  allowFullScreen: PropTypes.bool,
+  isBuffering: PropTypes.bool,
 };
 
 EmbeddedMediaIframe.defaultProps = {
-  allowFullscreen: false,
+  allowFullScreen: true,
+  isBuffering: false,
 };
 
 export default EmbeddedMediaIframe;

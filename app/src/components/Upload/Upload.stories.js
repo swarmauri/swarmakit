@@ -10,36 +10,36 @@ const Template = (args) => <Upload {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  filename: 'example.txt',
   status: 'uploading',
+  message: 'Uploading...',
 };
 
 export const Uploading = Template.bind({});
 Uploading.args = {
-  filename: 'example.txt',
   status: 'uploading',
+  message: 'Uploading...',
 };
 
 export const Downloading = Template.bind({});
 Downloading.args = {
-  filename: 'example.txt',
   status: 'downloading',
+  message: 'Downloading...',
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  filename: 'example.txt',
   status: 'completed',
+  message: 'Upload completed!',
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  filename: 'example.txt',
   status: 'paused',
+  message: 'Upload paused.',
 };
 
 export const Failed = Template.bind({});
 Failed.args = {
-  filename: 'example.txt',
   status: 'failed',
+  message: 'Upload failed. Please try again.',
 };

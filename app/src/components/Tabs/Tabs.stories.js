@@ -8,33 +8,29 @@ export default {
 
 const Template = (args) => <Tabs {...args} />;
 
-const tabsData = [
-  { id: '1', label: 'Tab 1', content: 'Content of Tab 1' },
-  { id: '2', label: 'Tab 2', content: 'Content of Tab 2' },
-  { id: '3', label: 'Tab 3', content: 'Content of Tab 3' },
-];
-
 export const Default = Template.bind({});
 Default.args = {
-  tabs: tabsData,
+  tabs: ['Tab 1', 'Tab 2', 'Tab 3'],
+  defaultActiveIndex: 0,
+  isDisabled: false,
 };
 
 export const Active = Template.bind({});
 Active.args = {
   ...Default.args,
-  initialActiveIndex: 1,
+  defaultActiveIndex: 1,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
   ...Default.args,
-  initialActiveIndex: 2,
+  defaultActiveIndex: -1,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   ...Default.args,
-  disabled: true,
+  isDisabled: true,
 };
 
 export const Hover = Template.bind({});

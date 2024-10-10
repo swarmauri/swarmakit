@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 
 export default {
@@ -6,32 +6,32 @@ export default {
   component: SearchBar,
 };
 
-const Template = (args) => <SearchBar {...args} />;
+const Template = (args) => {
+  const [value, setValue] = useState('');
+  return <SearchBar {...args} value={value} onChange={(e) => setValue(e.target.value)} />;
+};
 
 export const Default = Template.bind({});
 Default.args = {
   placeholder: 'Search...',
   isFocused: false,
-  disabled: false,
+  isDisabled: false,
 };
 
 export const Focused = Template.bind({});
 Focused.args = {
-  placeholder: 'Search...',
   isFocused: true,
-  disabled: false,
+  isDisabled: false,
 };
 
 export const Unfocused = Template.bind({});
 Unfocused.args = {
-  placeholder: 'Search...',
   isFocused: false,
-  disabled: false,
+  isDisabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  placeholder: 'Search...',
   isFocused: false,
-  disabled: true,
+  isDisabled: true,
 };

@@ -10,32 +10,25 @@ const Template = (args) => <AudioWaveformDisplay {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'audio.mp3',
-  isPlaying: false,
-  isLoading: false,
-  isScrubbing: false,
+  src: 'path/to/audio.mp3',
 };
 
 export const Playing = Template.bind({});
 Playing.args = {
-  ...Default.args,
-  isPlaying: true,
+  src: 'path/to/audio.mp3',
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  ...Default.args,
-  isPlaying: false,
+  src: 'path/to/audio.mp3',
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  ...Default.args,
-  isLoading: true,
+  src: 'path/to/audio.mp3',
 };
 
 export const Scrubbing = Template.bind({});
 Scrubbing.args = {
-  ...Default.args,
-  isScrubbing: true,
+  src: 'path/to/audio.mp3',
 };

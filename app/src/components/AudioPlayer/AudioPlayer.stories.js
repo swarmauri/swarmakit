@@ -10,32 +10,30 @@ const Template = (args) => <AudioPlayer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'audio.mp3',
-  isPlaying: false,
-  isMuted: false,
-  volume: 0.5,
+  src: 'path/to/audio.mp3',
+  autoPlay: false,
 };
 
 export const Play = Template.bind({});
 Play.args = {
-  ...Default.args,
-  isPlaying: true,
+  src: 'path/to/audio.mp3',
+  autoPlay: true,
 };
 
 export const Pause = Template.bind({});
 Pause.args = {
-  ...Default.args,
-  isPlaying: false,
+  src: 'path/to/audio.mp3',
+  autoPlay: false,
 };
 
 export const Mute = Template.bind({});
 Mute.args = {
-  ...Default.args,
-  isMuted: true,
+  src: 'path/to/audio.mp3',
+  autoPlay: true,
 };
 
 export const VolumeControl = Template.bind({});
 VolumeControl.args = {
-  ...Default.args,
-  volume: 0.8,
+  src: 'path/to/audio.mp3',
+  autoPlay: false,
 };

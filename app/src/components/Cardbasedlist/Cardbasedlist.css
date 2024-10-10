@@ -1,26 +1,36 @@
-.card-container {
+.card-based-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.card {
-  flex: 1 1 calc(25% - 16px);
-  padding: 16px;
-  background-color: white;
-  border: 1px solid #ddd;
+.card-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 15px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.card:hover {
-  background-color: #e0e0e0;
-}
-
-.card.disabled {
+.card-item:hover {
   background-color: #f0f0f0;
-  cursor: not-allowed;
 }
 
-.card.selected {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.card-item.selected {
+  background-color: #d0e6f7;
+  border-color: #007bff;
+}
+
+.card-item-content {
+  display: flex;
+  align-items: center;
+}
+
+.card-based-list.disabled .card-item {
+  cursor: not-allowed;
+  background-color: #f9f9f9;
+}
+
+.card-based-list.disabled .card-item:hover {
+  background-color: #f9f9f9;
 }

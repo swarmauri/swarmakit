@@ -1,41 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './SignalStrengthIndicator.css';
 
-const SignalContainer = styled.div`
-  display: flex;
-  align-items: flex-end;
-  gap: 0.3rem;
-`;
-
-const SignalBar = styled.div`
-  width: 0.5rem;
-  background-color: ${({ isActive }) => (isActive ? '#4caf50' : '#d3d3d3')};
-  transition: background-color 0.3s;
-`;
-
-const SignalStrengthIndicator = ({ signalStrength }) => {
-  const totalBars = 5;
+const SignalStrengthIndicator = ({ strength }) => {
+  const getBarClass = (index) => {
+    if (strength >= index + 1) {
+      return 'bar filled';
+    }
+    return 'bar';
+  };
 
   return (
-    <SignalContainer>
-      {[...Array(totalBars)].map((_, index) => (
-        <SignalBar
-          key={index}
-          isActive={index < signalStrength}
-          style={{ height: `${(index + 1) * 0.8}rem` }}
-        />
+    <div className="signal-strength-indicator">
+      {[...Array(5)].map((_, index) => (
+        <div key={index} className={getBarClass(index)} />
       ))}
-    </SignalContainer>
+    </div>
   );
 };
 
 SignalStrengthIndicator.propTypes = {
-  signalStrength: PropTypes.number,
+  strength: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 };
 
 SignalStrengthIndicator.defaultProps = {
-  signalStrength: 0,
+  strength: 0,
 };
 
 export default SignalStrengthIndicator;

@@ -1,62 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './Carousel.css';
 
-const CarouselContainer = styled.div`
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-`;
-
-const CarouselTrack = styled.div`
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-`;
-
-const CarouselSlide = styled.div`
-  min-width: 100%;
-  box-sizing: border-box;
-`;
-
-const Carousel = ({ images, autoPlay, interval }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+const Carousel = ({ images, autoPlayInterval }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
 
   useEffect(() => {
-    if (!autoPlay || isPaused) return;
-    const slideInterval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, interval);
-    return () => clearInterval(slideInterval);
-  }, [autoPlay, isPaused, interval, images.length]);
+    if (isAutoPlay) {
+      const timer = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, autoPlayInterval);
+      return () => clearInterval(timer);
+    }
+  }, [isAutoPlay, autoPlayInterval, images.length]);
 
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
+  const goToSlide = (index) => {
+    setActiveIndex(index);
+    setIsAutoPlay(false);
+  };
 
   return (
-    <CarouselContainer onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <CarouselTrack style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+    <div className="carousel-container" onMouseEnter={() => setIsAutoPlay(false)} onMouseLeave={() => setIsAutoPlay(true)}>
+      <div className="carousel-slides">
         {images.map((image, index) => (
-          <CarouselSlide key={index}>
+          <div key={index} className={`carousel-slide ${index === activeIndex ? 'active' : ''}`}>
             <img src={image} alt={`Slide ${index}`} />
-          </CarouselSlide>
+          </div>
         ))}
-      </CarouselTrack>
-    </CarouselContainer>
+      </div>
+      <div className="carousel-indicators">
+        {images.map((_, index) => (
+          <button key={index} className={`indicator ${index === activeIndex ? 'active' : ''}`} onClick={() => goToSlide(index)} />
+        ))}
+      </div>
+    </div>
   );
 };
 
 Carousel.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
-  autoPlay: PropTypes.bool,
-  interval: PropTypes.number,
+  autoPlayInterval: PropTypes.number,
 };
 
 Carousel.defaultProps = {
-  autoPlay: true,
-  interval: 3000,
+  autoPlayInterval: 3000,
 };
 
 export default Carousel;

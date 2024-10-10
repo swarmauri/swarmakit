@@ -1,9 +1,17 @@
-input[type='range'] {
+.slider {
   width: 100%;
-  margin: 0.5rem 0;
+  height: 4px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }
 
-input[type='range'][disabled] {
-  opacity: 0.5;
+.slider:hover {
+  opacity: 1;
+}
+
+.slider.disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }

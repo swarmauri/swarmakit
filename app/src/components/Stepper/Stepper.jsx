@@ -1,42 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './Stepper.css';
 
-const Step = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background-color: ${({ stepState }) => {
-    switch (stepState) {
-      case 'completed':
-        return '#4caf50';
-      case 'active':
-        return '#2196f3';
-      case 'disabled':
-        return '#d3d3d3';
-      default:
-        return '#d3d3d3';
-    }
-  }};
-  color: white;
-  font-weight: bold;
-  transition: background-color 0.3s;
-`;
+const Stepper = ({ steps, currentStep }) => {
+  return (
+    <div className="stepper">
+      {steps.map((step, index) => {
+        let statusClass = 'step';
+        if (index < currentStep) {
+          statusClass += ' completed';
+        } else if (index === currentStep) {
+          statusClass += ' active';
+        } else {
+          statusClass += ' disabled';
+        }
 
-const Stepper = ({ step, state }) => {
-  return <Step stepState={state}>{step}</Step>;
+        return (
+          <div key={index} className={statusClass}>
+            {step}
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 Stepper.propTypes = {
-  step: PropTypes.number.isRequired,
-  state: PropTypes.oneOf(['completed', 'active', 'disabled']),
+  steps: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentStep: PropTypes.number,
 };
 
 Stepper.defaultProps = {
-  state: 'disabled',
+  currentStep: 0,
 };
 
 export default Stepper;

@@ -10,20 +10,20 @@ const Template = (args) => <SignalStrengthIndicator {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  signalStrength: 3,
+  strength: 3,
 };
 
 export const FullSignal = Template.bind({});
 FullSignal.args = {
-  signalStrength: 5,
+  strength: 5,
 };
 
 export const WeakSignal = Template.bind({});
 WeakSignal.args = {
-  signalStrength: 2,
+  strength: 2,
 };
 
 export const NoSignal = Template.bind({});
 NoSignal.args = {
-  signalStrength: 0,
+  strength: 0,
 };

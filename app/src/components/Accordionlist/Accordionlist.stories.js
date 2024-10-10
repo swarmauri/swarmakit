@@ -11,39 +11,43 @@ const Template = (args) => <AccordionList {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { title: 'Accordion 1', content: 'Content for accordion 1' },
-    { title: 'Accordion 2', content: 'Content for accordion 2' },
-    { title: 'Accordion 3', content: 'Content for accordion 3' },
+    { title: 'Item 1', content: 'Content for item 1' },
+    { title: 'Item 2', content: 'Content for item 2' },
+    { title: 'Item 3', content: 'Content for item 3' },
   ],
 };
 
 export const Expanded = Template.bind({});
 Expanded.args = {
   items: [
-    { title: 'Accordion 1', content: 'Content for accordion 1' },
-    { title: 'Accordion 2', content: 'Content for accordion 2' },
-    { title: 'Accordion 3', content: 'Content for accordion 3' },
+    { title: 'Item 1', content: 'Content for item 1' },
+    { title: 'Item 2', content: 'Content for item 2' },
+    { title: 'Item 3', content: 'Content for item 3' },
   ],
 };
-Expanded.parameters = {
-  openIndex: 0, // Opens the first accordion by default
-};
+Expanded.decorators = [
+  (Story) => {
+    const Component = Story();
+    Component.props.children.props.expandedIndex = 0;
+    return Component;
+  },
+];
 
 export const Collapsed = Template.bind({});
 Collapsed.args = {
   items: [
-    { title: 'Accordion 1', content: 'Content for accordion 1' },
-    { title: 'Accordion 2', content: 'Content for accordion 2' },
-    { title: 'Accordion 3', content: 'Content for accordion 3' },
+    { title: 'Item 1', content: 'Content for item 1' },
+    { title: 'Item 2', content: 'Content for item 2' },
+    { title: 'Item 3', content: 'Content for item 3' },
   ],
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   items: [
-    { title: 'Accordion 1', content: 'Content for accordion 1' },
-    { title: 'Accordion 2', content: 'Content for accordion 2' },
-    { title: 'Accordion 3', content: 'Content for accordion 3' },
+    { title: 'Hover over me', content: 'This content is revealed on hover.' },
+    { title: 'Item 2', content: 'Content for item 2' },
+    { title: 'Item 3', content: 'Content for item 3' },
   ],
 };
 Hover.parameters = {

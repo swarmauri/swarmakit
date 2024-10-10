@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ToastNotifications from './ToastNotifications';
 
 export default {
@@ -6,44 +6,39 @@ export default {
   component: ToastNotifications,
 };
 
-const Template = (args) => {
-  const [dismissed, setDismissed] = useState(false);
-  return <ToastNotifications {...args} dismissed={dismissed} onClose={() => setDismissed(true)} />;
-};
+const Template = (args) => <ToastNotifications {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  message: 'This is a default notification.',
-  type: 'info',
+  notifications: [
+    { message: 'This is a success message', type: 'success' },
+    { message: 'This is an error message', type: 'error' },
+    { message: 'This is a warning message', type: 'warning' },
+    { message: 'This is an info message', type: 'info' },
+  ],
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  message: 'Operation completed successfully!',
-  type: 'success',
+  notifications: [{ message: 'Operation successful', type: 'success' }],
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  message: 'An error has occurred.',
-  type: 'error',
+  notifications: [{ message: 'An error occurred', type: 'error' }],
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  message: 'Warning! Please check your inputs.',
-  type: 'warning',
+  notifications: [{ message: 'This is a warning', type: 'warning' }],
 };
 
 export const Info = Template.bind({});
 Info.args = {
-  message: 'This is an informational message.',
-  type: 'info',
+  notifications: [{ message: 'Some information for you', type: 'info' }],
 };
 
 export const Dismissed = Template.bind({});
 Dismissed.args = {
-  message: 'This message will disappear.',
-  type: 'info',
-  dismissed: true,
+  notifications: [],
 };

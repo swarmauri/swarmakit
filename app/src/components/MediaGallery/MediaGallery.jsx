@@ -1,80 +1,49 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const GalleryContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ThumbnailWrapper = styled.div`
-  display: flex;
-  overflow-x: auto;
-`;
-
-const Thumbnail = styled.img`
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  cursor: pointer;
-`;
-
-const ExpandedView = styled.img`
-  width: 500px;
-  height: 500px;
-  margin: 20px 0;
-  transition: transform 0.3s;
-`;
-
-const ControlButton = styled.button`
-  margin: 5px;
-  cursor: pointer;
-`;
+import './MediaGallery.css';
 
 const MediaGallery = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
 
-  const handleThumbnailClick = (index) => {
-    setCurrentIndex(index);
+  const handleNext = () => {
+    setCurrentImage((currentImage + 1) % images.length);
   };
 
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  const handlePrevious = () => {
+    setCurrentImage((currentImage - 1 + images.length) % images.length);
   };
 
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
   };
 
-  const toggleZoom = () => {
-    setIsZoomed(!isZoomed);
+  const handleZoomIn = () => {
+    setZoomLevel(zoomLevel + 0.2);
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel(zoomLevel - 0.2 > 0 ? zoomLevel - 0.2 : zoomLevel);
   };
 
   return (
-    <GalleryContainer>
-      <ThumbnailWrapper>
-        {images.map((image, index) => (
-          <Thumbnail
-            key={image}
-            src={image}
-            onClick={() => handleThumbnailClick(index)}
-          />
-        ))}
-      </ThumbnailWrapper>
-      <ExpandedView
-        src={images[currentIndex]}
-        style={{ transform: isZoomed ? 'scale(1.5)' : 'scale(1)' }}
-      />
-      <div>
-        <ControlButton onClick={prevImage}>Previous</ControlButton>
-        <ControlButton onClick={nextImage}>Next</ControlButton>
-        <ControlButton onClick={toggleZoom}>
-          {isZoomed ? 'Zoom Out' : 'Zoom In'}
-        </ControlButton>
+    <div className="media-gallery">
+      <div className={`gallery-image ${isExpanded ? 'expanded' : ''}`}>
+        <img 
+          src={images[currentImage]} 
+          alt={`Image ${currentImage + 1}`} 
+          style={{ transform: `scale(${zoomLevel})` }} 
+        />
       </div>
-    </GalleryContainer>
+      <div className="gallery-controls">
+        <button onClick={handlePrevious}>Previous</button>
+        <button onClick={toggleExpand}>{isExpanded ? 'Collapse' : 'Expand'}</button>
+        <button onClick={handleNext}>Next</button>
+        <button onClick={handleZoomIn}>Zoom In</button>
+        <button onClick={handleZoomOut}>Zoom Out</button>
+      </div>
+    </div>
   );
 };
 

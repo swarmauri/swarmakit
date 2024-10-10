@@ -12,7 +12,7 @@ export const Default = Template.bind({});
 Default.args = {
   tasks: [
     { label: 'Task 1', status: 'unchecked' },
-    { label: 'Task 2', status: 'partially' },
+    { label: 'Task 2', status: 'partiallyComplete' },
     { label: 'Task 3', status: 'checked' },
   ],
 };
@@ -38,8 +38,8 @@ Unchecked.args = {
 export const PartiallyComplete = Template.bind({});
 PartiallyComplete.args = {
   tasks: [
-    { label: 'Task 1', status: 'partially' },
-    { label: 'Task 2', status: 'unchecked' },
-    { label: 'Task 3', status: 'checked' },
+    { label: 'Task 1', status: 'partiallyComplete' },
+    { label: 'Task 2', status: 'partiallyComplete' },
+    { label: 'Task 3', status: 'partiallyComplete' },
   ],
 };

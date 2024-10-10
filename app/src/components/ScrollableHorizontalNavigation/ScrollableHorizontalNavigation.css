@@ -1,0 +1,27 @@
+.scrollable-horizontal-navigation {
+  overflow-x: auto;
+  white-space: nowrap;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+.nav-items {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+  background-color: #ddd;
+}
+
+.nav-item.active {
+  background-color: #ccc;
+}

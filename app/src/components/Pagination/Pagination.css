@@ -1,28 +1,29 @@
-.pagination-container {
+.pagination {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.page-number {
-  margin: 0 5px;
+.page-item {
   padding: 10px 15px;
+  margin: 0 5px;
   border: 1px solid #ddd;
-  background-color: white;
-  color: black;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.page-number.active {
+.page-item:hover {
+  background-color: #f0f0f0;
+}
+
+.page-item.active {
   background-color: #007bff;
   color: white;
 }
 
-.page-number:hover {
-  background-color: #f1f1f1;
-}
-
-.page-number.disabled {
-  pointer-events: none;
-  color: #ccc;
+.page-item.inactive {
+  background-color: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
 }

@@ -1,79 +1,50 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './LiveStreamPlayer.css';
 
-const PlayerContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  position: relative;
-  background-color: #000;
-`;
-
-const Video = styled.video`
-  width: 100%;
-  height: 450px;
-  background-color: #000;
-`;
-
-const Controls = styled.div`
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: flex;
-  align-items: center;
-`;
-
-const Button = styled.button`
-  background: none;
-  border: none;
-  color: #fff;
-  margin-right: 10px;
-  cursor: pointer;
-`;
-
-const LiveStreamPlayer = ({ streamUrl, isMuted }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const LiveStreamPlayer = ({ src }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
-  
-  const videoRef = React.useRef(null);
 
   const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
+
+  const handleBuffering = () => {
+    setIsBuffering(!isBuffering);
   };
 
   return (
-    <PlayerContainer>
-      <Video
-        ref={videoRef}
-        src={streamUrl}
-        muted={isMuted}
-        onWaiting={() => setIsBuffering(true)}
+    <div className={`live-stream-player ${isBuffering ? 'buffering' : ''}`}>
+      <video 
+        src={src} 
+        autoPlay 
+        muted={isMuted} 
+        controls 
+        onPlay={() => setIsPlaying(true)} 
+        onPause={() => setIsPlaying(false)} 
+        onWaiting={handleBuffering}
         onPlaying={() => setIsBuffering(false)}
       />
-      <Controls>
-        <Button onClick={togglePlayPause}>
+      <div className="controls">
+        <button onClick={togglePlayPause}>
           {isPlaying ? 'Pause' : 'Play'}
-        </Button>
-        {isBuffering && <span>Buffering...</span>}
-      </Controls>
-    </PlayerContainer>
+        </button>
+        <button onClick={toggleMute}>
+          {isMuted ? 'Unmute' : 'Mute'}
+        </button>
+      </div>
+    </div>
   );
 };
 
 LiveStreamPlayer.propTypes = {
-  streamUrl: PropTypes.string.isRequired,
-  isMuted: PropTypes.bool,
-};
-
-LiveStreamPlayer.defaultProps = {
-  isMuted: false,
+  src: PropTypes.string.isRequired,
 };
 
 export default LiveStreamPlayer;

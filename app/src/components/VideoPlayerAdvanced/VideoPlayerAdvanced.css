@@ -1,27 +1,44 @@
-.PlayerContainer {
+.video-player-advanced {
+  max-width: 800px;
+  margin: 0 auto;
   position: relative;
-  width: 640px;
-  height: 360px;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #000;
 }
 
-.VideoElement {
+.video-player-advanced.fullscreen {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-.ControlButton {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+.video-player-advanced video {
+  width: 100%;
+  height: auto;
+}
+
+.video-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.video-controls button {
+  padding: 10px 20px;
   border: none;
-  padding: 10px;
+  background-color: #0056b3;
+  color: white;
+  cursor: pointer;
   border-radius: 5px;
-  margin-right: 10px;
+}
+
+.video-controls button:hover {
+  background-color: #004494;
+}
+
+.buffering {
+  background: url('path/to/buffering.gif') center center no-repeat;
 }

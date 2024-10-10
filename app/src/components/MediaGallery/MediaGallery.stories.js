@@ -11,9 +11,9 @@ const Template = (args) => <MediaGallery {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   images: [
-    'https://www.example.com/image1.jpg',
-    'https://www.example.com/image2.jpg',
-    'https://www.example.com/image3.jpg',
+    'https://example.com/image1.jpg',
+    'https://example.com/image2.jpg',
+    'https://example.com/image3.jpg',
   ],
 };
 

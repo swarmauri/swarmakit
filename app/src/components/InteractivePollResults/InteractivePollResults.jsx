@@ -1,48 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './InteractivePollResults.css';
 
-const PollContainer = styled.div`
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  width: 300px;
-`;
-
-const Option = styled.div`
-  margin-bottom: 10px;
-`;
-
-const Bar = styled.div`
-  height: 20px;
-  background-color: ${({ color }) => color};
-  width: ${({ percentage }) => percentage}%;
-  transition: width 0.3s ease;
-`;
-
-const InteractivePollResults = ({ options, totalVotes, status }) => {
+const InteractivePollResults = ({ results, status }) => {
   return (
-    <PollContainer>
-      {options.map((option) => (
-        <Option key={option.label}>
-          <div>{option.label} - {option.votes} votes</div>
-          <Bar color={option.color} percentage={(option.votes / totalVotes) * 100} />
-        </Option>
+    <div className={`poll-results ${status.toLowerCase()}`}>
+      {results.map((result, index) => (
+        <div key={index} className="poll-option">
+          <span className="option-label">{result.option}</span>
+          <span className="option-percentage">{result.percentage}%</span>
+          <div className="progress-bar" style={{ width: `${result.percentage}%` }} />
+        </div>
       ))}
-      <div>Status: {status}</div>
-    </PollContainer>
+    </div>
   );
 };
 
 InteractivePollResults.propTypes = {
-  options: PropTypes.arrayOf(
+  results: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      votes: PropTypes.number.isRequired,
-      color: PropTypes.string.isRequired,
+      option: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
     })
   ).isRequired,
-  totalVotes: PropTypes.number.isRequired,
   status: PropTypes.oneOf(['Live Results', 'Completed', 'Closed']).isRequired,
 };
 

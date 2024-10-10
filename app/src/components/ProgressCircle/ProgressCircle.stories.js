@@ -11,39 +11,29 @@ const Template = (args) => <ProgressCircle {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   progress: 50,
-  isComplete: false,
-  isPaused: false,
-  isActive: false,
+  state: 'active',
 };
 
 export const Complete = Template.bind({});
 Complete.args = {
   progress: 100,
-  isComplete: true,
-  isPaused: false,
-  isActive: false,
+  state: 'complete',
 };
 
 export const Incomplete = Template.bind({});
 Incomplete.args = {
-  progress: 50,
-  isComplete: false,
-  isPaused: false,
-  isActive: false,
+  progress: 25,
+  state: 'incomplete',
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
   progress: 50,
-  isComplete: false,
-  isPaused: true,
-  isActive: false,
+  state: 'paused',
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  progress: 75,
-  isComplete: false,
-  isPaused: false,
-  isActive: true,
+  progress: 70,
+  state: 'active',
 };

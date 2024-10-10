@@ -11,34 +11,29 @@ const Template = (args) => <ProgressBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   progress: 50,
-  isComplete: false,
-  isDisabled: false,
+  disabled: false,
 };
 
 export const Complete = Template.bind({});
 Complete.args = {
   progress: 100,
-  isComplete: true,
-  isDisabled: false,
+  disabled: false,
 };
 
 export const Incomplete = Template.bind({});
 Incomplete.args = {
-  progress: 50,
-  isComplete: false,
-  isDisabled: false,
+  progress: 25,
+  disabled: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  progress: 75,
-  isComplete: false,
-  isDisabled: false,
+  progress: 50,
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   progress: 50,
-  isComplete: false,
-  isDisabled: true,
+  disabled: true,
 };

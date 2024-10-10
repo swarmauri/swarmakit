@@ -1,0 +1,38 @@
+.sidebar {
+  width: 200px;
+  background-color: #f8f9fa;
+  transition: width 0.3s;
+}
+
+.sidebar.expanded {
+  width: 300px;
+}
+
+.sidebar.collapsed {
+  width: 50px;
+}
+
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.sidebar-item:hover {
+  background-color: #e9ecef;
+}

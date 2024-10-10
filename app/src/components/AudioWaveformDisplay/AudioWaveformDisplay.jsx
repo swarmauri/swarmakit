@@ -1,83 +1,75 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './AudioWaveformDisplay.css';
 
-const WaveformContainer = styled.div`
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  height: 100px;
-  background-color: #f0f0f0;
-  position: relative;
-`;
-
-const WaveformCanvas = styled.canvas`
-  width: 100%;
-  height: 100%;
-`;
-
-const AudioWaveformDisplay = ({ src, isPlaying, isLoading, isScrubbing }) => {
+const AudioWaveformDisplay = ({ src }) => {
+  const audioRef = useRef(null);
   const canvasRef = useRef(null);
-  const audioRef = useRef(new Audio(src));
-  const [waveform, setWaveform] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    const audio = audioRef.current;
-    const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
-
-    const drawWaveform = () => {
-      if (!context || !waveform) return;
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      waveform.forEach((value, index) => {
-        const x = (index / waveform.length) * canvas.width;
-        const y = (1 - value) * canvas.height;
-        context.lineTo(x, y);
+    if (audioRef.current) {
+      audioRef.current.addEventListener('loadedmetadata', () => {
+        setDuration(audioRef.current.duration);
+        setIsLoading(false);
       });
-      context.stroke();
-    };
 
-    if (isPlaying) {
-      audio.play();
-    } else {
-      audio.pause();
+      audioRef.current.addEventListener('timeupdate', () => {
+        setCurrentTime(audioRef.current.currentTime);
+        drawWaveform();
+      });
     }
-
-    drawWaveform();
-
-    return () => {
-      audio.pause();
-    };
-  }, [isPlaying, waveform]);
-
-  const loadWaveform = () => {
-    // Simulate waveform data
-    const mockWaveform = new Array(100).fill(0).map(() => Math.random());
-    setWaveform(mockWaveform);
-  };
-
-  useEffect(() => {
-    loadWaveform();
   }, [src]);
 
+  const togglePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const drawWaveform = () => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = '#007bff';
+    const progress = (currentTime / duration) * width;
+    context.fillRect(0, 0, progress, height);
+  };
+
+  const handleScrub = (event) => {
+    const newTime = (event.nativeEvent.offsetX / canvasRef.current.clientWidth) * duration;
+    audioRef.current.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
   return (
-    <WaveformContainer>
-      <WaveformCanvas ref={canvasRef} />
-    </WaveformContainer>
+    <div className="audio-waveform-display-container">
+      <audio ref={audioRef} src={src} />
+      <canvas
+        ref={canvasRef}
+        width="600"
+        height="100"
+        onClick={handleScrub}
+        className="waveform-canvas"
+      />
+      <button onClick={togglePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+      {isLoading && <div className="loading">Loading...</div>}
+    </div>
   );
 };
 
 AudioWaveformDisplay.propTypes = {
   src: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  isScrubbing: PropTypes.bool,
-};
-
-AudioWaveformDisplay.defaultProps = {
-  isPlaying: false,
-  isLoading: false,
-  isScrubbing: false,
 };
 
 export default AudioWaveformDisplay;

@@ -1,41 +1,30 @@
-.battery-container {
-  width: 50px;
-  height: 20px;
-  border: 2px solid #333;
-  border-radius: 3px;
+.battery-level-indicator {
+  width: 100px;
+  height: 25px;
+  border: 2px solid #000;
+  border-radius: 4px;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  background-color: #ddd;
 }
 
 .battery-level {
   height: 100%;
-  border-radius: 2px;
-  transition: width 0.3s;
+  background-color: #28a745;
+  transition: width 0.3s ease;
 }
 
-.battery-tip {
-  width: 6px;
-  height: 12px;
-  background-color: #333;
-  position: absolute;
-  right: -8px;
-  top: 3px;
+.battery-level-indicator.charging .battery-level {
+  background-color: #007bff;
 }
 
-.battery-level.low {
-  background-color: #f39c12;
+.battery-level-indicator.full .battery-level {
+  background-color: #28a745;
 }
 
-.battery-level.critical {
-  background-color: #e74c3c;
+.battery-level-indicator.low .battery-level {
+  background-color: #ffc107;
 }
 
-.battery-level.full {
-  background-color: #2ecc71;
-}
-
-.battery-level.default {
-  background-color: #3498db;
+.battery-level-indicator.critical .battery-level {
+  background-color: #dc3545;
 }

@@ -10,8 +10,7 @@ const Template = (args) => <LiveStreamPlayer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  streamUrl: 'https://www.example.com/livestream',
-  isMuted: false,
+  src: 'https://example.com/livestream',
 };
 
 export const Live = Template.bind({});
@@ -32,5 +31,4 @@ Buffering.args = {
 export const Muted = Template.bind({});
 Muted.args = {
   ...Default.args,
-  isMuted: true,
 };

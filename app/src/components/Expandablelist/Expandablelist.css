@@ -1,27 +1,33 @@
-.list-container {
+.expandable-list {
   list-style: none;
   padding: 0;
 }
 
 .list-item {
-  padding: 10px;
   border: 1px solid #ddd;
   margin-bottom: 5px;
   cursor: pointer;
-  background-color: #fff;
+  transition: background-color 0.3s;
 }
 
 .list-item:hover {
   background-color: #f0f0f0;
 }
 
-.list-item.selected {
+.item-header {
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.item-content {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.expanded .item-header {
   background-color: #e0e0e0;
 }
 
-.expandable-content {
-  margin-top: 5px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+.selected {
+  background-color: #d0e6f7;
 }

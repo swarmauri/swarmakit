@@ -1,32 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Accordion from './Accordion';
-
-const AccordionListContainer = styled.div`
-  width: 100%;
-`;
+import './AccordionList.css';
 
 const AccordionList = ({ items }) => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
-  const handleToggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleItem = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
   };
 
   return (
-    <AccordionListContainer>
+    <div className="accordion-list">
       {items.map((item, index) => (
-        <Accordion
+        <div
           key={index}
-          title={item.title}
-          isOpen={openIndex === index}
-          onClick={() => handleToggle(index)}
+          className={`accordion-item ${expandedIndex === index ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleItem(index)}
         >
-          {item.content}
-        </Accordion>
+          <div className="accordion-item-header">{item.title}</div>
+          {expandedIndex === index && <div className="accordion-item-content">{item.content}</div>}
+        </div>
       ))}
-    </AccordionListContainer>
+    </div>
   );
 };
 
@@ -34,7 +29,7 @@ AccordionList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      content: PropTypes.node.isRequired,
+      content: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

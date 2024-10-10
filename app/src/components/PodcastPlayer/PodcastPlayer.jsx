@@ -1,99 +1,56 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const PlayerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
-`;
-
-const EpisodeListWrapper = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-`;
-
-const Episode = styled.li`
-  margin: 10px 0;
-  cursor: pointer;
-`;
-
-const ControlButton = styled.button`
-  margin: 5px;
-  cursor: pointer;
-`;
-
-const ProgressBar = styled.div`
-  width: 100%;
-  height: 5px;
-  background-color: #eee;
-  margin: 10px 0;
-  position: relative;
-`;
-
-const Progress = styled.div`
-  width: ${(props) => props.progress}%;
-  height: 100%;
-  background-color: #007bff;
-  transition: width 0.3s;
-`;
+import './PodcastPlayer.css';
 
 const PodcastPlayer = ({ episodes }) => {
-  const [currentEpisode, setCurrentEpisode] = useState(null);
+  const [currentEpisode, setCurrentEpisode] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleEpisodeClick = (episode) => {
-    setCurrentEpisode(episode);
-    setIsPlaying(true);
-    setProgress(0);
-  };
-
-  const togglePlayPause = () => {
+  const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const downloadEpisode = (episode) => {
-    console.log(`Downloading ${episode.title}`);
+  const handleEpisodeSelect = (index) => {
+    setCurrentEpisode(index);
+    setIsPlaying(true);
+  };
+
+  const handleDownload = () => {
+    setIsDownloading(true);
+    setTimeout(() => setIsDownloading(false), 2000); // Simulate download
   };
 
   return (
-    <PlayerContainer>
-      <EpisodeListWrapper>
-        {episodes.map((episode) => (
-          <Episode key={episode.id} onClick={() => handleEpisodeClick(episode)}>
+    <div className="podcast-player">
+      <div className="episode-info">
+        <h3>{episodes[currentEpisode].title}</h3>
+        <p>{episodes[currentEpisode].description}</p>
+      </div>
+      <div className="player-controls">
+        <button onClick={handlePlayPause}>
+          {isPlaying ? 'Pause' : 'Play'}
+        </button>
+        <button onClick={handleDownload}>
+          {isDownloading ? 'Downloading...' : 'Download'}
+        </button>
+      </div>
+      <ul className="episode-list">
+        {episodes.map((episode, index) => (
+          <li key={index} onClick={() => handleEpisodeSelect(index)}>
             {episode.title}
-          </Episode>
+          </li>
         ))}
-      </EpisodeListWrapper>
-      {currentEpisode && (
-        <>
-          <h3>{currentEpisode.title}</h3>
-          <ProgressBar>
-            <Progress progress={progress} />
-          </ProgressBar>
-          <ControlButton onClick={togglePlayPause}>
-            {isPlaying ? 'Pause' : 'Play'}
-          </ControlButton>
-          <ControlButton onClick={() => downloadEpisode(currentEpisode)}>
-            Download
-          </ControlButton>
-        </>
-      )}
-    </PlayerContainer>
+      </ul>
+    </div>
   );
 };
 
 PodcastPlayer.propTypes = {
   episodes: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

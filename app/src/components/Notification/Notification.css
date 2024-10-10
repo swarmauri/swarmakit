@@ -1,0 +1,38 @@
+.notification {
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  position: relative;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+.notification.warning {
+  background-color: #ff9800;
+}
+
+.notification.info {
+  background-color: #2196f3;
+}
+
+.notification-dismiss {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.notification-dismiss:hover {
+  opacity: 0.7;
+}

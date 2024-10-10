@@ -24,7 +24,7 @@ Active.args = {
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  images: [],
+  ...Default.args,
 };
 
 export const Hover = Template.bind({});

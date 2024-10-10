@@ -10,8 +10,8 @@ const Template = (args) => <VideoPlayerAdvanced {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'sample-video.mp4',
-  subtitles: 'sample-subtitles.vtt',
+  videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
+  subtitlesSrc: 'https://example.com/subtitles.vtt',
 };
 
 export const Play = Template.bind({});
@@ -24,13 +24,13 @@ Pause.args = {
   ...Default.args,
 };
 
-export const Fullscreen = Template.bind({});
-Fullscreen.args = {
+export const Buffering = Template.bind({});
+Buffering.args = {
   ...Default.args,
 };
 
-export const Buffering = Template.bind({});
-Buffering.args = {
+export const Fullscreen = Template.bind({});
+Fullscreen.args = {
   ...Default.args,
 };
 

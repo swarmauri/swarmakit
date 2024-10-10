@@ -1,6 +1,13 @@
-.grid-container {
+.data-grid {
   width: 100%;
   overflow-x: auto;
+}
+
+.search-input {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 table {
@@ -8,14 +15,30 @@ table {
   border-collapse: collapse;
 }
 
-th {
-  background-color: #f0f0f0;
+th, td {
   padding: 10px;
   border: 1px solid #ddd;
-  cursor: pointer;
+  text-align: left;
+  position: relative;
 }
 
-td {
-  padding: 10px;
-  border: 1px solid #ddd;
+th .resize-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+  background-color: transparent;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.pagination-controls button {
+  padding: 5px 10px;
+  cursor: pointer;
 }

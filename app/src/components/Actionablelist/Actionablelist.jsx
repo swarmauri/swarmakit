@@ -1,50 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './ActionableList.css';
 
-const ActionableListContainer = styled.ul`
-  list-style-type: none;
-  padding: 0;
-`;
+const ActionableList = ({ items, onAction, isLoading, isDisabled }) => {
+  const handleAction = (item) => {
+    if (!isDisabled && !isLoading) {
+      onAction(item);
+    }
+  };
 
-const ListItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: ${({ disabled }) => (disabled ? '#f0f0f0' : '#fff')};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  &:hover {
-    background-color: ${({ disabled }) => (disabled ? '#f0f0f0' : '#e0e0e0')};
-  }
-`;
-
-const ActionButton = styled.button`
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  &:disabled {
-    background-color: #a0a0a0;
-    cursor: not-allowed;
-  }
-`;
-
-const ActionableList = ({ items, onAction }) => {
   return (
-    <ActionableListContainer>
+    <div className={`actionable-list ${isDisabled ? 'disabled' : ''}`}>
       {items.map((item, index) => (
-        <ListItem key={index} disabled={item.disabled}>
-          <span>{item.label}</span>
-          <ActionButton
-            onClick={() => onAction(item)}
-            disabled={item.disabled}
-          >
-            {item.loading ? 'Loading...' : 'Action'}
-          </ActionButton>
-        </ListItem>
+        <div
+          key={index}
+          className={`actionable-item ${isLoading ? 'loading' : ''}`}
+          onClick={() => handleAction(item)}
+        >
+          <div className="actionable-item-content">{item.label}</div>
+        </div>
       ))}
-    </ActionableListContainer>
+    </div>
   );
 };
 
@@ -52,11 +28,16 @@ ActionableList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      disabled: PropTypes.bool,
-      loading: PropTypes.bool,
     })
   ).isRequired,
   onAction: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+};
+
+ActionableList.defaultProps = {
+  isLoading: false,
+  isDisabled: false,
 };
 
 export default ActionableList;

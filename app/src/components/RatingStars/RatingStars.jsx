@@ -1,65 +1,48 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './RatingStars.css';
 
-const StarsContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Star = styled.span`
-  font-size: 2rem;
-  color: ${({ isSelected, isHovered, isInactive }) =>
-    isInactive ? '#d3d3d3' : isSelected || isHovered ? '#ff9800' : '#757575'};
-  cursor: ${({ isInactive }) => (isInactive ? 'default' : 'pointer')};
-  transition: color 0.2s;
-`;
-
-const RatingStars = ({ totalStars, initialRating, isInactive }) => {
+const RatingStars = ({ totalStars, initialRating, state }) => {
   const [rating, setRating] = useState(initialRating);
-  const [hoverIndex, setHoverIndex] = useState(undefined);
 
-  const handleMouseEnter = (index) => {
-    if (!isInactive) setHoverIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    if (!isInactive) setHoverIndex(undefined);
+  const handleMouseOver = (index) => {
+    if (state !== 'inactive') {
+      setRating(index + 1);
+    }
   };
 
   const handleClick = (index) => {
-    if (!isInactive) setRating(index + 1);
+    if (state !== 'inactive') {
+      setRating(index + 1);
+    }
   };
 
   return (
-    <StarsContainer>
+    <div className={`rating-stars ${state}`}>
       {[...Array(totalStars)].map((_, index) => (
-        <Star
+        <span
           key={index}
-          isSelected={index < rating}
-          isHovered={index <= hoverIndex}
-          isInactive={isInactive}
-          onMouseEnter={() => handleMouseEnter(index)}
-          onMouseLeave={handleMouseLeave}
+          className={`star ${index < rating ? 'filled' : ''}`}
+          onMouseOver={() => handleMouseOver(index)}
           onClick={() => handleClick(index)}
         >
           ★
-        </Star>
+        </span>
       ))}
-    </StarsContainer>
+    </div>
   );
 };
 
 RatingStars.propTypes = {
   totalStars: PropTypes.number,
   initialRating: PropTypes.number,
-  isInactive: PropTypes.bool,
+  state: PropTypes.oneOf(['hover', 'selected', 'inactive']),
 };
 
 RatingStars.defaultProps = {
   totalStars: 5,
   initialRating: 0,
-  isInactive: false,
+  state: 'inactive',
 };
 
 export default RatingStars;

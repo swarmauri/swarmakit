@@ -6,36 +6,36 @@ export default {
   component: DegreeImageViewer,
 };
 
-const Template = (args) => <DegreeImageViewer {...args} />;
+const images = Array.from({ length: 36 }, (_, index) => `path/to/image${index + 1}.jpg`);
+
+const Template = (args) => <DegreeImageViewer {...args} images={images} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
-  isRotating: false,
-  isZoomed: false,
-  isLoading: false,
+  autoRotate: true,
+  zoom: true,
 };
 
 export const Rotating = Template.bind({});
 Rotating.args = {
-  ...Default.args,
-  isRotating: true,
+  autoRotate: true,
+  zoom: false,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  ...Default.args,
-  isRotating: false,
+  autoRotate: false,
+  zoom: false,
 };
 
 export const ZoomInOut = Template.bind({});
 ZoomInOut.args = {
-  ...Default.args,
-  isZoomed: true,
+  autoRotate: false,
+  zoom: true,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  ...Default.args,
-  isLoading: true,
+  autoRotate: false,
+  zoom: false,
 };

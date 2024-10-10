@@ -1,32 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Dot = styled.div`
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background-color: ${({ statusColor }) => statusColor};
-  transition: background-color 0.3s;
-`;
+import './StatusDots.css';
 
 const StatusDots = ({ status }) => {
-  const statusColors = {
-    online: '#4caf50',
-    offline: '#d3d3d3',
-    busy: '#f44336',
-    idle: '#ffeb3b',
+  const getStatusClass = () => {
+    switch (status) {
+      case 'Online':
+        return 'dot online';
+      case 'Offline':
+        return 'dot offline';
+      case 'Busy':
+        return 'dot busy';
+      case 'Idle':
+        return 'dot idle';
+      default:
+        return 'dot';
+    }
   };
 
-  return <Dot statusColor={statusColors[status]} />;
+  return <div className={getStatusClass()} />;
 };
 
 StatusDots.propTypes = {
-  status: PropTypes.oneOf(['online', 'offline', 'busy', 'idle']),
+  status: PropTypes.oneOf(['Online', 'Offline', 'Busy', 'Idle']),
 };
 
 StatusDots.defaultProps = {
-  status: 'offline',
+  status: 'Offline',
 };
 
 export default StatusDots;

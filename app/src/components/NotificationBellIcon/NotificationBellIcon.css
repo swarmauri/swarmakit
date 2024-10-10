@@ -1,29 +1,27 @@
-.bell-icon {
+.notification-bell {
   position: relative;
-  width: 24px;
-  height: 24px;
-  background-color: #bdc3c7;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  font-size: 24px;
 }
 
-.bell-icon.has-notifications {
-  background-color: #ff7979;
+.bell-icon {
+  cursor: pointer;
 }
 
-.bell-icon::after {
-  content: '';
+.notification-dot {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: 0;
+  right: 0;
   width: 10px;
   height: 10px;
-  background-color: transparent;
+  background-color: red;
   border-radius: 50%;
 }
 
-.bell-icon.has-notifications::after {
-  background-color: #ffbe76;
+.new .notification-dot {
+  display: block;
+}
+
+.dismissed .notification-dot {
+  display: none;
 }

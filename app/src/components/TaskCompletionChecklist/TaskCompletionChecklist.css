@@ -1,22 +1,30 @@
-.checklist-item {
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
-  transition: background-color 0.3s;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
-.checklist-item.checked {
-  background-color: #e0f7fa;
+.task input[type='checkbox'] {
+  margin-right: 10px;
 }
 
-.checklist-item.unchecked {
-  background-color: #fbe9e7;
+.checked span {
+  text-decoration: line-through;
+  color: #4caf50;
 }
 
-.checklist-item.partially {
-  background-color: #fff3e0;
+.unchecked span {
+  color: #f44336;
 }
 
-.checkbox {
-  margin-right: 0.5rem;
+.partiallyComplete span {
+  text-decoration: underline;
+  color: #ff9800;
 }

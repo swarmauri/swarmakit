@@ -1,40 +1,46 @@
-.PlayerContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
+.podcast-player {
+  max-width: 600px;
+  margin: 0 auto;
   border: 1px solid #ccc;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-.EpisodeListWrapper {
+.episode-info {
+  margin-bottom: 20px;
+}
+
+.player-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.player-controls button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0056b3;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.player-controls button:hover {
+  background-color: #004494;
+}
+
+.episode-list {
   list-style-type: none;
   padding: 0;
-  width: 100%;
 }
 
-.Episode {
-  margin: 10px 0;
+.episode-list li {
+  padding: 10px;
   cursor: pointer;
+  border-bottom: 1px solid #ccc;
 }
 
-.ControlButton {
-  margin: 5px;
-  cursor: pointer;
-}
-
-.ProgressBar {
-  width: 100%;
-  height: 5px;
-  background-color: #eee;
-  margin: 10px 0;
-  position: relative;
-}
-
-.Progress {
-  width: 0;
-  height: 100%;
-  background-color: #007bff;
-  transition: width 0.3s;
+.episode-list li:hover {
+  background-color: #e0e0e0;
 }

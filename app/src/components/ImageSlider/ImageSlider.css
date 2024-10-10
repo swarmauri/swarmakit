@@ -1,22 +1,26 @@
-.SliderContainer {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
+.image-slider {
   position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.Slide {
-  min-width: 100%;
+.slider-images {
+  display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
-.Image {
-  width: 100%;
-  height: auto;
-  display: block;
+.slider-image {
+  min-width: 100%;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
 }
 
-button {
+.slider-image.active {
+  opacity: 1;
+}
+
+.slider-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -27,14 +31,14 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-button:first-of-type {
+.slider-button.prev {
   left: 10px;
 }
 
-button:last-of-type {
+.slider-button.next {
   right: 10px;
+}
+
+.slider-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }

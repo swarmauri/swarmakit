@@ -1,30 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const AlertBar = styled.div`
-  padding: 1rem;
-  color: white;
-  text-align: center;
-  background-color: ${({ alertType }) => {
-    switch (alertType) {
-      case 'success':
-        return '#4caf50';
-      case 'error':
-        return '#f44336';
-      case 'warning':
-        return '#ff9800';
-      case 'info':
-        return '#2196f3';
-      default:
-        return '#2196f3';
-    }
-  }};
-  transition: background-color 0.3s;
-`;
+import './SystemAlertGlobalNotificationBar.css';
 
 const SystemAlertGlobalNotificationBar = ({ message, type }) => {
-  return <AlertBar alertType={type}>{message}</AlertBar>;
+  return (
+    <div className={`notification-bar ${type}`}>
+      {message}
+    </div>
+  );
 };
 
 SystemAlertGlobalNotificationBar.propTypes = {

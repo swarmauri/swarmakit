@@ -1,64 +1,37 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './Contextuallist.css';
 
-const ContextListContainer = styled.div`
-  position: relative;
-  display: inline-block;
-`;
-
-const ContextItem = styled.div`
-  padding: 10px;
-  background-color: #f7f7f7;
-  cursor: pointer;
-  &:hover {
-    background-color: #d0d0d0;
-  }
-`;
-
-const ActionContainer = styled.div`
-  display: ${({ visible }) => (visible ? 'block' : 'none')};
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-`;
-
-const ContextualList = ({ items }) => {
-  const [actionTriggered, setActionTriggered] = useState(false);
+const ContextualList = ({ items, onAction }) => {
   const [dismissed, setDismissed] = useState(false);
 
-  const handleItemClick = () => {
-    setActionTriggered(true);
-    setDismissed(false);
-  };
-
-  const handleDismiss = () => {
+  const handleAction = (item) => {
+    onAction(item);
     setDismissed(true);
-    setActionTriggered(false);
   };
 
   return (
-    <ContextListContainer>
-      <ContextItem onClick={handleItemClick}>Open Actions</ContextItem>
-      <ActionContainer visible={actionTriggered && !dismissed}>
-        {items.map((item, index) => (
-          <div key={index} style={{ padding: '10px' }}>
-            {item}
-          </div>
-        ))}
-        <div style={{ padding: '10px', cursor: 'pointer' }} onClick={handleDismiss}>
-          Dismiss
-        </div>
-      </ActionContainer>
-    </ContextListContainer>
+    <ul className={`contextual-list ${dismissed ? 'dismissed' : ''}`}>
+      {items.map((item, index) => (
+        <li key={index} className="list-item">
+          <span>{item.label}</span>
+          <button onClick={() => handleAction(item)} className="action-button">
+            {item.actionLabel}
+          </button>
+        </li>
+      ))}
+    </ul>
   );
 };
 
 ContextualList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      actionLabel: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onAction: PropTypes.func.isRequired,
 };
 
 export default ContextualList;

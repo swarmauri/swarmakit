@@ -1,0 +1,18 @@
+.dark-mode-toggle {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode-toggle.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark-mode-toggle.dark {
+  background-color: #333;
+  color: #fff;
+}

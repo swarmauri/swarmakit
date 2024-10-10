@@ -1,40 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const ChecklistItem = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  background-color: ${({ status }) => {
-    switch (status) {
-      case 'checked':
-        return '#e0f7fa';
-      case 'partially':
-        return '#fff3e0';
-      case 'unchecked':
-        return '#fbe9e7';
-      default:
-        return '#ffffff';
-    }
-  }};
-  transition: background-color 0.3s;
-`;
-
-const Checkbox = styled.input`
-  margin-right: 0.5rem;
-`;
+import './TaskCompletionChecklist.css';
 
 const TaskCompletionChecklist = ({ tasks }) => {
   return (
-    <div>
+    <ul className="checklist">
       {tasks.map((task, index) => (
-        <ChecklistItem key={index} status={task.status}>
-          <Checkbox type="checkbox" checked={task.status === 'checked'} readOnly />
-          {task.label}
-        </ChecklistItem>
+        <li key={index} className={`task ${task.status}`}>
+          <input type="checkbox" checked={task.status === 'checked'} readOnly />
+          <span>{task.label}</span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
@@ -42,9 +19,13 @@ TaskCompletionChecklist.propTypes = {
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      status: PropTypes.oneOf(['checked', 'unchecked', 'partially']).isRequired,
+      status: PropTypes.oneOf(['checked', 'unchecked', 'partiallyComplete']),
     })
   ).isRequired,
+};
+
+TaskCompletionChecklist.defaultProps = {
+  tasks: [],
 };
 
 export default TaskCompletionChecklist;

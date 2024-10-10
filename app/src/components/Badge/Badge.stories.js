@@ -10,18 +10,18 @@ const Template = (args) => <Badge {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  variant: 'default',
-  children: 'Default Badge',
+  content: 'Default',
+  type: 'default',
 };
 
 export const Notification = Template.bind({});
 Notification.args = {
-  variant: 'notification',
-  children: 'New Notification',
+  content: '3',
+  type: 'notification',
 };
 
 export const StatusIndicator = Template.bind({});
 StatusIndicator.args = {
-  variant: 'status',
-  children: 'Active',
+  content: 'Online',
+  type: 'status',
 };

@@ -10,30 +10,25 @@ const Template = (args) => <Video {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'sample-video.mp4',
-  status: 'Completed',
+  videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
 };
 
 export const Uploading = Template.bind({});
 Uploading.args = {
-  src: 'sample-video.mp4',
-  status: 'Uploading',
+  ...Default.args,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  src: 'sample-video.mp4',
-  status: 'Paused',
+  ...Default.args,
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  src: 'sample-video.mp4',
-  status: 'Completed',
+  ...Default.args,
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  src: 'sample-video.mp4',
-  status: 'Error',
+  ...Default.args,
 };

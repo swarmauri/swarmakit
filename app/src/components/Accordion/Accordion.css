@@ -1,26 +1,29 @@
-.accordion-container {
+.accordion {
   border: 1px solid #ccc;
   border-radius: 4px;
-  overflow: hidden;
-  width: 100%;
-  margin: 0.5rem 0;
+  transition: all 0.3s ease;
 }
 
 .accordion-header {
-  background: #f1f1f1;
-  padding: 0.75rem;
+  background-color: #f7f7f7;
+  padding: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .accordion-header:hover {
-  background: #e0e0e0;
+  background-color: #e2e2e2;
 }
 
 .accordion-content {
-  padding: 0.75rem;
-  display: none;
+  padding: 10px;
+  border-top: 1px solid #ccc;
 }
 
-.accordion-content.open {
+.accordion.open .accordion-content {
   display: block;
+}
+
+.accordion.closed .accordion-content {
+  display: none;
 }

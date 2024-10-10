@@ -1,23 +1,26 @@
-.step {
+.stepper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  color: white;
-  font-weight: bold;
+  gap: 10px;
+}
+
+.step {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
   transition: background-color 0.3s;
 }
 
-.step.completed {
+.completed {
   background-color: #4caf50;
+  color: white;
 }
 
-.step.active {
+.active {
   background-color: #2196f3;
+  color: white;
 }
 
-.step.disabled {
-  background-color: #d3d3d3;
+.disabled {
+  background-color: #bdbdbd;
+  color: #757575;
 }

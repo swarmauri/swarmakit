@@ -1,52 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './CardBasedList.css';
 
-const CardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-`;
+const CardBasedList = ({ items, onSelect, selectedItem, isDisabled }) => {
+  const handleSelect = (item) => {
+    if (!isDisabled) {
+      onSelect(item);
+    }
+  };
 
-const Card = styled.div`
-  flex: 1 1 calc(25% - 16px);
-  padding: 16px;
-  background-color: ${({ disabled }) => (disabled ? '#f0f0f0' : '#fff')};
-  border: 1px solid #ddd;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  box-shadow: ${({ selected }) => (selected ? '0 0 10px rgba(0,0,0,0.3)' : 'none')};
-
-  &:hover {
-    background-color: ${({ disabled }) => (disabled ? '#f0f0f0' : '#e0e0e0')};
-  }
-`;
-
-const CardBasedList = ({ items, onSelect }) => {
   return (
-    <CardContainer>
+    <div className={`card-based-list ${isDisabled ? 'disabled' : ''}`}>
       {items.map((item, index) => (
-        <Card
+        <div
           key={index}
-          disabled={item.disabled}
-          selected={item.selected}
-          onClick={() => !item.disabled && onSelect(item)}
+          className={`card-item ${selectedItem === item ? 'selected' : ''}`}
+          onClick={() => handleSelect(item)}
         >
-          {item.content}
-        </Card>
+          <div className="card-item-content">{item.title}</div>
+        </div>
       ))}
-    </CardContainer>
+    </div>
   );
 };
 
 CardBasedList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      content: PropTypes.node.isRequired,
-      disabled: PropTypes.bool,
-      selected: PropTypes.bool,
+      title: PropTypes.string.isRequired,
     })
   ).isRequired,
   onSelect: PropTypes.func.isRequired,
+  selectedItem: PropTypes.object,
+  isDisabled: PropTypes.bool,
+};
+
+CardBasedList.defaultProps = {
+  selectedItem: null,
+  isDisabled: false,
 };
 
 export default CardBasedList;

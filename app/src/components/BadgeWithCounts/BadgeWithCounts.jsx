@@ -1,31 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './BadgeWithCounts.css';
 
-const BadgeWithCountsContainer = styled.span`
-  display: inline-block;
-  padding: 0.5em 1em;
-  border-radius: 12px;
-  font-size: 0.75em;
-  color: white;
-  background-color: ${(props) => {
-    if (props.count === 0) return '#e0e0e0';
-    if (props.count > 99) return '#e74c3c';
-    return '#3498db';
-  }};
-`;
+const BadgeWithCounts = ({ count, maxCount }) => {
+  const displayCount = count > maxCount ? `${maxCount}+` : count;
 
-const BadgeWithCounts = ({ count }) => {
-  const displayCount = count > 99 ? '99+' : count;
-  return <BadgeWithCountsContainer count={count}>{displayCount}</BadgeWithCountsContainer>;
+  return (
+    <span className="badge-with-counts">
+      {displayCount}
+    </span>
+  );
 };
 
 BadgeWithCounts.propTypes = {
   count: PropTypes.number.isRequired,
+  maxCount: PropTypes.number,
 };
 
 BadgeWithCounts.defaultProps = {
-  count: 0,
+  maxCount: 99,
 };
 
 export default BadgeWithCounts;

@@ -11,12 +11,11 @@ const Template = (args) => <CardBasedList {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { content: 'Card 1', disabled: false, selected: false },
-    { content: 'Card 2', disabled: false, selected: false },
-    { content: 'Card 3', disabled: false, selected: false },
-    { content: 'Card 4', disabled: false, selected: false },
+    { title: 'Card Item 1' },
+    { title: 'Card Item 2' },
+    { title: 'Card Item 3' },
   ],
-  onSelect: (item) => alert(`Selected ${item.content}`),
+  onSelect: (item) => alert(`Selected ${item.title}`),
 };
 
 export const Hover = Template.bind({});
@@ -29,22 +28,12 @@ Hover.parameters = {
 
 export const Selected = Template.bind({});
 Selected.args = {
-  items: [
-    { content: 'Card 1', disabled: false, selected: true },
-    { content: 'Card 2', disabled: false, selected: false },
-    { content: 'Card 3', disabled: false, selected: false },
-    { content: 'Card 4', disabled: false, selected: false },
-  ],
-  onSelect: (item) => alert(`Selected ${item.content}`),
+  ...Default.args,
+  selectedItem: { title: 'Card Item 2' },
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  items: [
-    { content: 'Card 1', disabled: true, selected: false },
-    { content: 'Card 2', disabled: false, selected: false },
-    { content: 'Card 3', disabled: false, selected: false },
-    { content: 'Card 4', disabled: false, selected: false },
-  ],
-  onSelect: (item) => alert(`Selected ${item.content}`),
+  ...Default.args,
+  isDisabled: true,
 };

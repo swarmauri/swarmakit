@@ -1,0 +1,39 @@
+.contextual-navigation {
+  position: relative;
+}
+
+.context-trigger {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.context-menu {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 150px;
+  z-index: 1000;
+}
+
+.context-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.context-item:last-child {
+  border-bottom: none;
+}
+
+.context-item:hover {
+  background-color: #f0f0f0;
+}

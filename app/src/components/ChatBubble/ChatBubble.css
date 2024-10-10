@@ -1,0 +1,26 @@
+.chat-bubble {
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 300px;
+  margin: 5px 0;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.chat-bubble.read {
+  background-color: #e0e0e0;
+  color: #555;
+}
+
+.chat-bubble.unread {
+  background-color: #4f93e6;
+  color: #fff;
+}
+
+.chat-bubble:hover {
+  background-color: #6faeea;
+}
+
+.chat-bubble.active {
+  border: 2px solid #2d72d9;
+}

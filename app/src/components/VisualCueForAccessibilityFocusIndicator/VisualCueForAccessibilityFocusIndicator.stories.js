@@ -10,18 +10,18 @@ const Template = (args) => <VisualCueForAccessibilityFocusIndicator {...args} />
 
 export const Default = Template.bind({});
 Default.args = {
-  content: 'Focusable Content',
   isFocused: false,
+  label: 'Focus indicator',
 };
 
 export const Focused = Template.bind({});
 Focused.args = {
-  content: 'Focusable Content',
   isFocused: true,
+  label: 'Focused state',
 };
 
 export const Unfocused = Template.bind({});
 Unfocused.args = {
-  content: 'Focusable Content',
   isFocused: false,
+  label: 'Unfocused state',
 };

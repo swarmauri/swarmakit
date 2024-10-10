@@ -1,0 +1,32 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 16px;
+  background-color: #e0e0e0;
+  margin: 5px;
+  font-size: 14px;
+  cursor: default;
+  transition: background-color 0.3s ease;
+}
+
+.chip.selectable {
+  cursor: pointer;
+}
+
+.chip.selectable:hover {
+  background-color: #cccccc;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #555;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.remove-button:hover {
+  color: #ff0000;
+}

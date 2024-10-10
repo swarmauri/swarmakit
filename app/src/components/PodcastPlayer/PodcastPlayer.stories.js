@@ -11,9 +11,9 @@ const Template = (args) => <PodcastPlayer {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   episodes: [
-    { id: 1, title: 'Episode 1: Introduction' },
-    { id: 2, title: 'Episode 2: The Journey Begins' },
-    { id: 3, title: 'Episode 3: Deep Dive' },
+    { title: 'Episode 1', description: 'Description for episode 1' },
+    { title: 'Episode 2', description: 'Description for episode 2' },
+    { title: 'Episode 3', description: 'Description for episode 3' },
   ],
 };
 

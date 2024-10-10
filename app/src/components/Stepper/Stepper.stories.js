@@ -10,24 +10,24 @@ const Template = (args) => <Stepper {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  step: 1,
-  state: 'disabled',
+  steps: ['Step 1', 'Step 2', 'Step 3'],
+  currentStep: 0,
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  step: 1,
-  state: 'completed',
+  steps: ['Step 1', 'Step 2', 'Step 3'],
+  currentStep: 3,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  step: 1,
-  state: 'active',
+  steps: ['Step 1', 'Step 2', 'Step 3'],
+  currentStep: 1,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  step: 1,
-  state: 'disabled',
+  steps: ['Step 1', 'Step 2', 'Step 3'],
+  currentStep: 0,
 };

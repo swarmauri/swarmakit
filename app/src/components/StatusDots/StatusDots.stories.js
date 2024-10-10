@@ -10,25 +10,25 @@ const Template = (args) => <StatusDots {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  status: 'offline',
+  status: 'Offline',
 };
 
 export const Online = Template.bind({});
 Online.args = {
-  status: 'online',
+  status: 'Online',
 };
 
 export const Offline = Template.bind({});
 Offline.args = {
-  status: 'offline',
+  status: 'Offline',
 };
 
 export const Busy = Template.bind({});
 Busy.args = {
-  status: 'busy',
+  status: 'Busy',
 };
 
 export const Idle = Template.bind({});
 Idle.args = {
-  status: 'idle',
+  status: 'Idle',
 };

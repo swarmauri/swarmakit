@@ -1,22 +1,22 @@
-.progress-bar-container {
+.progress-bar {
   width: 100%;
   background-color: #e0e0e0;
-  border-radius: 25px;
+  border-radius: 4px;
   overflow: hidden;
+  height: 20px;
   position: relative;
-  height: 10px;
 }
 
-.progress {
+.progress-fill {
+  background-color: #76c7c0;
   height: 100%;
-  background-color: #2196f3;
-  transition: width 0.3s;
+  transition: width 0.3s ease-in-out;
 }
 
-.progress.complete {
-  background-color: #4caf50;
+.progress-bar:hover .progress-fill {
+  background-color: #5ba9a7;
 }
 
-.progress.disabled {
-  background-color: #c0c0c0;
+.disabled .progress-fill {
+  background-color: #b0b0b0;
 }

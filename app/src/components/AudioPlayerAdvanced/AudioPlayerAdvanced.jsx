@@ -1,115 +1,116 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './AudioPlayerAdvanced.css';
 
-const PlayerContainer = styled.div`
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ControlsContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  margin-top: 10px;
-`;
-
-const ControlButton = styled.button`
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  cursor: pointer;
-`;
-
-const Slider = styled.input`
-  width: 100px;
-`;
-
-const AudioPlayerAdvanced = ({ src, isPlaying, isMuted, volume, playbackRate }) => {
+const AudioPlayerAdvanced = ({ src, autoPlay }) => {
   const audioRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(!isPlaying);
+  const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [speed, setSpeed] = useState(1);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const togglePlayPause = () => {
-    if (isPaused) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPaused(!isPaused);
   };
 
   const toggleMute = () => {
-    audioRef.current.muted = !audioRef.current.muted;
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
   };
 
-  const handleVolumeChange = (event) => {
-    audioRef.current.volume = event.target.value;
+  const changeVolume = (event) => {
+    const newVolume = event.target.value;
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+      setVolume(newVolume);
+    }
   };
 
-  const handleSeek = (event) => {
-    audioRef.current.currentTime = event.target.value;
+  const changeSpeed = (event) => {
+    const newSpeed = event.target.value;
+    if (audioRef.current) {
+      audioRef.current.playbackRate = newSpeed;
+      setSpeed(newSpeed);
+    }
   };
 
-  const handleSpeedChange = (event) => {
-    audioRef.current.playbackRate = event.target.value;
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  };
+
+  const seekAudio = (event) => {
+    const newTime = event.target.value;
+    if (audioRef.current) {
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
   };
 
   return (
-    <PlayerContainer>
-      <audio ref={audioRef} src={src} autoPlay={isPlaying} muted={isMuted} volume={volume} playbackRate={playbackRate} />
-      <ControlsContainer>
-        <ControlButton onClick={togglePlayPause}>
-          {isPaused ? 'Play' : 'Pause'}
-        </ControlButton>
-        <ControlButton onClick={toggleMute}>
-          {audioRef.current && audioRef.current.muted ? 'Unmute' : 'Mute'}
-        </ControlButton>
-        <Slider
+    <div className="audio-player-advanced-container">
+      <audio
+        ref={audioRef}
+        src={src}
+        autoPlay={autoPlay}
+        onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
+      />
+      <div className="controls">
+        <button onClick={togglePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+        <button onClick={toggleMute}>{isMuted ? 'Unmute' : 'Mute'}</button>
+        <input
           type="range"
           min="0"
-          max={audioRef.current ? audioRef.current.duration : 0}
-          step="1"
-          defaultValue="0"
-          onChange={handleSeek}
+          max={duration}
+          step="0.1"
+          value={currentTime}
+          onChange={seekAudio}
         />
-        <Slider
+        <input
           type="range"
           min="0"
           max="1"
-          step="0.1"
-          defaultValue={volume}
-          onChange={handleVolumeChange}
+          step="0.01"
+          value={volume}
+          onChange={changeVolume}
         />
-        <Slider
-          type="range"
-          min="0.5"
-          max="2"
-          step="0.1"
-          defaultValue={playbackRate}
-          onChange={handleSpeedChange}
-        />
-      </ControlsContainer>
-    </PlayerContainer>
+        <select value={speed} onChange={changeSpeed}>
+          <option value="0.5">0.5x</option>
+          <option value="1">1x</option>
+          <option value="1.5">1.5x</option>
+          <option value="2">2x</option>
+        </select>
+      </div>
+    </div>
   );
 };
 
 AudioPlayerAdvanced.propTypes = {
   src: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool,
-  isMuted: PropTypes.bool,
-  volume: PropTypes.number,
-  playbackRate: PropTypes.number,
+  autoPlay: PropTypes.bool,
 };
 
 AudioPlayerAdvanced.defaultProps = {
-  isPlaying: false,
-  isMuted: false,
-  volume: 0.5,
-  playbackRate: 1.0,
+  autoPlay: false,
 };
 
 export default AudioPlayerAdvanced;

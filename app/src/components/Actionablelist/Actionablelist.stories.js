@@ -11,9 +11,9 @@ const Template = (args) => <ActionableList {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { label: 'Item 1', disabled: false, loading: false },
-    { label: 'Item 2', disabled: false, loading: false },
-    { label: 'Item 3', disabled: false, loading: false },
+    { label: 'Action Item 1' },
+    { label: 'Action Item 2' },
+    { label: 'Action Item 3' },
   ],
   onAction: (item) => alert(`Action triggered for ${item.label}`),
 };
@@ -28,30 +28,17 @@ Hover.parameters = {
 
 export const ActionTriggered = Template.bind({});
 ActionTriggered.args = {
-  items: [
-    { label: 'Item 1', disabled: false, loading: true },
-    { label: 'Item 2', disabled: false, loading: false },
-    { label: 'Item 3', disabled: false, loading: false },
-  ],
-  onAction: (item) => alert(`Action triggered for ${item.label}`),
+  ...Default.args,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  items: [
-    { label: 'Item 1', disabled: true, loading: false },
-    { label: 'Item 2', disabled: false, loading: false },
-    { label: 'Item 3', disabled: false, loading: false },
-  ],
-  onAction: (item) => alert(`Action triggered for ${item.label}`),
+  ...Default.args,
+  isDisabled: true,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  items: [
-    { label: 'Item 1', disabled: false, loading: true },
-    { label: 'Item 2', disabled: false, loading: false },
-    { label: 'Item 3', disabled: false, loading: false },
-  ],
-  onAction: (item) => alert(`Action triggered for ${item.label}`),
+  ...Default.args,
+  isLoading: true,
 };

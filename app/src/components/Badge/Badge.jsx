@@ -1,37 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './Badge.css';
 
-const BadgeContainer = styled.span`
-  display: inline-block;
-  padding: 0.5em 1em;
-  border-radius: 12px;
-  font-size: 0.75em;
-  color: white;
-  background-color: ${(props) => {
-    switch (props.variant) {
-      case 'notification':
-        return '#3498db';
-      case 'status':
-        return '#4caf50';
-      default:
-        return '#7f8c8d';
-    }
-  }};
-`;
-
-const Badge = ({ variant, children }) => {
-  return <BadgeContainer variant={variant}>{children}</BadgeContainer>;
+const Badge = ({ content, type }) => {
+  return (
+    <span className={`badge ${type}`}>
+      {content}
+    </span>
+  );
 };
 
 Badge.propTypes = {
-  variant: PropTypes.oneOf(['default', 'notification', 'status']).isRequired,
-  children: PropTypes.node,
+  content: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['default', 'notification', 'status']).isRequired,
 };
 
 Badge.defaultProps = {
-  variant: 'default',
-  children: null,
+  type: 'default',
 };
 
 export default Badge;

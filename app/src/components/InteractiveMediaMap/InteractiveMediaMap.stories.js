@@ -10,12 +10,10 @@ const Template = (args) => <InteractiveMediaMap {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  mapSrc: 'https://via.placeholder.com/800x500?text=Map',
   markers: [
-    { top: 30, left: 40 },
-    { top: 60, left: 80 },
+    { name: 'Marker 1', position: { lat: 40.7128, lng: -74.0060 } },
+    { name: 'Marker 2', position: { lat: 34.0522, lng: -118.2437 } },
   ],
-  loading: false,
 };
 
 export const ZoomedIn = Template.bind({});
@@ -31,5 +29,5 @@ MarkerSelected.args = {
 export const Loading = Template.bind({});
 Loading.args = {
   ...Default.args,
-  loading: true,
+  markers: [],
 };

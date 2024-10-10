@@ -1,54 +1,30 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './Accordion.css';
 
-const AccordionContainer = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  width: 100%;
-  margin: 0.5rem 0;
-`;
+const Accordion = ({ title, content }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const AccordionHeader = styled.div`
-  background: #f1f1f1;
-  padding: 0.75rem;
-  cursor: pointer;
-  &:hover {
-    background: #e0e0e0;
-  }
-`;
-
-const AccordionContent = styled.div`
-  padding: 0.75rem;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
-`;
-
-const Accordion = ({ title, children, isOpen: initialOpen }) => {
-  const [isOpen, setIsOpen] = useState(initialOpen);
-
-  const toggleOpen = () => setIsOpen(!isOpen);
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <AccordionContainer>
-      <AccordionHeader onClick={toggleOpen}>
+    <div className={`accordion ${isOpen ? 'open' : 'closed'}`}>
+      <div
+        className="accordion-header"
+        onClick={toggleAccordion}
+      >
         {title}
-      </AccordionHeader>
-      <AccordionContent isOpen={isOpen}>
-        {children}
-      </AccordionContent>
-    </AccordionContainer>
+      </div>
+      {isOpen && <div className="accordion-content">{content}</div>}
+    </div>
   );
 };
 
 Accordion.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  isOpen: PropTypes.bool,
-};
-
-Accordion.defaultProps = {
-  isOpen: false,
+  content: PropTypes.string.isRequired,
 };
 
 export default Accordion;

@@ -1,54 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-const PageNumber = styled.button`
-  margin: 0 5px;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  background-color: ${(props) => (props.active ? '#007bff' : 'white')};
-  color: ${(props) => (props.active ? 'white' : 'black')};
-  cursor: pointer;
-  &:hover {
-    background-color: ${(props) => (props.active ? '#0056b3' : '#f1f1f1')};
-  }
-  ${(props) => props.disabled && `pointer-events: none; color: #ccc;`}
-`;
+import './Pagination.css';
 
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
-  const handlePageChange = (page) => {
-    if (onPageChange) onPageChange(page);
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <li
+          key={i}
+          className={`page-item ${currentPage === i ? 'active' : ''}`}
+          onClick={() => onPageChange(i)}
+        >
+          {i}
+        </li>
+      );
+    }
+    return pageNumbers;
   };
 
-  return (
-    <PaginationContainer>
-      {Array.from({ length: totalPages }, (_, index) => (
-        <PageNumber
-          key={index}
-          active={currentPage === index + 1}
-          onClick={() => handlePageChange(index + 1)}
-        >
-          {index + 1}
-        </PageNumber>
-      ))}
-    </PaginationContainer>
-  );
+  return <ul className="pagination">{renderPageNumbers()}</ul>;
 };
 
 Pagination.propTypes = {
   totalPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func,
-};
-
-Pagination.defaultProps = {
-  onPageChange: null,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Pagination;

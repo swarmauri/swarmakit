@@ -1,83 +1,108 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './DataGrid.css';
 
-const GridContainer = styled.div`
-  width: 100%;
-  overflow-x: auto;
-`;
+const DataGrid = ({ columns, data, rowsPerPage }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [resizableColumns, setResizableColumns] = useState({});
 
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const TableHeader = styled.th`
-  background-color: #f0f0f0;
-  padding: 10px;
-  border: 1px solid #ddd;
-  cursor: pointer;
-`;
-
-const TableCell = styled.td`
-  padding: 10px;
-  border: 1px solid #ddd;
-`;
-
-const DataGrid = ({ columns, data, paginated, searchable, resizable }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const filteredData = data.filter(item =>
-    columns.some(column =>
-      item[column].toString().toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData = data.filter((row) =>
+    columns.some((column) =>
+      row[column.accessor].toString().toLowerCase().includes(searchQuery.toLowerCase())
     )
   );
 
+  const handleResize = (index, newSize) => {
+    setResizableColumns((prev) => ({ ...prev, [index]: newSize }));
+  };
+
+  const paginatedData = filteredData.slice(
+    currentPage * rowsPerPage,
+    (currentPage + 1) * rowsPerPage
+  );
+
   return (
-    <GridContainer>
-      {searchable && (
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-          placeholder="Search..."
-          style={{ marginBottom: '10px', padding: '5px' }}
-        />
-      )}
-      <Table>
+    <div className="data-grid">
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-input"
+      />
+      <table>
         <thead>
           <tr>
-            {columns.map((col, index) => (
-              <TableHeader key={index}>{col}</TableHeader>
+            {columns.map((column, index) => (
+              <th
+                key={column.accessor}
+                style={{ width: resizableColumns[index] || 'auto' }}
+              >
+                {column.label}
+                <div
+                  className="resize-handle"
+                  onMouseDown={(e) => {
+                    const startX = e.clientX;
+                    const startWidth = e.target.parentElement.offsetWidth;
+                    const onMouseMove = (moveEvent) => {
+                      const newWidth = startWidth + (moveEvent.clientX - startX);
+                      handleResize(index, `${newWidth}px`);
+                    };
+                    const onMouseUp = () => {
+                      document.removeEventListener('mousemove', onMouseMove);
+                      document.removeEventListener('mouseup', onMouseUp);
+                    };
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.addEventListener('mouseup', onMouseUp);
+                  }}
+                />
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((row, rowIndex) => (
+          {paginatedData.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              {columns.map((col, colIndex) => (
-                <TableCell key={colIndex}>{row[col]}</TableCell>
+              {columns.map((column) => (
+                <td key={column.accessor}>{row[column.accessor]}</td>
               ))}
             </tr>
           ))}
         </tbody>
-      </Table>
-    </GridContainer>
+      </table>
+      <div className="pagination-controls">
+        <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}>
+          Previous
+        </button>
+        <span>{currentPage + 1}</span>
+        <button
+          onClick={() =>
+            setCurrentPage((prev) =>
+              Math.min(prev + 1, Math.ceil(filteredData.length / rowsPerPage) - 1)
+            )
+          }
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 };
 
 DataGrid.propTypes = {
-  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      accessor: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  paginated: PropTypes.bool,
-  searchable: PropTypes.bool,
-  resizable: PropTypes.bool,
+  rowsPerPage: PropTypes.number,
 };
 
 DataGrid.defaultProps = {
-  paginated: false,
-  searchable: false,
-  resizable: false,
+  rowsPerPage: 5,
 };
 
 export default DataGrid;

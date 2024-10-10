@@ -11,29 +11,32 @@ const Template = (args) => <Accordion {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: 'Accordion Title',
-  children: 'This is the content of the accordion.',
-  isOpen: false,
+  content: 'Accordion content goes here.',
 };
 
 export const Open = Template.bind({});
 Open.args = {
   title: 'Accordion Title',
-  children: 'This is the content of the accordion.',
-  isOpen: true,
+  content: 'Accordion content goes here.',
 };
+Open.decorators = [
+  (Story) => {
+    const Component = Story();
+    Component.props.children.props.isOpen = true;
+    return Component;
+  },
+];
 
 export const Closed = Template.bind({});
 Closed.args = {
   title: 'Accordion Title',
-  children: 'This is the content of the accordion.',
-  isOpen: false,
+  content: 'Accordion content goes here.',
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  title: 'Accordion Title',
-  children: 'This is the content of the accordion.',
-  isOpen: false,
+  title: 'Hover over me',
+  content: 'This content is revealed on hover.',
 };
 Hover.parameters = {
   pseudo: { hover: true },

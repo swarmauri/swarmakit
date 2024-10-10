@@ -10,15 +10,15 @@ const Template = (args) => <LoadingSpinner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  inactive: false,
+  active: true,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  inactive: false,
+  active: true,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  inactive: true,
+  active: false,
 };
