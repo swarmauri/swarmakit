@@ -1,0 +1,19 @@
+.secondary-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.secondary-button:hover {
+  background-color: #5a6268;
+}
+
+.secondary-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

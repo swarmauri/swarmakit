@@ -1,0 +1,32 @@
+.fab {
+  background-color: #007bff;
+  border: none;
+  padding: 16px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.fab__icon {
+  font-size: 24px;
+}
+
+.fab:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.fab:disabled {
+  cursor: not-allowed;
+  background-color: #cccccc;
+  box-shadow: none;
+}
+
+.fab:disabled .fab__icon {
+  color: #666666;
+}
