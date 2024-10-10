@@ -1,0 +1,50 @@
+.tooltip-icon-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-icon-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text.top {
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip-text.right {
+  top: -5px;
+  left: 125%;
+}
+
+.tooltip-text.bottom {
+  top: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip-text.left {
+  top: -5px;
+  right: 125%;
+}

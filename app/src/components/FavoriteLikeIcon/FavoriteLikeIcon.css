@@ -1,0 +1,9 @@
+.favorite-like-icon-container {
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.favorite-like-icon-container:hover {
+  transform: scale(1.2);
+}
