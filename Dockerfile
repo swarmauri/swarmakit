@@ -15,7 +15,7 @@ COPY app/ ./
 COPY app/.storybook ./app/.storybook
 
 # Build Storybook to generate static files
-RUN npm run build-storybook
+# RUN npm run build-storybook
 
 RUN ls /app
 
