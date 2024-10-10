@@ -1,0 +1,31 @@
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-primary:active {
+  background-color: #004085;
+}
+
+.btn-secondary:active {
+  background-color: #343a40;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  background-color: #e0e0e0;
+  color: #6c757d;
+}

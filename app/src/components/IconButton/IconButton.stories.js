@@ -1,26 +1,32 @@
 import React from 'react';
 import IconButton from './IconButton';
-import { FaStar } from 'react-icons/fa';
+import { FaCoffee } from 'react-icons/fa';
 
 export default {
-  title: 'Components/IconButton',
+  title: 'Buttons/IconButton',
   component: IconButton,
+  argTypes: { onClick: { action: 'clicked' } },
 };
 
 const Template = (args) => <IconButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  icon: <FaStar />,
-  onClick: () => alert('Icon Button Clicked!'),
-  disabled: false,
-  label: 'Star Icon Button',
+  icon: <FaCoffee />,
+};
+
+export const Active = Template.bind({});
+Active.args = {
+  icon: <FaCoffee />,
+};
+
+export const Hover = Template.bind({});
+Hover.args = {
+  icon: <FaCoffee />,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  icon: <FaStar />,
-  onClick: () => alert('Icon Button Clicked!'),
+  icon: <FaCoffee />,
   disabled: true,
-  label: 'Disabled Star Icon Button',
 };

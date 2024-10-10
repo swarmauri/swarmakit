@@ -1,29 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './IconButton.css';
+import styled from 'styled-components';
 
-const IconButton = ({ icon, onClick, disabled, label }) => {
+const StyledIconButton = styled.button`
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 50%;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+`;
+
+const IconButton = ({ icon, disabled, onClick }) => {
   return (
-    <button
-      className="icon-button"
-      onClick={onClick}
-      disabled={disabled}
-      aria-label={label}
-    >
-      <span className="icon-button__icon">{icon}</span>
-    </button>
+    <StyledIconButton disabled={disabled} onClick={onClick}>
+      {icon}
+    </StyledIconButton>
   );
 };
 
 IconButton.propTypes = {
   icon: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 IconButton.defaultProps = {
   disabled: false,
+  onClick: () => {},
 };
 
 export default IconButton;
