@@ -20,4 +20,9 @@ Default.args = {
 
 export const Custom = Template.bind({});
 Custom.args = {
-  year: 202
+  year: 2025,
+  companyName: 'Custom Company',
+  privacyPolicyUrl: 'https://customcompany.com/privacy',
+  termsOfServiceUrl: 'https://customcompany.com/terms',
+  contactUrl: 'https://customcompany.com/contact',
+};
