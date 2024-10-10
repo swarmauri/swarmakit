@@ -1,0 +1,43 @@
+.notification-card {
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.notification-card.info {
+  background-color: #2196f3;
+}
+
+.notification-card.success {
+  background-color: #4caf50;
+}
+
+.notification-card.warning {
+  background-color: #ff9800;
+}
+
+.notification-card.error {
+  background-color: #f44336;
+}
+
+.notification-message {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ddd;
+}

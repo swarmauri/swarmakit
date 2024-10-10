@@ -1,0 +1,25 @@
+.category-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.category {
+  padding: 10px;
+  background-color: #e3e3e3;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.category:hover {
+  background-color: #d3d3d3;
+}
+
+.category.selected {
+  background-color: #28a745;
+  color: white;
+}

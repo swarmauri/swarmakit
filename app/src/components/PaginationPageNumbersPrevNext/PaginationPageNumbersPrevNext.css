@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prev,
+.next {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.prev:disabled,
+.next:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.prev:hover:not(:disabled),
+.next:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.page-info {
+  font-size: 16px;
+}

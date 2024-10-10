@@ -1,0 +1,24 @@
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.tag {
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #e0e0e0;
+}
+
+.tag.selected {
+  background-color: #007bff;
+  color: white;
+}
