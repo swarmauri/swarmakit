@@ -1,0 +1,19 @@
+/* MemberMention.css */
+.member-mention {
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.member-mention.visible {
+  color: #007bff;
+}
+
+.member-mention.hidden {
+  display: none;
+}
+
+.member-mention.clicked {
+  color: #0056b3;
+  text-decoration: underline;
+}

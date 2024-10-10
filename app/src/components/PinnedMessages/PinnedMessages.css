@@ -1,0 +1,24 @@
+/* PinnedMessages.css */
+.pinned-message {
+  padding: 10px;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
+.pinned-message.visible {
+  display: block;
+}
+
+.pinned-message.hidden {
+  display: none;
+}
+
+.pinned-message.pinned {
+  border: 2px solid #ffa500;
+  background-color: #fff8e1;
+}
+
+.pinned-message.unpinned {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
