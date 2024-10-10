@@ -1,0 +1,61 @@
+/* TextToSpeech.css */
+.text-to-speech {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.text {
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
+  max-width: 300px;
+}
+
+.speak-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.speak-button:hover {
+  background-color: darkblue;
+}
+
+@media (max-width: 480px) {
+  .text {
+    font-size: 16px;
+  }
+
+  .speak-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .text {
+    font-size: 17px;
+  }
+
+  .speak-button {
+    font-size: 15px;
+    padding: 9px 18px;
+  }
+}
+
+@media (min-width: 769px) {
+  .text {
+    font-size: 18px;
+  }
+
+  .speak-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}

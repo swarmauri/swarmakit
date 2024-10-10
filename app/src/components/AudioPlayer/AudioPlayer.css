@@ -1,0 +1,23 @@
+/* AudioPlayer.css */
+.audio-player {
+  width: 100%;
+  max-width: 600px;
+}
+
+@media (max-width: 480px) {
+  .audio-player {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .audio-player {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 769px) {
+  .audio-player {
+    max-width: 600px;
+  }
+}

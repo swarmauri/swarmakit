@@ -1,0 +1,48 @@
+/* VideoPlayer.css */
+.video-player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+  .video-player {
+    padding: 5px;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .video-player {
+    padding: 8px;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .video-player {
+    padding: 10px;
+  }
+
+  video {
+    width: auto;
+    height: auto;
+  }
+}
