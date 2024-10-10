@@ -1,0 +1,50 @@
+/** @jsx css */
+.validation-error-tooltip {
+  position: relative;
+  padding: 8px;
+  color: #ffffff;
+  background-color: #dc3545;
+  border-radius: 4px;
+  font-size: 14px;
+  display: inline-block;
+  margin: 5px 0;
+}
+
+.validation-error-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #dc3545 transparent transparent transparent;
+}
+
+@media (max-width: 576px) {
+  /* Small mobile devices */
+  .validation-error-tooltip {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  /* Large mobile devices */
+  .validation-error-tooltip {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  /* Tablets */
+  .validation-error-tooltip {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 993px) {
+  /* Desktops */
+  .validation-error-tooltip {
+    font-size: 15px;
+  }
+}
