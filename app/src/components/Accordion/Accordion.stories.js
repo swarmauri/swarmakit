@@ -4,6 +4,10 @@ import Accordion from './Accordion';
 export default {
   title: 'Lists/Accordion',
   component: Accordion,
+  argTypes: {
+    title: { control: 'text' },
+    content: { control: 'text' },
+  },
 };
 
 const Template = (args) => <Accordion {...args} />;
@@ -11,23 +15,22 @@ const Template = (args) => <Accordion {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: 'Accordion Title',
-  children: 'This is the default content of the accordion.',
+  content: 'Accordion Content',
 };
 
 export const Open = Template.bind({});
 Open.args = {
   ...Default.args,
-  children: 'This accordion is open.',
+  isOpen: true,
 };
 
 export const Closed = Template.bind({});
 Closed.args = {
   ...Default.args,
-  children: 'This accordion is closed.',
+  isOpen: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   ...Default.args,
-  children: 'This accordion is being hovered over.',
 };

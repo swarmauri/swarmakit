@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const AccordionWrapper = styled.div`
+const AccordionContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: hidden;
@@ -10,16 +10,19 @@ const AccordionWrapper = styled.div`
 
 const AccordionHeader = styled.div`
   background-color: #f7f7f7;
-  padding: 10px;
   cursor: pointer;
+  padding: 10px;
+  &:hover {
+    background-color: #e7e7e7;
+  }
 `;
 
 const AccordionContent = styled.div`
   padding: 10px;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${(props) => (props.isOpen ? 'block' : 'none')};
 `;
 
-const Accordion = ({ title, children }) => {
+const Accordion = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -27,20 +30,20 @@ const Accordion = ({ title, children }) => {
   };
 
   return (
-    <AccordionWrapper>
+    <AccordionContainer>
       <AccordionHeader onClick={toggleAccordion}>
         {title}
       </AccordionHeader>
       <AccordionContent isOpen={isOpen}>
-        {children}
+        {content}
       </AccordionContent>
-    </AccordionWrapper>
+    </AccordionContainer>
   );
 };
 
 Accordion.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 export default Accordion;

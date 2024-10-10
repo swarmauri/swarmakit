@@ -1,4 +1,4 @@
-.AccordionWrapper {
+.AccordionContainer {
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: hidden;
@@ -6,15 +6,14 @@
 
 .AccordionHeader {
   background-color: #f7f7f7;
-  padding: 10px;
   cursor: pointer;
+  padding: 10px;
+}
+
+.AccordionHeader:hover {
+  background-color: #e7e7e7;
 }
 
 .AccordionContent {
   padding: 10px;
-  display: none;
-}
-
-.AccordionContent.isOpen {
-  display: block;
 }
