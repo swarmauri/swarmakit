@@ -10,20 +10,20 @@ const Template = (args) => <ActivityIndicators {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'loading',
+  status: 'loading',
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  type: 'loading',
+  status: 'loading',
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  type: 'success',
+  status: 'success',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  type: 'error',
+  status: 'error',
 };

@@ -1,43 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import './ActivityIndicators.css';
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const IndicatorContainer = styled.div`
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 3px solid ${(props) => (props.type === 'loading' ? '#ccc' : 'transparent')};
-  border-top-color: ${(props) => {
-    switch (props.type) {
-      case 'loading':
-        return '#3498db';
-      case 'success':
-        return '#4caf50';
-      case 'error':
-        return '#f44336';
-      default:
-        return '#ccc';
-    }
-  }};
-  border-radius: 50%;
-  animation: ${(props) => (props.type === 'loading' ? `${rotate} 1s linear infinite` : 'none')};
-`;
-
-const ActivityIndicators = ({ type }) => {
-  return <IndicatorContainer type={type} />;
+const ActivityIndicators = ({ status }) => {
+  return (
+    <div className={`activity-indicator ${status}`}>
+      {status === 'loading' && <div className="spinner" />}
+      {status === 'success' && <span className="success-icon">✔</span>}
+      {status === 'error' && <span className="error-icon">✖</span>}
+    </div>
+  );
 };
 
 ActivityIndicators.propTypes = {
-  type: PropTypes.oneOf(['loading', 'success', 'error']).isRequired,
+  status: PropTypes.oneOf(['loading', 'success', 'error']).isRequired,
+};
+
+ActivityIndicators.defaultProps = {
+  status: 'loading',
 };
 
 export default ActivityIndicators;

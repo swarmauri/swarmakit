@@ -1,18 +1,14 @@
-textarea {
+.custom-textarea {
   width: 100%;
+  min-height: 100px;
   padding: 10px;
-  font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 14px;
   resize: vertical;
-  background-color: #fff;
 }
 
-textarea:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-textarea[disabled] {
+.custom-textarea.disabled {
   background-color: #f5f5f5;
+  cursor: not-allowed;
 }

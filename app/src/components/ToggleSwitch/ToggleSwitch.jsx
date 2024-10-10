@@ -1,62 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './ToggleSwitch.css';
 
-const Switch = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-`;
-
-const Slider = styled.span`
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: ${(props) => (props.checked ? '#4caf50' : '#ccc')};
-  transition: 0.4s;
-  border-radius: 34px;
-
-  &:before {
-    position: absolute;
-    content: '';
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-    transform: ${(props) => (props.checked ? 'translateX(26px)' : 'translateX(0)')};
-  }
-`;
-
-const ToggleSwitch = ({ checked, disabled, onChange }) => {
+const ToggleSwitch = ({ isOn, handleToggle, disabled }) => {
   return (
-    <Switch>
+    <div className={`toggle-switch ${disabled ? 'disabled' : ''}`}>
       <input
+        className="toggle-switch-checkbox"
         type="checkbox"
-        checked={checked}
+        checked={isOn}
+        onChange={handleToggle}
         disabled={disabled}
-        onChange={onChange}
-        style={{ display: 'none' }}
+        id={`toggle-switch`}
       />
-      <Slider checked={checked} />
-    </Switch>
+      <label
+        className="toggle-switch-label"
+        htmlFor={`toggle-switch`}
+      >
+        <span className={`toggle-switch-inner`} />
+        <span className={`toggle-switch-switch`} />
+      </label>
+    </div>
   );
 };
 
 ToggleSwitch.propTypes = {
-  checked: PropTypes.bool,
+  isOn: PropTypes.bool,
+  handleToggle: PropTypes.func,
   disabled: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
 };
 
 ToggleSwitch.defaultProps = {
-  checked: false,
+  isOn: false,
+  handleToggle: () => {},
   disabled: false,
 };
 

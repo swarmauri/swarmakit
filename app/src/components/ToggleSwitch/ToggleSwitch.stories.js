@@ -1,36 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ToggleSwitch from './ToggleSwitch';
 
 export default {
   title: 'Forms/ToggleSwitch',
   component: ToggleSwitch,
+  argTypes: {
+    handleToggle: { action: 'toggled' },
+  },
 };
 
-const Template = (args) => {
-  const [checked, setChecked] = useState(args.checked);
-  return <ToggleSwitch {...args} checked={checked} onChange={() => setChecked(!checked)} />;
-};
+const Template = (args) => <ToggleSwitch {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  checked: false,
+  isOn: false,
   disabled: false,
 };
 
 export const On = Template.bind({});
 On.args = {
-  checked: true,
+  isOn: true,
   disabled: false,
 };
 
 export const Off = Template.bind({});
 Off.args = {
-  checked: false,
+  isOn: false,
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  checked: false,
+  isOn: false,
   disabled: true,
 };

@@ -1,33 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './ValidationMessages.css';
 
-const MessageContainer = styled.div`
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 4px;
-  color: #fff;
-  background-color: ${(props) => {
-    switch (props.type) {
-      case 'success':
-        return '#4caf50';
-      case 'error':
-        return '#f44336';
-      case 'warning':
-        return '#ff9800';
-      default:
-        return '#ccc';
-    }
-  }};
-`;
-
-const ValidationMessages = ({ type, message }) => {
-  return <MessageContainer type={type}>{message}</MessageContainer>;
+const ValidationMessages = ({ message, type }) => {
+  return (
+    <div className={`validation-message ${type}`}>
+      {message}
+    </div>
+  );
 };
 
 ValidationMessages.propTypes = {
-  type: PropTypes.oneOf(['success', 'error', 'warning']).isRequired,
   message: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['success', 'error', 'warning']),
+};
+
+ValidationMessages.defaultProps = {
+  type: 'success',
 };
 
 export default ValidationMessages;

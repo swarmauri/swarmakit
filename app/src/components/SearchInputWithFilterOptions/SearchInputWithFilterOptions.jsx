@@ -1,70 +1,58 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './SearchInputWithFilterOptions.css';
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: ${(props) => (props.disabled ? '#f5f5f5' : '#fff')};
-`;
+const SearchInputWithFilterOptions = ({ filters, onSearch, disabled }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilters, setActiveFilters] = useState([]);
 
-const Input = styled.input`
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  ${(props) => props.disabled && 'background-color: #f5f5f5;'}
-`;
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    onSearch(e.target.value, activeFilters);
+  };
 
-const FilterButton = styled.button`
-  padding: 10px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  ${(props) => props.disabled && 'background-color: #ccc; cursor: not-allowed;'}
-`;
-
-const SearchInputWithFilterOptions = ({ placeholder, filtersActive, disabled }) => {
-  const [searchValue, setSearchValue] = useState('');
-  const [results, setResults] = useState([]);
-
-  const handleSearch = () => {
-    if (!disabled) {
-      // Placeholder for search logic
-      setResults([]);
-    }
+  const toggleFilter = (filter) => {
+    const newFilters = activeFilters.includes(filter)
+      ? activeFilters.filter((f) => f !== filter)
+      : [...activeFilters, filter];
+    setActiveFilters(newFilters);
+    onSearch(searchTerm, newFilters);
   };
 
   return (
-    <Wrapper disabled={disabled}>
-      <Input
+    <div className={`search-input-with-filters ${disabled ? 'disabled' : ''}`}>
+      <input
         type="text"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-        placeholder={placeholder}
+        value={searchTerm}
+        onChange={handleSearchChange}
+        placeholder="Search..."
         disabled={disabled}
       />
-      <FilterButton onClick={handleSearch} disabled={disabled}>
-        {filtersActive ? 'Filters Active' : 'Search'}
-      </FilterButton>
-    </Wrapper>
+      <div className="filter-options">
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            onClick={() => toggleFilter(filter)}
+            className={activeFilters.includes(filter) ? 'active' : ''}
+            disabled={disabled}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 };
 
 SearchInputWithFilterOptions.propTypes = {
-  placeholder: PropTypes.string,
-  filtersActive: PropTypes.bool,
+  filters: PropTypes.arrayOf(PropTypes.string),
+  onSearch: PropTypes.func,
   disabled: PropTypes.bool,
 };
 
 SearchInputWithFilterOptions.defaultProps = {
-  placeholder: 'Search...',
-  filtersActive: false,
+  filters: [],
+  onSearch: () => {},
   disabled: false,
 };
 

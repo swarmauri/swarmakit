@@ -4,41 +4,39 @@ import SearchInputWithFilterOptions from './SearchInputWithFilterOptions';
 export default {
   title: 'Forms/SearchInputWithFilterOptions',
   component: SearchInputWithFilterOptions,
+  argTypes: {
+    onSearch: { action: 'search executed' },
+  },
 };
 
 const Template = (args) => <SearchInputWithFilterOptions {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  placeholder: 'Search...',
-  filtersActive: false,
+  filters: ['Filter 1', 'Filter 2', 'Filter 3'],
   disabled: false,
 };
 
 export const Searching = Template.bind({});
 Searching.args = {
-  placeholder: 'Type to search...',
-  filtersActive: false,
+  filters: ['Filter 1', 'Filter 2', 'Filter 3'],
   disabled: false,
 };
 
 export const FiltersActive = Template.bind({});
 FiltersActive.args = {
-  placeholder: 'Search with filters...',
-  filtersActive: true,
+  filters: ['Filter 1', 'Filter 2', 'Filter 3'],
   disabled: false,
 };
 
 export const NoResults = Template.bind({});
 NoResults.args = {
-  placeholder: 'No results found',
-  filtersActive: false,
+  filters: ['Filter 1', 'Filter 2', 'Filter 3'],
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  placeholder: 'Search...',
-  filtersActive: false,
+  filters: ['Filter 1', 'Filter 2', 'Filter 3'],
   disabled: true,
 };

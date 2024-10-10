@@ -1,46 +1,36 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './RichTextEditor.css';
 
-const EditorWrapper = styled.div`
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #fff;
-`;
+const RichTextEditor = ({ content, onChange, readOnly }) => {
+  const [editorContent, setEditorContent] = useState(content);
 
-const TextArea = styled.textarea`
-  width: 100%;
-  height: 200px;
-  border: none;
-  outline: none;
-  resize: none;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  ${(props) => props.readOnly && 'background-color: #f5f5f5;'}
-`;
-
-const RichTextEditor = ({ defaultValue, readOnly }) => {
-  const [content, setContent] = useState(defaultValue);
+  const handleInputChange = (e) => {
+    const newContent = e.target.innerHTML;
+    setEditorContent(newContent);
+    onChange(newContent);
+  };
 
   return (
-    <EditorWrapper>
-      <TextArea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        readOnly={readOnly}
-      />
-    </EditorWrapper>
+    <div
+      className={`rich-text-editor ${readOnly ? 'read-only' : ''}`}
+      contentEditable={!readOnly}
+      suppressContentEditableWarning={true}
+      onInput={handleInputChange}
+      dangerouslySetInnerHTML={{ __html: editorContent }}
+    />
   );
 };
 
 RichTextEditor.propTypes = {
-  defaultValue: PropTypes.string,
+  content: PropTypes.string,
+  onChange: PropTypes.func,
   readOnly: PropTypes.bool,
 };
 
 RichTextEditor.defaultProps = {
-  defaultValue: '',
+  content: '',
+  onChange: () => {},
   readOnly: false,
 };
 
