@@ -1,37 +1,23 @@
-/* DataTable.css */
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 16px 0;
-}
-
-.data-table th,
-.data-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-.data-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-@media (max-width: 480px) {
-  .data-table td {
-    padding: 6px;
-    font-size: 12px;
+@media (max-width: 599px) {
+  .table-wrapper {
+    padding: 10px;
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  .data-table td {
-    font-size: 14px;
+@media (min-width: 600px) and (max-width: 899px) {
+  .table-wrapper {
+    padding: 15px;
   }
 }
 
-@media (min-width: 769px) {
-  .data-table td {
-    font-size: 16px;
+@media (min-width: 900px) and (max-width: 1199px) {
+  .table-wrapper {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .table-wrapper {
+    padding: 25px;
   }
 }

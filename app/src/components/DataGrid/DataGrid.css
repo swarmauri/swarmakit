@@ -1,73 +1,23 @@
-.GridWrapper {
-  overflow-x: auto;
-  margin: 20px 0;
-}
-
-.Table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.TableHeader,
-.TableCell {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-.TableHeader {
-  background-color: #f9f9f9;
-}
-
-.TableHeader[resizable] {
-  cursor: col-resize;
-}
-
-.SearchInput {
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.Pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.PageButton {
-  padding: 5px 10px;
-  margin: 0 5px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.PageButton:hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 480px) {
-  .GridWrapper {
-    width: 90%;
+@media (max-width: 599px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  .GridWrapper {
-    width: 95%;
+@media (min-width: 600px) and (max-width: 899px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .GridWrapper {
-    width: 80%;
+@media (min-width: 900px) and (max-width: 1199px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
 
-@media (min-width: 1025px) {
-  .GridWrapper {
-    width: 60%;
+@media (min-width: 1200px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }

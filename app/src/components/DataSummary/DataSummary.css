@@ -1,23 +1,27 @@
 @media (max-width: 599px) {
-  .search-bar-wrapper {
+  .summary-wrapper {
     width: 100%;
+    padding: 12px;
   }
 }
 
 @media (min-width: 600px) and (max-width: 899px) {
-  .search-bar-wrapper {
+  .summary-wrapper {
     max-width: 80%;
+    padding: 14px;
   }
 }
 
 @media (min-width: 900px) and (max-width: 1199px) {
-  .search-bar-wrapper {
-    max-width: 60%;
+  .summary-wrapper {
+    max-width: 70%;
+    padding: 16px;
   }
 }
 
 @media (min-width: 1200px) {
-  .search-bar-wrapper {
-    max-width: 40%;
+  .summary-wrapper {
+    max-width: 60%;
+    padding: 16px;
   }
 }

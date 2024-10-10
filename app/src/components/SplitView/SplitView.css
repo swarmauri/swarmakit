@@ -1,0 +1,23 @@
+@media (max-width: 599px) {
+  .split-view-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .split-view-wrapper {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .split-view-wrapper {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1200px) {
+  .split-view-wrapper {
+    flex-direction: row;
+  }
+}

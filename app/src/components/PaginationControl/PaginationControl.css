@@ -1,0 +1,23 @@
+@media (max-width: 599px) {
+  .pagination-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .pagination-wrapper {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .pagination-wrapper {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pagination-wrapper {
+    justify-content: space-around;
+  }
+}

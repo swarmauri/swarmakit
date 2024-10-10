@@ -1,23 +1,23 @@
 @media (max-width: 599px) {
-  .search-bar-wrapper {
+  .dropdown-wrapper {
     width: 100%;
   }
 }
 
 @media (min-width: 600px) and (max-width: 899px) {
-  .search-bar-wrapper {
-    max-width: 80%;
+  .dropdown-wrapper {
+    width: 80%;
   }
 }
 
 @media (min-width: 900px) and (max-width: 1199px) {
-  .search-bar-wrapper {
-    max-width: 60%;
+  .dropdown-wrapper {
+    width: 60%;
   }
 }
 
 @media (min-width: 1200px) {
-  .search-bar-wrapper {
-    max-width: 40%;
+  .dropdown-wrapper {
+    width: 40%;
   }
 }

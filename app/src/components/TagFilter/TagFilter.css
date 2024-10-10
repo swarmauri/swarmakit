@@ -1,24 +1,27 @@
-.tag-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-width: 400px;
-  margin: 0 auto;
+@media (max-width: 599px) {
+  .tag-wrapper {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
 }
 
-.tag {
-  padding: 8px 12px;
-  background-color: #f0f0f0;
-  border-radius: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+@media (min-width: 600px) and (max-width: 899px) {
+  .tag-wrapper {
+    padding: 8px 12px;
+    font-size: 15px;
+  }
 }
 
-.tag:hover {
-  background-color: #e0e0e0;
+@media (min-width: 900px) and (max-width: 1199px) {
+  .tag-wrapper {
+    padding: 8px 14px;
+    font-size: 16px;
+  }
 }
 
-.tag.selected {
-  background-color: #007bff;
-  color: white;
+@media (min-width: 1200px) {
+  .tag-wrapper {
+    padding: 10px 16px;
+    font-size: 16px;
+  }
 }
