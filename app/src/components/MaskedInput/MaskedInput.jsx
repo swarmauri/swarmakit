@@ -1,43 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Input = styled.input`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-  &:focus {
-    border-color: #888;
-    outline: none;
-  }
-  &[disabled] {
-    background-color: #f2f2f2;
-    cursor: not-allowed;
-  }
-`;
+import './MaskedInput.css';
 
 const MaskedInput = ({ mask, value, onChange, disabled }) => {
-  const handleInputChange = (e) => {
-    const maskedValue = mask ? mask(e.target.value) : e.target.value;
-    onChange(maskedValue);
+  const [isMasked, setIsMasked] = useState(true);
+
+  const toggleMask = () => {
+    setIsMasked(!isMasked);
   };
 
-  return <Input type="text" value={value} onChange={handleInputChange} disabled={disabled} />;
+  const handleChange = (e) => {
+    onChange(e.target.value);
+  };
+
+  return (
+    <div className="masked-input-container">
+      <input
+        className="masked-input"
+        type={isMasked ? 'password' : 'text'}
+        value={value}
+        onChange={handleChange}
+        disabled={disabled}
+      />
+      <button type="button" onClick={toggleMask} disabled={disabled}>
+        {isMasked ? 'Show' : 'Hide'}
+      </button>
+    </div>
+  );
 };
 
 MaskedInput.propTypes = {
-  mask: PropTypes.func,
+  mask: PropTypes.bool,
   value: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   disabled: PropTypes.bool,
 };
 
 MaskedInput.defaultProps = {
-  mask: null,
+  mask: true,
   value: '',
+  onChange: () => {},
   disabled: false,
 };
 

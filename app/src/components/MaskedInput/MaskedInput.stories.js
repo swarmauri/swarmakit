@@ -1,34 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MaskedInput from './MaskedInput';
 
 export default {
   title: 'Forms/MaskedInput',
   component: MaskedInput,
+  argTypes: {
+    onChange: { action: 'value changed' },
+  },
 };
 
-const Template = (args) => {
-  const [value, setValue] = useState('');
-  return <MaskedInput {...args} value={value} onChange={setValue} />;
+const Template = (args) => <MaskedInput {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  mask: true,
+  value: '',
+  disabled: false,
 };
 
 export const Masked = Template.bind({});
 Masked.args = {
-  mask: (value) => value.replace(/./g, '*'),
-  placeholder: 'Enter text...',
+  mask: true,
+  value: '',
+  disabled: false,
 };
 
 export const Unmasked = Template.bind({});
 Unmasked.args = {
-  placeholder: 'Enter text...',
+  mask: false,
+  value: '',
+  disabled: false,
 };
 
 export const Focused = Template.bind({});
 Focused.args = {
-  placeholder: 'Focus to see effect...',
+  mask: true,
+  value: '',
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+  mask: true,
+  value: '',
   disabled: true,
-  placeholder: 'Disabled input...',
 };

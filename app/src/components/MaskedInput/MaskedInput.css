@@ -1,19 +1,39 @@
-input {
-  font-family: Arial, sans-serif;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
+.masked-input-container {
+  display: flex;
+  align-items: center;
 }
 
-input:focus {
-  border-color: #888;
+.masked-input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.masked-input:focus {
+  border-color: #66afe9;
   outline: none;
 }
 
-input[disabled] {
-  background-color: #f2f2f2;
+.masked-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
   cursor: not-allowed;
 }
