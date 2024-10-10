@@ -1,68 +1,58 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './PasswordConfirmationField.css';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+const PasswordConfirmationField = ({ password, confirmPassword, onChange, disabled }) => {
+  const [passwordInput, setPasswordInput] = useState(password);
+  const [confirmPasswordInput, setConfirmPasswordInput] = useState(confirmPassword);
 
-const Input = styled.input`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  &:focus {
-    border-color: #888;
-    outline: none;
-  }
-  &[disabled] {
-    background-color: #f2f2f2;
-    cursor: not-allowed;
-  }
-`;
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPasswordInput(newPassword);
+    onChange(newPassword, confirmPasswordInput);
+  };
 
-const Message = styled.div`
-  color: ${(props) => (props.match ? 'green' : 'red')};
-  font-size: 0.9em;
-`;
+  const handleConfirmPasswordChange = (e) => {
+    const newConfirmPassword = e.target.value;
+    setConfirmPasswordInput(newConfirmPassword);
+    onChange(passwordInput, newConfirmPassword);
+  };
 
-const PasswordConfirmationField = ({ password, onPasswordChange, confirmPassword, onConfirmPasswordChange, disabled }) => {
-  const isMatch = password === confirmPassword;
+  const isMatching = passwordInput === confirmPasswordInput;
 
   return (
-    <Wrapper>
-      <Input
+    <div className="password-confirmation-container">
+      <input
+        className="password-input"
         type="password"
-        value={password}
-        onChange={(e) => onPasswordChange(e.target.value)}
-        placeholder="Password"
+        value={passwordInput}
+        onChange={handlePasswordChange}
         disabled={disabled}
+        placeholder="Enter password"
       />
-      <Input
+      <input
+        className={`password-input ${isMatching ? 'matching' : 'not-matching'}`}
         type="password"
-        value={confirmPassword}
-        onChange={(e) => onConfirmPasswordChange(e.target.value)}
-        placeholder="Confirm Password"
+        value={confirmPasswordInput}
+        onChange={handleConfirmPasswordChange}
         disabled={disabled}
+        placeholder="Confirm password"
       />
-      <Message match={isMatch}>
-        {isMatch ? 'Passwords match' : 'Passwords do not match'}
-      </Message>
-    </Wrapper>
+    </div>
   );
 };
 
 PasswordConfirmationField.propTypes = {
-  password: PropTypes.string.isRequired,
-  onPasswordChange: PropTypes.func.isRequired,
-  confirmPassword: PropTypes.string.isRequired,
-  onConfirmPasswordChange: PropTypes.func.isRequired,
+  password: PropTypes.string,
+  confirmPassword: PropTypes.string,
+  onChange: PropTypes.func,
   disabled: PropTypes.bool,
 };
 
 PasswordConfirmationField.defaultProps = {
+  password: '',
+  confirmPassword: '',
+  onChange: () => {},
   disabled: false,
 };
 

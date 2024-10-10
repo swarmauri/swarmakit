@@ -1,46 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import './RadioButton.css';
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Input = styled.input`
-  margin-right: 10px;
-  cursor: pointer;
-  &[disabled] {
-    cursor: not-allowed;
-  }
-`;
-
-const Label = styled.label`
-  font-size: 1em;
-  color: #333;
-`;
-
-const RadioButton = ({ label, selected, onChange, disabled }) => (
-  <Wrapper>
-    <Input
-      type="radio"
-      checked={selected}
-      onChange={onChange}
-      disabled={disabled}
-    />
-    <Label>{label}</Label>
-  </Wrapper>
-);
+const RadioButton = ({ label, selected, onChange, disabled }) => {
+  return (
+    <label className="radio-button-container">
+      <input
+        type="radio"
+        checked={selected}
+        onChange={onChange}
+        disabled={disabled}
+        className="radio-button-input"
+      />
+      <span className={`radio-button-checkmark ${selected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}></span>
+      {label}
+    </label>
+  );
+};
 
 RadioButton.propTypes = {
   label: PropTypes.string.isRequired,
   selected: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   disabled: PropTypes.bool,
 };
 
 RadioButton.defaultProps = {
   selected: false,
+  onChange: () => {},
   disabled: false,
 };
 

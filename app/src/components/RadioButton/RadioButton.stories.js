@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RadioButton from './RadioButton';
 
 export default {
   title: 'Forms/RadioButton',
   component: RadioButton,
+  argTypes: {
+    onChange: { action: 'radio button clicked' },
+  },
 };
 
-const Template = (args) => {
-  const [selected, setSelected] = useState(args.selected || false);
-  return (
-    <RadioButton
-      {...args}
-      selected={selected}
-      onChange={() => setSelected(!selected)}
-    />
-  );
-};
+const Template = (args) => <RadioButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Radio Button',
+  label: 'Option 1',
+  selected: false,
+  disabled: false,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  label: 'Selected Radio Button',
+  label: 'Option 1',
   selected: true,
+  disabled: false,
 };
 
 export const Unselected = Template.bind({});
 Unselected.args = {
-  label: 'Unselected Radio Button',
+  label: 'Option 1',
   selected: false,
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Disabled Radio Button',
+  label: 'Option 1',
+  selected: false,
   disabled: true,
 };
