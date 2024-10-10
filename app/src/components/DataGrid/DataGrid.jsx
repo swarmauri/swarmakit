@@ -1,111 +1,72 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const GridContainer = styled.div`
-  width: 100%;
-  overflow-x: auto;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const Th = styled.th`
-  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(${(props) => props.columns}, 1fr);
+  gap: 10px;
   border: 1px solid #ccc;
-  background-color: #f4f4f4;
-  cursor: ${({ resizable }) => (resizable ? 'col-resize' : 'default')};
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
-const Td = styled.td`
+const GridItem = styled.div`
   padding: 10px;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
 `;
 
-const DataGrid = ({ columns, data, paginated, searchable, resizable }) => {
-  const [query, setQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(0);
-  const pageSize = 10;
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+`;
 
-  const filteredData = data.filter(item =>
-    columns.some(column =>
-      item[column.accessor].toString().toLowerCase().includes(query.toLowerCase())
-    )
-  );
-
-  const paginatedData = filteredData.slice(
-    currentPage * pageSize,
-    (currentPage + 1) * pageSize
-  );
+const DataGrid = ({ data, columns, paginated, onSearch, resizable }) => {
+  const handleSearch = (e) => {
+    onSearch(e.target.value);
+  };
 
   return (
-    <GridContainer>
-      {searchable && (
+    <div>
+      {onSearch && (
         <input
           type="text"
           placeholder="Search..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleSearch}
+          style={{ marginBottom: '10px', padding: '5px', width: '100%' }}
         />
       )}
-      <Table>
-        <thead>
-          <tr>
-            {columns.map((column, index) => (
-              <Th key={index} resizable={resizable}>
-                {column.header}
-              </Th>
+      <GridContainer columns={columns}>
+        {data.map((item, index) => (
+          <GridItem key={index}>
+            {Object.values(item).map((value, idx) => (
+              <div key={idx}>{value}</div>
             ))}
-          </tr>
-        </thead>
-        <tbody>
-          {(paginated ? paginatedData : filteredData).map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {columns.map((column, colIndex) => (
-                <Td key={colIndex}>{row[column.accessor]}</Td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+          </GridItem>
+        ))}
+      </GridContainer>
       {paginated && (
-        <div>
-          <button
-            disabled={currentPage <= 0}
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
-            Previous
-          </button>
-          <button
-            disabled={(currentPage + 1) * pageSize >= filteredData.length}
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
-            Next
-          </button>
-        </div>
+        <Pagination>
+          <button disabled>Previous</button>
+          <button>Next</button>
+        </Pagination>
       )}
-    </GridContainer>
+    </div>
   );
 };
 
 DataGrid.propTypes = {
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
-      header: PropTypes.string.isRequired,
-      accessor: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  columns: PropTypes.number,
   paginated: PropTypes.bool,
-  searchable: PropTypes.bool,
+  onSearch: PropTypes.func,
   resizable: PropTypes.bool,
 };
 
 DataGrid.defaultProps = {
+  columns: 3,
   paginated: false,
-  searchable: false,
   resizable: false,
 };
 

@@ -1,27 +1,42 @@
 .GridContainer {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.Table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.Th {
-  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
   border: 1px solid #ccc;
-  background-color: #f4f4f4;
-  cursor: col-resize;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.Td {
+.GridItem {
   padding: 10px;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
+}
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 input[type="text"] {
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
