@@ -13,10 +13,11 @@ export const Default = Template.bind({});
 Default.args = {
   year: 2024,
   companyName: 'Your Company Name',
+  privacyPolicyUrl: '#privacy',
+  termsOfServiceUrl: '#terms',
+  contactUrl: '#contact',
 };
 
 export const Custom = Template.bind({});
 Custom.args = {
-  year: 2025,
-  companyName: 'Custom Company',
-};
+  year: 202
