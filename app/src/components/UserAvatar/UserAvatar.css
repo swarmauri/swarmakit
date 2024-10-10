@@ -1,64 +1,70 @@
+/* UserAvatar.css */
 .user-avatar {
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.user-avatar--small {
-  width: 30px;
-  height: 30px;
-}
-
-.user-avatar--medium {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
 }
 
-.user-avatar--large {
-  width: 70px;
-  height: 70px;
+.user-avatar img {
+  width: 100%;
+  height: 100%;
 }
 
-@media (max-width: 480px) {
-  .user-avatar--small {
-    width: 25px;
-    height: 25px;
-  }
-  .user-avatar--medium {
-    width: 40px;
-    height: 40px;
-  }
-  .user-avatar--large {
-    width: 60px;
-    height: 60px;
-  }
+.user-avatar.online::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #28a745;
+  border-radius: 50%;
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  .user-avatar--small {
-    width: 28px;
-    height: 28px;
-  }
-  .user-avatar--medium {
-    width: 45px;
-    height: 45px;
-  }
-  .user-avatar--large {
-    width: 65px;
-    height: 65px;
-  }
+.user-avatar.offline::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #6c757d;
+  border-radius: 50%;
 }
 
-@media (min-width: 769px) {
-  .user-avatar--small {
-    width: 30px;
-    height: 30px;
-  }
-  .user-avatar--medium {
-    width: 50px;
-    height: 50px;
-  }
-  .user-avatar--large {
-    width: 70px;
-    height: 70px;
-  }
+.user-avatar.active::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 50%;
+}
+
+.user-avatar.away::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #ffc107;
+  border-radius: 50%;
+}
+
+.user-avatar.busy::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #dc3545;
+  border-radius: 50%;
 }

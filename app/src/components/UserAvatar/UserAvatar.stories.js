@@ -1,13 +1,12 @@
+// UserAvatar.stories.js
 import React from 'react';
 import UserAvatar from './UserAvatar';
 
 export default {
-  title: 'Components/UserAvatar',
+  title: 'Chat/UserAvatar',
   component: UserAvatar,
-  argTypes: {
-    imageUrl: { control: 'text' },
-    size: { control: { type: 'select', options: ['small', 'medium', 'large'] } },
-    altText: { control: 'text' },
+  parameters: {
+    layout: 'centered',
   },
 };
 
@@ -15,21 +14,42 @@ const Template = (args) => <UserAvatar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  status: 'online',
   imageUrl: 'https://via.placeholder.com/150',
-  size: 'medium',
-  altText: 'Default Avatar',
+  onClick: () => {},
 };
 
-export const Small = Template.bind({});
-Small.args = {
+export const Online = Template.bind({});
+Online.args = {
+  status: 'online',
   imageUrl: 'https://via.placeholder.com/150',
-  size: 'small',
-  altText: 'Small Avatar',
+  onClick: () => {},
 };
 
-export const Large = Template.bind({});
-Large.args = {
+export const Offline = Template.bind({});
+Offline.args = {
+  status: 'offline',
   imageUrl: 'https://via.placeholder.com/150',
-  size: 'large',
-  altText: 'Large Avatar',
+  onClick: () => {},
+};
+
+export const Active = Template.bind({});
+Active.args = {
+  status: 'active',
+  imageUrl: 'https://via.placeholder.com/150',
+  onClick: () => {},
+};
+
+export const Away = Template.bind({});
+Away.args = {
+  status: 'away',
+  imageUrl: 'https://via.placeholder.com/150',
+  onClick: () => {},
+};
+
+export const Busy = Template.bind({});
+Busy.args = {
+  status: 'busy',
+  imageUrl: 'https://via.placeholder.com/150',
+  onClick: () => {},
 };

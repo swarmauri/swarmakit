@@ -1,0 +1,23 @@
+/* ReadReceipt.css */
+.read-receipt {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.read-receipt.seen {
+  background-color: #4caf50;
+}
+
+.read-receipt.unseen {
+  background-color: #9e9e9e;
+}
+
+.read-receipt.delivered {
+  background-color: #2196f3;
+}
+
+.read-receipt.failed {
+  background-color: #f44336;
+}

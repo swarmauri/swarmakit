@@ -1,0 +1,23 @@
+/* AttachmentIcon.css */
+.attachment-icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.1s ease;
+}
+
+.attachment-icon.enabled {
+  color: #0d6efd;
+}
+
+.attachment-icon.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.attachment-icon.hovered:not(.disabled) {
+  color: #0056b3;
+}
+
+.attachment-icon.clicked:not(.disabled) {
+  transform: scale(0.98);
+}
