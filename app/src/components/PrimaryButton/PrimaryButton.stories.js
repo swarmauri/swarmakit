@@ -2,7 +2,7 @@ import React from 'react';
 import PrimaryButton from './PrimaryButton';
 
 export default {
-  title: 'Components/PrimaryButton',
+  title: 'Buttons/PrimaryButton',
   component: PrimaryButton,
   argTypes: {
     label: { control: 'text' },

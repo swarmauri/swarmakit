@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 // Export metadata about the component
 export default {
-  title: 'Components/Navbar',
+  title: 'Navigation/Navbar',
   component: Navbar,
   argTypes: {
     logo: { control: 'text' },

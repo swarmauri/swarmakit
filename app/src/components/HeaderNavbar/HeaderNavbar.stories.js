@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderNavbar from './HeaderNavbar';
 
 export default {
-  title: 'Components/HeaderNavbar',
+  title: 'Navigation/HeaderNavbar',
   component: HeaderNavbar,
   argTypes: {
     links: { control: 'array' },

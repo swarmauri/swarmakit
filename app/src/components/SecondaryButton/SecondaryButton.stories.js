@@ -2,7 +2,7 @@ import React from 'react';
 import SecondaryButton from './SecondaryButton';
 
 export default {
-  title: 'Components/SecondaryButton',
+  title: 'Buttons/SecondaryButton',
   component: SecondaryButton,
   argTypes: {
     label: { control: 'text' },
