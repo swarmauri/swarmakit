@@ -1,0 +1,15 @@
+.body-text-paragraphs {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.body-text-paragraphs p {
+  margin-bottom: 16px;
+}
+
+.custom-paragraph-style {
+  color: #007bff;
+  font-weight: bold;
+}
