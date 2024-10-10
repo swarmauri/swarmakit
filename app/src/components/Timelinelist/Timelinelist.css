@@ -1,0 +1,44 @@
+.TimelineContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.TimelineItem {
+  position: relative;
+  padding: 10px 20px;
+  border-left: 2px solid #ccc;
+  margin-left: 20px;
+  color: #333;
+}
+
+.TimelineItem.isActive {
+  color: #007bff;
+}
+
+.TimelineItem.isCompleted {
+  color: #28a745;
+}
+
+.TimelineItem:before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.TimelineItem.isActive:before {
+  background-color: #007bff;
+}
+
+.TimelineItem.isCompleted:before {
+  background-color: #28a745;
+}
+
+.TimelineItem:hover {
+  color: #555;
+}
