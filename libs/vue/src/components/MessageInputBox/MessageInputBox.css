@@ -1,0 +1,49 @@
+.message-input-box {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.message-input-box.focused {
+  border-color: #007bff;
+}
+
+.message-input-box.unfocused {
+  border-color: #ccc;
+}
+
+.message-input-box.typing {
+  border-color: #28a745;
+}
+
+.message-input-box.empty {
+  border-color: #dc3545;
+}
+
+.message-input-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 4px;
+}
+
+@media (max-width: 480px) {
+  .message-input-box {
+    padding: 6px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .message-input-box {
+    padding: 7px;
+  }
+}
+
+@media (min-width: 769px) {
+  .message-input-box {
+    padding: 8px;
+  }
+}

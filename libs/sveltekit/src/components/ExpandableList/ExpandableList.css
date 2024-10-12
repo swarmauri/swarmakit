@@ -1,0 +1,32 @@
+.expandable-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+}
+
+.list-item:hover {
+  background-color: #f1f1f1;
+}
+
+.list-item.selected {
+  background-color: #cce5ff;
+}
+
+.item-header {
+  font-weight: bold;
+}
+
+.item-content {
+  margin-top: 5px;
+  padding-left: 20px;
+  color: #555;
+}

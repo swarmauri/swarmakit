@@ -1,0 +1,25 @@
+.action-sheet {
+  position: relative;
+  display: inline-block;
+}
+
+.action-sheet-content {
+  display: block;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 200px;
+  padding: 10px;
+}
+
+.action-item {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-item:hover {
+  background-color: #f1f1f1;
+}

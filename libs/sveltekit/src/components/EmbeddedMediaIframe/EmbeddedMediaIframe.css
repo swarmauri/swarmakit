@@ -1,0 +1,52 @@
+.media-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.media-container.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+iframe.fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.buffering {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}

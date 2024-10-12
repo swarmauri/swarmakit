@@ -1,0 +1,14 @@
+.group-chat-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.group-chat-name.hidden {
+  display: none;
+}
+
+.group-chat-name.edited::after {
+  content: ' (edited)';
+  font-style: italic;
+  color: #888888;
+}

@@ -1,0 +1,26 @@
+.split-view {
+  display: flex;
+  height: 100vh;
+}
+
+.left-pane {
+  background-color: #f0f0f0;
+  overflow: auto;
+  transition: width 0.3s ease;
+}
+
+.right-pane {
+  flex-grow: 1;
+  background-color: #ffffff;
+  overflow: auto;
+}
+
+button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}

@@ -1,0 +1,47 @@
+.sortable-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: move;
+  transition: background-color 0.3s;
+}
+
+.list-item.dragging {
+  background-color: #e0e0e0;
+}
+
+.list-item.disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .list-item {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .list-item {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .list-item {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .list-item {
+    font-size: 18px;
+  }
+}

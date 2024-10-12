@@ -1,0 +1,37 @@
+.video-player {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:focus {
+  outline: 2px solid #fff;
+}
+
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+  }
+}

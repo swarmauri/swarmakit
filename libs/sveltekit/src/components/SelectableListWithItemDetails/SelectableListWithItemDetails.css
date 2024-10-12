@@ -1,0 +1,32 @@
+.selectable-list {
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.selectable-list div {
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.selectable-list div:last-child {
+  border-bottom: none;
+}
+
+.selectable-list div.selected {
+  background-color: #e0e0e0;
+}
+
+.selectable-list button {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.item-details {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
+  margin-top: 5px;
+}

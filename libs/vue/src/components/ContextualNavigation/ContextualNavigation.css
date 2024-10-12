@@ -1,0 +1,28 @@
+.contextual-navigation {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+}
+
+.contextual-navigation button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.contextual-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.contextual-navigation li {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.contextual-navigation li span:hover {
+  text-decoration: underline;
+}

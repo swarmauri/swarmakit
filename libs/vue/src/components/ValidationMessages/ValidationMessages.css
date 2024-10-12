@@ -1,0 +1,26 @@
+.validation-message {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.validation-message.success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+.validation-message.error {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.validation-message.warning {
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+}
+
+@media (max-width: 600px) {
+  .validation-message {
+    font-size: 12px;
+  }
+}

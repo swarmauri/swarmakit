@@ -1,0 +1,42 @@
+.contextual-nav {
+  position: relative;
+}
+
+.contextual-trigger {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.contextual-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contextual-item {
+  padding: 8px 16px;
+}
+
+.contextual-link {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 0;
+  color: #333;
+  cursor: pointer;
+}
+
+.contextual-link:hover {
+  background-color: #f0f0f0;
+}

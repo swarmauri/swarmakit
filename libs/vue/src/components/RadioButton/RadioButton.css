@@ -1,0 +1,25 @@
+.radio-button-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.radio-button {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.radio-label {
+  cursor: pointer;
+}
+
+.radio-button:disabled + .radio-label {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .radio-button {
+    margin-right: 6px;
+  }
+}

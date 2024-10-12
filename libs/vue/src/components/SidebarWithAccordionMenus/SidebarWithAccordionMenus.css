@@ -1,0 +1,70 @@
+.sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-button {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+  background-color: #e0e0e0;
+}
+
+.menu-button.active {
+  background-color: #d0d0d0;
+}
+
+.menu-button.disabled {
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.submenu-list {
+  list-style: none;
+  padding: 0 0 0 20px;
+  margin: 5px 0;
+}
+
+.submenu-list a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 5px 0;
+}
+
+.submenu-list a.active {
+  color: #007bff;
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 200px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    width: 250px;
+  }
+}

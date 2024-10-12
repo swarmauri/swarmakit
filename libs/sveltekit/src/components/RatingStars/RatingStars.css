@@ -1,0 +1,22 @@
+.rating-stars {
+  display: inline-flex;
+  font-size: 2rem;
+}
+
+.star {
+  cursor: pointer;
+  color: #e0e0e0;
+  transition: color 0.2s;
+}
+
+.star.selected {
+  color: #ffc107;
+}
+
+.star.hover {
+  color: #ffd54f;
+}
+
+.star.inactive {
+  cursor: default;
+}

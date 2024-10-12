@@ -1,0 +1,30 @@
+.accordion {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.accordion-title {
+  padding: 15px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.accordion:hover {
+  background-color: #f1f1f1;
+}
+
+.accordion-content {
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.accordion[aria-expanded='true'] .accordion-content {
+  display: block;
+}
+
+.accordion[aria-expanded='false'] .accordion-content {
+  display: none;
+}

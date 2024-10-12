@@ -1,0 +1,53 @@
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.button-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.button-disabled {
+  background-color: #d6d6d6;
+  color: #8c8c8c;
+  cursor: not-allowed;
+}
+
+.button-active {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  button {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  button {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  button {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  button {
+    font-size: 1.25rem;
+  }
+}

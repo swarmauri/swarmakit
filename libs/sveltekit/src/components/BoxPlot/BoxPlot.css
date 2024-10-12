@@ -1,0 +1,47 @@
+.box-plot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.loading-message,
+.empty-message {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin: 20px 0;
+}
+
+.plot {
+  overflow: visible;
+}
+
+.box-line {
+  stroke: #6c757d;
+  stroke-width: 2;
+  cursor: pointer;
+}
+
+.box-rect {
+  fill: #007bff;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.median-line {
+  stroke: #dc3545;
+  stroke-width: 2;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 12px;
+  pointer-events: none;
+  transform: translateY(-100%);
+}

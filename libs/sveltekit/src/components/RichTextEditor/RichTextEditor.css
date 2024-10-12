@@ -1,0 +1,16 @@
+.rich-text-editor {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 150px;
+  overflow-y: auto;
+}
+
+.rich-text-editor[contenteditable="true"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.rich-text-editor[aria-readonly="true"] {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}

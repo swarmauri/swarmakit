@@ -1,0 +1,8 @@
+.typing-status {
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.typing-status[aria-hidden="true"] {
+  display: none;
+}

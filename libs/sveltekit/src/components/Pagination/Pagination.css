@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination ul {
+  display: flex;
+  gap: 5px;
+}
+
+.pagination button {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  cursor: default;
+}
+
+.pagination button[disabled] {
+  cursor: not-allowed;
+}

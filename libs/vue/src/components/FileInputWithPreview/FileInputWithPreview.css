@@ -1,0 +1,31 @@
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input[type="file"] {
+  padding: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.preview img {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .file-input-container {
+    gap: 5px;
+  }
+}

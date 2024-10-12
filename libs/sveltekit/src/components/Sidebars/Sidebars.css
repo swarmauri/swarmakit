@@ -1,0 +1,29 @@
+.sidebar {
+  width: 60px;
+  background-color: #343a40;
+  color: white;
+  transition: width 0.3s;
+  overflow: hidden;
+}
+
+.sidebar.expanded {
+  width: 200px;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.sidebar .content {
+  padding: 10px;
+}
+
+.sidebar:hover {
+  background-color: #495057;
+}

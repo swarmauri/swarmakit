@@ -1,0 +1,21 @@
+.validation-message {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.validation-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.validation-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.validation-message.warning {
+  background-color: #fff3cd;
+  color: #856404;
+}

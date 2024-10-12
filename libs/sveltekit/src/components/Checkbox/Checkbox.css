@@ -1,0 +1,32 @@
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  opacity: 1;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  background-color: #fff;
+}
+
+.checkbox-label {
+  font-size: 1rem;
+}
+
+.checkbox-container[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.checkbox-container:focus {
+  outline: 2px solid #007acc;
+}

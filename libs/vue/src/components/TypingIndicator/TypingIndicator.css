@@ -1,0 +1,49 @@
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 50px;
+  border-radius: 12px;
+  background-color: #e0e0e0;
+  animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator.typing span {
+  font-size: 24px;
+  color: #616161;
+}
+
+.typing-indicator.hidden {
+  display: none;
+}
+
+@keyframes typing {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .typing-indicator {
+    width: 40px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .typing-indicator {
+    width: 45px;
+  }
+}
+
+@media (min-width: 769px) {
+  .typing-indicator {
+    width: 50px;
+  }
+}

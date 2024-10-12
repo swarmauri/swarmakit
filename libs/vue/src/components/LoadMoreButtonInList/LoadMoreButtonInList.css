@@ -1,0 +1,60 @@
+.list-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.list-item {
+  padding: 8px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.load-more-button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.load-more-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.end-of-list-message {
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .list-container {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .list-container {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .list-container {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .list-container {
+    font-size: 18px;
+  }
+}

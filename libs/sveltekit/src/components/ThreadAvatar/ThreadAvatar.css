@@ -1,0 +1,35 @@
+.avatar-container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+}
+
+.status-online {
+  border: 2px solid #28a745;
+}
+
+.status-offline {
+  border: 2px solid #6c757d;
+}
+
+.status-active {
+  border: 2px solid #007bff;
+}
+
+.status-away {
+  border: 2px solid #ffc107;
+}
+
+.status-busy {
+  border: 2px solid #dc3545;
+}

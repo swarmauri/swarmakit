@@ -1,0 +1,32 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tree-node {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.tree-node:focus {
+  border-color: #007bff;
+}
+
+.tree-node:hover {
+  background-color: #f5f5f5;
+}
+
+.tree-node[aria-selected='true'] {
+  background-color: #e6f7ff;
+}
+
+.toggle {
+  margin-right: 5px;
+  cursor: pointer;
+  user-select: none;
+}

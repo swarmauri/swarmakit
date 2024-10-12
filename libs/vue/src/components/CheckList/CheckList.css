@@ -1,0 +1,43 @@
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+}
+
+.checklist-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.checklist-item.disabled input[type="checkbox"] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .checklist {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .checklist {
+    padding: 12px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .checklist {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .checklist {
+    padding: 20px;
+  }
+}

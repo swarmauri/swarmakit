@@ -1,0 +1,29 @@
+.status-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 4px;
+  transition: background-color 0.2s;
+}
+
+.dot.online {
+  background-color: #4caf50;
+}
+
+.dot.offline {
+  background-color: #f44336;
+}
+
+.dot.busy {
+  background-color: #ff9800;
+}
+
+.dot.idle {
+  background-color: #ffeb3b;
+}

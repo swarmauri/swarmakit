@@ -1,0 +1,18 @@
+.radio-button-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio-button-container input[type="radio"] {
+  accent-color: #007bff;
+}
+
+.radio-button-container input[type="radio"]:disabled {
+  accent-color: #ccc;
+  cursor: not-allowed;
+}
+
+.radio-button-container label {
+  font-size: 16px;
+}

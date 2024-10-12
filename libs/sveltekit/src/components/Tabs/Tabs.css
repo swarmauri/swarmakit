@@ -1,0 +1,22 @@
+.tab-button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  outline: none;
+}
+
+.tab-button[aria-selected="true"] {
+  background-color: #dcdcdc;
+  font-weight: bold;
+}
+
+.tab-button[aria-disabled="true"] {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.tab-button:hover:not([aria-disabled="true"]) {
+  background-color: #eaeaea;
+}

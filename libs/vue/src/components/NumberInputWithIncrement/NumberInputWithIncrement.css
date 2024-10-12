@@ -1,0 +1,64 @@
+.number-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.number-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 4px;
+  width: 60px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.number-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.increment-button,
+.decrement-button {
+  padding: 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.increment-button:disabled,
+.decrement-button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .number-input {
+    width: 50px;
+    padding: 6px;
+  }
+
+  .increment-button,
+  .decrement-button {
+    padding: 6px;
+  }
+}

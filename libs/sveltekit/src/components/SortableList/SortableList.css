@@ -1,0 +1,22 @@
+.sortable-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sortable-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  cursor: move;
+}
+
+.sortable-item[aria-disabled="true"] {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.sortable-item:active {
+  background-color: #dcdcdc;
+}

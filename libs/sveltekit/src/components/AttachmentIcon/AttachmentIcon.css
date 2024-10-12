@@ -1,0 +1,21 @@
+.attachment-icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: inline-block;
+  padding: 5px;
+  user-select: none;
+}
+
+.attachment-icon[aria-disabled='true'] {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.attachment-icon:hover:not([aria-disabled='true']) {
+  color: #007bff;
+}
+
+.attachment-icon:active:not([aria-disabled='true']) {
+  color: #0056b3;
+}

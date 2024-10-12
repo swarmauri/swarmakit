@@ -1,0 +1,88 @@
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.grid-header {
+  display: contents;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.grid-header-cell {
+  padding: 10px;
+  border-bottom: 2px solid #ccc;
+  user-select: none;
+}
+
+.grid-row {
+  display: contents;
+}
+
+.grid-cell {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination-controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-controls button:hover:enabled {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .grid-header-cell {
+    font-size: 12px;
+  }
+  .grid-cell {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .grid-header-cell {
+    font-size: 14px;
+  }
+  .grid-cell {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .grid-header-cell {
+    font-size: 16px;
+  }
+  .grid-cell {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .grid-header-cell {
+    font-size: 18px;
+  }
+  .grid-cell {
+    font-size: 18px;
+  }
+}

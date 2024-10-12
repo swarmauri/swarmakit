@@ -1,0 +1,48 @@
+.podcast-player {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-controls {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 5px 15px;
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  background-color: #666;
+}
+
+button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.episode-list {
+  margin-top: 10px;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.episode-list li {
+  margin: 5px 0;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}

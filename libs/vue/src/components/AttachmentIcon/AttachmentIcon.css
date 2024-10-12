@@ -1,0 +1,49 @@
+div {
+  font-size: 24px;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+  user-select: none;
+}
+
+div.enabled {
+  background-color: transparent;
+  color: #007bff;
+}
+
+div.disabled {
+  background-color: transparent;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+div.hovered {
+  background-color: #e9ecef;
+  color: #0056b3;
+}
+
+div.clicked {
+  background-color: #e9ecef;
+  color: #0056b3;
+  transform: scale(0.98);
+}
+
+@media (max-width: 480px) {
+  div {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  div {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 769px) {
+  div {
+    font-size: 24px;
+  }
+}

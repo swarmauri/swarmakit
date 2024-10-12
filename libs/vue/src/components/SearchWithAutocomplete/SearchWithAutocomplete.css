@@ -1,0 +1,39 @@
+.search-autocomplete {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.autocomplete-list {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: -1px;
+}
+
+.autocomplete-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.autocomplete-list li.highlighted {
+  background-color: #f0f0f0;
+}
+
+.no-results {
+  color: #999;
+  margin-top: 8px;
+}

@@ -1,0 +1,28 @@
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.checklist li.checked {
+  text-decoration: line-through;
+  color: #4caf50;
+}
+
+.checklist li.unchecked {
+  color: #f44336;
+}
+
+.checklist li.partially-complete {
+  color: #ff9800;
+}
+
+.checklist input[type="checkbox"] {
+  margin-right: 10px;
+}

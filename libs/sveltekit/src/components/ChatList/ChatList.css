@@ -1,0 +1,31 @@
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.chat-item {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-item.selected {
+  background-color: #e6f7ff;
+}
+
+.chat-name {
+  font-weight: bold;
+}
+
+.chat-message {
+  color: #666;
+}
+
+.empty-message {
+  padding: 1rem;
+  text-align: center;
+  color: #999;
+}

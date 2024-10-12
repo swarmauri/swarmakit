@@ -1,0 +1,27 @@
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input[type='file'] {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.file-preview {
+  max-width: 200px;
+  max-height: 200px;
+  border: 1px solid #ddd;
+  margin-top: 0.5rem;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+}
+
+[aria-disabled='true'] input {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}

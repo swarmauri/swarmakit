@@ -1,0 +1,39 @@
+.loading-bars {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.step {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.step-bar {
+  height: 0.5rem;
+  background-color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.step-label {
+  font-size: 0.875rem;
+}
+
+.step.active .step-bar {
+  background-color: #3f51b5;
+}
+
+.step.completed .step-bar {
+  background-color: #4caf50;
+}
+
+.step.inactive .step-bar {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 600px) {
+  .step-label {
+    font-size: 0.75rem;
+  }
+}

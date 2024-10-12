@@ -1,0 +1,50 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.page-item {
+  margin: 0 5px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.page-item.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+.page-item:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  .pagination {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .pagination {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .pagination {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .pagination {
+    font-size: 18px;
+  }
+}

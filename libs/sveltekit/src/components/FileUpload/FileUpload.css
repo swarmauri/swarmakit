@@ -1,0 +1,28 @@
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.file-upload-container input[type="file"] {
+  display: none;
+}
+
+.drag-drop-area {
+  color: #666;
+  padding: 10px;
+}
+
+.is-dragging {
+  border-color: #000;
+  background-color: #f0f0f0;
+}
+
+.upload-progress {
+  margin-top: 10px;
+  color: #333;
+}

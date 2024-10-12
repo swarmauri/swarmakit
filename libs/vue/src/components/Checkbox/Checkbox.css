@@ -1,0 +1,30 @@
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-container label {
+  user-select: none;
+}
+
+input[type="checkbox"]:disabled + label {
+  color: #d6d6d6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .checkbox-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .checkbox-container label {
+    margin-top: 0.5rem;
+  }
+}

@@ -1,0 +1,51 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.breadcrumb ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.breadcrumb li {
+  position: relative;
+  cursor: pointer;
+}
+
+.breadcrumb .separator {
+  margin: 0 8px;
+}
+
+.breadcrumb .dropdown {
+  position: relative;
+}
+
+.breadcrumb .dropdown-toggle::after {
+  content: ' ▼';
+  font-size: 10px;
+}
+
+.breadcrumb .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+}
+
+.breadcrumb .dropdown-menu li {
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.breadcrumb .dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}

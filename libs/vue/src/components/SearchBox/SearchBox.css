@@ -1,0 +1,37 @@
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .search-input {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .search-input {
+    font-size: 1.1rem;
+  }
+}

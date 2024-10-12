@@ -1,0 +1,16 @@
+.date-time-picker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input[type='date'],
+input[type='time'] {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+[aria-disabled='true'] input {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}

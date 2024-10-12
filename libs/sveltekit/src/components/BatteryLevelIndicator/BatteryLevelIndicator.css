@@ -1,0 +1,35 @@
+.battery-level-indicator {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.battery-icon {
+  width: 50px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  position: relative;
+  margin-right: 8px;
+}
+
+.battery-fill {
+  height: 100%;
+  background-color: #76c7c0;
+}
+
+.full .battery-fill {
+  background-color: #4caf50;
+}
+
+.low .battery-fill {
+  background-color: #ffeb3b;
+}
+
+.critical .battery-fill {
+  background-color: #f44336;
+}
+
+.charging-indicator {
+  font-size: 1.2rem;
+}

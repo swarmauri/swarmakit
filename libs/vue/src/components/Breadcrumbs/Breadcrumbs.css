@@ -1,0 +1,24 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.breadcrumbs li {
+  cursor: pointer;
+}
+
+.breadcrumbs .separator {
+  margin: 0 8px;
+}
+
+.breadcrumbs .active span {
+  font-weight: bold;
+}

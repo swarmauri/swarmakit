@@ -1,0 +1,25 @@
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f9fa;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.tab-bar.active {
+  background-color: #e9ecef;
+}
+
+.tab-bar.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.tab-bar .tab {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tab-bar .tab:hover {
+  background-color: #dee2e6;
+}

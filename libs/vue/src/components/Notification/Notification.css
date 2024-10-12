@@ -1,0 +1,64 @@
+.notification {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  position: relative;
+  max-width: 90%;
+}
+
+.notification-icon {
+  margin-right: 10px;
+}
+
+.notification-message {
+  flex-grow: 1;
+}
+
+.dismiss-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+}
+
+.notification--success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.notification--error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.notification--warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.notification--info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+@media (max-width: 480px) {
+  .notification {
+    padding: 8px 15px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .notification {
+    padding: 9px 18px;
+  }
+}
+
+@media (min-width: 769px) {
+  .notification {
+    padding: 10px 20px;
+  }
+}

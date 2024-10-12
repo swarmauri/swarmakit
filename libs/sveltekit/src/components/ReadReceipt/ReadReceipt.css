@@ -1,0 +1,28 @@
+.read-receipt {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.read-receipt .icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+}
+
+.read-receipt.status-seen .icon {
+  background-color: #4caf50;
+}
+
+.read-receipt.status-unseen .icon {
+  background-color: #9e9e9e;
+}
+
+.read-receipt.status-delivered .icon {
+  background-color: #2196f3;
+}
+
+.read-receipt.status-failed .icon {
+  background-color: #f44336;
+}

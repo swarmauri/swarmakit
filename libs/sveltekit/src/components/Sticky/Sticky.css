@@ -1,0 +1,32 @@
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  transition: all 0.3s;
+  padding: 10px;
+}
+
+.sticky.scrolled {
+  background-color: #e9ecef;
+}
+
+.sticky.expanded {
+  height: 200px;
+}
+
+.sticky.collapsed {
+  height: 60px;
+}
+
+.sticky button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+}
+
+.sticky .content {
+  display: flex;
+  flex-direction: column;
+}

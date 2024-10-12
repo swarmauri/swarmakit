@@ -1,0 +1,34 @@
+.poll-results {
+  font-size: 1rem;
+  color: #333;
+}
+
+.poll-option {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 1em;
+  margin: 0 0.5em;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.percentage {
+  min-width: 3em;
+  text-align: right;
+}
+
+.status {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+@media (max-width: 600px) {
+  .poll-results {
+    font-size: 0.9rem;
+  }
+}

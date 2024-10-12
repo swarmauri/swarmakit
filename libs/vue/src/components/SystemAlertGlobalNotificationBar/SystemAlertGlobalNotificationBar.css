@@ -1,0 +1,33 @@
+.notification-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.notification-bar.success {
+  background-color: #4caf50;
+}
+
+.notification-bar.error {
+  background-color: #f44336;
+}
+
+.notification-bar.warning {
+  background-color: #ff9800;
+}
+
+.notification-bar.info {
+  background-color: #2196f3;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 1.5em;
+}
+
+.message {
+  flex-grow: 1;
+}

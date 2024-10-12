@@ -1,0 +1,45 @@
+.upload-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: #2196f3;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.upload.uploading .progress-bar {
+  background-color: #4caf50;
+}
+
+.upload.downloading .progress-bar {
+  background-color: #2196f3;
+}
+
+.upload.completed .progress-bar {
+  background-color: #4caf50;
+}
+
+.upload.paused .progress-bar {
+  background-color: #ff9800;
+}
+
+.upload.failed .progress-bar {
+  background-color: #f44336;
+}

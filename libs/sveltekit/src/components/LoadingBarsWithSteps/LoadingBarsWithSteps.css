@@ -1,0 +1,36 @@
+.loading-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+}
+
+.bar {
+  flex: 1;
+  height: 1rem;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.label {
+  width: 4rem;
+  text-align: right;
+}
+
+.step-active .bar {
+  background-color: #ff9800;
+}
+
+.step-completed .bar {
+  background-color: #4caf50;
+}
+
+.step-inactive .bar {
+  background-color: #e0e0e0;
+}

@@ -1,0 +1,35 @@
+.scroll-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.scroll-button[aria-pressed="true"] {
+  background-color: #ddd;
+}
+
+.scroll-button button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.scroll-button button:hover {
+  background-color: #0056b3;
+}
+
+.scroll-button[aria-pressed="true"] {
+  background-color: #0056b3;
+}
+
+.scroll-button[is-visible="true"] {
+  visibility: visible;
+}

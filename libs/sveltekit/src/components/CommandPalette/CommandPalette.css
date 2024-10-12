@@ -1,0 +1,38 @@
+.command-palette {
+  position: relative;
+  display: none;
+}
+
+.command-palette.open {
+  display: block;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.command-palette input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.command-palette ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.command-palette li {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.command-palette li.active {
+  background-color: #f0f0f0;
+}

@@ -1,0 +1,26 @@
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.icon {
+  padding: 0.5rem;
+}
+
+.icon.sent {
+  color: #007bff;
+}
+
+.icon.delivered {
+  color: #28a745;
+}
+
+.icon.failed {
+  color: #dc3545;
+}
+
+.icon.read {
+  color: #17a2b8;
+}

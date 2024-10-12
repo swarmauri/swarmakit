@@ -1,0 +1,64 @@
+.collapsible-menu-list {
+  width: 100%;
+}
+
+.menu-header {
+  width: 100%;
+  background-color: #f3f3f3;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-header:hover {
+  background-color: #e0e0e0;
+}
+
+.menu-header:active {
+  background-color: #d0d0d0;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ccc;
+  transition: max-height 0.3s ease;
+}
+
+.menu-item {
+  padding: 8px 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 600px) {
+  .menu-header {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .menu-header {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .menu-header {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .menu-header {
+    font-size: 18px;
+  }
+}

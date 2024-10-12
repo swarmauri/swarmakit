@@ -1,0 +1,63 @@
+.wizard-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.wizard-steps {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.wizard-step {
+  flex: 1;
+  text-align: center;
+}
+
+.wizard-step button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wizard-step.completed button {
+  background-color: #e0f7fa;
+  font-weight: bold;
+}
+
+.wizard-step.current button {
+  background-color: #b2ebf2;
+  font-weight: bold;
+}
+
+.wizard-step.disabled button {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .wizard-step button {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .wizard-step button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .wizard-step button {
+    font-size: 18px;
+  }
+}

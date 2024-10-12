@@ -1,0 +1,40 @@
+.toast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.toast p {
+  margin: 0;
+}
+
+.toast button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.toast.success {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.toast.error {
+  background-color: #f44336;
+  color: #ffffff;
+}
+
+.toast.warning {
+  background-color: #ff9800;
+  color: #ffffff;
+}
+
+.toast.info {
+  background-color: #2196f3;
+  color: #ffffff;
+}

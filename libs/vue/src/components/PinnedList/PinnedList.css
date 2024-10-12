@@ -1,0 +1,63 @@
+.pinned-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.list-item.pinned {
+  border-color: #007bff;
+  background-color: #e7f0ff;
+}
+
+.list-item.selected {
+  border-color: #28a745;
+  background-color: #e0ffe0;
+}
+
+.list-item:hover {
+  background-color: #f0f0f0;
+}
+
+.pin-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .list-item {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .list-item {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .list-item {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .list-item {
+    font-size: 18px;
+  }
+}

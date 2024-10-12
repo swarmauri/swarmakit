@@ -1,0 +1,39 @@
+.signal-strength-indicator {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 10px;
+  margin: 0 2px;
+  background-color: #e0e0e0;
+  transition: background-color 0.2s, height 0.2s;
+}
+
+.bar.active {
+  background-color: #4caf50;
+}
+
+.bar.inactive {
+  height: 10px;
+}
+
+.bar:nth-child(1) {
+  height: 12px;
+}
+
+.bar:nth-child(2) {
+  height: 18px;
+}
+
+.bar:nth-child(3) {
+  height: 24px;
+}
+
+.bar:nth-child(4) {
+  height: 30px;
+}
+
+.bar:nth-child(5) {
+  height: 36px;
+}

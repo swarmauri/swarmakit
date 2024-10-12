@@ -1,0 +1,46 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.timeline-item:focus {
+  border-color: #007bff;
+}
+
+.timeline-item:hover {
+  background-color: #f5f5f5;
+}
+
+.timeline-item .content h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.timeline-item .content p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.status {
+  margin-left: auto;
+  padding: 2px 5px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.status.completed {
+  background-color: #28a745;
+  color: white;
+}

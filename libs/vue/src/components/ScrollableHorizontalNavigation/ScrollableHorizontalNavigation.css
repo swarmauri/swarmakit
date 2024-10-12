@@ -1,0 +1,51 @@
+.scrollable-nav {
+  overflow-x: auto;
+  white-space: nowrap;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+
+.nav-list {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.nav-list a:hover {
+  background-color: #eaeaea;
+}
+
+.nav-list a.active {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
+
+@media (max-width: 480px) {
+  .nav-list a {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav-list a {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-list a {
+    padding: 12px;
+  }
+}

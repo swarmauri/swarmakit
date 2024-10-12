@@ -1,0 +1,31 @@
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.textarea-container.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+textarea {
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  width: 100%;
+}
+
+textarea:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .textarea-container {
+    width: 90%;
+  }
+}

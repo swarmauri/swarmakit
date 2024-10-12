@@ -1,0 +1,66 @@
+.image-viewer {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.viewer-image {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.viewer-image.zoomed {
+  transform: scale(1.5);
+}
+
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #777;
+}
+
+.control-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.control-button:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  .control-button {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .control-button {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .control-button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .control-button {
+    font-size: 18px;
+  }
+}

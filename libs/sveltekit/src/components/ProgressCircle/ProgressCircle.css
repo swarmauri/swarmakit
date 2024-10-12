@@ -1,0 +1,31 @@
+.progress-circle {
+  transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-width: 10;
+}
+
+.progress-circle-fg {
+  fill: none;
+  stroke-width: 10;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.progress-circle-fg.complete {
+  stroke: #76c7c0;
+}
+
+.progress-circle-fg.incomplete {
+  stroke: #e0e0e0;
+}
+
+.progress-circle-fg.paused {
+  stroke: #ffc107;
+}
+
+.progress-circle-fg.active {
+  stroke: #2196f3;
+}

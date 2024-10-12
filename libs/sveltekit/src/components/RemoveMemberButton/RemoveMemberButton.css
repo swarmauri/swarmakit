@@ -1,0 +1,23 @@
+.remove-member-button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-member-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.remove-member-button:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+.remove-member-button:active:not(:disabled) {
+  background-color: #bd2130;
+}

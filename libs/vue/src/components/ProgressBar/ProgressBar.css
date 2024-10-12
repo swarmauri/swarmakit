@@ -1,0 +1,22 @@
+.progress-bar-container {
+  width: 100%;
+  height: 1rem;
+  background-color: #e0e0e0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width 0.2s ease;
+}
+
+.progress-bar-container:hover .progress-bar {
+  background-color: #2563eb;
+}
+
+.progress-bar-container[aria-disabled="true"] .progress-bar {
+  background-color: #9ca3af;
+}

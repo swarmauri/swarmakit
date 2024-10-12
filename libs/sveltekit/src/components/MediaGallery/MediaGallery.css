@@ -1,0 +1,47 @@
+.gallery-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnail,
+.zoomed {
+  max-width: 100%;
+  max-height: 400px;
+  cursor: pointer;
+}
+
+.slideshow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #444;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  background-color: #666;
+}

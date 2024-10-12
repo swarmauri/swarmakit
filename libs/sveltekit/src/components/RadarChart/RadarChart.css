@@ -1,0 +1,21 @@
+.radar-chart {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-message,
+.empty-message {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+
+polygon {
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+polygon:hover {
+  fill: rgba(173, 216, 230, 0.7);
+}

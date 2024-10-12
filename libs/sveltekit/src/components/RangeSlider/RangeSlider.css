@@ -1,0 +1,18 @@
+.range-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.range-slider-container input[type="range"] {
+  width: 100%;
+}
+
+.range-slider-container input[type="range"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.range-slider-container output {
+  font-size: 16px;
+}

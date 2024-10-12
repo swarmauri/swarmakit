@@ -1,0 +1,23 @@
+.rating-stars {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 2rem;
+  color: #cfcfcf;
+  transition: color 0.2s;
+}
+
+.star.selected {
+  color: #ffd700;
+}
+
+.star.hover {
+  color: #ffc107;
+}
+
+.rating-stars[state="inactive"] .star {
+  pointer-events: none;
+  color: #e0e0e0;
+}

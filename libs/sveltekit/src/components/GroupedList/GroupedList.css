@@ -1,0 +1,44 @@
+.grouped-list {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.group {
+  margin-bottom: 15px;
+}
+
+.group-title {
+  padding: 10px;
+  background-color: #eee;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.group-title:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  background-color: #f9f9f9;
+}
+
+li.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+li:hover {
+  background-color: #e0e0e0;
+}

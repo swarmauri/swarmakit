@@ -1,0 +1,29 @@
+.banner {
+  padding: 15px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.banner.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.banner button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #721c24;
+}
+
+.banner button:last-child {
+  font-size: 1.5rem;
+  line-height: 1;
+}

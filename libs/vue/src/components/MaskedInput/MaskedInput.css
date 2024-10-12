@@ -1,0 +1,39 @@
+.masked-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.masked-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.masked-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.masked-input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .masked-input {
+    padding: 6px;
+  }
+}

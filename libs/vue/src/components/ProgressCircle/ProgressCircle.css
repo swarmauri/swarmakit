@@ -1,0 +1,35 @@
+.progress-circle {
+  width: 100px;
+  height: 100px;
+}
+
+.progress-circle svg {
+  transform: rotate(-90deg);
+}
+
+.background {
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-width: 4;
+}
+
+.progress {
+  fill: none;
+  stroke: #3b82f6;
+  stroke-width: 4;
+  stroke-dasharray: 88;
+  transition: stroke-dashoffset 0.35s ease;
+  transform-origin: center;
+}
+
+.progress-circle[state="paused"] .progress {
+  stroke: #f97316;
+}
+
+.progress-circle[state="complete"] .progress {
+  stroke: #10b981;
+}
+
+.progress-circle[state="incomplete"] .progress {
+  stroke: #ef4444;
+}

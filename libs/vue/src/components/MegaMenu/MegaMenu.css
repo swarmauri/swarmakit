@@ -1,0 +1,42 @@
+.mega-menu {
+  position: relative;
+  display: flex;
+}
+
+.mega-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.mega-menu li {
+  position: relative;
+  margin-right: 20px;
+}
+
+.mega-menu a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  display: block;
+}
+
+.mega-menu a.active,
+.mega-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.mega-menu li[aria-expanded="true"] .submenu {
+  display: block;
+}

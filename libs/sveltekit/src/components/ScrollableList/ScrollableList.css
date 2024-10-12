@@ -1,0 +1,31 @@
+.scrollable-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.scrollable-list div {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.scrollable-list div:hover {
+  background-color: #e0e0e0;
+}
+
+.scrollable-list div:last-child {
+  border-bottom: none;
+}
+
+.scrollable-list .item-disabled {
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.scrollable-list[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+}

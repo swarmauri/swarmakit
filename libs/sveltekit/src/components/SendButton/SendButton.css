@@ -1,0 +1,26 @@
+.send-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-button:disabled,
+.send-button[aria-disabled='true'] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.send-button:hover:not(:disabled),
+.send-button[aria-disabled='false']:hover {
+  background-color: #0056b3;
+}
+
+.send-button:active:not(:disabled),
+.send-button[aria-disabled='false']:active {
+  background-color: #004494;
+}

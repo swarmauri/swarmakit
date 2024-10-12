@@ -1,0 +1,25 @@
+.slider {
+  width: 100%;
+  appearance: none;
+  height: 8px;
+  background: #ddd;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #2196f3;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider:disabled {
+  background: #f5f5f5;
+}
+
+.slider:disabled::-webkit-slider-thumb {
+  background: #bbb;
+}

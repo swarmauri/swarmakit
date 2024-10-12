@@ -1,0 +1,30 @@
+.date-picker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date-range-picker {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+input[type="date"],
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .date-picker-container {
+    gap: 5px;
+  }
+}

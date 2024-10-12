@@ -1,0 +1,53 @@
+.group-member-list {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.toggle-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.toggle-button:focus {
+  outline: 2px solid #0056b3;
+}
+
+.member-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.member-item {
+  padding: 0.25rem 0;
+}
+
+.no-members {
+  color: #888;
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .toggle-button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .toggle-button {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .toggle-button {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,40 @@
+.delivery-status-icon {
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delivery-status-icon.sent {
+  color: #007bff;
+}
+
+.delivery-status-icon.delivered {
+  color: #28a745;
+}
+
+.delivery-status-icon.failed {
+  color: #dc3545;
+}
+
+.delivery-status-icon.read {
+  color: #6c757d;
+}
+
+@media (max-width: 480px) {
+  .delivery-status-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .delivery-status-icon {
+    font-size: 1.35rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .delivery-status-icon {
+    font-size: 1.5rem;
+  }
+}

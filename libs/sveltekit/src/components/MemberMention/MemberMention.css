@@ -1,0 +1,13 @@
+.member-mention {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.member-mention[aria-pressed="true"] {
+  background-color: #007bff;
+  color: white;
+}

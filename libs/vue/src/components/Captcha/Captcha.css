@@ -1,0 +1,48 @@
+.captcha-content {
+  display: flex;
+  align-items: center;
+}
+
+.captcha-content img {
+  margin-right: 1rem;
+  max-height: 50px;
+}
+
+.captcha-content input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
+
+@media (max-width: 600px) {
+  .captcha-content {
+    flex-direction: column;
+  }
+
+  .captcha-content img {
+    margin-bottom: 1rem;
+  }
+}

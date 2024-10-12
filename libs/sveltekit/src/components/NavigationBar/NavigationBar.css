@@ -1,0 +1,47 @@
+.navigation-bar {
+  position: relative;
+}
+
+.nav-trigger {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.nav-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+.nav-items.expanded {
+  display: block;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+}
+
+.nav-item {
+  padding: 8px;
+}
+
+.item-link {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #333;
+  cursor: pointer;
+}
+
+.nav-item.active .item-link,
+.item-link:hover {
+  background-color: #f0f0f0;
+}

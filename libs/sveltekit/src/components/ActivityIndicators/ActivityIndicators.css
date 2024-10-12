@@ -1,0 +1,23 @@
+.activity-indicator {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.activity-indicator.loading {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.activity-indicator.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.activity-indicator.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}

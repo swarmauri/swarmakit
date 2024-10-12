@@ -1,0 +1,50 @@
+.off-canvas-navigation {
+  position: relative;
+}
+
+.nav-trigger {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.nav-panel {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+}
+
+.nav-panel.visible {
+  left: 0;
+}
+
+.nav-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  padding: 16px;
+}
+
+.item-link {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #333;
+  cursor: pointer;
+}
+
+.nav-item.active .item-link,
+.item-link:hover {
+  background-color: #f0f0f0;
+}

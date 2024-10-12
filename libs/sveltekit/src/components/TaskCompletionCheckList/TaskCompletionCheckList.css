@@ -1,0 +1,27 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-item.checked {
+  background-color: #e0f7fa;
+}
+
+.task-item.unchecked {
+  background-color: #ffebee;
+}
+
+.task-item.partially-complete {
+  background-color: #fff3e0;
+}
+
+input[type="checkbox"] {
+  margin-right: 8px;
+}

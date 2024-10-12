@@ -1,0 +1,67 @@
+.actionable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.list-item:hover {
+  background-color: #f0f0f0;
+}
+
+.list-item.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.list-item.loading {
+  cursor: wait;
+}
+
+.action-button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .actionable-list {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .actionable-list {
+    padding: 12px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .actionable-list {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .actionable-list {
+    padding: 20px;
+  }
+}

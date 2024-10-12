@@ -1,0 +1,36 @@
+.signal-strength {
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 10px;
+  height: 10px;
+  background-color: #d3d3d3;
+  margin: 0 2px;
+  transition: background-color 0.2s, height 0.2s;
+}
+
+.bar.active {
+  background-color: #4caf50;
+}
+
+.bar:nth-child(1) {
+  height: 20%;
+}
+
+.bar:nth-child(2) {
+  height: 40%;
+}
+
+.bar:nth-child(3) {
+  height: 60%;
+}
+
+.bar:nth-child(4) {
+  height: 80%;
+}
+
+.bar:nth-child(5) {
+  height: 100%;
+}

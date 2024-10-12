@@ -1,0 +1,11 @@
+.countdown-timer {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown-timer span {
+  color: #333;
+}

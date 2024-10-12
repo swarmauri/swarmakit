@@ -1,0 +1,59 @@
+.file-upload-container {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  transition: border-color 0.3s;
+}
+
+.file-upload-container.drag-active {
+  border-color: #007bff;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.file-list {
+  margin-top: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #f3f3f3;
+  height: 5px;
+  margin-top: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #007bff;
+  transition: width 0.3s;
+}
+
+@media (max-width: 600px) {
+  .file-upload-container {
+    padding: 10px;
+  }
+  
+  button {
+    padding: 6px 12px;
+  }
+}

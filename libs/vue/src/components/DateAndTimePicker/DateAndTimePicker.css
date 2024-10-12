@@ -1,0 +1,24 @@
+.date-time-picker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .date-time-picker-container {
+    gap: 5px;
+  }
+}

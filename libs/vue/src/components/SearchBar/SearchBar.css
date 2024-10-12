@@ -1,0 +1,22 @@
+.search-bar {
+  display: inline-block;
+  position: relative;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.search-bar.focused input {
+  border-color: #007bff;
+}
+
+.search-bar.disabled input {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}

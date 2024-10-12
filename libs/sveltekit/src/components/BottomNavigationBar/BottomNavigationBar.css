@@ -1,0 +1,35 @@
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  color: #333;
+}
+
+.nav-item.selected {
+  color: #007bff;
+}
+
+.nav-item.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.nav-item:hover:not(.disabled) {
+  background-color: #f0f0f0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}

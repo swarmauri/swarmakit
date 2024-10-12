@@ -1,0 +1,24 @@
+.video {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+.status {
+  font-size: 1.2em;
+  padding: 20px;
+}
+
+.uploading {
+  color: blue;
+}
+
+.error {
+  color: red;
+}

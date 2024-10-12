@@ -1,0 +1,41 @@
+.upload {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.status-indicator {
+  flex-grow: 1;
+}
+
+.upload button {
+  margin-left: 10px;
+  background: none;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.upload.uploading {
+  background-color: #e0f7fa;
+}
+
+.upload.downloading {
+  background-color: #e8f5e9;
+}
+
+.upload.completed {
+  background-color: #f1f8e9;
+}
+
+.upload.paused {
+  background-color: #fffde7;
+}
+
+.upload.failed {
+  background-color: #ffebee;
+}

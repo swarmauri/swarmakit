@@ -1,0 +1,36 @@
+.popover-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.popover-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+@media (max-width: 480px) {
+  .popover-content {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .popover-content {
+    width: 70%;
+  }
+}
+
+@media (min-width: 769px) {
+  .popover-content {
+    width: 50%;
+  }
+}

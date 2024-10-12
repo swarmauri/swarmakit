@@ -1,0 +1,38 @@
+.countdown-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.time-display {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+button {
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+  .countdown-timer {
+    font-size: 1rem;
+  }
+
+  .time-display {
+    font-size: 1.5rem;
+  }
+}

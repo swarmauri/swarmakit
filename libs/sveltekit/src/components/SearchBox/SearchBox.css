@@ -1,0 +1,18 @@
+.search-box {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+input[type='text']:focus {
+  border-color: #007bff;
+}

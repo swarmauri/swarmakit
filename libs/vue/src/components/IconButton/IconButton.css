@@ -1,0 +1,46 @@
+.icon-button {
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.icon-button-disabled {
+  background-color: #d6d6d6;
+  color: #8c8c8c;
+  cursor: not-allowed;
+}
+
+.icon-button-active {
+  background-color: #0056b3;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .icon-button {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .icon-button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .icon-button {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  .icon-button {
+    font-size: 2rem;
+  }
+}

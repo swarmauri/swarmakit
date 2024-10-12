@@ -1,0 +1,34 @@
+.badge-with-counts {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4em 0.8em;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: #ddd;
+  color: #333;
+  position: relative;
+}
+
+.count {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.2em 0.6em;
+  margin-left: 0.5em;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .badge-with-counts {
+    font-size: 0.7rem;
+    padding: 0.3em 0.6em;
+  }
+
+  .count {
+    font-size: 0.6rem;
+    padding: 0.1em 0.5em;
+  }
+}

@@ -1,0 +1,35 @@
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 16px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.chip.selectable[aria-selected='true'] {
+  background-color: #c0c0ff;
+}
+
+.chip.selectable:hover {
+  background-color: #d0d0ff;
+}
+
+.chip.removable {
+  padding-right: 5px;
+}
+
+.remove-btn {
+  margin-left: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}

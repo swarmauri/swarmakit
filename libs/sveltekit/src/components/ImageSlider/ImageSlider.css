@@ -1,0 +1,32 @@
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.slide {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.slider:hover .slide {
+  transform: scale(1.05);
+}

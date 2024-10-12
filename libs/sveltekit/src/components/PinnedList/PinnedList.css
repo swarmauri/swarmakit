@@ -1,0 +1,35 @@
+.pinned-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pinned-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  background-color: #f9f9f9;
+}
+
+.pinned-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.pinned-list li.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.pinned-list button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.pinned-list button:hover {
+  text-decoration: underline;
+}
