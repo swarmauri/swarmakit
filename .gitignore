@@ -129,3 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 /app/storybook-static
+
+*storybook.log
