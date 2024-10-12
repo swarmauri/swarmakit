@@ -1,8 +1,9 @@
 import ToggleSwitch from './ToggleSwitch.svelte';
 
 export default {
-  title: 'Forms/ToggleSwitch',
+  title: 'Components/Forms/ToggleSwitch',
   component: ToggleSwitch,
+  tags: ['autodocs'],
   argTypes: {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },

@@ -1,29 +1,38 @@
 <script lang="ts">
-  export interface Item {
+  import { createEventDispatcher } from 'svelte';
+
+  export type ListItem = {
     id: number;
     text: string;
-    disabled: boolean;
-  }
+    disabled?: boolean;
+  };
 
-  export let items: Item[] = [];
-  export let onItemSelect: (id: number) => void;
-  export let isDisabled: boolean = false;
+  export let items: ListItem[] = [];
+  export let disabled: boolean = false;
 
-  function handleSelect(item: Item) {
-    if (!item.disabled && !isDisabled) {
-      onItemSelect(item.id);
+  const dispatch = createEventDispatcher();
+
+  function handleScroll(event: Event) {
+    const target = event.target as HTMLElement;
+    if (target.scrollHeight - target.scrollTop === target.clientHeight) {
+      dispatch('endOfList');
     }
   }
 </script>
 
-<div class="scrollable-list" role="listbox" aria-disabled={isDisabled}>
+<div
+  class="scrollable-list"
+  on:scroll={handleScroll}
+  aria-disabled={disabled}
+  tabindex={disabled ? -1 : 0}
+>
   {#each items as item (item.id)}
     <div
-      class:item-disabled={item.disabled || isDisabled}
-      on:click={() => handleSelect(item)}
-      on:keydown={(e) => e.key === 'Enter' && handleSelect(item)}
-      role="option"
-      tabindex="0"
+      class="scrollable-list-item"
+      class:hover={!disabled}
+      class:disabled={item.disabled}
+      role="listitem"
+      aria-disabled={item.disabled}
     >
       {item.text}
     </div>

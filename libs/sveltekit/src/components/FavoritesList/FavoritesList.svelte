@@ -1,47 +1,38 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  export type ListState = 'starred' | 'unstarred' | 'hover' | 'selected';
+  export let items: { id: number; title: string; isStarred: boolean }[] = [];
+  export let state: ListState = 'unstarred';
 
-  export enum ListState {
-    Starred = 'starred',
-    Unstarred = 'unstarred',
-    Hover = 'hover',
-    Selected = 'selected'
+  let selectedItem: number | null = null;
+
+  function toggleStar(itemId: number) {
+    const item = items.find(item => item.id === itemId);
+    if (item) {
+      item.isStarred = !item.isStarred;
+    }
   }
 
-  export let state: ListState = ListState.Unstarred;
-  export let items: { title: string; starred: boolean; }[] = [];
-
-  const dispatch = createEventDispatcher();
-  let selectedIndex: number | null = null;
-
-  function toggleStar(index: number) {
-    items[index].starred = !items[index].starred;
-    dispatch('toggleStar', { index, starred: items[index].starred });
-  }
-
-  function selectItem(index: number) {
-    selectedIndex = index;
-    dispatch('select', { index });
+  function selectItem(itemId: number) {
+    selectedItem = itemId;
   }
 </script>
 
 <ul class="favorites-list">
-  {#each items as { title, starred }, index}
+  {#each items as { id, title, isStarred }}
     <li
-      class="list-item"
-      class:selected={state === ListState.Selected && selectedIndex === index}
-      on:click={() => toggleStar(index)}
-      on:keydown={(e) => e.key === 'Enter' && toggleStar(index)}
-      tabindex="0"
+      class={`list-item ${isStarred ? 'starred' : 'unstarred'} ${selectedItem === id ? 'selected' : ''}`}
+      on:click={() => toggleStar(id)}
+      on:keydown={(e) => e.key === 'Enter' && toggleStar(id)}
       role="button"
+      tabindex="0"
     >
       <div
-        class="item-header"
-        on:mouseenter={() => state = ListState.Hover}
-        on:mouseleave={() => state = ListState.Unstarred}
+        class="list-title"
+        on:mouseenter={() => selectItem(id)}
+        on:mouseleave={() => selectItem(null)}
       >
         {title}
-        <span class="star" class:starred={starred}>★</span>
+        <span class="star-icon">{isStarred ? '⭐' : '☆'}</span>
       </div>
     </li>
   {/each}

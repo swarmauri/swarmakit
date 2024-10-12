@@ -1,44 +1,41 @@
 .grouped-list {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+  margin: 20px;
 }
 
 .group {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .group-title {
   padding: 10px;
   background-color: #eee;
   cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  outline: none;
 }
 
-.group-title:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #007bff;
+.group-title[aria-expanded="true"] {
+  background-color: #ccc;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
-  margin: 10px 0 0 0;
+  margin: 0;
 }
 
-li {
+.list-item {
   padding: 10px;
   border: 1px solid #ddd;
-  margin-bottom: 5px;
+  margin: 5px 0;
   background-color: #f9f9f9;
+  cursor: pointer;
 }
 
-li.selected {
-  background-color: #007bff;
-  color: white;
+.list-item:hover {
+  background-color: #e0f7fa;
 }
 
-li:hover {
-  background-color: #e0e0e0;
+.list-item[aria-selected="true"] {
+  background-color: #b2ebf2;
+  font-weight: bold;
 }

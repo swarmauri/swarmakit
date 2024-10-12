@@ -2,38 +2,45 @@
   import { onMount } from 'svelte';
 
   export let items: string[] = [];
-  export let isLoadingMore: boolean = false;
-  export let hasMoreItems: boolean = true;
-  export let loadMoreItems: () => void;
+  export let isLoading: boolean = false;
+  export let hasMore: boolean = true;
+  export let loadMore: () => void;
 
-  let listContainer: HTMLDivElement;
-
-  function handleScroll() {
-    const bottomThreshold = listContainer.scrollHeight - listContainer.scrollTop - listContainer.clientHeight < 100;
-    if (bottomThreshold && hasMoreItems && !isLoadingMore) {
-      loadMoreItems();
-    }
-  }
+  let observer: IntersectionObserver;
 
   onMount(() => {
-    listContainer.addEventListener('scroll', handleScroll);
-    return () => listContainer.removeEventListener('scroll', handleScroll);
+    const lastItem = document.querySelector('.list-end');
+    if (lastItem) {
+      observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && hasMore && !isLoading) {
+            loadMore();
+          }
+        });
+      });
+      observer.observe(lastItem);
+    }
+
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   });
 </script>
 
-<div class="virtualized-list" bind:this={listContainer}>
-  {#each items as item, index}
-    <div class="list-item" tabindex="0">
-      {item}
-    </div>
+<ul class="virtualized-list" role="list">
+  {#each items as item}
+    <li class="list-item" role="listitem">{item}</li>
   {/each}
-  {#if isLoadingMore}
-    <div class="loading">Loading more items...</div>
+  <li class="list-end" aria-hidden="true"></li>
+  {#if isLoading}
+    <li role="alert">Loading...</li>
   {/if}
-  {#if !hasMoreItems}
-    <div class="end-of-list">End of List</div>
+  {#if !hasMore && !isLoading}
+    <li role="status">End of List</li>
   {/if}
-</div>
+</ul>
 
 <style lang="css">
   @import './VirtualizedList.css';

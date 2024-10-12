@@ -1,18 +1,13 @@
 import RatingStars from './RatingStars.svelte';
 
 export default {
-  title: 'Indicators/RatingStars',
+  title: 'Components/Indicators/RatingStars',
   component: RatingStars,
+  tags: ['autodocs'],
   argTypes: {
-    rating: {
-      control: { type: 'number', min: 0, max: 5 },
-    },
-    maxRating: {
-      control: { type: 'number', min: 1, max: 10 },
-    },
-    interactive: {
-      control: { type: 'boolean' },
-    },
+    rating: { control: { type: 'number', min: 0, max: 5 } },
+    maxRating: { control: { type: 'number', min: 1, max: 10 } },
+    interactive: { control: 'boolean' }
   },
 };
 
@@ -30,14 +25,14 @@ Default.args = {
 
 export const Hover = Template.bind({});
 Hover.args = {
-  rating: 0,
+  rating: 4,
   maxRating: 5,
   interactive: true,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  rating: 4,
+  rating: 5,
   maxRating: 5,
   interactive: false,
 };

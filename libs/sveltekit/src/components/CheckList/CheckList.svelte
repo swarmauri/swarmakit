@@ -1,43 +1,32 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export enum CheckListState {
-    Checked = 'checked',
-    Unchecked = 'unchecked',
-    PartiallyChecked = 'partially-checked',
-    Disabled = 'disabled'
-  }
-
-  export let state: CheckListState = CheckListState.Unchecked;
-  export let items: { label: string; checked?: boolean; disabled?: boolean }[] = [];
-
-  const dispatch = createEventDispatcher();
+  export type CheckListState = 'checked' | 'unchecked' | 'partially-checked' | 'disabled';
+  export let state: CheckListState = 'unchecked';
+  export let items: { label: string; checked: boolean }[] = [];
+  export let disabled: boolean = false;
 
   function toggleCheck(index: number) {
-    if (items[index].disabled || state === CheckListState.Disabled) return;
-    items[index].checked = !items[index].checked;
-    dispatch('toggle', { index, checked: items[index].checked });
+    if (!disabled) {
+      items[index].checked = !items[index].checked;
+    }
   }
 
-  function handleKeyDown(event: KeyboardEvent, index: number) {
-    if ((event.key === 'Enter' || event.key === ' ') && !items[index].disabled) {
+  function handleKey(event: KeyboardEvent, index: number) {
+    if ((event.key === 'Enter' || event.key === ' ') && !disabled) {
       toggleCheck(index);
     }
   }
 </script>
 
-<div class="checklist">
-  {#each items as { label, checked, disabled }, index}
+<div class={`checklist checklist-${state}`}>
+  {#each items as { label, checked }, index}
     <div
       class="checklist-item"
       role="checkbox"
+      tabindex={disabled ? -1 : 0}
       aria-checked={checked}
       aria-disabled={disabled}
-      tabindex={disabled ? -1 : 0}
       on:click={() => toggleCheck(index)}
-      on:keydown={(event) => handleKeyDown(event, index)}
-      class:checked={checked}
-      class:disabled={disabled}
+      on:keydown={(event) => handleKey(event, index)}
     >
       <input type="checkbox" bind:checked disabled={disabled} />
       <label>{label}</label>

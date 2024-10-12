@@ -1,51 +1,56 @@
 import Stepper from './Stepper.svelte';
-import type { StepState } from './Stepper.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/Stepper',
+const meta: Meta = {
+  title: 'Components/Indicators/Stepper',
   component: Stepper,
+  tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: {
-        type: 'select',
-        options: Object.values(StepState),
-      },
-    },
-    currentStepIndex: {
-      control: { type: 'number', min: 0 },
+    steps: {
+      control: { type: 'object' },
     },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Stepper,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: StepState.Disabled,
-  steps: ['Step 1', 'Step 2', 'Step 3'],
-  currentStepIndex: 0,
+  steps: [
+    { label: 'Step 1', state: 'completed' },
+    { label: 'Step 2', state: 'active' },
+    { label: 'Step 3', state: 'disabled' },
+  ],
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  state: StepState.Completed,
-  steps: ['Step 1', 'Step 2', 'Step 3'],
-  currentStepIndex: 2,
+  steps: [
+    { label: 'Step 1', state: 'completed' },
+    { label: 'Step 2', state: 'completed' },
+    { label: 'Step 3', state: 'completed' },
+  ],
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  state: StepState.Active,
-  steps: ['Step 1', 'Step 2', 'Step 3'],
-  currentStepIndex: 1,
+  steps: [
+    { label: 'Step 1', state: 'active' },
+    { label: 'Step 2', state: 'active' },
+    { label: 'Step 3', state: 'active' },
+  ],
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  state: StepState.Disabled,
-  steps: ['Step 1', 'Step 2', 'Step 3'],
-  currentStepIndex: 0,
+  steps: [
+    { label: 'Step 1', state: 'disabled' },
+    { label: 'Step 2', state: 'disabled' },
+    { label: 'Step 3', state: 'disabled' },
+  ],
 };

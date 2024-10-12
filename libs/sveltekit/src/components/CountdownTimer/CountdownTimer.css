@@ -1,11 +1,30 @@
 .countdown-timer {
-  font-size: 1.5rem;
-  font-weight: bold;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #f5f5f5;
 }
 
-.countdown-timer span {
+.time-left {
+  font-size: 20px;
+  font-weight: bold;
   color: #333;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #76c7c0;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #64aba7;
 }

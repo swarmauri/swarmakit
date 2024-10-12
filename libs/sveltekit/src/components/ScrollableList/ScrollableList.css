@@ -2,30 +2,24 @@
   max-height: 200px;
   overflow-y: auto;
   border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.scrollable-list-item {
   padding: 10px;
-  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
 }
 
-.scrollable-list div {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #ddd;
-}
-
-.scrollable-list div:hover {
-  background-color: #e0e0e0;
-}
-
-.scrollable-list div:last-child {
+.scrollable-list-item:last-child {
   border-bottom: none;
 }
 
-.scrollable-list .item-disabled {
-  color: #aaa;
-  cursor: not-allowed;
+.scrollable-list-item:hover {
+  background-color: #f1f1f1;
 }
 
-.scrollable-list[aria-disabled="true"] {
+.scrollable-list-item.disabled {
+  color: #ccc;
+  background-color: #f9f9f9;
   pointer-events: none;
-  opacity: 0.5;
 }

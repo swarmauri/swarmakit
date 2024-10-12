@@ -1,49 +1,40 @@
 <script lang="ts">
-  export interface Item {
+  import { createEventDispatcher } from 'svelte';
+
+  export type ListItem = {
     id: number;
     text: string;
     pinned: boolean;
-    selected: boolean;
+  };
+
+  export let items: ListItem[] = [];
+
+  const dispatch = createEventDispatcher();
+
+  function togglePin(id: number) {
+    dispatch('togglePin', { id });
   }
 
-  export let items: Item[] = [];
-  export let onPinToggle: (id: number) => void;
-  export let onSelect: (id: number) => void;
-
-  function handlePinToggle(item: Item) {
-    onPinToggle(item.id);
-  }
-
-  function handleSelect(item: Item) {
-    onSelect(item.id);
+  function handleKeydown(event: KeyboardEvent, id: number) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      togglePin(id);
+    }
   }
 </script>
 
 <ul class="pinned-list">
-  {#each items as item}
+  {#each items as item (item.id)}
     <li
-      class:selected={item.selected}
-      on:click={() => handleSelect(item)}
-      on:keydown={(e) => e.key === 'Enter' && handleSelect(item)}
+      class="pinned-list-item"
+      class:pinned={item.pinned}
       role="button"
+      aria-pressed={item.pinned}
       tabindex="0"
+      on:click={() => togglePin(item.id)}
+      on:keydown={(event) => handleKeydown(event, item.id)}
     >
-      <span>{item.text}</span>
-      <button
-        on:click={(e) => {
-          e.stopPropagation();
-          handlePinToggle(item);
-        }}
-        on:keydown={(e) => {
-          if (e.key === 'Enter') {
-            e.stopPropagation();
-            handlePinToggle(item);
-          }
-        }}
-        aria-label={item.pinned ? 'Unpin item' : 'Pin item'}
-      >
-        {item.pinned ? '📌' : '📍'}
-      </button>
+      {item.text}
     </li>
   {/each}
 </ul>

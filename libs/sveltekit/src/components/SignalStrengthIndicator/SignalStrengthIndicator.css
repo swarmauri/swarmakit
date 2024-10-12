@@ -1,39 +1,28 @@
 .signal-strength-indicator {
-  display: inline-flex;
+  display: flex;
   align-items: flex-end;
+  gap: 2px;
 }
 
 .bar {
-  width: 10px;
-  margin: 0 2px;
+  width: 5px;
+  height: 10px;
   background-color: #e0e0e0;
-  transition: background-color 0.2s, height 0.2s;
+  transition: background-color 0.3s ease, height 0.3s ease;
 }
 
 .bar.active {
   background-color: #4caf50;
 }
 
-.bar.inactive {
-  height: 10px;
-}
-
-.bar:nth-child(1) {
-  height: 12px;
-}
-
 .bar:nth-child(2) {
-  height: 18px;
+  height: 15px;
 }
 
 .bar:nth-child(3) {
-  height: 24px;
+  height: 20px;
 }
 
 .bar:nth-child(4) {
-  height: 30px;
-}
-
-.bar:nth-child(5) {
-  height: 36px;
+  height: 25px;
 }

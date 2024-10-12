@@ -1,49 +1,77 @@
 import AudioWaveformDisplay from './AudioWaveformDisplay.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Media/AudioWaveformDisplay',
+const meta: Meta = {
+  title: 'Components/Media/AudioWaveformDisplay',
   component: AudioWaveformDisplay,
+  tags: ['autodocs'],
   argTypes: {
-    audioSrc: { control: 'text' },
-    isPlaying: { control: 'boolean' },
-    isLoading: { control: 'boolean' },
-    isScrubbing: { control: 'boolean' },
+    src: {
+      control: { type: 'text' },
+    },
+    isPlaying: {
+      control: { type: 'boolean' },
+    },
+    isLoading: {
+      control: { type: 'boolean' },
+    },
+    currentTime: {
+      control: { type: 'number' },
+    },
+    duration: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: AudioWaveformDisplay,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  audioSrc: 'audio-sample.mp3',
+  src: 'path/to/audio.mp3',
   isPlaying: false,
   isLoading: false,
-  isScrubbing: false,
+  currentTime: 0,
+  duration: 0,
 };
 
 export const Playing = Template.bind({});
 Playing.args = {
-  ...Default.args,
+  src: 'path/to/audio.mp3',
   isPlaying: true,
+  isLoading: false,
+  currentTime: 10,
+  duration: 100,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  ...Default.args,
+  src: 'path/to/audio.mp3',
   isPlaying: false,
+  isLoading: false,
+  currentTime: 10,
+  duration: 100,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  ...Default.args,
+  src: 'path/to/audio.mp3',
+  isPlaying: false,
   isLoading: true,
+  currentTime: 0,
+  duration: 0,
 };
 
 export const Scrubbing = Template.bind({});
 Scrubbing.args = {
-  ...Default.args,
-  isScrubbing: true,
+  src: 'path/to/audio.mp3',
+  isPlaying: false,
+  isLoading: false,
+  currentTime: 50,
+  duration: 100,
 };

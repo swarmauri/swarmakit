@@ -1,8 +1,0 @@
-.date-time-stamp {
-  font-size: 0.875rem;
-  color: #666;
-}
-
-.date-time-stamp[aria-hidden="true"] {
-  display: none;
-}

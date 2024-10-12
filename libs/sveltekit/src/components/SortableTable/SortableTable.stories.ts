@@ -1,61 +1,60 @@
 import SortableTable from './SortableTable.svelte';
-import type { Column, Row } from './SortableTable.svelte';
+import type { Meta, Story } from '@storybook/svelte';
+import type { TableColumn, TableRow } from './SortableTable.svelte';
 
-export default {
-  title: 'Lists/SortableTable',
+const meta: Meta = {
+  title: 'Components/Lists/SortableTable',
   component: SortableTable,
+  tags: ['autodocs'],
   argTypes: {
-    columns: { control: 'object' },
-    rows: { control: 'object' },
-    onSort: { action: 'onSort' },
-    onFilter: { action: 'onFilter' },
-    onSelectRow: { action: 'onSelectRow' },
+    columns: {
+      control: { type: 'object' },
+    },
+    rows: {
+      control: { type: 'object' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: SortableTable,
   props: args,
 });
 
+const sampleColumns: TableColumn[] = [
+  { key: 'id', label: 'ID', sortable: true },
+  { key: 'name', label: 'Name', sortable: true },
+  { key: 'age', label: 'Age', sortable: true },
+];
+
+const sampleRows: TableRow[] = [
+  { id: 1, name: 'Alice', age: 30 },
+  { id: 2, name: 'Bob', age: 25 },
+  { id: 3, name: 'Charlie', age: 35 },
+];
+
 export const Default = Template.bind({});
 Default.args = {
-  columns: [
-    { key: 'name', title: 'Name', sortable: true },
-    { key: 'age', title: 'Age', sortable: true },
-    { key: 'location', title: 'Location', sortable: false },
-  ],
-  rows: [
-    { id: 1, name: 'John Doe', age: 29, location: 'New York' },
-    { id: 2, name: 'Jane Smith', age: 34, location: 'London' },
-    { id: 3, name: 'Sam Green', age: 23, location: 'Sydney' },
-  ],
-  onSort: (key: string) => console.log(`Sorted by ${key}`),
-  onFilter: (key: string, value: string) => console.log(`Filtered ${key} by ${value}`),
-  onSelectRow: (id: number) => console.log(`Selected row ${id}`),
+  columns: sampleColumns,
+  rows: sampleRows,
 };
 
 export const Sorting = Template.bind({});
 Sorting.args = {
-  ...Default.args,
-  columns: [
-    { key: 'name', title: 'Name', sortable: true },
-    { key: 'age', title: 'Age', sortable: true },
-    { key: 'location', title: 'Location', sortable: false },
-  ],
+  columns: sampleColumns,
+  rows: sampleRows,
 };
 
 export const Filtering = Template.bind({});
 Filtering.args = {
-  ...Default.args,
-  columns: Default.args.columns,
+  columns: sampleColumns,
+  rows: sampleRows,
 };
 
 export const RowSelection = Template.bind({});
 RowSelection.args = {
-  ...Default.args,
-  rows: Default.args.rows.map((row, index) => ({
-    ...row,
-    selected: index === 0,
-  })),
+  columns: sampleColumns,
+  rows: sampleRows,
 };

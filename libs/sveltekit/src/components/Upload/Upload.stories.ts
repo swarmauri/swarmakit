@@ -1,57 +1,69 @@
 import Upload from './Upload.svelte';
-import type { UploadState } from './Upload.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/Upload',
+const meta: Meta = {
+  title: 'Components/Indicators/Upload',
   component: Upload,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(UploadState),
+      control: { type: 'select' },
+      options: ['uploading', 'downloading', 'completed', 'paused', 'failed'],
+    },
+    fileName: {
+      control: { type: 'text' },
     },
     progress: {
-      control: 'number',
+      control: { type: 'number' },
     },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Upload,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: UploadState.Uploading,
+  state: 'uploading',
+  fileName: 'example.txt',
   progress: 50,
 };
 
 export const Uploading = Template.bind({});
 Uploading.args = {
-  state: UploadState.Uploading,
-  progress: 30,
+  state: 'uploading',
+  fileName: 'uploading_file.txt',
+  progress: 65,
 };
 
 export const Downloading = Template.bind({});
 Downloading.args = {
-  state: UploadState.Downloading,
-  progress: 60,
+  state: 'downloading',
+  fileName: 'downloading_file.txt',
+  progress: 30,
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  state: UploadState.Completed,
+  state: 'completed',
+  fileName: 'completed_file.txt',
   progress: 100,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  state: UploadState.Paused,
-  progress: 75,
+  state: 'paused',
+  fileName: 'paused_file.txt',
+  progress: 45,
 };
 
 export const Failed = Template.bind({});
 Failed.args = {
-  state: UploadState.Failed,
+  state: 'failed',
+  fileName: 'failed_file.txt',
   progress: 0,
 };

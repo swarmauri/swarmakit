@@ -1,50 +1,45 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  export let src: string;
+  export let src: string = '';
   export let isPlaying: boolean = false;
   export let isMuted: boolean = false;
   export let volume: number = 1;
 
-  let audio: HTMLAudioElement;
+  let audioElement: HTMLAudioElement;
 
-  function togglePlay() {
-    isPlaying = !isPlaying;
+  const togglePlay = () => {
     if (isPlaying) {
-      audio.play();
+      audioElement.pause();
     } else {
-      audio.pause();
+      audioElement.play();
     }
-  }
+    isPlaying = !isPlaying;
+  };
 
-  function toggleMute() {
-    isMuted = !isMuted;
-    audio.muted = isMuted;
-  }
+  const toggleMute = () => {
+    audioElement.muted = isMuted = !isMuted;
+  };
 
-  function handleVolumeChange(event: Event) {
+  const handleVolumeChange = (event: Event) => {
     const target = event.target as HTMLInputElement;
     volume = parseFloat(target.value);
-    audio.volume = volume;
-  }
+    audioElement.volume = volume;
+  };
 
   onMount(() => {
-    audio.volume = volume;
-    audio.muted = isMuted;
+    audioElement.volume = volume;
   });
 </script>
 
-<div class="audio-player">
-  <audio bind:this={audio} src={src} />
-
-  <button on:click={togglePlay} aria-label="Play/Pause">
-    {isPlaying ? 'Pause' : 'Play'}
+<div class="audio-player" role="region" aria-label="Audio Player">
+  <audio bind:this={audioElement} src={src}></audio>
+  <button on:click={togglePlay} on:keydown={(e) => e.key === 'Enter' && togglePlay()} aria-label={isPlaying ? 'Pause' : 'Play'}>
+    {#if isPlaying}Pause{:else}Play{/if}
   </button>
-
-  <button on:click={toggleMute} aria-label="Mute/Unmute">
-    {isMuted ? 'Unmute' : 'Mute'}
+  <button on:click={toggleMute} on:keydown={(e) => e.key === 'Enter' && toggleMute()} aria-label={isMuted ? 'Unmute' : 'Mute'}>
+    {#if isMuted}Unmute{:else}Mute{/if}
   </button>
-  
   <input type="range" min="0" max="1" step="0.01" value={volume} on:input={handleVolumeChange} aria-label="Volume Control" />
 </div>
 

@@ -1,28 +1,36 @@
 import Captcha from './Captcha.svelte';
 
 export default {
-  title: 'Components/Forms',
+  title: 'Components/Forms/Captcha',
   component: Captcha,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    onSolve: { action: 'solved' },
+    onError: { action: 'error' },
+  },
 };
 
-export const Default = {
-  args: {
-    solved: false,
-    error: false
-  }
+const Template = (args) => ({
+  Component: Captcha,
+  props: args,
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  question: 'What is 2 + 2?',
+  answer: '4',
 };
 
-export const Solved = {
-  args: {
-    ...Default.args,
-    solved: true
-  }
+export const Solved = Template.bind({});
+Solved.args = {
+  question: 'What is 2 + 2?',
+  answer: '4',
+  onSolve: () => console.log('Captcha solved!'),
 };
 
-export const Error = {
-  args: {
-    ...Default.args,
-    error: true
-  }
+export const Error = Template.bind({});
+Error.args = {
+  question: 'What is 2 + 2?',
+  answer: '4',
+  onError: () => console.log('Error occurred!'),
 };

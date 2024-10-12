@@ -1,15 +1,12 @@
 import CountdownTimer from './CountdownTimer.svelte';
 
 export default {
-  title: 'Indicators/CountdownTimer',
+  title: 'Components/Indicators/CountdownTimer',
   component: CountdownTimer,
+  tags: ['autodocs'],
   argTypes: {
-    duration: {
-      control: { type: 'number' },
-    },
-    isRunning: {
-      control: { type: 'boolean' },
-    },
+    duration: { control: 'number' },
+    isPaused: { control: 'boolean' },
   },
 };
 
@@ -21,23 +18,23 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   duration: 60,
-  isRunning: true,
+  isPaused: false,
 };
 
 export const Running = Template.bind({});
 Running.args = {
   duration: 60,
-  isRunning: true,
+  isPaused: false,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
   duration: 60,
-  isRunning: false,
+  isPaused: true,
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
   duration: 0,
-  isRunning: false,
+  isPaused: false,
 };

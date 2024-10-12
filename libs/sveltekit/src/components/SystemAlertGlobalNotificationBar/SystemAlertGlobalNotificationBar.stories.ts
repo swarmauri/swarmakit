@@ -1,61 +1,54 @@
 import SystemAlertGlobalNotificationBar from './SystemAlertGlobalNotificationBar.svelte';
-import type { AlertType } from './SystemAlertGlobalNotificationBar.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/SystemAlertGlobalNotificationBar',
+const meta: Meta = {
+  title: 'Components/Indicators/SystemAlertGlobalNotificationBar',
   component: SystemAlertGlobalNotificationBar,
+  tags: ['autodocs'],
   argTypes: {
-    type: {
-      control: {
-        type: 'select',
-        options: Object.values(AlertType),
-      },
-    },
     message: {
-      control: 'text',
+      control: { type: 'text' },
     },
-    isVisible: {
-      control: 'boolean',
+    type: {
+      control: { type: 'radio' },
+      options: ['success', 'error', 'warning', 'info'],
     },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: SystemAlertGlobalNotificationBar,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  type: AlertType.Info,
-  message: 'This is an information message.',
-  isVisible: true,
+  message: 'This is an informational message.',
+  type: 'info',
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  type: AlertType.Success,
-  message: 'Operation completed successfully.',
-  isVisible: true,
+  message: 'Operation completed successfully!',
+  type: 'success',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  type: AlertType.Error,
   message: 'An error has occurred.',
-  isVisible: true,
+  type: 'error',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  type: AlertType.Warning,
-  message: 'Please be aware of this warning.',
-  isVisible: true,
+  message: 'This is a warning message.',
+  type: 'warning',
 };
 
 export const Info = Template.bind({});
 Info.args = {
-  type: AlertType.Info,
-  message: 'This is an information message.',
-  isVisible: true,
+  message: 'This is an informational message.',
+  type: 'info',
 };

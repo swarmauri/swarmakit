@@ -1,11 +1,11 @@
 <script lang="ts">
   export let type: 'default' | 'notification' | 'status' = 'default';
-  export let content: string = '';
+  export let label: string = '';
 </script>
 
-<div class="badge" class={type} role="status" aria-live="polite">
-  {content}
-</div>
+<span class={`badge ${type}`} role="status" aria-live="polite">
+  {label}
+</span>
 
 <style lang="css">
   @import './Badge.css';

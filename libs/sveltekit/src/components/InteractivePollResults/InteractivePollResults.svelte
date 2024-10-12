@@ -1,22 +1,30 @@
 <script lang="ts">
-  export let options: { label: string; votes: number }[] = [];
-  export let totalVotes: number = 0;
-  export let status: 'live' | 'completed' | 'closed' = 'live';
+  import { writable } from 'svelte/store';
 
-  const calculatePercentage = (votes: number) => {
-    return totalVotes ? Math.round((votes / totalVotes) * 100) : 0;
-  };
+  export let options: { option: string; votes: number }[] = [];
+  export let isClosed: boolean = false;
+
+  const totalVotes = writable(0);
+  $: totalVotes.set(options.reduce((total, option) => total + option.votes, 0));
+
+  function vote(index: number) {
+    if (isClosed) return;
+    options[index].votes += 1;
+    totalVotes.update((n) => n + 1);
+  }
 </script>
 
-<div class="poll-results" role="status" aria-live="polite">
-  {#each options as { label, votes }}
-    <div class="poll-option" tabindex="0" on:click={() => {}} on:keydown={(e) => e.key === 'Enter' && {}}>
-      <span class="label">{label}</span>
-      <span class="bar" style="width: {calculatePercentage(votes)}%;"></span>
-      <span class="percentage">{calculatePercentage(votes)}%</span>
+<div class="interactive-poll-results" role="list">
+  {#each options as { option, votes }, index}
+    <div class="option" role="listitem">
+      <span>{option}</span>
+      <span>{votes} votes</span>
+      <button on:click={() => vote(index)} aria-disabled={isClosed}>
+        Vote
+      </button>
     </div>
   {/each}
-  <div class="status">Status: {status}</div>
+  <div class="total" aria-live="polite">Total Votes: {$totalVotes}</div>
 </div>
 
 <style lang="css">

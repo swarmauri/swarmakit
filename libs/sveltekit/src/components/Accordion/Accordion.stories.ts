@@ -1,48 +1,55 @@
 import Accordion from './Accordion.svelte';
-import type { AccordionState } from './Accordion.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/Accordion',
+const meta: Meta = {
+  title: 'Components/Lists/Accordion',
   component: Accordion,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(AccordionState),
+      control: { type: 'select' },
+      options: ['open', 'closed', 'hover'],
     },
-    title: { control: 'text' },
-    content: { control: 'text' },
+    title: {
+      control: { type: 'text' },
+    },
+    content: {
+      control: { type: 'text' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Accordion,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: AccordionState.Closed,
+  state: 'closed',
   title: 'Accordion Title',
   content: 'Accordion Content',
 };
 
 export const Open = Template.bind({});
 Open.args = {
-  state: AccordionState.Open,
+  state: 'open',
   title: 'Accordion Title',
   content: 'Accordion Content',
 };
 
 export const Closed = Template.bind({});
 Closed.args = {
-  state: AccordionState.Closed,
+  state: 'closed',
   title: 'Accordion Title',
   content: 'Accordion Content',
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  state: AccordionState.Hover,
+  state: 'hover',
   title: 'Accordion Title',
   content: 'Accordion Content',
 };

@@ -1,55 +1,78 @@
 import CardbasedList from './CardbasedList.svelte';
-import type { CardbasedListState } from './CardbasedList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/CardbasedList',
+const meta: Meta = {
+  title: 'Components/Lists/CardbasedList',
   component: CardbasedList,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(CardbasedListState),
+      control: { type: 'select' },
+      options: ['hover', 'selected', 'disabled'],
     },
-    cards: { control: 'object' },
+    items: {
+      control: { type: 'array' },
+    },
+    selectedItem: {
+      control: { type: 'number' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: CardbasedList,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: CardbasedListState.Hover,
-  cards: [
-    { title: 'Card 1', content: 'Content 1', disabled: false },
-    { title: 'Card 2', content: 'Content 2', disabled: false },
+  state: 'hover',
+  items: [
+    { title: 'Card 1', description: 'Description for card 1' },
+    { title: 'Card 2', description: 'Description for card 2' },
+    { title: 'Card 3', description: 'Description for card 3' },
   ],
+  selectedItem: null,
+  disabled: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  state: CardbasedListState.Hover,
-  cards: [
-    { title: 'Card 1', content: 'Content 1', disabled: false },
-    { title: 'Card 2', content: 'Content 2', disabled: false },
+  state: 'hover',
+  items: [
+    { title: 'Card 1', description: 'Description for card 1' },
+    { title: 'Card 2', description: 'Description for card 2' },
+    { title: 'Card 3', description: 'Description for card 3' },
   ],
+  selectedItem: null,
+  disabled: false,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  state: CardbasedListState.Selected,
-  cards: [
-    { title: 'Card 1', content: 'Content 1', disabled: false },
-    { title: 'Card 2', content: 'Content 2', disabled: false },
+  state: 'selected',
+  items: [
+    { title: 'Card 1', description: 'Description for card 1' },
+    { title: 'Card 2', description: 'Description for card 2' },
+    { title: 'Card 3', description: 'Description for card 3' },
   ],
+  selectedItem: 1,
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  state: CardbasedListState.Disabled,
-  cards: [
-    { title: 'Card 1', content: 'Content 1', disabled: true },
-    { title: 'Card 2', content: 'Content 2', disabled: true },
+  state: 'disabled',
+  items: [
+    { title: 'Card 1', description: 'Description for card 1' },
+    { title: 'Card 2', description: 'Description for card 2' },
+    { title: 'Card 3', description: 'Description for card 3' },
   ],
+  selectedItem: null,
+  disabled: true,
 };

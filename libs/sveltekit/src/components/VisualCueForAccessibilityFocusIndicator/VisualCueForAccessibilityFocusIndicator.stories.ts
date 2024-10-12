@@ -1,33 +1,36 @@
 import VisualCueForAccessibilityFocusIndicator from './VisualCueForAccessibilityFocusIndicator.svelte';
-import type { FocusState } from './VisualCueForAccessibilityFocusIndicator.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/VisualCueForAccessibilityFocusIndicator',
+const meta: Meta = {
+  title: 'Components/Indicators/VisualCueForAccessibilityFocusIndicator',
   component: VisualCueForAccessibilityFocusIndicator,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(FocusState),
+      control: { type: 'select' },
+      options: ['focused', 'unfocused'],
     },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: VisualCueForAccessibilityFocusIndicator,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: FocusState.Unfocused,
+  state: 'unfocused',
 };
 
 export const Focused = Template.bind({});
 Focused.args = {
-  state: FocusState.Focused,
+  state: 'focused',
 };
 
 export const Unfocused = Template.bind({});
 Unfocused.args = {
-  state: FocusState.Unfocused,
+  state: 'unfocused',
 };

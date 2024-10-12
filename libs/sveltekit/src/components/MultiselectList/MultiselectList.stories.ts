@@ -1,16 +1,26 @@
 import MultiselectList from './MultiselectList.svelte';
-import type { Item } from './MultiselectList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/MultiselectList',
+const meta: Meta = {
+  title: 'Components/Lists/MultiselectList',
   component: MultiselectList,
+  tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    onSelect: { action: 'onSelect' },
+    items: {
+      control: { type: 'object' },
+    },
+    selectedItems: {
+      control: { type: 'object' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: MultiselectList,
   props: args,
 });
@@ -18,49 +28,54 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { id: 1, name: 'Item 1', selected: false },
-    { id: 2, name: 'Item 2', selected: false },
-    { id: 3, name: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onSelect: (id: number) => console.log(`Item ${id} selected`),
+  selectedItems: new Set(),
+  disabled: false,
 };
 
 export const ItemSelected = Template.bind({});
 ItemSelected.args = {
   items: [
-    { id: 1, name: 'Item 1', selected: true },
-    { id: 2, name: 'Item 2', selected: false },
-    { id: 3, name: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onSelect: (id: number) => console.log(`Item ${id} selected`),
+  selectedItems: new Set([1]),
+  disabled: false,
 };
 
 export const ItemDeselected = Template.bind({});
 ItemDeselected.args = {
   items: [
-    { id: 1, name: 'Item 1', selected: false },
-    { id: 2, name: 'Item 2', selected: false },
-    { id: 3, name: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onSelect: (id: number) => console.log(`Item ${id} deselected`),
+  selectedItems: new Set(),
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   items: [
-    { id: 1, name: 'Item 1', selected: false, disabled: true },
-    { id: 2, name: 'Item 2', selected: false },
-    { id: 3, name: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onSelect: (id: number) => console.log(`Item ${id} selected`),
+  selectedItems: new Set(),
+  disabled: true,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   items: [
-    { id: 1, name: 'Item 1', selected: false },
-    { id: 2, name: 'Item 2', selected: false },
-    { id: 3, name: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onSelect: (id: number) => console.log(`Item ${id} selected`),
+  selectedItems: new Set(),
+  disabled: false,
 };

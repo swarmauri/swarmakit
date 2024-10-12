@@ -1,30 +1,37 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export let name: string;
-  export let value: string;
-  export let selectedValue: string;
+  export let selected: boolean = false;
   export let disabled: boolean = false;
+  export let name: string = '';
+  export let value: string = '';
+  export let label: string = '';
 
-  const dispatch = createEventDispatcher();
-
-  function handleChange(event: Event) {
-    const target = event.target as HTMLInputElement;
-    dispatch('change', target.value);
+  function handleKeyDown(event: KeyboardEvent) {
+    if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
+      selected = !selected;
+      event.preventDefault();
+    }
   }
 </script>
 
-<div role="radiogroup" class="radio-button-container">
+<div 
+  class="radio-button" 
+  role="radio" 
+  aria-checked={selected} 
+  aria-disabled={disabled}
+  tabindex={disabled ? -1 : 0}
+  on:click={() => !disabled && (selected = !selected)}
+  on:keydown={handleKeyDown}
+>
   <input
     type="radio"
+    bind:checked={selected}
+    disabled={disabled}
     name={name}
     value={value}
-    checked={value === selectedValue}
-    on:change={handleChange}
-    disabled={disabled}
-    aria-checked={value === selectedValue}
+    aria-label={label}
+    class="radio-input"
   />
-  <label>{value}</label>
+  <label>{label}</label>
 </div>
 
 <style lang="css">

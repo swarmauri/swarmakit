@@ -5,28 +5,31 @@
 }
 
 .list-item {
-  padding: 10px;
   border: 1px solid #ddd;
-  margin-bottom: 5px;
+  margin: 5px 0;
+  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  outline: none;
+  background-color: #f9f9f9;
 }
 
-.list-item:hover {
-  background-color: #f1f1f1;
+.list-item.expanded {
+  background-color: #e0f7fa;
 }
 
 .list-item.selected {
-  background-color: #cce5ff;
+  background-color: #ffe0b2;
 }
 
-.item-header {
+.list-item:hover {
+  background-color: #e0e0e0;
+}
+
+.list-title {
   font-weight: bold;
 }
 
-.item-content {
+.list-content {
   margin-top: 5px;
-  padding-left: 20px;
-  color: #555;
+  padding: 5px;
+  border-top: 1px solid #ddd;
 }

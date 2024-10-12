@@ -1,16 +1,26 @@
 import Carousel from './Carousel.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Media/Carousel',
+const meta: Meta = {
+  title: 'Components/Media/Carousel',
   component: Carousel,
+  tags: ['autodocs'],
   argTypes: {
-    images: { control: 'array' },
-    autoPlay: { control: 'boolean' },
-    interval: { control: 'number' },
+    images: {
+      control: { type: 'array' },
+    },
+    autoPlay: {
+      control: { type: 'boolean' },
+    },
+    autoPlayInterval: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Carousel,
   props: args,
 });
@@ -19,29 +29,33 @@ export const Default = Template.bind({});
 Default.args = {
   images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
   autoPlay: false,
-  interval: 3000,
+  autoPlayInterval: 3000,
 };
 
 export const AutoPlay = Template.bind({});
 AutoPlay.args = {
-  ...Default.args,
+  images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
   autoPlay: true,
+  autoPlayInterval: 3000,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  ...Default.args,
+  images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
   autoPlay: false,
+  autoPlayInterval: 3000,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  ...Default.args,
+  images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
   autoPlay: true,
+  autoPlayInterval: 3000,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  ...Default.args,
-  autoPlay: false,
+  images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
+  autoPlay: true,
+  autoPlayInterval: 1000,
 };

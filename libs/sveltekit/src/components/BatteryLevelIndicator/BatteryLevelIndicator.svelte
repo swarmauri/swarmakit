@@ -2,16 +2,26 @@
   export let level: number = 100;
   export let isCharging: boolean = false;
 
-  $: indicatorClass = level > 80 ? 'full' : level > 20 ? 'low' : 'critical';
+  $: batteryStatus = getBatteryStatus(level, isCharging);
+
+  function getBatteryStatus(level: number, isCharging: boolean) {
+    if (isCharging) return 'Charging';
+    if (level > 80) return 'Full';
+    if (level > 20) return 'Low Battery';
+    return 'Critical';
+  }
 </script>
 
-<div class="battery-level-indicator {indicatorClass}" role="progressbar" aria-valuenow={level} aria-valuemin="0" aria-valuemax="100">
-  <div class="battery-icon">
-    <div class="battery-fill" style="width: {level}%;"></div>
-  </div>
-  {#if isCharging}
-    <span class="charging-indicator">⚡</span>
-  {/if}
+<div
+  class="battery-level-indicator"
+  role="progressbar"
+  aria-valuenow={level}
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-label={batteryStatus}
+>
+  <div class="battery-level" style={`width: ${level}%`}></div>
+  <span class="battery-status">{batteryStatus}</span>
 </div>
 
 <style lang="css">

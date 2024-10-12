@@ -1,45 +1,37 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
 
-  export enum ListState {
-    FilterApplied = 'filterApplied',
-    NoResults = 'noResults',
-    Default = 'default',
-    ClearFilter = 'clearFilter'
+  export type ListItem = { id: number; title: string; };
+  export let items: ListItem[] = [];
+  export let filterText: string = '';
+
+  const filteredItems = writable(items);
+
+  $: {
+    filteredItems.set(filterText ? items.filter(item => item.title.toLowerCase().includes(filterText.toLowerCase())) : items);
   }
 
-  export let state: ListState = ListState.Default;
-  export let items: string[] = [];
-  let filter = writable('');
-
-  $: filteredItems = items.filter(item => item.toLowerCase().includes($filter.toLowerCase()));
-
   function clearFilter() {
-    filter.set('');
+    filterText = '';
   }
 </script>
 
 <div class="filterable-list">
   <input
     type="text"
-    bind:value={$filter}
-    placeholder="Type to filter..."
+    bind:value={filterText}
+    placeholder="Filter items..."
     aria-label="Filter items"
   />
-  <button
-    on:click={clearFilter}
-  >
-    Clear Filter
-  </button>
-
+  <button on:click={clearFilter} aria-label="Clear filter">Clear Filter</button>
   <ul>
-    {#if state === ListState.NoResults || filteredItems.length === 0}
-      <li>No results found</li>
+    {#each $filteredItems as { id, title }}
+      <li class="list-item" role="listitem">
+        {title}
+      </li>
     {:else}
-      {#each filteredItems as item}
-        <li>{item}</li>
-      {/each}
-    {/if}
+      <li class="no-results" role="listitem">No results found</li>
+    {/each}
   </ul>
 </div>
 

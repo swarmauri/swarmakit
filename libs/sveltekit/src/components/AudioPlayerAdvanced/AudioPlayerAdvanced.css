@@ -6,15 +6,7 @@
 
 button {
   padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
   cursor: pointer;
-  outline: none;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 input[type="range"] {

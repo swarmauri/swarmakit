@@ -1,22 +1,24 @@
 .rating-stars {
-  display: inline-flex;
-  font-size: 2rem;
+  display: flex;
+  gap: 5px;
 }
 
 .star {
+  font-size: 24px;
   cursor: pointer;
   color: #e0e0e0;
-  transition: color 0.2s;
+  transition: color 0.3s ease;
 }
 
 .star.selected {
-  color: #ffc107;
+  color: #ffb400;
 }
 
-.star.hover {
-  color: #ffd54f;
+.star.interactive:hover {
+  color: #ffb400;
 }
 
-.star.inactive {
-  cursor: default;
+.star.interactive:focus {
+  outline: none;
+  color: #ffb400;
 }

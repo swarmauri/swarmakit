@@ -1,45 +1,46 @@
 import StatusDots from './StatusDots.svelte';
-import type { Status } from './StatusDots.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/StatusDots',
+const meta: Meta = {
+  title: 'Components/Indicators/StatusDots',
   component: StatusDots,
+  tags: ['autodocs'],
   argTypes: {
     status: {
-      control: {
-        type: 'select',
-        options: Object.values(Status),
-      },
+      control: { type: 'select' },
+      options: ['online', 'offline', 'busy', 'idle'],
     },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: StatusDots,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  status: Status.Offline,
+  status: 'offline',
 };
 
 export const Online = Template.bind({});
 Online.args = {
-  status: Status.Online,
+  status: 'online',
 };
 
 export const Offline = Template.bind({});
 Offline.args = {
-  status: Status.Offline,
+  status: 'offline',
 };
 
 export const Busy = Template.bind({});
 Busy.args = {
-  status: Status.Busy,
+  status: 'busy',
 };
 
 export const Idle = Template.bind({});
 Idle.args = {
-  status: Status.Idle,
+  status: 'idle',
 };

@@ -1,15 +1,12 @@
 import BatteryLevelIndicator from './BatteryLevelIndicator.svelte';
 
 export default {
-  title: 'Indicators/BatteryLevelIndicator',
+  title: 'Components/Indicators/BatteryLevelIndicator',
   component: BatteryLevelIndicator,
+  tags: ['autodocs'],
   argTypes: {
-    level: {
-      control: { type: 'number' },
-    },
-    isCharging: {
-      control: { type: 'boolean' },
-    },
+    level: { control: 'number' },
+    isCharging: { control: 'boolean' },
   },
 };
 

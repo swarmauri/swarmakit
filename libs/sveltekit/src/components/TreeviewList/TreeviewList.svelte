@@ -1,51 +1,39 @@
 <script lang="ts">
-  export interface TreeNode {
-    id: number;
-    name: string;
-    children?: TreeNode[];
-    expanded?: boolean;
+  export let nodes: { label: string, children?: any[], expanded: boolean, selected: boolean }[] = [];
+
+  function toggleNode(index: number) {
+    nodes = nodes.map((node, i) => ({
+      ...node,
+      expanded: i === index ? !node.expanded : node.expanded
+    }));
   }
 
-  export let nodes: TreeNode[] = [];
-  export let selectedNodeId: number;
-  export let onNodeSelect: (node: TreeNode) => void;
-
-  function toggleNode(node: TreeNode) {
-    node.expanded = !node.expanded;
-  }
-
-  function selectNode(node: TreeNode) {
-    selectedNodeId = node.id;
-    onNodeSelect(node);
+  function selectNode(index: number) {
+    nodes = nodes.map((node, i) => ({
+      ...node,
+      selected: i === index ? true : false
+    }));
   }
 </script>
 
-<ul>
-  {#each nodes as node (node.id)}
-    <li>
+<ul class="treeview" role="tree">
+  {#each nodes as { label, children, expanded, selected }, index}
+    <li class="tree-node" role="treeitem" aria-expanded={expanded} tabindex="0">
       <div
-        role="treeitem"
-        class="tree-node"
-        aria-expanded={node.expanded ? 'true' : 'false'}
-        aria-selected={node.id === selectedNodeId ? 'true' : 'false'}
-        on:click={() => selectNode(node)}
-        on:keydown={(event) => event.key === 'Enter' && selectNode(node)}
-        tabindex="0"
+        class="node-content"
+        class:expanded={expanded}
+        class:selected={selected}
+        on:click={() => toggleNode(index)}
+        on:keydown={(event) => event.key === 'Enter' && toggleNode(index)}
       >
-        <span
-          class="toggle"
-          on:click={(e) => { e.stopPropagation(); toggleNode(node); }}
-          on:keydown={(e) => { if (e.key === 'Enter') { e.stopPropagation(); toggleNode(node); } }}
-          tabindex="0"
-        >
-          {#if node.children}
-            {node.expanded ? '-' : '+'}
-          {/if}
-        </span>
-        {node.name}
+        <span on:click={() => selectNode(index)} on:keydown={(event) => event.key === ' ' && selectNode(index)}>{label}</span>
       </div>
-      {#if node.expanded && node.children}
-        <TreeviewList nodes={node.children} selectedNodeId={selectedNodeId} onNodeSelect={onNodeSelect} />
+      {#if expanded && children}
+        <ul role="group">
+          {#each children as child}
+            <TreeviewList nodes={[child]} />
+          {/each}
+        </ul>
       {/if}
     </li>
   {/each}

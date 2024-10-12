@@ -1,39 +1,46 @@
 <script lang="ts">
   export let progress: number = 0;
-  export let status: 'complete' | 'incomplete' | 'paused' | 'active' = 'incomplete';
+  export let status: 'active' | 'paused' | 'complete' | 'incomplete' = 'incomplete';
 
-  $: progressNormalized = Math.min(Math.max(progress, 0), 100);
-  $: circleRadius = 50;
-  $: circumference = 2 * Math.PI * circleRadius;
-  $: progressOffset = circumference - (progressNormalized / 100) * circumference;
+  function handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleClick();
+    }
+  }
+
+  function handleClick() {
+    // Handle progress circle click logic
+  }
+
+  $: progressCircleClass = `progress-circle ${status}`;
 </script>
 
-<svg
-  class="progress-circle"
-  width="120"
-  height="120"
-  viewBox="0 0 120 120"
-  aria-valuenow={progress}
+<div
+  class={progressCircleClass}
+  role="progressbar"
   aria-valuemin="0"
   aria-valuemax="100"
-  aria-label="Progress Circle"
->
-  <circle
-    class="progress-circle-bg"
-    cx="60"
-    cy="60"
-    r={circleRadius}
-  />
-  <circle
-    class="progress-circle-fg"
-    cx="60"
-    cy="60"
-    r={circleRadius}
-    stroke-dasharray={circumference}
-    stroke-dashoffset={progressOffset}
-    class={status}
-  />
-</svg>
+  aria-valuenow={progress}
+  tabindex="0"
+  on:click={handleClick}
+  on:keydown={handleKeyDown}>
+  <svg viewBox="0 0 36 36">
+    <path
+      class="circle-bg"
+      d="M18 2.0845
+         a 15.9155 15.9155 0 0 1 0 31.831
+         a 15.9155 15.9155 0 0 1 0 -31.831"
+    />
+    <path
+      class="circle"
+      stroke-dasharray="{progress}, 100"
+      d="M18 2.0845
+         a 15.9155 15.9155 0 0 1 0 31.831
+         a 15.9155 15.9155 0 0 1 0 -31.831"
+    />
+  </svg>
+  <span class="progress-text">{progress}%</span>
+</div>
 
 <style lang="css">
   @import './ProgressCircle.css';

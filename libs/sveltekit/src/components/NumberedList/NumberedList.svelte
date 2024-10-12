@@ -1,33 +1,38 @@
 <script lang="ts">
-  export interface ListItem {
-    id: number;
-    content: string;
-    selected: boolean;
-    disabled?: boolean;
+  import { createEventDispatcher } from 'svelte';
+
+  export let items: { id: number; label: string }[] = [];
+  export let selectedItem: number | null = null;
+  export let disabled = false;
+
+  const dispatch = createEventDispatcher();
+
+  function selectItem(itemId: number) {
+    if (disabled) return;
+    dispatch('select', { selectedItem: itemId });
   }
 
-  export let items: ListItem[] = [];
-  export let onItemClick: (id: number) => void;
-
-  function handleItemClick(item: ListItem) {
-    if (item.disabled) return;
-    onItemClick(item.id);
+  function handleKeydown(event: KeyboardEvent, itemId: number) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      selectItem(itemId);
+    }
   }
 </script>
 
-<ol class="numbered-list">
-  {#each items as item}
+<ol class="numbered-list" aria-disabled={disabled}>
+  {#each items as { id, label }}
     <li
-      class:disabled={item.disabled}
-      class:selected={item.selected}
-      on:click={() => handleItemClick(item)}
-      on:keydown={(e) => e.key === 'Enter' && handleItemClick(item)}
-      tabindex={item.disabled ? -1 : 0}
-      role="listitem"
-      aria-selected={item.selected}
-      aria-disabled={item.disabled}
+      class="numbered-item"
+      class:selected={selectedItem === id}
+      class:disabled={disabled}
+      role="option"
+      aria-selected={selectedItem === id}
+      tabindex={disabled ? -1 : 0}
+      on:click={() => selectItem(id)}
+      on:keydown={(event) => handleKeydown(event, id)}
     >
-      {item.content}
+      {label}
     </li>
   {/each}
 </ol>

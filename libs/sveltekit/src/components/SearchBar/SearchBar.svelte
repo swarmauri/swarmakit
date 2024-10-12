@@ -1,41 +1,30 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export enum SearchBarState {
-    Focused = 'focused',
-    Unfocused = 'unfocused',
-    Disabled = 'disabled'
-  }
-
-  export let state: SearchBarState = SearchBarState.Unfocused;
+  export type SearchBarState = 'focused' | 'unfocused' | 'disabled';
+  export let state: SearchBarState = 'unfocused';
   export let placeholder: string = 'Search...';
-  export let value: string = '';
 
-  const dispatch = createEventDispatcher();
-
-  function handleInput(event: Event) {
-    if (state !== SearchBarState.Disabled) {
-      dispatch('input', (event.target as HTMLInputElement).value);
+  function handleFocus() {
+    if (state !== 'disabled') {
+      state = 'focused';
     }
   }
 
-  function handleKeydown(event: KeyboardEvent) {
-    if (event.key === 'Enter' && state !== SearchBarState.Disabled) {
-      dispatch('search', value);
+  function handleBlur() {
+    if (state !== 'disabled') {
+      state = 'unfocused';
     }
   }
 </script>
 
 <input
+  class={`search-bar search-bar-${state}`}
   type="text"
-  class="search-bar"
   placeholder={placeholder}
-  bind:value
-  class={state}
-  on:input={handleInput}
-  on:keydown={handleKeydown}
-  {disabled}
-  aria-disabled={state === SearchBarState.Disabled}
+  on:focus={handleFocus}
+  on:blur={handleBlur}
+  disabled={state === 'disabled'}
+  aria-label="Search"
+  role="searchbox"
 />
 
 <style lang="css">

@@ -1,34 +1,32 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { createEventDispatcher } from 'svelte';
-
   export let content: string = '';
   export let readOnly: boolean = false;
-
-  const dispatch = createEventDispatcher();
   let editor: HTMLDivElement;
 
   onMount(() => {
-    editor.innerHTML = content;
+    if (!readOnly) {
+      editor.contentEditable = "true";
+    }
   });
 
-  function handleInput() {
-    if (!readOnly) {
-      content = editor.innerHTML;
-      dispatch('input', content);
-    }
+  function handleInput(event: InputEvent) {
+    const target = event.target as HTMLDivElement;
+    content = target.innerHTML;
   }
 </script>
 
 <div
-  class="rich-text-editor"
-  contenteditable={!readOnly}
   bind:this={editor}
+  class="rich-text-editor"
   on:input={handleInput}
   role="textbox"
   aria-multiline="true"
   aria-readonly={readOnly}
-></div>
+  tabindex="0"
+>
+  {@html content}
+</div>
 
 <style lang="css">
   @import './RichTextEditor.css';

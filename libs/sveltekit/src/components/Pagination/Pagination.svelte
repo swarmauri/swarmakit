@@ -1,32 +1,38 @@
 <script lang="ts">
-  export interface Page {
-    number: number;
-    active: boolean;
+  import { createEventDispatcher } from 'svelte';
+
+  export let totalPages: number = 1;
+  export let currentPage: number = 1;
+
+  const dispatch = createEventDispatcher();
+
+  function selectPage(page: number) {
+    if (page < 1 || page > totalPages) return;
+    dispatch('change', { page });
   }
 
-  export let pages: Page[] = [];
-  export let onPageClick: (number: number) => void;
-
-  function handlePageClick(page: Page) {
-    if (!page.active) {
-      onPageClick(page.number);
+  function handleKeydown(event: KeyboardEvent, page: number) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      selectPage(page);
     }
   }
 </script>
 
-<nav class="pagination" aria-label="Pagination">
-  <ul>
-    {#each pages as page}
-      <li>
-        <button
-          class:active={page.active}
-          on:click={() => handlePageClick(page)}
-          on:keydown={(e) => e.key === 'Enter' && handlePageClick(page)}
-          aria-current={page.active ? 'page' : undefined}
-          disabled={page.active}
-        >
-          {page.number}
-        </button>
+<nav aria-label="Pagination Navigation">
+  <ul class="pagination">
+    {#each Array(totalPages) as _, index}
+      <li
+        class="pagination-item"
+        class:active={currentPage === index + 1}
+        role="button"
+        aria-current={currentPage === index + 1 ? 'page' : undefined}
+        aria-label={`Page ${index + 1}`}
+        tabindex="0"
+        on:click={() => selectPage(index + 1)}
+        on:keydown={(event) => handleKeydown(event, index + 1)}
+      >
+        {index + 1}
       </li>
     {/each}
   </ul>

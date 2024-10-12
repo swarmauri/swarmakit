@@ -1,76 +1,71 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export enum GridState {
-    Paginated = 'paginated',
-    Search = 'search',
-    Resizable = 'resizable'
-  }
-
-  export let state: GridState = GridState.Paginated;
+  export type GridState = 'paginated' | 'search' | 'resizable';
+  export let state: GridState = 'paginated';
+  export let data: { [key: string]: any }[] = [];
   export let columns: string[] = [];
-  export let rows: Record<string, any>[] = [];
   export let pageSize: number = 5;
-  export let searchQuery: string = '';
 
-  const dispatch = createEventDispatcher();
-  let currentPage = 0;
+  let currentPage: number = 1;
+  let searchTerm: string = '';
+  let filteredData = data;
+
+  function paginateData() {
+    const start = (currentPage - 1) * pageSize;
+    const end = start + pageSize;
+    return filteredData.slice(start, end);
+  }
 
   function handleSearch() {
-    dispatch('search', { query: searchQuery });
-  }
-
-  function handleResize() {
-    dispatch('resize');
+    filteredData = data.filter(item =>
+      columns.some(column => item[column].toString().toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+    currentPage = 1;
   }
 
   function nextPage() {
-    if ((currentPage + 1) * pageSize < rows.length) {
-      currentPage++;
-    }
+    if (currentPage < Math.ceil(filteredData.length / pageSize)) currentPage++;
   }
 
   function prevPage() {
-    if (currentPage > 0) {
-      currentPage--;
-    }
+    if (currentPage > 1) currentPage--;
   }
-
-  $: paginatedRows = rows.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
-  $: filteredRows = searchQuery.length > 0 
-    ? rows.filter(row => Object.values(row).some(value => value.toString().includes(searchQuery)))
-    : rows;
 </script>
 
-<div class="data-grid" on:resize={handleResize}>
-  {#if state === GridState.Search}
-    <input type="text" bind:value={searchQuery} on:input={handleSearch} placeholder="Search..." />
-  {/if}
-  <table>
-    <thead>
+{#if state === 'search'}
+  <input
+    type="text"
+    placeholder="Search..."
+    bind:value={searchTerm}
+    on:input={handleSearch}
+  />
+{/if}
+
+<table class={`data-grid grid-${state}`}>
+  <thead>
+    <tr>
+      {#each columns as column}
+        <th>{column}</th>
+      {/each}
+    </tr>
+  </thead>
+  <tbody>
+    {#each paginateData() as row}
       <tr>
         {#each columns as column}
-          <th>{column}</th>
+          <td>{row[column]}</td>
         {/each}
       </tr>
-    </thead>
-    <tbody>
-      {#each (state === GridState.Paginated ? paginatedRows : filteredRows) as row}
-        <tr>
-          {#each columns as column}
-            <td>{row[column]}</td>
-          {/each}
-        </tr>
-      {/each}
-    </tbody>
-  </table>
-  {#if state === GridState.Paginated}
-    <div class="pagination">
-      <button on:click={prevPage} disabled={currentPage === 0}>Previous</button>
-      <button on:click={nextPage} disabled={(currentPage + 1) * pageSize >= rows.length}>Next</button>
-    </div>
-  {/if}
-</div>
+    {/each}
+  </tbody>
+</table>
+
+{#if state === 'paginated'}
+  <div class="pagination-controls">
+    <button on:click={prevPage} disabled={currentPage === 1} aria-label="Previous Page">Previous</button>
+    <span>Page {currentPage}</span>
+    <button on:click={nextPage} disabled={currentPage === Math.ceil(filteredData.length / pageSize)} aria-label="Next Page">Next</button>
+  </div>
+{/if}
 
 <style lang="css">
   @import './DataGrid.css';

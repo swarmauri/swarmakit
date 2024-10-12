@@ -1,46 +1,54 @@
 import ContextualList from './ContextualList.svelte';
-import type { ListState } from './ContextualList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/ContextualList',
+const meta: Meta = {
+  title: 'Components/Lists/ContextualList',
   component: ContextualList,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(ListState),
+      control: { type: 'select' },
+      options: ['default', 'actionTriggered', 'dismissed'],
     },
-    items: { control: 'object' },
+    listItems: {
+      control: { type: 'array' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: ContextualList,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: ListState.Default,
-  items: [
-    { label: 'Action 1', action: () => alert('Action 1 triggered') },
-    { label: 'Action 2', action: () => alert('Action 2 triggered') },
+  state: 'default',
+  listItems: [
+    { label: 'Edit', action: () => alert('Edit triggered') },
+    { label: 'Delete', action: () => alert('Delete triggered') },
+    { label: 'Share', action: () => alert('Share triggered') },
   ],
 };
 
 export const ActionTriggered = Template.bind({});
 ActionTriggered.args = {
-  state: ListState.ActionTriggered,
-  items: [
-    { label: 'Action 1', action: () => alert('Action 1 triggered') },
-    { label: 'Action 2', action: () => alert('Action 2 triggered') },
+  state: 'actionTriggered',
+  listItems: [
+    { label: 'Edit', action: () => alert('Edit triggered') },
+    { label: 'Delete', action: () => alert('Delete triggered') },
+    { label: 'Share', action: () => alert('Share triggered') },
   ],
 };
 
 export const Dismissed = Template.bind({});
 Dismissed.args = {
-  state: ListState.Dismissed,
-  items: [
-    { label: 'Action 1', action: () => alert('Action 1 triggered') },
-    { label: 'Action 2', action: () => alert('Action 2 triggered') },
+  state: 'dismissed',
+  listItems: [
+    { label: 'Edit', action: () => alert('Edit triggered') },
+    { label: 'Delete', action: () => alert('Delete triggered') },
+    { label: 'Share', action: () => alert('Share triggered') },
   ],
 };

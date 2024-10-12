@@ -1,25 +1,12 @@
 <script lang="ts">
-  export let steps: { label: string; status: 'active' | 'completed' | 'inactive' }[] = [];
-
-  const getStepClass = (status: string) => {
-    switch (status) {
-      case 'active':
-        return 'step-active';
-      case 'completed':
-        return 'step-completed';
-      case 'inactive':
-        return 'step-inactive';
-      default:
-        return '';
-    }
-  };
+  export let steps: { label: string; active: boolean; completed: boolean }[] = [];
 </script>
 
-<div class="loading-bars">
-  {#each steps as { label, status }, index}
-    <div class="step {getStepClass(status)}" role="progressbar" aria-valuenow={index + 1} aria-valuemin="0" aria-valuemax={steps.length}>
-      <div class="bar"></div>
-      <span class="label">{label}</span>
+<div class="loading-bars-with-steps" role="progressbar" aria-valuemin="0" aria-valuemax={steps.length} aria-valuenow={steps.filter(step => step.completed).length}>
+  {#each steps as { label, active, completed }, index}
+    <div class="step" role="listitem" aria-current={active ? 'step' : undefined} aria-label={label}>
+      <div class="bar {completed ? 'completed' : active ? 'active' : 'inactive'}"></div>
+      <span>{label}</span>
     </div>
   {/each}
 </div>

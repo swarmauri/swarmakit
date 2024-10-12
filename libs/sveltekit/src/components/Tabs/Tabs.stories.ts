@@ -1,54 +1,59 @@
 import Tabs from './Tabs.svelte';
-import type { Tab } from './Tabs.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/Tabs',
+const meta: Meta = {
+  title: 'Components/Lists/Tabs',
   component: Tabs,
+  tags: ['autodocs'],
   argTypes: {
-    tabs: { control: 'object' },
-    activeTabId: { control: 'number' },
-    onTabChange: { action: 'onTabChange' },
+    tabs: {
+      control: { type: 'array' },
+    },
+    activeIndex: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Tabs,
   props: args,
 });
 
+const sampleTabs = [
+  { label: 'Tab 1', content: 'Content for Tab 1' },
+  { label: 'Tab 2', content: 'Content for Tab 2' },
+  { label: 'Tab 3', content: 'Content for Tab 3', disabled: true },
+];
+
 export const Default = Template.bind({});
 Default.args = {
-  tabs: [
-    { id: 1, title: 'Tab 1' },
-    { id: 2, title: 'Tab 2' },
-    { id: 3, title: 'Tab 3' },
-  ],
-  activeTabId: 1,
-  onTabChange: (activeTab: Tab) => console.log('Active tab', activeTab),
+  tabs: sampleTabs,
+  activeIndex: 0,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  ...Default.args,
+  tabs: sampleTabs,
+  activeIndex: 1,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  ...Default.args,
-  activeTabId: 2,
+  tabs: sampleTabs,
+  activeIndex: 2,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  tabs: [
-    { id: 1, title: 'Tab 1' },
-    { id: 2, title: 'Tab 2', disabled: true },
-    { id: 3, title: 'Tab 3' },
-  ],
-  activeTabId: 1,
+  tabs: sampleTabs,
+  activeIndex: 0,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  ...Default.args,
+  tabs: sampleTabs,
+  activeIndex: 0,
 };

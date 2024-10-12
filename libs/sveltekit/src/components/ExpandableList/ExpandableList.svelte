@@ -1,50 +1,40 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  export type ListState = 'itemExpanded' | 'itemCollapsed' | 'hover' | 'selected';
+  export let items: { id: number; title: string; content: string }[] = [];
+  export let state: ListState = 'itemCollapsed';
 
-  export enum ListState {
-    ItemExpanded = 'itemExpanded',
-    ItemCollapsed = 'itemCollapsed',
-    Hover = 'hover',
-    Selected = 'selected'
+  let expandedItem: number | null = null;
+  let selectedItem: number | null = null;
+
+  function toggleExpand(itemId: number) {
+    expandedItem = expandedItem === itemId ? null : itemId;
   }
 
-  export let state: ListState = ListState.ItemCollapsed;
-  export let items: { title: string; content: string; }[] = [];
-
-  const dispatch = createEventDispatcher();
-  let expandedIndex: number | null = null;
-  let selectedIndex: number | null = null;
-
-  function toggleItem(index: number) {
-    expandedIndex = expandedIndex === index ? null : index;
-    dispatch('toggle', { index, expanded: expandedIndex === index });
-  }
-
-  function selectItem(index: number) {
-    selectedIndex = index;
-    dispatch('select', { index });
+  function selectItem(itemId: number) {
+    selectedItem = itemId;
   }
 </script>
 
 <ul class="expandable-list">
-  {#each items as { title, content }, index}
+  {#each items as { id, title, content }}
     <li
-      class="list-item"
-      class:selected={state === ListState.Selected && selectedIndex === index}
-      on:click={() => toggleItem(index)}
-      on:keydown={(e) => e.key === 'Enter' && toggleItem(index)}
-      tabindex="0"
+      class={`list-item ${expandedItem === id ? 'expanded' : ''} ${selectedItem === id ? 'selected' : ''}`}
+      on:click={() => toggleExpand(id)}
+      on:keydown={(e) => e.key === 'Enter' && toggleExpand(id)}
       role="button"
+      tabindex="0"
     >
       <div
-        class="item-header"
-        on:mouseenter={() => state = ListState.Hover}
-        on:mouseleave={() => state = ListState.ItemCollapsed}
+        class="list-title"
+        on:mouseenter={() => selectItem(id)}
+        on:mouseleave={() => selectItem(null)}
       >
         {title}
       </div>
-      {#if expandedIndex === index && state === ListState.ItemExpanded}
-        <div class="item-content">{content}</div>
+      {#if expandedItem === id}
+        <div class="list-content">
+          {content}
+        </div>
       {/if}
     </li>
   {/each}

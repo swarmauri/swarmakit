@@ -1,14 +1,14 @@
 <script lang="ts">
-  export let status: 'loading' | 'success' | 'error' = 'loading';
+  export let state: 'loading' | 'success' | 'error' = 'loading';
 </script>
 
-<div class="activity-indicator" class={status} role="status" aria-live="polite">
-  {#if status === 'loading'}
+<div class={`activity-indicator ${state}`} role="status" aria-live="polite">
+  {#if state === 'loading'}
     <span>Loading...</span>
-  {:else if status === 'success'}
+  {:else if state === 'success'}
     <span>Success!</span>
-  {:else if status === 'error'}
-    <span>Error occurred.</span>
+  {:else if state === 'error'}
+    <span>Error!</span>
   {/if}
 </div>
 

@@ -1,36 +1,39 @@
 import SelectableListWithItemDetails from './SelectableListWithItemDetails.svelte';
-import type { Item } from './SelectableListWithItemDetails.svelte';
+import type { Meta, Story } from '@storybook/svelte';
+import type { ListItem } from './SelectableListWithItemDetails.svelte';
 
-export default {
-  title: 'Lists/SelectableListWithItemDetails',
+const meta: Meta = {
+  title: 'Components/Lists/SelectableListWithItemDetails',
   component: SelectableListWithItemDetails,
+  tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    onItemSelect: { action: 'onItemSelect' },
-    onToggleDetails: { action: 'onToggleDetails' },
+    items: {
+      control: { type: 'object' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: SelectableListWithItemDetails,
   props: args,
 });
 
+const sampleItems: ListItem[] = Array.from({ length: 5 }, (v, i) => ({
+  id: i + 1,
+  text: `Item ${i + 1}`,
+  details: `Details for item ${i + 1}`,
+}));
+
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { id: 1, title: 'Item 1', details: 'Details of Item 1', selected: false },
-    { id: 2, title: 'Item 2', details: 'Details of Item 2', selected: false },
-    { id: 3, title: 'Item 3', details: 'Details of Item 3', selected: false },
-  ],
-  onItemSelect: (id: number) => console.log(`Selected item ${id}`),
-  onToggleDetails: (id: number) => console.log(`Toggled details for item ${id}`),
+  items: sampleItems,
 };
 
 export const ItemSelected = Template.bind({});
 ItemSelected.args = {
-  ...Default.args,
-  items: Default.args.items.map((item, index) => ({
+  items: sampleItems.map((item, index) => ({
     ...item,
     selected: index === 0,
   })),
@@ -38,27 +41,18 @@ ItemSelected.args = {
 
 export const ItemDeselected = Template.bind({});
 ItemDeselected.args = {
-  ...Default.args,
-  items: Default.args.items.map((item) => ({
-    ...item,
-    selected: false,
-  })),
+  items: sampleItems,
 };
 
 export const DetailsOpened = Template.bind({});
 DetailsOpened.args = {
-  ...Default.args,
-  items: Default.args.items.map((item, index) => ({
+  items: sampleItems.map((item, index) => ({
     ...item,
-    selected: index === 1,
+    detailsOpen: index === 0,
   })),
 };
 
 export const DetailsClosed = Template.bind({});
 DetailsClosed.args = {
-  ...Default.args,
-  items: Default.args.items.map((item) => ({
-    ...item,
-    selected: false,
-  })),
+  items: sampleItems,
 };

@@ -1,46 +1,34 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export enum MenuState {
-    Expanded = 'expanded',
-    Collapsed = 'collapsed',
-    Hover = 'hover',
-    Active = 'active'
-  }
-
-  export let state: MenuState = MenuState.Collapsed;
-  export let items: { label: string; active?: boolean }[] = [];
-
-  const dispatch = createEventDispatcher();
+  export type MenuState = 'expanded' | 'collapsed' | 'hover' | 'active';
+  export let state: MenuState = 'collapsed';
+  export let menuItems: { label: string; active: boolean }[] = [];
+  let isExpanded: boolean = state === 'expanded';
 
   function toggleMenu() {
-    state = state === MenuState.Expanded ? MenuState.Collapsed : MenuState.Expanded;
-    dispatch('toggle', { state });
+    isExpanded = !isExpanded;
   }
 
-  function handleKeyDown(event: KeyboardEvent) {
+  function handleKey(event: KeyboardEvent) {
     if (event.key === 'Enter' || event.key === ' ') {
       toggleMenu();
     }
   }
 </script>
 
-<div class="collapsible-menu">
+<div class={`collapsible-menu-list menu-${state}`}>
   <div
     class="menu-header"
     role="button"
-    aria-expanded={state === MenuState.Expanded}
     tabindex="0"
+    aria-expanded={isExpanded}
     on:click={toggleMenu}
-    on:keydown={handleKeyDown}
-    class:active={state === MenuState.Active}
-    class:hover={state === MenuState.Hover}
+    on:keydown={handleKey}
   >
     Menu
   </div>
-  {#if state === MenuState.Expanded}
-    <ul class="menu-list">
-      {#each items as { label, active }}
+  {#if isExpanded}
+    <ul>
+      {#each menuItems as { label, active }}
         <li class:active={active}>{label}</li>
       {/each}
     </ul>

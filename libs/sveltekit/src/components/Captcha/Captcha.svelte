@@ -1,57 +1,45 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  export let question: string;
+  export let answer: string;
+  export let onSolve: () => void;
+  export let onError: () => void;
 
-  export let solved: boolean = false;
-  export let error: boolean = false;
+  let userAnswer = '';
+  let error = false;
 
-  const dispatch = createEventDispatcher();
-
-  function handleSolve() {
-    if (!solved) {
-      dispatch('solve', { solved: true });
+  function handleSubmit() {
+    if (userAnswer.trim().toLowerCase() === answer.toLowerCase()) {
+      error = false;
+      onSolve && onSolve();
+    } else {
+      error = true;
+      onError && onError();
     }
   }
-
-  function handleError() {
-    if (!error) {
-      dispatch('error', { error: true });
+  
+  function handleKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      handleSubmit();
     }
   }
 </script>
 
-<div
-  class="captcha-container"
-  role="group"
-  aria-labelledby="captcha-label"
-  on:click={handleSolve}
-  on:keydown={(event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      handleSolve();
-    }
-  }}
-  tabindex="0"
->
-  <div id="captcha-label" class="captcha-label">
-    {solved ? 'Captcha Solved' : 'Please solve the captcha'}
-  </div>
+<div class="captcha">
+  <p>{question}</p>
+  <input
+    type="text"
+    bind:value={userAnswer}
+    on:keypress={handleKeyPress}
+    aria-invalid={error}
+    aria-describedby="captcha-error"
+    placeholder="Enter your answer"
+  />
+  <button on:click={handleSubmit}>Submit</button>
   {#if error}
-    <div class="captcha-error" aria-live="assertive">Captcha Error</div>
+    <p id="captcha-error" class="error">Incorrect answer. Please try again.</p>
   {/if}
 </div>
 
 <style lang="css">
-  .captcha-container {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    border-radius: 8px;
-    display: inline-block;
-    cursor: pointer;
-    background-color: #f9f9f9;
-  }
-
-  .captcha-error {
-    color: red;
-    margin-top: 0.5rem;
-  }
+  @import './Captcha.css';
 </style>

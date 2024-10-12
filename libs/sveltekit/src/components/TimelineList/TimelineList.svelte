@@ -1,40 +1,28 @@
 <script lang="ts">
-  export interface TimelineItem {
-    id: number;
-    title: string;
-    description: string;
-    completed?: boolean;
-  }
+  export let events: { title: string, description: string, completed: boolean, active: boolean }[] = [];
 
-  export let items: TimelineItem[] = [];
-  export let activeItemId: number;
-  export let onItemSelect: (item: TimelineItem) => void;
-
-  function selectItem(item: TimelineItem) {
-    activeItemId = item.id;
-    onItemSelect(item);
+  function handleClick(index: number) {
+    events = events.map((event, i) => ({
+      ...event,
+      active: i === index ? true : false
+    }));
   }
 </script>
 
-<ul>
-  {#each items as item (item.id)}
-    <li
-      role="listitem"
-      class="timeline-item"
-      aria-current={item.id === activeItemId ? 'step' : undefined}
-      on:click={() => selectItem(item)}
-      on:keydown={(event) => event.key === 'Enter' && selectItem(item)}
-      tabindex="0"
-    >
-      <div class="content">
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
+<ul class="timeline" role="list">
+  {#each events as { title, description, completed, active }, index}
+    <li class="timeline-event" role="listitem">
+      <div
+        class="event-content"
+        class:active={active}
+        class:completed={completed}
+        tabindex="0"
+        on:click={() => handleClick(index)}
+        on:keydown={(event) => event.key === 'Enter' && handleClick(index)}
+      >
+        <h3>{title}</h3>
+        <p>{description}</p>
       </div>
-      {#if item.completed}
-        <span class="status completed">Completed</span>
-      {:else}
-        <span class="status">{item.id === activeItemId ? 'Active' : 'Inactive'}</span>
-      {/if}
     </li>
   {/each}
 </ul>

@@ -1,52 +1,69 @@
 import Toast from './Toast.svelte';
-import type { ToastState } from './Toast.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'UI Layout/Toast',
+const meta: Meta = {
+  title: 'Components/Indicators/Toast',
   component: Toast,
+  tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: ['visible', 'hidden', 'dismissed', 'autoHide'],
+    type: {
+      control: { type: 'select' },
+      options: ['success', 'error', 'warning', 'info'],
     },
-    message: { control: 'text' },
-    autoHideDuration: { control: { type: 'number', min: 1000, max: 10000, step: 500 } },
+    message: {
+      control: { type: 'text' },
+    },
+    isVisible: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args: { state: ToastState; message: string; autoHideDuration: number }) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Toast,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'visible',
-  message: 'This is a toast message!',
-  autoHideDuration: 3000,
+  type: 'info',
+  message: 'This is an informational message.',
+  isVisible: true,
 };
 
-export const Visible = Template.bind({});
-Visible.args = {
-  state: 'visible',
-  message: 'This is a visible toast!',
+export const Success = Template.bind({});
+Success.args = {
+  type: 'success',
+  message: 'Operation completed successfully!',
+  isVisible: true,
 };
 
-export const Hidden = Template.bind({});
-Hidden.args = {
-  state: 'hidden',
-  message: 'This toast is hidden and will not show.',
+export const Error = Template.bind({});
+Error.args = {
+  type: 'error',
+  message: 'Something went wrong!',
+  isVisible: true,
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  type: 'warning',
+  message: 'This is a warning message!',
+  isVisible: true,
+};
+
+export const Info = Template.bind({});
+Info.args = {
+  type: 'info',
+  message: 'This is an informational message.',
+  isVisible: true,
 };
 
 export const Dismissed = Template.bind({});
 Dismissed.args = {
-  state: 'dismissed',
-  message: 'This toast was dismissed.',
-};
-
-export const AutoHide = Template.bind({});
-AutoHide.args = {
-  state: 'autoHide',
-  message: 'This toast will auto-hide!',
-  autoHideDuration: 3000,
+  type: 'info',
+  message: 'This message has been dismissed.',
+  isVisible: false,
 };

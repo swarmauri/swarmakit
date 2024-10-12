@@ -1,75 +1,61 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  export let src: string;
+  export let src: string = '';
   export let isPlaying: boolean = false;
   export let isMuted: boolean = false;
   export let volume: number = 1;
   export let playbackRate: number = 1;
 
-  let audio: HTMLAudioElement;
-  let currentTime: number = 0;
+  let audioElement: HTMLAudioElement;
 
-  function togglePlay() {
-    isPlaying = !isPlaying;
+  const togglePlay = () => {
     if (isPlaying) {
-      audio.play();
+      audioElement.pause();
     } else {
-      audio.pause();
+      audioElement.play();
     }
-  }
+    isPlaying = !isPlaying;
+  };
 
-  function toggleMute() {
-    isMuted = !isMuted;
-    audio.muted = isMuted;
-  }
+  const toggleMute = () => {
+    audioElement.muted = isMuted = !isMuted;
+  };
 
-  function handleVolumeChange(event: Event) {
+  const handleVolumeChange = (event: Event) => {
     const target = event.target as HTMLInputElement;
     volume = parseFloat(target.value);
-    audio.volume = volume;
-  }
+    audioElement.volume = volume;
+  };
 
-  function handleSpeedChange(event: Event) {
+  const handlePlaybackRateChange = (event: Event) => {
     const target = event.target as HTMLInputElement;
     playbackRate = parseFloat(target.value);
-    audio.playbackRate = playbackRate;
-  }
+    audioElement.playbackRate = playbackRate;
+  };
 
-  function handleSeek(event: Event) {
+  const handleSeek = (event: Event) => {
     const target = event.target as HTMLInputElement;
-    currentTime = parseFloat(target.value);
-    audio.currentTime = currentTime;
-  }
-
-  function updateCurrentTime() {
-    currentTime = audio.currentTime;
-  }
+    audioElement.currentTime = parseFloat(target.value);
+  };
 
   onMount(() => {
-    audio.volume = volume;
-    audio.muted = isMuted;
-    audio.playbackRate = playbackRate;
-    audio.addEventListener('timeupdate', updateCurrentTime);
+    audioElement.volume = volume;
+    audioElement.playbackRate = playbackRate;
   });
 </script>
 
-<div class="audio-player-advanced">
-  <audio bind:this={audio} src={src} />
-
-  <button on:click={togglePlay} aria-label="Play/Pause">
-    {isPlaying ? 'Pause' : 'Play'}
+<div class="audio-player-advanced" role="region" aria-label="Advanced Audio Player">
+  <audio bind:this={audioElement} src={src}></audio>
+  <button on:click={togglePlay} on:keydown={(e) => e.key === 'Enter' && togglePlay()} aria-label={isPlaying ? 'Pause' : 'Play'}>
+    {#if isPlaying}Pause{:else}Play{/if}
   </button>
-
-  <button on:click={toggleMute} aria-label="Mute/Unmute">
-    {isMuted ? 'Unmute' : 'Mute'}
+  <button on:click={toggleMute} on:keydown={(e) => e.key === 'Enter' && toggleMute()} aria-label={isMuted ? 'Unmute' : 'Mute'}>
+    {#if isMuted}Unmute{:else}Mute{/if}
   </button>
-  
+  <input type="range" min="0" max="{audioElement.duration}" step="0.1" on:input={handleSeek} aria-label="Seek Control" />
   <input type="range" min="0" max="1" step="0.01" value={volume} on:input={handleVolumeChange} aria-label="Volume Control" />
-  
-  <input type="range" min="0.5" max="2" step="0.1" value={playbackRate} on:input={handleSpeedChange} aria-label="Speed Control" />
-  
-  <input type="range" min="0" max={audio?.duration || 0} step="0.1" value={currentTime} on:input={handleSeek} aria-label="Seek Control" />
+  <input type="range" min="0.5" max="2" step="0.1" value={playbackRate} on:input={handlePlaybackRateChange} aria-label="Speed Control" />
 </div>
 
 <style lang="css">

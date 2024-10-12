@@ -1,45 +1,42 @@
-.upload-container {
-  width: 100%;
-  max-width: 400px;
-  margin: 20px 0;
-}
-
 .upload {
+  padding: 10px 20px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  align-items: flex-start;
+  margin: 10px 0;
+  color: #333;
+  background-color: #f8f8f8;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  position: relative;
+}
+
+.upload-completed {
+  color: #4caf50;
+}
+
+.upload-failed {
+  color: #f44336;
 }
 
 .progress-bar {
-  height: 5px;
-  background-color: #2196f3;
-  border-radius: 2px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
 }
 
-.upload.uploading .progress-bar {
-  background-color: #4caf50;
-}
-
-.upload.downloading .progress-bar {
+.progress {
+  height: 10px;
   background-color: #2196f3;
 }
 
-.upload.completed .progress-bar {
-  background-color: #4caf50;
-}
-
-.upload.paused .progress-bar {
-  background-color: #ff9800;
-}
-
-.upload.failed .progress-bar {
-  background-color: #f44336;
+button {
+  margin-top: 10px;
+  background-color: #009688;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
 }

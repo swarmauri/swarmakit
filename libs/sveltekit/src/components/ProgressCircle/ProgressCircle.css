@@ -1,31 +1,50 @@
 .progress-circle {
-  transform: rotate(-90deg);
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  cursor: pointer;
 }
 
-.progress-circle-bg {
+.progress-circle svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.circle-bg {
   fill: none;
   stroke: #e0e0e0;
-  stroke-width: 10;
+  stroke-width: 3.8;
 }
 
-.progress-circle-fg {
+.circle {
   fill: none;
-  stroke-width: 10;
-  transition: stroke-dashoffset 0.3s ease-in-out;
+  stroke-width: 3.8;
+  transition: stroke-dasharray 0.3s ease;
 }
 
-.progress-circle-fg.complete {
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.progress-circle.active .circle {
   stroke: #76c7c0;
 }
 
-.progress-circle-fg.incomplete {
-  stroke: #e0e0e0;
+.progress-circle.paused .circle {
+  stroke: #f5a623;
 }
 
-.progress-circle-fg.paused {
-  stroke: #ffc107;
+.progress-circle.complete .circle {
+  stroke: #4caf50;
 }
 
-.progress-circle-fg.active {
-  stroke: #2196f3;
+.progress-circle.incomplete .circle {
+  stroke: #ff5722;
 }

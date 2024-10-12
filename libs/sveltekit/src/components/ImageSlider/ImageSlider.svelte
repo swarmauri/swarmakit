@@ -2,21 +2,31 @@
   export let images: string[] = [];
   export let activeIndex: number = 0;
 
-  function nextImage() {
+  const nextImage = () => {
     activeIndex = (activeIndex + 1) % images.length;
-  }
+  };
 
-  function prevImage() {
+  const prevImage = () => {
     activeIndex = (activeIndex - 1 + images.length) % images.length;
-  }
+  };
+
+  const handleKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'ArrowRight') {
+      nextImage();
+    } else if (event.key === 'ArrowLeft') {
+      prevImage();
+    }
+  };
 </script>
 
-<div class="slider" role="region" aria-live="polite">
-  <button on:click={prevImage} aria-label="Previous Image">Prev</button>
+<div class="image-slider" role="region" aria-label="Image Slider" tabindex="0" on:keydown={handleKeydown}>
   {#if images.length > 0}
-    <img src={images[activeIndex]} alt="Image Slider" class="slide" />
+    <img src={images[activeIndex]} alt={`Image ${activeIndex + 1}`} class="slider-image" />
+    <div class="controls">
+      <button on:click={prevImage} aria-label="Previous Image">&lt;</button>
+      <button on:click={nextImage} aria-label="Next Image">&gt;</button>
+    </div>
   {/if}
-  <button on:click={nextImage} aria-label="Next Image">Next</button>
 </div>
 
 <style lang="css">

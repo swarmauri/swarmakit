@@ -1,64 +1,62 @@
 import ActionableList from './ActionableList.svelte';
-import type { ActionableListState } from './ActionableList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/ActionableList',
+const meta: Meta = {
+  title: 'Components/Lists/ActionableList',
   component: ActionableList,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(ActionableListState),
+      control: { type: 'select' },
+      options: ['hover', 'action-triggered', 'disabled', 'loading'],
     },
-    items: { control: 'object' },
+    items: {
+      control: { type: 'array' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: ActionableList,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: ActionableListState.Hover,
-  items: [
-    { title: 'Item 1', action: 'Action 1', disabled: false },
-    { title: 'Item 2', action: 'Action 2', disabled: false },
-  ],
+  state: 'hover',
+  items: ['Item 1', 'Item 2', 'Item 3'],
+  disabled: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  state: ActionableListState.Hover,
-  items: [
-    { title: 'Item 1', action: 'Action 1', disabled: false },
-    { title: 'Item 2', action: 'Action 2', disabled: false },
-  ],
+  state: 'hover',
+  items: ['Item 1', 'Item 2', 'Item 3'],
+  disabled: false,
 };
 
 export const ActionTriggered = Template.bind({});
 ActionTriggered.args = {
-  state: ActionableListState.ActionTriggered,
-  items: [
-    { title: 'Item 1', action: 'Action 1', disabled: false },
-    { title: 'Item 2', action: 'Action 2', disabled: false },
-  ],
+  state: 'action-triggered',
+  items: ['Item 1', 'Item 2', 'Item 3'],
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  state: ActionableListState.Disabled,
-  items: [
-    { title: 'Item 1', action: 'Action 1', disabled: true },
-    { title: 'Item 2', action: 'Action 2', disabled: true },
-  ],
+  state: 'disabled',
+  items: ['Item 1', 'Item 2', 'Item 3'],
+  disabled: true,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  state: ActionableListState.Loading,
-  items: [
-    { title: 'Item 1', action: 'Action 1', disabled: false },
-    { title: 'Item 2', action: 'Action 2', disabled: false },
-  ],
+  state: 'loading',
+  items: ['Item 1', 'Item 2', 'Item 3'],
+  disabled: false,
 };

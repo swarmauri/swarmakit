@@ -1,10 +1,12 @@
 import Textarea from './Textarea.svelte';
 
 export default {
-  title: 'Forms/Textarea',
+  title: 'Components/Forms/Textarea',
   component: Textarea,
+  tags: ['autodocs'],
   argTypes: {
     value: { control: 'text' },
+    placeholder: { control: 'text' },
     disabled: { control: 'boolean' },
   },
 };
@@ -16,12 +18,14 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  value: 'This is a textarea',
+  value: '',
+  placeholder: 'Enter text...',
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  value: 'This textarea is disabled',
+  value: '',
+  placeholder: 'Enter text...',
   disabled: true,
 };

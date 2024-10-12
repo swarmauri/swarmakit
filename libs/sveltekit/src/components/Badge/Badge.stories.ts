@@ -1,16 +1,12 @@
 import Badge from './Badge.svelte';
 
 export default {
-  title: 'Indicators/Badge',
+  title: 'Components/Indicators/Badge',
   component: Badge,
+  tags: ['autodocs'],
   argTypes: {
-    type: {
-      control: { type: 'select' },
-      options: ['default', 'notification', 'status'],
-    },
-    content: {
-      control: 'text',
-    },
+    type: { control: { type: 'select', options: ['default', 'notification', 'status'] } },
+    label: { control: 'text' },
   },
 };
 
@@ -22,17 +18,17 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   type: 'default',
-  content: 'Default Badge',
+  label: 'Default Badge',
 };
 
 export const Notification = Template.bind({});
 Notification.args = {
   type: 'notification',
-  content: '3',
+  label: '3',
 };
 
 export const StatusIndicator = Template.bind({});
 StatusIndicator.args = {
   type: 'status',
-  content: 'Active',
+  label: 'Active',
 };

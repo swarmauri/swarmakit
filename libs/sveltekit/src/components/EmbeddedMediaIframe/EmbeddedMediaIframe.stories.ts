@@ -1,17 +1,26 @@
 import EmbeddedMediaIframe from './EmbeddedMediaIframe.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Media/EmbeddedMediaIframe',
+const meta: Meta = {
+  title: 'Components/Media/EmbeddedMediaIframe',
   component: EmbeddedMediaIframe,
+  tags: ['autodocs'],
   argTypes: {
-    src: { control: 'text' },
-    title: { control: 'text' },
-    isFullscreen: { control: 'boolean' },
-    isBuffering: { control: 'boolean' },
+    src: {
+      control: { type: 'text' },
+    },
+    title: {
+      control: { type: 'text' },
+    },
+    allowFullscreen: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: EmbeddedMediaIframe,
   props: args,
 });
@@ -19,19 +28,20 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-  title: 'Example Video',
-  isFullscreen: false,
-  isBuffering: false,
+  title: 'Default Media',
+  allowFullscreen: false,
 };
 
 export const Fullscreen = Template.bind({});
 Fullscreen.args = {
-  ...Default.args,
-  isFullscreen: true,
+  src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  title: 'Fullscreen Enabled Media',
+  allowFullscreen: true,
 };
 
 export const Buffering = Template.bind({});
 Buffering.args = {
-  ...Default.args,
-  isBuffering: true,
+  src: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
+  title: 'Buffering Media',
+  allowFullscreen: false,
 };

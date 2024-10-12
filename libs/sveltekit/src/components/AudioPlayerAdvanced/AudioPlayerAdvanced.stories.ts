@@ -1,25 +1,39 @@
 import AudioPlayerAdvanced from './AudioPlayerAdvanced.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Media/AudioPlayerAdvanced',
+const meta: Meta = {
+  title: 'Components/Media/AudioPlayerAdvanced',
   component: AudioPlayerAdvanced,
+  tags: ['autodocs'],
   argTypes: {
-    src: { control: 'text' },
-    isPlaying: { control: 'boolean' },
-    isMuted: { control: 'boolean' },
-    volume: { control: 'number' },
-    playbackRate: { control: 'number' },
+    src: {
+      control: { type: 'text' },
+    },
+    isPlaying: {
+      control: { type: 'boolean' },
+    },
+    isMuted: {
+      control: { type: 'boolean' },
+    },
+    volume: {
+      control: { type: 'number' },
+    },
+    playbackRate: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: AudioPlayerAdvanced,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'audio-sample.mp3',
+  src: 'path/to/audio.mp3',
   isPlaying: false,
   isMuted: false,
   volume: 1,
@@ -28,36 +42,54 @@ Default.args = {
 
 export const Play = Template.bind({});
 Play.args = {
-  ...Default.args,
+  src: 'path/to/audio.mp3',
   isPlaying: true,
+  isMuted: false,
+  volume: 1,
+  playbackRate: 1,
 };
 
 export const Pause = Template.bind({});
 Pause.args = {
-  ...Default.args,
+  src: 'path/to/audio.mp3',
   isPlaying: false,
-};
-
-export const Mute = Template.bind({});
-Mute.args = {
-  ...Default.args,
-  isMuted: true,
-};
-
-export const VolumeControl = Template.bind({});
-VolumeControl.args = {
-  ...Default.args,
-  volume: 0.5,
-};
-
-export const SpeedControl = Template.bind({});
-SpeedControl.args = {
-  ...Default.args,
-  playbackRate: 1.5,
+  isMuted: false,
+  volume: 1,
+  playbackRate: 1,
 };
 
 export const Seek = Template.bind({});
 Seek.args = {
-  ...Default.args,
-  currentTime: 30,
+  src: 'path/to/audio.mp3',
+  isPlaying: false,
+  isMuted: false,
+  volume: 1,
+  playbackRate: 1,
+};
+
+export const Mute = Template.bind({});
+Mute.args = {
+  src: 'path/to/audio.mp3',
+  isPlaying: false,
+  isMuted: true,
+  volume: 1,
+  playbackRate: 1,
+};
+
+export const VolumeControl = Template.bind({});
+VolumeControl.args = {
+  src: 'path/to/audio.mp3',
+  isPlaying: false,
+  isMuted: false,
+  volume: 0.5,
+  playbackRate: 1,
+};
+
+export const SpeedControl = Template.bind({});
+SpeedControl.args = {
+  src: 'path/to/audio.mp3',
+  isPlaying: false,
+  isMuted: false,
+  volume: 1,
+  playbackRate: 1.5,
 };

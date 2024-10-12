@@ -1,15 +1,12 @@
 import ProgressBar from './ProgressBar.svelte';
 
 export default {
-  title: 'Indicators/ProgressBar',
+  title: 'Components/Indicators/ProgressBar',
   component: ProgressBar,
+  tags: ['autodocs'],
   argTypes: {
-    progress: {
-      control: { type: 'number', min: 0, max: 100 },
-    },
-    isDisabled: {
-      control: { type: 'boolean' },
-    },
+    progress: { control: { type: 'range', min: 0, max: 100 } },
+    disabled: { control: 'boolean' },
   },
 };
 
@@ -21,33 +18,29 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   progress: 50,
-  isDisabled: false,
+  disabled: false,
 };
 
 export const Complete = Template.bind({});
 Complete.args = {
   progress: 100,
-  isDisabled: false,
+  disabled: false,
 };
 
 export const Incomplete = Template.bind({});
 Incomplete.args = {
-  progress: 0,
-  isDisabled: false,
+  progress: 25,
+  disabled: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  progress: 50,
-  isDisabled: false,
-};
-
-Hover.parameters = {
-  pseudo: { hover: true },
+  progress: 75,
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   progress: 50,
-  isDisabled: true,
+  disabled: true,
 };

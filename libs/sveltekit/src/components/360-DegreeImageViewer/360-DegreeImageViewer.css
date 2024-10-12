@@ -1,41 +1,21 @@
-.image-viewer {
-  position: relative;
+.viewer-container {
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f3f3;
   overflow: hidden;
+  position: relative;
 }
 
-img {
-  width: 100%;
-  transition: transform 0.3s ease;
-}
-
-img.is-zoomed-in {
-  transform: scale(1.5);
-}
-
-button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 5px 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  outline: none;
-}
-
-button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+.viewer-container img {
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.2s ease-in-out;
 }
 
 .loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
   font-size: 1.5em;
-  color: #666;
+  color: #888;
 }

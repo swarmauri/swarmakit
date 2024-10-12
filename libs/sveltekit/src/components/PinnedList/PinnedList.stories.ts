@@ -1,72 +1,61 @@
 import PinnedList from './PinnedList.svelte';
-import type { Item } from './PinnedList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
+import type { ListItem } from './PinnedList.svelte';
 
-export default {
-  title: 'Lists/PinnedList',
+const meta: Meta = {
+  title: 'Components/Lists/PinnedList',
   component: PinnedList,
+  tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    onPinToggle: { action: 'onPinToggle' },
-    onSelect: { action: 'onSelect' },
+    items: {
+      control: { type: 'object' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: PinnedList,
   props: args,
 });
 
+const sampleItems: ListItem[] = [
+  { id: 1, text: 'Item 1', pinned: false },
+  { id: 2, text: 'Item 2', pinned: false },
+  { id: 3, text: 'Item 3', pinned: false },
+];
+
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { id: 1, text: 'Item 1', pinned: false, selected: false },
-    { id: 2, text: 'Item 2', pinned: false, selected: false },
-    { id: 3, text: 'Item 3', pinned: true, selected: false },
-  ],
-  onPinToggle: (id: number) => console.log(`Toggled pin for item ${id}`),
-  onSelect: (id: number) => console.log(`Selected item ${id}`),
+  items: sampleItems,
 };
 
 export const Pinned = Template.bind({});
 Pinned.args = {
-  items: [
-    { id: 1, text: 'Item 1', pinned: true, selected: false },
-    { id: 2, text: 'Item 2', pinned: false, selected: false },
-    { id: 3, text: 'Item 3', pinned: true, selected: false },
-  ],
-  onPinToggle: (id: number) => console.log(`Toggled pin for item ${id}`),
-  onSelect: (id: number) => console.log(`Selected item ${id}`),
+  items: sampleItems.map((item, index) => ({
+    ...item,
+    pinned: index === 0,
+  })),
 };
 
 export const Unpinned = Template.bind({});
 Unpinned.args = {
-  items: [
-    { id: 1, text: 'Item 1', pinned: false, selected: false },
-    { id: 2, text: 'Item 2', pinned: false, selected: false },
-    { id: 3, text: 'Item 3', pinned: false, selected: false },
-  ],
-  onPinToggle: (id: number) => console.log(`Toggled pin for item ${id}`),
-  onSelect: (id: number) => console.log(`Selected item ${id}`),
+  items: sampleItems.map((item) => ({
+    ...item,
+    pinned: false,
+  })),
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  items: [
-    { id: 1, text: 'Item 1', pinned: false, selected: false },
-    { id: 2, text: 'Item 2', pinned: false, selected: false },
-    { id: 3, text: 'Item 3', pinned: false, selected: false },
-  ],
-  onPinToggle: (id: number) => console.log(`Toggled pin for item ${id}`),
-  onSelect: (id: number) => console.log(`Selected item ${id}`),
+  items: sampleItems,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  items: [
-    { id: 1, text: 'Item 1', pinned: false, selected: true },
-    { id: 2, text: 'Item 2', pinned: false, selected: false },
-    { id: 3, text: 'Item 3', pinned: false, selected: false },
-  ],
-  onPinToggle: (id: number) => console.log(`Toggled pin for item ${id}`),
-  onSelect: (id: number) => console.log(`Selected item ${id}`),
+  items: sampleItems.map((item, index) => ({
+    ...item,
+    pinned: index === 1,
+  })),
 };

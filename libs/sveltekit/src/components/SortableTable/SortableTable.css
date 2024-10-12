@@ -1,40 +1,22 @@
 .sortable-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
 .sortable-table th, .sortable-table td {
-  border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-.sortable-table th {
-  background-color: #f4f4f4;
+.sortable-table th.sortable {
   cursor: pointer;
+  user-select: none;
 }
 
-.sortable-table th[role="button"]:hover {
-  background-color: #e0e0e0;
-}
-
-.sortable-table input[type="text"] {
+.filter input[type="text"] {
+  margin-bottom: 10px;
+  padding: 5px;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 5px;
-  padding: 4px;
-}
-
-.sortable-table tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
-.sortable-table tbody tr[role="button"]:hover {
-  background-color: #dcdcdc;
-}
-
-.sort-indicator {
-  font-size: 0.8em;
-  margin-left: 5px;
 }

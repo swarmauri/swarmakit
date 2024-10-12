@@ -1,18 +1,20 @@
 .focus-indicator {
+  padding: 10px 20px;
+  border-radius: 5px;
   display: inline-block;
-  padding: 10px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  cursor: pointer;
+  margin: 10px 0;
+  color: #333;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
   outline: none;
-  transition: border-color 0.3s;
+  cursor: pointer;
 }
 
-.focus-indicator.focused {
-  border-color: #2196f3;
-  background-color: #e3f2fd;
+.focus-indicator-focused {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px #4caf50;
 }
 
-.focus-indicator.unfocused {
-  border-color: transparent;
+.focus-indicator-unfocused {
+  border-color: #ddd;
 }

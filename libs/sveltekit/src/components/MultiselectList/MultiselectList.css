@@ -1,35 +1,28 @@
 .multiselect-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
-  max-width: 400px;
 }
 
-li {
+.multiselect-item {
   padding: 10px;
-  border: 1px solid #ddd;
-  margin-bottom: 5px;
-  background-color: #f9f9f9;
+  margin: 5px 0;
+  background-color: #f0f0f0;
   cursor: pointer;
+  border-radius: 4px;
   outline: none;
 }
 
-li:hover:not(.disabled) {
-  background-color: #e0e0e0;
-}
-
-li.selected {
+.multiselect-item.selected {
   background-color: #007bff;
-  color: white;
+  color: #fff;
 }
 
-li.disabled {
-  background-color: #ccc;
+.multiselect-item.disabled {
+  background-color: #e0e0e0;
   cursor: not-allowed;
 }
 
-li[aria-selected="true"] {
-  background-color: #007bff;
-  color: white;
+.multiselect-item:hover:not(.disabled) {
+  background-color: #d0d0d0;
 }

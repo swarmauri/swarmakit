@@ -1,64 +1,48 @@
 import GroupedList from './GroupedList.svelte';
-import type { ListState } from './GroupedList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/GroupedList',
+const meta: Meta = {
+  title: 'Components/Lists/GroupedList',
   component: GroupedList,
+  tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: Object.values(ListState),
+    groups: {
+      control: { type: 'array' },
     },
-    groups: { control: 'object' },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: GroupedList,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: ListState.GroupCollapsed,
   groups: [
-    { title: 'Fruits', items: ['Apple', 'Banana', 'Cherry'] },
-    { title: 'Vegetables', items: ['Carrot', 'Lettuce', 'Tomato'] }
+    { id: 1, title: 'Fruits', items: [{ id: 1, title: 'Apple' }, { id: 2, title: 'Banana' }] },
+    { id: 2, title: 'Vegetables', items: [{ id: 3, title: 'Carrot' }, { id: 4, title: 'Lettuce' }] },
   ],
 };
 
 export const GroupExpanded = Template.bind({});
 GroupExpanded.args = {
-  state: ListState.GroupExpanded,
-  groups: [
-    { title: 'Fruits', items: ['Apple', 'Banana', 'Cherry'] },
-    { title: 'Vegetables', items: ['Carrot', 'Lettuce', 'Tomato'] }
-  ],
+  groups: Default.args.groups,
 };
 
 export const GroupCollapsed = Template.bind({});
 GroupCollapsed.args = {
-  state: ListState.GroupCollapsed,
-  groups: [
-    { title: 'Fruits', items: ['Apple', 'Banana', 'Cherry'] },
-    { title: 'Vegetables', items: ['Carrot', 'Lettuce', 'Tomato'] }
-  ],
+  groups: Default.args.groups,
 };
 
 export const ItemHover = Template.bind({});
 ItemHover.args = {
-  state: ListState.ItemHover,
-  groups: [
-    { title: 'Fruits', items: ['Apple', 'Banana', 'Cherry'] },
-    { title: 'Vegetables', items: ['Carrot', 'Lettuce', 'Tomato'] }
-  ],
+  groups: Default.args.groups,
 };
 
 export const ItemSelected = Template.bind({});
 ItemSelected.args = {
-  state: ListState.ItemSelected,
-  groups: [
-    { title: 'Fruits', items: ['Apple', 'Banana', 'Cherry'] },
-    { title: 'Vegetables', items: ['Carrot', 'Lettuce', 'Tomato'] }
-  ],
+  groups: Default.args.groups,
 };

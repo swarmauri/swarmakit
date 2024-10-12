@@ -1,22 +1,35 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-list {
+  display: flex;
+}
+
 .tab-button {
-  padding: 10px 20px;
-  margin: 0 5px;
+  padding: 10px;
+  margin-right: 2px;
+  background-color: #f1f1f1;
   border: none;
-  background-color: #f4f4f4;
   cursor: pointer;
-  outline: none;
 }
 
 .tab-button[aria-selected="true"] {
-  background-color: #dcdcdc;
+  background-color: #ddd;
   font-weight: bold;
 }
 
 .tab-button[aria-disabled="true"] {
-  background-color: #e0e0e0;
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .tab-button:hover:not([aria-disabled="true"]) {
-  background-color: #eaeaea;
+  background-color: #ccc;
+}
+
+.tab-content {
+  padding: 10px;
+  border-top: 1px solid #ddd;
 }

@@ -1,57 +1,63 @@
 import DataGrid from './DataGrid.svelte';
-import type { GridState } from './DataGrid.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/DataGrid',
+const meta: Meta = {
+  title: 'Components/Lists/DataGrid',
   component: DataGrid,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(GridState),
+      control: { type: 'select' },
+      options: ['paginated', 'search', 'resizable'],
     },
-    columns: { control: 'array' },
-    rows: { control: 'object' },
-    pageSize: { control: 'number' },
-    searchQuery: { control: 'text' },
+    data: {
+      control: { type: 'array' },
+    },
+    columns: {
+      control: { type: 'array' },
+    },
+    pageSize: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: DataGrid,
   props: args,
 });
 
-export const Paginated = Template.bind({});
-Paginated.args = {
-  state: GridState.Paginated,
-  columns: ['Name', 'Age', 'Occupation'],
-  rows: [
-    { Name: 'Alice', Age: 30, Occupation: 'Engineer' },
-    { Name: 'Bob', Age: 25, Occupation: 'Designer' },
-    // Add more rows as needed
+export const Default = Template.bind({});
+Default.args = {
+  state: 'paginated',
+  data: [
+    { name: 'Alice', age: 25, city: 'New York' },
+    { name: 'Bob', age: 30, city: 'Los Angeles' },
+    { name: 'Charlie', age: 35, city: 'Chicago' },
+    { name: 'David', age: 40, city: 'Houston' },
+    { name: 'Eve', age: 45, city: 'Phoenix' },
+    { name: 'Frank', age: 50, city: 'Philadelphia' },
+    { name: 'Grace', age: 55, city: 'San Antonio' },
+    { name: 'Hank', age: 60, city: 'San Diego' },
+    { name: 'Ivy', age: 65, city: 'Dallas' },
+    { name: 'Jack', age: 70, city: 'San Jose' },
   ],
+  columns: ['name', 'age', 'city'],
   pageSize: 5,
 };
 
 export const Search = Template.bind({});
 Search.args = {
-  state: GridState.Search,
-  columns: ['Name', 'Age', 'Occupation'],
-  rows: [
-    { Name: 'Alice', Age: 30, Occupation: 'Engineer' },
-    { Name: 'Bob', Age: 25, Occupation: 'Designer' },
-    // Add more rows as needed
-  ],
-  searchQuery: '',
+  state: 'search',
+  data: Default.args.data,
+  columns: Default.args.columns,
 };
 
 export const Resizable = Template.bind({});
 Resizable.args = {
-  state: GridState.Resizable,
-  columns: ['Name', 'Age', 'Occupation'],
-  rows: [
-    { Name: 'Alice', Age: 30, Occupation: 'Engineer' },
-    { Name: 'Bob', Age: 25, Occupation: 'Designer' },
-    // Add more rows as needed
-  ],
+  state: 'resizable',
+  data: Default.args.data,
+  columns: Default.args.columns,
 };

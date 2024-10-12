@@ -1,29 +1,36 @@
 <script lang="ts">
   export let src: string = '';
-  export let title: string = 'Embedded Media';
-  export let isFullscreen: boolean = false;
-  export let isBuffering: boolean = false;
+  export let title: string = '';
+  export let allowFullscreen: boolean = false;
 
-  function toggleFullscreen() {
-    isFullscreen = !isFullscreen;
-  }
+  const handleKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      toggleFullscreen();
+    }
+  };
+
+  const toggleFullscreen = () => {
+    if (allowFullscreen && iframeElement.requestFullscreen) {
+      iframeElement.requestFullscreen();
+    }
+  };
+
+  let iframeElement: HTMLIFrameElement;
 </script>
 
-<div class="media-container" class:fullscreen={isFullscreen}>
-  {#if isBuffering}
-    <div class="buffering" role="alert" aria-live="assertive">Buffering...</div>
-  {/if}
+<div class="embedded-media-iframe" role="region" aria-label={title}>
   <iframe
+    bind:this={iframeElement}
     src={src}
     title={title}
-    frameborder="0"
-    allowfullscreen
-    class:fullscreen={isFullscreen}
-    aria-label={title}
+    allowfullscreen={allowFullscreen}
+    aria-label="Embedded Media"
   ></iframe>
-  <button on:click={toggleFullscreen} aria-label="Toggle Fullscreen">
-    {isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
-  </button>
+  {#if allowFullscreen}
+    <div role="button" tabindex="0" on:click={toggleFullscreen} on:keydown={handleKeydown} aria-label="Toggle Fullscreen">
+      Toggle Fullscreen
+    </div>
+  {/if}
 </div>
 
 <style lang="css">

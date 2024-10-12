@@ -1,21 +1,34 @@
 <script lang="ts">
-  export enum UploadState {
-    Uploading = 'uploading',
-    Downloading = 'downloading',
-    Completed = 'completed',
-    Paused = 'paused',
-    Failed = 'failed'
+  export type UploadState = 'uploading' | 'downloading' | 'completed' | 'paused' | 'failed';
+  export let state: UploadState = 'uploading';
+  export let fileName: string = '';
+  export let progress: number = 0;
+
+  function handlePause() {
+    if (state === 'uploading') {
+      state = 'paused';
+    }
   }
 
-  export let state: UploadState = UploadState.Uploading;
-  export let progress: number = 0;
+  function handleResume() {
+    if (state === 'paused') {
+      state = 'uploading';
+    }
+  }
 </script>
 
-<div class="upload-container" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={progress}>
-  <div class={`upload ${state}`}>
-    <span>{state.charAt(0).toUpperCase() + state.slice(1)}</span>
-    <div class="progress-bar" style="width: {progress}%"></div>
-  </div>
+<div class={`upload upload-${state}`} role="status">
+  <span>{fileName}</span>
+  {#if state !== 'completed'}
+    <div class="progress-bar">
+      <div class="progress" style={`width: ${progress}%`}></div>
+    </div>
+  {/if}
+  {#if state === 'paused'}
+    <button on:click={handleResume} aria-label="Resume Upload">Resume</button>
+  {:else if state === 'uploading'}
+    <button on:click={handlePause} aria-label="Pause Upload">Pause</button>
+  {/if}
 </div>
 
 <style lang="css">

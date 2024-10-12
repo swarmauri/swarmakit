@@ -1,14 +1,25 @@
 <script lang="ts">
-  export enum FocusState {
-    Focused = 'focused',
-    Unfocused = 'unfocused'
+  export type FocusState = 'focused' | 'unfocused';
+  export let state: FocusState = 'unfocused';
+
+  function handleFocus() {
+    state = 'focused';
   }
 
-  export let state: FocusState = FocusState.Unfocused;
+  function handleBlur() {
+    state = 'unfocused';
+  }
 </script>
 
-<div class="focus-indicator" tabindex="0" role="button" aria-pressed={state === FocusState.Focused}>
-  <span class={state}>{state.charAt(0).toUpperCase() + state.slice(1)}</span>
+<div
+  class={`focus-indicator focus-indicator-${state}`}
+  tabindex="0"
+  on:focus={handleFocus}
+  on:blur={handleBlur}
+  role="button"
+  aria-label="Focus Indicator"
+>
+  <span>{state === 'focused' ? 'Focused' : 'Unfocused'}</span>
 </div>
 
 <style lang="css">

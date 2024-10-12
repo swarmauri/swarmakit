@@ -1,13 +1,14 @@
 .notification-bar {
-  padding: 16px;
-  color: #ffffff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
   text-align: center;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.notification-message {
+  font-weight: bold;
 }
 
 .notification-bar.success {
@@ -24,8 +25,4 @@
 
 .notification-bar.info {
   background-color: #2196f3;
-}
-
-.message {
-  font-size: 16px;
 }

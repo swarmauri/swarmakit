@@ -1,39 +1,37 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+
   export let rating: number = 0;
   export let maxRating: number = 5;
-  export let interactive: boolean = false;
+  export let interactive: boolean = true;
 
-  let currentHover: number | null = null;
+  const dispatch = createEventDispatcher();
 
-  const handleMouseEnter = (index: number) => {
-    if (interactive) currentHover = index;
-  };
+  function handleKeyDown(index: number, event: KeyboardEvent) {
+    if ((event.key === 'Enter' || event.key === ' ') && interactive) {
+      handleClick(index);
+    }
+  }
 
-  const handleMouseLeave = () => {
-    if (interactive) currentHover = null;
-  };
-
-  const handleClick = (index: number) => {
-    if (interactive) rating = index;
-  };
+  function handleClick(index: number) {
+    if (interactive) {
+      rating = index;
+      dispatch('rate', { rating });
+    }
+  }
 </script>
 
-<div role="group" aria-label="Rating Stars" class="rating-stars">
+<div class="rating-stars" role="radiogroup" aria-label="Rating">
   {#each Array(maxRating) as _, index}
-    <span
-      class="star"
-      aria-hidden="true"
-      on:mouseenter={() => handleMouseEnter(index + 1)}
-      on:mouseleave={handleMouseLeave}
+    <div
+      role="radio"
+      aria-checked={rating > index}
+      tabindex={interactive ? "0" : undefined}
+      class="star {interactive ? 'interactive' : ''} {rating > index ? 'selected' : ''}"
       on:click={() => handleClick(index + 1)}
-      on:keydown={(e) => e.key === 'Enter' && handleClick(index + 1)}
-      tabindex={interactive ? 0 : -1}
-      class:selected={rating >= index + 1}
-      class:hover={currentHover !== null && currentHover >= index + 1}
-      class:inactive={!interactive}
-    >
+      on:keydown={(event) => handleKeyDown(index + 1, event)}>
       ★
-    </span>
+    </div>
   {/each}
 </div>
 

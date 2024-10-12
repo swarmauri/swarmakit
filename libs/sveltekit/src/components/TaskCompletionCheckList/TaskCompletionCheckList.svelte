@@ -1,18 +1,27 @@
 <script lang="ts">
-  export enum TaskState {
-    Checked = 'checked',
-    Unchecked = 'unchecked',
-    PartiallyComplete = 'partially-complete'
+  export type TaskState = 'checked' | 'unchecked' | 'partially-complete';
+  export let tasks: { id: number; label: string; state: TaskState }[] = [];
+  
+  function handleCheckboxChange(taskId: number) {
+    const task = tasks.find(t => t.id === taskId);
+    if (task) {
+      task.state = task.state === 'checked' ? 'unchecked' : 'checked';
+    }
   }
-
-  export let taskList: { name: string, state: TaskState }[] = [];
 </script>
 
-<ul>
-  {#each taskList as { name, state }}
-    <li class={`task-item ${state}`} role="checkbox" aria-checked={state === TaskState.Checked}>
-      <input type="checkbox" bind:group={state} disabled={state === TaskState.PartiallyComplete} />
-      <span>{name}</span>
+<ul class="task-list">
+  {#each tasks as task (task.id)}
+    <li class="task-item">
+      <input
+        type="checkbox"
+        id={`task-${task.id}`}
+        bind:checked={task.state === 'checked'}
+        on:change={() => handleCheckboxChange(task.id)}
+        aria-checked={task.state === 'checked' ? 'true' : 'false'}
+        role="checkbox"
+      />
+      <label for={`task-${task.id}`}>{task.label}</label>
     </li>
   {/each}
 </ul>

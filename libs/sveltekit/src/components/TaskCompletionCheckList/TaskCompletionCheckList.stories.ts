@@ -1,53 +1,52 @@
 import TaskCompletionCheckList from './TaskCompletionCheckList.svelte';
-import type { TaskState } from './TaskCompletionCheckList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/TaskCompletionCheckList',
+const meta: Meta = {
+  title: 'Components/Indicators/TaskCompletionCheckList',
   component: TaskCompletionCheckList,
+  tags: ['autodocs'],
   argTypes: {
-    taskList: {
-      control: 'object',
+    tasks: {
+      control: { type: 'object' },
     },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: TaskCompletionCheckList,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  taskList: [
-    { name: 'Task 1', state: TaskState.Unchecked },
-    { name: 'Task 2', state: TaskState.PartiallyComplete },
-    { name: 'Task 3', state: TaskState.Checked },
+  tasks: [
+    { id: 1, label: 'Task 1', state: 'unchecked' },
+    { id: 2, label: 'Task 2', state: 'unchecked' },
   ],
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
-  taskList: [
-    { name: 'Task 1', state: TaskState.Checked },
-    { name: 'Task 2', state: TaskState.Checked },
-    { name: 'Task 3', state: TaskState.Checked },
+  tasks: [
+    { id: 1, label: 'Task 1', state: 'checked' },
+    { id: 2, label: 'Task 2', state: 'checked' },
   ],
 };
 
 export const Unchecked = Template.bind({});
 Unchecked.args = {
-  taskList: [
-    { name: 'Task 1', state: TaskState.Unchecked },
-    { name: 'Task 2', state: TaskState.Unchecked },
-    { name: 'Task 3', state: TaskState.Unchecked },
+  tasks: [
+    { id: 1, label: 'Task 1', state: 'unchecked' },
+    { id: 2, label: 'Task 2', state: 'unchecked' },
   ],
 };
 
 export const PartiallyComplete = Template.bind({});
 PartiallyComplete.args = {
-  taskList: [
-    { name: 'Task 1', state: TaskState.PartiallyComplete },
-    { name: 'Task 2', state: TaskState.PartiallyComplete },
-    { name: 'Task 3', state: TaskState.PartiallyComplete },
+  tasks: [
+    { id: 1, label: 'Task 1', state: 'checked' },
+    { id: 2, label: 'Task 2', state: 'unchecked' },
   ],
 };

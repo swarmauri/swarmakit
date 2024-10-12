@@ -1,52 +1,49 @@
 import SortableList from './SortableList.svelte';
-import type { Item } from './SortableList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/SortableList',
+const meta: Meta = {
+  title: 'Components/Lists/SortableList',
   component: SortableList,
+  tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    onSort: { action: 'onSort' },
+    items: {
+      control: { type: 'array' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: SortableList,
   props: args,
 });
 
+const sampleItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { id: 1, content: 'Item 1' },
-    { id: 2, content: 'Item 2' },
-    { id: 3, content: 'Item 3' },
-    { id: 4, content: 'Item 4' },
-  ],
-  onSort: (sortedItems: Item[]) => console.log('Sorted items', sortedItems),
+  items: sampleItems,
+  disabled: false,
 };
 
 export const Dragging = Template.bind({});
 Dragging.args = {
-  ...Default.args,
+  items: sampleItems,
+  disabled: false,
 };
 
 export const Sorted = Template.bind({});
 Sorted.args = {
-  items: [
-    { id: 3, content: 'Item 3' },
-    { id: 1, content: 'Item 1' },
-    { id: 4, content: 'Item 4' },
-    { id: 2, content: 'Item 2' },
-  ],
+  items: ['Item 2', 'Item 1', 'Item 3', 'Item 4'],
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  items: [
-    { id: 1, content: 'Item 1', disabled: true },
-    { id: 2, content: 'Item 2' },
-    { id: 3, content: 'Item 3' },
-    { id: 4, content: 'Item 4', disabled: true },
-  ],
+  items: sampleItems,
+  disabled: true,
 };

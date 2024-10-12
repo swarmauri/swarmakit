@@ -1,60 +1,66 @@
 <script lang="ts">
-  export let multiple: boolean = false;
-  export let onFilesChange: (files: FileList | null) => void;
+  import { onMount } from 'svelte';
+  import { writable } from 'svelte/store';
 
-  let isDragging = false;
-  let progress = 0;
+  export let multiple: boolean = false;
+  export let progress: number = 0;
+  export let disabled: boolean = false;
+
+  const files = writable<File[]>([]);
 
   function handleFileChange(event: Event) {
-    const target = event.target as HTMLInputElement;
-    onFilesChange(target.files);
-  }
-
-  function handleDragOver(event: DragEvent) {
-    event.preventDefault();
-    isDragging = true;
-  }
-
-  function handleDragLeave() {
-    isDragging = false;
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      files.set(Array.from(input.files));
+    }
   }
 
   function handleDrop(event: DragEvent) {
     event.preventDefault();
-    isDragging = false;
-    onFilesChange(event.dataTransfer?.files || null);
+    if (event.dataTransfer?.files) {
+      files.set(Array.from(event.dataTransfer.files));
+    }
   }
 
-  function simulateUpload() {
-    progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      if (progress >= 100) {
-        clearInterval(interval);
-      }
-    }, 200);
+  function handleDragOver(event: DragEvent) {
+    event.preventDefault();
   }
+
+  onMount(() => {
+    files.subscribe((filesArray) => {
+      if (filesArray.length > 0) {
+        // Simulate file upload progress for demonstration
+        let uploadProgress = 0;
+        const interval = setInterval(() => {
+          uploadProgress += 10;
+          if (uploadProgress > 100) {
+            clearInterval(interval);
+          }
+          progress = uploadProgress;
+        }, 100);
+      }
+    });
+  });
 </script>
 
 <div 
   class="file-upload-container" 
-  on:dragover={handleDragOver} 
-  on:dragleave={handleDragLeave} 
   on:drop={handleDrop} 
-  aria-label="File upload area"
-  role="group"
+  on:dragover={handleDragOver} 
+  aria-label="File Upload"
+  role="region"
 >
   <input 
     type="file" 
-    multiple={multiple} 
     on:change={handleFileChange} 
-    on:click={simulateUpload}
+    multiple={multiple} 
+    disabled={disabled} 
+    aria-label="Select files to upload"
   />
-  <div class="drag-drop-area" class:is-dragging={isDragging}>
-    Drag and drop files here
-  </div>
   {#if progress > 0 && progress < 100}
-    <div class="upload-progress">Uploading... {progress}%</div>
+    <div class="progress-bar" role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
+      <div class="progress" style="width: {progress}%"></div>
+    </div>
   {/if}
 </div>
 

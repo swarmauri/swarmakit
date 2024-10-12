@@ -1,79 +1,90 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  export let audioSrc: string;
+  export let src: string = '';
   export let isPlaying: boolean = false;
   export let isLoading: boolean = false;
-  export let isScrubbing: boolean = false;
-  
-  let canvas: HTMLCanvasElement;
+  export let currentTime: number = 0;
+  export let duration: number = 0;
+
+  let canvasElement: HTMLCanvasElement;
+  let audioElement: HTMLAudioElement;
   let audioContext: AudioContext;
   let analyser: AnalyserNode;
   let dataArray: Uint8Array;
   let animationFrameId: number;
 
-  function drawWaveform() {
-    const canvasContext = canvas.getContext('2d');
-    const width = canvas.width;
-    const height = canvas.height;
+  const drawWaveform = () => {
+    if (!analyser || !canvasElement) return;
 
-    canvasContext.clearRect(0, 0, width, height);
+    const canvasCtx = canvasElement.getContext('2d');
+    if (!canvasCtx) return;
 
+    const bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
     analyser.getByteTimeDomainData(dataArray);
 
-    canvasContext.lineWidth = 2;
-    canvasContext.strokeStyle = 'rgb(0, 123, 255)';
-    canvasContext.beginPath();
+    canvasCtx.fillStyle = 'rgba(255, 255, 255, 1)';
+    canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
 
-    const sliceWidth = width / dataArray.length;
+    canvasCtx.lineWidth = 2;
+    canvasCtx.strokeStyle = 'rgba(0, 0, 0, 1)';
+    canvasCtx.beginPath();
+
+    const sliceWidth = canvasElement.width / bufferLength;
     let x = 0;
 
-    for (let i = 0; i < dataArray.length; i++) {
+    for (let i = 0; i < bufferLength; i++) {
       const v = dataArray[i] / 128.0;
-      const y = (v * height) / 2;
+      const y = (v * canvasElement.height) / 2;
 
       if (i === 0) {
-        canvasContext.moveTo(x, y);
+        canvasCtx.moveTo(x, y);
       } else {
-        canvasContext.lineTo(x, y);
+        canvasCtx.lineTo(x, y);
       }
 
       x += sliceWidth;
     }
 
-    canvasContext.lineTo(width, height / 2);
-    canvasContext.stroke();
-  }
+    canvasCtx.lineTo(canvasElement.width, canvasElement.height / 2);
+    canvasCtx.stroke();
 
-  onMount(() => {
+    animationFrameId = requestAnimationFrame(drawWaveform);
+  };
+
+  const initializeAudio = () => {
     audioContext = new AudioContext();
     analyser = audioContext.createAnalyser();
-    analyser.fftSize = 2048;
-    const bufferLength = analyser.frequencyBinCount;
-    dataArray = new Uint8Array(bufferLength);
-
-    const audioElement = new Audio(audioSrc);
     const source = audioContext.createMediaElementSource(audioElement);
     source.connect(analyser);
     analyser.connect(audioContext.destination);
 
-    animationFrameId = requestAnimationFrame(drawWaveform);
+    analyser.fftSize = 2048;
+    drawWaveform();
+  };
 
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      audioContext.close();
-    };
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioElement.pause();
+    } else {
+      audioElement.play();
+    }
+    isPlaying = !isPlaying;
+  };
+
+  onMount(() => {
+    initializeAudio();
+    return () => cancelAnimationFrame(animationFrameId);
   });
 </script>
 
-<div class="audio-waveform-display">
-  <canvas bind:this={canvas} width="600" height="100" aria-label="Audio Waveform Display"></canvas>
-  {#if isLoading}
-    <div class="loading-indicator" aria-live="polite">Loading...</div>
-  {/if}
-  {#if isScrubbing}
-    <div class="scrubbing-indicator" aria-live="polite">Scrubbing...</div>
-  {/if}
+<div class="audio-waveform-display" role="region" aria-label="Audio Waveform Display">
+  <audio bind:this={audioElement} src={src} on:loadedmetadata={() => duration = audioElement.duration} on:timeupdate={() => currentTime = audioElement.currentTime}></audio>
+  <canvas bind:this={canvasElement} width="600" height="100" aria-label="Waveform"></canvas>
+  <button on:click={togglePlay} on:keydown={(e) => e.key === 'Enter' && togglePlay()} aria-label={isPlaying ? 'Pause' : 'Play'}>
+    {#if isPlaying}Pause{:else}Play{/if}
+  </button>
 </div>
 
 <style lang="css">

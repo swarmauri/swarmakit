@@ -1,36 +1,37 @@
-.loading-bars {
+.loading-bars-with-steps {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
+  width: 200px;
   margin: 0 auto;
 }
 
 .step {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .bar {
   flex: 1;
-  height: 1rem;
-  margin-right: 0.5rem;
-  transition: background-color 0.3s;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 4px;
+  background-color: #ccc;
 }
 
-.label {
-  width: 4rem;
-  text-align: right;
+.bar.active {
+  background-color: #76c7c0;
 }
 
-.step-active .bar {
-  background-color: #ff9800;
-}
-
-.step-completed .bar {
+.bar.completed {
   background-color: #4caf50;
 }
 
-.step-inactive .bar {
-  background-color: #e0e0e0;
+.bar.inactive {
+  background-color: #eee;
+}
+
+span {
+  font-size: 14px;
+  color: #333;
 }

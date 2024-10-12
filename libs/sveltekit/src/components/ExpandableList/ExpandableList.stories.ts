@@ -1,55 +1,58 @@
 import ExpandableList from './ExpandableList.svelte';
-import type { ListState } from './ExpandableList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/ExpandableList',
+const meta: Meta = {
+  title: 'Components/Lists/ExpandableList',
   component: ExpandableList,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(ListState),
+      control: { type: 'select' },
+      options: ['itemExpanded', 'itemCollapsed', 'hover', 'selected'],
     },
-    items: { control: 'object' },
+    items: {
+      control: { type: 'array' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: ExpandableList,
   props: args,
 });
 
+export const Default = Template.bind({});
+Default.args = {
+  state: 'itemCollapsed',
+  items: [
+    { id: 1, title: 'Item 1', content: 'Content for item 1' },
+    { id: 2, title: 'Item 2', content: 'Content for item 2' },
+    { id: 3, title: 'Item 3', content: 'Content for item 3' },
+  ],
+};
+
 export const ItemExpanded = Template.bind({});
 ItemExpanded.args = {
-  state: ListState.ItemExpanded,
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-  ],
+  state: 'itemExpanded',
+  items: Default.args.items,
 };
 
 export const ItemCollapsed = Template.bind({});
 ItemCollapsed.args = {
-  state: ListState.ItemCollapsed,
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-  ],
+  state: 'itemCollapsed',
+  items: Default.args.items,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  state: ListState.Hover,
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-  ],
+  state: 'hover',
+  items: Default.args.items,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  state: ListState.Selected,
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-  ],
+  state: 'selected',
+  items: Default.args.items,
 };

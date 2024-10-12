@@ -1,39 +1,35 @@
 .data-grid {
   width: 100%;
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
   border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-th, td {
+.data-grid th,
+.data-grid td {
+  border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
 }
 
-.pagination {
-  margin-top: 10px;
-}
-
-.pagination button {
-  padding: 8px 12px;
-  margin-right: 5px;
+.data-grid th {
+  background-color: #f2f2f2;
   cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
 }
 
-.pagination button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.grid-paginated .pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.pagination button:hover:not(:disabled) {
-  background-color: #0056b3;
+.pagination-controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
+.grid-search input[type='text'] {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }

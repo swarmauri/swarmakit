@@ -1,36 +1,45 @@
 import IconButton from './IconButton.svelte';
 
 export default {
-  title: 'Components/Buttons',
+  title: 'Buttons/IconButton',
   component: IconButton,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    icon: { control: 'text' },
+    label: { control: 'text' },
+    disabled: { control: 'boolean' },
+  },
 };
 
 export const Default = {
   args: {
-    icon: 'path/to/default-icon.svg',
-    label: 'Icon Button',
-    disabled: false
-  }
+    icon: 'fas fa-star',
+    label: 'Favorite',
+    disabled: false,
+  },
 };
 
 export const Active = {
   args: {
     ...Default.args,
-    icon: 'path/to/active-icon.svg'
-  }
+  },
+  parameters: {
+    pseudo: { active: true },
+  },
 };
 
 export const Hover = {
   args: {
     ...Default.args,
-    icon: 'path/to/hover-icon.svg'
-  }
+  },
+  parameters: {
+    pseudo: { hover: true },
+  },
 };
 
 export const Disabled = {
   args: {
     ...Default.args,
-    disabled: true
-  }
+    disabled: true,
+  },
 };

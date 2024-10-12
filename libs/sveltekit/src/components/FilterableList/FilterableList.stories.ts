@@ -1,45 +1,51 @@
 import FilterableList from './FilterableList.svelte';
-import type { ListState } from './FilterableList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/FilterableList',
+const meta: Meta = {
+  title: 'Components/Lists/FilterableList',
   component: FilterableList,
+  tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: Object.values(ListState),
+    filterText: {
+      control: { type: 'text' },
     },
-    items: { control: 'object' },
+    items: {
+      control: { type: 'array' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: FilterableList,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: ListState.Default,
-  items: ['Apple', 'Banana', 'Cherry', 'Date'],
+  filterText: '',
+  items: [
+    { id: 1, title: 'Apple' },
+    { id: 2, title: 'Banana' },
+    { id: 3, title: 'Cherry' },
+  ],
 };
 
 export const FilterApplied = Template.bind({});
 FilterApplied.args = {
-  state: ListState.FilterApplied,
-  items: ['Apple', 'Banana', 'Cherry', 'Date'],
-  filter: 'a',
+  filterText: 'a',
+  items: Default.args.items,
 };
 
 export const NoResults = Template.bind({});
 NoResults.args = {
-  state: ListState.NoResults,
-  items: ['Apple', 'Banana', 'Cherry', 'Date'],
-  filter: 'z',
+  filterText: 'z',
+  items: Default.args.items,
 };
 
 export const ClearFilter = Template.bind({});
 ClearFilter.args = {
-  state: ListState.ClearFilter,
-  items: ['Apple', 'Banana', 'Cherry', 'Date'],
+  filterText: '',
+  items: Default.args.items,
 };

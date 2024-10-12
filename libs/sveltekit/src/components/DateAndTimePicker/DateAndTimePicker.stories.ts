@@ -1,36 +1,45 @@
 import DateAndTimePicker from './DateAndTimePicker.svelte';
 
 export default {
-  title: 'Components/Forms',
+  title: 'Components/Forms/DateAndTimePicker',
   component: DateAndTimePicker,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    selectedDate: { control: 'date' },
+    selectedTime: { control: 'text' },
+    disabled: { control: 'boolean' },
+  },
 };
 
-export const Default = {
-  args: {
-    selectedDate: '',
-    selectedTime: '',
-    isDisabled: false
-  }
+const Template = (args) => ({
+  Component: DateAndTimePicker,
+  props: args,
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  selectedDate: '',
+  selectedTime: '',
+  disabled: false,
 };
 
-export const DateSelected = {
-  args: {
-    ...Default.args,
-    selectedDate: '2023-01-01'
-  }
+export const DateSelected = Template.bind({});
+DateSelected.args = {
+  selectedDate: '2023-01-01',
+  selectedTime: '',
+  disabled: false,
 };
 
-export const TimeSelected = {
-  args: {
-    ...Default.args,
-    selectedTime: '12:00'
-  }
+export const TimeSelected = Template.bind({});
+TimeSelected.args = {
+  selectedDate: '',
+  selectedTime: '12:00',
+  disabled: false,
 };
 
-export const Disabled = {
-  args: {
-    ...Default.args,
-    isDisabled: true
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  selectedDate: '',
+  selectedTime: '',
+  disabled: true,
 };

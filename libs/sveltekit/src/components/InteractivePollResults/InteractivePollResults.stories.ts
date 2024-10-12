@@ -1,18 +1,12 @@
 import InteractivePollResults from './InteractivePollResults.svelte';
 
 export default {
-  title: 'Indicators/InteractivePollResults',
+  title: 'Components/Indicators/InteractivePollResults',
   component: InteractivePollResults,
+  tags: ['autodocs'],
   argTypes: {
-    options: {
-      control: { type: 'object' },
-    },
-    totalVotes: {
-      control: { type: 'number' },
-    },
-    status: {
-      control: { type: 'select', options: ['live', 'completed', 'closed'] },
-    },
+    options: { control: 'object' },
+    isClosed: { control: 'boolean' },
   },
 };
 
@@ -24,39 +18,39 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   options: [
-    { label: 'Option 1', votes: 30 },
-    { label: 'Option 2', votes: 70 },
+    { option: 'Option A', votes: 10 },
+    { option: 'Option B', votes: 20 },
+    { option: 'Option C', votes: 5 },
   ],
-  totalVotes: 100,
-  status: 'live',
+  isClosed: false,
 };
 
 export const LiveResults = Template.bind({});
 LiveResults.args = {
   options: [
-    { label: 'Option 1', votes: 30 },
-    { label: 'Option 2', votes: 70 },
+    { option: 'Option A', votes: 15 },
+    { option: 'Option B', votes: 25 },
+    { option: 'Option C', votes: 10 },
   ],
-  totalVotes: 100,
-  status: 'live',
+  isClosed: false,
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
   options: [
-    { label: 'Option 1', votes: 50 },
-    { label: 'Option 2', votes: 50 },
+    { option: 'Option A', votes: 30 },
+    { option: 'Option B', votes: 45 },
+    { option: 'Option C', votes: 25 },
   ],
-  totalVotes: 100,
-  status: 'completed',
+  isClosed: true,
 };
 
 export const Closed = Template.bind({});
 Closed.args = {
   options: [
-    { label: 'Option 1', votes: 50 },
-    { label: 'Option 2', votes: 50 },
+    { option: 'Option A', votes: 30 },
+    { option: 'Option B', votes: 45 },
+    { option: 'Option C', votes: 25 },
   ],
-  totalVotes: 100,
-  status: 'closed',
+  isClosed: true,
 };

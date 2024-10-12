@@ -1,48 +1,36 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  export type ActionableListState = 'hover' | 'action-triggered' | 'disabled' | 'loading';
+  export let state: ActionableListState = 'hover';
+  export let items: string[] = [];
+  export let disabled: boolean = false;
 
-  export enum ActionableListState {
-    Hover = 'hover',
-    ActionTriggered = 'actionTriggered',
-    Disabled = 'disabled',
-    Loading = 'loading'
+  function handleAction(item: string) {
+    if (!disabled) {
+      console.log(`Action triggered for: ${item}`);
+    }
   }
 
-  export let state: ActionableListState = ActionableListState.Hover;
-  export let items: { title: string; action: string; disabled?: boolean }[] = [];
-
-  const dispatch = createEventDispatcher();
-
-  function handleAction(index: number) {
-    if (items[index].disabled || state === ActionableListState.Disabled) return;
-    dispatch('action', { index, action: items[index].action });
-  }
-
-  function handleKeyDown(event: KeyboardEvent, index: number) {
-    if ((event.key === 'Enter' || event.key === ' ') && !items[index].disabled) {
-      handleAction(index);
+  function handleKey(event: KeyboardEvent, item: string) {
+    if ((event.key === 'Enter' || event.key === ' ') && !disabled) {
+      handleAction(item);
     }
   }
 </script>
 
-<div class="actionable-list">
-  {#each items as { title, action, disabled }, index}
-    <div
-      class="actionable-item"
+<ul class={`actionable-list actionable-list-${state}`}>
+  {#each items as item}
+    <li
+      class="actionable-list-item"
       role="button"
       tabindex={disabled ? -1 : 0}
+      on:click={() => handleAction(item)}
+      on:keydown={(event) => handleKey(event, item)}
       aria-disabled={disabled}
-      on:click={() => handleAction(index)}
-      on:keydown={(event) => handleKeyDown(event, index)}
-      class:disabled={disabled}
     >
-      <div class="item-title">{title}</div>
-      {#if state === ActionableListState.Loading}
-        <div class="loading-spinner"></div>
-      {/if}
-    </div>
+      {item}
+    </li>
   {/each}
-</div>
+</ul>
 
 <style lang="css">
   @import './ActionableList.css';

@@ -1,29 +1,33 @@
 .checklist {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .checklist-item {
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.checklist-item input[type='checkbox'] {
+.checklist-item input[type="checkbox"] {
   margin-right: 10px;
 }
 
-.checklist-item.checked {
-  background-color: #e0f7fa;
+.checklist-checked .checklist-item[aria-checked="true"] {
+  background-color: #e1f5fe;
 }
 
-.checklist-item.disabled {
+.checklist-unchecked .checklist-item[aria-checked="false"] {
+  background-color: #fff;
+}
+
+.checklist-partially-checked .checklist-item {
+  background-color: #f0f0f0;
+}
+
+.checklist-disabled .checklist-item {
+  background-color: #f9f9f9;
   cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.checklist-item:hover:not(.disabled) {
-  background-color: #f1f1f1;
+  opacity: 0.6;
 }

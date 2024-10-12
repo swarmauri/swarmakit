@@ -1,16 +1,17 @@
 .notification-bell {
   position: relative;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  outline: none;
 }
 
-.icon {
-  width: 24px;
-  height: 24px;
-  color: #333;
+.bell-icon {
+  fill: currentColor;
+  width: 100%;
+  height: 100%;
 }
 
 .notification-dot {
@@ -21,5 +22,4 @@
   height: 8px;
   background-color: red;
   border-radius: 50%;
-  border: 2px solid white;
 }

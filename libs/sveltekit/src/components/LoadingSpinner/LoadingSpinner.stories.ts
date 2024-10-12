@@ -1,12 +1,11 @@
 import LoadingSpinner from './LoadingSpinner.svelte';
 
 export default {
-  title: 'Indicators/LoadingSpinner',
+  title: 'Components/Indicators/LoadingSpinner',
   component: LoadingSpinner,
+  tags: ['autodocs'],
   argTypes: {
-    isActive: {
-      control: { type: 'boolean' },
-    },
+    active: { control: 'boolean' },
   },
 };
 
@@ -17,15 +16,15 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  isActive: true,
+  active: true,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  isActive: true,
+  active: true,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  isActive: false,
+  active: false,
 };

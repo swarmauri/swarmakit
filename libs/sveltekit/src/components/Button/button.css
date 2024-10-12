@@ -1,22 +1,75 @@
 .button {
-  padding: 0.5rem 1rem;
-  border: none;
+  font-size: 16px;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button.primary {
   background-color: #007bff;
   color: white;
+  border: 1px solid #007bff;
 }
 
-.button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+.button.secondary {
   background-color: #6c757d;
+  color: white;
+  border: 1px solid #6c757d;
 }
 
-.button:hover:not(:disabled) {
+.button:disabled,
+.button[aria-disabled='true'] {
+  background-color: #e0e0e0;
+  color: #6c757d;
+  border: 1px solid #e0e0e0;
+  cursor: not-allowed;
+}
+
+.button.primary:hover:not(:disabled),
+.button.primary[aria-disabled='false']:hover {
   background-color: #0056b3;
 }
 
-.button:active:not(:disabled) {
+.button.secondary:hover:not(:disabled),
+.button.secondary[aria-disabled='false']:hover {
+  background-color: #545b62;
+}
+
+.button.primary:active:not(:disabled),
+.button.primary[aria-disabled='false']:active {
   background-color: #004085;
+}
+
+.button.secondary:active:not(:disabled),
+.button.secondary[aria-disabled='false']:active {
+  background-color: #343a40;
+}
+
+@media (max-width: 320px) {
+  .button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 480px) {
+  .button {
+    font-size: 15px;
+    padding: 9px 18px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+@media (min-width: 769px) {
+  .button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
 }

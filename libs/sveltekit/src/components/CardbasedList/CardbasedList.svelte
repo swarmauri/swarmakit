@@ -1,42 +1,36 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export enum CardbasedListState {
-    Hover = 'hover',
-    Selected = 'selected',
-    Disabled = 'disabled'
-  }
-
-  export let state: CardbasedListState = CardbasedListState.Hover;
-  export let cards: { title: string; content: string; disabled?: boolean }[] = [];
-
-  const dispatch = createEventDispatcher();
+  export type CardbasedListState = 'hover' | 'selected' | 'disabled';
+  export let state: CardbasedListState = 'hover';
+  export let items: { title: string; description: string }[] = [];
+  export let selectedItem: number | null = null;
+  export let disabled: boolean = false;
 
   function handleSelect(index: number) {
-    if (cards[index].disabled || state === CardbasedListState.Disabled) return;
-    dispatch('select', { index });
+    if (!disabled) {
+      selectedItem = index;
+    }
   }
 
-  function handleKeyDown(event: KeyboardEvent, index: number) {
-    if ((event.key === 'Enter' || event.key === ' ') && !cards[index].disabled) {
+  function handleKey(event: KeyboardEvent, index: number) {
+    if ((event.key === 'Enter' || event.key === ' ') && !disabled) {
       handleSelect(index);
     }
   }
 </script>
 
-<div class="cardbased-list">
-  {#each cards as { title, content, disabled }, index}
+<div class={`cardbased-list cardbased-list-${state}`}>
+  {#each items as { title, description }, index}
     <div
-      class="cardbased-item"
+      class="cardbased-list-item"
       role="button"
       tabindex={disabled ? -1 : 0}
-      aria-disabled={disabled}
       on:click={() => handleSelect(index)}
-      on:keydown={(event) => handleKeyDown(event, index)}
-      class:disabled={disabled}
+      on:keydown={(event) => handleKey(event, index)}
+      aria-disabled={disabled}
+      aria-selected={selectedItem === index}
     >
-      <h3 class="card-title">{title}</h3>
-      <p class="card-content">{content}</p>
+      <h3>{title}</h3>
+      <p>{description}</p>
     </div>
   {/each}
 </div>

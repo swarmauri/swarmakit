@@ -1,32 +1,35 @@
-.slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.image-slider {
   position: relative;
+  width: 100%;
   max-width: 800px;
   margin: auto;
+  outline: none;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
 }
 
 button {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
-  z-index: 1;
+  border-radius: 4px;
 }
 
 button:hover {
-  background-color: #555;
-}
-
-.slide {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-.slider:hover .slide {
-  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.7);
 }

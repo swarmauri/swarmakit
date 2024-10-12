@@ -1,50 +1,34 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  export type ListState = 'default' | 'actionTriggered' | 'dismissed';
+  export let state: ListState = 'default';
+  export let listItems: { label: string; action: () => void }[] = [];
+  let isVisible: boolean = state !== 'dismissed';
 
-  export enum ListState {
-    Default = 'default',
-    ActionTriggered = 'actionTriggered',
-    Dismissed = 'dismissed'
+  function triggerAction(index: number) {
+    listItems[index].action();
   }
 
-  export let state: ListState = ListState.Default;
-  export let items: { label: string; action: () => void }[] = [];
-
-  const dispatch = createEventDispatcher();
-
-  function handleItemClick(item: { label: string; action: () => void }) {
-    item.action();
-    state = ListState.ActionTriggered;
-    dispatch('action', { item });
-  }
-
-  function dismissList() {
-    state = ListState.Dismissed;
-    dispatch('dismiss');
-  }
-
-  function handleKeyDown(event: KeyboardEvent, item: { label: string; action: () => void }) {
+  function handleKey(event: KeyboardEvent, index: number) {
     if (event.key === 'Enter' || event.key === ' ') {
-      handleItemClick(item);
+      triggerAction(index);
     }
   }
 </script>
 
-<div class="contextual-list" hidden={state === ListState.Dismissed}>
-  <ul class="list">
-    {#each items as item}
+{#if isVisible}
+  <ul class={`contextual-list list-${state}`}>
+    {#each listItems as { label, action }, index}
       <li
         role="button"
         tabindex="0"
-        on:click={() => handleItemClick(item)}
-        on:keydown={(event) => handleKeyDown(event, item)}
+        on:click={() => triggerAction(index)}
+        on:keydown={(event) => handleKey(event, index)}
       >
-        {item.label}
+        {label}
       </li>
     {/each}
   </ul>
-  <button on:click={dismissList}>Dismiss</button>
-</div>
+{/if}
 
 <style lang="css">
   @import './ContextualList.css';

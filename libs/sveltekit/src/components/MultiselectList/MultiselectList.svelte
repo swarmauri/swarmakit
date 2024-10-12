@@ -1,36 +1,46 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
+  import { createEventDispatcher } from 'svelte';
+  import { onMount } from 'svelte';
 
-  export interface Item {
-    id: number;
-    name: string;
-    selected: boolean;
-    disabled?: boolean;
+  export let items: { id: number; label: string }[] = [];
+  export let selectedItems: Set<number> = new Set();
+  export let disabled = false;
+
+  const dispatch = createEventDispatcher();
+
+  function toggleSelect(itemId: number) {
+    if (disabled) return;
+
+    const newSelectedItems = new Set(selectedItems);
+    if (newSelectedItems.has(itemId)) {
+      newSelectedItems.delete(itemId);
+    } else {
+      newSelectedItems.add(itemId);
+    }
+    dispatch('select', { selectedItems: newSelectedItems });
   }
 
-  export let items: Item[] = [];
-  export let onSelect: (id: number) => void;
-
-  function toggleSelection(item: Item) {
-    if (item.disabled) return;
-    item.selected = !item.selected;
-    onSelect(item.id);
+  function handleKeydown(event: KeyboardEvent, itemId: number) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleSelect(itemId);
+    }
   }
 </script>
 
-<ul class="multiselect-list">
-  {#each items as item}
+<ul class="multiselect-list" aria-disabled={disabled}>
+  {#each items as { id, label }}
     <li
-      class:disabled={item.disabled}
-      class:selected={item.selected}
-      on:click={() => toggleSelection(item)}
-      on:keydown={(e) => e.key === 'Enter' && toggleSelection(item)}
-      tabindex={item.disabled ? -1 : 0}
+      class="multiselect-item"
+      class:selected={selectedItems.has(id)}
+      class:disabled={disabled}
       role="option"
-      aria-selected={item.selected}
-      aria-disabled={item.disabled}
+      aria-selected={selectedItems.has(id)}
+      tabindex={disabled ? -1 : 0}
+      on:click={() => toggleSelect(id)}
+      on:keydown={(event) => handleKeydown(event, id)}
     >
-      {item.name}
+      {label}
     </li>
   {/each}
 </ul>

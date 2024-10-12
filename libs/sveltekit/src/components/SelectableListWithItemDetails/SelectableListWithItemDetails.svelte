@@ -1,46 +1,53 @@
 <script lang="ts">
-  export interface Item {
+  import { createEventDispatcher } from 'svelte';
+
+  export type ListItem = {
     id: number;
-    title: string;
+    text: string;
     details: string;
-    selected: boolean;
+    selected?: boolean;
+  };
+
+  export let items: ListItem[] = [];
+  const dispatch = createEventDispatcher();
+
+  function toggleSelection(item: ListItem) {
+    if (!item.selected) {
+      dispatch('itemSelected', item);
+    } else {
+      dispatch('itemDeselected', item);
+    }
+    item.selected = !item.selected;
   }
 
-  export let items: Item[] = [];
-  export let onItemSelect: (id: number) => void;
-  export let onToggleDetails: (id: number) => void;
-
-  function handleSelect(item: Item) {
-    onItemSelect(item.id);
-  }
-
-  function handleToggleDetails(item: Item) {
-    onToggleDetails(item.id);
+  function toggleDetails(item: ListItem) {
+    item.detailsOpen = !item.detailsOpen;
+    dispatch(item.detailsOpen ? 'detailsOpened' : 'detailsClosed', item);
   }
 </script>
 
-<div class="selectable-list" role="listbox">
+<div class="selectable-list" role="list">
   {#each items as item (item.id)}
     <div
+      class="selectable-list-item"
       class:selected={item.selected}
-      role="option"
-      aria-selected={item.selected}
+      role="listitem"
       tabindex="0"
-      on:click={() => handleSelect(item)}
-      on:keydown={(e) => e.key === 'Enter' && handleSelect(item)}
+      on:click={() => toggleSelection(item)}
+      on:keydown={(e) => e.key === "Enter" && toggleSelection(item)}
+      aria-selected={item.selected}
     >
-      <span>{item.title}</span>
+      <div>{item.text}</div>
       <button
-        aria-expanded={item.selected}
-        on:click|stopPropagation={() => handleToggleDetails(item)}
-        on:keydown|stopPropagation={(e) => e.key === 'Enter' && handleToggleDetails(item)}
+        type="button"
+        class="details-button"
+        on:click={() => toggleDetails(item)}
+        on:keydown={(e) => e.key === "Enter" && toggleDetails(item)}
       >
-        {item.selected ? 'Close Details' : 'Open Details'}
+        {item.detailsOpen ? 'Hide Details' : 'Show Details'}
       </button>
-      {#if item.selected}
-        <div class="item-details">
-          {item.details}
-        </div>
+      {#if item.detailsOpen}
+        <div class="item-details">{item.details}</div>
       {/if}
     </div>
   {/each}

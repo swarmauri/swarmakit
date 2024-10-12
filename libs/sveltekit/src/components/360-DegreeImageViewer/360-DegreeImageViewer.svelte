@@ -1,44 +1,43 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  export let images: string[] = [];
+  export let imageUrls: string[] = [];
+  export let isLoading: boolean = false;
   export let isRotating: boolean = false;
-  export let isZoomedIn: boolean = false;
-  export let isLoading: boolean = true;
-  
-  let currentIndex = 0;
-  let timer;
-  let viewer: HTMLDivElement;
+  export let isZoomed: boolean = false;
 
-  function startRotation() {
-    if (isRotating) {
-      timer = setInterval(() => {
-        currentIndex = (currentIndex + 1) % images.length;
+  let currentIndex = 0;
+  let interval: NodeJS.Timer;
+  let zoomLevel = 1;
+
+  const startRotation = () => {
+    if (isRotating && imageUrls.length > 0) {
+      interval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % imageUrls.length;
       }, 100);
     }
-  }
+  };
 
-  function stopRotation() {
-    clearInterval(timer);
-  }
+  const stopRotation = () => {
+    clearInterval(interval);
+  };
 
-  function toggleZoom() {
-    isZoomedIn = !isZoomedIn;
-  }
+  const toggleZoom = () => {
+    isZoomed = !isZoomed;
+    zoomLevel = isZoomed ? 2 : 1;
+  };
 
   onMount(() => {
-    isLoading = false;
-    if (isRotating) startRotation();
+    startRotation();
     return () => stopRotation();
   });
 </script>
 
-<div class="image-viewer" bind:this={viewer}>
+<div class="viewer-container" aria-label="360 Degree Image Viewer" role="region" tabindex="0" on:click={toggleZoom} on:keydown={(e) => e.key === 'Enter' && toggleZoom()}>
   {#if isLoading}
-    <div class="loading">Loading...</div>
+    <div class="loading" role="status" aria-live="polite">Loading...</div>
   {:else}
-    <img src={images[currentIndex]} alt="360-degree view" class:is-zoomed-in={isZoomedIn} />
-    <button on:click={toggleZoom} aria-label="Toggle Zoom">{isZoomedIn ? 'Zoom Out' : 'Zoom In'}</button>
+    <img src={imageUrls[currentIndex]} alt="360-degree view" style="transform: scale({zoomLevel});" />
   {/if}
 </div>
 

@@ -1,66 +1,39 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export let checked: boolean = false;
-  export let disabled: boolean = false;
-
-  const dispatch = createEventDispatcher();
+  export let isChecked: boolean = false;
+  export let isDisabled: boolean = false;
+  export let label: string = '';
 
   function toggleCheck() {
-    if (!disabled) {
-      checked = !checked;
-      dispatch('change', { checked });
+    if (!isDisabled) {
+      isChecked = !isChecked;
+    }
+  }
+
+  function handleKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      toggleCheck();
     }
   }
 </script>
 
-<div
-  class="checkbox-container"
-  role="checkbox"
-  aria-checked={checked}
-  aria-disabled={disabled}
-  on:click={toggleCheck}
-  on:keydown={(event) => {
-    if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
-      event.preventDefault();
-      toggleCheck();
-    }
-  }}
-  tabindex={disabled ? undefined : '0'}
+<div 
+  class="checkbox-container" 
+  role="checkbox" 
+  aria-checked={isChecked} 
+  tabindex={isDisabled ? undefined : 0} 
+  aria-disabled={isDisabled}
+  on:click={toggleCheck} 
+  on:keypress={handleKeyPress}
 >
-  <div class="checkbox">
-    {checked ? '✔️' : ''}
-  </div>
-  <label class="checkbox-label">{checked ? 'Checked' : 'Unchecked'}</label>
+  <input 
+    type="checkbox" 
+    bind:checked={isChecked} 
+    disabled={isDisabled} 
+    aria-hidden="true"
+  />
+  <span>{label}</span>
 </div>
 
 <style lang="css">
-  .checkbox-container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    opacity: 1;
-  }
-
-  .checkbox {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.5rem;
-    background-color: #fff;
-  }
-
-  .checkbox-label {
-    font-size: 1rem;
-  }
-
-  .checkbox-container[aria-disabled='true'] {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+  @import './Checkbox.css';
 </style>

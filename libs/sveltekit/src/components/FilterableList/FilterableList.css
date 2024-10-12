@@ -1,41 +1,34 @@
 .filterable-list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  margin: 20px;
 }
 
-input[type="text"] {
-  padding: 8px;
+.filterable-list input {
   margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 5px;
+  width: calc(100% - 20px);
 }
 
-button {
-  padding: 8px;
+.filterable-list button {
   margin-bottom: 10px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
+  padding: 5px 10px;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
-li {
+.list-item {
   padding: 10px;
   border: 1px solid #ddd;
-  margin-bottom: 5px;
+  margin: 5px 0;
   background-color: #f9f9f9;
+}
+
+.no-results {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #ffcdd2;
+  text-align: center;
 }

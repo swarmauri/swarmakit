@@ -1,25 +1,18 @@
 <script lang="ts">
-  export type ToastState = 'visible' | 'hidden' | 'dismissed' | 'autoHide';
-  export let state: ToastState = 'hidden';
+  export type ToastType = 'success' | 'error' | 'warning' | 'info';
+  export let type: ToastType = 'info';
   export let message: string = '';
-  export let autoHideDuration: number = 3000;
-  let isVisible = state === 'visible';
+  export let isVisible: boolean = true;
 
-  const handleDismiss = () => {
+  function dismissToast() {
     isVisible = false;
-  };
-
-  if (state === 'autoHide') {
-    setTimeout(() => {
-      isVisible = false;
-    }, autoHideDuration);
   }
 </script>
 
 {#if isVisible}
-  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div>{message}</div>
-    <button on:click={handleDismiss} aria-label="Dismiss">Dismiss</button>
+  <div class={`toast toast-${type}`} role="alert">
+    <span>{message}</span>
+    <button on:click={dismissToast} aria-label="Dismiss Toast">✕</button>
   </div>
 {/if}
 

@@ -1,65 +1,64 @@
 import SearchInputWithFilterOptions from './SearchInputWithFilterOptions.svelte';
 
 export default {
-  title: 'Forms/SearchInputWithFilterOptions',
+  title: 'Components/Forms/SearchInputWithFilterOptions',
   component: SearchInputWithFilterOptions,
+  tags: ['autodocs'],
   argTypes: {
-    searchTerm: { control: 'text' },
-    filters: { control: 'array' },
+    placeholder: { control: 'text' },
+    query: { control: 'text' },
+    filtersActive: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    noResults: { control: 'boolean' },
   },
 };
 
 const Template = (args) => ({
   Component: SearchInputWithFilterOptions,
   props: args,
-  on: {
-    search: args.onSearch,
-    filter: args.onFilter,
-  },
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  searchTerm: '',
-  filters: ['Option 1', 'Option 2', 'Option 3'],
+  placeholder: 'Search...',
+  query: '',
+  filtersActive: false,
   disabled: false,
-  onSearch: (term) => console.log('Search term:', term),
-  onFilter: (filter) => console.log('Filter selected:', filter),
+  noResults: false,
 };
 
 export const Searching = Template.bind({});
 Searching.args = {
-  searchTerm: 'Searching...',
-  filters: ['Option 1', 'Option 2', 'Option 3'],
+  placeholder: 'Search...',
+  query: 'Searching...',
+  filtersActive: false,
   disabled: false,
-  onSearch: (term) => console.log('Search term:', term),
-  onFilter: (filter) => console.log('Filter selected:', filter),
+  noResults: false,
 };
 
 export const FiltersActive = Template.bind({});
 FiltersActive.args = {
-  searchTerm: '',
-  filters: ['Active Filter 1', 'Active Filter 2'],
+  placeholder: 'Search...',
+  query: '',
+  filtersActive: true,
   disabled: false,
-  onSearch: (term) => console.log('Search term:', term),
-  onFilter: (filter) => console.log('Filter selected:', filter),
+  noResults: false,
 };
 
 export const NoResults = Template.bind({});
 NoResults.args = {
-  searchTerm: 'No Results',
-  filters: [],
+  placeholder: 'Search...',
+  query: 'No match',
+  filtersActive: false,
   disabled: false,
-  onSearch: (term) => console.log('Search term:', term),
-  onFilter: (filter) => console.log('Filter selected:', filter),
+  noResults: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  searchTerm: '',
-  filters: ['Option 1', 'Option 2', 'Option 3'],
+  placeholder: 'Search...',
+  query: '',
+  filtersActive: false,
   disabled: true,
-  onSearch: (term) => console.log('Search term:', term),
-  onFilter: (filter) => console.log('Filter selected:', filter),
+  noResults: false,
 };

@@ -1,15 +1,17 @@
 <script lang="ts">
-  export enum Status {
-    Online = 'online',
-    Offline = 'offline',
-    Busy = 'busy',
-    Idle = 'idle'
-  }
-
-  export let status: Status = Status.Offline;
+  export type Status = 'online' | 'offline' | 'busy' | 'idle';
+  export let status: Status = 'offline';
 </script>
 
-<div role="img" aria-label="Status Indicator" class={`status-dot ${status}`}></div>
+<div class="status-dot" role="status" aria-label={`Status: ${status}`} tabindex="0" on:keydown={(e) => e.key === 'Enter' && handleClick()}>
+  <div class={`dot ${status}`}></div>
+</div>
+
+<script lang="ts">
+  function handleClick() {
+    // Handle click event
+  }
+</script>
 
 <style lang="css">
   @import './StatusDots.css';

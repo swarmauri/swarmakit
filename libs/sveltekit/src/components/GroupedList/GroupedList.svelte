@@ -1,44 +1,54 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
 
-  export enum ListState {
-    GroupExpanded = 'groupExpanded',
-    GroupCollapsed = 'groupCollapsed',
-    ItemHover = 'itemHover',
-    ItemSelected = 'itemSelected'
+  export type Group = { id: number; title: string; items: ListItem[]; };
+  export type ListItem = { id: number; title: string; };
+
+  export let groups: Group[] = [];
+  const expandedGroups = writable(new Set<number>());
+  const selectedItem = writable<ListItem | null>(null);
+
+  function toggleGroup(groupId: number) {
+    expandedGroups.update(expanded => {
+      const newExpanded = new Set(expanded);
+      if (newExpanded.has(groupId)) {
+        newExpanded.delete(groupId);
+      } else {
+        newExpanded.add(groupId);
+      }
+      return newExpanded;
+    });
   }
 
-  export let state: ListState = ListState.GroupCollapsed;
-  export let groups: { title: string; items: string[] }[] = [];
-
-  let expandedGroups = writable<string[]>([]);
-
-  function toggleGroup(title: string) {
-    expandedGroups.update(groups => {
-      if (groups.includes(title)) {
-        return groups.filter(group => group !== title);
-      }
-      return [...groups, title];
-    });
+  function selectItem(item: ListItem) {
+    selectedItem.set(item);
   }
 </script>
 
 <div class="grouped-list">
-  {#each groups as group}
+  {#each groups as { id: groupId, title: groupTitle, items }}
     <div class="group">
-      <div
-        class="group-title"
-        role="button"
-        on:click={() => toggleGroup(group.title)}
-        on:keydown={(e) => e.key === 'Enter' && toggleGroup(group.title)}
-        tabindex="0"
-      >
-        {group.title}
+      <div 
+        class="group-title" 
+        role="button" 
+        tabindex="0" 
+        on:click={() => toggleGroup(groupId)} 
+        on:keydown={(e) => e.key === 'Enter' && toggleGroup(groupId)}
+        aria-expanded={$expandedGroups.has(groupId)}>
+        {groupTitle}
       </div>
-      {#if $expandedGroups.includes(group.title)}
+      {#if $expandedGroups.has(groupId)}
         <ul>
-          {#each group.items as item}
-            <li class={state === ListState.ItemSelected ? 'selected' : ''}>{item}</li>
+          {#each items as { id, title }}
+            <li 
+              class="list-item" 
+              bind:this={selectedItem}
+              on:click={() => selectItem({ id, title })} 
+              aria-selected={$selectedItem?.id === id}
+              on:mouseenter={() => selectedItem.set({ id, title })}
+              on:mouseleave={() => selectedItem.set(null)}>
+              {title}
+            </li>
           {/each}
         </ul>
       {/if}

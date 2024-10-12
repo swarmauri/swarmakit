@@ -1,42 +1,33 @@
 .actionable-list {
-  width: 100%;
-  border: 1px solid #ddd;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.actionable-list-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
   border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.actionable-item {
-  border-bottom: 1px solid #ddd;
-  padding: 15px;
+  background-color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s;
 }
 
-.actionable-item:last-child {
-  border-bottom: none;
+.actionable-list-hover .actionable-list-item:hover {
+  background-color: #f0f0f0;
 }
 
-.actionable-item:hover:not(.disabled) {
-  background-color: #f1f1f1;
+.actionable-list-action-triggered .actionable-list-item {
+  background-color: #e1f5fe;
 }
 
-.disabled {
+.actionable-list-disabled .actionable-list-item {
+  background-color: #f9f9f9;
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
-.loading-spinner {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-top-color: #333;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.actionable-list-loading .actionable-list-item {
+  background-color: #eee;
 }

@@ -4,44 +4,48 @@
 
   export let images: string[] = [];
   export let autoPlay: boolean = false;
-  export let interval: number = 3000;
+  export let autoPlayInterval: number = 3000;
 
-  let currentIndex = writable(0);
-  let autoPlayInterval: any;
+  let currentIndex = 0;
+  let intervalId: NodeJS.Timeout;
+  const isHovered = writable(false);
 
-  function next() {
-    currentIndex.update(n => (n + 1) % images.length);
-  }
+  const nextSlide = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+  };
 
-  function prev() {
-    currentIndex.update(n => (n - 1 + images.length) % images.length);
-  }
+  const prevSlide = () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+  };
 
-  function startAutoPlay() {
-    if (autoPlay) {
-      autoPlayInterval = setInterval(next, interval);
+  const startAutoPlay = () => {
+    if (autoPlay && images.length > 1) {
+      intervalId = setInterval(() => {
+        if (!get(isHovered)) {
+          nextSlide();
+        }
+      }, autoPlayInterval);
     }
-  }
+  };
 
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
+  const stopAutoPlay = () => {
+    clearInterval(intervalId);
+  };
 
   onMount(() => {
     startAutoPlay();
-
-    return () => {
-      stopAutoPlay();
-    };
+    return () => stopAutoPlay();
   });
 </script>
 
-<div class="carousel" role="region" aria-label="Image Carousel" on:mouseenter={stopAutoPlay} on:mouseleave={startAutoPlay}>
-  <button on:click={prev} aria-label="Previous Image">‹</button>
-  {#each images as image, index (image)}
-    <img src={image} alt={`Carousel Image ${index + 1}`} class:hidden={index !== $currentIndex} />
+<div class="carousel" role="region" aria-label="Image Carousel" on:mouseenter={() => isHovered.set(true)} on:mouseleave={() => isHovered.set(false)}>
+  <button on:click={prevSlide} on:keydown={(e) => e.key === 'Enter' && prevSlide()} aria-label="Previous slide">&#10094;</button>
+  
+  {#each images as image, index}
+    <img src={image} alt={`Slide ${index + 1}`} class:selected={index === currentIndex} />
   {/each}
-  <button on:click={next} aria-label="Next Image">›</button>
+  
+  <button on:click={nextSlide} on:keydown={(e) => e.key === 'Enter' && nextSlide()} aria-label="Next slide">&#10095;</button>
 </div>
 
 <style lang="css">

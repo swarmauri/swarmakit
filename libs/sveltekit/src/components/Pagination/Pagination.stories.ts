@@ -1,64 +1,47 @@
 import Pagination from './Pagination.svelte';
-import type { Page } from './Pagination.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/Pagination',
+const meta: Meta = {
+  title: 'Components/Lists/Pagination',
   component: Pagination,
+  tags: ['autodocs'],
   argTypes: {
-    pages: { control: 'object' },
-    onPageClick: { action: 'onPageClick' },
+    totalPages: {
+      control: { type: 'number' },
+    },
+    currentPage: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Pagination,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  pages: [
-    { number: 1, active: false },
-    { number: 2, active: false },
-    { number: 3, active: true },
-    { number: 4, active: false },
-    { number: 5, active: false },
-  ],
-  onPageClick: (number: number) => console.log(`Page ${number} clicked`),
+  totalPages: 5,
+  currentPage: 1,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  pages: [
-    { number: 1, active: false },
-    { number: 2, active: false },
-    { number: 3, active: true },
-    { number: 4, active: false },
-    { number: 5, active: false },
-  ],
-  onPageClick: (number: number) => console.log(`Page ${number} clicked`),
+  totalPages: 5,
+  currentPage: 3,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  pages: [
-    { number: 1, active: false },
-    { number: 2, active: false },
-    { number: 3, active: false },
-    { number: 4, active: false },
-    { number: 5, active: false },
-  ],
-  onPageClick: (number: number) => console.log(`Page ${number} clicked`),
+  totalPages: 5,
+  currentPage: 0,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  pages: [
-    { number: 1, active: false },
-    { number: 2, active: false },
-    { number: 3, active: false },
-    { number: 4, active: false },
-    { number: 5, active: false },
-  ],
-  onPageClick: (number: number) => console.log(`Page ${number} clicked`),
+  totalPages: 5,
+  currentPage: 1,
 };

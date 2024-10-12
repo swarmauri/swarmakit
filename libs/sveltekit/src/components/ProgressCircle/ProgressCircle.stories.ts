@@ -1,14 +1,14 @@
 import ProgressCircle from './ProgressCircle.svelte';
 
 export default {
-  title: 'Indicators/ProgressCircle',
+  title: 'Components/Indicators/ProgressCircle',
   component: ProgressCircle,
+  tags: ['autodocs'],
   argTypes: {
-    progress: {
-      control: { type: 'number', min: 0, max: 100 },
-    },
+    progress: { control: { type: 'range', min: 0, max: 100 } },
     status: {
-      control: { type: 'select', options: ['complete', 'incomplete', 'paused', 'active'] },
+      control: 'select',
+      options: ['active', 'paused', 'complete', 'incomplete'],
     },
   },
 };
@@ -32,7 +32,7 @@ Complete.args = {
 
 export const Incomplete = Template.bind({});
 Incomplete.args = {
-  progress: 0,
+  progress: 25,
   status: 'incomplete',
 };
 

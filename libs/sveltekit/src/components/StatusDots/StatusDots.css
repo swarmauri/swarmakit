@@ -1,23 +1,31 @@
 .status-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #e0e0e0;
-  transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
 }
 
-.status-dot.online {
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.dot.online {
   background-color: #4caf50;
 }
 
-.status-dot.offline {
+.dot.offline {
   background-color: #f44336;
 }
 
-.status-dot.busy {
+.dot.busy {
   background-color: #ff9800;
 }
 
-.status-dot.idle {
+.dot.idle {
   background-color: #ffeb3b;
 }

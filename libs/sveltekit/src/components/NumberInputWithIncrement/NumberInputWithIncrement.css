@@ -3,26 +3,25 @@
   align-items: center;
 }
 
-.number-input-container button {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
+button {
+  width: 30px;
+  height: 30px;
   background-color: #f0f0f0;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.number-input-container input {
-  width: 60px;
-  text-align: center;
-  margin: 0 5px;
-  padding: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.number-input-container button:disabled,
-.number-input-container input:disabled {
+button:disabled {
   background-color: #e0e0e0;
   cursor: not-allowed;
+}
+
+input[type="number"] {
+  width: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin: 0 5px;
 }

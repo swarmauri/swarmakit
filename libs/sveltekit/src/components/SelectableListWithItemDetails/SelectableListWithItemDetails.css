@@ -1,32 +1,31 @@
 .selectable-list {
   border: 1px solid #ddd;
-  padding: 10px;
-  background-color: #f9f9f9;
+  border-radius: 4px;
 }
 
-.selectable-list div {
+.selectable-list-item {
   padding: 10px;
-  margin-bottom: 5px;
-  cursor: pointer;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.selectable-list div:last-child {
+.selectable-list-item:last-child {
   border-bottom: none;
 }
 
-.selectable-list div.selected {
-  background-color: #e0e0e0;
+.selectable-list-item.selected {
+  background-color: #e0f7fa;
 }
 
-.selectable-list button {
+.details-button {
   margin-left: 10px;
-  cursor: pointer;
 }
 
 .item-details {
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-top: 1px solid #ddd;
   margin-top: 5px;
+  padding: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
 }

@@ -1,56 +1,47 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-
-  export let searchTerm: string = '';
-  export let filters: string[] = [];
+  export let placeholder: string = 'Search...';
+  export let query: string = '';
+  export let filtersActive: boolean = false;
   export let disabled: boolean = false;
+  export let noResults: boolean = false;
 
   const dispatch = createEventDispatcher();
 
-  function handleSearchInput(event: Event) {
-    if (!disabled) {
-      searchTerm = (event.target as HTMLInputElement).value;
-      dispatch('search', searchTerm);
-    }
+  function handleInput(event: Event) {
+    const target = event.target as HTMLInputElement;
+    query = target.value;
+    dispatch('input', { query });
   }
 
-  function handleFilterClick(filter: string) {
+  function handleFilterClick() {
     if (!disabled) {
-      dispatch('filter', filter);
-    }
-  }
-
-  function handleKeyDown(event: KeyboardEvent, filter: string) {
-    if (!disabled && event.key === 'Enter') {
-      handleFilterClick(filter);
+      filtersActive = !filtersActive;
+      dispatch('filterToggle', { filtersActive });
     }
   }
 </script>
 
-<div class="search-input-with-filters">
+<div class="search-input-container" aria-disabled={disabled}>
   <input
     type="text"
-    bind:value={searchTerm}
-    on:input={handleSearchInput}
-    placeholder="Search..."
+    bind:value={query}
+    placeholder={placeholder}
+    on:input={handleInput}
     disabled={disabled}
-    aria-disabled={disabled}
+    aria-label="Search input"
   />
-
-  <div class="filters" role="list">
-    {#each filters as filter}
-      <div
-        class="filter"
-        role="listitem"
-        tabIndex={disabled ? -1 : 0}
-        on:click={() => handleFilterClick(filter)}
-        on:keydown={(event) => handleKeyDown(event, filter)}
-        aria-disabled={disabled}
-      >
-        {filter}
-      </div>
-    {/each}
-  </div>
+  <button
+    on:click={handleFilterClick}
+    aria-pressed={filtersActive}
+    disabled={disabled}
+    aria-label="Toggle filters"
+  >
+    Filters
+  </button>
+  {#if noResults}
+    <p class="no-results-message">No results found</p>
+  {/if}
 </div>
 
 <style lang="css">

@@ -1,55 +1,62 @@
 import FavoritesList from './FavoritesList.svelte';
-import type { ListState } from './FavoritesList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/FavoritesList',
+const meta: Meta = {
+  title: 'Components/Lists/FavoritesList',
   component: FavoritesList,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(ListState),
+      control: { type: 'select' },
+      options: ['starred', 'unstarred', 'hover', 'selected'],
     },
-    items: { control: 'object' },
+    items: {
+      control: { type: 'array' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: FavoritesList,
   props: args,
 });
 
+export const Default = Template.bind({});
+Default.args = {
+  state: 'unstarred',
+  items: [
+    { id: 1, title: 'Item 1', isStarred: false },
+    { id: 2, title: 'Item 2', isStarred: false },
+    { id: 3, title: 'Item 3', isStarred: false },
+  ],
+};
+
 export const Starred = Template.bind({});
 Starred.args = {
-  state: ListState.Starred,
+  state: 'starred',
   items: [
-    { title: 'Item 1', starred: true },
-    { title: 'Item 2', starred: false },
+    { id: 1, title: 'Item 1', isStarred: true },
+    { id: 2, title: 'Item 2', isStarred: true },
+    { id: 3, title: 'Item 3', isStarred: false },
   ],
 };
 
 export const Unstarred = Template.bind({});
 Unstarred.args = {
-  state: ListState.Unstarred,
-  items: [
-    { title: 'Item 1', starred: false },
-    { title: 'Item 2', starred: false },
-  ],
+  state: 'unstarred',
+  items: Default.args.items,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  state: ListState.Hover,
-  items: [
-    { title: 'Item 1', starred: false },
-    { title: 'Item 2', starred: false },
-  ],
+  state: 'hover',
+  items: Default.args.items,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  state: ListState.Selected,
-  items: [
-    { title: 'Item 1', starred: false },
-    { title: 'Item 2', starred: false },
-  ],
+  state: 'selected',
+  items: Default.args.items,
 };

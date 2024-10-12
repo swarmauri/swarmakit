@@ -1,59 +1,56 @@
 import TreeviewList from './TreeviewList.svelte';
-import type { TreeNode } from './TreeviewList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/TreeviewList',
+const meta: Meta = {
+  title: 'Components/Lists/TreeviewList',
   component: TreeviewList,
+  tags: ['autodocs'],
   argTypes: {
-    nodes: { control: 'object' },
-    selectedNodeId: { control: 'number' },
-    onNodeSelect: { action: 'onNodeSelect' },
+    nodes: {
+      control: { type: 'array' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: TreeviewList,
   props: args,
 });
 
+const sampleNodes = [
+  { label: 'Node 1', expanded: true, selected: false, children: [
+    { label: 'Child 1.1', expanded: false, selected: false },
+    { label: 'Child 1.2', expanded: false, selected: false }
+  ]},
+  { label: 'Node 2', expanded: false, selected: false, children: [
+    { label: 'Child 2.1', expanded: false, selected: false }
+  ]},
+  { label: 'Node 3', expanded: false, selected: false }
+];
+
 export const Default = Template.bind({});
 Default.args = {
-  nodes: [
-    { id: 1, name: 'Node 1', children: [{ id: 4, name: 'Child 1' }, { id: 5, name: 'Child 2' }] },
-    { id: 2, name: 'Node 2', children: [{ id: 6, name: 'Child 3' }] },
-    { id: 3, name: 'Node 3' },
-  ],
-  selectedNodeId: 1,
-  onNodeSelect: (node: TreeNode) => console.log('Selected node', node),
+  nodes: sampleNodes,
 };
 
 export const NodeExpanded = Template.bind({});
 NodeExpanded.args = {
-  nodes: [
-    { id: 1, name: 'Node 1', expanded: true, children: [{ id: 4, name: 'Child 1' }, { id: 5, name: 'Child 2' }] },
-    { id: 2, name: 'Node 2', children: [{ id: 6, name: 'Child 3' }] },
-    { id: 3, name: 'Node 3' },
-  ],
-  selectedNodeId: 1,
+  nodes: sampleNodes.map((node, i) => ({ ...node, expanded: i === 0 })),
 };
 
 export const NodeCollapsed = Template.bind({});
 NodeCollapsed.args = {
-  nodes: [
-    { id: 1, name: 'Node 1', children: [{ id: 4, name: 'Child 1' }, { id: 5, name: 'Child 2' }] },
-    { id: 2, name: 'Node 2', children: [{ id: 6, name: 'Child 3' }] },
-    { id: 3, name: 'Node 3' },
-  ],
-  selectedNodeId: 1,
+  nodes: sampleNodes.map((node) => ({ ...node, expanded: false })),
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  ...Default.args,
+  nodes: sampleNodes,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  ...Default.args,
-  selectedNodeId: 2,
+  nodes: sampleNodes.map((node, i) => ({ ...node, selected: i === 1 })),
 };

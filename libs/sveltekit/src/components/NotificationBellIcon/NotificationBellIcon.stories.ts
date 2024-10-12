@@ -1,15 +1,12 @@
 import NotificationBellIcon from './NotificationBellIcon.svelte';
 
 export default {
-  title: 'Indicators/NotificationBellIcon',
+  title: 'Components/Indicators/NotificationBellIcon',
   component: NotificationBellIcon,
+  tags: ['autodocs'],
   argTypes: {
-    hasNotifications: {
-      control: { type: 'boolean' },
-    },
-    isDismissed: {
-      control: { type: 'boolean' },
-    },
+    hasNotifications: { control: 'boolean' },
+    dismissed: { control: 'boolean' },
   },
 };
 
@@ -21,23 +18,23 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   hasNotifications: false,
-  isDismissed: false,
+  dismissed: false,
 };
 
 export const NoNotifications = Template.bind({});
 NoNotifications.args = {
   hasNotifications: false,
-  isDismissed: false,
+  dismissed: false,
 };
 
 export const NewNotifications = Template.bind({});
 NewNotifications.args = {
   hasNotifications: true,
-  isDismissed: false,
+  dismissed: false,
 };
 
 export const Dismissed = Template.bind({});
 Dismissed.args = {
   hasNotifications: true,
-  isDismissed: true,
+  dismissed: true,
 };

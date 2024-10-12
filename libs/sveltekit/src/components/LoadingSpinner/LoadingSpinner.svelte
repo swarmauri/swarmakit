@@ -1,12 +1,12 @@
 <script lang="ts">
-  export let isActive: boolean = false;
+  export let active: boolean = false;
 </script>
 
-{#if isActive}
-  <div class="spinner" role="status" aria-live="polite" aria-label="Loading">
-    <div class="circle"></div>
-  </div>
-{/if}
+<div class="loading-spinner" role="status" aria-live={active ? 'polite' : 'off'} aria-hidden={!active}>
+  {#if active}
+    <div class="spinner" aria-label="Loading"></div>
+  {/if}
+</div>
 
 <style lang="css">
   @import './LoadingSpinner.css';

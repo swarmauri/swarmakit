@@ -1,18 +1,15 @@
 .audio-waveform-display {
-  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 20px;
+  gap: 10px;
 }
 
 canvas {
+  background-color: #f0f0f0;
   border: 1px solid #ccc;
-  margin-bottom: 10px;
 }
 
-.loading-indicator,
-.scrubbing-indicator {
-  font-size: 14px;
-  color: #555;
+button {
+  padding: 5px 10px;
+  cursor: pointer;
 }

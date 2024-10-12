@@ -1,45 +1,38 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  import { writable } from 'svelte/store';
 
   export let password: string = '';
   export let confirmPassword: string = '';
   export let disabled: boolean = false;
+  export let minLength: number = 8;
 
-  const dispatch = createEventDispatcher();
+  const passwordsMatch = writable<boolean>(false);
 
-  function handlePasswordChange(event: Event) {
-    const target = event.target as HTMLInputElement;
-    dispatch('passwordChange', target.value);
-  }
-
-  function handleConfirmPasswordChange(event: Event) {
-    const target = event.target as HTMLInputElement;
-    dispatch('confirmPasswordChange', target.value);
-  }
-
-  $: passwordsMatch = password === confirmPassword;
+  $: passwordsMatch.set(password === confirmPassword && password.length >= minLength);
 </script>
 
-<div class="password-confirmation-container">
+<div class="password-confirmation-field" aria-label="Password Confirmation Field" role="group">
   <input
     type="password"
-    placeholder="Password"
     bind:value={password}
-    on:input={handlePasswordChange}
+    placeholder="Enter password"
+    minlength={minLength}
     disabled={disabled}
+    aria-label="Password"
+    class="password-input"
   />
   <input
     type="password"
-    placeholder="Confirm Password"
     bind:value={confirmPassword}
-    on:input={handleConfirmPasswordChange}
+    placeholder="Confirm password"
+    minlength={minLength}
     disabled={disabled}
+    aria-label="Confirm Password"
+    class="confirm-password-input"
   />
-  {#if password && confirmPassword}
-    <p class={passwordsMatch ? 'match' : 'not-match'}>
-      {passwordsMatch ? 'Passwords match' : 'Passwords do not match'}
-    </p>
-  {/if}
+  <span class="match-indicator" aria-live="polite">
+    {$passwordsMatch ? 'Passwords match' : 'Passwords do not match'}
+  </span>
 </div>
 
 <style lang="css">

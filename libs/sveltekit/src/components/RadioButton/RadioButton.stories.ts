@@ -1,56 +1,55 @@
 import RadioButton from './RadioButton.svelte';
 
 export default {
-  title: 'Forms/RadioButton',
+  title: 'Components/Forms/RadioButton',
   component: RadioButton,
+  tags: ['autodocs'],
   argTypes: {
+    selected: { control: 'boolean' },
+    disabled: { control: 'boolean' },
     name: { control: 'text' },
     value: { control: 'text' },
-    selectedValue: { control: 'text' },
-    disabled: { control: 'boolean' },
+    label: { control: 'text' },
   },
 };
 
 const Template = (args) => ({
   Component: RadioButton,
   props: args,
-  on: {
-    change: args.onChange,
-  },
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  name: 'option',
-  value: 'Option 1',
-  selectedValue: '',
+  selected: false,
   disabled: false,
-  onChange: (value) => console.log('Radio button selected:', value),
+  name: 'option',
+  value: 'default',
+  label: 'Default Option',
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  name: 'option',
-  value: 'Option 1',
-  selectedValue: 'Option 1',
+  selected: true,
   disabled: false,
-  onChange: (value) => console.log('Radio button selected:', value),
+  name: 'option',
+  value: 'selected',
+  label: 'Selected Option',
 };
 
 export const Unselected = Template.bind({});
 Unselected.args = {
-  name: 'option',
-  value: 'Option 1',
-  selectedValue: '',
+  selected: false,
   disabled: false,
-  onChange: (value) => console.log('Radio button selected:', value),
+  name: 'option',
+  value: 'unselected',
+  label: 'Unselected Option',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  name: 'option',
-  value: 'Option 1',
-  selectedValue: 'Option 1',
+  selected: false,
   disabled: true,
-  onChange: (value) => console.log('Radio button selected:', value),
+  name: 'option',
+  value: 'disabled',
+  label: 'Disabled Option',
 };

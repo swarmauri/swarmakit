@@ -1,24 +1,28 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   export let checked: boolean = false;
   export let disabled: boolean = false;
 
-  function toggle() {
+  const dispatch = createEventDispatcher();
+
+  function handleToggle() {
     if (!disabled) {
       checked = !checked;
+      dispatch('toggle', { checked });
     }
   }
 </script>
 
 <div
+  class="toggle-switch"
   role="switch"
   aria-checked={checked}
   aria-disabled={disabled}
-  class="toggle-switch"
-  on:click={toggle}
-  tabindex={disabled ? -1 : 0}
-  on:keydown={(e) => !disabled && e.key === 'Enter' && toggle()}
+  tabindex="0"
+  on:click={handleToggle}
+  on:keydown={(event) => event.key === 'Enter' && handleToggle()}
 >
-  <div class="switch-thumb" class:checked={checked} class:disabled={disabled}></div>
+  <div class="toggle-thumb" class:checked={checked}></div>
 </div>
 
 <style lang="css">

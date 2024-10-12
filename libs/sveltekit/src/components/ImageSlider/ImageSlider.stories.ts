@@ -1,15 +1,23 @@
 import ImageSlider from './ImageSlider.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Media/ImageSlider',
+const meta: Meta = {
+  title: 'Components/Media/ImageSlider',
   component: ImageSlider,
+  tags: ['autodocs'],
   argTypes: {
-    images: { control: 'array' },
-    activeIndex: { control: 'number' },
+    images: {
+      control: { type: 'array' },
+    },
+    activeIndex: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: ImageSlider,
   props: args,
 });
@@ -17,27 +25,29 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   images: [
-    'https://via.placeholder.com/800x400?text=Image+1',
-    'https://via.placeholder.com/800x400?text=Image+2',
-    'https://via.placeholder.com/800x400?text=Image+3',
+    'https://via.placeholder.com/800x450?text=Image+1',
+    'https://via.placeholder.com/800x450?text=Image+2',
+    'https://via.placeholder.com/800x450?text=Image+3',
   ],
   activeIndex: 0,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  ...Default.args,
+  images: [
+    'https://via.placeholder.com/800x450?text=Image+1',
+    'https://via.placeholder.com/800x450?text=Image+2',
+    'https://via.placeholder.com/800x450?text=Image+3',
+  ],
   activeIndex: 1,
-};
-
-export const Inactive = Template.bind({});
-Inactive.args = {
-  ...Default.args,
-  activeIndex: 2,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  ...Default.args,
+  images: [
+    'https://via.placeholder.com/800x450?text=Image+1',
+    'https://via.placeholder.com/800x450?text=Image+2',
+    'https://via.placeholder.com/800x450?text=Image+3',
+  ],
   activeIndex: 0,
 };

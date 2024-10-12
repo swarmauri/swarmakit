@@ -1,10 +1,9 @@
 .badge {
   display: inline-block;
   padding: 5px 10px;
-  border-radius: 12px;
-  font-size: 0.8rem;
+  font-size: 14px;
   font-weight: bold;
-  text-align: center;
+  border-radius: 12px;
 }
 
 .badge.default {
@@ -13,11 +12,11 @@
 }
 
 .badge.notification {
-  background-color: #f39c12;
+  background-color: #ffcc00;
   color: #fff;
 }
 
 .badge.status {
-  background-color: #28a745;
+  background-color: #4caf50;
   color: #fff;
 }

@@ -1,48 +1,66 @@
 import Button from './Button.svelte';
 
 export default {
-  title: 'Components/Buttons',
+  title: 'Buttons/Button',
   component: Button,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    type: {
+      control: { type: 'select' },
+      options: ['button', 'submit', 'reset'],
+    },
+    disabled: { control: 'boolean' },
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+    },
+  },
 };
 
 export const Default = {
   args: {
-    label: 'Button',
     type: 'button',
-    disabled: false
-  }
+    disabled: false,
+    variant: 'primary',
+    children: 'Button',
+  },
 };
 
 export const Primary = {
   args: {
     ...Default.args,
-    label: 'Primary Button'
-  }
+    variant: 'primary',
+  },
 };
 
 export const Secondary = {
   args: {
     ...Default.args,
-    label: 'Secondary Button'
-  }
+    variant: 'secondary',
+  },
 };
 
 export const Disabled = {
   args: {
     ...Default.args,
-    disabled: true
-  }
+    disabled: true,
+  },
 };
 
 export const Hover = {
   args: {
-    ...Default.args
-  }
+    ...Default.args,
+  },
+  parameters: {
+    pseudo: { hover: true },
+  },
 };
 
 export const Active = {
   args: {
-    ...Default.args
-  }
+    ...Default.args,
+  },
+  parameters: {
+    pseudo: { active: true },
+  },
 };

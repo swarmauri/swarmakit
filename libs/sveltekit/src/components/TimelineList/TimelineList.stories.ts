@@ -1,55 +1,51 @@
 import TimelineList from './TimelineList.svelte';
-import type { TimelineItem } from './TimelineList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/TimelineList',
+const meta: Meta = {
+  title: 'Components/Lists/TimelineList',
   component: TimelineList,
+  tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    activeItemId: { control: 'number' },
-    onItemSelect: { action: 'onItemSelect' },
+    events: {
+      control: { type: 'array' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: TimelineList,
   props: args,
 });
 
+const sampleEvents = [
+  { title: 'Event 1', description: 'Description for Event 1', completed: true, active: false },
+  { title: 'Event 2', description: 'Description for Event 2', completed: false, active: true },
+  { title: 'Event 3', description: 'Description for Event 3', completed: false, active: false },
+];
+
 export const Default = Template.bind({});
 Default.args = {
-  items: [
-    { id: 1, title: 'Step 1', description: 'Description for step 1' },
-    { id: 2, title: 'Step 2', description: 'Description for step 2' },
-    { id: 3, title: 'Step 3', description: 'Description for step 3' },
-  ],
-  activeItemId: 1,
-  onItemSelect: (item: TimelineItem) => console.log('Selected item', item),
+  events: sampleEvents,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  ...Default.args,
-  activeItemId: 1,
+  events: sampleEvents.map((event, i) => ({ ...event, active: i === 1 })),
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  items: [
-    { id: 1, title: 'Step 1', description: 'Description for step 1', completed: true },
-    { id: 2, title: 'Step 2', description: 'Description for step 2', completed: true },
-    { id: 3, title: 'Step 3', description: 'Description for step 3' },
-  ],
-  activeItemId: 3,
+  events: sampleEvents.map((event) => ({ ...event, completed: true })),
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  ...Default.args,
+  events: sampleEvents,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  ...Default.args,
-  activeItemId: 3,
+  events: sampleEvents.map((event) => ({ ...event, active: false })),
 };

@@ -1,37 +1,53 @@
 import VirtualizedList from './VirtualizedList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/VirtualizedList',
+const meta: Meta = {
+  title: 'Components/Lists/VirtualizedList',
   component: VirtualizedList,
+  tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
-    isLoadingMore: { control: 'boolean' },
-    hasMoreItems: { control: 'boolean' },
-    loadMoreItems: { action: 'loadMoreItems' },
+    items: {
+      control: { type: 'array' },
+    },
+    isLoading: {
+      control: { type: 'boolean' },
+    },
+    hasMore: {
+      control: { type: 'boolean' },
+    },
+    loadMore: { action: 'loadMore' },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: VirtualizedList,
   props: args,
 });
 
+const sampleItems = Array.from({ length: 20 }, (_, i) => `Item ${i + 1}`);
+
 export const Default = Template.bind({});
 Default.args = {
-  items: Array.from({ length: 20 }, (_, i) => `Item ${i + 1}`),
-  isLoadingMore: false,
-  hasMoreItems: true,
-  loadMoreItems: () => console.log('Loading more items...'),
+  items: sampleItems,
+  isLoading: false,
+  hasMore: true,
+  loadMore: () => console.log('Loading more items...'),
 };
 
 export const LoadingMore = Template.bind({});
 LoadingMore.args = {
-  ...Default.args,
-  isLoadingMore: true,
+  items: sampleItems,
+  isLoading: true,
+  hasMore: true,
+  loadMore: () => console.log('Loading more items...'),
 };
 
 export const EndOfList = Template.bind({});
 EndOfList.args = {
-  ...Default.args,
-  hasMoreItems: false,
+  items: sampleItems,
+  isLoading: false,
+  hasMore: false,
+  loadMore: () => console.log('Loading more items...'),
 };

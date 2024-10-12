@@ -1,58 +1,62 @@
 import Slider from './Slider.svelte';
-import type { SliderState } from './Slider.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Input/Slider',
+const meta: Meta = {
+  title: 'Components/Input/Slider',
   component: Slider,
+  tags: ['autodocs'],
   argTypes: {
     state: {
-      control: 'select',
-      options: Object.values(SliderState),
+      control: { type: 'select' },
+      options: ['min', 'max', 'disabled'],
     },
-    min: { control: 'number' },
-    max: { control: 'number' },
-    value: { control: 'number' },
-    step: { control: 'number' },
+    min: {
+      control: { type: 'number' },
+    },
+    max: {
+      control: { type: 'number' },
+    },
+    value: {
+      control: { type: 'number' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: Slider,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: SliderState.Min,
+  state: 'min',
   min: 0,
   max: 100,
   value: 0,
-  step: 1,
 };
 
 export const Min = Template.bind({});
 Min.args = {
-  state: SliderState.Min,
+  state: 'min',
   min: 0,
   max: 100,
   value: 0,
-  step: 1,
 };
 
 export const Max = Template.bind({});
 Max.args = {
-  state: SliderState.Max,
+  state: 'max',
   min: 0,
   max: 100,
   value: 100,
-  step: 1,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  state: SliderState.Disabled,
+  state: 'disabled',
   min: 0,
   max: 100,
   value: 50,
-  step: 1,
 };

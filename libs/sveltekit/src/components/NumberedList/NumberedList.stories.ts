@@ -1,16 +1,26 @@
 import NumberedList from './NumberedList.svelte';
-import type { ListItem } from './NumberedList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/NumberedList',
+const meta: Meta = {
+  title: 'Components/Lists/NumberedList',
   component: NumberedList,
+  tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    onItemClick: { action: 'onItemClick' },
+    items: {
+      control: { type: 'object' },
+    },
+    selectedItem: {
+      control: { type: 'number' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args) => ({
+export default meta;
+
+const Template: Story = (args) => ({
   Component: NumberedList,
   props: args,
 });
@@ -18,39 +28,43 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { id: 1, content: 'Item 1', selected: false },
-    { id: 2, content: 'Item 2', selected: false },
-    { id: 3, content: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onItemClick: (id: number) => console.log(`Item ${id} clicked`),
+  selectedItem: null,
+  disabled: false,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
   items: [
-    { id: 1, content: 'Item 1', selected: true },
-    { id: 2, content: 'Item 2', selected: false },
-    { id: 3, content: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onItemClick: (id: number) => console.log(`Item ${id} clicked`),
+  selectedItem: 1,
+  disabled: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   items: [
-    { id: 1, content: 'Item 1', selected: false },
-    { id: 2, content: 'Item 2', selected: false },
-    { id: 3, content: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onItemClick: (id: number) => console.log(`Item ${id} clicked`),
+  selectedItem: null,
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   items: [
-    { id: 1, content: 'Item 1', selected: false, disabled: true },
-    { id: 2, content: 'Item 2', selected: false },
-    { id: 3, content: 'Item 3', selected: false },
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
   ],
-  onItemClick: (id: number) => console.log(`Item ${id} clicked`),
+  selectedItem: null,
+  disabled: true,
 };

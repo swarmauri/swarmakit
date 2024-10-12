@@ -1,41 +1,41 @@
-import LoadmorebuttoninList from './LoadmorebuttoninList.svelte';
-import type { ButtonState } from './LoadmorebuttoninList.svelte';
+import LoadMoreButtonInList from './LoadMoreButtonInList.svelte';
+import type { Meta, Story } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/LoadmorebuttoninList',
-  component: LoadmorebuttoninList,
+const meta: Meta = {
+  title: 'Components/Lists/LoadMoreButtonInList',
+  component: LoadMoreButtonInList,
+  tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: Object.values(ButtonState),
+    loading: {
+      control: { type: 'boolean' },
     },
-    items: { control: 'object' },
-    loadMore: { action: 'loadMore' },
+    endOfList: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args) => ({
-  Component: LoadmorebuttoninList,
+export default meta;
+
+const Template: Story = (args) => ({
+  Component: LoadMoreButtonInList,
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  state: ButtonState.Default,
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  loadMore: () => console.log('Load more items'),
+  loading: false,
+  endOfList: false,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  state: ButtonState.Loading,
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  loadMore: () => console.log('Loading more items'),
+  loading: true,
+  endOfList: false,
 };
 
 export const EndOfList = Template.bind({});
 EndOfList.args = {
-  state: ButtonState.EndOfList,
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  loadMore: () => console.log('No more items to load'),
+  loading: false,
+  endOfList: true,
 };

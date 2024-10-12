@@ -1,15 +1,12 @@
 import BadgeWithCounts from './BadgeWithCounts.svelte';
 
 export default {
-  title: 'Indicators/BadgeWithCounts',
+  title: 'Components/Indicators/BadgeWithCounts',
   component: BadgeWithCounts,
+  tags: ['autodocs'],
   argTypes: {
-    count: {
-      control: { type: 'number' },
-    },
-    maxCount: {
-      control: { type: 'number' },
-    },
+    count: { control: 'number' },
+    maxCount: { control: 'number' },
   },
 };
 
@@ -32,7 +29,7 @@ Zero.args = {
 
 export const Active = Template.bind({});
 Active.args = {
-  count: 27,
+  count: 10,
   maxCount: 99,
 };
 

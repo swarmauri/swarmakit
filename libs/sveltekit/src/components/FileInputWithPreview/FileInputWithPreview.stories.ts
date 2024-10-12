@@ -1,45 +1,58 @@
 import FileInputWithPreview from './FileInputWithPreview.svelte';
 
 export default {
-  title: 'Components/Forms',
+  title: 'Components/Forms/FileInputWithPreview',
   component: FileInputWithPreview,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    file: { control: 'object' },
+    previewUrl: { control: 'text' },
+    errorMessage: { control: 'text' },
+    disabled: { control: 'boolean' },
+  },
 };
 
-export const Default = {
-  args: {
-    file: null,
-    previewUrl: '',
-    errorMessage: '',
-    isDisabled: false
-  }
+const Template = (args) => ({
+  Component: FileInputWithPreview,
+  props: args,
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  file: null,
+  previewUrl: '',
+  errorMessage: '',
+  disabled: false,
 };
 
-export const FileUploaded = {
-  args: {
-    ...Default.args,
-    file: new File([''], 'example.png', { type: 'image/png' }),
-    previewUrl: 'path/to/example.png'
-  }
+export const FileUploaded = Template.bind({});
+FileUploaded.args = {
+  file: new File(['sample'], 'sample.png', { type: 'image/png' }),
+  previewUrl: 'sample-preview-url',
+  errorMessage: '',
+  disabled: false,
 };
 
-export const PreviewDisplayed = {
-  args: {
-    ...Default.args,
-    previewUrl: 'path/to/example.png'
-  }
+export const PreviewDisplayed = Template.bind({});
+PreviewDisplayed.args = {
+  file: null,
+  previewUrl: 'sample-preview-url',
+  errorMessage: '',
+  disabled: false,
 };
 
-export const Error = {
-  args: {
-    ...Default.args,
-    errorMessage: 'No file selected'
-  }
+export const Error = Template.bind({});
+Error.args = {
+  file: null,
+  previewUrl: '',
+  errorMessage: 'Error uploading file',
+  disabled: false,
 };
 
-export const Disabled = {
-  args: {
-    ...Default.args,
-    isDisabled: true
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  file: null,
+  previewUrl: '',
+  errorMessage: '',
+  disabled: true,
 };
