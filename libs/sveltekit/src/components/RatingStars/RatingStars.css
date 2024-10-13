@@ -1,24 +1,27 @@
 .rating-stars {
   display: flex;
-  gap: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
 .star {
-  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  fill: #ccc;
   cursor: pointer;
-  color: #e0e0e0;
-  transition: color 0.3s ease;
+  transition: fill 0.2s;
+}
+
+.star:hover,
+.star.hover {
+  fill: #ffc107;
 }
 
 .star.selected {
-  color: #ffb400;
+  fill: #ff9800;
 }
 
-.star.interactive:hover {
-  color: #ffb400;
-}
-
-.star.interactive:focus {
-  outline: none;
-  color: #ffb400;
+.rating-stars[aria-disabled='true'] .star {
+  cursor: default;
+  fill: #e0e0e0;
 }

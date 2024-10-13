@@ -1,45 +1,38 @@
-.interactive-poll-results {
-  width: 300px;
-  padding: 10px;
-  border: 2px solid #333;
-  border-radius: 5px;
-  background-color: #f5f5f5;
+.poll-results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .option {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f0f0f0;
 }
 
-.option span {
-  font-size: 16px;
-  color: #333;
-}
-
-button {
-  padding: 5px 10px;
-  font-size: 14px;
-  background-color: #76c7c0;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-button[aria-disabled='true'] {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-button:hover:enabled {
-  background-color: #64aba7;
-}
-
-.total {
-  margin-top: 10px;
-  font-size: 18px;
+.option-text {
   font-weight: bold;
-  color: #333;
+}
+
+.progress-bar {
+  background-color: #6200ea;
+  height: 20px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.votes {
+  font-size: 0.8rem;
+}
+
+.poll-status {
+  font-size: 1rem;
+  color: red;
+  font-weight: bold;
+  text-align: center;
 }

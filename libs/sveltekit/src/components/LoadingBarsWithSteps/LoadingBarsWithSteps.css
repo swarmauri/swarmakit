@@ -1,37 +1,32 @@
-.loading-bars-with-steps {
+.loading-bars {
   display: flex;
-  flex-direction: column;
-  width: 200px;
-  margin: 0 auto;
+  gap: 10px;
 }
 
 .step {
+  flex: 1;
+  height: 20px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
-.bar {
-  flex: 1;
-  height: 8px;
-  margin-right: 10px;
-  border-radius: 4px;
-  background-color: #ccc;
+.step.active {
+  background-color: #6200ea;
 }
 
-.bar.active {
-  background-color: #76c7c0;
+.step.completed {
+  background-color: #03dac5;
 }
 
-.bar.completed {
-  background-color: #4caf50;
+.step.inactive {
+  background-color: #e0e0e0;
 }
 
-.bar.inactive {
-  background-color: #eee;
-}
-
-span {
-  font-size: 14px;
-  color: #333;
+.step-label {
+  padding: 0 5px;
 }

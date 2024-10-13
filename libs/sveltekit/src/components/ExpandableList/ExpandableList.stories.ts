@@ -1,58 +1,62 @@
 import ExpandableList from './ExpandableList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Lists/ExpandableList',
+export default {
+  title: 'Lists/ExpandableList',
   component: ExpandableList,
   tags: ['autodocs'],
-  argTypes: {
-    state: {
-      control: { type: 'select' },
-      options: ['itemExpanded', 'itemCollapsed', 'hover', 'selected'],
-    },
-    items: {
-      control: { type: 'array' },
-    },
+};
+
+export const Default = {
+  args: {
+    items: [
+      { title: 'Item 1', content: 'Content 1', expanded: false },
+      { title: 'Item 2', content: 'Content 2', expanded: false },
+      { title: 'Item 3', content: 'Content 3', expanded: false },
+    ],
+    selectedItemIndex: null,
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: ExpandableList,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  state: 'itemCollapsed',
-  items: [
-    { id: 1, title: 'Item 1', content: 'Content for item 1' },
-    { id: 2, title: 'Item 2', content: 'Content for item 2' },
-    { id: 3, title: 'Item 3', content: 'Content for item 3' },
-  ],
+export const ItemExpanded = {
+  args: {
+    items: [
+      { title: 'Item 1', content: 'Content 1', expanded: true },
+      { title: 'Item 2', content: 'Content 2', expanded: false },
+      { title: 'Item 3', content: 'Content 3', expanded: false },
+    ],
+    selectedItemIndex: null,
+  },
 };
 
-export const ItemExpanded = Template.bind({});
-ItemExpanded.args = {
-  state: 'itemExpanded',
-  items: Default.args.items,
+export const ItemCollapsed = {
+  args: {
+    items: [
+      { title: 'Item 1', content: 'Content 1', expanded: false },
+      { title: 'Item 2', content: 'Content 2', expanded: false },
+      { title: 'Item 3', content: 'Content 3', expanded: false },
+    ],
+    selectedItemIndex: null,
+  },
 };
 
-export const ItemCollapsed = Template.bind({});
-ItemCollapsed.args = {
-  state: 'itemCollapsed',
-  items: Default.args.items,
+export const Hover = {
+  args: {
+    items: [
+      { title: 'Item 1', content: 'Content 1', expanded: false },
+      { title: 'Item 2', content: 'Content 2', expanded: false },
+      { title: 'Item 3', content: 'Content 3', expanded: false },
+    ],
+    selectedItemIndex: null,
+  },
 };
 
-export const Hover = Template.bind({});
-Hover.args = {
-  state: 'hover',
-  items: Default.args.items,
-};
-
-export const Selected = Template.bind({});
-Selected.args = {
-  state: 'selected',
-  items: Default.args.items,
+export const Selected = {
+  args: {
+    items: [
+      { title: 'Item 1', content: 'Content 1', expanded: false },
+      { title: 'Item 2', content: 'Content 2', expanded: false },
+      { title: 'Item 3', content: 'Content 3', expanded: false },
+    ],
+    selectedItemIndex: 1,
+  },
 };

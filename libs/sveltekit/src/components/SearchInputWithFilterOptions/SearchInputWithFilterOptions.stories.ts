@@ -1,64 +1,52 @@
 import SearchInputWithFilterOptions from './SearchInputWithFilterOptions.svelte';
 
 export default {
-  title: 'Components/Forms/SearchInputWithFilterOptions',
+  title: 'Forms/SearchInputWithFilterOptions',
   component: SearchInputWithFilterOptions,
   tags: ['autodocs'],
-  argTypes: {
-    placeholder: { control: 'text' },
-    query: { control: 'text' },
-    filtersActive: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    noResults: { control: 'boolean' },
+};
+
+export const Default = {
+  args: {
+    query: '',
+    filters: ['Option 1', 'Option 2', 'Option 3'],
+    activeFilters: [],
+    disabled: false,
   },
 };
 
-const Template = (args) => ({
-  Component: SearchInputWithFilterOptions,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  placeholder: 'Search...',
-  query: '',
-  filtersActive: false,
-  disabled: false,
-  noResults: false,
+export const Searching = {
+  args: {
+    query: 'Searching...',
+    filters: ['Option 1', 'Option 2', 'Option 3'],
+    activeFilters: [],
+    disabled: false,
+  },
 };
 
-export const Searching = Template.bind({});
-Searching.args = {
-  placeholder: 'Search...',
-  query: 'Searching...',
-  filtersActive: false,
-  disabled: false,
-  noResults: false,
+export const FiltersActive = {
+  args: {
+    query: '',
+    filters: ['Option 1', 'Option 2', 'Option 3'],
+    activeFilters: ['Option 1', 'Option 2'],
+    disabled: false,
+  },
 };
 
-export const FiltersActive = Template.bind({});
-FiltersActive.args = {
-  placeholder: 'Search...',
-  query: '',
-  filtersActive: true,
-  disabled: false,
-  noResults: false,
+export const NoResults = {
+  args: {
+    query: 'No results found',
+    filters: ['Option 1', 'Option 2', 'Option 3'],
+    activeFilters: [],
+    disabled: false,
+  },
 };
 
-export const NoResults = Template.bind({});
-NoResults.args = {
-  placeholder: 'Search...',
-  query: 'No match',
-  filtersActive: false,
-  disabled: false,
-  noResults: true,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  placeholder: 'Search...',
-  query: '',
-  filtersActive: false,
-  disabled: true,
-  noResults: false,
+export const Disabled = {
+  args: {
+    query: '',
+    filters: ['Option 1', 'Option 2', 'Option 3'],
+    activeFilters: [],
+    disabled: true,
+  },
 };

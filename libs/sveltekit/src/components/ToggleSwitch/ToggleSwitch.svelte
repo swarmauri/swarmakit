@@ -1,30 +1,44 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   export let checked: boolean = false;
   export let disabled: boolean = false;
 
-  const dispatch = createEventDispatcher();
-
-  function handleToggle() {
+  function toggle() {
     if (!disabled) {
       checked = !checked;
-      dispatch('toggle', { checked });
     }
   }
 </script>
 
-<div
-  class="toggle-switch"
-  role="switch"
-  aria-checked={checked}
-  aria-disabled={disabled}
-  tabindex="0"
-  on:click={handleToggle}
-  on:keydown={(event) => event.key === 'Enter' && handleToggle()}
->
-  <div class="toggle-thumb" class:checked={checked}></div>
+<div class="toggle-switch" on:click={toggle} role="switch" aria-checked={checked} aria-disabled={disabled}>
+  <div class="toggle-thumb" style="transform: translateX({checked ? '24px' : '0'})"></div>
 </div>
 
 <style lang="css">
-  @import './ToggleSwitch.css';
+  .toggle-switch {
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .toggle-thumb {
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    transition: transform 0.2s;
+  }
+
+  .toggle-switch[aria-checked="true"] {
+    background-color: #4caf50;
+  }
+
+  .toggle-switch[aria-disabled="true"] {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
 </style>

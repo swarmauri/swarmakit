@@ -1,51 +1,69 @@
 import FilterableList from './FilterableList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Lists/FilterableList',
+export default {
+  title: 'Lists/FilterableList',
   component: FilterableList,
   tags: ['autodocs'],
-  argTypes: {
-    filterText: {
-      control: { type: 'text' },
-    },
-    items: {
-      control: { type: 'array' },
+};
+
+export const Default = {
+  args: {
+    items: [
+      { title: 'Apple' },
+      { title: 'Banana' },
+      { title: 'Cherry' },
+      { title: 'Date' },
+      { title: 'Elderberry' },
+    ],
+  },
+};
+
+export const FilterApplied = {
+  args: {
+    items: [
+      { title: 'Apple' },
+      { title: 'Banana' },
+      { title: 'Cherry' },
+      { title: 'Date' },
+      { title: 'Elderberry' },
+    ],
+  },
+  parameters: {
+    pseudo: {
+      user: {
+        input: 'an',
+      },
     },
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: FilterableList,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  filterText: '',
-  items: [
-    { id: 1, title: 'Apple' },
-    { id: 2, title: 'Banana' },
-    { id: 3, title: 'Cherry' },
-  ],
+export const NoResults = {
+  args: {
+    items: [
+      { title: 'Apple' },
+      { title: 'Banana' },
+      { title: 'Cherry' },
+      { title: 'Date' },
+      { title: 'Elderberry' },
+    ],
+  },
+  parameters: {
+    pseudo: {
+      user: {
+        input: 'xyz',
+      },
+    },
+  },
 };
 
-export const FilterApplied = Template.bind({});
-FilterApplied.args = {
-  filterText: 'a',
-  items: Default.args.items,
-};
-
-export const NoResults = Template.bind({});
-NoResults.args = {
-  filterText: 'z',
-  items: Default.args.items,
-};
-
-export const ClearFilter = Template.bind({});
-ClearFilter.args = {
-  filterText: '',
-  items: Default.args.items,
+export const ClearFilter = {
+  args: {
+    items: [
+      { title: 'Apple' },
+      { title: 'Banana' },
+      { title: 'Cherry' },
+      { title: 'Date' },
+      { title: 'Elderberry' },
+    ],
+  },
 };

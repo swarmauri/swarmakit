@@ -1,36 +1,60 @@
 <script lang="ts">
-  export type UploadState = 'uploading' | 'downloading' | 'completed' | 'paused' | 'failed';
-  export let state: UploadState = 'uploading';
-  export let fileName: string = '';
+  export let status: 'uploading' | 'downloading' | 'completed' | 'paused' | 'failed' = 'completed';
   export let progress: number = 0;
 
-  function handlePause() {
-    if (state === 'uploading') {
-      state = 'paused';
+  const getStatusMessage = () => {
+    switch (status) {
+      case 'uploading':
+        return 'Uploading...';
+      case 'downloading':
+        return 'Downloading...';
+      case 'completed':
+        return 'Completed';
+      case 'paused':
+        return 'Paused';
+      case 'failed':
+        return 'Failed';
+      default:
+        return '';
     }
-  }
-
-  function handleResume() {
-    if (state === 'paused') {
-      state = 'uploading';
-    }
-  }
+  };
 </script>
 
-<div class={`upload upload-${state}`} role="status">
-  <span>{fileName}</span>
-  {#if state !== 'completed'}
-    <div class="progress-bar">
-      <div class="progress" style={`width: ${progress}%`}></div>
-    </div>
-  {/if}
-  {#if state === 'paused'}
-    <button on:click={handleResume} aria-label="Resume Upload">Resume</button>
-  {:else if state === 'uploading'}
-    <button on:click={handlePause} aria-label="Pause Upload">Pause</button>
-  {/if}
+<div class="upload" role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
+  <div class="upload-status">{getStatusMessage()}</div>
+  <div class="progress-bar">
+    <div class="progress" style="width: {progress}%"></div>
+  </div>
 </div>
 
 <style lang="css">
-  @import './Upload.css';
+  .upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  .upload-status {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .progress-bar {
+    width: 100%;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress {
+    height: 10px;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+  }
 </style>

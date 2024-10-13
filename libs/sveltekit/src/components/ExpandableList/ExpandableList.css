@@ -6,30 +6,24 @@
 
 .list-item {
   border: 1px solid #ddd;
-  margin: 5px 0;
-  padding: 10px;
+  margin-bottom: 5px;
   cursor: pointer;
+  padding: 10px;
   background-color: #f9f9f9;
 }
 
-.list-item.expanded {
-  background-color: #e0f7fa;
+.list-item:hover {
+  background-color: #f1f1f1;
 }
 
 .list-item.selected {
-  background-color: #ffe0b2;
-}
-
-.list-item:hover {
   background-color: #e0e0e0;
 }
 
-.list-title {
+.list-item-title {
   font-weight: bold;
 }
 
-.list-content {
+.list-item-content {
   margin-top: 5px;
-  padding: 5px;
-  border-top: 1px solid #ddd;
 }

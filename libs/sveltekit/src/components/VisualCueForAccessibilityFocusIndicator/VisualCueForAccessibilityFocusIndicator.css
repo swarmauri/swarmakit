@@ -1,20 +1,21 @@
 .focus-indicator {
   padding: 10px 20px;
-  border-radius: 5px;
-  display: inline-block;
-  margin: 10px 0;
-  color: #333;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  outline: none;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  transition: border-color 0.3s ease;
   cursor: pointer;
 }
 
-.focus-indicator-focused {
-  border-color: #4caf50;
-  box-shadow: 0 0 5px #4caf50;
+.focus-indicator:focus {
+  outline: none;
 }
 
-.focus-indicator-unfocused {
-  border-color: #ddd;
+.focus-indicator[aria-pressed='true'] {
+  border-color: #6200ea;
+}
+
+.focus-text {
+  color: #333;
 }

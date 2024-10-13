@@ -1,31 +1,46 @@
 <script lang="ts">
-  export type SliderState = 'min' | 'max' | 'disabled';
-  export let state: SliderState = 'min';
   export let min: number = 0;
   export let max: number = 100;
-  export let value: number = 0;
+  export let value: number = 50;
+  export let isDisabled: boolean = false;
 
-  function handleInput(event: Event) {
+  function handleChange(event: Event) {
     const target = event.target as HTMLInputElement;
-    value = Number(target.value);
+    value = parseInt(target.value, 10);
   }
 </script>
 
-<input
-  class={`slider slider-${state}`}
-  type="range"
-  min={min}
-  max={max}
-  bind:value={value}
-  on:input={handleInput}
-  disabled={state === 'disabled'}
-  aria-valuemin={min}
-  aria-valuemax={max}
-  aria-valuenow={value}
-  aria-disabled={state === 'disabled'}
-  role="slider"
-/>
+<div class="slider-container">
+  <input
+    type="range"
+    class="slider"
+    {min}
+    {max}
+    bind:value
+    aria-disabled={isDisabled}
+    {isDisabled}
+    on:input={handleChange}
+  />
+  <span class="value-label">{value}</span>
+</div>
 
 <style lang="css">
-  @import './Slider.css';
+  .slider-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .slider {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  .slider[aria-disabled='true'] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .value-label {
+    font-size: 16px;
+  }
 </style>

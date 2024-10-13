@@ -1,32 +1,32 @@
-.search-input-container {
+.search-input-with-filters {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 8px;
 }
 
-input[type="text"] {
-  flex-grow: 1;
-  padding: 0.5rem;
+.search-input {
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-button {
-  margin-left: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid #007BFF;
-  background-color: #007BFF;
-  color: white;
+.search-input:disabled {
+  background-color: #f5f5f5;
+}
+
+.filters {
+  display: flex;
+  gap: 4px;
+}
+
+.filter-button {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  cursor: pointer;
+  background-color: #fff;
 }
 
-button[disabled] {
-  background-color: #ccc;
-  border-color: #ccc;
-  cursor: not-allowed;
-}
-
-.no-results-message {
-  margin-left: 1rem;
-  color: #ff0000;
+.filter-button[aria-pressed="true"] {
+  background-color: #66afe9;
+  color: #fff;
 }

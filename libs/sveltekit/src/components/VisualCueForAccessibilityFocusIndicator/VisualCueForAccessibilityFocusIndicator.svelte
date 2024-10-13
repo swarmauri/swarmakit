@@ -1,27 +1,31 @@
 <script lang="ts">
-  export type FocusState = 'focused' | 'unfocused';
-  export let state: FocusState = 'unfocused';
-
-  function handleFocus() {
-    state = 'focused';
-  }
-
-  function handleBlur() {
-    state = 'unfocused';
-  }
+  export let isFocused: boolean = false;
 </script>
 
-<div
-  class={`focus-indicator focus-indicator-${state}`}
-  tabindex="0"
-  on:focus={handleFocus}
-  on:blur={handleBlur}
-  role="button"
-  aria-label="Focus Indicator"
->
-  <span>{state === 'focused' ? 'Focused' : 'Unfocused'}</span>
-</div>
+<button class="focus-indicator" aria-pressed={isFocused}>
+  <span class="focus-text">{isFocused ? 'Focused' : 'Unfocused'}</span>
+</button>
 
 <style lang="css">
-  @import './VisualCueForAccessibilityFocusIndicator.css';
+  .focus-indicator {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .focus-indicator:focus {
+    outline: none;
+  }
+
+  .focus-indicator[aria-pressed='true'] {
+    border-color: #6200ea;
+  }
+
+  .focus-text {
+    color: #333;
+  }
 </style>

@@ -1,17 +1,15 @@
 .rich-text-editor {
-  border: 1px solid #ddd;
-  padding: 10px;
+  border: 1px solid #ccc;
+  padding: 8px;
   min-height: 100px;
-  background-color: #fff;
-  overflow-y: auto;
+  outline: none;
 }
 
-.rich-text-editor:focus {
-  outline: none;
-  border-color: #007BFF;
+.rich-text-editor[contenteditable="true"]:focus {
+  border-color: #66afe9;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
 .rich-text-editor[aria-readonly="true"] {
-  background-color: #f7f7f7;
-  cursor: default;
+  background-color: #f9f9f9;
 }

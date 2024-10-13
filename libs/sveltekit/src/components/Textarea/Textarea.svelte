@@ -1,28 +1,38 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   export let value: string = '';
-  export let placeholder: string = 'Enter text...';
   export let disabled: boolean = false;
 
-  const dispatch = createEventDispatcher();
-
-  function handleInput(event: Event) {
+  function handleInput(event: InputEvent) {
     const target = event.target as HTMLTextAreaElement;
     value = target.value;
-    dispatch('input', { value });
   }
 </script>
 
-<div class="textarea-container" aria-disabled={disabled}>
+<div class="textarea-container">
   <textarea
+    class="textarea"
     bind:value={value}
-    placeholder={placeholder}
     on:input={handleInput}
+    placeholder="Enter text here..."
     disabled={disabled}
-    aria-label="Text input"
+    aria-disabled={disabled}
   ></textarea>
 </div>
 
 <style lang="css">
-  @import './Textarea.css';
+  .textarea-container {
+    width: 100%;
+  }
+
+  .textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+  .textarea:disabled {
+    background-color: #f5f5f5;
+  }
 </style>

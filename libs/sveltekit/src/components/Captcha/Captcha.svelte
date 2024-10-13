@@ -1,45 +1,62 @@
 <script lang="ts">
-  export let question: string;
-  export let answer: string;
-  export let onSolve: () => void;
-  export let onError: () => void;
+  export let label: string = "Please solve the captcha";
+  export let errorMessage: string = "Incorrect, please try again";
+  export let solved: boolean = false;
+  export let error: boolean = false;
 
-  let userAnswer = '';
-  let error = false;
-
-  function handleSubmit() {
-    if (userAnswer.trim().toLowerCase() === answer.toLowerCase()) {
-      error = false;
-      onSolve && onSolve();
-    } else {
-      error = true;
-      onError && onError();
-    }
-  }
-  
-  function handleKeyPress(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      handleSubmit();
-    }
+  function handleSolve() {
+    // Logic to solve the captcha
+    solved = true;
+    error = false;
   }
 </script>
 
 <div class="captcha">
-  <p>{question}</p>
-  <input
-    type="text"
-    bind:value={userAnswer}
-    on:keypress={handleKeyPress}
-    aria-invalid={error}
-    aria-describedby="captcha-error"
-    placeholder="Enter your answer"
-  />
-  <button on:click={handleSubmit}>Submit</button>
+  <label class="captcha-label" for="captcha-input">{label}</label>
+  <div class="captcha-content">
+    <input
+      id="captcha-input"
+      type="text"
+      aria-invalid={error}
+      aria-describedby="captcha-error"
+      class:solved
+    />
+    <button on:click={handleSolve} aria-label="Submit captcha">Verify</button>
+  </div>
   {#if error}
-    <p id="captcha-error" class="error">Incorrect answer. Please try again.</p>
+    <p id="captcha-error" class="captcha-error" role="alert">{errorMessage}</p>
   {/if}
 </div>
 
 <style lang="css">
-  @import './Captcha.css';
+  .captcha {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .captcha-label {
+    font-size: 16px;
+  }
+
+  .captcha-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #captcha-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  #captcha-input.solved {
+    border-color: green;
+  }
+
+  .captcha-error {
+    color: red;
+    font-size: 14px;
+  }
 </style>

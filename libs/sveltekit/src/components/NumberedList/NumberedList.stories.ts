@@ -1,70 +1,46 @@
 import NumberedList from './NumberedList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Lists/NumberedList',
+export default {
+  title: 'Lists/NumberedList',
   component: NumberedList,
   tags: ['autodocs'],
-  argTypes: {
-    items: {
-      control: { type: 'object' },
-    },
-    selectedItem: {
-      control: { type: 'number' },
-    },
-    disabled: {
-      control: { type: 'boolean' },
+};
+
+const items = [
+  { id: 1, name: 'Item 1', selected: false },
+  { id: 2, name: 'Item 2', selected: false },
+  { id: 3, name: 'Item 3', selected: false },
+];
+
+export const Default = {
+  args: {
+    items,
+    disabled: false,
+  },
+};
+
+export const Selected = {
+  args: {
+    items: items.map((item, index) => ({ ...item, selected: index === 0 })),
+    disabled: false,
+  },
+};
+
+export const Hover = {
+  args: {
+    items,
+    disabled: false,
+  },
+  parameters: {
+    pseudo: {
+      hover: '.numbered-item',
     },
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: NumberedList,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  items: [
-    { id: 1, label: 'Item 1' },
-    { id: 2, label: 'Item 2' },
-    { id: 3, label: 'Item 3' },
-  ],
-  selectedItem: null,
-  disabled: false,
-};
-
-export const Selected = Template.bind({});
-Selected.args = {
-  items: [
-    { id: 1, label: 'Item 1' },
-    { id: 2, label: 'Item 2' },
-    { id: 3, label: 'Item 3' },
-  ],
-  selectedItem: 1,
-  disabled: false,
-};
-
-export const Hover = Template.bind({});
-Hover.args = {
-  items: [
-    { id: 1, label: 'Item 1' },
-    { id: 2, label: 'Item 2' },
-    { id: 3, label: 'Item 3' },
-  ],
-  selectedItem: null,
-  disabled: false,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  items: [
-    { id: 1, label: 'Item 1' },
-    { id: 2, label: 'Item 2' },
-    { id: 3, label: 'Item 3' },
-  ],
-  selectedItem: null,
-  disabled: true,
+export const Disabled = {
+  args: {
+    items,
+    disabled: true,
+  },
 };

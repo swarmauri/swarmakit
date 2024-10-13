@@ -1,50 +1,62 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import { onMount } from 'svelte';
 
-  export let items: { id: number; label: string }[] = [];
-  export let selectedItems: Set<number> = new Set();
-  export let disabled = false;
+  export let items: Array<{ id: number; name: string; selected: boolean }> = [];
+  export let disabled: boolean = false;
 
   const dispatch = createEventDispatcher();
 
-  function toggleSelect(itemId: number) {
-    if (disabled) return;
-
-    const newSelectedItems = new Set(selectedItems);
-    if (newSelectedItems.has(itemId)) {
-      newSelectedItems.delete(itemId);
-    } else {
-      newSelectedItems.add(itemId);
-    }
-    dispatch('select', { selectedItems: newSelectedItems });
-  }
-
-  function handleKeydown(event: KeyboardEvent, itemId: number) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      toggleSelect(itemId);
+  function toggleItemSelection(itemId: number) {
+    if (!disabled) {
+      const updatedItems = items.map(item =>
+        item.id === itemId ? { ...item, selected: !item.selected } : item
+      );
+      dispatch('update', updatedItems);
     }
   }
 </script>
 
 <ul class="multiselect-list" aria-disabled={disabled}>
-  {#each items as { id, label }}
+  {#each items as item (item.id)}
     <li
       class="multiselect-item"
-      class:selected={selectedItems.has(id)}
-      class:disabled={disabled}
-      role="option"
-      aria-selected={selectedItems.has(id)}
-      tabindex={disabled ? -1 : 0}
-      on:click={() => toggleSelect(id)}
-      on:keydown={(event) => handleKeydown(event, id)}
+      class:selected={item.selected}
+      on:click={() => toggleItemSelection(item.id)}
+      aria-selected={item.selected}
+      tabindex="0"
+      on:keydown={(e) => e.key === 'Enter' && toggleItemSelection(item.id)}
     >
-      {label}
+      {item.name}
     </li>
   {/each}
 </ul>
 
 <style lang="css">
-  @import './MultiselectList.css';
+  .multiselect-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .multiselect-item {
+    padding: 8px;
+    margin: 4px 0;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+
+  .multiselect-item:hover:not(.selected) {
+    background-color: #e0e0e0;
+  }
+
+  .multiselect-item.selected {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+
+  .multiselect-list[aria-disabled='true'] .multiselect-item {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 </style>

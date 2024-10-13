@@ -1,28 +1,26 @@
 .numbered-list {
-  list-style: decimal;
   padding: 0;
   margin: 0;
 }
 
 .numbered-item {
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #f0f0f0;
+  padding: 8px;
+  margin: 4px 0;
   cursor: pointer;
+  background-color: #f0f0f0;
   border-radius: 4px;
-  outline: none;
+}
+
+.numbered-item:hover:not(.selected) {
+  background-color: #e0e0e0;
 }
 
 .numbered-item.selected {
   background-color: #007bff;
-  color: #fff;
+  color: #ffffff;
 }
 
-.numbered-item.disabled {
-  background-color: #e0e0e0;
+.numbered-list[aria-disabled='true'] .numbered-item {
   cursor: not-allowed;
-}
-
-.numbered-item:hover:not(.disabled) {
-  background-color: #d0d0d0;
+  opacity: 0.5;
 }

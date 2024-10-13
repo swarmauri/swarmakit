@@ -1,20 +1,18 @@
 .radio-button {
   display: flex;
   align-items: center;
+}
+
+.radio-button input[type="radio"] {
+  margin-right: 8px;
+}
+
+.radio-button label {
+  font-size: 16px;
   cursor: pointer;
-  margin-bottom: 10px;
-  outline: none;
 }
 
-.radio-button[aria-disabled="true"] {
+.radio-button label.disabled {
+  color: #ccc;
   cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.radio-input {
-  margin-right: 10px;
-}
-
-label {
-  font-size: 14px;
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let selectedDate: string = '';
-  export let selectedTime: string = '';
+  export let selectedDate: string = "";
+  export let selectedTime: string = "";
   export let disabled: boolean = false;
 
   function handleDateChange(event: Event) {
@@ -14,27 +14,35 @@
   }
 </script>
 
-<div class="date-time-picker-container">
-  <label for="date-picker" aria-label="Select date">
-    <input 
-      type="date" 
-      id="date-picker" 
-      bind:value={selectedDate} 
-      on:input={handleDateChange} 
-      disabled={disabled} 
-    />
-  </label>
-  <label for="time-picker" aria-label="Select time">
-    <input 
-      type="time" 
-      id="time-picker" 
-      bind:value={selectedTime} 
-      on:input={handleTimeChange} 
-      disabled={disabled} 
-    />
-  </label>
+<div class="date-time-picker">
+  <input 
+    type="date" 
+    bind:value={selectedDate} 
+    on:input={handleDateChange} 
+    aria-label="Select Date" 
+    {disabled}
+  />
+  <input 
+    type="time" 
+    bind:value={selectedTime} 
+    on:input={handleTimeChange} 
+    aria-label="Select Time" 
+    {disabled}
+  />
 </div>
 
 <style lang="css">
-  @import './DateAndTimePicker.css';
+  .date-time-picker input[type="date"],
+  .date-time-picker input[type="time"] {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .date-time-picker input[disabled] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+  }
 </style>

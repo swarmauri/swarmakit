@@ -1,35 +1,31 @@
 import SignalStrengthIndicator from './SignalStrengthIndicator.svelte';
 
 export default {
-  title: 'Components/Indicators/SignalStrengthIndicator',
+  title: 'Indicators/SignalStrengthIndicator',
   component: SignalStrengthIndicator,
   tags: ['autodocs'],
-  argTypes: {
-    strength: { control: { type: 'number', min: 0, max: 4 } },
+};
+
+export const Default = {
+  args: {
+    signalStrength: 'none',
   },
 };
 
-const Template = (args) => ({
-  Component: SignalStrengthIndicator,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  strength: 3,
+export const FullSignal = {
+  args: {
+    signalStrength: 'full',
+  },
 };
 
-export const FullSignal = Template.bind({});
-FullSignal.args = {
-  strength: 4,
+export const WeakSignal = {
+  args: {
+    signalStrength: 'weak',
+  },
 };
 
-export const WeakSignal = Template.bind({});
-WeakSignal.args = {
-  strength: 1,
-};
-
-export const NoSignal = Template.bind({});
-NoSignal.args = {
-  strength: 0,
+export const NoSignal = {
+  args: {
+    signalStrength: 'none',
+  },
 };

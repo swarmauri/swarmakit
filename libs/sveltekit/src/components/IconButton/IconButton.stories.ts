@@ -4,24 +4,21 @@ export default {
   title: 'Buttons/IconButton',
   component: IconButton,
   tags: ['autodocs'],
-  argTypes: {
-    icon: { control: 'text' },
-    label: { control: 'text' },
-    disabled: { control: 'boolean' },
-  },
 };
 
 export const Default = {
   args: {
-    icon: 'fas fa-star',
-    label: 'Favorite',
+    icon: 'path/to/icon.svg',
+    label: 'Icon Button',
     disabled: false,
   },
 };
 
 export const Active = {
   args: {
-    ...Default.args,
+    icon: 'path/to/icon.svg',
+    label: 'Active Icon Button',
+    disabled: false,
   },
   parameters: {
     pseudo: { active: true },
@@ -30,7 +27,9 @@ export const Active = {
 
 export const Hover = {
   args: {
-    ...Default.args,
+    icon: 'path/to/icon.svg',
+    label: 'Hover Icon Button',
+    disabled: false,
   },
   parameters: {
     pseudo: { hover: true },
@@ -39,7 +38,8 @@ export const Hover = {
 
 export const Disabled = {
   args: {
-    ...Default.args,
+    icon: 'path/to/icon.svg',
+    label: 'Disabled Icon Button',
     disabled: true,
   },
 };

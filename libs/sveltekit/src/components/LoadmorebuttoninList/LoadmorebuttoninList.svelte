@@ -1,35 +1,61 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
 
-  export let loading = false;
-  export let endOfList = false;
+  export let isLoading: boolean = false;
+  export let hasMore: boolean = true;
 
   const dispatch = createEventDispatcher();
 
-  function handleClick() {
-    if (!loading && !endOfList) {
-      dispatch('loadMore');
+  function loadMore() {
+    if (!isLoading && hasMore) {
+      dispatch('load');
     }
   }
 </script>
 
-<div class="load-more-container">
-  <button 
-    class="load-more-button" 
-    disabled={loading || endOfList} 
-    on:click={handleClick}
-    aria-busy={loading}
-    aria-disabled={loading || endOfList}>
-    {#if loading}
-      Loading...
-    {:else if endOfList}
-      No more items
-    {:else}
-      Load More
-    {/if}
-  </button>
+<div class="load-more-button-container">
+  {#if hasMore}
+    <button 
+      class="load-more-button" 
+      on:click={loadMore} 
+      disabled={isLoading}
+      aria-busy={isLoading}
+    >
+      {#if isLoading}
+        Loading...
+      {:else}
+        Load More
+      {/if}
+    </button>
+  {:else}
+    <p class="end-of-list">End of List</p>
+  {/if}
 </div>
 
 <style lang="css">
-  @import './LoadMoreButtonInList.css';
+  .load-more-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .load-more-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .load-more-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  .end-of-list {
+    font-size: 14px;
+    color: #888888;
+  }
 </style>

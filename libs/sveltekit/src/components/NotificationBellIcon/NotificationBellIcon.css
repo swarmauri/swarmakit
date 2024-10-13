@@ -1,25 +1,20 @@
 .notification-bell {
   position: relative;
+  display: inline-block;
   width: 24px;
   height: 24px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .bell-icon {
-  fill: currentColor;
-  width: 100%;
-  height: 100%;
+  fill: #333;
 }
 
-.notification-dot {
+.notification-badge {
   position: absolute;
   top: 0;
   right: 0;
   width: 8px;
   height: 8px;
-  background-color: red;
+  background-color: #ff3b30;
   border-radius: 50%;
 }

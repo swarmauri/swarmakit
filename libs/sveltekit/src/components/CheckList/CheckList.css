@@ -1,33 +1,28 @@
-.checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.checklist-container {
+  padding: 10px;
 }
 
-.checklist-item {
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+.checkbox {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.checklist-item input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-.checklist-checked .checklist-item[aria-checked="true"] {
-  background-color: #e1f5fe;
-}
-
-.checklist-unchecked .checklist-item[aria-checked="false"] {
-  background-color: #fff;
-}
-
-.checklist-partially-checked .checklist-item {
-  background-color: #f0f0f0;
-}
-
-.checklist-disabled .checklist-item {
-  background-color: #f9f9f9;
+.checkbox[aria-disabled='true'] {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+input {
+  margin-right: 8px;
 }

@@ -1,39 +1,38 @@
 <script lang="ts">
-  export type ListState = 'itemExpanded' | 'itemCollapsed' | 'hover' | 'selected';
-  export let items: { id: number; title: string; content: string }[] = [];
-  export let state: ListState = 'itemCollapsed';
+  export let items: Array<{ title: string; content: string; expanded: boolean }> = [];
+  export let selectedItemIndex: number | null = null;
 
-  let expandedItem: number | null = null;
-  let selectedItem: number | null = null;
-
-  function toggleExpand(itemId: number) {
-    expandedItem = expandedItem === itemId ? null : itemId;
+  function toggleItem(index: number) {
+    items = items.map((item, i) => ({
+      ...item,
+      expanded: i === index ? !item.expanded : item.expanded
+    }));
   }
 
-  function selectItem(itemId: number) {
-    selectedItem = itemId;
+  function selectItem(index: number) {
+    selectedItemIndex = index;
   }
 </script>
 
 <ul class="expandable-list">
-  {#each items as { id, title, content }}
+  {#each items as item, index}
     <li
-      class={`list-item ${expandedItem === id ? 'expanded' : ''} ${selectedItem === id ? 'selected' : ''}`}
-      on:click={() => toggleExpand(id)}
-      on:keydown={(e) => e.key === 'Enter' && toggleExpand(id)}
-      role="button"
-      tabindex="0"
+      class="list-item"
+      class:selected={selectedItemIndex === index}
+      on:click={() => selectItem(index)}
     >
       <div
-        class="list-title"
-        on:mouseenter={() => selectItem(id)}
-        on:mouseleave={() => selectItem(null)}
+        class="list-item-title"
+        on:click|stopPropagation={() => toggleItem(index)}
+        tabindex="0"
+        aria-expanded={item.expanded}
+        aria-controls={`content-${index}`}
       >
-        {title}
+        {item.title}
       </div>
-      {#if expandedItem === id}
-        <div class="list-content">
-          {content}
+      {#if item.expanded}
+        <div id={`content-${index}`} class="list-item-content">
+          {item.content}
         </div>
       {/if}
     </li>
@@ -41,5 +40,33 @@
 </ul>
 
 <style lang="css">
-  @import './ExpandableList.css';
+  .expandable-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .list-item {
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+
+  .list-item:hover {
+    background-color: #f1f1f1;
+  }
+
+  .list-item.selected {
+    background-color: #e0e0e0;
+  }
+
+  .list-item-title {
+    font-weight: bold;
+  }
+
+  .list-item-content {
+    margin-top: 5px;
+  }
 </style>

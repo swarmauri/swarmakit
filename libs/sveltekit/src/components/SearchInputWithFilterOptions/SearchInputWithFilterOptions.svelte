@@ -1,49 +1,78 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-  export let placeholder: string = 'Search...';
   export let query: string = '';
-  export let filtersActive: boolean = false;
   export let disabled: boolean = false;
-  export let noResults: boolean = false;
+  export let filters: string[] = [];
+  export let activeFilters: string[] = [];
 
-  const dispatch = createEventDispatcher();
-
-  function handleInput(event: Event) {
+  function handleInput(event: InputEvent) {
     const target = event.target as HTMLInputElement;
     query = target.value;
-    dispatch('input', { query });
   }
 
-  function handleFilterClick() {
-    if (!disabled) {
-      filtersActive = !filtersActive;
-      dispatch('filterToggle', { filtersActive });
+  function toggleFilter(filter: string) {
+    if (activeFilters.includes(filter)) {
+      activeFilters = activeFilters.filter(f => f !== filter);
+    } else {
+      activeFilters = [...activeFilters, filter];
     }
   }
 </script>
 
-<div class="search-input-container" aria-disabled={disabled}>
+<div class="search-input-with-filters">
   <input
     type="text"
+    class="search-input"
     bind:value={query}
-    placeholder={placeholder}
     on:input={handleInput}
+    placeholder="Search..."
     disabled={disabled}
-    aria-label="Search input"
+    aria-disabled={disabled}
   />
-  <button
-    on:click={handleFilterClick}
-    aria-pressed={filtersActive}
-    disabled={disabled}
-    aria-label="Toggle filters"
-  >
-    Filters
-  </button>
-  {#if noResults}
-    <p class="no-results-message">No results found</p>
-  {/if}
+  <div class="filters">
+    {#each filters as filter}
+      <button
+        type="button"
+        class="filter-button"
+        on:click={() => toggleFilter(filter)}
+        aria-pressed={activeFilters.includes(filter)}
+      >
+        {filter}
+      </button>
+    {/each}
+  </div>
 </div>
 
 <style lang="css">
-  @import './SearchInputWithFilterOptions.css';
+  .search-input-with-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .search-input:disabled {
+    background-color: #f5f5f5;
+  }
+
+  .filters {
+    display: flex;
+    gap: 4px;
+  }
+
+  .filter-button {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+
+  .filter-button[aria-pressed="true"] {
+    background-color: #66afe9;
+    color: #fff;
+  }
 </style>

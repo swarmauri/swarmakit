@@ -1,45 +1,43 @@
 .collapsible-menu-list {
-  width: 200px;
-}
-
-.menu-header {
-  background-color: #f0f0f0;
   padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #ccc;
-}
-
-.menu-header:hover {
-  background-color: #e0e0e0;
 }
 
 ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  margin-bottom: 8px;
 }
 
-li.active {
-  background-color: #d0d0d0;
-}
-
-.menu-expanded .menu-header {
-  background-color: #e1f5fe;
-}
-
-.menu-collapsed .menu-header {
+.menu-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
-.menu-hover .menu-header:hover {
+.menu-item:hover {
   background-color: #e0e0e0;
 }
 
-.menu-active li.active {
+.menu-item:focus {
+  outline: none;
   background-color: #d0d0d0;
+}
+
+.item-active .menu-item {
+  background-color: #c0c0c0;
+}
+
+.submenu {
+  margin-left: 16px;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-left: 2px solid #d0d0d0;
 }

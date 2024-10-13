@@ -1,24 +1,32 @@
 .activity-indicator {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-.activity-indicator.loading {
-  background-color: #f0f0f0;
-  color: #333;
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 2s linear infinite;
 }
 
-.activity-indicator.success {
-  background-color: #dff0d8;
-  color: #3c763d;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.activity-indicator.error {
-  background-color: #f2dede;
-  color: #a94442;
+.success-icon {
+  color: #28a745;
+  font-size: 24px;
+}
+
+.error-icon {
+  color: #dc3545;
+  font-size: 24px;
 }

@@ -1,63 +1,64 @@
 import DataGrid from './DataGrid.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Lists/DataGrid',
+export default {
+  title: 'Lists/DataGrid',
   component: DataGrid,
   tags: ['autodocs'],
-  argTypes: {
-    state: {
-      control: { type: 'select' },
-      options: ['paginated', 'search', 'resizable'],
-    },
-    data: {
-      control: { type: 'array' },
-    },
-    columns: {
-      control: { type: 'array' },
-    },
-    pageSize: {
-      control: { type: 'number' },
-    },
+};
+
+export const Default = {
+  args: {
+    columns: ['Name', 'Age', 'Email'],
+    data: [
+      { Name: 'Alice', Age: 30, Email: 'alice@example.com' },
+      { Name: 'Bob', Age: 25, Email: 'bob@example.com' },
+      { Name: 'Charlie', Age: 35, Email: 'charlie@example.com' },
+    ],
+    currentPage: 1,
+    pageSize: 10,
+    searchTerm: '',
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: DataGrid,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  state: 'paginated',
-  data: [
-    { name: 'Alice', age: 25, city: 'New York' },
-    { name: 'Bob', age: 30, city: 'Los Angeles' },
-    { name: 'Charlie', age: 35, city: 'Chicago' },
-    { name: 'David', age: 40, city: 'Houston' },
-    { name: 'Eve', age: 45, city: 'Phoenix' },
-    { name: 'Frank', age: 50, city: 'Philadelphia' },
-    { name: 'Grace', age: 55, city: 'San Antonio' },
-    { name: 'Hank', age: 60, city: 'San Diego' },
-    { name: 'Ivy', age: 65, city: 'Dallas' },
-    { name: 'Jack', age: 70, city: 'San Jose' },
-  ],
-  columns: ['name', 'age', 'city'],
-  pageSize: 5,
+export const Paginated = {
+  args: {
+    columns: ['Name', 'Age', 'Email'],
+    data: Array.from({ length: 50 }, (_, i) => ({
+      Name: `Person ${i + 1}`,
+      Age: 20 + (i % 30),
+      Email: `person${i + 1}@example.com`,
+    })),
+    currentPage: 1,
+    pageSize: 10,
+    searchTerm: '',
+  },
 };
 
-export const Search = Template.bind({});
-Search.args = {
-  state: 'search',
-  data: Default.args.data,
-  columns: Default.args.columns,
+export const Search = {
+  args: {
+    columns: ['Name', 'Age', 'Email'],
+    data: [
+      { Name: 'Alice', Age: 30, Email: 'alice@example.com' },
+      { Name: 'Bob', Age: 25, Email: 'bob@example.com' },
+      { Name: 'Charlie', Age: 35, Email: 'charlie@example.com' },
+    ],
+    currentPage: 1,
+    pageSize: 10,
+    searchTerm: 'Alice',
+  },
 };
 
-export const Resizable = Template.bind({});
-Resizable.args = {
-  state: 'resizable',
-  data: Default.args.data,
-  columns: Default.args.columns,
+export const Resizable = {
+  args: {
+    columns: ['Name', 'Age', 'Email'],
+    data: [
+      { Name: 'Alice', Age: 30, Email: 'alice@example.com' },
+      { Name: 'Bob', Age: 25, Email: 'bob@example.com' },
+      { Name: 'Charlie', Age: 35, Email: 'charlie@example.com' },
+    ],
+    currentPage: 1,
+    pageSize: 10,
+    searchTerm: '',
+    resizableColumns: true,
+  },
 };

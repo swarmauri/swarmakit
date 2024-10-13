@@ -1,39 +1,43 @@
 <script lang="ts">
-  export let selected: boolean = false;
+  export let name: string;
+  export let value: string;
+  export let selectedValue: string;
   export let disabled: boolean = false;
-  export let name: string = '';
-  export let value: string = '';
-  export let label: string = '';
 
-  function handleKeyDown(event: KeyboardEvent) {
-    if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
-      selected = !selected;
-      event.preventDefault();
-    }
-  }
+  const isSelected = value === selectedValue;
 </script>
 
-<div 
-  class="radio-button" 
-  role="radio" 
-  aria-checked={selected} 
-  aria-disabled={disabled}
-  tabindex={disabled ? -1 : 0}
-  on:click={() => !disabled && (selected = !selected)}
-  on:keydown={handleKeyDown}
->
-  <input
-    type="radio"
-    bind:checked={selected}
-    disabled={disabled}
-    name={name}
-    value={value}
-    aria-label={label}
-    class="radio-input"
+<div class="radio-button">
+  <input 
+    type="radio" 
+    bind:group={selectedValue} 
+    {value} 
+    {name} 
+    {disabled} 
+    checked={isSelected} 
+    aria-checked={isSelected} 
+    aria-disabled={disabled}
   />
-  <label>{label}</label>
+  <label class:disabled={disabled}>{value}</label>
 </div>
 
 <style lang="css">
-  @import './RadioButton.css';
+  .radio-button {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-button input[type="radio"] {
+    margin-right: 8px;
+  }
+
+  .radio-button label {
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .radio-button label.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
 </style>

@@ -1,62 +1,76 @@
 import ActionableList from './ActionableList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Lists/ActionableList',
+export default {
+  title: 'Lists/ActionableList',
   component: ActionableList,
   tags: ['autodocs'],
-  argTypes: {
-    state: {
-      control: { type: 'select' },
-      options: ['hover', 'action-triggered', 'disabled', 'loading'],
-    },
-    items: {
-      control: { type: 'array' },
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
+};
+
+export const Default = {
+  args: {
+    items: [
+      { id: 1, text: 'Item 1' },
+      { id: 2, text: 'Item 2' },
+      { id: 3, text: 'Item 3' },
+    ],
+    isDisabled: false,
+    isLoading: false,
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: ActionableList,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  state: 'hover',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  disabled: false,
+export const Hover = {
+  args: {
+    items: [
+      { id: 1, text: 'Item 1' },
+      { id: 2, text: 'Item 2' },
+      { id: 3, text: 'Item 3' },
+    ],
+    isDisabled: false,
+    isLoading: false,
+  },
+  parameters: {
+    pseudo: { hover: true }
+  }
 };
 
-export const Hover = Template.bind({});
-Hover.args = {
-  state: 'hover',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  disabled: false,
+export const ActionTriggered = {
+  args: {
+    items: [
+      { id: 1, text: 'Item 1' },
+      { id: 2, text: 'Item 2' },
+      { id: 3, text: 'Item 3' },
+    ],
+    isDisabled: false,
+    isLoading: false,
+  },
+  play: async ({ canvasElement }) => {
+    const button = canvasElement.querySelector('button');
+    if (button) {
+      button.click();
+    }
+  },
 };
 
-export const ActionTriggered = Template.bind({});
-ActionTriggered.args = {
-  state: 'action-triggered',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  disabled: false,
+export const Disabled = {
+  args: {
+    items: [
+      { id: 1, text: 'Item 1' },
+      { id: 2, text: 'Item 2' },
+      { id: 3, text: 'Item 3' },
+    ],
+    isDisabled: true,
+    isLoading: false,
+  },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  state: 'disabled',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  disabled: true,
-};
-
-export const Loading = Template.bind({});
-Loading.args = {
-  state: 'loading',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  disabled: false,
+export const Loading = {
+  args: {
+    items: [
+      { id: 1, text: 'Item 1' },
+      { id: 2, text: 'Item 2' },
+      { id: 3, text: 'Item 3' },
+    ],
+    isDisabled: false,
+    isLoading: true,
+  },
 };

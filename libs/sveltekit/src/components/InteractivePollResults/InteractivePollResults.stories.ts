@@ -1,56 +1,55 @@
 import InteractivePollResults from './InteractivePollResults.svelte';
 
 export default {
-  title: 'Components/Indicators/InteractivePollResults',
+  title: 'Indicators/InteractivePollResults',
   component: InteractivePollResults,
   tags: ['autodocs'],
-  argTypes: {
-    options: { control: 'object' },
-    isClosed: { control: 'boolean' },
+};
+
+export const Default = {
+  args: {
+    options: [
+      { id: 1, text: 'Option A', votes: 10 },
+      { id: 2, text: 'Option B', votes: 20 },
+      { id: 3, text: 'Option C', votes: 5 },
+    ],
+    totalVotes: 35,
+    isClosed: false,
   },
 };
 
-const Template = (args) => ({
-  Component: InteractivePollResults,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  options: [
-    { option: 'Option A', votes: 10 },
-    { option: 'Option B', votes: 20 },
-    { option: 'Option C', votes: 5 },
-  ],
-  isClosed: false,
+export const LiveResults = {
+  args: {
+    options: [
+      { id: 1, text: 'Option A', votes: 15 },
+      { id: 2, text: 'Option B', votes: 25 },
+      { id: 3, text: 'Option C', votes: 10 },
+    ],
+    totalVotes: 50,
+    isClosed: false,
+  },
 };
 
-export const LiveResults = Template.bind({});
-LiveResults.args = {
-  options: [
-    { option: 'Option A', votes: 15 },
-    { option: 'Option B', votes: 25 },
-    { option: 'Option C', votes: 10 },
-  ],
-  isClosed: false,
+export const Completed = {
+  args: {
+    options: [
+      { id: 1, text: 'Option A', votes: 30 },
+      { id: 2, text: 'Option B', votes: 50 },
+      { id: 3, text: 'Option C', votes: 20 },
+    ],
+    totalVotes: 100,
+    isClosed: true,
+  },
 };
 
-export const Completed = Template.bind({});
-Completed.args = {
-  options: [
-    { option: 'Option A', votes: 30 },
-    { option: 'Option B', votes: 45 },
-    { option: 'Option C', votes: 25 },
-  ],
-  isClosed: true,
-};
-
-export const Closed = Template.bind({});
-Closed.args = {
-  options: [
-    { option: 'Option A', votes: 30 },
-    { option: 'Option B', votes: 45 },
-    { option: 'Option C', votes: 25 },
-  ],
-  isClosed: true,
+export const Closed = {
+  args: {
+    options: [
+      { id: 1, text: 'Option A', votes: 30 },
+      { id: 2, text: 'Option B', votes: 50 },
+      { id: 3, text: 'Option C', votes: 20 },
+    ],
+    totalVotes: 100,
+    isClosed: true,
+  },
 };

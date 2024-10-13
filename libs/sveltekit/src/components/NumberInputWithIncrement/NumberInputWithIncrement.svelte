@@ -1,35 +1,52 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
-
   export let value: number = 0;
-  export let min: number = 0;
-  export let max: number = 100;
   export let step: number = 1;
   export let disabled: boolean = false;
 
-  const handleIncrement = () => {
-    if (value + step <= max) {
+  function increment() {
+    if (!disabled) {
       value += step;
     }
-  };
+  }
 
-  const handleDecrement = () => {
-    if (value - step >= min) {
+  function decrement() {
+    if (!disabled) {
       value -= step;
     }
-  };
+  }
 </script>
 
-<div class="number-input-container" aria-label="Number Input with Increment" role="group">
-  <button on:click={handleDecrement} disabled={disabled || value <= min} aria-label="Decrement" class="decrement-btn">
-    -
-  </button>
-  <input type="number" bind:value min={min} max={max} step={step} disabled={disabled} aria-label="Number input" />
-  <button on:click={handleIncrement} disabled={disabled || value >= max} aria-label="Increment" class="increment-btn">
-    +
-  </button>
+<div class="number-input">
+  <button on:click={decrement} aria-label="Decrement" disabled={disabled}>-</button>
+  <input type="number" bind:value {disabled} aria-label="Number input" />
+  <button on:click={increment} aria-label="Increment" disabled={disabled}>+</button>
 </div>
 
 <style lang="css">
-  @import './NumberInputWithIncrement.css';
+  .number-input {
+    display: flex;
+    align-items: center;
+  }
+
+  .number-input button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .number-input button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+
+  .number-input input[type="number"] {
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    font-size: 16px;
+  }
 </style>

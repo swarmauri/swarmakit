@@ -1,32 +1,53 @@
 <script lang="ts">
-  export type SearchBarState = 'focused' | 'unfocused' | 'disabled';
-  export let state: SearchBarState = 'unfocused';
-  export let placeholder: string = 'Search...';
+  export let isFocused: boolean = false;
+  export let isDisabled: boolean = false;
+  let searchInput: HTMLInputElement | null = null;
 
   function handleFocus() {
-    if (state !== 'disabled') {
-      state = 'focused';
-    }
+    isFocused = true;
   }
 
   function handleBlur() {
-    if (state !== 'disabled') {
-      state = 'unfocused';
-    }
+    isFocused = false;
   }
 </script>
 
-<input
-  class={`search-bar search-bar-${state}`}
-  type="text"
-  placeholder={placeholder}
-  on:focus={handleFocus}
-  on:blur={handleBlur}
-  disabled={state === 'disabled'}
-  aria-label="Search"
-  role="searchbox"
-/>
+<div class="search-bar">
+  <input
+    type="text"
+    class="search-input"
+    bind:this={searchInput}
+    aria-disabled={isDisabled}
+    {isDisabled}
+    on:focus={handleFocus}
+    on:blur={handleBlur}
+    placeholder="Search..."
+  />
+</div>
 
 <style lang="css">
-  @import './SearchBar.css';
+  .search-bar {
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    outline: none;
+  }
+
+  .search-input:focus {
+    border-color: #6200ea;
+  }
+
+  .search-input[aria-disabled='true'] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
 </style>

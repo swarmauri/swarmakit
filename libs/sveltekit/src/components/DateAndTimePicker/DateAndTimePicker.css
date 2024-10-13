@@ -1,16 +1,13 @@
-.date-time-picker-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.date-time-picker input[type="date"],
+.date-time-picker input[type="time"] {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-input[type="date"],
-input[type="time"] {
-  padding: 5px;
-  font-size: 16px;
-}
-
-label {
-  display: inline-block;
-  cursor: pointer;
+.date-time-picker input[disabled] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
 }

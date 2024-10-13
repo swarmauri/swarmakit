@@ -1,54 +1,45 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
 
-  export type Group = { id: number; title: string; items: ListItem[]; };
-  export type ListItem = { id: number; title: string; };
+  export interface Group {
+    title: string;
+    items: Array<{ id: number; name: string }>;
+  }
 
-  export let groups: Group[] = [];
-  const expandedGroups = writable(new Set<number>());
-  const selectedItem = writable<ListItem | null>(null);
+  export let groups: Array<Group> = [];
+  let expandedGroups = writable<Set<string>>(new Set());
 
-  function toggleGroup(groupId: number) {
-    expandedGroups.update(expanded => {
-      const newExpanded = new Set(expanded);
-      if (newExpanded.has(groupId)) {
-        newExpanded.delete(groupId);
+  function toggleGroup(title: string) {
+    expandedGroups.update((current) => {
+      const newSet = new Set(current);
+      if (newSet.has(title)) {
+        newSet.delete(title);
       } else {
-        newExpanded.add(groupId);
+        newSet.add(title);
       }
-      return newExpanded;
+      return newSet;
     });
   }
 
-  function selectItem(item: ListItem) {
-    selectedItem.set(item);
+  function isExpanded(title: string) {
+    return $expandedGroups.has(title);
   }
 </script>
 
 <div class="grouped-list">
-  {#each groups as { id: groupId, title: groupTitle, items }}
+  {#each groups as group}
     <div class="group">
-      <div 
-        class="group-title" 
-        role="button" 
-        tabindex="0" 
-        on:click={() => toggleGroup(groupId)} 
-        on:keydown={(e) => e.key === 'Enter' && toggleGroup(groupId)}
-        aria-expanded={$expandedGroups.has(groupId)}>
-        {groupTitle}
+      <div
+        class="group-title"
+        on:click={() => toggleGroup(group.title)}
+        aria-expanded={isExpanded(group.title)}
+      >
+        {group.title}
       </div>
-      {#if $expandedGroups.has(groupId)}
+      {#if isExpanded(group.title)}
         <ul>
-          {#each items as { id, title }}
-            <li 
-              class="list-item" 
-              bind:this={selectedItem}
-              on:click={() => selectItem({ id, title })} 
-              aria-selected={$selectedItem?.id === id}
-              on:mouseenter={() => selectedItem.set({ id, title })}
-              on:mouseleave={() => selectedItem.set(null)}>
-              {title}
-            </li>
+          {#each group.items as item}
+            <li class="item">{item.name}</li>
           {/each}
         </ul>
       {/if}
@@ -57,5 +48,39 @@
 </div>
 
 <style lang="css">
-  @import './GroupedList.css';
+  .grouped-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .group {
+    margin-bottom: 10px;
+  }
+
+  .group-title {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #f5f5f5;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .item {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .item:hover {
+    background-color: #e0e0e0;
+  }
+
+  .item.selected {
+    background-color: #c0c0ff;
+  }
 </style>

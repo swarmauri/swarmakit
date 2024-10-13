@@ -1,27 +1,26 @@
-.number-input-container {
+.number-input {
   display: flex;
   align-items: center;
 }
 
-button {
-  width: 30px;
-  height: 30px;
-  background-color: #f0f0f0;
+.number-input button {
+  padding: 5px 10px;
   border: 1px solid #ccc;
+  background-color: #f9f9f9;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 16px;
 }
 
-button:disabled {
+.number-input button:disabled {
   background-color: #e0e0e0;
   cursor: not-allowed;
 }
 
-input[type="number"] {
+.number-input input[type="number"] {
   width: 60px;
   text-align: center;
+  padding: 5px;
   border: 1px solid #ccc;
   margin: 0 5px;
+  font-size: 16px;
 }

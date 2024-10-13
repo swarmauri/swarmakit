@@ -1,52 +1,47 @@
 import TaskCompletionCheckList from './TaskCompletionCheckList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Indicators/TaskCompletionCheckList',
+export default {
+  title: 'Indicators/TaskCompletionCheckList',
   component: TaskCompletionCheckList,
   tags: ['autodocs'],
-  argTypes: {
-    tasks: {
-      control: { type: 'object' },
-    },
+};
+
+export const Default = {
+  args: {
+    tasks: [
+      { id: 1, text: 'Task 1', completed: false },
+      { id: 2, text: 'Task 2', completed: false },
+      { id: 3, text: 'Task 3', completed: false },
+    ],
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: TaskCompletionCheckList,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  tasks: [
-    { id: 1, label: 'Task 1', state: 'unchecked' },
-    { id: 2, label: 'Task 2', state: 'unchecked' },
-  ],
+export const Checked = {
+  args: {
+    tasks: [
+      { id: 1, text: 'Task 1', completed: true },
+      { id: 2, text: 'Task 2', completed: true },
+      { id: 3, text: 'Task 3', completed: true },
+    ],
+  },
 };
 
-export const Checked = Template.bind({});
-Checked.args = {
-  tasks: [
-    { id: 1, label: 'Task 1', state: 'checked' },
-    { id: 2, label: 'Task 2', state: 'checked' },
-  ],
+export const Unchecked = {
+  args: {
+    tasks: [
+      { id: 1, text: 'Task 1', completed: false },
+      { id: 2, text: 'Task 2', completed: false },
+      { id: 3, text: 'Task 3', completed: false },
+    ],
+  },
 };
 
-export const Unchecked = Template.bind({});
-Unchecked.args = {
-  tasks: [
-    { id: 1, label: 'Task 1', state: 'unchecked' },
-    { id: 2, label: 'Task 2', state: 'unchecked' },
-  ],
-};
-
-export const PartiallyComplete = Template.bind({});
-PartiallyComplete.args = {
-  tasks: [
-    { id: 1, label: 'Task 1', state: 'checked' },
-    { id: 2, label: 'Task 2', state: 'unchecked' },
-  ],
+export const PartiallyComplete = {
+  args: {
+    tasks: [
+      { id: 1, text: 'Task 1', completed: true },
+      { id: 2, text: 'Task 2', completed: false },
+      { id: 3, text: 'Task 3', completed: false },
+    ],
+  },
 };

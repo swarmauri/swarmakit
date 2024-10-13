@@ -1,72 +1,93 @@
 <script lang="ts">
-  export type GridState = 'paginated' | 'search' | 'resizable';
-  export let state: GridState = 'paginated';
-  export let data: { [key: string]: any }[] = [];
   export let columns: string[] = [];
-  export let pageSize: number = 5;
+  export let data: Array<Record<string, any>> = [];
+  export let currentPage: number = 1;
+  export let pageSize: number = 10;
+  export let searchTerm: string = '';
 
-  let currentPage: number = 1;
-  let searchTerm: string = '';
-  let filteredData = data;
+  let resizableColumns: boolean = false;
 
-  function paginateData() {
-    const start = (currentPage - 1) * pageSize;
-    const end = start + pageSize;
-    return filteredData.slice(start, end);
-  }
+  $: filteredData = searchTerm 
+    ? data.filter(row => columns.some(column => (row[column] || '').toString().toLowerCase().includes(searchTerm.toLowerCase())))
+    : data;
 
-  function handleSearch() {
-    filteredData = data.filter(item =>
-      columns.some(column => item[column].toString().toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-    currentPage = 1;
-  }
+  $: paginatedData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
-  function nextPage() {
-    if (currentPage < Math.ceil(filteredData.length / pageSize)) currentPage++;
-  }
-
-  function prevPage() {
-    if (currentPage > 1) currentPage--;
+  function goToPage(page: number) {
+    currentPage = page;
   }
 </script>
 
-{#if state === 'search'}
+<div class="data-grid">
   <input
     type="text"
     placeholder="Search..."
     bind:value={searchTerm}
-    on:input={handleSearch}
+    aria-label="Search data grid"
   />
-{/if}
 
-<table class={`data-grid grid-${state}`}>
-  <thead>
-    <tr>
-      {#each columns as column}
-        <th>{column}</th>
-      {/each}
-    </tr>
-  </thead>
-  <tbody>
-    {#each paginateData() as row}
+  <table>
+    <thead>
       <tr>
         {#each columns as column}
-          <td>{row[column]}</td>
+          <th class:resizable={resizableColumns}>{column}</th>
         {/each}
       </tr>
-    {/each}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {#each paginatedData as row}
+        <tr>
+          {#each columns as column}
+            <td>{row[column]}</td>
+          {/each}
+        </tr>
+      {/each}
+    </tbody>
+  </table>
 
-{#if state === 'paginated'}
   <div class="pagination-controls">
-    <button on:click={prevPage} disabled={currentPage === 1} aria-label="Previous Page">Previous</button>
+    <button on:click={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
     <span>Page {currentPage}</span>
-    <button on:click={nextPage} disabled={currentPage === Math.ceil(filteredData.length / pageSize)} aria-label="Next Page">Next</button>
+    <button on:click={() => goToPage(currentPage + 1)} disabled={currentPage * pageSize >= filteredData.length}>Next</button>
   </div>
-{/if}
+</div>
 
 <style lang="css">
-  @import './DataGrid.css';
+  .data-grid {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  input[type="text"] {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th.resizable {
+    cursor: ew-resize;
+  }
+
+  .pagination-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  button {
+    padding: 5px 10px;
+  }
 </style>

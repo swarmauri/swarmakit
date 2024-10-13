@@ -1,0 +1,18 @@
+/* src/themes/custom.css */
+:root {
+  --primary-color: #ff9900;
+  --secondary-color: #6a0dad;
+  --background-color: #f0f0f0;
+  --text-color: #222222;
+
+  --button-bg: #f8e7e1;
+  --button-text-color: #222;
+  --button-border-radius: 8px;
+  --button-primary-bg: #ff9900;
+  --button-primary-hover-bg: #e68a00;
+  --button-secondary-bg: #6a0dad;
+  --button-secondary-hover-bg: #5a0b9d;
+  --button-disabled-bg: #cccccc;
+  --button-active-border: #ff9900;
+
+}

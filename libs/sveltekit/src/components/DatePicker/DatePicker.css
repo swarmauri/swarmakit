@@ -1,16 +1,12 @@
-.date-picker-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.date-picker input[type="date"],
+.date-picker input[type="time"] {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-input[type="date"],
-input[type="datetime-local"] {
-  padding: 5px;
-  font-size: 16px;
-}
-
-label {
-  display: inline-block;
-  cursor: pointer;
+.date-picker span {
+  margin: 0 5px;
 }

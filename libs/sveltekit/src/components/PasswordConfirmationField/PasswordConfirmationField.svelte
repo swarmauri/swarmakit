@@ -1,40 +1,51 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
-
   export let password: string = '';
   export let confirmPassword: string = '';
   export let disabled: boolean = false;
-  export let minLength: number = 8;
 
-  const passwordsMatch = writable<boolean>(false);
-
-  $: passwordsMatch.set(password === confirmPassword && password.length >= minLength);
+  $: isMatching = password === confirmPassword;
 </script>
 
-<div class="password-confirmation-field" aria-label="Password Confirmation Field" role="group">
-  <input
-    type="password"
-    bind:value={password}
-    placeholder="Enter password"
-    minlength={minLength}
-    disabled={disabled}
-    aria-label="Password"
-    class="password-input"
+<div class="password-confirmation-field">
+  <input 
+    type="password" 
+    bind:value={password} 
+    placeholder="Enter password" 
+    {disabled} 
+    aria-label="Password" 
   />
-  <input
-    type="password"
-    bind:value={confirmPassword}
-    placeholder="Confirm password"
-    minlength={minLength}
-    disabled={disabled}
-    aria-label="Confirm Password"
-    class="confirm-password-input"
+  <input 
+    type="password" 
+    bind:value={confirmPassword} 
+    placeholder="Confirm password" 
+    {disabled} 
+    aria-label="Confirm password" 
+    aria-describedby="password-match-status"
   />
-  <span class="match-indicator" aria-live="polite">
-    {$passwordsMatch ? 'Passwords match' : 'Passwords do not match'}
+  <span id="password-match-status" class:isMatching={isMatching}>
+    {isMatching ? 'Passwords match' : 'Passwords do not match'}
   </span>
 </div>
 
 <style lang="css">
-  @import './PasswordConfirmationField.css';
+  .password-confirmation-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .password-confirmation-field input[type="password"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  .password-confirmation-field span {
+    font-size: 14px;
+    color: red;
+  }
+
+  .password-confirmation-field span.isMatching {
+    color: green;
+  }
 </style>

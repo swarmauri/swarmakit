@@ -1,0 +1,17 @@
+/* src/themes/dark.css */
+:root {
+  --primary-color: #1485cc;
+  --secondary-color: #cc3b6e;
+  --background-color: #333333;
+  --text-color: #ffffff;
+  
+  --button-bg: #333;
+  --button-text-color: #fff;
+  --button-border-radius: 4px;
+  --button-primary-bg: #1485cc;
+  --button-primary-hover-bg: #0f6499;
+  --button-secondary-bg: #cc3b6e;
+  --button-secondary-hover-bg: #a3305c;
+  --button-disabled-bg: #555;
+  --button-active-border: #1485cc;
+}

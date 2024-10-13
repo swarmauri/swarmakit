@@ -1,49 +1,42 @@
 import ProgressCircle from './ProgressCircle.svelte';
 
 export default {
-  title: 'Components/Indicators/ProgressCircle',
+  title: 'Indicators/ProgressCircle',
   component: ProgressCircle,
   tags: ['autodocs'],
-  argTypes: {
-    progress: { control: { type: 'range', min: 0, max: 100 } },
-    status: {
-      control: 'select',
-      options: ['active', 'paused', 'complete', 'incomplete'],
-    },
+};
+
+export const Default = {
+  args: {
+    progress: 50,
+    status: 'active',
   },
 };
 
-const Template = (args) => ({
-  Component: ProgressCircle,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  progress: 50,
-  status: 'active',
+export const Complete = {
+  args: {
+    progress: 100,
+    status: 'active',
+  },
 };
 
-export const Complete = Template.bind({});
-Complete.args = {
-  progress: 100,
-  status: 'complete',
+export const Incomplete = {
+  args: {
+    progress: 0,
+    status: 'active',
+  },
 };
 
-export const Incomplete = Template.bind({});
-Incomplete.args = {
-  progress: 25,
-  status: 'incomplete',
+export const Paused = {
+  args: {
+    progress: 50,
+    status: 'paused',
+  },
 };
 
-export const Paused = Template.bind({});
-Paused.args = {
-  progress: 50,
-  status: 'paused',
-};
-
-export const Active = Template.bind({});
-Active.args = {
-  progress: 75,
-  status: 'active',
+export const Active = {
+  args: {
+    progress: 50,
+    status: 'active',
+  },
 };

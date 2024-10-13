@@ -1,14 +1,20 @@
-.checkbox-container {
+.checkbox {
   display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+label {
+  font-size: 16px;
   cursor: pointer;
 }
 
-.checkbox-container[aria-disabled="true"] {
+label.disabled {
+  color: #aaa;
   cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.checkbox-container input {
-  margin-right: 8px;
 }

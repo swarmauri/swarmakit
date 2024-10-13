@@ -1,42 +1,29 @@
 .upload {
-  padding: 10px 20px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   margin: 10px 0;
-  color: #333;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
 }
 
-.upload-completed {
-  color: #4caf50;
-}
-
-.upload-failed {
-  color: #f44336;
+.upload-status {
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .progress-bar {
   width: 100%;
-  background-color: #ddd;
-  border-radius: 5px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
   overflow: hidden;
-  margin-top: 5px;
 }
 
 .progress {
   height: 10px;
-  background-color: #2196f3;
-}
-
-button {
-  margin-top: 10px;
-  background-color: #009688;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
 }

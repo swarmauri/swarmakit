@@ -1,35 +1,45 @@
 <script lang="ts">
-  export type AccordionState = 'open' | 'closed' | 'hover';
-  export let state: AccordionState = 'closed';
-  export let title: string = 'Accordion Title';
-  export let content: string = 'Accordion Content';
-  let isOpen: boolean = state === 'open';
+  export let isOpen: boolean = false;
+  export let title: string = "Accordion Title";
 
-  function toggleAccordion() {
+  function toggle() {
     isOpen = !isOpen;
-  }
-
-  function handleKey(event: KeyboardEvent) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      toggleAccordion();
-    }
   }
 </script>
 
-<div
-  class={`accordion accordion-${state}`}
-  role="button"
-  tabindex="0"
-  on:click={toggleAccordion}
-  on:keydown={handleKey}
-  aria-expanded={isOpen}
->
-  <div class="accordion-title">{title}</div>
+<div class="accordion-container">
+  <button class="accordion-header" on:click={toggle} aria-expanded={isOpen}>
+    {title}
+  </button>
   {#if isOpen}
-    <div class="accordion-content">{content}</div>
+    <div class="accordion-content" aria-hidden={!isOpen}>
+      <slot />
+    </div>
   {/if}
 </div>
 
 <style lang="css">
-  @import './Accordion.css';
+  .accordion-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .accordion-header {
+    width: 100%;
+    padding: 10px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .accordion-header:hover {
+    background-color: #e0e0e0;
+  }
+
+  .accordion-content {
+    padding: 10px;
+    background-color: #fff;
+  }
 </style>

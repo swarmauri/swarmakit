@@ -1,54 +1,57 @@
 .icon-button {
-  background-color: transparent;
+  padding: 10px;
   border: none;
+  border-radius: 50%;
+  background-color: transparent;
   cursor: pointer;
-  transition: color 0.3s ease;
-  font-size: 24px;
-  display: inline-flex;
+  transition: background-color 0.3s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.icon-button i {
-  pointer-events: none;
+.icon-button img {
+  width: 24px;
+  height: 24px;
 }
 
-.icon-button:disabled,
-.icon-button[aria-disabled='true'] {
-  color: #e0e0e0;
+.icon-button:disabled {
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
-.icon-button:hover:not(:disabled),
-.icon-button[aria-disabled='false']:hover {
-  color: #0056b3;
+.icon-button:not(:disabled):hover {
+  background-color: rgba(0, 123, 255, 0.1);
 }
 
-.icon-button:active:not(:disabled),
-.icon-button[aria-disabled='false']:active {
-  color: #004085;
+.icon-button:not(:disabled):active {
+  background-color: rgba(0, 123, 255, 0.2);
 }
 
 @media (max-width: 320px) {
-  .icon-button {
-    font-size: 20px;
+  .icon-button img {
+    width: 20px;
+    height: 20px;
   }
 }
 
 @media (min-width: 321px) and (max-width: 480px) {
-  .icon-button {
-    font-size: 22px;
+  .icon-button img {
+    width: 22px;
+    height: 22px;
   }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  .icon-button {
-    font-size: 24px;
+  .icon-button img {
+    width: 24px;
+    height: 24px;
   }
 }
 
 @media (min-width: 769px) {
-  .icon-button {
-    font-size: 24px;
+  .icon-button img {
+    width: 26px;
+    height: 26px;
   }
 }

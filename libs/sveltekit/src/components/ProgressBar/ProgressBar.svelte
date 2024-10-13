@@ -1,37 +1,41 @@
 <script lang="ts">
   export let progress: number = 0;
   export let disabled: boolean = false;
-
-  function handleKeyDown(event: KeyboardEvent) {
-    if ((event.key === 'Enter' || event.key === ' ') && !disabled) {
-      handleClick();
-    }
-  }
-
-  function handleClick() {
-    if (!disabled) {
-      // Handle progress bar click logic
-    }
-  }
 </script>
 
 <div
-  class="progress-bar-container"
+  class="progress-bar"
   role="progressbar"
+  aria-valuenow={progress}
   aria-valuemin="0"
   aria-valuemax="100"
-  aria-valuenow={progress}
   aria-disabled={disabled}
   tabindex="0"
-  on:click={handleClick}
-  on:keydown={handleKeyDown}>
-  <div
-    class="progress-bar"
-    style="width: {progress}%;"
-    aria-label="Progress bar with {progress}% completed">
-  </div>
+>
+  <div class="progress-fill" style={`width: ${progress}%`}></div>
 </div>
 
 <style lang="css">
-  @import './ProgressBar.css';
+  .progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background-color: #76c7c0;
+    transition: width 0.3s ease;
+  }
+
+  .progress-bar[aria-disabled="true"] .progress-fill {
+    background-color: #b0b0b0;
+  }
+
+  .progress-bar:hover .progress-fill {
+    background-color: #5aa9a8;
+  }
 </style>

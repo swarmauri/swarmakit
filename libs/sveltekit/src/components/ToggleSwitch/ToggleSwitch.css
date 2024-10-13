@@ -5,30 +5,23 @@
   border-radius: 12px;
   position: relative;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 2px;
-  transition: background-color 0.3s;
-}
-
-.toggle-switch[aria-disabled="true"] {
-  cursor: not-allowed;
-  opacity: 0.6;
 }
 
 .toggle-thumb {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-color: #fff;
   border-radius: 50%;
   position: absolute;
-  transition: transform 0.3s;
+  top: 0;
+  transition: transform 0.2s;
 }
 
-.toggle-switch[aria-checked="true"] .toggle-thumb {
-  transform: translateX(26px);
+.toggle-switch[aria-checked="true"] {
+  background-color: #4caf50;
 }
 
-.toggle-switch[aria-checked="false"] .toggle-thumb {
-  transform: translateX(0);
+.toggle-switch[aria-disabled="true"] {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
 }

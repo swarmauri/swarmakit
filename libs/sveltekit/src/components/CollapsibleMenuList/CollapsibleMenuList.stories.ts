@@ -1,74 +1,57 @@
 import CollapsibleMenuList from './CollapsibleMenuList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Lists/CollapsibleMenuList',
+export default {
+  title: 'Lists/CollapsibleMenuList',
   component: CollapsibleMenuList,
   tags: ['autodocs'],
-  argTypes: {
-    state: {
-      control: { type: 'select' },
-      options: ['expanded', 'collapsed', 'hover', 'active'],
-    },
-    menuItems: {
-      control: { type: 'array' },
-    },
+};
+
+export const Default = {
+  args: {
+    items: [
+      { id: 1, label: 'Menu 1', expanded: false },
+      { id: 2, label: 'Menu 2', expanded: false },
+      { id: 3, label: 'Menu 3', expanded: false },
+    ],
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: CollapsibleMenuList,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  state: 'collapsed',
-  menuItems: [
-    { label: 'Home', active: false },
-    { label: 'About', active: false },
-    { label: 'Contact', active: false },
-  ],
+export const Expanded = {
+  args: {
+    items: [
+      { id: 1, label: 'Menu 1', expanded: true },
+      { id: 2, label: 'Menu 2', expanded: true },
+      { id: 3, label: 'Menu 3', expanded: true },
+    ],
+  },
 };
 
-export const Expanded = Template.bind({});
-Expanded.args = {
-  state: 'expanded',
-  menuItems: [
-    { label: 'Home', active: false },
-    { label: 'About', active: false },
-    { label: 'Contact', active: false },
-  ],
+export const Collapsed = {
+  args: {
+    items: [
+      { id: 1, label: 'Menu 1', expanded: false },
+      { id: 2, label: 'Menu 2', expanded: false },
+      { id: 3, label: 'Menu 3', expanded: false },
+    ],
+  },
 };
 
-export const Collapsed = Template.bind({});
-Collapsed.args = {
-  state: 'collapsed',
-  menuItems: [
-    { label: 'Home', active: false },
-    { label: 'About', active: false },
-    { label: 'Contact', active: false },
-  ],
+export const Hover = {
+  args: {
+    items: [
+      { id: 1, label: 'Menu 1', expanded: false },
+      { id: 2, label: 'Menu 2', expanded: false },
+      { id: 3, label: 'Menu 3', expanded: false },
+    ],
+  },
 };
 
-export const Hover = Template.bind({});
-Hover.args = {
-  state: 'hover',
-  menuItems: [
-    { label: 'Home', active: false },
-    { label: 'About', active: false },
-    { label: 'Contact', active: false },
-  ],
-};
-
-export const Active = Template.bind({});
-Active.args = {
-  state: 'active',
-  menuItems: [
-    { label: 'Home', active: true },
-    { label: 'About', active: false },
-    { label: 'Contact', active: false },
-  ],
+export const Active = {
+  args: {
+    items: [
+      { id: 1, label: 'Menu 1', expanded: false, active: true },
+      { id: 2, label: 'Menu 2', expanded: false },
+      { id: 3, label: 'Menu 3', expanded: false },
+    ],
+  },
 };

@@ -1,18 +1,34 @@
 <script lang="ts">
-  export type Status = 'online' | 'offline' | 'busy' | 'idle';
-  export let status: Status = 'offline';
+  export let status: 'online' | 'offline' | 'busy' | 'idle' = 'offline';
+
+  const getColor = () => {
+    switch (status) {
+      case 'online':
+        return 'green';
+      case 'offline':
+        return 'gray';
+      case 'busy':
+        return 'red';
+      case 'idle':
+        return 'yellow';
+      default:
+        return 'gray';
+    }
+  };
 </script>
 
-<div class="status-dot" role="status" aria-label={`Status: ${status}`} tabindex="0" on:keydown={(e) => e.key === 'Enter' && handleClick()}>
-  <div class={`dot ${status}`}></div>
-</div>
-
-<script lang="ts">
-  function handleClick() {
-    // Handle click event
-  }
-</script>
+<div 
+  class="status-dot" 
+  style="background-color: {getColor()}" 
+  aria-label={`Status: ${status}`}
+></div>
 
 <style lang="css">
-  @import './StatusDots.css';
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.2s;
+  }
 </style>

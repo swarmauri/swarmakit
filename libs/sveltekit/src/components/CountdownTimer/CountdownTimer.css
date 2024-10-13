@@ -1,30 +1,29 @@
 .countdown-timer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 200px;
+  gap: 10px;
   padding: 10px;
-  border: 2px solid #333;
-  border-radius: 5px;
-  background-color: #f5f5f5;
+  border-radius: 6px;
+  background-color: #e0e0e0;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.time-left {
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
+.time {
+  min-width: 60px;
+  text-align: center;
 }
 
 button {
   padding: 5px 10px;
-  font-size: 14px;
-  background-color: #76c7c0;
-  color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
+  background-color: #6200ea;
+  color: #fff;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #64aba7;
+  background-color: #3700b3;
 }

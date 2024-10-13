@@ -1,32 +1,72 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
 
-  export let options: { option: string; votes: number }[] = [];
+  export interface PollOption {
+    id: number;
+    text: string;
+    votes: number;
+  }
+
+  export let options: PollOption[] = [];
+  export let totalVotes: number = 0;
   export let isClosed: boolean = false;
 
-  const totalVotes = writable(0);
-  $: totalVotes.set(options.reduce((total, option) => total + option.votes, 0));
-
-  function vote(index: number) {
-    if (isClosed) return;
-    options[index].votes += 1;
-    totalVotes.update((n) => n + 1);
-  }
+  const calculatePercentage = (votes: number) => {
+    return totalVotes > 0 ? (votes / totalVotes) * 100 : 0;
+  };
 </script>
 
-<div class="interactive-poll-results" role="list">
-  {#each options as { option, votes }, index}
-    <div class="option" role="listitem">
-      <span>{option}</span>
-      <span>{votes} votes</span>
-      <button on:click={() => vote(index)} aria-disabled={isClosed}>
-        Vote
-      </button>
+<div class="poll-results" aria-live="polite">
+  {#each options as { id, text, votes }}
+    <div class="option" aria-label={`Option ${id}: ${text}`}>
+      <span class="option-text">{text}</span>
+      <div class="progress-bar" style="width: {calculatePercentage(votes)}%">
+        <span class="votes" aria-label={`Votes: ${votes}`}>{votes} votes</span>
+      </div>
     </div>
   {/each}
-  <div class="total" aria-live="polite">Total Votes: {$totalVotes}</div>
+  {#if isClosed}
+    <div class="poll-status">Poll is closed</div>
+  {/if}
 </div>
 
 <style lang="css">
-  @import './InteractivePollResults.css';
+  .poll-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+  }
+
+  .option-text {
+    font-weight: bold;
+  }
+
+  .progress-bar {
+    background-color: #6200ea;
+    height: 20px;
+    border-radius: 4px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+  }
+
+  .votes {
+    font-size: 0.8rem;
+  }
+
+  .poll-status {
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }
 </style>

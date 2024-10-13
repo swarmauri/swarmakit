@@ -1,48 +1,35 @@
 import SearchBar from './SearchBar.svelte';
-import type { Meta, Story } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Input/SearchBar',
+export default {
+  title: 'Input/SearchBar',
   component: SearchBar,
   tags: ['autodocs'],
-  argTypes: {
-    state: {
-      control: { type: 'select' },
-      options: ['focused', 'unfocused', 'disabled'],
-    },
-    placeholder: {
-      control: { type: 'text' },
-    },
+};
+
+export const Default = {
+  args: {
+    isFocused: false,
+    isDisabled: false,
   },
 };
 
-export default meta;
-
-const Template: Story = (args) => ({
-  Component: SearchBar,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  state: 'unfocused',
-  placeholder: 'Search...',
+export const Focused = {
+  args: {
+    isFocused: true,
+    isDisabled: false,
+  },
 };
 
-export const Focused = Template.bind({});
-Focused.args = {
-  state: 'focused',
-  placeholder: 'Search...',
+export const Unfocused = {
+  args: {
+    isFocused: false,
+    isDisabled: false,
+  },
 };
 
-export const Unfocused = Template.bind({});
-Unfocused.args = {
-  state: 'unfocused',
-  placeholder: 'Search...',
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  state: 'disabled',
-  placeholder: 'Search...',
+export const Disabled = {
+  args: {
+    isFocused: false,
+    isDisabled: true,
+  },
 };

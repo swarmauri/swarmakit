@@ -1,53 +1,41 @@
+/* Button styles */
+
+/* Use CSS variables to style the button based on the active theme */
 button {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 1rem;
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
+  border-radius: var(--button-border-radius);
+  padding: 10px 20px;
+  border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
+/* Primary variant */
 .button-primary {
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background-color: var(--button-primary-bg);
 }
 
+.button-primary:hover {
+  background-color: var(--button-primary-hover-bg);
+}
+
+/* Secondary variant */
 .button-secondary {
-  background-color: #6c757d;
-  color: white;
-  border: none;
+  background-color: var(--button-secondary-bg);
 }
 
+.button-secondary:hover {
+  background-color: var(--button-secondary-hover-bg);
+}
+
+/* Disabled state */
 .button-disabled {
-  background-color: #d6d6d6;
-  color: #8c8c8c;
+  background-color: var(--button-disabled-bg);
   cursor: not-allowed;
 }
 
+/* Active state */
 .button-active {
-  background-color: #0056b3;
-}
-
-@media (max-width: 600px) {
-  button {
-    font-size: 0.875rem;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  button {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  button {
-    font-size: 1.125rem;
-  }
-}
-
-@media (min-width: 1201px) {
-  button {
-    font-size: 1.25rem;
-  }
+  border: 2px solid var(--button-active-border);
 }

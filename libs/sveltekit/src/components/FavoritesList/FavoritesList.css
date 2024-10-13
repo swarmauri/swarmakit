@@ -6,34 +6,26 @@
 
 .list-item {
   border: 1px solid #ddd;
-  margin: 5px 0;
+  margin-bottom: 5px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
   cursor: pointer;
-  background-color: #f9f9f9;
-}
-
-.list-item.starred {
-  background-color: #ffe082;
-}
-
-.list-item.unstarred {
-  background-color: #f9f9f9;
-}
-
-.list-item.selected {
-  background-color: #e1bee7;
 }
 
 .list-item:hover {
+  background-color: #f1f1f1;
+}
+
+.list-item.selected {
   background-color: #e0e0e0;
 }
 
-.list-title {
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-}
-
-.star-icon {
-  font-size: 1.5em;
+.star-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }

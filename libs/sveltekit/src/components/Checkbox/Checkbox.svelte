@@ -1,39 +1,46 @@
 <script lang="ts">
-  export let isChecked: boolean = false;
-  export let isDisabled: boolean = false;
-  export let label: string = '';
+  export let label: string = "Checkbox";
+  export let checked: boolean = false;
+  export let disabled: boolean = false;
 
   function toggleCheck() {
-    if (!isDisabled) {
-      isChecked = !isChecked;
-    }
-  }
-
-  function handleKeyPress(event: KeyboardEvent) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      toggleCheck();
+    if (!disabled) {
+      checked = !checked;
     }
   }
 </script>
 
-<div 
-  class="checkbox-container" 
-  role="checkbox" 
-  aria-checked={isChecked} 
-  tabindex={isDisabled ? undefined : 0} 
-  aria-disabled={isDisabled}
-  on:click={toggleCheck} 
-  on:keypress={handleKeyPress}
->
-  <input 
-    type="checkbox" 
-    bind:checked={isChecked} 
-    disabled={isDisabled} 
-    aria-hidden="true"
+<div class="checkbox">
+  <input
+    type="checkbox"
+    id="checkbox"
+    bind:checked
+    disabled={disabled}
+    aria-disabled={disabled}
+    aria-checked={checked}
   />
-  <span>{label}</span>
+  <label for="checkbox" on:click={toggleCheck} class:disabled>{label}</label>
 </div>
 
 <style lang="css">
-  @import './Checkbox.css';
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  label {
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  label.disabled {
+    color: #aaa;
+    cursor: not-allowed;
+  }
 </style>

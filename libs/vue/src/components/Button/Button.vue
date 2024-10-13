@@ -11,6 +11,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+// Import the external CSS file
+import './Button.css';
 
 export default defineComponent({
   name: 'Button',
@@ -47,7 +49,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="css">
-@import './Button.css';
-</style>

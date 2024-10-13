@@ -1,30 +1,25 @@
 import LoadingSpinner from './LoadingSpinner.svelte';
 
 export default {
-  title: 'Components/Indicators/LoadingSpinner',
+  title: 'Indicators/LoadingSpinner',
   component: LoadingSpinner,
   tags: ['autodocs'],
-  argTypes: {
-    active: { control: 'boolean' },
+};
+
+export const Default = {
+  args: {
+    active: true,
   },
 };
 
-const Template = (args) => ({
-  Component: LoadingSpinner,
-  props: args,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  active: true,
+export const Active = {
+  args: {
+    active: true,
+  },
 };
 
-export const Active = Template.bind({});
-Active.args = {
-  active: true,
-};
-
-export const Inactive = Template.bind({});
-Inactive.args = {
-  active: false,
+export const Inactive = {
+  args: {
+    active: false,
+  },
 };

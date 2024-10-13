@@ -1,16 +1,18 @@
 .filterable-list {
-  margin: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-.filterable-list input {
+input[type='text'] {
+  padding: 8px;
   margin-bottom: 10px;
-  padding: 5px;
-  width: calc(100% - 20px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.filterable-list button {
+button {
+  padding: 8px;
   margin-bottom: 10px;
-  padding: 5px 10px;
   cursor: pointer;
 }
 
@@ -21,14 +23,10 @@ ul {
 
 .list-item {
   padding: 10px;
-  border: 1px solid #ddd;
-  margin: 5px 0;
-  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
 }
 
 .no-results {
   padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #ffcdd2;
-  text-align: center;
+  color: #999;
 }

@@ -1,33 +1,33 @@
-.actionable-list {
+.actionable-list-container {
+  padding: 10px;
+}
+
+.loading {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
-.actionable-list-item {
-  padding: 10px;
-  border: 1px solid #ccc;
+li {
   margin-bottom: 5px;
-  border-radius: 4px;
-  background-color: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  text-align: left;
 }
 
-.actionable-list-hover .actionable-list-item:hover {
-  background-color: #f0f0f0;
+button:hover {
+  background-color: #e0e0e0;
 }
 
-.actionable-list-action-triggered .actionable-list-item {
-  background-color: #e1f5fe;
-}
-
-.actionable-list-disabled .actionable-list-item {
-  background-color: #f9f9f9;
+button:disabled {
   cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.actionable-list-loading .actionable-list-item {
-  background-color: #eee;
+  background-color: #f0f0f0;
 }

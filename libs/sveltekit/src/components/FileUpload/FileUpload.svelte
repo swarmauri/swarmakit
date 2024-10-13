@@ -1,63 +1,45 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { writable } from 'svelte/store';
+  import { createEventDispatcher } from 'svelte';
 
   export let multiple: boolean = false;
   export let progress: number = 0;
-  export let disabled: boolean = false;
 
-  const files = writable<File[]>([]);
+  let files: File[] = [];
+  const dispatch = createEventDispatcher();
 
   function handleFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
-    if (input.files) {
-      files.set(Array.from(input.files));
-    }
+    files = Array.from(input.files || []);
+    dispatch('filechange', files);
   }
 
   function handleDrop(event: DragEvent) {
     event.preventDefault();
-    if (event.dataTransfer?.files) {
-      files.set(Array.from(event.dataTransfer.files));
-    }
+    files = Array.from(event.dataTransfer?.files || []);
+    dispatch('filechange', files);
   }
 
   function handleDragOver(event: DragEvent) {
     event.preventDefault();
   }
-
-  onMount(() => {
-    files.subscribe((filesArray) => {
-      if (filesArray.length > 0) {
-        // Simulate file upload progress for demonstration
-        let uploadProgress = 0;
-        const interval = setInterval(() => {
-          uploadProgress += 10;
-          if (uploadProgress > 100) {
-            clearInterval(interval);
-          }
-          progress = uploadProgress;
-        }, 100);
-      }
-    });
-  });
 </script>
 
-<div 
-  class="file-upload-container" 
-  on:drop={handleDrop} 
-  on:dragover={handleDragOver} 
-  aria-label="File Upload"
-  role="region"
->
+<div class="file-upload">
   <input 
     type="file" 
     on:change={handleFileChange} 
-    multiple={multiple} 
-    disabled={disabled} 
-    aria-label="Select files to upload"
+    {multiple} 
+    aria-label={multiple ? "Upload Files" : "Upload File"}
   />
-  {#if progress > 0 && progress < 100}
+  <div 
+    class="drop-zone" 
+    on:drop={handleDrop} 
+    on:dragover={handleDragOver} 
+    aria-label="Drag and drop files here"
+  >
+    Drag and Drop Files Here
+  </div>
+  {#if progress > 0}
     <div class="progress-bar" role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
       <div class="progress" style="width: {progress}%"></div>
     </div>
@@ -65,5 +47,34 @@
 </div>
 
 <style lang="css">
-  @import './FileUpload.css';
+  .file-upload input[type="file"] {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .file-upload .drop-zone {
+    margin-top: 10px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    text-align: center;
+    color: #aaa;
+  }
+
+  .file-upload .progress-bar {
+    margin-top: 10px;
+    height: 20px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .file-upload .progress {
+    height: 100%;
+    background-color: #007bff;
+    transition: width 0.4s ease;
+  }
 </style>

@@ -1,5 +1,6 @@
 .grouped-list {
-  margin: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 .group {
@@ -7,14 +8,10 @@
 }
 
 .group-title {
-  padding: 10px;
-  background-color: #eee;
   cursor: pointer;
-  outline: none;
-}
-
-.group-title[aria-expanded="true"] {
-  background-color: #ccc;
+  font-weight: bold;
+  padding: 8px;
+  background-color: #f5f5f5;
 }
 
 ul {
@@ -23,19 +20,16 @@ ul {
   margin: 0;
 }
 
-.list-item {
-  padding: 10px;
-  border: 1px solid #ddd;
-  margin: 5px 0;
-  background-color: #f9f9f9;
+.item {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
-.list-item:hover {
-  background-color: #e0f7fa;
+.item:hover {
+  background-color: #e0e0e0;
 }
 
-.list-item[aria-selected="true"] {
-  background-color: #b2ebf2;
-  font-weight: bold;
+.item.selected {
+  background-color: #c0c0ff;
 }
