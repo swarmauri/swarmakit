@@ -1,5 +1,23 @@
 {
-  "dependencies": {
+  "name": "swarmakit",
+  "version": "0.0.1",
+  "private": false,
+  "workspaces": [
+    "libs/react",
+    "libs/vue",
+    "libs/sveltekit"
+  ],
+  "scripts": {
+    "build": "pnpm -r run build",               // Build all packages
+    "dev": "pnpm -r run dev",                   // Run development servers for all packages
+    "test": "pnpm -r run test",                 // Run tests across all packages
+    "lint": "pnpm -r run lint",                 // Run linters across all packages
+    "format": "pnpm -r run format"              // Format codebase across all packages
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4",                     // Shared TypeScript version
+    "eslint": "^8.0.0",                         // Linter
+    "prettier": "^2.7.1",                       // Code formatter
     "storybook": "^8.3.5"
   }
 }
