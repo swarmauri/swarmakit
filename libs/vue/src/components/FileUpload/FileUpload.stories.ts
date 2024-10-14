@@ -1,15 +1,17 @@
 import FileUpload from './FileUpload.vue';
 
 export default {
-  title: 'Forms/FileUpload',
   component: FileUpload,
+  title: 'component/Forms/FileUpload',
   tags: ['autodocs'],
   argTypes: {
-    multiple: { control: 'boolean' },
+    multiple: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { FileUpload },
   setup() {
     return { args };
@@ -34,7 +36,7 @@ MultipleFiles.args = {
 
 export const DragAndDrop = Template.bind({});
 DragAndDrop.args = {
-  multiple: true,
+  multiple: false,
 };
 
 export const Progress = Template.bind({});

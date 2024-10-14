@@ -1,61 +1,25 @@
-.scrollable-list {
-  max-height: 300px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  background-color: #f9f9f9;
+:root {
+  --list-max-height: 200px;
+  --list-border: 1px solid #ddd;
+  --list-border-radius: 4px;
+  --list-item-padding: 10px 15px;
+  --hover-bg: #e9ecef;
+  --disabled-color: #ccc;
+  --end-of-list-color: #555;
 }
 
-.list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.list-item {
-  padding: 10px;
-  margin-bottom: 5px;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.3s;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.list-item.hover {
-  background-color: #f0f0f0;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.end-of-list {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #888;
-}
-
-[aria-disabled="true"] {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-@media (max-width: 600px) {
-  .list-item {
-    font-size: 12px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .list-item {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  .list-item {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 1201px) {
-  .list-item {
-    font-size: 18px;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

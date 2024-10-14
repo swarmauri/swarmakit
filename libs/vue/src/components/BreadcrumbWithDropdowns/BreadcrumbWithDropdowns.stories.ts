@@ -1,50 +1,43 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BreadcrumbWithDropdowns from './BreadcrumbWithDropdowns.vue';
 
 export default {
-  title: 'Navigation/BreadcrumbWithDropdowns',
+  title: 'component/Navigation/BreadcrumbWithDropdowns',
   component: BreadcrumbWithDropdowns,
   tags: ['autodocs'],
-  argTypes: {
-    breadcrumbItems: { control: 'object' },
-  },
-};
+} as Meta<typeof BreadcrumbWithDropdowns>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof BreadcrumbWithDropdowns> = (args) => ({
   components: { BreadcrumbWithDropdowns },
   setup() {
     return { args };
   },
-  template: `
-    <BreadcrumbWithDropdowns v-bind="args" @select="args.selectedItem = $event" />
-  `,
+  template: '<BreadcrumbWithDropdowns v-bind="args" />',
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  breadcrumbItems: [
-    { label: 'Home' },
-    { label: 'Products', children: [{ label: 'Electronics' }, { label: 'Apparel' }] },
-    { label: 'Electronics', children: [{ label: 'Phones' }, { label: 'Laptops' }] },
-    { label: 'Phones' },
+  breadcrumbs: [
+    { name: 'Home', link: '/' },
+    { name: 'Category', dropdown: [{ name: 'Subcategory 1', link: '/subcategory1' }, { name: 'Subcategory 2', link: '/subcategory2' }] },
+    { name: 'Current Page' },
   ],
 };
 
 export const DropdownOpen = Template.bind({});
 DropdownOpen.args = {
-  breadcrumbItems: [
-    { label: 'Home' },
-    { label: 'Products', children: [{ label: 'Electronics' }, { label: 'Apparel' }] },
-    { label: 'Electronics', children: [{ label: 'Phones' }, { label: 'Laptops' }] },
-    { label: 'Phones' },
+  breadcrumbs: [
+    { name: 'Home', link: '/' },
+    { name: 'Category', dropdown: [{ name: 'Subcategory 1', link: '/subcategory1' }, { name: 'Subcategory 2', link: '/subcategory2' }] },
+    { name: 'Current Page' },
   ],
 };
 
 export const DropdownClosed = Template.bind({});
 DropdownClosed.args = {
-  breadcrumbItems: [
-    { label: 'Home' },
-    { label: 'Products', children: [{ label: 'Electronics' }, { label: 'Apparel' }] },
-    { label: 'Electronics', children: [{ label: 'Phones' }, { label: 'Laptops' }] },
-    { label: 'Phones' },
+  breadcrumbs: [
+    { name: 'Home', link: '/' },
+    { name: 'Category', dropdown: [{ name: 'Subcategory 1', link: '/subcategory1' }, { name: 'Subcategory 2', link: '/subcategory2' }] },
+    { name: 'Current Page' },
   ],
 };

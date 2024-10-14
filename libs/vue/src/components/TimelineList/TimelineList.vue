@@ -1,40 +1,36 @@
 <template>
-  <ul class="timeline-list">
+  <ul class="timeline-list" role="list">
     <li
       v-for="(item, index) in items"
       :key="item.id"
-      class="timeline-item"
       :class="{
         active: index === activeIndex,
         completed: item.completed,
-        inactive: !item.active,
+        inactive: !item.completed && index !== activeIndex
       }"
-      @mouseover="onHover(index)"
+      role="listitem"
     >
       <div class="timeline-content">
-        <span class="timeline-title">{{ item.title }}</span>
-        <span class="timeline-description">{{ item.description }}</span>
+        <span class="timeline-label">{{ item.label }}</span>
       </div>
     </li>
   </ul>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
 interface TimelineItem {
   id: number;
-  title: string;
-  description: string;
+  label: string;
   completed?: boolean;
-  active?: boolean;
 }
 
 export default defineComponent({
   name: 'TimelineList',
   props: {
     items: {
-      type: Array as () => TimelineItem[],
+      type: Array as PropType<TimelineItem[]>,
       required: true,
     },
     activeIndex: {
@@ -42,16 +38,48 @@ export default defineComponent({
       default: 0,
     },
   },
-  setup() {
-    const onHover = (index: number) => {
-      // handle hover effect
-    };
-
-    return { onHover };
-  },
 });
 </script>
 
-<style lang="css">
-@import './TimelineList.css';
+<style scoped lang="css">
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-list li {
+  padding: 10px;
+  border-left: var(--timeline-border);
+  position: relative;
+  cursor: pointer;
+}
+
+.timeline-list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--timeline-dot-bg);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.timeline-list li.active::before {
+  background-color: var(--timeline-active-dot-bg);
+}
+
+.timeline-list li.completed::before {
+  background-color: var(--timeline-completed-dot-bg);
+}
+
+.timeline-list li:hover::before {
+  background-color: var(--timeline-hover-dot-bg);
+}
+
+.timeline-list li.inactive::before {
+  background-color: var(--timeline-inactive-dot-bg);
+}
 </style>

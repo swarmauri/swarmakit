@@ -1,51 +1,33 @@
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
+:root {
+  --font-size: 16px;
+  --breadcrumb-color: #333;
+  --breadcrumb-link-color: #007bff;
+  --breadcrumb-separator: 10px;
+  --dropdown-bg: #fff;
+  --dropdown-border-color: #ccc;
+  --dropdown-hover-bg: #f1f1f1;
 }
 
-.breadcrumb ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
+@media (max-width: 480px) {
+  .breadcrumb {
+    font-size: 14px;
+  }
 }
 
-.breadcrumb li {
-  position: relative;
-  cursor: pointer;
+@media (min-width: 481px) and (max-width: 768px) {
+  .breadcrumb {
+    font-size: 15px;
+  }
 }
 
-.breadcrumb .separator {
-  margin: 0 8px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .breadcrumb {
+    font-size: 16px;
+  }
 }
 
-.breadcrumb .dropdown {
-  position: relative;
-}
-
-.breadcrumb .dropdown-toggle::after {
-  content: ' ▼';
-  font-size: 10px;
-}
-
-.breadcrumb .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  z-index: 1000;
-}
-
-.breadcrumb .dropdown-menu li {
-  padding: 8px 12px;
-  white-space: nowrap;
-}
-
-.breadcrumb .dropdown-menu li:hover {
-  background-color: #f0f0f0;
+@media (min-width: 1025px) {
+  .breadcrumb {
+    font-size: 18px;
+  }
 }

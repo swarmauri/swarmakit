@@ -1,33 +1,32 @@
 <template>
-  <div class="sortable-table" role="table" aria-label="Sortable Table">
-    <div class="table-header" role="row">
-      <div
-        v-for="column in columns"
-        :key="column.key"
-        class="table-cell header-cell"
-        @click="sortBy(column.key)"
-        role="columnheader"
-        :aria-sort="getSortDirection(column.key)"
-        :tabindex="0"
-      >
-        {{ column.label }}
-        <span v-if="sortKey === column.key" class="sort-indicator">
-          {{ sortOrder === 'asc' ? '🔼' : '🔽' }}
-        </span>
-      </div>
-    </div>
-    <div v-for="row in filteredData" :key="row.id" class="table-row" role="row">
-      <div
-        v-for="column in columns"
-        :key="column.key"
-        class="table-cell"
-        role="cell"
-        :class="{ selected: selectedRow === row.id }"
-        @click="selectRow(row.id)"
-      >
-        {{ row[column.key] }}
-      </div>
-    </div>
+  <div class="sortable-table">
+    <input 
+      type="text" 
+      v-model="filterText" 
+      class="filter-input" 
+      placeholder="Filter table..."
+      aria-label="Filter table"
+    />
+    <table>
+      <thead>
+        <tr>
+          <th v-for="column in columns" :key="column.key" @click="sortBy(column.key)">
+            {{ column.label }}
+            <span :class="getSortDirection(column.key)"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+          v-for="row in filteredAndSortedData" 
+          :key="row.id" 
+          :class="{ selected: row.id === selectedRow }" 
+          @click="selectRow(row.id)"
+        >
+          <td v-for="column in columns" :key="column.key">{{ row[column.key] }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -47,51 +46,116 @@ interface TableRow {
 export default defineComponent({
   name: 'SortableTable',
   props: {
-    data: {
-      type: Array as () => TableRow[],
-      required: true,
-    },
     columns: {
       type: Array as () => TableColumn[],
+      required: true,
+    },
+    data: {
+      type: Array as () => TableRow[],
       required: true,
     },
   },
   setup(props) {
     const sortKey = ref<string | null>(null);
-    const sortOrder = ref<'asc' | 'desc'>('asc');
+    const sortDirection = ref<1 | -1>(1);
+    const filterText = ref<string>("");
     const selectedRow = ref<number | null>(null);
 
     const sortBy = (key: string) => {
       if (sortKey.value === key) {
-        sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
+        sortDirection.value = -sortDirection.value;
       } else {
         sortKey.value = key;
-        sortOrder.value = 'asc';
+        sortDirection.value = 1;
       }
     };
 
-    const filteredData = computed(() => {
-      if (!sortKey.value) return props.data;
-      return [...props.data].sort((a, b) => {
-        if (a[sortKey.value!] < b[sortKey.value!]) return sortOrder.value === 'asc' ? -1 : 1;
-        if (a[sortKey.value!] > b[sortKey.value!]) return sortOrder.value === 'asc' ? 1 : -1;
-        return 0;
-      });
-    });
-
-    const selectRow = (rowId: number) => {
-      selectedRow.value = selectedRow.value === rowId ? null : rowId;
+    const selectRow = (id: number) => {
+      selectedRow.value = selectedRow.value === id ? null : id;
     };
 
     const getSortDirection = (key: string) => {
-      return sortKey.value === key ? (sortOrder.value === 'asc' ? 'ascending' : 'descending') : 'none';
+      if (sortKey.value === key) {
+        return sortDirection.value === 1 ? 'asc' : 'desc';
+      }
+      return '';
     };
 
-    return { sortKey, sortOrder, filteredData, selectedRow, sortBy, selectRow, getSortDirection };
+    const filteredAndSortedData = computed(() => {
+      let filteredData = props.data.filter(row => 
+        Object.values(row).some(val => val.toString().toLowerCase().includes(filterText.value.toLowerCase()))
+      );
+
+      if (sortKey.value) {
+        filteredData.sort((a, b) => {
+          const aValue = a[sortKey.value];
+          const bValue = b[sortKey.value];
+          if (aValue < bValue) return -1 * sortDirection.value;
+          if (aValue > bValue) return 1 * sortDirection.value;
+          return 0;
+        });
+      }
+
+      return filteredData;
+    });
+
+    return { sortBy, selectRow, getSortDirection, filteredAndSortedData, filterText, selectedRow };
   },
 });
 </script>
 
-<style lang="css">
-@import './SortableTable.css';
+<style scoped lang="css">
+.sortable-table {
+  --table-border: 1px solid #ccc;
+  --selected-row-bg: #f0f8ff;
+  --table-row-hover-bg: #f5f5f5;
+  --sort-icon-color: #007bff;
+  --filter-input-border: 1px solid #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  border: var(--table-border);
+  text-align: left;
+  cursor: pointer;
+}
+
+th {
+  position: relative;
+}
+
+th span {
+  position: absolute;
+  right: 10px;
+  color: var(--sort-icon-color);
+}
+
+th span.asc::after {
+  content: '▲';
+}
+
+th span.desc::after {
+  content: '▼';
+}
+
+tr:hover {
+  background-color: var(--table-row-hover-bg);
+}
+
+tr.selected {
+  background-color: var(--selected-row-bg);
+}
+
+.filter-input {
+  margin-bottom: 10px;
+  padding: 6px;
+  border: var(--filter-input-border);
+  width: 100%;
+  box-sizing: border-box;
+}
 </style>

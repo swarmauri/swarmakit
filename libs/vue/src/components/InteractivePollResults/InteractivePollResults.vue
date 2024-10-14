@@ -1,19 +1,21 @@
 <template>
-  <div class="poll-results" role="region" aria-live="polite" :aria-label="status">
-    <h2>{{ pollTitle }}</h2>
+  <div class="poll-results" role="region" aria-live="polite">
+    <h2>{{ title }}</h2>
     <ul>
-      <li v-for="option in options" :key="option.id" class="poll-option">
-        <span>{{ option.text }}</span>
-        <div class="progress-bar" :style="{ width: option.percentage + '%' }"></div>
-        <span class="percentage">{{ option.percentage }}%</span>
+      <li v-for="option in options" :key="option.id" :aria-label="`${option.text}: ${option.percentage}%`">
+        <span class="option-text">{{ option.text }}</span>
+        <div class="progress-bar" :style="{ '--progress': `${option.percentage}%` }">
+          <span class="percentage">{{ option.percentage }}%</span>
+        </div>
       </li>
     </ul>
-    <p class="status">{{ status }}</p>
+    <div v-if="state === 'completed'" class="poll-status">Poll Completed</div>
+    <div v-if="state === 'closed'" class="poll-status">Poll Closed</div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
 interface PollOption {
   id: number;
@@ -24,22 +26,52 @@ interface PollOption {
 export default defineComponent({
   name: 'InteractivePollResults',
   props: {
-    pollTitle: {
+    title: {
       type: String,
       required: true,
     },
     options: {
-      type: Array as () => PollOption[],
+      type: Array as PropType<PollOption[]>,
       required: true,
     },
-    status: {
-      type: String,
+    state: {
+      type: String as PropType<'live' | 'completed' | 'closed'>,
       required: true,
     },
   },
 });
 </script>
 
-<style lang="css">
-@import './InteractivePollResults.css';
+<style scoped lang="css">
+.poll-results {
+  font-size: var(--poll-font-size, 16px);
+  color: var(--poll-text-color, #000);
+}
+
+.option-text {
+  margin-right: 10px;
+}
+
+.progress-bar {
+  display: inline-block;
+  width: calc(var(--progress) + 2px);
+  height: var(--progress-bar-height, 20px);
+  background-color: var(--progress-bar-color, #007bff);
+  position: relative;
+  overflow: hidden;
+}
+
+.percentage {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--percentage-text-color, #fff);
+}
+
+.poll-status {
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--status-text-color, #ff0000);
+}
 </style>

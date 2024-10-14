@@ -1,39 +1,25 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import SkeletonLoading from './SkeletonLoading.vue';
 
 export default {
-  title: 'Miscellaneous/SkeletonLoading',
+  title: 'component/Miscellaneous/SkeletonLoading',
   component: SkeletonLoading,
   tags: ['autodocs'],
-  argTypes: {
-    loading: { control: 'boolean' },
-  },
-};
+} as Meta<typeof SkeletonLoading>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof SkeletonLoading> = (args) => ({
   components: { SkeletonLoading },
   setup() {
     return { args };
   },
-  template: `
-    <SkeletonLoading v-bind="args">
-      <div style="padding: 16px; background-color: #f8f8f8;">
-        Content loaded
-      </div>
-    </SkeletonLoading>
-  `,
+  template: '<SkeletonLoading v-bind="args">Content loaded</SkeletonLoading>',
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  loading: true,
-};
+Default.args = { loading: false };
 
 export const Loading = Template.bind({});
-Loading.args = {
-  loading: true,
-};
+Loading.args = { loading: true };
 
 export const Active = Template.bind({});
-Active.args = {
-  loading: false,
-};
+Active.args = { loading: false };

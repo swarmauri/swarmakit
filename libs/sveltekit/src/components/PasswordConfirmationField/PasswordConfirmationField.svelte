@@ -3,49 +3,33 @@
   export let confirmPassword: string = '';
   export let disabled: boolean = false;
 
-  $: isMatching = password === confirmPassword;
+  let passwordsMatch: boolean = true;
+
+  $: passwordsMatch = password === confirmPassword;
 </script>
 
-<div class="password-confirmation-field">
-  <input 
-    type="password" 
-    bind:value={password} 
-    placeholder="Enter password" 
-    {disabled} 
-    aria-label="Password" 
+<div class="password-confirmation-field" aria-label="Password Confirmation Field">
+  <input
+    type="password"
+    bind:value={password}
+    placeholder="Enter password"
+    disabled={disabled}
+    aria-disabled={disabled}
+    aria-label="Password"
   />
-  <input 
-    type="password" 
-    bind:value={confirmPassword} 
-    placeholder="Confirm password" 
-    {disabled} 
-    aria-label="Confirm password" 
-    aria-describedby="password-match-status"
+  <input
+    type="password"
+    bind:value={confirmPassword}
+    placeholder="Confirm password"
+    disabled={disabled}
+    aria-disabled={disabled}
+    aria-label="Confirm Password"
   />
-  <span id="password-match-status" class:isMatching={isMatching}>
-    {isMatching ? 'Passwords match' : 'Passwords do not match'}
-  </span>
+  {#if !passwordsMatch}
+    <p class="error" aria-live="assertive">Passwords do not match</p>
+  {/if}
 </div>
 
 <style lang="css">
-  .password-confirmation-field {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .password-confirmation-field input[type="password"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 5px;
-    font-size: 16px;
-  }
-
-  .password-confirmation-field span {
-    font-size: 14px;
-    color: red;
-  }
-
-  .password-confirmation-field span.isMatching {
-    color: green;
-  }
+  @import './PasswordConfirmationField.css';
 </style>

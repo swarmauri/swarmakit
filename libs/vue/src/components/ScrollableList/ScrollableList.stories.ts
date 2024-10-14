@@ -1,26 +1,29 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ScrollableList from './ScrollableList.vue';
 
 export default {
-  title: 'Lists/ScrollableList',
+  title: 'component/Lists/ScrollableList',
   component: ScrollableList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
+    items: { control: 'object' },
     disabled: { control: 'boolean' },
   },
-};
+} as Meta<typeof ScrollableList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ScrollableList> = (args) => ({
   components: { ScrollableList },
   setup() {
     return { args };
   },
-  template: '<ScrollableList v-bind="args" />',
+  template: `
+    <ScrollableList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, name: `Item ${i + 1}` })),
+  items: Array.from({ length: 20 }, (_, i) => ({ id: i, label: `Item ${i + 1}` })),
   disabled: false,
 };
 
@@ -31,13 +34,16 @@ Scrolling.args = {
 
 export const EndOfList = Template.bind({});
 EndOfList.args = {
-  items: Array.from({ length: 5 }, (_, i) => ({ id: i + 1, name: `Item ${i + 1}` })),
-  disabled: false,
+  ...Default.args,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   ...Default.args,
+};
+Hover.play = async ({ args, canvasElement }) => {
+  const item = canvasElement.querySelector('.scrollable-list-item:nth-child(2)');
+  item.dispatchEvent(new Event('mouseover'));
 };
 
 export const Disabled = Template.bind({});

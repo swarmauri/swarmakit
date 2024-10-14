@@ -1,23 +1,24 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import StatusDots from './StatusDots.vue';
 
 export default {
-  title: 'Indicators/StatusDots',
+  title: 'component/Indicators/StatusDots',
   component: StatusDots,
   tags: ['autodocs'],
   argTypes: {
     status: {
-      control: { type: 'select', options: ['online', 'offline', 'busy', 'idle'] },
-      description: 'The current status represented by the dot',
+      control: 'select',
+      options: ['online', 'offline', 'busy', 'idle'],
     },
   },
-};
+} as Meta<typeof StatusDots>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof StatusDots> = (args) => ({
   components: { StatusDots },
   setup() {
     return { args };
   },
-  template: '<StatusDots v-bind="args" />',
+  template: `<StatusDots v-bind="args" />`,
 });
 
 export const Default = Template.bind({});

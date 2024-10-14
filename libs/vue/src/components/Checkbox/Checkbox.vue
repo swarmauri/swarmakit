@@ -1,25 +1,26 @@
 <template>
   <div class="checkbox-container">
-    <input
-      type="checkbox"
-      :id="id"
-      :checked="checked"
-      :disabled="disabled"
-      @change="toggle"
-      :aria-checked="checked"
-      :aria-disabled="disabled"
+    <input 
+      type="checkbox" 
+      :checked="checked" 
+      :disabled="disabled" 
+      @change="$emit('update:checked', $event.target.checked)" 
+      :aria-checked="checked.toString()" 
+      :aria-disabled="disabled.toString()"
     />
-    <label :for="id"><slot /></label>
+    <label :class="{ 'checkbox--disabled': disabled }">
+      <slot />
+    </label>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Checkbox',
   props: {
-    modelValue: {
+    checked: {
       type: Boolean,
       default: false,
     },
@@ -27,33 +28,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    id: {
-      type: String,
-      default: () => `checkbox-${Math.random().toString(36).substr(2, 9)}`,
-    },
-  },
-  emits: ['update:modelValue'],
-  setup(props, { emit }) {
-    const checked = ref(props.modelValue);
-
-    const toggle = () => {
-      if (!props.disabled) {
-        emit('update:modelValue', !checked.value);
-      }
-    };
-
-    watch(() => props.modelValue, (newVal) => {
-      checked.value = newVal;
-    });
-
-    return {
-      checked,
-      toggle,
-    };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './Checkbox.css';
 </style>

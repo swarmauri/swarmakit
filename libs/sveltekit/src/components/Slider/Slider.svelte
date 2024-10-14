@@ -1,46 +1,26 @@
 <script lang="ts">
+  export let value: number = 50;
   export let min: number = 0;
   export let max: number = 100;
-  export let value: number = 50;
   export let isDisabled: boolean = false;
-
-  function handleChange(event: Event) {
-    const target = event.target as HTMLInputElement;
-    value = parseInt(target.value, 10);
-  }
+  export let step: number = 1;
 </script>
 
-<div class="slider-container">
-  <input
-    type="range"
-    class="slider"
-    {min}
-    {max}
-    bind:value
-    aria-disabled={isDisabled}
-    {isDisabled}
-    on:input={handleChange}
-  />
-  <span class="value-label">{value}</span>
-</div>
+<input
+  type="range"
+  class="slider"
+  min={min}
+  max={max}
+  step={step}
+  value={value}
+  disabled={isDisabled}
+  aria-valuemin={min}
+  aria-valuemax={max}
+  aria-valuenow={value}
+  aria-label="Slider"
+  tabindex="0"
+/>
 
 <style lang="css">
-  .slider-container {
-    display: flex;
-    align-items: center;
-  }
-
-  .slider {
-    flex: 1;
-    margin-right: 10px;
-  }
-
-  .slider[aria-disabled='true'] {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  .value-label {
-    font-size: 16px;
-  }
+  @import './Slider.css';
 </style>

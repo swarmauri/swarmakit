@@ -1,17 +1,18 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Chips from './Chips.vue';
 
 export default {
-  title: 'Miscellaneous/Chips',
+  title: 'component/Miscellaneous/Chips',
   component: Chips,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
     selectable: { control: 'boolean' },
     removable: { control: 'boolean' },
+    grouped: { control: 'boolean' },
   },
-};
+} as Meta<typeof Chips>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Chips> = (args) => ({
   components: { Chips },
   setup() {
     return { args };
@@ -21,32 +22,28 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  items: [{ label: 'Chip 1' }, { label: 'Chip 2' }, { label: 'Chip 3' }],
   selectable: false,
   removable: false,
+  grouped: false,
 };
 
 export const Selectable = Template.bind({});
 Selectable.args = {
-  items: [{ label: 'Selectable 1' }, { label: 'Selectable 2' }],
   selectable: true,
   removable: false,
+  grouped: false,
 };
 
 export const Removable = Template.bind({});
 Removable.args = {
-  items: [{ label: 'Removable 1' }, { label: 'Removable 2' }],
   selectable: false,
   removable: true,
+  grouped: false,
 };
 
 export const Grouped = Template.bind({});
 Grouped.args = {
-  items: [
-    { label: 'Grouped 1' },
-    { label: 'Grouped 2' },
-    { label: 'Grouped 3' },
-  ],
-  selectable: true,
-  removable: true,
+  selectable: false,
+  removable: false,
+  grouped: true,
 };

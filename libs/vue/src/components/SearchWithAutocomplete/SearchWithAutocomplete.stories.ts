@@ -1,15 +1,13 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import SearchWithAutocomplete from './SearchWithAutocomplete.vue';
 
 export default {
-  title: 'Miscellaneous/SearchWithAutocomplete',
+  title: 'component/Miscellaneous/SearchWithAutocomplete',
   component: SearchWithAutocomplete,
   tags: ['autodocs'],
-  argTypes: {
-    results: { control: 'array' },
-  },
-};
+} as Meta<typeof SearchWithAutocomplete>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof SearchWithAutocomplete> = (args) => ({
   components: { SearchWithAutocomplete },
   setup() {
     return { args };
@@ -18,24 +16,13 @@ const Template = (args: any) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  results: ['Apple', 'Banana', 'Orange', 'Grapes', 'Watermelon'],
-};
+Default.args = { options: ['Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape'] };
 
 export const Typing = Template.bind({});
-Typing.args = {
-  results: ['Apple', 'Banana', 'Orange', 'Grapes', 'Watermelon'],
-  query: 'Ap',
-};
+Typing.args = { options: ['Apple', 'Banana', 'Cherry'], query: 'Ap' };
 
 export const ShowingResults = Template.bind({});
-ShowingResults.args = {
-  results: ['Apple', 'Banana', 'Orange', 'Grapes', 'Watermelon'],
-  query: 'Ap',
-};
+ShowingResults.args = { options: ['Apple', 'Banana', 'Cherry'], query: 'B' };
 
 export const NoResults = Template.bind({});
-NoResults.args = {
-  results: [],
-  query: 'Unknown',
-};
+NoResults.args = { options: ['Apple', 'Banana', 'Cherry'], query: 'Xylophone' };

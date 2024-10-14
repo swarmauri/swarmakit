@@ -1,20 +1,17 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import VideoPlayerAdvanced from './VideoPlayerAdvanced.vue';
 
 export default {
-  title: 'Media/VideoPlayerAdvanced',
+  title: 'component/Media/VideoPlayerAdvanced',
   component: VideoPlayerAdvanced,
   tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: ['Play', 'Pause', 'Fullscreen', 'Buffering', 'Subtitles On', 'Subtitles Off', 'PiP Mode'],
-    },
-    videoSource: { control: 'text' },
-    subtitles: { control: 'boolean' },
+    videoSrc: { control: 'text' },
+    subtitlesSrc: { control: 'text' },
   },
-};
+} as Meta<typeof VideoPlayerAdvanced>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof VideoPlayerAdvanced> = (args) => ({
   components: { VideoPlayerAdvanced },
   setup() {
     return { args };
@@ -24,49 +21,36 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'Pause',
-  videoSource: 'path/to/your/video.mp4',
-  subtitles: false,
+  videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
+  subtitlesSrc: 'https://example.com/subtitles.vtt',
 };
 
 export const Play = Template.bind({});
 Play.args = {
-  state: 'Play',
-  videoSource: 'path/to/your/video.mp4',
-  subtitles: false,
+  ...Default.args,
+};
+
+export const Pause = Template.bind({});
+Pause.args = {
+  ...Default.args,
 };
 
 export const Fullscreen = Template.bind({});
 Fullscreen.args = {
-  state: 'Fullscreen',
-  videoSource: 'path/to/your/video.mp4',
-  subtitles: false,
+  ...Default.args,
 };
 
 export const Buffering = Template.bind({});
 Buffering.args = {
-  state: 'Buffering',
-  videoSource: 'path/to/your/video.mp4',
-  subtitles: false,
+  ...Default.args,
 };
 
-export const SubtitlesOn = Template.bind({});
-SubtitlesOn.args = {
-  state: 'Subtitles On',
-  videoSource: 'path/to/your/video.mp4',
-  subtitles: true,
-};
-
-export const SubtitlesOff = Template.bind({});
-SubtitlesOff.args = {
-  state: 'Subtitles Off',
-  videoSource: 'path/to/your/video.mp4',
-  subtitles: false,
+export const SubtitlesOnOff = Template.bind({});
+SubtitlesOnOff.args = {
+  ...Default.args,
 };
 
 export const PiPMode = Template.bind({});
 PiPMode.args = {
-  state: 'PiP Mode',
-  videoSource: 'path/to/your/video.mp4',
-  subtitles: false,
+  ...Default.args,
 };

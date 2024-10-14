@@ -1,23 +1,24 @@
 <template>
-  <div class="validation-message" :class="type" role="alert" :aria-live="type === 'error' ? 'assertive' : 'polite'">
+  <div :class="['validation-message', type]" role="alert" aria-live="assertive">
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ValidationMessages',
   props: {
     type: {
-      type: String as PropType<'success' | 'error' | 'warning'>,
-      required: true,
+      type: String as () => 'success' | 'error' | 'warning',
+      default: 'success',
+      validator: (value: string) => ['success', 'error', 'warning'].includes(value),
     },
   },
 });
 </script>
 
-<style lang="css">
+<style scoped>
 @import './ValidationMessages.css';
 </style>

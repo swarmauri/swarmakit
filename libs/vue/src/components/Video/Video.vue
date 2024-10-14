@@ -1,14 +1,18 @@
 <template>
-  <div class="video" role="region" aria-label="Video Component">
-    <div v-if="state === 'Uploading'" class="status uploading">
-      Uploading...
-    </div>
-    <video v-if="state !== 'Uploading'" ref="videoRef" controls @pause="onPause" @ended="onComplete">
-      <source :src="videoSource" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div v-if="state === 'Error'" class="status error" aria-live="assertive">
-      Error: Unable to load video.
+  <div class="video-container" role="region" aria-label="Video Player">
+    <video
+      ref="videoElement"
+      :src="videoSrc"
+      @play="onPlay"
+      @pause="onPause"
+      controls
+      class="video-element"
+    ></video>
+    <div class="status" aria-live="polite">
+      <span v-if="isUploading" class="status-text">Uploading...</span>
+      <span v-if="isPaused" class="status-text">Paused</span>
+      <span v-if="isCompleted" class="status-text">Completed</span>
+      <span v-if="isError" class="status-text">Error</span>
     </div>
   </div>
 </template>
@@ -19,31 +23,62 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   name: 'Video',
   props: {
-    state: {
-      type: String,
-      default: 'Paused',
-    },
-    videoSource: {
+    videoSrc: {
       type: String,
       required: true,
     },
+    initialState: {
+      type: String as () => 'uploading' | 'paused' | 'completed' | 'error',
+      default: 'paused',
+    },
   },
   setup(props) {
-    const videoRef = ref<HTMLVideoElement | null>(null);
+    const isUploading = ref(props.initialState === 'uploading');
+    const isPaused = ref(props.initialState === 'paused');
+    const isCompleted = ref(props.initialState === 'completed');
+    const isError = ref(props.initialState === 'error');
+    const videoElement = ref<HTMLVideoElement | null>(null);
+
+    const onPlay = () => {
+      isPaused.value = false;
+    };
 
     const onPause = () => {
-      props.state = 'Paused';
+      isPaused.value = true;
     };
 
-    const onComplete = () => {
-      props.state = 'Completed';
+    return {
+      isUploading,
+      isPaused,
+      isCompleted,
+      isError,
+      videoElement,
+      onPlay,
+      onPause,
     };
-
-    return { videoRef, onPause, onComplete };
   },
 });
 </script>
 
-<style lang="css">
-@import './Video.css';
+<style scoped lang="css">
+.video-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--video-bg-color);
+}
+
+.video-element {
+  width: 100%;
+  display: block;
+}
+
+.status {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.status-text {
+  color: var(--status-text-color);
+}
 </style>

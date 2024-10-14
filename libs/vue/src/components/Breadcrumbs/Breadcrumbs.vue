@@ -1,28 +1,43 @@
 <template>
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <ol>
-      <li v-for="(item, index) in breadcrumbItems" :key="item.label" :class="{ active: index === activeIndex }">
-        <span @click="navigateTo(item)">
-          {{ index === activeIndex ? item.label : truncate(item.label) }}
+  <nav aria-label="Breadcrumb" class="breadcrumbs">
+    <ol class="breadcrumbs-list">
+      <li
+        v-for="(crumb, index) in breadcrumbs"
+        :key="index"
+        :class="['breadcrumbs-item', { active: index === activeIndex }]"
+      >
+        <span
+          v-if="index === activeIndex"
+          aria-current="page"
+          class="breadcrumbs-link"
+        >
+          {{ crumb.name }}
         </span>
-        <span v-if="index < breadcrumbItems.length - 1" class="separator">/</span>
+        <span
+          v-else
+          class="breadcrumbs-link"
+          @click="navigateTo(crumb.link)"
+        >
+          {{ crumb.name }}
+        </span>
       </li>
     </ol>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 
-interface BreadcrumbItem {
-  label: string;
+interface Breadcrumb {
+  name: string;
+  link?: string;
 }
 
 export default defineComponent({
   name: 'Breadcrumbs',
   props: {
-    breadcrumbItems: {
-      type: Array as PropType<BreadcrumbItem[]>,
+    breadcrumbs: {
+      type: Array as () => Breadcrumb[],
       required: true,
     },
     activeIndex: {
@@ -31,16 +46,40 @@ export default defineComponent({
     },
   },
   methods: {
-    truncate(label: string) {
-      return label.length > 10 ? label.slice(0, 7) + '...' : label;
-    },
-    navigateTo(item: BreadcrumbItem) {
-      this.$emit('navigate', item);
+    navigateTo(link?: string) {
+      if (link) {
+        window.location.href = link;
+      }
     },
   },
 });
 </script>
 
-<style lang="css">
-@import './Breadcrumbs.css';
+<style scoped lang="css">
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size, 16px);
+  color: var(--breadcrumb-color, #333);
+}
+
+.breadcrumbs-list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.breadcrumbs-item {
+  margin-right: var(--breadcrumb-separator, 10px);
+}
+
+.breadcrumbs-link {
+  cursor: pointer;
+  color: var(--breadcrumb-link-color, #007bff);
+}
+
+.breadcrumbs-item.active .breadcrumbs-link {
+  font-weight: bold;
+  color: var(--active-breadcrumb-color, #000);
+}
 </style>

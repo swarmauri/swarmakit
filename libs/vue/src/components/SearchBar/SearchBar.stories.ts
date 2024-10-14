@@ -1,38 +1,55 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import SearchBar from './SearchBar.vue';
 
 export default {
-  title: 'Input/SearchBar',
+  title: 'component/Input/SearchBar',
   component: SearchBar,
   tags: ['autodocs'],
   argTypes: {
-    disabled: { control: 'boolean' },
+    placeholder: {
+      control: 'text',
+    },
+    isFocused: {
+      control: 'boolean',
+    },
+    isDisabled: {
+      control: 'boolean',
+    },
   },
-};
+} as Meta<typeof SearchBar>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof SearchBar> = (args) => ({
   components: { SearchBar },
   setup() {
     return { args };
   },
-  template: '<SearchBar v-bind="args" />',
+  template: `<SearchBar v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  disabled: false,
+  placeholder: 'Search...',
+  isFocused: false,
+  isDisabled: false,
 };
 
 export const Focused = Template.bind({});
 Focused.args = {
-  disabled: false,
+  placeholder: 'Search...',
+  isFocused: true,
+  isDisabled: false,
 };
 
 export const Unfocused = Template.bind({});
 Unfocused.args = {
-  disabled: false,
+  placeholder: 'Search...',
+  isFocused: false,
+  isDisabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true,
+  placeholder: 'Search...',
+  isFocused: false,
+  isDisabled: true,
 };

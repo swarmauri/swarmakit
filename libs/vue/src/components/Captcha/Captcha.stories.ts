@@ -1,16 +1,17 @@
 import Captcha from './Captcha.vue';
 
 export default {
-  title: 'Forms/Captcha',
   component: Captcha,
+  title: 'component/Forms/Captcha',
   tags: ['autodocs'],
   argTypes: {
-    solved: { control: 'boolean' },
-    error: { control: 'boolean' },
+    captchaText: {
+      control: { type: 'text' },
+    },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { Captcha },
   setup() {
     return { args };
@@ -20,18 +21,15 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  solved: false,
-  error: false,
+  captchaText: 'Please solve the captcha',
 };
 
 export const Solved = Template.bind({});
 Solved.args = {
-  solved: true,
-  error: false,
+  captchaText: '✔ Solved',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  solved: false,
-  error: true,
+  captchaText: 'Error: Incorrect solution',
 };

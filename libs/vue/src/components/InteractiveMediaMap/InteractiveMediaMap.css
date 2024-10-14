@@ -1,81 +1,34 @@
-.interactive-media-map {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  height: 400px;
-  border: 1px solid #ccc;
-  overflow: hidden;
+:root {
+  --map-bg-color: #e0e0e0;
+  --marker-bg-color: #ff0000;
+  --marker-hover-bg-color: #ff5555;
+  --button-bg-color: rgba(0, 0, 0, 0.5);
+  --button-text-color: #fff;
+  --info-bg-color: rgba(255, 255, 255, 0.9);
+  --info-text-color: #000;
+  --loading-text-color: #333;
 }
 
-.map-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.map {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: #e0e0e0;
-  cursor: pointer;
-}
-
-.marker {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.marker-info {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 1.5rem;
-  color: #666;
-}
-
-.interactive-media-map.zoomed-in .map {
-  transform: scale(1.2);
-}
-
-.interactive-media-map.marker-selected .marker {
-  background-color: blue;
-}
-
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .interactive-media-map {
-    height: 300px;
+    max-width: 100%;
   }
 }
 
-@media (min-width: 601px) and (max-width: 900px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .interactive-media-map {
-    height: 350px;
+    max-width: 90%;
   }
 }
 
-@media (min-width: 901px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .interactive-media-map {
-    height: 400px;
+    max-width: 95%;
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1025px) {
   .interactive-media-map {
-    height: 450px;
+    max-width: 100%;
   }
 }

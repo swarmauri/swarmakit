@@ -1,16 +1,16 @@
 import ToggleSwitch from './ToggleSwitch.vue';
 
 export default {
-  title: 'Forms/ToggleSwitch',
   component: ToggleSwitch,
+  title: 'component/Forms/ToggleSwitch',
   tags: ['autodocs'],
   argTypes: {
-    modelValue: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    checked: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { ToggleSwitch },
   setup() {
     return { args };
@@ -20,24 +20,24 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  modelValue: false,
+  checked: false,
   disabled: false,
 };
 
 export const On = Template.bind({});
 On.args = {
-  modelValue: true,
+  checked: true,
   disabled: false,
 };
 
 export const Off = Template.bind({});
 Off.args = {
-  modelValue: false,
+  checked: false,
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  modelValue: false,
+  checked: false,
   disabled: true,
 };

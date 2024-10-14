@@ -1,51 +1,40 @@
 <template>
   <div class="date-picker-container">
-    <input
-      v-if="!range && !timePicker"
-      type="date"
-      :value="modelValue"
-      :aria-disabled="disabled"
-      :disabled="disabled"
-      @input="updateDate"
+    <input 
+      type="date" 
+      :value="startDate" 
+      :disabled="disabled" 
+      @input="updateStartDate" 
+      aria-label="Start Date"
+      :aria-disabled="disabled.toString()"
     />
-    <div v-if="range" class="date-range-picker">
-      <input
-        type="date"
-        :value="startDate"
-        :aria-disabled="disabled"
-        :disabled="disabled"
-        @input="updateStartDate"
-      />
-      <span>to</span>
-      <input
-        type="date"
-        :value="endDate"
-        :aria-disabled="disabled"
-        :disabled="disabled"
-        @input="updateEndDate"
-      />
-    </div>
-    <input
-      v-if="timePicker"
-      type="datetime-local"
-      :value="modelValue"
-      :aria-disabled="disabled"
-      :disabled="disabled"
-      @input="updateDateTime"
+    <input 
+      v-if="isDateRange" 
+      type="date" 
+      :value="endDate" 
+      :disabled="disabled" 
+      @input="updateEndDate" 
+      aria-label="End Date"
+      :aria-disabled="disabled.toString()"
+    />
+    <input 
+      v-if="isTimePicker" 
+      type="time" 
+      :value="selectedTime" 
+      :disabled="disabled" 
+      @input="updateTime" 
+      aria-label="Time Picker"
+      :aria-disabled="disabled.toString()"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'DatePicker',
   props: {
-    modelValue: {
-      type: String,
-      default: '',
-    },
     startDate: {
       type: String,
       default: '',
@@ -54,59 +43,40 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    selectedTime: {
+      type: String,
+      default: '',
+    },
+    isDateRange: {
+      type: Boolean,
+      default: false,
+    },
+    isTimePicker: {
+      type: Boolean,
+      default: false,
+    },
     disabled: {
       type: Boolean,
       default: false,
     },
-    range: {
-      type: Boolean,
-      default: false,
-    },
-    timePicker: {
-      type: Boolean,
-      default: false,
-    },
   },
-  emits: ['update:modelValue', 'update:startDate', 'update:endDate'],
-  setup(props, { emit }) {
-    const updateDate = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      if (!props.disabled) {
-        emit('update:modelValue', target.value);
-      }
-    };
-
-    const updateStartDate = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      if (!props.disabled) {
-        emit('update:startDate', target.value);
-      }
-    };
-
-    const updateEndDate = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      if (!props.disabled) {
-        emit('update:endDate', target.value);
-      }
-    };
-
-    const updateDateTime = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      if (!props.disabled) {
-        emit('update:modelValue', target.value);
-      }
-    };
-
-    return {
-      updateDate,
-      updateStartDate,
-      updateEndDate,
-      updateDateTime,
-    };
+  methods: {
+    updateStartDate(event: Event) {
+      const input = event.target as HTMLInputElement;
+      this.$emit('update:startDate', input.value);
+    },
+    updateEndDate(event: Event) {
+      const input = event.target as HTMLInputElement;
+      this.$emit('update:endDate', input.value);
+    },
+    updateTime(event: Event) {
+      const input = event.target as HTMLInputElement;
+      this.$emit('update:selectedTime', input.value);
+    },
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './DatePicker.css';
 </style>

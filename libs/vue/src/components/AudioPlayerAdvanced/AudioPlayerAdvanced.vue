@@ -1,49 +1,38 @@
 <template>
-  <div class="audio-player-advanced" role="region" aria-label="Advanced Audio Player">
-    <audio ref="audio" :src="src" @timeupdate="updateProgress" @ended="onAudioEnd" />
-    <div class="controls">
-      <button @click="togglePlay" aria-pressed="isPlaying" class="control-button">
-        {{ isPlaying ? 'Pause' : 'Play' }}
-      </button>
-      <button @click="toggleMute" aria-pressed="isMuted" class="control-button">
-        {{ isMuted ? 'Unmute' : 'Mute' }}
-      </button>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        v-model="volume"
-        @input="changeVolume"
-        aria-label="Volume Control"
-        class="volume-slider"
-      />
-      <input
-        type="range"
-        min="0.5"
-        max="2"
-        step="0.1"
-        v-model="playbackRate"
-        @input="changeSpeed"
-        aria-label="Speed Control"
-        class="speed-slider"
-      />
-    </div>
-    <div class="progress-bar" role="progressbar" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">
-      <input
-        type="range"
-        min="0"
-        max="100"
-        v-model="progress"
-        @input="seekAudio"
-        class="seek-slider"
-        aria-label="Seek Control"
-      />
-    </div>
+  <div class="audio-player-advanced" role="region" aria-label="Advanced audio player">
+    <audio ref="audioElement" :src="src" @loadeddata="onLoadedData"></audio>
+    <button @click="togglePlay" class="control-button" aria-label="Play/Pause">
+      {{ isPlaying ? 'Pause' : 'Play' }}
+    </button>
+    <button @click="toggleMute" class="control-button" aria-label="Mute/Unmute">
+      {{ isMuted ? 'Unmute' : 'Mute' }}
+    </button>
+    <input
+      type="range"
+      class="volume-control"
+      min="0"
+      max="1"
+      step="0.1"
+      v-model="volume"
+      @input="changeVolume"
+      aria-label="Volume control"
+    />
+    <input
+      type="range"
+      class="seek-bar"
+      :max="duration"
+      v-model="currentTime"
+      @input="seekAudio"
+      aria-label="Seek control"
+    />
+    <select v-model="playbackRate" @change="changeSpeed" aria-label="Playback speed control">
+      <option v-for="rate in playbackRates" :key="rate" :value="rate">{{ rate }}x</option>
+    </select>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 
 export default defineComponent({
   name: 'AudioPlayerAdvanced',
@@ -54,68 +43,112 @@ export default defineComponent({
     },
   },
   setup() {
-    const audio = ref<HTMLAudioElement | null>(null);
+    const audioElement = ref<HTMLAudioElement | null>(null);
     const isPlaying = ref(false);
     const isMuted = ref(false);
-    const volume = ref(100);
-    const playbackRate = ref(1.0);
-    const progress = ref(0);
+    const volume = ref(1);
+    const currentTime = ref(0);
+    const duration = ref(0);
+    const playbackRate = ref(1);
+    const playbackRates = [0.5, 1, 1.5, 2];
 
     const togglePlay = () => {
-      if (audio.value) {
+      if (audioElement.value) {
         if (isPlaying.value) {
-          audio.value.pause();
+          audioElement.value.pause();
         } else {
-          audio.value.play();
+          audioElement.value.play();
         }
         isPlaying.value = !isPlaying.value;
       }
     };
 
     const toggleMute = () => {
-      if (audio.value) {
-        isMuted.value = !isMuted.value;
-        audio.value.muted = isMuted.value;
+      if (audioElement.value) {
+        audioElement.value.muted = !audioElement.value.muted;
+        isMuted.value = audioElement.value.muted;
       }
     };
 
     const changeVolume = () => {
-      if (audio.value) {
-        audio.value.volume = volume.value / 100;
-      }
-    };
-
-    const changeSpeed = () => {
-      if (audio.value) {
-        audio.value.playbackRate = playbackRate.value;
+      if (audioElement.value) {
+        audioElement.value.volume = volume.value;
       }
     };
 
     const seekAudio = () => {
-      if (audio.value) {
-        const seekTime = (progress.value / 100) * audio.value.duration;
-        audio.value.currentTime = seekTime;
+      if (audioElement.value) {
+        audioElement.value.currentTime = currentTime.value;
       }
     };
 
-    const updateProgress = () => {
-      if (audio.value) {
-        progress.value = (audio.value.currentTime / audio.value.duration) * 100;
+    const changeSpeed = () => {
+      if (audioElement.value) {
+        audioElement.value.playbackRate = playbackRate.value;
       }
     };
 
-    const onAudioEnd = () => {
-      isPlaying.value = false;
+    const onLoadedData = () => {
+      if (audioElement.value) {
+        volume.value = audioElement.value.volume;
+        duration.value = audioElement.value.duration;
+      }
     };
 
-    watch(volume, changeVolume);
-    watch(playbackRate, changeSpeed);
+    onMounted(() => {
+      if (audioElement.value) {
+        audioElement.value.addEventListener('timeupdate', () => {
+          currentTime.value = audioElement.value.currentTime;
+        });
+      }
+    });
 
-    return { audio, isPlaying, togglePlay, isMuted, toggleMute, volume, progress, seekAudio, playbackRate };
+    return {
+      isPlaying,
+      isMuted,
+      volume,
+      currentTime,
+      duration,
+      playbackRate,
+      playbackRates,
+      togglePlay,
+      toggleMute,
+      changeVolume,
+      seekAudio,
+      changeSpeed,
+      onLoadedData,
+    };
   },
 });
 </script>
 
-<style lang="css">
-@import './AudioPlayerAdvanced.css';
+<style scoped lang="css">
+.audio-player-advanced {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--player-bg-color);
+  border-radius: 5px;
+}
+
+.control-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.volume-control,
+.seek-bar {
+  width: 100px;
+}
+
+select {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid var(--button-bg-color);
+}
 </style>

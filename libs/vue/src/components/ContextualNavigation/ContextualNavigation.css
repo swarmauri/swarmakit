@@ -1,28 +1,32 @@
-.contextual-navigation {
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 200px;
+:root {
+  --font-size: 16px;
+  --toggle-bg-color: #007bff;
+  --toggle-text-color: #fff;
+  --button-font-size: 16px;
+  --menu-bg-color: #fff;
+  --menu-link-color: #007bff;
 }
 
-.contextual-navigation button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
+@media (max-width: 480px) {
+  .contextual-navigation {
+    font-size: 14px;
+  }
 }
 
-.contextual-navigation ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0;
+@media (min-width: 481px) and (max-width: 768px) {
+  .contextual-navigation {
+    font-size: 15px;
+  }
 }
 
-.contextual-navigation li {
-  margin: 5px 0;
-  cursor: pointer;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contextual-navigation {
+    font-size: 16px;
+  }
 }
 
-.contextual-navigation li span:hover {
-  text-decoration: underline;
+@media (min-width: 1025px) {
+  .contextual-navigation {
+    font-size: 18px;
+  }
 }

@@ -1,55 +1,56 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ChatBubble from './ChatBubble.vue';
 
 export default {
-  title: 'Miscellaneous/ChatBubble',
+  title: 'component/Miscellaneous/ChatBubble',
   component: ChatBubble,
   tags: ['autodocs'],
   argTypes: {
-    message: { control: 'text' },
     read: { control: 'boolean' },
     unread: { control: 'boolean' },
+    active: { control: 'boolean' },
   },
-};
+} as Meta<typeof ChatBubble>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ChatBubble> = (args) => ({
   components: { ChatBubble },
   setup() {
     return { args };
   },
-  template: '<ChatBubble v-bind="args" />',
+  template: '<ChatBubble v-bind="args">This is a chat message.</ChatBubble>',
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  message: 'This is a chat bubble',
   read: false,
   unread: false,
+  active: false,
 };
 
 export const Read = Template.bind({});
 Read.args = {
-  message: 'This message has been read',
   read: true,
   unread: false,
+  active: false,
 };
 
 export const Unread = Template.bind({});
 Unread.args = {
-  message: 'This message is unread',
   read: false,
   unread: true,
+  active: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  message: 'Hover over this message',
   read: false,
   unread: false,
+  active: false,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  message: 'This message is active',
   read: false,
   unread: false,
+  active: true,
 };

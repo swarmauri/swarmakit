@@ -1,64 +1,74 @@
 <template>
-  <ul class="expandable-list" role="list">
-    <li
+  <div class="expandable-list" role="list" aria-label="Expandable list">
+    <div
       v-for="(item, index) in items"
       :key="index"
       class="list-item"
-      :class="{ expanded: expandedIndex === index, selected: selectedIndex === index }"
-      role="listitem"
-      @click="toggleExpand(index)"
-      @mouseover="hoverIndex = index"
-      @mouseleave="hoverIndex = -1"
-      tabindex="0"
-      :aria-expanded="expandedIndex === index"
+      :aria-expanded="selectedItem === index"
+      @click="toggleItem(index)"
+      @mouseover="hoverItem(index)"
+      @mouseleave="hoverItem(null)"
     >
-      <div class="item-header">{{ item.title }}</div>
-      <div v-if="expandedIndex === index" class="item-content">{{ item.content }}</div>
-    </li>
-  </ul>
+      <div class="item-header">
+        {{ item.title }}
+      </div>
+      <div v-if="selectedItem === index" class="item-content">
+        {{ item.content }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-interface Item {
-  title: string;
-  content: string;
-}
-
 export default defineComponent({
   name: 'ExpandableList',
   props: {
     items: {
-      type: Array as () => Item[],
-      default: () => [],
+      type: Array as () => Array<{ title: string; content: string }>,
+      required: true,
     },
   },
   setup() {
-    const expandedIndex = ref(-1);
-    const hoverIndex = ref(-1);
-    const selectedIndex = ref(-1);
+    const selectedItem = ref<number | null>(null);
+    const hoveredItem = ref<number | null>(null);
 
-    const toggleExpand = (index: number) => {
-      if (expandedIndex.value === index) {
-        expandedIndex.value = -1;
-        selectedIndex.value = -1;
-      } else {
-        expandedIndex.value = index;
-        selectedIndex.value = index;
-      }
+    const toggleItem = (index: number) => {
+      selectedItem.value = selectedItem.value === index ? null : index;
     };
 
-    return {
-      expandedIndex,
-      hoverIndex,
-      selectedIndex,
-      toggleExpand,
+    const hoverItem = (index: number | null) => {
+      hoveredItem.value = index;
     };
+
+    return { selectedItem, hoveredItem, toggleItem, hoverItem };
   },
 });
 </script>
 
-<style lang="css">
-@import './ExpandableList.css';
+<style scoped lang="css">
+.expandable-list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  margin: var(--item-margin, 5px 0);
+  padding: var(--item-padding, 10px);
+  border: var(--item-border, 1px solid #ccc);
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background-color: var(--hover-background-color, #f0f0f0);
+}
+
+.item-header {
+  font-weight: var(--item-header-font-weight, bold);
+}
+
+.item-content {
+  margin-top: var(--item-content-margin-top, 5px);
+}
 </style>

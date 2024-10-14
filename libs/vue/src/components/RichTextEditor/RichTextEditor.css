@@ -1,37 +1,50 @@
-.rich-text-editor-container {
-  border: 1px solid #ccc;
-  padding: 8px;
-  border-radius: 4px;
+:root {
+  --editor-border-color: #ccc;
+  --editor-background-color: #fff;
+  --editor-readonly-background-color: #f7f7f7;
 }
 
-.toolbar {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+.editor-container {
+  border: 1px solid var(--editor-border-color);
+  background-color: var(--editor-background-color);
+  border-radius: 5px;
+  padding: 1rem;
+  min-height: 200px;
 }
 
-.toolbar button {
-  cursor: pointer;
+.ql-toolbar {
   border: none;
-  background: none;
-  font-weight: bold;
+  border-bottom: 1px solid var(--editor-border-color);
 }
 
-.editor {
-  min-height: 100px;
-  outline: none;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.ql-container {
+  border: none;
 }
 
-.editor.read-only {
-  background-color: #f9f9f9;
-  cursor: not-allowed;
+.editor-container[aria-readonly="true"] {
+  background-color: var(--editor-readonly-background-color);
 }
 
-@media (max-width: 600px) {
-  .rich-text-editor-container {
-    width: 90%;
+@media (max-width: 576px) {
+  .editor-container {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .editor-container {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .editor-container {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 993px) {
+  .editor-container {
+    padding: 1rem;
   }
 }

@@ -1,83 +1,47 @@
 <template>
   <div class="password-confirmation-container">
-    <label :for="passwordId" class="input-label">{{ passwordLabel }}</label>
-    <input
-      :id="passwordId"
-      type="password"
-      v-model="password"
-      class="password-input"
-      :disabled="disabled"
-      aria-describedby="passwordHelp"
-      :aria-invalid="!!error"
+    <input 
+      type="password" 
+      v-model="password" 
+      :disabled="disabled" 
+      placeholder="Enter password" 
+      aria-label="Enter password"
     />
-    <label :for="confirmPasswordId" class="input-label">{{ confirmPasswordLabel }}</label>
-    <input
-      :id="confirmPasswordId"
-      type="password"
-      v-model="confirmPassword"
-      class="password-input"
-      :disabled="disabled"
-      aria-describedby="confirmPasswordHelp"
-      :aria-invalid="!!error"
+    <input 
+      type="password" 
+      v-model="confirmPassword" 
+      :disabled="disabled" 
+      placeholder="Confirm password" 
+      aria-label="Confirm password"
     />
-    <span v-if="error" class="error-message">{{ error }}</span>
-    <span v-if="matching && !error" class="success-message">Passwords match</span>
+    <p :class="{'match': isMatching, 'not-match': !isMatching}">
+      {{ isMatching ? 'Passwords match' : 'Passwords do not match' }}
+    </p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
   name: 'PasswordConfirmationField',
   props: {
-    passwordLabel: {
-      type: String,
-      default: 'Password',
-    },
-    confirmPasswordLabel: {
-      type: String,
-      default: 'Confirm Password',
-    },
-    passwordId: {
-      type: String,
-      required: true,
-    },
-    confirmPasswordId: {
-      type: String,
-      required: true,
-    },
     disabled: {
       type: Boolean,
       default: false,
     },
-    error: {
-      type: String,
-      default: '',
-    },
   },
-  setup(props) {
+  setup() {
     const password = ref('');
     const confirmPassword = ref('');
-    const matching = computed(() => password.value === confirmPassword.value);
+    
+    const isMatching = computed(() => password.value === confirmPassword.value);
 
-    watch([password, confirmPassword], () => {
-      if (!props.disabled && !matching.value) {
-        props.error = 'Passwords do not match';
-      } else {
-        props.error = '';
-      }
-    });
-
-    return {
-      password,
-      confirmPassword,
-      matching,
-    };
+    return { password, confirmPassword, isMatching };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './PasswordConfirmationField.css';
 </style>

@@ -1,60 +1,50 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import InteractivePollResults from './InteractivePollResults.vue';
 
 export default {
-  title: 'Indicators/InteractivePollResults',
+  title: 'component/Indicators/InteractivePollResults',
   component: InteractivePollResults,
   tags: ['autodocs'],
   argTypes: {
-    pollTitle: {
-      control: { type: 'text' },
-      description: 'Title of the poll',
-    },
-    options: {
-      control: { type: 'object' },
-      description: 'Array of poll options with percentages',
-    },
-    status: {
-      control: { type: 'select' },
-      options: ['Live Results', 'Completed', 'Closed'],
-      description: 'Status of the poll',
-    },
+    title: { control: 'text' },
+    options: { control: 'object' },
+    state: { control: { type: 'select', options: ['live', 'completed', 'closed'] } },
   },
-};
+} as Meta<typeof InteractivePollResults>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof InteractivePollResults> = (args) => ({
   components: { InteractivePollResults },
   setup() {
     return { args };
   },
-  template: '<InteractivePollResults v-bind="args" />',
+  template: `<InteractivePollResults v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  pollTitle: 'Favorite Programming Language',
+  title: 'Poll Results',
   options: [
-    { id: 1, text: 'JavaScript', percentage: 40 },
-    { id: 2, text: 'Python', percentage: 30 },
-    { id: 3, text: 'Java', percentage: 20 },
-    { id: 4, text: 'C++', percentage: 10 },
+    { id: 1, text: 'Option A', percentage: 40 },
+    { id: 2, text: 'Option B', percentage: 30 },
+    { id: 3, text: 'Option C', percentage: 30 },
   ],
-  status: 'Live Results',
+  state: 'live',
 };
 
 export const LiveResults = Template.bind({});
 LiveResults.args = {
   ...Default.args,
-  status: 'Live Results',
+  state: 'live',
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
   ...Default.args,
-  status: 'Completed',
+  state: 'completed',
 };
 
 export const Closed = Template.bind({});
 Closed.args = {
   ...Default.args,
-  status: 'Closed',
+  state: 'closed',
 };

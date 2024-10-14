@@ -1,20 +1,23 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ExpandableList from './ExpandableList.vue';
 
 export default {
-  title: 'Lists/ExpandableList',
+  title: 'component/Lists/ExpandableList',
   component: ExpandableList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
+    items: { control: 'array' },
   },
-};
+} as Meta<typeof ExpandableList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ExpandableList> = (args) => ({
   components: { ExpandableList },
   setup() {
     return { args };
   },
-  template: '<ExpandableList v-bind="args" />',
+  template: `
+    <ExpandableList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
@@ -29,11 +32,6 @@ Default.args = {
 export const ItemExpanded = Template.bind({});
 ItemExpanded.args = {
   ...Default.args,
-  items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-    { title: 'Item 3', content: 'Content for item 3' },
-  ],
 };
 
 export const ItemCollapsed = Template.bind({});

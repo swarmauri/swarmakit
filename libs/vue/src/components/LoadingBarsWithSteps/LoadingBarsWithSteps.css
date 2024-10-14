@@ -1,39 +1,23 @@
-.loading-bars {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+:root {
+  --loading-font-size: 14px;
+  --step-bar-height: 5px;
+  --step-bar-bg: #ccc;
+  --active-step-bar-color: #007bff;
+  --completed-step-bar-color: #28a745;
 }
 
-.step {
-  flex-grow: 1;
-  text-align: center;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.step-bar {
-  height: 0.5rem;
-  background-color: #e0e0e0;
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.step-label {
-  font-size: 0.875rem;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.step.active .step-bar {
-  background-color: #3f51b5;
-}
-
-.step.completed .step-bar {
-  background-color: #4caf50;
-}
-
-.step.inactive .step-bar {
-  background-color: #e0e0e0;
-}
-
-@media (max-width: 600px) {
-  .step-label {
-    font-size: 0.75rem;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

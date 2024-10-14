@@ -1,16 +1,24 @@
 <template>
-  <div class="toggle-switch" :class="{ disabled, on: isOn }" @click="toggle" role="switch" :aria-checked="isOn" :aria-disabled="disabled">
-    <div class="toggle-handle"></div>
+  <div class="toggle-switch">
+    <input 
+      type="checkbox" 
+      :checked="checked" 
+      :disabled="disabled" 
+      @change="onToggle" 
+      aria-checked="checked"
+      role="switch"
+    />
+    <span class="slider"></span>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ToggleSwitch',
   props: {
-    modelValue: {
+    checked: {
       type: Boolean,
       default: false,
     },
@@ -19,24 +27,19 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: ['update:modelValue'],
+  emits: ['change'],
   setup(props, { emit }) {
-    const isOn = computed(() => props.modelValue);
-
-    const toggle = () => {
-      if (!props.disabled) {
-        emit('update:modelValue', !props.modelValue);
-      }
+    const onToggle = (event: Event) => {
+      emit('change', (event.target as HTMLInputElement).checked);
     };
 
     return {
-      isOn,
-      toggle,
+      onToggle,
     };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped>
 @import './ToggleSwitch.css';
 </style>

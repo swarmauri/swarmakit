@@ -1,67 +1,68 @@
 <template>
-  <div class="contextual-list">
-    <button
-      class="trigger-button"
-      @click="toggleList"
-      :aria-expanded="isListVisible"
-      aria-controls="contextual-list"
+  <div class="contextual-list" role="list">
+    <div
+      v-for="(item, index) in items"
+      :key="index"
+      class="list-item"
+      :class="{ actionTriggered: item.actionTriggered, dismissed: item.dismissed }"
     >
-      {{ buttonText }}
-    </button>
-    <ul
-      v-show="isListVisible"
-      class="list"
-      id="contextual-list"
-      role="list"
-      aria-hidden="!isListVisible"
-    >
-      <li
-        v-for="(item, index) in items"
-        :key="index"
-        class="list-item"
-        role="listitem"
-      >
-        <button @click="onActionTriggered(item)">{{ item }}</button>
-      </li>
-    </ul>
+      <span>{{ item.label }}</span>
+      <button @click="triggerAction(index)">Action</button>
+      <button @click="dismissItem(index)">Dismiss</button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
+
+interface ListItem {
+  label: string;
+  actionTriggered: boolean;
+  dismissed: boolean;
+}
 
 export default defineComponent({
   name: 'ContextualList',
   props: {
-    buttonText: {
-      type: String,
-      default: 'Open List',
-    },
     items: {
-      type: Array as () => string[],
-      default: () => [],
+      type: Array as () => ListItem[],
+      required: true,
     },
   },
-  setup() {
-    const isListVisible = ref(false);
-
-    const toggleList = () => {
-      isListVisible.value = !isListVisible.value;
+  setup(props) {
+    const triggerAction = (index: number) => {
+      props.items[index].actionTriggered = true;
     };
 
-    const onActionTriggered = (item: string) => {
-      console.log(`Action triggered on: ${item}`);
+    const dismissItem = (index: number) => {
+      props.items[index].dismissed = true;
     };
 
-    return {
-      isListVisible,
-      toggleList,
-      onActionTriggered,
-    };
+    return { triggerAction, dismissItem };
   },
 });
 </script>
 
-<style lang="css">
-@import './ContextualList.css';
+<style scoped lang="css">
+.contextual-list {
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--list-item-margin-bottom, 10px);
+  padding: var(--list-item-padding, 10px);
+  background-color: var(--list-item-background, #fff);
+  border: var(--list-item-border, 1px solid #ccc);
+}
+
+.list-item.actionTriggered {
+  background-color: var(--action-triggered-background, #e0f7fa);
+}
+
+.list-item.dismissed {
+  display: none;
+}
 </style>

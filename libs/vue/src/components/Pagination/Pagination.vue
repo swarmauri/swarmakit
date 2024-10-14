@@ -1,16 +1,14 @@
 <template>
-  <nav class="pagination" role="navigation" aria-label="Pagination">
-    <ul>
+  <nav class="pagination" aria-label="Pagination Navigation">
+    <ul class="pagination-list">
       <li
         v-for="page in pages"
         :key="page"
-        :class="['page-item', { active: activePage === page }]"
-        @click="setActivePage(page)"
+        :class="['pagination-item', { active: page === currentPage }]"
+        @click="changePage(page)"
         @mouseover="hoveredPage = page"
         @mouseleave="hoveredPage = null"
-        :aria-current="activePage === page ? 'page' : null"
-        :tabindex="0"
-        role="button"
+        :aria-current="page === currentPage ? 'page' : undefined"
       >
         {{ page }}
       </li>
@@ -19,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
   name: 'Pagination',
@@ -28,22 +26,56 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    currentPage: {
+      type: Number,
+      required: true,
+    },
   },
-  setup(props) {
-    const activePage = ref<number>(1);
+  setup(props, { emit }) {
     const hoveredPage = ref<number | null>(null);
 
-    const setActivePage = (page: number) => {
-      activePage.value = page;
+    const pages = computed(() => {
+      return Array.from({ length: props.totalPages }, (_, i) => i + 1);
+    });
+
+    const changePage = (page: number) => {
+      if (page !== props.currentPage) {
+        emit('update:currentPage', page);
+      }
     };
 
-    const pages = Array.from({ length: props.totalPages }, (_, i) => i + 1);
-
-    return { activePage, setActivePage, hoveredPage, pages };
+    return { pages, hoveredPage, changePage };
   },
 });
 </script>
 
-<style lang="css">
-@import './Pagination.css';
+<style scoped lang="css">
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination-item {
+  padding: var(--pagination-item-padding, 8px 12px);
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: var(--pagination-border-radius, 4px);
+}
+
+.pagination-item.active {
+  background-color: var(--active-bg, #007bff);
+  color: var(--active-color, #fff);
+}
+
+.pagination-item:hover:not(.active) {
+  background-color: var(--hover-bg, #e9ecef);
+}
 </style>

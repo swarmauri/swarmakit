@@ -1,29 +1,23 @@
-.status-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+:root {
+  --status-dot-size: 12px;
+  --status-online-color: #4caf50;
+  --status-offline-color: #f44336;
+  --status-busy-color: #ff9800;
+  --status-idle-color: #ffeb3b;
 }
 
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin: 0 4px;
-  transition: background-color 0.2s;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.dot.online {
-  background-color: #4caf50;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.dot.offline {
-  background-color: #f44336;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.dot.busy {
-  background-color: #ff9800;
-}
-
-.dot.idle {
-  background-color: #ffeb3b;
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

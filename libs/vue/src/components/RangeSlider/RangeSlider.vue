@@ -1,20 +1,24 @@
 <template>
   <div class="range-slider-container">
-    <input
-      type="range"
-      :id="id"
-      :min="min"
-      :max="max"
-      v-model="modelValue"
-      :step="step"
-      :disabled="disabled"
-      class="range-slider"
-      :aria-valuemin="min"
-      :aria-valuemax="max"
-      :aria-valuenow="modelValue"
+    <label 
+      :class="['range-label', labelPosition]" 
+      :aria-label="`Range slider at ${value}`" 
       :aria-disabled="disabled"
-    />
-    <label :for="id" class="range-label">{{ label }}</label>
+    >
+      <span v-if="labelPosition === 'left' || labelPosition === 'center'">{{ label }}</span>
+      <input 
+        type="range" 
+        :min="min" 
+        :max="max" 
+        :step="step" 
+        :value="value" 
+        :disabled="disabled" 
+        @input="onInput" 
+        @focus="onFocus" 
+        @blur="onBlur" 
+      />
+      <span v-if="labelPosition === 'right'">{{ label }}</span>
+    </label>
   </div>
 </template>
 
@@ -24,14 +28,6 @@ import { defineComponent, PropType } from 'vue';
 export default defineComponent({
   name: 'RangeSlider',
   props: {
-    label: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
     min: {
       type: Number,
       default: 0,
@@ -40,23 +36,42 @@ export default defineComponent({
       type: Number,
       default: 100,
     },
+    value: {
+      type: Number,
+      default: 50,
+    },
     step: {
       type: Number,
       default: 1,
-    },
-    modelValue: {
-      type: Number as PropType<number | null>,
-      default: null,
     },
     disabled: {
       type: Boolean,
       default: false,
     },
+    label: {
+      type: String,
+      default: '',
+    },
+    labelPosition: {
+      type: String as PropType<'left' | 'center' | 'right'>,
+      default: 'right',
+    },
   },
-  emits: ['update:modelValue'],
+  emits: ['update:value'],
+  methods: {
+    onInput(event: Event) {
+      this.$emit('update:value', Number((event.target as HTMLInputElement).value));
+    },
+    onFocus() {
+      this.$el.classList.add('focused');
+    },
+    onBlur() {
+      this.$el.classList.remove('focused');
+    },
+  },
 });
 </script>
 
-<style lang="css">
+<style scoped>
 @import './RangeSlider.css';
 </style>

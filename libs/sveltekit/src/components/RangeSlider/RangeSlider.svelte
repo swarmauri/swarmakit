@@ -3,46 +3,38 @@
   export let max: number = 100;
   export let value: number = 50;
   export let disabled: boolean = false;
-  
+  export let label: string = '';
+  export let labelPosition: 'left' | 'center' | 'right' = 'right';
+
   function handleInput(event: Event) {
-    const target = event.target as HTMLInputElement;
-    value = parseInt(target.value, 10);
+    value = (event.target as HTMLInputElement).valueAsNumber;
   }
 </script>
 
-<div class="range-slider">
-  <input 
-    type="range" 
-    min={min} 
-    max={max} 
-    bind:value 
-    {disabled}
+<div class="range-slider" aria-disabled={disabled} style={`justify-content: ${labelPosition}`}>
+  {#if labelPosition === 'left'}
+    <label>{label}</label>
+  {/if}
+  <input
+    type="range"
+    min={min}
+    max={max}
+    value={value}
+    disabled={disabled}
     on:input={handleInput}
-    aria-valuemin={min} 
-    aria-valuemax={max} 
-    aria-valuenow={value} 
-    aria-disabled={disabled} 
+    aria-valuemin={min}
+    aria-valuemax={max}
+    aria-valuenow={value}
+    aria-label={label}
   />
-  <span>{value}</span>
+  {#if labelPosition === 'center'}
+    <label>{label}</label>
+  {/if}
+  {#if labelPosition === 'right'}
+    <label>{label}</label>
+  {/if}
 </div>
 
 <style lang="css">
-  .range-slider {
-    display: flex;
-    align-items: center;
-  }
-
-  .range-slider input[type="range"] {
-    margin-right: 8px;
-    cursor: pointer;
-  }
-
-  .range-slider input[type="range"]:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  .range-slider span {
-    font-size: 16px;
-  }
+  @import './RangeSlider.css';
 </style>

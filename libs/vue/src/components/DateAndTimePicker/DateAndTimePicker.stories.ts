@@ -1,17 +1,23 @@
 import DateAndTimePicker from './DateAndTimePicker.vue';
 
 export default {
-  title: 'Forms/DateAndTimePicker',
   component: DateAndTimePicker,
+  title: 'component/Forms/DateAndTimePicker',
   tags: ['autodocs'],
   argTypes: {
-    dateValue: { control: 'text' },
-    timeValue: { control: 'text' },
-    disabled: { control: 'boolean' },
+    selectedDate: {
+      control: { type: 'date' },
+    },
+    selectedTime: {
+      control: { type: 'time' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { DateAndTimePicker },
   setup() {
     return { args };
@@ -19,23 +25,30 @@ const Template = (args: any) => ({
   template: '<DateAndTimePicker v-bind="args" />',
 });
 
+export const Default = Template.bind({});
+Default.args = {
+  selectedDate: '',
+  selectedTime: '',
+  disabled: false,
+};
+
 export const DateSelected = Template.bind({});
 DateSelected.args = {
-  dateValue: '2023-10-01',
-  timeValue: '',
+  selectedDate: new Date().toISOString().split('T')[0],
+  selectedTime: '',
   disabled: false,
 };
 
 export const TimeSelected = Template.bind({});
 TimeSelected.args = {
-  dateValue: '',
-  timeValue: '12:00',
+  selectedDate: '',
+  selectedTime: '12:00',
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  dateValue: '',
-  timeValue: '',
+  selectedDate: new Date().toISOString().split('T')[0],
+  selectedTime: '12:00',
   disabled: true,
 };

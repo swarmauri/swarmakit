@@ -1,53 +1,19 @@
 <script lang="ts">
   export let isFocused: boolean = false;
   export let isDisabled: boolean = false;
-  let searchInput: HTMLInputElement | null = null;
-
-  function handleFocus() {
-    isFocused = true;
-  }
-
-  function handleBlur() {
-    isFocused = false;
-  }
+  export let placeholder: string = 'Search...';
 </script>
 
-<div class="search-bar">
-  <input
-    type="text"
-    class="search-input"
-    bind:this={searchInput}
-    aria-disabled={isDisabled}
-    {isDisabled}
-    on:focus={handleFocus}
-    on:blur={handleBlur}
-    placeholder="Search..."
-  />
-</div>
+<input
+  type="text"
+  class="search-bar"
+  class:is-focused={isFocused}
+  disabled={isDisabled}
+  placeholder={placeholder}
+  aria-label="Search"
+  tabindex="0"
+/>
 
 <style lang="css">
-  .search-bar {
-    display: inline-block;
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .search-input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-    outline: none;
-  }
-
-  .search-input:focus {
-    border-color: #6200ea;
-  }
-
-  .search-input[aria-disabled='true'] {
-    background-color: #f5f5f5;
-    cursor: not-allowed;
-  }
+  @import './SearchBar.css';
 </style>

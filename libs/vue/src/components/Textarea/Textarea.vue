@@ -1,10 +1,11 @@
 <template>
-  <div class="textarea-container" :class="{ disabled }">
-    <textarea
-      :placeholder="placeholder"
-      v-model="textValue"
+  <div class="textarea-container">
+    <textarea 
+      :placeholder="placeholder" 
       :disabled="disabled"
-      :aria-label="ariaLabel"
+      aria-label="Textarea input"
+      v-model="text"
+      @input="onInput"
     ></textarea>
   </div>
 </template>
@@ -23,21 +24,23 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    ariaLabel: {
-      type: String,
-      default: 'Text area',
-    },
   },
-  setup() {
-    const textValue = ref('');
+  emits: ['input'],
+  setup(props, { emit }) {
+    const text = ref('');
+
+    const onInput = () => {
+      emit('input', text.value);
+    };
 
     return {
-      textValue,
+      text,
+      onInput,
     };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped>
 @import './Textarea.css';
 </style>

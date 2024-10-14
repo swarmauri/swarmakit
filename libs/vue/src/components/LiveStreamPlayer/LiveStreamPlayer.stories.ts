@@ -1,16 +1,16 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import LiveStreamPlayer from './LiveStreamPlayer.vue';
 
 export default {
-  title: 'Media/LiveStreamPlayer',
+  title: 'component/Media/LiveStreamPlayer',
   component: LiveStreamPlayer,
   tags: ['autodocs'],
   argTypes: {
-    state: { control: 'select', options: ['Live', 'Paused', 'Buffering', 'Muted'] },
-    videoSrc: { control: 'text' },
+    streamSrc: { control: 'text' },
   },
-};
+} as Meta<typeof LiveStreamPlayer>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof LiveStreamPlayer> = (args) => ({
   components: { LiveStreamPlayer },
   setup() {
     return { args };
@@ -20,24 +20,25 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'Live',
-  videoSrc: 'https://www.example.com/live-stream.mp4',
+  streamSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
+};
+
+export const Live = Template.bind({});
+Live.args = {
+  ...Default.args,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  state: 'Paused',
-  videoSrc: 'https://www.example.com/live-stream.mp4',
+  ...Default.args,
 };
 
 export const Buffering = Template.bind({});
 Buffering.args = {
-  state: 'Buffering',
-  videoSrc: 'https://www.example.com/live-stream.mp4',
+  ...Default.args,
 };
 
 export const Muted = Template.bind({});
 Muted.args = {
-  state: 'Muted',
-  videoSrc: 'https://www.example.com/live-stream.mp4',
+  ...Default.args,
 };

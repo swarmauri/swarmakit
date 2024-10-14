@@ -12,15 +12,15 @@
   --warning-color: #ffc107;
 
   /* Button Colors */
-  --button-bg: #f0f0f0;
-  --button-text-color: #333;
-  --button-border-radius: 4px;
-  --button-primary-bg: #1ea7fd;
-  --button-primary-hover-bg: #1485cc;
-  --button-secondary-bg: #ff4785;
-  --button-secondary-hover-bg: #cc3b6e;
-  --button-disabled-bg: #e0e0e0;
-  --button-active-border: #1ea7fd;
+  --btn-bg: #f0f0f0;
+  --btn-text-color: #333;
+  --btn-border-radius: 4px;
+  --btn-primary-bg: #1ea7fd;
+  --btn-primary-hover-bg: #1485cc;
+  --btn-secondary-bg: #ff4785;
+  --btn-secondary-hover-bg: #cc3b6e;
+  --btn-disabled-bg: #e0e0e0;
+  --btn-active-border: #1ea7fd;
 
   /* Typography */
   --font-family: 'Arial, sans-serif';
@@ -135,4 +135,9 @@
   --container-align-left: left;
   --container-align-right: right;
   --container-align-center: center;
+
+  --file-upload-border-color: #ccc;
+  --file-upload-focus-color: #007bff;
+  --file-upload-disabled-color: #e0e0e0;
+  --file-upload-dragover-color: #f0f8ff;
 }

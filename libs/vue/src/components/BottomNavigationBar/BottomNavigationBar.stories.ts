@@ -1,64 +1,52 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BottomNavigationBar from './BottomNavigationBar.vue';
 
 export default {
-  title: 'Navigation/BottomNavigationBar',
+  title: 'component/Navigation/BottomNavigationBar',
   component: BottomNavigationBar,
   tags: ['autodocs'],
-  argTypes: {
-    selectedIndex: { control: 'number' },
-  },
-};
+} as Meta<typeof BottomNavigationBar>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof BottomNavigationBar> = (args) => ({
   components: { BottomNavigationBar },
   setup() {
     return { args };
   },
-  template: `
-    <BottomNavigationBar v-bind="args" @update:selectedIndex="args.selectedIndex = $event" />
-  `,
+  template: '<BottomNavigationBar v-bind="args" @update:items="args.items = $event" />',
 });
 
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { icon: '🏠', label: 'Home' },
-    { icon: '🔍', label: 'Search' },
-    { icon: '❤️', label: 'Favorites' },
-    { icon: '👤', label: 'Profile' },
+    { label: 'Home', selected: false, disabled: false },
+    { label: 'Search', selected: false, disabled: false },
+    { label: 'Profile', selected: false, disabled: false },
   ],
-  selectedIndex: 0,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
   items: [
-    { icon: '🏠', label: 'Home' },
-    { icon: '🔍', label: 'Search' },
-    { icon: '❤️', label: 'Favorites' },
-    { icon: '👤', label: 'Profile' },
+    { label: 'Home', selected: true, disabled: false },
+    { label: 'Search', selected: false, disabled: false },
+    { label: 'Profile', selected: false, disabled: false },
   ],
-  selectedIndex: 2,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   items: [
-    { icon: '🏠', label: 'Home' },
-    { icon: '🔍', label: 'Search' },
-    { icon: '❤️', label: 'Favorites' },
-    { icon: '👤', label: 'Profile' },
+    { label: 'Home', selected: false, disabled: false },
+    { label: 'Search', selected: false, disabled: false },
+    { label: 'Profile', selected: false, disabled: false },
   ],
-  selectedIndex: 0,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   items: [
-    { icon: '🏠', label: 'Home' },
-    { icon: '🔍', label: 'Search', disabled: true },
-    { icon: '❤️', label: 'Favorites' },
-    { icon: '👤', label: 'Profile' },
+    { label: 'Home', selected: false, disabled: true },
+    { label: 'Search', selected: false, disabled: false },
+    { label: 'Profile', selected: false, disabled: false },
   ],
-  selectedIndex: 0,
 };

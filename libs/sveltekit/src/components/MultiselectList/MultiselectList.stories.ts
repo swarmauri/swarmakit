@@ -1,53 +1,82 @@
 import MultiselectList from './MultiselectList.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/MultiselectList',
+const meta: Meta<MultiselectList> = {
+  title: 'component/Lists/MultiselectList',
   component: MultiselectList,
   tags: ['autodocs'],
-};
-
-const items = [
-  { id: 1, name: 'Item 1', selected: false },
-  { id: 2, name: 'Item 2', selected: false },
-  { id: 3, name: 'Item 3', selected: false },
-];
-
-export const Default = {
-  args: {
-    items,
-    disabled: false,
-  },
-};
-
-export const ItemSelected = {
-  args: {
-    items: items.map((item, index) => ({ ...item, selected: index === 0 })),
-    disabled: false,
-  },
-};
-
-export const ItemDeselected = {
-  args: {
-    items,
-    disabled: false,
-  },
-};
-
-export const Disabled = {
-  args: {
-    items,
-    disabled: true,
-  },
-};
-
-export const Hover = {
-  args: {
-    items,
-    disabled: false,
+  argTypes: {
+    items: { control: 'object' },
+    disabled: { control: 'boolean' }
   },
   parameters: {
-    pseudo: {
-      hover: '.multiselect-item',
-    },
-  },
+    layout: 'centered',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
+};
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    items: [
+      { id: '1', label: 'Option 1', selected: false },
+      { id: '2', label: 'Option 2', selected: false },
+      { id: '3', label: 'Option 3', selected: false }
+    ],
+    disabled: false
+  }
+};
+
+export const ItemSelected: Story = {
+  args: {
+    items: [
+      { id: '1', label: 'Option 1', selected: true },
+      { id: '2', label: 'Option 2', selected: false },
+      { id: '3', label: 'Option 3', selected: false }
+    ],
+    disabled: false
+  }
+};
+
+export const ItemDeselected: Story = {
+  args: {
+    items: [
+      { id: '1', label: 'Option 1', selected: false },
+      { id: '2', label: 'Option 2', selected: true },
+      { id: '3', label: 'Option 3', selected: false }
+    ],
+    disabled: false
+  }
+};
+
+export const Disabled: Story = {
+  args: {
+    items: [
+      { id: '1', label: 'Option 1', selected: false },
+      { id: '2', label: 'Option 2', selected: false },
+      { id: '3', label: 'Option 3', selected: false }
+    ],
+    disabled: true
+  }
+};
+
+export const Hover: Story = {
+  args: {
+    items: [
+      { id: '1', label: 'Option 1', selected: false },
+      { id: '2', label: 'Option 2', selected: false },
+      { id: '3', label: 'Option 3', selected: false }
+    ],
+    disabled: false
+  }
 };

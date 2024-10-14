@@ -1,48 +1,35 @@
-.command-palette {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 400px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  z-index: 1000;
-  display: none;
+:root {
+  --palette-bg-color: #fff;
+  --palette-radius: 8px;
+  --input-border-color: #ccc;
+  --input-radius: 4px;
+  --command-active-bg-color: #e0e0e0;
 }
 
-.command-palette.open {
-  display: block;
+@media (max-width: 480px) {
+  :root {
+    --palette-radius: 6px;
+    --input-radius: 3px;
+  }
 }
 
-.command-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 10px;
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --palette-radius: 7px;
+    --input-radius: 3.5px;
+  }
 }
 
-.command-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  max-height: 200px;
-  overflow-y: auto;
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --palette-radius: 8px;
+    --input-radius: 4px;
+  }
 }
 
-.command-list li {
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.command-list li.active {
-  background-color: #f0f0f0;
-}
-
-.command-list li:hover {
-  background-color: #e0e0e0;
+@media (min-width: 1025px) {
+  :root {
+    --palette-radius: 9px;
+    --input-radius: 4.5px;
+  }
 }

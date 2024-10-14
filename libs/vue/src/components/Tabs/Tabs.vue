@@ -1,15 +1,16 @@
 <template>
-  <div role="tablist" class="tabs">
+  <div class="tabs" role="tablist">
     <button
       v-for="(tab, index) in tabs"
       :key="tab.id"
-      class="tab"
-      :class="{ active: index === activeIndex, disabled: tab.disabled }"
-      role="tab"
-      :aria-selected="index === activeIndex"
-      :aria-disabled="tab.disabled"
+      :role="'tab'"
+      :aria-selected="activeIndex === index"
+      :disabled="tab.disabled"
+      :class="{
+        active: activeIndex === index,
+        disabled: tab.disabled
+      }"
       @click="selectTab(index)"
-      @mouseover="onHover(index)"
     >
       {{ tab.label }}
     </button>
@@ -17,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, PropType } from 'vue';
 
 interface Tab {
   id: number;
@@ -29,16 +30,16 @@ export default defineComponent({
   name: 'Tabs',
   props: {
     tabs: {
-      type: Array as () => Tab[],
+      type: Array as PropType<Tab[]>,
       required: true,
     },
-    defaultActiveIndex: {
+    initialActiveIndex: {
       type: Number,
       default: 0,
     },
   },
   setup(props) {
-    const activeIndex = ref(props.defaultActiveIndex);
+    const activeIndex = ref(props.initialActiveIndex);
 
     const selectTab = (index: number) => {
       if (!props.tabs[index].disabled) {
@@ -46,17 +47,35 @@ export default defineComponent({
       }
     };
 
-    const onHover = (index: number) => {
-      if (!props.tabs[index].disabled) {
-        // handle hover effect
-      }
-    };
-
-    return { activeIndex, selectTab, onHover };
+    return { activeIndex, selectTab };
   },
 });
 </script>
 
-<style lang="css">
-@import './Tabs.css';
+<style scoped lang="css">
+.tabs {
+  display: flex;
+  border-bottom: var(--tabs-border);
+}
+
+.tabs button {
+  padding: 10px 20px;
+  background-color: var(--tab-bg);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tabs button.active {
+  background-color: var(--tab-active-bg);
+}
+
+.tabs button.disabled {
+  background-color: var(--tab-disabled-bg);
+  cursor: not-allowed;
+}
+
+.tabs button:hover:not(.active):not(.disabled) {
+  background-color: var(--tab-hover-bg);
+}
 </style>

@@ -1,55 +1,54 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BatteryLevelIndicator from './BatteryLevelIndicator.vue';
 
 export default {
-  title: 'Indicators/BatteryLevelIndicator',
+  title: 'component/Indicators/BatteryLevelIndicator',
   component: BatteryLevelIndicator,
   tags: ['autodocs'],
   argTypes: {
     level: {
-      control: { type: 'number' },
-      description: 'The current battery level as a percentage',
+      control: { type: 'number', min: 0, max: 100 },
     },
-    isCharging: {
+    charging: {
       control: { type: 'boolean' },
-      description: 'Indicates if the battery is currently charging',
     },
   },
-};
+} as Meta<typeof BatteryLevelIndicator>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof BatteryLevelIndicator> = (args) => ({
   components: { BatteryLevelIndicator },
   setup() {
     return { args };
   },
-  template: '<BatteryLevelIndicator v-bind="args" />',
+  template: `<BatteryLevelIndicator v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   level: 50,
-  isCharging: false,
+  charging: false,
 };
 
 export const Charging = Template.bind({});
 Charging.args = {
   level: 50,
-  isCharging: true,
+  charging: true,
 };
 
 export const Full = Template.bind({});
 Full.args = {
   level: 100,
-  isCharging: false,
+  charging: false,
 };
 
 export const LowBattery = Template.bind({});
 LowBattery.args = {
-  level: 30,
-  isCharging: false,
+  level: 20,
+  charging: false,
 };
 
 export const Critical = Template.bind({});
 Critical.args = {
-  level: 10,
-  isCharging: false,
+  level: 5,
+  charging: false,
 };

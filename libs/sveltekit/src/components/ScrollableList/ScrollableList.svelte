@@ -1,41 +1,31 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
   export type ListItem = {
     id: number;
     text: string;
-    disabled?: boolean;
   };
 
   export let items: ListItem[] = [];
   export let disabled: boolean = false;
 
-  const dispatch = createEventDispatcher();
+  let isScrolling = false;
+  let endOfList = false;
 
-  function handleScroll(event: Event) {
-    const target = event.target as HTMLElement;
-    if (target.scrollHeight - target.scrollTop === target.clientHeight) {
-      dispatch('endOfList');
-    }
-  }
+  const onScroll = (event: Event) => {
+    const { scrollTop, scrollHeight, clientHeight } = event.target as HTMLElement;
+    isScrolling = scrollTop > 0;
+    endOfList = scrollTop + clientHeight >= scrollHeight;
+  };
 </script>
 
 <div
-  class="scrollable-list"
-  on:scroll={handleScroll}
+  class="scrollable-list {disabled ? 'disabled' : ''}"
+  on:scroll={onScroll}
   aria-disabled={disabled}
   tabindex={disabled ? -1 : 0}
+  role="list"
 >
   {#each items as item (item.id)}
-    <div
-      class="scrollable-list-item"
-      class:hover={!disabled}
-      class:disabled={item.disabled}
-      role="listitem"
-      aria-disabled={item.disabled}
-    >
-      {item.text}
-    </div>
+    <div class="list-item" role="listitem">{item.text}</div>
   {/each}
 </div>
 

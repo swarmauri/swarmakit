@@ -1,24 +1,28 @@
-.video {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+:root {
+  --video-bg-color: #000;
+  --status-text-color: #fff;
 }
 
-video {
-  width: 100%;
-  height: auto;
+@media (max-width: 480px) {
+  .video-container {
+    padding: 1rem;
+  }
 }
 
-.status {
-  font-size: 1.2em;
-  padding: 20px;
+@media (min-width: 481px) and (max-width: 768px) {
+  .video-container {
+    padding: 1.5rem;
+  }
 }
 
-.uploading {
-  color: blue;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .video-container {
+    padding: 2rem;
+  }
 }
 
-.error {
-  color: red;
+@media (min-width: 1025px) {
+  .video-container {
+    padding: 2.5rem;
+  }
 }

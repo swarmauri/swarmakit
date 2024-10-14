@@ -1,27 +1,30 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import GroupedList from './GroupedList.vue';
 
 export default {
-  title: 'Lists/GroupedList',
+  title: 'component/Lists/GroupedList',
   component: GroupedList,
   tags: ['autodocs'],
   argTypes: {
-    groups: { control: 'array' },
+    groups: { control: 'object' },
   },
-};
+} as Meta<typeof GroupedList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof GroupedList> = (args) => ({
   components: { GroupedList },
   setup() {
     return { args };
   },
-  template: '<GroupedList v-bind="args" />',
+  template: `
+    <GroupedList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   groups: [
-    { title: 'Group 1', items: ['Item 1', 'Item 2', 'Item 3'] },
-    { title: 'Group 2', items: ['Item A', 'Item B', 'Item C'] },
+    { name: 'Fruits', items: ['Apple', 'Banana', 'Cherry'] },
+    { name: 'Vegetables', items: ['Carrot', 'Lettuce', 'Spinach'] },
   ],
 };
 
@@ -29,10 +32,19 @@ export const GroupExpanded = Template.bind({});
 GroupExpanded.args = {
   ...Default.args,
 };
+GroupExpanded.play = async ({ args, canvasElement }) => {
+  const headers = canvasElement.querySelectorAll('.group-header');
+  headers.forEach(header => header.click());
+};
 
 export const GroupCollapsed = Template.bind({});
 GroupCollapsed.args = {
   ...Default.args,
+};
+GroupCollapsed.play = async ({ args, canvasElement }) => {
+  const headers = canvasElement.querySelectorAll('.group-header');
+  headers.forEach(header => header.click());
+  headers.forEach(header => header.click());
 };
 
 export const ItemHover = Template.bind({});
@@ -43,4 +55,8 @@ ItemHover.args = {
 export const ItemSelected = Template.bind({});
 ItemSelected.args = {
   ...Default.args,
+};
+ItemSelected.play = async ({ args, canvasElement }) => {
+  const items = canvasElement.querySelectorAll('.list-item');
+  items[0].click();
 };

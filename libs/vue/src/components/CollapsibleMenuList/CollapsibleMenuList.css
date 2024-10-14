@@ -1,64 +1,23 @@
-.collapsible-menu-list {
-  width: 100%;
+:root {
+  --menu-item-margin-bottom: 10px;
+  --menu-button-padding: 10px;
+  --expanded-font-weight: bold;
+  --active-background-color: #f0f0f0;
+  --submenu-padding-left: 20px;
 }
 
-.menu-header {
-  width: 100%;
-  background-color: #f3f3f3;
-  border: none;
-  padding: 10px;
-  text-align: left;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.menu-header:hover {
-  background-color: #e0e0e0;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.menu-header:active {
-  background-color: #d0d0d0;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid #ccc;
-  transition: max-height 0.3s ease;
-}
-
-.menu-item {
-  padding: 8px 10px;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.menu-item:hover {
-  background-color: #f9f9f9;
-}
-
-@media (max-width: 600px) {
-  .menu-header {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .menu-header {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  .menu-header {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 1201px) {
-  .menu-header {
-    font-size: 18px;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

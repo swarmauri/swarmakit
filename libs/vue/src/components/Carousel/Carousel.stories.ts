@@ -1,16 +1,17 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Carousel from './Carousel.vue';
 
 export default {
-  title: 'Media/Carousel',
+  title: 'component/Media/Carousel',
   component: Carousel,
   tags: ['autodocs'],
   argTypes: {
-    slides: { control: 'array' },
-    state: { control: 'select', options: ['Auto-Play', 'Paused', 'Hover', 'Active'] },
+    slides: { control: 'object' },
+    interval: { control: 'number' },
   },
-};
+} as Meta<typeof Carousel>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Carousel> = (args) => ({
   components: { Carousel },
   setup() {
     return { args };
@@ -20,30 +21,31 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  slides: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
-  state: 'Paused',
+  slides: [
+    { src: 'image1.jpg', alt: 'Image 1' },
+    { src: 'image2.jpg', alt: 'Image 2' },
+    { src: 'image3.jpg', alt: 'Image 3' },
+  ],
+  interval: 3000,
 };
 
 export const AutoPlay = Template.bind({});
 AutoPlay.args = {
-  slides: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
-  state: 'Auto-Play',
+  ...Default.args,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  slides: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
-  state: 'Paused',
+  ...Default.args,
+  interval: null,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  slides: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
-  state: 'Hover',
+  ...Default.args,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  slides: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
-  state: 'Active',
+  ...Default.args,
 };

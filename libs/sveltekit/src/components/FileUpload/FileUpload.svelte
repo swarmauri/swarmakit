@@ -1,80 +1,51 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
   export let multiple: boolean = false;
-  export let progress: number = 0;
+  export let uploadProgress: number = 0;
+  export let isDragAndDrop: boolean = true;
 
   let files: File[] = [];
-  const dispatch = createEventDispatcher();
 
   function handleFileChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    files = Array.from(input.files || []);
-    dispatch('filechange', files);
-  }
-
-  function handleDrop(event: DragEvent) {
-    event.preventDefault();
-    files = Array.from(event.dataTransfer?.files || []);
-    dispatch('filechange', files);
+    const inputFiles = Array.from((event.target as HTMLInputElement).files || []);
+    files = inputFiles;
   }
 
   function handleDragOver(event: DragEvent) {
     event.preventDefault();
   }
+
+  function handleDrop(event: DragEvent) {
+    event.preventDefault();
+    const droppedFiles = Array.from(event.dataTransfer?.files || []);
+    files = droppedFiles;
+  }
 </script>
 
-<div class="file-upload">
-  <input 
-    type="file" 
-    on:change={handleFileChange} 
-    {multiple} 
-    aria-label={multiple ? "Upload Files" : "Upload File"}
+<div
+  class="file-upload"
+  on:dragover={handleDragOver}
+  on:drop={handleDrop}
+  aria-label="File Upload"
+>
+  {#if isDragAndDrop}
+    <div class="drop-area" tabindex="0">
+      Drag and drop files here or click to browse
+    </div>
+  {/if}
+  <input
+    type="file"
+    class="file-input"
+    multiple={multiple}
+    on:change={handleFileChange}
+    aria-hidden="true"
   />
-  <div 
-    class="drop-zone" 
-    on:drop={handleDrop} 
-    on:dragover={handleDragOver} 
-    aria-label="Drag and drop files here"
-  >
-    Drag and Drop Files Here
-  </div>
-  {#if progress > 0}
-    <div class="progress-bar" role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
-      <div class="progress" style="width: {progress}%"></div>
+  {#if uploadProgress > 0}
+    <div class="progress-bar" role="progressbar" aria-valuenow={uploadProgress} aria-valuemin="0" aria-valuemax="100">
+      <div class="progress" style="width: {uploadProgress}%"></div>
     </div>
   {/if}
 </div>
 
 <style lang="css">
-  .file-upload input[type="file"] {
-    margin: 5px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-
-  .file-upload .drop-zone {
-    margin-top: 10px;
-    padding: 20px;
-    border: 2px dashed #ccc;
-    border-radius: 4px;
-    text-align: center;
-    color: #aaa;
-  }
-
-  .file-upload .progress-bar {
-    margin-top: 10px;
-    height: 20px;
-    background-color: #e9ecef;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .file-upload .progress {
-    height: 100%;
-    background-color: #007bff;
-    transition: width 0.4s ease;
-  }
+  @import './FileUpload.css';
 </style>

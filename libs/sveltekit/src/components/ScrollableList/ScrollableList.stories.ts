@@ -1,59 +1,62 @@
 import ScrollableList from './ScrollableList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
-import type { ListItem } from './ScrollableList.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-const meta: Meta = {
-  title: 'Components/Lists/ScrollableList',
+const meta: Meta<ScrollableList> = {
+  title: 'component/Lists/ScrollableList',
   component: ScrollableList,
   tags: ['autodocs'],
   argTypes: {
-    items: {
-      control: { type: 'object' },
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
+    items: { control: 'object' },
+    disabled: { control: 'boolean' }
   },
+  parameters: {
+    layout: 'centered',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
 };
 
 export default meta;
 
-const Template: Story = (args) => ({
-  Component: ScrollableList,
-  props: args,
-});
+type Story = StoryObj<typeof meta>;
 
-const sampleItems: ListItem[] = Array.from({ length: 20 }, (v, i) => ({
-  id: i + 1,
-  text: `Item ${i + 1}`,
-}));
-
-export const Default = Template.bind({});
-Default.args = {
-  items: sampleItems,
-  disabled: false,
+export const Default: Story = {
+  args: {
+    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+    disabled: false
+  }
 };
 
-export const Scrolling = Template.bind({});
-Scrolling.args = {
-  items: sampleItems,
-  disabled: false,
+export const Scrolling: Story = {
+  args: {
+    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+    disabled: false
+  }
 };
 
-export const EndOfList = Template.bind({});
-EndOfList.args = {
-  items: sampleItems,
-  disabled: false,
+export const EndOfList: Story = {
+  args: {
+    items: Array.from({ length: 5 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+    disabled: false
+  }
 };
 
-export const Hover = Template.bind({});
-Hover.args = {
-  items: sampleItems,
-  disabled: false,
+export const Hover: Story = {
+  args: {
+    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+    disabled: false
+  }
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  items: sampleItems,
-  disabled: true,
+export const Disabled: Story = {
+  args: {
+    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+    disabled: true
+  }
 };

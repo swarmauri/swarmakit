@@ -1,41 +1,13 @@
 <script lang="ts">
   export let progress: number = 0;
   export let disabled: boolean = false;
+  export let ariaLabel: string = 'Progress Bar';
 </script>
 
-<div
-  class="progress-bar"
-  role="progressbar"
-  aria-valuenow={progress}
-  aria-valuemin="0"
-  aria-valuemax="100"
-  aria-disabled={disabled}
-  tabindex="0"
->
-  <div class="progress-fill" style={`width: ${progress}%`}></div>
+<div class="progress-bar-container" aria-disabled={disabled}>
+  <div class="progress-bar" role="progressbar" aria-label={ariaLabel} aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100" style="width: {progress}%"></div>
 </div>
 
 <style lang="css">
-  .progress-bar {
-    width: 100%;
-    height: 20px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background-color: #76c7c0;
-    transition: width 0.3s ease;
-  }
-
-  .progress-bar[aria-disabled="true"] .progress-fill {
-    background-color: #b0b0b0;
-  }
-
-  .progress-bar:hover .progress-fill {
-    background-color: #5aa9a8;
-  }
+  @import './ProgressBar.css';
 </style>

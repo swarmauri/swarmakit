@@ -1,77 +1,58 @@
 <script lang="ts">
-  export let selectedDate: string = "";
-  export let startDate: string = "";
-  export let endDate: string = "";
-  export let time: string = "";
-  export let rangePicker: boolean = false;
-  export let timePicker: boolean = false;
+  export let date: string = '';
+  export let startDate: string = '';
+  export let endDate: string = '';
+  export let time: string = '';
+  export let mode: 'single' | 'range' | 'time' = 'single';
 
   function handleDateChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    selectedDate = input.value;
+    date = (event.target as HTMLInputElement).value;
   }
 
   function handleStartDateChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    startDate = input.value;
+    startDate = (event.target as HTMLInputElement).value;
   }
 
   function handleEndDateChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    endDate = input.value;
+    endDate = (event.target as HTMLInputElement).value;
   }
 
   function handleTimeChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    time = input.value;
+    time = (event.target as HTMLInputElement).value;
   }
 </script>
 
-<div class="date-picker">
-  {#if rangePicker}
-    <input 
-      type="date" 
-      bind:value={startDate} 
-      on:input={handleStartDateChange} 
-      aria-label="Start Date"
-    />
-    <span>to</span>
-    <input 
-      type="date" 
-      bind:value={endDate} 
-      on:input={handleEndDateChange} 
-      aria-label="End Date"
-    />
-  {:else}
-    <input 
-      type="date" 
-      bind:value={selectedDate} 
-      on:input={handleDateChange} 
+<div class="date-picker-container">
+  {#if mode === 'single'}
+    <input
+      type="date"
+      bind:value={date}
       aria-label="Select Date"
+      on:input={handleDateChange}
     />
-  {/if}
-
-  {#if timePicker}
-    <input 
-      type="time" 
-      bind:value={time} 
-      on:input={handleTimeChange} 
+  {:else if mode === 'range'}
+    <input
+      type="date"
+      bind:value={startDate}
+      aria-label="Select Start Date"
+      on:input={handleStartDateChange}
+    />
+    <input
+      type="date"
+      bind:value={endDate}
+      aria-label="Select End Date"
+      on:input={handleEndDateChange}
+    />
+  {:else if mode === 'time'}
+    <input
+      type="time"
+      bind:value={time}
       aria-label="Select Time"
+      on:input={handleTimeChange}
     />
   {/if}
 </div>
 
 <style lang="css">
-  .date-picker input[type="date"],
-  .date-picker input[type="time"] {
-    margin: 5px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .date-picker span {
-    margin: 0 5px;
-  }
+  @import './DatePicker.css';
 </style>

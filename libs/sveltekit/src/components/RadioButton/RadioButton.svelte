@@ -1,43 +1,25 @@
 <script lang="ts">
-  export let name: string;
-  export let value: string;
-  export let selectedValue: string;
+  export let selected: boolean = false;
   export let disabled: boolean = false;
+  export let label: string = '';
 
-  const isSelected = value === selectedValue;
+  function handleSelect() {
+    if (!disabled) {
+      selected = !selected;
+    }
+  }
 </script>
 
-<div class="radio-button">
-  <input 
-    type="radio" 
-    bind:group={selectedValue} 
-    {value} 
-    {name} 
-    {disabled} 
-    checked={isSelected} 
-    aria-checked={isSelected} 
-    aria-disabled={disabled}
+<div class="radio-button" role="radio" aria-checked={selected} aria-disabled={disabled} on:click={handleSelect}>
+  <input
+    type="radio"
+    checked={selected}
+    disabled={disabled}
+    aria-label={label}
   />
-  <label class:disabled={disabled}>{value}</label>
+  <label>{label}</label>
 </div>
 
 <style lang="css">
-  .radio-button {
-    display: flex;
-    align-items: center;
-  }
-
-  .radio-button input[type="radio"] {
-    margin-right: 8px;
-  }
-
-  .radio-button label {
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  .radio-button label.disabled {
-    color: #ccc;
-    cursor: not-allowed;
-  }
+  @import './RadioButton.css';
 </style>

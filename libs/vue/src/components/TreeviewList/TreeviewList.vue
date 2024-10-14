@@ -3,29 +3,23 @@
     <li
       v-for="node in nodes"
       :key="node.id"
-      class="treeview-node"
-      :class="{ expanded: node.expanded, selected: node.selected }"
-      @click="toggleNode(node)"
-      @mouseover="onHover(node)"
+      :class="{
+        expanded: node.expanded,
+        selected: node.selected
+      }"
+      role="treeitem"
       :aria-expanded="node.expanded"
-      :aria-selected="node.selected"
     >
-      <div class="treeview-content">
-        <span class="treeview-icon" aria-hidden="true">
-          {{ node.expanded ? '-' : '+' }}
-        </span>
+      <div class="treeview-node" @click="toggleNode(node)">
         <span class="treeview-label">{{ node.label }}</span>
       </div>
-      <TreeviewList
-        v-if="node.expanded && node.children"
-        :nodes="node.children"
-      />
+      <TreeviewList v-if="node.children && node.expanded" :nodes="node.children" />
     </li>
   </ul>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
 interface TreeNode {
   id: number;
@@ -39,22 +33,50 @@ export default defineComponent({
   name: 'TreeviewList',
   props: {
     nodes: {
-      type: Array as () => TreeNode[],
+      type: Array as PropType<TreeNode[]>,
       required: true,
     },
   },
   methods: {
     toggleNode(node: TreeNode) {
       node.expanded = !node.expanded;
-      node.selected = !node.selected;
-    },
-    onHover(node: TreeNode) {
-      // handle hover effect
     },
   },
 });
 </script>
 
-<style lang="css">
-@import './TreeviewList.css';
+<style scoped lang="css">
+.treeview-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.treeview-list li {
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.treeview-list li.selected {
+  background-color: var(--treeview-selected-bg);
+}
+
+.treeview-list li .treeview-node:hover {
+  background-color: var(--treeview-hover-bg);
+}
+
+.treeview-list li.expanded::before {
+  content: '▼';
+  position: absolute;
+  left: -20px;
+  top: 10px;
+}
+
+.treeview-list li:not(.expanded)::before {
+  content: '►';
+  position: absolute;
+  left: -20px;
+  top: 10px;
+}
 </style>

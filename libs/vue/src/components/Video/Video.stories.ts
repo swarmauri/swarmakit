@@ -1,19 +1,17 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Video from './Video.vue';
 
 export default {
-  title: 'Media/Video',
+  title: 'component/Media/Video',
   component: Video,
   tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: ['Uploading', 'Paused', 'Completed', 'Error'],
-    },
-    videoSource: { control: 'text' },
+    videoSrc: { control: 'text' },
+    initialState: { control: 'select', options: ['uploading', 'paused', 'completed', 'error'] },
   },
-};
+} as Meta<typeof Video>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Video> = (args) => ({
   components: { Video },
   setup() {
     return { args };
@@ -23,24 +21,30 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'Paused',
-  videoSource: 'path/to/your/video.mp4',
+  videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
+  initialState: 'paused',
 };
 
 export const Uploading = Template.bind({});
 Uploading.args = {
-  state: 'Uploading',
-  videoSource: '',
+  ...Default.args,
+  initialState: 'uploading',
+};
+
+export const Paused = Template.bind({});
+Paused.args = {
+  ...Default.args,
+  initialState: 'paused',
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  state: 'Completed',
-  videoSource: 'path/to/your/video.mp4',
+  ...Default.args,
+  initialState: 'completed',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  state: 'Error',
-  videoSource: '',
+  ...Default.args,
+  initialState: 'error',
 };

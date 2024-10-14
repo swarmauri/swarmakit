@@ -1,37 +1,29 @@
-.video-player {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
+:root {
+  --player-bg-color: #000;
+  --button-bg-color: #333;
+  --button-text-color: #fff;
 }
 
-video {
-  width: 100%;
-  height: auto;
+@media (max-width: 480px) {
+  .video-player {
+    padding: 1rem;
+  }
 }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+@media (min-width: 481px) and (max-width: 768px) {
+  .video-player {
+    padding: 1.5rem;
+  }
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .video-player {
+    padding: 2rem;
+  }
 }
 
-button:focus {
-  outline: 2px solid #fff;
-}
-
-@media (max-width: 600px) {
-  .controls {
-    flex-direction: column;
+@media (min-width: 1025px) {
+  .video-player {
+    padding: 2.5rem;
   }
 }

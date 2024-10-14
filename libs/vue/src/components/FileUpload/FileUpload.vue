@@ -1,31 +1,25 @@
 <template>
-  <div
-    class="file-upload-container"
-    :class="{ 'drag-active': dragActive }"
-    @dragover.prevent="handleDragOver"
-    @dragleave.prevent="handleDragLeave"
+  <div 
+    class="file-upload-container" 
+    :class="{ 'drag-over': isDragOver }" 
+    @dragover.prevent="handleDragOver" 
+    @dragleave.prevent="handleDragLeave" 
     @drop.prevent="handleDrop"
   >
-    <input
-      type="file"
-      :multiple="multiple"
-      @change="handleFileChange"
-      ref="fileInput"
+    <input 
+      type="file" 
+      :multiple="multiple" 
+      @change="handleFileSelect" 
+      aria-label="Upload File(s)"
     />
-    <div v-if="progress > 0" class="progress-bar">
+    <div v-if="progress" class="progress-bar" role="progressbar" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">
       <div class="progress" :style="{ width: progress + '%' }"></div>
-    </div>
-    <button type="button" @click="triggerFileInput">Upload Files</button>
-    <div v-if="files.length" class="file-list">
-      <ul>
-        <li v-for="(file, index) in files" :key="index">{{ file.name }}</li>
-      </ul>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'FileUpload',
@@ -36,64 +30,38 @@ export default defineComponent({
     },
   },
   setup() {
-    const files = ref<File[]>([]);
-    const fileInput = ref<HTMLInputElement | null>(null);
-    const dragActive = ref(false);
-    const progress = ref(0);
+    const isDragOver = ref(false);
+    const progress = ref<number | null>(null);
 
-    const handleFileChange = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      const selectedFiles = target.files ? Array.from(target.files) : [];
-      files.value = selectedFiles;
-      simulateProgress();
+    const handleFileSelect = (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      const files = input.files;
+      if (files) {
+        // Process files
+      }
     };
 
     const handleDragOver = () => {
-      dragActive.value = true;
+      isDragOver.value = true;
     };
 
     const handleDragLeave = () => {
-      dragActive.value = false;
+      isDragOver.value = false;
     };
 
     const handleDrop = (event: DragEvent) => {
-      const droppedFiles = event.dataTransfer?.files
-        ? Array.from(event.dataTransfer.files)
-        : [];
-      files.value = droppedFiles;
-      dragActive.value = false;
-      simulateProgress();
+      isDragOver.value = false;
+      const files = event.dataTransfer?.files;
+      if (files) {
+        // Process files
+      }
     };
 
-    const simulateProgress = () => {
-      progress.value = 0;
-      const interval = setInterval(() => {
-        progress.value += 10;
-        if (progress.value >= 100) {
-          clearInterval(interval);
-        }
-      }, 100);
-    };
-
-    const triggerFileInput = () => {
-      fileInput.value?.click();
-    };
-
-    return {
-      files,
-      fileInput,
-      dragActive,
-      progress,
-      handleFileChange,
-      handleDragOver,
-      handleDragLeave,
-      handleDrop,
-      triggerFileInput,
-    };
+    return { isDragOver, progress, handleFileSelect, handleDragOver, handleDragLeave, handleDrop };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './FileUpload.css';
 </style>

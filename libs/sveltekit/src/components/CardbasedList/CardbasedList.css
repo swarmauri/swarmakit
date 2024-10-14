@@ -1,51 +1,36 @@
-.cardbased-list-container {
-  padding: 10px;
+:root {
+  --card-bg: #ffffff;
+  --card-hover-bg: #f0f0f0;
+  --card-selected-bg: #d0f0d0;
+  --card-disabled-bg: #e0e0e0;
+  --card-border: #ccc;
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+.cardbased-list {
+  display: grid;
   gap: 10px;
 }
 
-li {
-  width: 100%;
-}
-
-@media (min-width: 600px) {
-  li {
-    width: 48%;
-  }
-}
-
-@media (min-width: 900px) {
-  li {
-    width: 31%;
-  }
-}
-
 .card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
   padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   cursor: pointer;
-  background-color: #fff;
-  transition: background-color 0.3s;
+  transition: background 0.3s;
 }
 
 .card:hover {
-  background-color: #e0e0e0;
+  background: var(--card-hover-bg);
 }
 
-.card[aria-selected='true'] {
-  border-color: #007bff;
-  background-color: #d9eaff;
+.card.selected {
+  background: var(--card-selected-bg);
 }
 
-.card[aria-disabled='true'] {
+.card.disabled {
+  background: var(--card-disabled-bg);
   cursor: not-allowed;
-  background-color: #f8f8f8;
-  opacity: 0.6;
 }

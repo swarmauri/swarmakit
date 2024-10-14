@@ -1,54 +1,46 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Breadcrumbs from './Breadcrumbs.vue';
 
 export default {
-  title: 'Navigation/Breadcrumbs',
+  title: 'component/Navigation/Breadcrumbs',
   component: Breadcrumbs,
   tags: ['autodocs'],
-  argTypes: {
-    breadcrumbItems: { control: 'object' },
-    activeIndex: { control: 'number' },
-  },
-};
+} as Meta<typeof Breadcrumbs>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Breadcrumbs> = (args) => ({
   components: { Breadcrumbs },
   setup() {
     return { args };
   },
-  template: `
-    <Breadcrumbs v-bind="args" @navigate="args.navigateToItem = $event" />
-  `,
+  template: '<Breadcrumbs v-bind="args" />',
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  breadcrumbItems: [
-    { label: 'Home' },
-    { label: 'Category' },
-    { label: 'Subcategory' },
-    { label: 'Product' },
+  breadcrumbs: [
+    { name: 'Home', link: '/' },
+    { name: 'Category', link: '/category' },
+    { name: 'Current Page' },
   ],
-  activeIndex: 3,
+  activeIndex: 2,
 };
 
 export const Truncated = Template.bind({});
 Truncated.args = {
-  breadcrumbItems: [
-    { label: 'Home' },
-    { label: 'LongCategoryName' },
-    { label: 'VeryLongSubcategoryName' },
-    { label: 'Product' },
+  breadcrumbs: [
+    { name: 'Home', link: '/' },
+    { name: '...', link: '/truncated' },
+    { name: 'Current Page' },
   ],
-  activeIndex: 3,
+  activeIndex: 2,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  breadcrumbItems: [
-    { label: 'Home' },
-    { label: 'Category' },
-    { label: 'Subcategory' },
-    { label: 'Product' },
+  breadcrumbs: [
+    { name: 'Home', link: '/' },
+    { name: 'Category', link: '/category' },
+    { name: 'Current Page' },
   ],
-  activeIndex: 2,
+  activeIndex: 1,
 };

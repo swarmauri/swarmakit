@@ -1,20 +1,32 @@
+:root {
+  --bell-size: 24px;
+  --bell-color: #333;
+  --notification-dot-size: 8px;
+  --notification-dot-color: #e74c3c;
+}
+
 .notification-bell {
   position: relative;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bell-size);
+  height: var(--bell-size);
+  color: var(--bell-color);
+  cursor: pointer;
 }
 
 .bell-icon {
-  fill: #333;
+  width: 100%;
+  height: 100%;
 }
 
-.notification-badge {
+.notification-dot {
   position: absolute;
   top: 0;
   right: 0;
-  width: 8px;
-  height: 8px;
-  background-color: #ff3b30;
+  width: var(--notification-dot-size);
+  height: var(--notification-dot-size);
+  background-color: var(--notification-dot-color);
   border-radius: 50%;
 }

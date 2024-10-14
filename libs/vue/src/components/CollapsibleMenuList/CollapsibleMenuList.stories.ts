@@ -1,61 +1,59 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import CollapsibleMenuList from './CollapsibleMenuList.vue';
 
 export default {
-  title: 'Lists/CollapsibleMenuList',
+  title: 'component/Lists/CollapsibleMenuList',
   component: CollapsibleMenuList,
   tags: ['autodocs'],
   argTypes: {
-    title: { control: 'text' },
-    items: { control: 'object' },
-    expanded: { control: 'boolean' },
+    items: {
+      control: 'object',
+    },
   },
-};
+} as Meta<typeof CollapsibleMenuList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof CollapsibleMenuList> = (args) => ({
   components: { CollapsibleMenuList },
   setup() {
     return { args };
   },
-  template: '<CollapsibleMenuList v-bind="args" />',
+  template: `
+    <CollapsibleMenuList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Menu',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  expanded: false,
+  items: [
+    { label: 'Menu Item 1', expanded: false, active: false, subItems: ['Sub Item 1', 'Sub Item 2'] },
+    { label: 'Menu Item 2', expanded: false, active: false, subItems: ['Sub Item 1', 'Sub Item 2'] },
+  ],
 };
 
 export const Expanded = Template.bind({});
 Expanded.args = {
-  title: 'Menu',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  expanded: true,
+  items: [
+    { label: 'Expanded Item', expanded: true, active: false, subItems: ['Sub Item 1', 'Sub Item 2'] },
+  ],
 };
 
 export const Collapsed = Template.bind({});
 Collapsed.args = {
-  title: 'Menu',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  expanded: false,
+  items: [
+    { label: 'Collapsed Item', expanded: false, active: false, subItems: ['Sub Item 1', 'Sub Item 2'] },
+  ],
 };
 
 export const Hover = Template.bind({});
-Hover.parameters = {
-  pseudo: { hover: true },
-};
 Hover.args = {
-  title: 'Menu',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  expanded: false,
+  items: [
+    { label: 'Hover Item', expanded: false, active: true, subItems: ['Sub Item 1', 'Sub Item 2'] },
+  ],
 };
 
 export const Active = Template.bind({});
-Active.parameters = {
-  pseudo: { active: true },
-};
 Active.args = {
-  title: 'Menu',
-  items: ['Item 1', 'Item 2', 'Item 3'],
-  expanded: false,
+  items: [
+    { label: 'Active Item', expanded: false, active: true, subItems: ['Sub Item 1', 'Sub Item 2'] },
+  ],
 };

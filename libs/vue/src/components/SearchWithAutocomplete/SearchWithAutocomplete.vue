@@ -4,31 +4,13 @@
       type="text"
       v-model="query"
       @input="onInput"
-      @keydown.down="highlightNext"
-      @keydown.up="highlightPrev"
-      @keydown.enter="selectItem"
-      role="combobox"
-      aria-expanded="true"
-      aria-owns="autocomplete-list"
-      aria-autocomplete="list"
-      aria-activedescendant="autocomplete-item-{{ highlightedIndex }}"
-      aria-label="Search"
-      class="search-input"
+      placeholder="Search..."
+      aria-label="Search input"
     />
-    <ul v-if="showResults" id="autocomplete-list" class="autocomplete-list" role="listbox">
-      <li
-        v-for="(result, index) in filteredResults"
-        :key="result"
-        :id="'autocomplete-item-' + index"
-        :class="{ highlighted: index === highlightedIndex }"
-        role="option"
-        @click="selectItem(result)"
-        @mouseover="highlightIndex(index)"
-      >
-        {{ result }}
-      </li>
+    <ul v-if="query && filteredResults.length" class="results-list">
+      <li v-for="(result, index) in filteredResults" :key="index">{{ result }}</li>
     </ul>
-    <p v-if="!filteredResults.length && query" class="no-results">No results found</p>
+    <p v-if="query && !filteredResults.length" class="no-results">No results found.</p>
   </div>
 </template>
 
@@ -38,62 +20,58 @@ import { defineComponent, ref, computed } from 'vue';
 export default defineComponent({
   name: 'SearchWithAutocomplete',
   props: {
-    results: {
+    options: {
       type: Array as () => string[],
       default: () => [],
     },
   },
   setup(props) {
     const query = ref('');
-    const highlightedIndex = ref(-1);
 
     const filteredResults = computed(() =>
-      props.results.filter((result) =>
-        result.toLowerCase().includes(query.value.toLowerCase())
+      props.options.filter(option =>
+        option.toLowerCase().includes(query.value.toLowerCase())
       )
     );
 
-    const showResults = computed(() => query.value.length > 0 && filteredResults.value.length > 0);
-
     const onInput = () => {
-      highlightedIndex.value = -1;
+      // Logic to handle input can be added here
     };
 
-    const highlightNext = () => {
-      if (highlightedIndex.value < filteredResults.value.length - 1) {
-        highlightedIndex.value++;
-      }
-    };
-
-    const highlightPrev = () => {
-      if (highlightedIndex.value > 0) {
-        highlightedIndex.value--;
-      }
-    };
-
-    const highlightIndex = (index: number) => {
-      highlightedIndex.value = index;
-    };
-
-    const selectItem = (item?: string) => {
-      query.value = item || filteredResults.value[highlightedIndex.value];
-    };
-
-    return {
-      query,
-      highlightedIndex,
-      filteredResults,
-      showResults,
-      onInput,
-      highlightNext,
-      highlightPrev,
-      highlightIndex,
-      selectItem,
-    };
+    return { query, filteredResults, onInput };
   },
 });
 </script>
 
-<style lang="css">
-@import './SearchWithAutocomplete.css';
+<style scoped lang="css">
+.search-autocomplete {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.results-list {
+  position: absolute;
+  width: 100%;
+  background-color: var(--results-bg, white);
+  border: 1px solid var(--results-border, #ccc);
+  z-index: 10;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.results-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.results-list li:hover {
+  background-color: var(--results-hover-bg, #f0f0f0);
+}
+
+.no-results {
+  color: var(--no-results-color, #ff0000);
+  margin-top: 5px;
+}
 </style>

@@ -1,72 +1,38 @@
 <script lang="ts">
-  export let items: Array<{ title: string; content: string; expanded: boolean }> = [];
-  export let selectedItemIndex: number | null = null;
+  import { writable } from 'svelte/store';
 
-  function toggleItem(index: number) {
-    items = items.map((item, i) => ({
-      ...item,
-      expanded: i === index ? !item.expanded : item.expanded
-    }));
-  }
+  export let items: { id: string; label: string; content: string }[] = [];
+  
+  let expandedItemId = writable<string | null>(null);
+  let selectedItemId = writable<string | null>(null);
 
-  function selectItem(index: number) {
-    selectedItemIndex = index;
-  }
+  const toggleExpand = (id: string) => {
+    expandedItemId.update(current => (current === id ? null : id));
+  };
+
+  const selectItem = (id: string) => {
+    selectedItemId.set(id);
+  };
 </script>
 
 <ul class="expandable-list">
-  {#each items as item, index}
-    <li
-      class="list-item"
-      class:selected={selectedItemIndex === index}
-      on:click={() => selectItem(index)}
-    >
-      <div
-        class="list-item-title"
-        on:click|stopPropagation={() => toggleItem(index)}
-        tabindex="0"
-        aria-expanded={item.expanded}
-        aria-controls={`content-${index}`}
+  {#each items as item (item.id)}
+    <li class="list-item" aria-expanded={item.id === $expandedItemId} on:click={() => toggleExpand(item.id)}>
+      <div 
+        class="item-label"
+        class:expanded={item.id === $expandedItemId}
+        class:selected={item.id === $selectedItemId}
+        on:click={() => selectItem(item.id)}
       >
-        {item.title}
+        {item.label}
       </div>
-      {#if item.expanded}
-        <div id={`content-${index}`} class="list-item-content">
-          {item.content}
-        </div>
+      {#if item.id === $expandedItemId}
+        <div class="item-content">{item.content}</div>
       {/if}
     </li>
   {/each}
 </ul>
 
 <style lang="css">
-  .expandable-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .list-item {
-    border: 1px solid #ddd;
-    margin-bottom: 5px;
-    cursor: pointer;
-    padding: 10px;
-    background-color: #f9f9f9;
-  }
-
-  .list-item:hover {
-    background-color: #f1f1f1;
-  }
-
-  .list-item.selected {
-    background-color: #e0e0e0;
-  }
-
-  .list-item-title {
-    font-weight: bold;
-  }
-
-  .list-item-content {
-    margin-top: 5px;
-  }
+  @import './ExpandableList.css';
 </style>

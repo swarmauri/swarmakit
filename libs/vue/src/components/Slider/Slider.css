@@ -1,38 +1,24 @@
-.slider-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
+:root {
+  --slider-padding: 8px;
+  --slider-margin: 8px 0;
+  --slider-input-margin-right: 8px;
+  --slider-accent-color: #007bff;
+  --slider-value-font-size: 14px;
+  --slider-value-color: #333;
 }
 
-.slider-container input[type='range'] {
-  width: 100%;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.slider-container input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background-color: #007bff;
-  cursor: pointer;
-  border-radius: 50%;
-  border: none;
-  transition: background-color 0.3s ease;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.slider-container input[type='range']::-webkit-slider-runnable-track {
-  height: 4px;
-  background-color: #ccc;
-  border-radius: 2px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.slider-container.disabled input[type='range'] {
-  cursor: not-allowed;
-}
-
-.slider-container.disabled input[type='range']::-webkit-slider-thumb {
-  background-color: #aaa;
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

@@ -1,43 +1,49 @@
-.collapsible-menu-list {
-  padding: 10px;
+:root {
+  --menu-bg: #ffffff;
+  --menu-hover-bg: #f0f0f0;
+  --menu-expanded-bg: #d0e0f0;
+  --menu-active-bg: #a0c0f0;
+  --menu-border: #ccc;
+  --menu-color: #333;
 }
 
-ul {
-  list-style-type: none;
+.collapsible-menu {
+  list-style: none;
   padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 8px;
 }
 
 .menu-item {
-  display: flex;
-  align-items: center;
   cursor: pointer;
-  background-color: #f0f0f0;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  background: var(--menu-bg);
+  border: 1px solid var(--menu-border);
+  margin-bottom: 5px;
+  transition: background 0.3s;
 }
 
 .menu-item:hover {
-  background-color: #e0e0e0;
+  background: var(--menu-hover-bg);
 }
 
-.menu-item:focus {
-  outline: none;
-  background-color: #d0d0d0;
+.menu-item.expanded {
+  background: var(--menu-expanded-bg);
 }
 
-.item-active .menu-item {
-  background-color: #c0c0c0;
+.menu-item.active {
+  background: var(--menu-active-bg);
+}
+
+.menu-label {
+  padding: 10px;
+  color: var(--menu-color);
 }
 
 .submenu {
-  margin-left: 16px;
-  padding: 8px;
-  background-color: #f9f9f9;
-  border-left: 2px solid #d0d0d0;
+  list-style: none;
+  padding: 0 10px;
+  background: var(--menu-expanded-bg);
+}
+
+.submenu li {
+  padding: 5px 0;
+  color: var(--menu-color);
 }

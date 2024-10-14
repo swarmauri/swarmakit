@@ -1,43 +1,50 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Accordion from './Accordion.vue';
 
 export default {
-  title: 'Lists/Accordion',
+  title: 'component/Lists/Accordion',
   component: Accordion,
   tags: ['autodocs'],
   argTypes: {
-    title: { control: 'text' },
-    open: { control: 'boolean' },
+    defaultOpen: {
+      control: 'boolean',
+    },
   },
-};
+} as Meta<typeof Accordion>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Accordion> = (args) => ({
   components: { Accordion },
   setup() {
     return { args };
   },
-  template: '<Accordion v-bind="args">Content goes here</Accordion>',
+  template: `
+    <Accordion v-bind="args">
+      <template #header>
+        Accordion Header
+      </template>
+      <template #content>
+        Accordion Content
+      </template>
+    </Accordion>
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Accordion Title',
-  open: false,
+  defaultOpen: false,
 };
 
 export const Open = Template.bind({});
 Open.args = {
-  title: 'Accordion Title',
-  open: true,
+  defaultOpen: true,
 };
 
 export const Closed = Template.bind({});
 Closed.args = {
-  title: 'Accordion Title',
-  open: false,
+  defaultOpen: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  title: 'Accordion Title',
-  open: false,
+  defaultOpen: false,
 };

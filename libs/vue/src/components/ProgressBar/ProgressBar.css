@@ -1,22 +1,25 @@
-.progress-bar-container {
-  width: 100%;
-  height: 1rem;
-  background-color: #e0e0e0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  position: relative;
+:root {
+  --progress-bar-height: 20px;
+  --progress-bar-bg-color: #e0e0e0;
+  --progress-bar-color: #76c7c0;
+  --progress-bar-hover-color: #5baaa8;
+  --progress-bar-disabled-bg-color: #c0c0c0;
+  --progress-bar-disabled-color: #a0a0a0;
+  --progress-bar-radius: 10px;
 }
 
-.progress-bar {
-  height: 100%;
-  background-color: #3b82f6;
-  transition: width 0.2s ease;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.progress-bar-container:hover .progress-bar {
-  background-color: #2563eb;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.progress-bar-container[aria-disabled="true"] .progress-bar {
-  background-color: #9ca3af;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
+}
+
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

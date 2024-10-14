@@ -1,16 +1,16 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AudioWaveformDisplay from './AudioWaveformDisplay.vue';
 
 export default {
-  title: 'Media/AudioWaveformDisplay',
+  title: 'component/Media/AudioWaveformDisplay',
   component: AudioWaveformDisplay,
   tags: ['autodocs'],
   argTypes: {
     src: { control: 'text' },
-    state: { control: 'select', options: ['Playing', 'Paused', 'Loading', 'Scrubbing'] },
   },
-};
+} as Meta<typeof AudioWaveformDisplay>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof AudioWaveformDisplay> = (args) => ({
   components: { AudioWaveformDisplay },
   setup() {
     return { args };
@@ -20,30 +20,25 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'sample-audio.mp3',
-  state: 'Loading',
+  src: 'path/to/audio.mp3',
 };
 
 export const Playing = Template.bind({});
 Playing.args = {
-  src: 'sample-audio.mp3',
-  state: 'Playing',
+  ...Default.args,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  src: 'sample-audio.mp3',
-  state: 'Paused',
+  ...Default.args,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  src: 'sample-audio.mp3',
-  state: 'Loading',
+  ...Default.args,
 };
 
 export const Scrubbing = Template.bind({});
 Scrubbing.args = {
-  src: 'sample-audio.mp3',
-  state: 'Scrubbing',
+  ...Default.args,
 };

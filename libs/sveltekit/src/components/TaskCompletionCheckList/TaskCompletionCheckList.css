@@ -1,17 +1,23 @@
-ul {
-  list-style-type: none;
-  padding: 0;
+:root {
+  --checklist-padding: 1rem;
+  --checklist-item-margin: 0.5rem 0;
+  --checklist-label-color: #333;
+  --checklist-label-font-size: 1rem;
 }
 
-li {
-  margin: 5px 0;
+.checklist {
+  list-style: none;
+  padding: var(--checklist-padding);
 }
 
-.partially-complete {
-  border-left: 4px solid orange;
-  padding-left: 10px;
+.checklist li {
+  margin: var(--checklist-item-margin);
+  display: flex;
+  align-items: center;
 }
 
-input[type='checkbox'] {
-  margin-right: 10px;
+.checklist label {
+  margin-left: 0.5rem;
+  color: var(--checklist-label-color);
+  font-size: var(--checklist-label-font-size);
 }

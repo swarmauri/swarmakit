@@ -1,31 +1,67 @@
+:root {
+  --file-input-border: #adb5bd;
+  --file-input-bg: #f8f9fa;
+  --error-color: #dc3545;
+}
+
 .file-input-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 1rem;
 }
 
 input[type="file"] {
-  padding: 5px;
+  border: 1px solid var(--file-input-border);
+  padding: 0.5rem;
+  background-color: var(--file-input-bg);
+  cursor: pointer;
+}
+
+input[type="file"]:disabled {
+  cursor: not-allowed;
+}
+
+.preview-container {
+  max-width: 100%;
+  text-align: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
 }
 
 .error-message {
-  color: red;
-  font-size: 12px;
+  color: var(--error-color);
+  font-size: 0.875rem;
 }
 
-.preview img {
-  max-width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+@media (max-width: 576px) {
+  input[type="file"] {
+    width: 100%;
+    font-size: 0.875rem;
+  }
 }
 
-input:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+@media (min-width: 577px) and (max-width: 768px) {
+  input[type="file"] {
+    width: 95%;
+    font-size: 0.9375rem;
+  }
 }
 
-@media (max-width: 600px) {
-  .file-input-container {
-    gap: 5px;
+@media (min-width: 769px) and (max-width: 992px) {
+  input[type="file"] {
+    width: 90%;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 993px) {
+  input[type="file"] {
+    width: 85%;
+    font-size: 1.125rem;
   }
 }

@@ -1,61 +1,28 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Notification from './Notification.vue';
 
 export default {
-  title: 'Overlays/Notification',
+  title: 'component/Miscellaneous/Notification',
   component: Notification,
   tags: ['autodocs'],
-  argTypes: {
-    type: { 
-      control: { type: 'select', options: ['success', 'error', 'warning', 'info'] } 
-    },
-    dismissed: { control: 'boolean' },
-  },
-};
+} as Meta<typeof Notification>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Notification> = (args) => ({
   components: { Notification },
   setup() {
     return { args };
   },
-  template: `
-    <Notification v-bind="args">
-      This is a {{ args.type }} notification.
-    </Notification>
-  `,
+  template: '<Notification v-bind="args" />',
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  type: 'info',
-  dismissed: false,
-};
-
 export const Success = Template.bind({});
-Success.args = {
-  type: 'success',
-  dismissed: false,
-};
+Success.args = { notificationType: 'success', message: 'Operation was successful.' };
 
 export const Error = Template.bind({});
-Error.args = {
-  type: 'error',
-  dismissed: false,
-};
+Error.args = { notificationType: 'error', message: 'An error has occurred.' };
 
 export const Warning = Template.bind({});
-Warning.args = {
-  type: 'warning',
-  dismissed: false,
-};
-
-export const Info = Template.bind({});
-Info.args = {
-  type: 'info',
-  dismissed: false,
-};
+Warning.args = { notificationType: 'warning', message: 'Warning: Check your input.' };
 
 export const Dismissed = Template.bind({});
-Dismissed.args = {
-  type: 'info',
-  dismissed: true,
-};
+Dismissed.args = { notificationType: 'success', message: 'This notification has been dismissed.', isDismissed: true };

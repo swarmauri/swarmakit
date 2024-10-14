@@ -1,36 +1,28 @@
+:root {
+  --spinner-size: 50px;
+  --spinner-border-width: 5px;
+  --spinner-color: #3498db;
+  --spinner-background-color: #f3f3f3;
+}
+
 .loading-spinner {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spinner-size);
+  height: var(--spinner-size);
 }
 
 .spinner {
-  animation: rotate 2s linear infinite;
+  border: var(--spinner-border-width) solid var(--spinner-background-color);
+  border-top: var(--spinner-border-width) solid var(--spinner-color);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  animation: spin 1s linear infinite;
 }
 
-.path {
-  stroke: #6200ea;
-  stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 150;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
-  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

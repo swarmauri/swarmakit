@@ -1,22 +1,27 @@
-.color-picker-container {
-  display: flex;
-  align-items: center;
+:root {
+  --color-picker-active-border: #2196f3;
 }
 
-.color-picker-container input[type="color"] {
-  width: 40px;
-  height: 40px;
-  border: none;
-  cursor: pointer;
+@media (max-width: 480px) {
+  .color-picker {
+    /* Styles for small mobile devices */
+  }
 }
 
-input[type="color"]:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+@media (min-width: 481px) and (max-width: 767px) {
+  .color-picker {
+    /* Styles for large mobile devices */
+  }
 }
 
-@media (max-width: 600px) {
-  .color-picker-container {
-    justify-content: center;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .color-picker {
+    /* Styles for tablets */
+  }
+}
+
+@media (min-width: 1025px) {
+  .color-picker {
+    /* Styles for desktops */
   }
 }

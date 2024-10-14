@@ -1,32 +1,45 @@
-.loading-bars {
+:root {
+  --step-active-background: #4caf50;
+  --step-completed-background: #8bc34a;
+  --step-inactive-background: #e0e0e0;
+  --step-label-color: #333333;
+  --step-font-size: 16px;
+  --loading-bar-height: 8px;
+  --step-padding: 8px;
+  --step-bar-border-radius: 4px;
+}
+
+.loading-bars-with-steps {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 16px;
+  padding: var(--step-padding);
 }
 
 .step {
-  flex: 1;
-  height: 20px;
-  border-radius: 4px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-.step.active {
-  background-color: #6200ea;
-}
-
-.step.completed {
-  background-color: #03dac5;
-}
-
-.step.inactive {
-  background-color: #e0e0e0;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .step-label {
-  padding: 0 5px;
+  font-size: var(--step-font-size);
+  color: var(--step-label-color);
+}
+
+.loading-bar {
+  height: var(--loading-bar-height);
+  border-radius: var(--step-bar-border-radius);
+}
+
+.step.active .loading-bar {
+  background-color: var(--step-active-background);
+}
+
+.step.completed .loading-bar {
+  background-color: var(--step-completed-background);
+}
+
+.step.inactive .loading-bar {
+  background-color: var(--step-inactive-background);
 }

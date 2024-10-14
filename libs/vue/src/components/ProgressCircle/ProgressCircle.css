@@ -1,35 +1,24 @@
-.progress-circle {
-  width: 100px;
-  height: 100px;
+:root {
+  --progress-circle-size: 100px;
+  --progress-circle-bg-color: #e0e0e0;
+  --progress-circle-complete-color: #76c7c0;
+  --progress-circle-incomplete-color: #ff6f61;
+  --progress-circle-paused-color: #f9a825;
+  --progress-circle-active-color: #76c7c0;
 }
 
-.progress-circle svg {
-  transform: rotate(-90deg);
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.background {
-  fill: none;
-  stroke: #e0e0e0;
-  stroke-width: 4;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.progress {
-  fill: none;
-  stroke: #3b82f6;
-  stroke-width: 4;
-  stroke-dasharray: 88;
-  transition: stroke-dashoffset 0.35s ease;
-  transform-origin: center;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.progress-circle[state="paused"] .progress {
-  stroke: #f97316;
-}
-
-.progress-circle[state="complete"] .progress {
-  stroke: #10b981;
-}
-
-.progress-circle[state="incomplete"] .progress {
-  stroke: #ef4444;
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

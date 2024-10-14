@@ -1,55 +1,50 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ProgressCircle from './ProgressCircle.vue';
 
 export default {
-  title: 'Indicators/ProgressCircle',
+  title: 'component/Indicators/ProgressCircle',
   component: ProgressCircle,
   tags: ['autodocs'],
   argTypes: {
-    progress: {
-      control: { type: 'number', min: 0, max: 100 },
-      description: 'The current progress value',
-    },
-    state: {
-      control: { type: 'select', options: ['active', 'paused', 'complete', 'incomplete'] },
-      description: 'The current state of the progress circle',
-    },
+    progress: { control: 'number' },
+    status: { control: 'select', options: ['complete', 'incomplete', 'paused', 'active'] },
   },
-};
+} as Meta<typeof ProgressCircle>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ProgressCircle> = (args) => ({
   components: { ProgressCircle },
   setup() {
     return { args };
   },
-  template: '<ProgressCircle v-bind="args" />',
+  template: `<ProgressCircle v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   progress: 50,
-  state: 'active',
+  status: 'active',
 };
 
 export const Complete = Template.bind({});
 Complete.args = {
   progress: 100,
-  state: 'complete',
+  status: 'complete',
 };
 
 export const Incomplete = Template.bind({});
 Incomplete.args = {
-  progress: 25,
-  state: 'incomplete',
+  progress: 0,
+  status: 'incomplete',
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
   progress: 50,
-  state: 'paused',
+  status: 'paused',
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  progress: 75,
-  state: 'active',
+  progress: 50,
+  status: 'active',
 };

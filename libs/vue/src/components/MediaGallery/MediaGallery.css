@@ -1,94 +1,29 @@
-.media-gallery {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+:root {
+  --gallery-bg-color: #f0f0f0;
+  --button-bg-color: #444;
+  --button-text-color: #fff;
 }
 
-.thumbnails {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-}
-
-.thumbnail {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  cursor: pointer;
-}
-
-.expanded {
-  position: relative;
-}
-
-.expanded-image {
-  width: 100%;
-  height: auto;
-}
-
-.controls {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.zoom {
-  position: relative;
-}
-
-.zoomed-image {
-  width: 100%;
-  height: auto;
-}
-
-.zoom-controls {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-button {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-button:focus {
-  outline: 2px solid #fff;
-}
-
-@media (max-width: 600px) {
-  .thumbnail {
-    width: 75px;
-    height: 75px;
+@media (max-width: 480px) {
+  .media-gallery {
+    padding: 1rem;
   }
 }
 
-@media (min-width: 601px) and (max-width: 900px) {
-  .thumbnail {
-    width: 90px;
-    height: 90px;
+@media (min-width: 481px) and (max-width: 768px) {
+  .media-gallery {
+    padding: 1.5rem;
   }
 }
 
-@media (min-width: 901px) and (max-width: 1200px) {
-  .thumbnail {
-    width: 100px;
-    height: 100px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .media-gallery {
+    padding: 2rem;
   }
 }
 
-@media (min-width: 1201px) {
-  .thumbnail {
-    width: 110px;
-    height: 110px;
+@media (min-width: 1025px) {
+  .media-gallery {
+    padding: 2.5rem;
   }
 }

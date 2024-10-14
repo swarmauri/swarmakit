@@ -1,16 +1,13 @@
 import ColorPicker from './ColorPicker.vue';
+import { Meta, Story } from '@storybook/vue3';
 
 export default {
-  title: 'Forms/ColorPicker',
+  title: 'component/Drawing/ColorPicker',
   component: ColorPicker,
   tags: ['autodocs'],
-  argTypes: {
-    modelValue: { control: 'color' },
-    disabled: { control: 'boolean' },
-  },
-};
+} as Meta;
 
-const Template = (args: any) => ({
+const Template: Story = (args) => ({
   components: { ColorPicker },
   setup() {
     return { args };
@@ -19,19 +16,18 @@ const Template = (args: any) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  modelValue: '#000000',
-  disabled: false,
+Default.args = {};
+
+export const Active = Template.bind({});
+Active.args = {
+  isActive: true,
 };
 
-export const Selected = Template.bind({});
-Selected.args = {
-  modelValue: '#ff5733',
-  disabled: false,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  modelValue: '#000000',
-  disabled: true,
+export const ColorSelected = Template.bind({});
+ColorSelected.args = {
+  isActive: true,
+  selectedColor: '#ff5733',
+  hexCode: '#ff5733',
+  brightness: 70,
+  opacity: 0.8,
 };

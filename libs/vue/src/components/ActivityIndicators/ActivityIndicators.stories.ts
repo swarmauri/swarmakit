@@ -1,17 +1,21 @@
 import ActivityIndicators from './ActivityIndicators.vue';
 
 export default {
-  title: 'Indicators/ActivityIndicators',
   component: ActivityIndicators,
+  title: 'component/Indicators/ActivityIndicators',
   tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: { type: 'select', options: ['loading', 'success', 'error'] },
+    type: {
+      control: { type: 'select' },
+      options: ['loading', 'success', 'error'],
+    },
+    message: {
+      control: 'text',
     },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { ActivityIndicators },
   setup() {
     return { args };
@@ -21,20 +25,24 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'loading',
+  type: 'loading',
+  message: 'Loading...',
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  state: 'loading',
+  type: 'loading',
+  message: 'Loading...',
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  state: 'success',
+  type: 'success',
+  message: 'Operation successful!',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  state: 'error',
+  type: 'error',
+  message: 'An error occurred!',
 };

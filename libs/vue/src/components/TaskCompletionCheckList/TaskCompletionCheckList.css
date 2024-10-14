@@ -1,28 +1,24 @@
-.checklist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+:root {
+  --checklist-margin: 16px 0;
+  --checklist-item-padding: 8px 0;
+  --task-checked-color: #28a745;
+  --task-unchecked-color: #6c757d;
+  --task-partially-complete-color: #ffc107;
+  --task-label-margin: 8px;
 }
 
-.checklist li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.checklist li.checked {
-  text-decoration: line-through;
-  color: #4caf50;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.checklist li.unchecked {
-  color: #f44336;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.checklist li.partially-complete {
-  color: #ff9800;
-}
-
-.checklist input[type="checkbox"] {
-  margin-right: 10px;
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

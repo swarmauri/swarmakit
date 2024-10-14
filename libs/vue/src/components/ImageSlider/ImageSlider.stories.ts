@@ -1,16 +1,16 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ImageSlider from './ImageSlider.vue';
 
 export default {
-  title: 'Media/ImageSlider',
+  title: 'component/Media/ImageSlider',
   component: ImageSlider,
   tags: ['autodocs'],
   argTypes: {
     images: { control: 'array' },
-    state: { control: 'select', options: ['Active', 'Inactive', 'Hover'] },
   },
-};
+} as Meta<typeof ImageSlider>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ImageSlider> = (args) => ({
   components: { ImageSlider },
   setup() {
     return { args };
@@ -21,39 +21,24 @@ const Template = (args: any) => ({
 export const Default = Template.bind({});
 Default.args = {
   images: [
-    'https://via.placeholder.com/600x300?text=Slide+1',
-    'https://via.placeholder.com/600x300?text=Slide+2',
-    'https://via.placeholder.com/600x300?text=Slide+3',
+    'https://via.placeholder.com/800x400?text=Image+1',
+    'https://via.placeholder.com/800x400?text=Image+2',
+    'https://via.placeholder.com/800x400?text=Image+3',
   ],
-  state: 'Active',
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  images: [
-    'https://via.placeholder.com/600x300?text=Slide+1',
-    'https://via.placeholder.com/600x300?text=Slide+2',
-    'https://via.placeholder.com/600x300?text=Slide+3',
-  ],
-  state: 'Active',
+  ...Default.args,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  images: [
-    'https://via.placeholder.com/600x300?text=Slide+1',
-    'https://via.placeholder.com/600x300?text=Slide+2',
-    'https://via.placeholder.com/600x300?text=Slide+3',
-  ],
-  state: 'Inactive',
+  ...Default.args,
+  images: [],
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  images: [
-    'https://via.placeholder.com/600x300?text=Slide+1',
-    'https://via.placeholder.com/600x300?text=Slide+2',
-    'https://via.placeholder.com/600x300?text=Slide+3',
-  ],
-  state: 'Hover',
+  ...Default.args,
 };

@@ -1,17 +1,17 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import VirtualizedList from './VirtualizedList.vue';
 
 export default {
-  title: 'Lists/VirtualizedList',
+  title: 'component/Lists/VirtualizedList',
   component: VirtualizedList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
-    loading: { control: 'boolean' },
-    endOfList: { control: 'boolean' },
+    items: { control: 'object' },
+    itemHeight: { control: 'number' },
   },
-};
+} as Meta<typeof VirtualizedList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof VirtualizedList> = (args) => ({
   components: { VirtualizedList },
   setup() {
     return { args };
@@ -21,30 +21,18 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  items: Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    content: `Item ${i + 1}`,
-  })),
-  loading: false,
-  endOfList: false,
+  items: Array.from({ length: 100 }, (_, index) => ({ id: index, label: `Item ${index + 1}` })),
+  itemHeight: 50,
 };
 
 export const LoadingMore = Template.bind({});
 LoadingMore.args = {
-  items: Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    content: `Item ${i + 1}`,
-  })),
-  loading: true,
-  endOfList: false,
+  ...Default.args,
+  items: Array.from({ length: 50 }, (_, index) => ({ id: index, label: `Item ${index + 1}` })),
 };
 
 export const EndOfList = Template.bind({});
 EndOfList.args = {
-  items: Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    content: `Item ${i + 1}`,
-  })),
-  loading: false,
-  endOfList: true,
+  ...Default.args,
+  items: Array.from({ length: 10 }, (_, index) => ({ id: index, label: `Item ${index + 1}` })),
 };

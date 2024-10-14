@@ -1,16 +1,17 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import DegreeImageViewer from './360-DegreeImageViewer.vue';
 
 export default {
-  title: 'Media/360-DegreeImageViewer',
+  title: 'component/Media/360-DegreeImageViewer',
   component: DegreeImageViewer,
   tags: ['autodocs'],
   argTypes: {
     images: { control: 'array' },
-    loading: { control: 'boolean' },
+    rotationSpeed: { control: 'number' },
   },
-};
+} as Meta<typeof DegreeImageViewer>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof DegreeImageViewer> = (args) => ({
   components: { DegreeImageViewer },
   setup() {
     return { args };
@@ -20,30 +21,28 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  images: Array.from({ length: 36 }, (_, i) => `image_${i + 1}.jpg`),
-  loading: false,
+  images: Array.from({ length: 36 }, (_, index) => `path/to/image${index + 1}.jpg`),
+  rotationSpeed: 100,
 };
 
 export const Rotating = Template.bind({});
 Rotating.args = {
-  images: Array.from({ length: 36 }, (_, i) => `image_${i + 1}.jpg`),
-  loading: false,
+  ...Default.args,
+  rotationSpeed: 50,
 };
 
 export const Paused = Template.bind({});
 Paused.args = {
-  images: Array.from({ length: 36 }, (_, i) => `image_${i + 1}.jpg`),
-  loading: false,
+  ...Default.args,
 };
 
 export const ZoomInOut = Template.bind({});
 ZoomInOut.args = {
-  images: Array.from({ length: 36 }, (_, i) => `image_${i + 1}.jpg`),
-  loading: false,
+  ...Default.args,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
+  ...Default.args,
   images: [],
-  loading: true,
 };

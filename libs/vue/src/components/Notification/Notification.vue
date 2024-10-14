@@ -1,52 +1,72 @@
 <template>
   <div
-    v-if="!isDismissed"
     class="notification"
-    :class="typeClass"
+    :class="notificationType"
     role="alert"
+    v-if="!isDismissed"
   >
-    <span class="notification-icon" :aria-label="ariaLabel"></span>
-    <p class="notification-message"><slot></slot></p>
-    <button class="dismiss-button" @click="dismissNotification" aria-label="Dismiss notification">×</button>
+    <span>{{ message }}</span>
+    <button class="close-btn" @click="dismiss" aria-label="Dismiss notification">✖</button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, ref, PropType } from 'vue';
 
 export default defineComponent({
   name: 'Notification',
   props: {
-    type: {
-      type: String,
-      default: 'info',
-      validator: (value: string) => ['success', 'error', 'warning', 'info'].includes(value),
+    notificationType: {
+      type: String as PropType<'success' | 'error' | 'warning'>,
+      default: 'success',
     },
-    dismissed: {
-      type: Boolean,
-      default: false,
+    message: {
+      type: String,
+      default: 'This is a notification message.',
     },
   },
-  setup(props) {
-    const isDismissed = ref(props.dismissed);
+  setup() {
+    const isDismissed = ref(false);
 
-    const dismissNotification = () => {
+    const dismiss = () => {
       isDismissed.value = true;
     };
 
-    const typeClass = computed(() => `notification--${props.type}`);
-    const ariaLabel = computed(() => `${props.type} notification`);
-
-    return {
-      isDismissed,
-      dismissNotification,
-      typeClass,
-      ariaLabel,
-    };
+    return { isDismissed, dismiss };
   },
 });
 </script>
 
-<style lang="css">
-@import './Notification.css';
+<style scoped lang="css">
+.notification {
+  padding: 15px;
+  border-radius: 5px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification.success {
+  background-color: var(--notification-success-bg, #d4edda);
+  color: var(--notification-success-color, #155724);
+}
+
+.notification.error {
+  background-color: var(--notification-error-bg, #f8d7da);
+  color: var(--notification-error-color, #721c24);
+}
+
+.notification.warning {
+  background-color: var(--notification-warning-bg, #fff3cd);
+  color: var(--notification-warning-color, #856404);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 16px;
+}
 </style>

@@ -1,42 +1,36 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Badge from './Badge.vue';
 
 export default {
-  title: 'Indicators/Badge',
+  title: 'component/Indicators/Badge',
   component: Badge,
   tags: ['autodocs'],
   argTypes: {
     type: {
-      control: { type: 'select', options: ['default', 'notification', 'status'] },
-    },
-    default: {
-      control: 'text',
-      description: 'Text content of the badge',
+      control: { type: 'select', options: ['default', 'notification', 'status-indicator'] },
     },
   },
-};
+} as Meta<typeof Badge>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Badge> = (args) => ({
   components: { Badge },
   setup() {
     return { args };
   },
-  template: '<Badge v-bind="args">{{ args.default }}</Badge>',
+  template: `<Badge v-bind="args">{{ args.type }}</Badge>`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   type: 'default',
-  default: 'Default Badge',
 };
 
 export const Notification = Template.bind({});
 Notification.args = {
   type: 'notification',
-  default: '3',
 };
 
 export const StatusIndicator = Template.bind({});
 StatusIndicator.args = {
-  type: 'status',
-  default: 'Online',
+  type: 'status-indicator',
 };

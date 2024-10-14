@@ -1,49 +1,49 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import RatingStars from './RatingStars.vue';
 
 export default {
-  title: 'Indicators/RatingStars',
+  title: 'component/Indicators/RatingStars',
   component: RatingStars,
   tags: ['autodocs'],
   argTypes: {
-    modelValue: {
-      control: { type: 'number', min: 0, max: 5 },
-      description: 'The current rating value',
-    },
-    state: {
-      control: { type: 'select', options: ['hover', 'selected', 'inactive'] },
-      description: 'The current state of the rating stars',
-    },
+    maxStars: { control: 'number' },
+    initialRating: { control: 'number' },
+    inactive: { control: 'boolean' },
   },
-};
+} as Meta<typeof RatingStars>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof RatingStars> = (args) => ({
   components: { RatingStars },
   setup() {
     return { args };
   },
-  template: '<RatingStars v-bind="args" />',
+  template: `<RatingStars v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  modelValue: 0,
-  state: 'inactive',
+  maxStars: 5,
+  initialRating: 0,
+  inactive: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  modelValue: 3,
-  state: 'hover',
+  maxStars: 5,
+  initialRating: 0,
+  inactive: false,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  modelValue: 4,
-  state: 'selected',
+  maxStars: 5,
+  initialRating: 3,
+  inactive: false,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
-  modelValue: 2,
-  state: 'inactive',
+  maxStars: 5,
+  initialRating: 3,
+  inactive: true,
 };

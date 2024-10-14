@@ -1,71 +1,124 @@
 <template>
   <div class="video-player" role="region" aria-label="Video Player">
-    <video ref="videoRef" @play="onPlay" @pause="onPause" @waiting="onBuffering" controls>
-      <source :src="videoSource" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <video
+      ref="videoElement"
+      :src="videoSrc"
+      @play="onPlay"
+      @pause="onPause"
+      @waiting="onBuffering"
+      @fullscreenchange="onFullscreenChange"
+      controls
+      class="video-element"
+    ></video>
     <div class="controls">
-      <button @click="togglePlayPause" aria-label="Play/Pause">
-        {{ state === 'Play' ? 'Pause' : 'Play' }}
+      <button @click="togglePlayPause" aria-label="Play/Pause" class="control-btn">
+        {{ isPlaying ? 'Pause' : 'Play' }}
       </button>
-      <button @click="toggleFullscreen" aria-label="Fullscreen">
-        Fullscreen
+      <button @click="toggleFullscreen" aria-label="Fullscreen" class="control-btn">
+        {{ isFullscreen ? 'Exit Fullscreen' : 'Fullscreen' }}
       </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 
 export default defineComponent({
   name: 'VideoPlayer',
   props: {
-    state: {
-      type: String,
-      default: 'Pause',
-    },
-    videoSource: {
+    videoSrc: {
       type: String,
       required: true,
     },
   },
   setup(props) {
-    const videoRef = ref<HTMLVideoElement | null>(null);
+    const isPlaying = ref(false);
+    const isFullscreen = ref(false);
+    const videoElement = ref<HTMLVideoElement | null>(null);
+
+    onMounted(() => {
+      if (videoElement.value) {
+        videoElement.value.controls = false;
+      }
+    });
 
     const togglePlayPause = () => {
-      if (!videoRef.value) return;
-      if (videoRef.value.paused) {
-        videoRef.value.play();
-      } else {
-        videoRef.value.pause();
+      if (videoElement.value) {
+        if (videoElement.value.paused) {
+          videoElement.value.play();
+        } else {
+          videoElement.value.pause();
+        }
       }
     };
 
     const toggleFullscreen = () => {
-      if (!videoRef.value) return;
-      if (videoRef.value.requestFullscreen) {
-        videoRef.value.requestFullscreen();
+      if (videoElement.value) {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          videoElement.value.requestFullscreen();
+        }
       }
     };
 
     const onPlay = () => {
-      props.state = 'Play';
+      isPlaying.value = true;
     };
 
     const onPause = () => {
-      props.state = 'Pause';
+      isPlaying.value = false;
     };
 
     const onBuffering = () => {
-      props.state = 'Buffering';
+      isPlaying.value = false;
     };
 
-    return { videoRef, togglePlayPause, toggleFullscreen, onPlay, onPause, onBuffering };
+    const onFullscreenChange = () => {
+      isFullscreen.value = !!document.fullscreenElement;
+    };
+
+    return {
+      isPlaying,
+      isFullscreen,
+      videoElement,
+      togglePlayPause,
+      toggleFullscreen,
+      onPlay,
+      onPause,
+      onBuffering,
+      onFullscreenChange,
+    };
   },
 });
 </script>
 
-<style lang="css">
-@import './VideoPlayer.css';
+<style scoped lang="css">
+.video-player {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--player-bg-color);
+}
+
+.video-element {
+  width: 100%;
+  display: block;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.control-btn {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
 </style>

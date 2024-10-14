@@ -1,32 +1,31 @@
 import IconButton from './IconButton.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: 'Buttons/IconButton',
+  title: 'component/Buttons/IconButton',
   component: IconButton,
   tags: ['autodocs'],
   argTypes: {
     disabled: { control: 'boolean' },
-    active: { control: 'boolean' },
   },
-};
+} as Meta<typeof IconButton>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof IconButton> = (args) => ({
   components: { IconButton },
   setup() {
     return { args };
   },
-  template: '<IconButton v-bind="args"><svg><!-- Your SVG icon here --></svg></IconButton>',
+  template: '<IconButton v-bind="args"><span class="icon">⭐</span></IconButton>',
 });
 
 export const Default = Template.bind({});
 Default.args = {
   disabled: false,
-  active: false,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  active: true,
+  disabled: false,
 };
 
 export const Hover = Template.bind({});

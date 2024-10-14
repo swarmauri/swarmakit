@@ -1,57 +1,33 @@
 <script lang="ts">
   export let progress: number = 0;
-  export let status: 'active' | 'paused' = 'active';
+  export let state: 'complete' | 'incomplete' | 'in-progress' | 'paused' | 'active' = 'in-progress';
+  export let ariaLabel: string = 'Progress Circle';
+  
+  const circumference = 2 * Math.PI * 45;
+  const offset = circumference - (progress / 100) * circumference;
 </script>
 
 <svg
   class="progress-circle"
-  viewBox="0 0 36 36"
+  width="100"
+  height="100"
+  aria-label={ariaLabel}
   role="progressbar"
   aria-valuenow={progress}
   aria-valuemin="0"
   aria-valuemax="100"
-  aria-label="Progress Circle"
 >
-  <path
-    class="circle-bg"
-    d="M18 2.0845
-        a 15.9155 15.9155 0 0 1 0 31.831
-        a 15.9155 15.9155 0 0 1 0 -31.831"
-  />
-  <path
-    class="circle"
-    d="M18 2.0845
-        a 15.9155 15.9155 0 0 1 0 31.831
-        a 15.9155 15.9155 0 0 1 0 -31.831"
-    style={`stroke-dasharray: ${progress}, 100`}
+  <circle cx="50" cy="50" r="45" class="background" />
+  <circle
+    cx="50"
+    cy="50"
+    r="45"
+    class="progress"
+    stroke-dasharray="{circumference}"
+    stroke-dashoffset="{offset}"
   />
 </svg>
 
 <style lang="css">
-  .progress-circle {
-    width: 100px;
-    height: 100px;
-  }
-
-  .circle-bg {
-    fill: none;
-    stroke: #e0e0e0;
-    stroke-width: 2.8;
-  }
-
-  .circle {
-    fill: none;
-    stroke-width: 2.8;
-    stroke-linecap: round;
-    stroke: #76c7c0;
-    transition: stroke-dasharray 0.3s ease;
-  }
-
-  .progress-circle[aria-valuenow='100'] .circle {
-    stroke: #4caf50;
-  }
-
-  .progress-circle[data-status='paused'] .circle {
-    stroke: #ff9800;
-  }
+  @import './ProgressCircle.css';
 </style>

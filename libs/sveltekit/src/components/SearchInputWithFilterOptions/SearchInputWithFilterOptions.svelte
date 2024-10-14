@@ -1,12 +1,16 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+
   export let query: string = '';
-  export let disabled: boolean = false;
   export let filters: string[] = [];
   export let activeFilters: string[] = [];
+  export let disabled: boolean = false;
 
-  function handleInput(event: InputEvent) {
-    const target = event.target as HTMLInputElement;
-    query = target.value;
+  const dispatch = createEventDispatcher();
+
+  function updateQuery(event: Event) {
+    query = (event.target as HTMLInputElement).value;
+    dispatch('search', { query });
   }
 
   function toggleFilter(filter: string) {
@@ -15,26 +19,28 @@
     } else {
       activeFilters = [...activeFilters, filter];
     }
+    dispatch('filterChange', { activeFilters });
   }
 </script>
 
-<div class="search-input-with-filters">
+<div class="search-input-container">
   <input
     type="text"
     class="search-input"
-    bind:value={query}
-    on:input={handleInput}
     placeholder="Search..."
+    bind:value={query}
+    on:input={updateQuery}
     disabled={disabled}
-    aria-disabled={disabled}
+    aria-label="Search input"
   />
-  <div class="filters">
+  <div class="filter-options">
     {#each filters as filter}
       <button
         type="button"
-        class="filter-button"
+        class="filter-button {activeFilters.includes(filter) ? 'active' : ''}"
         on:click={() => toggleFilter(filter)}
         aria-pressed={activeFilters.includes(filter)}
+        disabled={disabled}
       >
         {filter}
       </button>
@@ -43,36 +49,5 @@
 </div>
 
 <style lang="css">
-  .search-input-with-filters {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .search-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .search-input:disabled {
-    background-color: #f5f5f5;
-  }
-
-  .filters {
-    display: flex;
-    gap: 4px;
-  }
-
-  .filter-button {
-    padding: 4px 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-  }
-
-  .filter-button[aria-pressed="true"] {
-    background-color: #66afe9;
-    color: #fff;
-  }
+  @import './SearchInputWithFilterOptions.css';
 </style>

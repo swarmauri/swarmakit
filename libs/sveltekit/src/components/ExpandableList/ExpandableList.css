@@ -1,29 +1,42 @@
+:root {
+  --list-border: #ccc;
+  --list-item-bg: #fff;
+  --list-item-hover-bg: #f0f0f0;
+  --list-item-selected-bg: #e0e0e0;
+  --list-item-expanded-bg: #f9f9f9;
+  --list-color: #333;
+}
+
 .expandable-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .list-item {
-  border: 1px solid #ddd;
-  margin-bottom: 5px;
-  cursor: pointer;
+  border-bottom: 1px solid var(--list-border);
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: var(--list-item-bg);
+  cursor: pointer;
 }
 
 .list-item:hover {
-  background-color: #f1f1f1;
+  background-color: var(--list-item-hover-bg);
 }
 
-.list-item.selected {
-  background-color: #e0e0e0;
-}
-
-.list-item-title {
+.item-label {
   font-weight: bold;
 }
 
-.list-item-content {
+.item-content {
   margin-top: 5px;
+  padding-left: 15px;
+}
+
+.expanded {
+  background-color: var(--list-item-expanded-bg) !important;
+}
+
+.selected {
+  background-color: var(--list-item-selected-bg) !important;
 }

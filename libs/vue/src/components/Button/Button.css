@@ -1,41 +1,32 @@
-/* Button styles */
-
-/* Use CSS variables to style the button based on the active theme */
-button {
-  background-color: var(--button-bg);
-  color: var(--button-text-color);
-  border-radius: var(--button-border-radius);
-  padding: 10px 20px;
+.button {
+  padding: var(--button-padding, 10px 20px);
+  font-size: var(--button-font-size, 16px);
+  border-radius: var(--button-border-radius, 4px);
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-/* Primary variant */
-.button-primary {
-  background-color: var(--button-primary-bg);
+.primary {
+  background-color: var(--button-primary-bg, #007bff);
+  color: var(--button-primary-color, #fff);
 }
 
-.button-primary:hover {
-  background-color: var(--button-primary-hover-bg);
+.secondary {
+  background-color: var(--button-secondary-bg, #6c757d);
+  color: var(--button-secondary-color, #fff);
 }
 
-/* Secondary variant */
-.button-secondary {
-  background-color: var(--button-secondary-bg);
-}
-
-.button-secondary:hover {
-  background-color: var(--button-secondary-hover-bg);
-}
-
-/* Disabled state */
-.button-disabled {
-  background-color: var(--button-disabled-bg);
+.disabled {
+  background-color: var(--button-disabled-bg, #e0e0e0);
+  color: var(--button-disabled-color, #9e9e9e);
   cursor: not-allowed;
 }
 
-/* Active state */
-.button-active {
-  border: 2px solid var(--button-active-border);
+.hover:not(.disabled) {
+  background-color: var(--button-hover-bg, #0056b3);
+}
+
+.active:not(.disabled) {
+  background-color: var(--button-active-bg, #004085);
 }

@@ -1,43 +1,43 @@
+:root {
+  --list-bg: #ffffff;
+  --list-border: #ccc;
+  --list-item-hover-bg: #f0f0f0;
+  --list-action-bg: #d0f0c0;
+  --list-color: #333;
+}
+
 .contextual-list {
-  padding: 10px;
-}
-
-ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  margin: 0;
+  border: 1px solid var(--list-border);
+  background: var(--list-bg);
 }
 
-li {
+.list-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
-  padding: 8px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  align-items: center;
 }
 
-li:hover {
-  background-color: #e0e0e0;
+.list-item:hover {
+  background: var(--list-item-hover-bg);
+}
+
+.list-item.action-triggered {
+  background: var(--list-action-bg);
 }
 
 button {
-  margin-left: 10px;
-  padding: 4px 8px;
-  cursor: pointer;
+  background: none;
   border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  transition: background-color 0.3s;
+  cursor: pointer;
+  color: var(--list-color);
+  padding: 5px 10px;
 }
 
 button:hover {
-  background-color: #0056b3;
-}
-
-.item-action-triggered {
-  background-color: #c0ffc0;
+  text-decoration: underline;
 }

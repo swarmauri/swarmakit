@@ -1,29 +1,26 @@
-.stepper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+:root {
+  --step-padding: 8px 16px;
+  --step-completed-bg: #4caf50;
+  --step-completed-color: #fff;
+  --step-active-bg: #2196f3;
+  --step-active-color: #fff;
+  --step-disabled-bg: #e0e0e0;
+  --step-disabled-color: #757575;
+  --step-label-margin: 8px;
 }
 
-.step {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  margin: 0 5px;
-  transition: background-color 0.2s, color 0.2s;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.step.completed {
-  background-color: #4caf50;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.step.active {
-  background-color: #2196f3;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.step.disabled {
-  background-color: #9e9e9e;
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

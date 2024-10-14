@@ -1,52 +1,35 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
   export type ListItem = {
     id: number;
     text: string;
     details: string;
-    selected?: boolean;
   };
 
   export let items: ListItem[] = [];
-  const dispatch = createEventDispatcher();
+  export let selectedItemId: number | null = null;
+  export let detailsOpen: boolean = false;
 
-  function toggleSelection(item: ListItem) {
-    if (!item.selected) {
-      dispatch('itemSelected', item);
-    } else {
-      dispatch('itemDeselected', item);
-    }
-    item.selected = !item.selected;
-  }
+  const toggleSelection = (itemId: number) => {
+    selectedItemId = selectedItemId === itemId ? null : itemId;
+    detailsOpen = selectedItemId === itemId;
+  };
 
-  function toggleDetails(item: ListItem) {
-    item.detailsOpen = !item.detailsOpen;
-    dispatch(item.detailsOpen ? 'detailsOpened' : 'detailsClosed', item);
-  }
+  const toggleDetails = () => {
+    detailsOpen = !detailsOpen;
+  };
 </script>
 
 <div class="selectable-list" role="list">
   {#each items as item (item.id)}
     <div
-      class="selectable-list-item"
-      class:selected={item.selected}
+      class="list-item {selectedItemId === item.id ? 'selected' : ''}"
+      on:click={() => toggleSelection(item.id)}
       role="listitem"
+      aria-selected={selectedItemId === item.id}
       tabindex="0"
-      on:click={() => toggleSelection(item)}
-      on:keydown={(e) => e.key === "Enter" && toggleSelection(item)}
-      aria-selected={item.selected}
     >
-      <div>{item.text}</div>
-      <button
-        type="button"
-        class="details-button"
-        on:click={() => toggleDetails(item)}
-        on:keydown={(e) => e.key === "Enter" && toggleDetails(item)}
-      >
-        {item.detailsOpen ? 'Hide Details' : 'Show Details'}
-      </button>
-      {#if item.detailsOpen}
+      {item.text}
+      {#if selectedItemId === item.id && detailsOpen}
         <div class="item-details">{item.details}</div>
       {/if}
     </div>

@@ -1,17 +1,18 @@
 import SearchInputWithFilterOptions from './SearchInputWithFilterOptions.vue';
 
 export default {
-  title: 'Forms/SearchInputWithFilterOptions',
   component: SearchInputWithFilterOptions,
+  title: 'component/Forms/SearchInputWithFilterOptions',
   tags: ['autodocs'],
   argTypes: {
-    placeholder: { control: 'text' },
-    filterOptions: { control: 'array' },
-    disabled: { control: 'boolean' },
+    placeholder: { control: { type: 'text' } },
+    disabled: { control: { type: 'boolean' } },
+    filtersActive: { control: { type: 'boolean' } },
+    noResults: { control: { type: 'boolean' } },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { SearchInputWithFilterOptions },
   setup() {
     return { args };
@@ -22,34 +23,39 @@ const Template = (args: any) => ({
 export const Default = Template.bind({});
 Default.args = {
   placeholder: 'Search...',
-  filterOptions: ['Option 1', 'Option 2', 'Option 3'],
   disabled: false,
+  filtersActive: false,
+  noResults: false,
 };
 
 export const Searching = Template.bind({});
 Searching.args = {
   placeholder: 'Searching...',
-  filterOptions: ['Option 1', 'Option 2', 'Option 3'],
   disabled: false,
+  filtersActive: true,
+  noResults: false,
 };
 
 export const FiltersActive = Template.bind({});
 FiltersActive.args = {
   placeholder: 'Search...',
-  filterOptions: ['Option 1', 'Option 2', 'Option 3'],
   disabled: false,
+  filtersActive: true,
+  noResults: false,
 };
 
 export const NoResults = Template.bind({});
 NoResults.args = {
   placeholder: 'Search...',
-  filterOptions: ['Option 1', 'Option 2', 'Option 3'],
   disabled: false,
+  filtersActive: false,
+  noResults: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   placeholder: 'Search...',
-  filterOptions: ['Option 1', 'Option 2', 'Option 3'],
   disabled: true,
+  filtersActive: false,
+  noResults: false,
 };

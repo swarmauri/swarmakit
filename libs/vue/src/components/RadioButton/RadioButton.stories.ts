@@ -1,63 +1,55 @@
 import RadioButton from './RadioButton.vue';
 
 export default {
-  title: 'Forms/RadioButton',
   component: RadioButton,
+  title: 'component/Forms/RadioButton',
   tags: ['autodocs'],
   argTypes: {
-    label: { control: 'text' },
-    id: { control: 'text' },
-    name: { control: 'text' },
-    value: { control: 'text' },
-    modelValue: { control: 'text' },
-    disabled: { control: 'boolean' },
+    checked: {
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { RadioButton },
   setup() {
     return { args };
   },
-  template: '<RadioButton v-bind="args" />',
+  template: '<RadioButton v-bind="args">Option</RadioButton>',
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Option',
-  id: 'default-radio',
-  name: 'radio-group',
-  value: 'default',
-  modelValue: null,
+  checked: false,
   disabled: false,
+  value: 'option1',
+  name: 'radioGroup',
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  label: 'Option',
-  id: 'selected-radio',
-  name: 'radio-group',
-  value: 'selected',
-  modelValue: 'selected',
+  checked: true,
   disabled: false,
+  value: 'option1',
+  name: 'radioGroup',
 };
 
 export const Unselected = Template.bind({});
 Unselected.args = {
-  label: 'Option',
-  id: 'unselected-radio',
-  name: 'radio-group',
-  value: 'unselected',
-  modelValue: null,
+  checked: false,
   disabled: false,
+  value: 'option1',
+  name: 'radioGroup',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Option',
-  id: 'disabled-radio',
-  name: 'radio-group',
-  value: 'disabled',
-  modelValue: null,
+  checked: false,
   disabled: true,
+  value: 'option1',
+  name: 'radioGroup',
 };

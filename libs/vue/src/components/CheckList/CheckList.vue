@@ -1,34 +1,32 @@
 <template>
-  <div class="checklist">
+  <div class="checklist" role="group">
     <div
       v-for="(item, index) in items"
       :key="index"
       class="checklist-item"
-      :class="{ disabled: item.disabled }"
+      :class="{ checked: item.checked, indeterminate: item.indeterminate, disabled: item.disabled }"
     >
       <input
         type="checkbox"
+        :id="'checkbox-' + index"
         :checked="item.checked"
-        :indeterminate="item.indeterminate"
+        :indeterminate.prop="item.indeterminate"
         :disabled="item.disabled"
         @change="toggleCheck(index)"
-        :id="'checklist-item-' + index"
-        aria-checked="item.indeterminate ? 'mixed' : item.checked"
-        :aria-disabled="item.disabled"
       />
-      <label :for="'checklist-item-' + index">{{ item.label }}</label>
+      <label :for="'checkbox-' + index">{{ item.label }}</label>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 interface CheckListItem {
   label: string;
   checked: boolean;
-  indeterminate: boolean;
-  disabled: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
 }
 
 export default defineComponent({
@@ -39,18 +37,45 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: {
-    toggleCheck(index: number) {
-      if (!this.items[index].disabled) {
-        this.items[index].checked = !this.items[index].checked;
-        this.items[index].indeterminate = false;
-        this.$emit('item-checked', index, this.items[index].checked);
+  setup(props) {
+    const toggleCheck = (index: number) => {
+      const item = props.items[index];
+      if (!item.disabled) {
+        item.checked = !item.checked;
+        if (item.indeterminate) item.indeterminate = false;
       }
-    },
+    };
+    return { toggleCheck };
   },
 });
 </script>
 
-<style lang="css">
-@import './CheckList.css';
+<style scoped lang="css">
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--checklist-gap, 10px);
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+}
+
+input[type='checkbox'] {
+  margin-right: var(--checkbox-margin-right, 8px);
+}
+
+input[type='checkbox']:checked + label {
+  font-weight: var(--checked-label-weight, bold);
+}
+
+input[type='checkbox']:indeterminate + label {
+  color: var(--indeterminate-label-color, #666);
+}
+
+input[type='checkbox']:disabled + label {
+  color: var(--disabled-label-color, #ccc);
+  cursor: not-allowed;
+}
 </style>

@@ -1,3 +1,12 @@
+:root {
+  --step-size: 2rem;
+  --step-completed-color: #4caf50;
+  --step-active-color: #2196f3;
+  --step-disabled-color: #9e9e9e;
+  --step-separator-color: #cccccc;
+  --step-label-color: #000000;
+}
+
 .stepper {
   display: flex;
   align-items: center;
@@ -6,28 +15,34 @@
 .step {
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.step-circle {
+  width: var(--step-size);
+  height: var(--step-size);
+  border-radius: 50%;
+  background-color: var(--step-disabled-color);
+  transition: background-color 0.3s;
 }
 
 .step-label {
-  margin-right: 5px;
+  margin-top: 0.5rem;
+  color: var(--step-label-color);
+}
+
+[data-status='completed'] .step-circle {
+  background-color: var(--step-completed-color);
+}
+
+[data-status='active'] .step-circle {
+  background-color: var(--step-active-color);
 }
 
 .step-separator {
-  width: 20px;
-  height: 2px;
-  background-color: #ccc;
-  margin-left: 5px;
-}
-
-.completed .step-label {
-  color: green;
-}
-
-.active .step-label {
-  color: blue;
-}
-
-.disabled .step-label {
-  color: gray;
+  flex-grow: 1;
+  height: 0.2rem;
+  background-color: var(--step-separator-color);
+  margin: 0 0.5rem;
 }

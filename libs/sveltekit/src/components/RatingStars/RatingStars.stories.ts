@@ -1,39 +1,55 @@
 import RatingStars from './RatingStars.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/RatingStars',
+const meta: Meta<RatingStars> = {
+  title: 'component/Indicators/RatingStars',
   component: RatingStars,
   tags: ['autodocs'],
+  argTypes: {
+    rating: { control: { type: 'range', min: 0, max: 5 } },
+    state: { control: 'select', options: ['hover', 'selected', 'inactive'] },
+  },
+  parameters: {
+    layout: 'centered',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
 };
 
-export const Default = {
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
     rating: 3,
-    maxRating: 5,
-    status: 'inactive',
-  },
+    state: 'inactive',
+  }
 };
 
-export const Hover = {
+export const Hover: Story = {
   args: {
     rating: 3,
-    maxRating: 5,
-    status: 'hover',
-  },
+    state: 'hover',
+  }
 };
 
-export const Selected = {
+export const Selected: Story = {
   args: {
     rating: 4,
-    maxRating: 5,
-    status: 'selected',
-  },
+    state: 'selected',
+  }
 };
 
-export const Inactive = {
+export const Inactive: Story = {
   args: {
-    rating: 3,
-    maxRating: 5,
-    status: 'inactive',
-  },
+    rating: 0,
+    state: 'inactive',
+  }
 };

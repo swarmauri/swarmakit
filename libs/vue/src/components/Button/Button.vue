@@ -1,51 +1,52 @@
 <template>
   <button
-    :class="buttonClass"
+    :class="['button', buttonType, { disabled }]"
+    :aria-disabled="disabled"
     :disabled="disabled"
-    @click="onClick"
-    aria-pressed="active"
+    @mouseover="isHover = true"
+    @mouseleave="isHover = false"
+    @mousedown="isActive = true"
+    @mouseup="isActive = false"
   >
     <slot></slot>
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-// Import the external CSS file
-import './Button.css';
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
   name: 'Button',
   props: {
-    variant: {
-      type: String as PropType<'primary' | 'secondary'>,
+    type: {
+      type: String as () => 'primary' | 'secondary',
       default: 'primary',
     },
     disabled: {
       type: Boolean,
       default: false,
     },
-    active: {
-      type: Boolean,
-      default: false,
-    },
   },
-  computed: {
-    buttonClass() {
-      return {
-        'button-primary': this.variant === 'primary',
-        'button-secondary': this.variant === 'secondary',
-        'button-disabled': this.disabled,
-        'button-active': this.active,
-      };
-    },
-  },
-  methods: {
-    onClick() {
-      if (!this.disabled) {
-        this.$emit('click');
-      }
-    },
+  setup(props) {
+    const isHover = ref(false);
+    const isActive = ref(false);
+
+    const buttonType = computed(() => {
+      if (props.disabled) return 'disabled';
+      if (isActive.value) return 'active';
+      if (isHover.value) return 'hover';
+      return props.type;
+    });
+
+    return {
+      isHover,
+      isActive,
+      buttonType,
+    };
   },
 });
 </script>
+
+<style scoped>
+@import './Button.css';
+</style>

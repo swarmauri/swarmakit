@@ -1,34 +1,24 @@
-.poll-results {
-  font-size: 1rem;
-  color: #333;
+:root {
+  --poll-font-size: 16px;
+  --poll-text-color: #000;
+  --progress-bar-height: 20px;
+  --progress-bar-color: #007bff;
+  --percentage-text-color: #fff;
+  --status-text-color: #ff0000;
 }
 
-.poll-option {
-  display: flex;
-  align-items: center;
-  margin: 0.5em 0;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.progress-bar {
-  flex-grow: 1;
-  height: 1em;
-  margin: 0 0.5em;
-  background-color: #4caf50;
-  transition: width 0.3s ease;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.percentage {
-  min-width: 3em;
-  text-align: right;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.status {
-  font-weight: bold;
-  margin-top: 1em;
-}
-
-@media (max-width: 600px) {
-  .poll-results {
-    font-size: 0.9rem;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

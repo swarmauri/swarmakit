@@ -1,30 +1,30 @@
 <template>
-  <div class="search-input-container" :class="{ disabled }">
-    <input
-      type="text"
-      :placeholder="placeholder"
-      v-model="searchQuery"
-      @input="onInput"
+  <div class="search-container">
+    <input 
+      type="text" 
+      :placeholder="placeholder" 
       :disabled="disabled"
-      :aria-label="ariaLabel"
+      aria-label="Search input"
+      v-model="query"
+      @input="onInput"
     />
-    <button @click="toggleFilters" :aria-expanded="filtersVisible" :disabled="disabled">
+    <button 
+      :aria-pressed="filtersActive" 
+      @click="toggleFilters"
+    >
       Filters
     </button>
-    <div v-if="filtersVisible" class="filters" role="region" aria-label="Filter options">
-      <label v-for="option in filterOptions" :key="option">
-        <input type="checkbox" v-model="activeFilters" :value="option" />
-        {{ option }}
-      </label>
+    <div v-if="filtersActive" class="filter-options">
+      <slot name="filters"></slot>
     </div>
-    <div v-if="noResults" class="no-results" role="alert">
-      No results found
+    <div v-if="noResults" class="no-results">
+      No Results Found
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'SearchInputWithFilterOptions',
@@ -33,45 +33,40 @@ export default defineComponent({
       type: String,
       default: 'Search...',
     },
-    filterOptions: {
-      type: Array as PropType<string[]>,
-      default: () => ['Option 1', 'Option 2', 'Option 3'],
-    },
     disabled: {
       type: Boolean,
       default: false,
     },
-    ariaLabel: {
-      type: String,
-      default: 'Search input',
+    filtersActive: {
+      type: Boolean,
+      default: false,
+    },
+    noResults: {
+      type: Boolean,
+      default: false,
     },
   },
-  setup() {
-    const searchQuery = ref('');
-    const filtersVisible = ref(false);
-    const activeFilters = ref<string[]>([]);
-    const noResults = ref(false);
-
-    const toggleFilters = () => {
-      filtersVisible.value = !filtersVisible.value;
-    };
+  emits: ['update:filtersActive', 'input'],
+  setup(props, { emit }) {
+    const query = ref('');
 
     const onInput = () => {
-      noResults.value = searchQuery.value.length > 0 && Math.random() > 0.5;
+      emit('input', query.value);
+    };
+
+    const toggleFilters = () => {
+      emit('update:filtersActive', !props.filtersActive);
     };
 
     return {
-      searchQuery,
-      filtersVisible,
-      activeFilters,
-      noResults,
-      toggleFilters,
+      query,
       onInput,
+      toggleFilters,
     };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped>
 @import './SearchInputWithFilterOptions.css';
 </style>

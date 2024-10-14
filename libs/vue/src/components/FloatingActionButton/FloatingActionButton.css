@@ -1,33 +1,31 @@
-.floating-action-button {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  color: white;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
+:root {
+  --fab-bg-color: #6200ee;
+  --fab-color: #fff;
+  --fab-radius: 50%;
+  --fab-hover-bg-color: #3700b3;
+  --fab-focus-color: #000;
 }
 
-.floating-action-button:hover {
-  background-color: #0056b3;
+@media (max-width: 480px) {
+  :root {
+    --fab-radius: 45%;
+  }
 }
 
-.floating-action-button:focus {
-  outline: 2px solid #0056b3;
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --fab-radius: 50%;
+  }
 }
 
-.floating-action-button .icon {
-  transition: transform 0.3s ease;
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --fab-radius: 55%;
+  }
 }
 
-.floating-action-button .icon.expanded {
-  transform: rotate(45deg);
+@media (min-width: 1025px) {
+  :root {
+    --fab-radius: 60%;
+  }
 }

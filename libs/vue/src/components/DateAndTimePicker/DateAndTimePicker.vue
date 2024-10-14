@@ -1,18 +1,20 @@
 <template>
   <div class="date-time-picker-container">
-    <input
-      type="date"
-      :value="dateValue"
-      :aria-disabled="disabled"
-      :disabled="disabled"
-      @input="updateDate"
+    <input 
+      type="date" 
+      :value="selectedDate" 
+      :disabled="disabled" 
+      @input="updateDate" 
+      aria-label="Select Date"
+      :aria-disabled="disabled.toString()"
     />
-    <input
-      type="time"
-      :value="timeValue"
-      :aria-disabled="disabled"
-      :disabled="disabled"
-      @input="updateTime"
+    <input 
+      type="time" 
+      :value="selectedTime" 
+      :disabled="disabled" 
+      @input="updateTime" 
+      aria-label="Select Time"
+      :aria-disabled="disabled.toString()"
     />
   </div>
 </template>
@@ -23,11 +25,11 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'DateAndTimePicker',
   props: {
-    dateValue: {
+    selectedDate: {
       type: String,
       default: '',
     },
-    timeValue: {
+    selectedTime: {
       type: String,
       default: '',
     },
@@ -36,30 +38,19 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: ['update:dateValue', 'update:timeValue'],
-  setup(props, { emit }) {
-    const updateDate = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      if (!props.disabled) {
-        emit('update:dateValue', target.value);
-      }
-    };
-
-    const updateTime = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      if (!props.disabled) {
-        emit('update:timeValue', target.value);
-      }
-    };
-
-    return {
-      updateDate,
-      updateTime,
-    };
+  methods: {
+    updateDate(event: Event) {
+      const input = event.target as HTMLInputElement;
+      this.$emit('update:selectedDate', input.value);
+    },
+    updateTime(event: Event) {
+      const input = event.target as HTMLInputElement;
+      this.$emit('update:selectedTime', input.value);
+    },
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './DateAndTimePicker.css';
 </style>

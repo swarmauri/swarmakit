@@ -1,25 +1,23 @@
 <template>
-  <div class="grouped-list" role="list">
+  <div class="grouped-list">
     <div
-      v-for="(group, index) in groups"
-      :key="index"
+      v-for="(group, groupIndex) in groups"
+      :key="groupIndex"
       class="group"
-      @click="toggleGroup(index)"
-      :aria-expanded="expandedGroups[index]"
     >
-      <div class="group-header" role="heading" aria-level="2">
-        {{ group.title }}
+      <div class="group-header" @click="toggleGroup(groupIndex)">
+        {{ group.name }}
       </div>
-      <ul v-if="expandedGroups[index]" class="group-items" role="list">
+      <ul v-show="expandedGroups[groupIndex]" class="group-items" role="list" aria-label="Group items">
         <li
           v-for="(item, itemIndex) in group.items"
           :key="itemIndex"
-          class="group-item"
-          role="listitem"
-          @click.stop="selectItem(group.title, item)"
-          :class="{ selected: selectedItem === item }"
-          @mouseenter="hoveredItem = item"
+          :class="['list-item', { 'selected': selectedItem === item }]"
+          @click="selectItem(item)"
+          @mouseover="hoveredItem = item"
           @mouseleave="hoveredItem = null"
+          :aria-selected="selectedItem === item"
+          role="option"
         >
           {{ item }}
         </li>
@@ -32,7 +30,7 @@
 import { defineComponent, ref } from 'vue';
 
 interface Group {
-  title: string;
+  name: string;
   items: string[];
 }
 
@@ -41,7 +39,7 @@ export default defineComponent({
   props: {
     groups: {
       type: Array as () => Group[],
-      default: () => [],
+      required: true,
     },
   },
   setup() {
@@ -53,21 +51,47 @@ export default defineComponent({
       expandedGroups.value[index] = !expandedGroups.value[index];
     };
 
-    const selectItem = (groupTitle: string, item: string) => {
+    const selectItem = (item: string) => {
       selectedItem.value = item;
     };
 
-    return {
-      expandedGroups,
-      toggleGroup,
-      selectItem,
-      selectedItem,
-      hoveredItem,
-    };
+    return { expandedGroups, selectedItem, hoveredItem, toggleGroup, selectItem };
   },
 });
 </script>
 
-<style lang="css">
-@import './GroupedList.css';
+<style scoped lang="css">
+.grouped-list {
+  width: 100%;
+}
+
+.group {
+  margin-bottom: var(--group-margin-bottom, 20px);
+}
+
+.group-header {
+  cursor: pointer;
+  background-color: var(--group-header-bg, #f5f5f5);
+  padding: var(--group-header-padding, 10px);
+  border: var(--group-header-border, 1px solid #ccc);
+}
+
+.group-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-item {
+  padding: var(--list-item-padding, 8px);
+  cursor: pointer;
+  background-color: var(--list-item-bg, #fff);
+}
+
+.list-item:hover {
+  background-color: var(--list-item-hover-bg, #e0e0e0);
+}
+
+.list-item.selected {
+  background-color: var(--list-item-selected-bg, #d0d0d0);
+}
 </style>

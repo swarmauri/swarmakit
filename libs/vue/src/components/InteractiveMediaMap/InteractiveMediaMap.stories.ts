@@ -1,16 +1,17 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import InteractiveMediaMap from './InteractiveMediaMap.vue';
 
 export default {
-  title: 'Media/InteractiveMediaMap',
+  title: 'component/Media/InteractiveMediaMap',
   component: InteractiveMediaMap,
   tags: ['autodocs'],
   argTypes: {
-    state: { control: 'select', options: ['Default', 'Zoomed In', 'Marker Selected', 'Loading'] },
-    markers: { control: 'array' },
+    mapSrc: { control: 'text' },
+    markers: { control: 'object' },
   },
-};
+} as Meta<typeof InteractiveMediaMap>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof InteractiveMediaMap> = (args) => ({
   components: { InteractiveMediaMap },
   setup() {
     return { args };
@@ -20,36 +21,25 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'Default',
+  mapSrc: 'https://via.placeholder.com/800x600?text=Map',
   markers: [
-    { x: 20, y: 30 },
-    { x: 50, y: 50 },
-    { x: 80, y: 70 },
+    { x: 20, y: 30, info: 'Marker 1' },
+    { x: 50, y: 50, info: 'Marker 2' },
   ],
 };
 
 export const ZoomedIn = Template.bind({});
 ZoomedIn.args = {
-  state: 'Zoomed In',
-  markers: [
-    { x: 20, y: 30 },
-    { x: 50, y: 50 },
-    { x: 80, y: 70 },
-  ],
+  ...Default.args,
 };
 
 export const MarkerSelected = Template.bind({});
 MarkerSelected.args = {
-  state: 'Marker Selected',
-  markers: [
-    { x: 20, y: 30 },
-    { x: 50, y: 50 },
-    { x: 80, y: 70 },
-  ],
+  ...Default.args,
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  state: 'Loading',
-  markers: [],
+  ...Default.args,
+  mapSrc: '',
 };

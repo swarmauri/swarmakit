@@ -1,16 +1,16 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import EmbeddedMediaIframe from './EmbeddedMediaIframe.vue';
 
 export default {
-  title: 'Media/EmbeddedMediaIframe',
+  title: 'component/Media/EmbeddedMediaIframe',
   component: EmbeddedMediaIframe,
   tags: ['autodocs'],
   argTypes: {
     src: { control: 'text' },
-    state: { control: 'select', options: ['Default', 'Fullscreen', 'Buffering'] },
   },
-};
+} as Meta<typeof EmbeddedMediaIframe>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof EmbeddedMediaIframe> = (args) => ({
   components: { EmbeddedMediaIframe },
   setup() {
     return { args };
@@ -21,17 +21,15 @@ const Template = (args: any) => ({
 export const Default = Template.bind({});
 Default.args = {
   src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-  state: 'Default',
 };
 
 export const Fullscreen = Template.bind({});
 Fullscreen.args = {
-  src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-  state: 'Fullscreen',
+  ...Default.args,
 };
 
 export const Buffering = Template.bind({});
 Buffering.args = {
-  src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-  state: 'Buffering',
+  ...Default.args,
+  src: '', // Simulate buffering state by providing an empty or slow-loading source
 };

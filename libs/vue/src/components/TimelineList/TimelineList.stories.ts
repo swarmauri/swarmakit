@@ -1,70 +1,63 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import TimelineList from './TimelineList.vue';
 
 export default {
-  title: 'Lists/TimelineList',
+  title: 'component/Lists/TimelineList',
   component: TimelineList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
+    items: { control: 'object' },
     activeIndex: { control: 'number' },
   },
-};
+} as Meta<typeof TimelineList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof TimelineList> = (args) => ({
   components: { TimelineList },
   setup() {
     return { args };
   },
-  template: '<TimelineList v-bind="args" />',
+  template: `
+    <TimelineList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { id: 1, title: 'Step 1', description: 'Start', active: true },
-    { id: 2, title: 'Step 2', description: 'In Progress' },
-    { id: 3, title: 'Step 3', description: 'Review' },
-    { id: 4, title: 'Step 4', description: 'Complete' },
+    { id: 1, label: 'Step 1' },
+    { id: 2, label: 'Step 2' },
+    { id: 3, label: 'Step 3' },
   ],
   activeIndex: 0,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  items: [
-    { id: 1, title: 'Step 1', description: 'Start', active: true },
-    { id: 2, title: 'Step 2', description: 'In Progress' },
-    { id: 3, title: 'Step 3', description: 'Review' },
-  ],
-  activeIndex: 0,
+  ...Default.args,
+  activeIndex: 1,
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
   items: [
-    { id: 1, title: 'Step 1', description: 'Start', completed: true },
-    { id: 2, title: 'Step 2', description: 'In Progress', completed: true },
-    { id: 3, title: 'Step 3', description: 'Review' },
+    { id: 1, label: 'Step 1', completed: true },
+    { id: 2, label: 'Step 2', completed: true },
+    { id: 3, label: 'Step 3' },
   ],
   activeIndex: 2,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  items: [
-    { id: 1, title: 'Step 1', description: 'Start' },
-    { id: 2, title: 'Step 2', description: 'In Progress' },
-    { id: 3, title: 'Step 3', description: 'Review' },
-  ],
-  activeIndex: 0,
+  ...Default.args,
 };
 
 export const Inactive = Template.bind({});
 Inactive.args = {
   items: [
-    { id: 1, title: 'Step 1', description: 'Start', active: false },
-    { id: 2, title: 'Step 2', description: 'In Progress', active: false },
-    { id: 3, title: 'Step 3', description: 'Review', active: false },
+    { id: 1, label: 'Step 1' },
+    { id: 2, label: 'Step 2' },
+    { id: 3, label: 'Step 3' },
   ],
-  activeIndex: 0,
+  activeIndex: -1,
 };

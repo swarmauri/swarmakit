@@ -1,17 +1,13 @@
 <template>
-  <ul class="sortable-list" role="list" aria-label="Sortable List">
-    <li
-      v-for="(item, index) in items"
-      :key="item.id"
-      class="list-item"
-      :class="{ dragging: isDragging && dragIndex === index, disabled: item.disabled }"
-      draggable="true"
-      @dragstart="onDragStart(index)"
-      @dragover.prevent
-      @dragenter.prevent="onDragEnter(index)"
-      @dragend="onDragEnd"
-      role="listitem"
-      :aria-disabled="item.disabled"
+  <ul class="sortable-list" :aria-disabled="disabled">
+    <li 
+      v-for="(item, index) in items" 
+      :key="item.id" 
+      :draggable="!disabled" 
+      @dragstart="onDragStart(index)" 
+      @dragover.prevent 
+      @drop="onDrop(index)"
+      :class="{ dragging: draggingIndex === index }"
     >
       {{ item.label }}
     </li>
@@ -19,57 +15,69 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref, PropType } from 'vue';
 
 interface ListItem {
   id: number;
   label: string;
-  disabled?: boolean;
 }
 
 export default defineComponent({
   name: 'SortableList',
   props: {
     items: {
-      type: Array as () => ListItem[],
+      type: Array as PropType<ListItem[]>,
       required: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
-  setup(props, { emit }) {
-    const sortedItems = ref<ListItem[]>([...props.items]);
-    const isDragging = ref(false);
-    const dragIndex = ref<number | null>(null);
+  setup(props) {
+    const draggingIndex = ref<number | null>(null);
 
     const onDragStart = (index: number) => {
-      if (sortedItems.value[index].disabled) return;
-      isDragging.value = true;
-      dragIndex.value = index;
-    };
-
-    const onDragEnter = (index: number) => {
-      if (isDragging.value && dragIndex.value !== null && dragIndex.value !== index) {
-        const draggedItem = sortedItems.value[dragIndex.value];
-        sortedItems.value.splice(dragIndex.value, 1);
-        sortedItems.value.splice(index, 0, draggedItem);
-        dragIndex.value = index;
+      if (!props.disabled) {
+        draggingIndex.value = index;
       }
     };
 
-    const onDragEnd = () => {
-      isDragging.value = false;
-      dragIndex.value = null;
-      emit('update:items', sortedItems.value);
+    const onDrop = (index: number) => {
+      if (draggingIndex.value !== null && draggingIndex.value !== index && !props.disabled) {
+        const item = props.items[draggingIndex.value];
+        props.items.splice(draggingIndex.value, 1);
+        props.items.splice(index, 0, item);
+        draggingIndex.value = null;
+      }
     };
 
-    watch(() => props.items, (newItems) => {
-      sortedItems.value = [...newItems];
-    });
-
-    return { sortedItems, isDragging, dragIndex, onDragStart, onDragEnter, onDragEnd };
+    return { onDragStart, onDrop, draggingIndex };
   },
 });
 </script>
 
-<style lang="css">
-@import './SortableList.css';
+<style scoped lang="css">
+.sortable-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sortable-list li {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: var(--list-item-bg);
+  border: var(--list-item-border);
+  cursor: move;
+}
+
+.sortable-list li.dragging {
+  opacity: 0.5;
+}
+
+.sortable-list[aria-disabled="true"] li {
+  cursor: not-allowed;
+  background-color: var(--list-item-disabled-bg);
+}
 </style>

@@ -1,84 +1,80 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import DropdownMenu from './DropdownMenu.vue';
 
 export default {
-  title: 'Navigation/DropdownMenu',
+  title: 'component/Navigation/DropdownMenu',
   component: DropdownMenu,
   tags: ['autodocs'],
-  argTypes: {
-    menuItems: { control: 'object' },
-  },
-};
+} as Meta<typeof DropdownMenu>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof DropdownMenu> = (args) => ({
   components: { DropdownMenu },
   setup() {
     return { args };
   },
-  template: `
-    <DropdownMenu v-bind="args" />
-  `,
+  template: '<DropdownMenu v-bind="args" />',
 });
 
 export const Default = Template.bind({});
 Default.args = {
   menuItems: [
-    { label: 'Home' },
-    { label: 'About' },
-    { label: 'Services' },
-    { label: 'Contact' },
+    { name: 'Home', link: '/home' },
+    { name: 'About', link: '/about' },
+    { name: 'Contact', link: '/contact' },
   ],
 };
 
 export const Expanded = Template.bind({});
 Expanded.args = {
   menuItems: [
-    { label: 'Home' },
-    { label: 'About' },
-    { label: 'Services' },
-    { label: 'Contact' },
+    { name: 'Home', link: '/home' },
+    { name: 'About', link: '/about' },
+    { name: 'Contact', link: '/contact' },
   ],
 };
-Expanded.play = async ({ args, canvasElement }) => {
-  const canvas = within(canvasElement);
-  await userEvent.click(canvas.getByRole('button', { name: /menu/i }));
+Expanded.play = async ({ canvasElement }) => {
+  const button = canvasElement.querySelector('.dropdown-toggle');
+  if (button) {
+    button.click();
+  }
 };
 
 export const Collapsed = Template.bind({});
 Collapsed.args = {
   menuItems: [
-    { label: 'Home' },
-    { label: 'About' },
-    { label: 'Services' },
-    { label: 'Contact' },
+    { name: 'Home', link: '/home' },
+    { name: 'About', link: '/about' },
+    { name: 'Contact', link: '/contact' },
   ],
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   menuItems: [
-    { label: 'Home' },
-    { label: 'About' },
-    { label: 'Services' },
-    { label: 'Contact' },
+    { name: 'Home', link: '/home' },
+    { name: 'About', link: '/about' },
+    { name: 'Contact', link: '/contact' },
   ],
 };
-Hover.play = async ({ args, canvasElement }) => {
-  const canvas = within(canvasElement);
-  const menuItem = canvas.getByText('Home');
-  await userEvent.hover(menuItem);
+Hover.play = async ({ canvasElement }) => {
+  const listItem = canvasElement.querySelector('.dropdown-list li a');
+  if (listItem) {
+    listItem.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+  }
 };
 
 export const Active = Template.bind({});
 Active.args = {
   menuItems: [
-    { label: 'Home' },
-    { label: 'About' },
-    { label: 'Services' },
-    { label: 'Contact' },
+    { name: 'Home', link: '/home' },
+    { name: 'About', link: '/about' },
+    { name: 'Contact', link: '/contact' },
   ],
 };
-Active.play = async ({ args, canvasElement }) => {
-  const canvas = within(canvasElement);
-  const menuItem = canvas.getByText('Home');
-  await userEvent.hover(menuItem);
+Active.play = async ({ canvasElement }) => {
+  const listItem = canvasElement.querySelector('.dropdown-list li a');
+  if (listItem) {
+    listItem.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    listItem.classList.add('active');
+  }
 };

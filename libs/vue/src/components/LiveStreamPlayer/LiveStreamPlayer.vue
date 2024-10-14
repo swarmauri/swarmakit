@@ -1,100 +1,114 @@
 <template>
-  <div class="live-stream-player" :class="stateClass" role="region" aria-label="Live Stream Player">
-    <div class="video-container">
-      <video
-        ref="videoRef"
-        :aria-label="`Live stream video: ${state}`"
-        @play="onPlay"
-        @pause="onPause"
-        @waiting="onBuffering"
-      >
-        <source :src="videoSrc" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div v-if="state === 'Buffering'" class="buffering">Buffering...</div>
-    </div>
-    <div class="controls">
-      <button @click="togglePlayPause" :aria-pressed="state !== 'Paused'">{{ playPauseLabel }}</button>
-      <button @click="toggleMute" :aria-pressed="state === 'Muted'">{{ muteLabel }}</button>
-    </div>
+  <div class="live-stream-player" role="region" aria-label="Live Stream Player">
+    <video
+      ref="videoElement"
+      :src="streamSrc"
+      @play="onPlay"
+      @pause="onPause"
+      @waiting="onBuffering"
+      @volumechange="onVolumeChange"
+      controls
+    ></video>
+    <div v-if="buffering" class="buffering-overlay">Buffering...</div>
+    <button @click="toggleMute" aria-label="Toggle Mute" class="mute-btn">
+      {{ muted ? 'Unmute' : 'Mute' }}
+    </button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
   name: 'LiveStreamPlayer',
   props: {
-    state: {
-      type: String,
-      default: 'Live',
-    },
-    videoSrc: {
+    streamSrc: {
       type: String,
       required: true,
     },
   },
-  setup(props) {
-    const videoRef = ref<HTMLVideoElement | null>(null);
+  setup() {
+    const videoElement = ref<HTMLVideoElement | null>(null);
+    const muted = ref(false);
+    const buffering = ref(false);
 
-    const stateClass = computed(() => {
-      switch (props.state) {
-        case 'Paused':
-          return 'paused';
-        case 'Buffering':
-          return 'buffering';
-        case 'Muted':
-          return 'muted';
-        default:
-          return 'live';
+    const toggleMute = () => {
+      if (videoElement.value) {
+        videoElement.value.muted = !videoElement.value.muted;
+        muted.value = videoElement.value.muted;
       }
-    });
-
-    const playPauseLabel = computed(() => (props.state === 'Paused' ? 'Play' : 'Pause'));
-    const muteLabel = computed(() => (props.state === 'Muted' ? 'Unmute' : 'Mute'));
+    };
 
     const onPlay = () => {
-      // Handle play logic
+      buffering.value = false;
     };
 
     const onPause = () => {
-      // Handle pause logic
+      // Handle pause state
     };
 
     const onBuffering = () => {
-      // Handle buffering logic
+      buffering.value = true;
     };
 
-    const togglePlayPause = () => {
-      if (videoRef.value) {
-        if (props.state === 'Paused') {
-          videoRef.value.play();
-        } else {
-          videoRef.value.pause();
-        }
+    const onVolumeChange = () => {
+      if (videoElement.value) {
+        muted.value = videoElement.value.muted;
       }
     };
 
-    const toggleMute = () => {
-      if (videoRef.value) {
-        videoRef.value.muted = !videoRef.value.muted;
-      }
-    };
-
-    onMounted(() => {
-      if (videoRef.value) {
-        if (props.state === 'Muted') {
-          videoRef.value.muted = true;
-        }
+    watch(muted, (newValue) => {
+      if (videoElement.value) {
+        videoElement.value.muted = newValue;
       }
     });
 
-    return { videoRef, stateClass, playPauseLabel, muteLabel, togglePlayPause, toggleMute };
+    return {
+      videoElement,
+      muted,
+      buffering,
+      toggleMute,
+    };
   },
 });
 </script>
 
-<style lang="css">
-@import './LiveStreamPlayer.css';
+<style scoped lang="css">
+.live-stream-player {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--player-bg-color);
+}
+
+video {
+  width: 100%;
+  height: auto;
+  background-color: var(--video-bg-color);
+}
+
+.buffering-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--buffering-text-color);
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.mute-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
 </style>

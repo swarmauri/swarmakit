@@ -1,43 +1,47 @@
 import Checkbox from './Checkbox.vue';
 
 export default {
-  title: 'Forms/Checkbox',
   component: Checkbox,
+  title: 'component/Forms/Checkbox',
   tags: ['autodocs'],
   argTypes: {
-    modelValue: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    checked: {
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { Checkbox },
   setup() {
     return { args };
   },
-  template: '<Checkbox v-bind="args">Checkbox Label</Checkbox>',
+  template: '<Checkbox v-bind="args">Example Checkbox</Checkbox>',
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  modelValue: false,
+  checked: false,
   disabled: false,
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
-  modelValue: true,
+  checked: true,
   disabled: false,
 };
 
 export const Unchecked = Template.bind({});
 Unchecked.args = {
-  modelValue: false,
+  checked: false,
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  modelValue: false,
+  checked: false,
   disabled: true,
 };

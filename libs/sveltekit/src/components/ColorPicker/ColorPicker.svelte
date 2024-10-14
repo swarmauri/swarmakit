@@ -1,37 +1,24 @@
 <script lang="ts">
-  export let selectedColor: string = "#000000";
+  export let color: string = '#000000';
   export let disabled: boolean = false;
 
-  function handleColorChange(event: Event) {
-    if (!disabled) {
-      const input = event.target as HTMLInputElement;
-      selectedColor = input.value;
-    }
+  function handleChange(event: Event) {
+    color = (event.target as HTMLInputElement).value;
   }
 </script>
 
-<div class="color-picker">
-  <input 
-    type="color" 
-    bind:value={selectedColor} 
-    on:input={handleColorChange} 
-    disabled={disabled} 
-    aria-disabled={disabled} 
+<div class="color-picker-container">
+  <input
+    type="color"
+    bind:value={color}
+    disabled={disabled}
     aria-label="Color Picker"
+    aria-disabled={disabled}
+    on:input={handleChange}
   />
+  <span class="color-value">{color}</span>
 </div>
 
 <style lang="css">
-  .color-picker input[type="color"] {
-    width: 40px;
-    height: 40px;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-  }
-
-  .color-picker input[type="color"]:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+  @import './ColorPicker.css';
 </style>

@@ -1,50 +1,41 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BadgeWithCounts from './BadgeWithCounts.vue';
 
 export default {
-  title: 'Indicators/BadgeWithCounts',
+  title: 'component/Indicators/BadgeWithCounts',
   component: BadgeWithCounts,
   tags: ['autodocs'],
   argTypes: {
     count: {
       control: { type: 'number' },
-      description: 'The count number displayed in the badge',
-    },
-    max: {
-      control: { type: 'number' },
-      description: 'The maximum number before overflow occurs',
     },
   },
-};
+} as Meta<typeof BadgeWithCounts>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof BadgeWithCounts> = (args) => ({
   components: { BadgeWithCounts },
   setup() {
     return { args };
   },
-  template: '<BadgeWithCounts v-bind="args">{{ args.default }}</BadgeWithCounts>',
+  template: `<BadgeWithCounts v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  count: 10,
-  default: 'Messages',
+  count: 0,
 };
 
 export const Zero = Template.bind({});
 Zero.args = {
   count: 0,
-  default: 'Notifications',
 };
 
 export const Active = Template.bind({});
 Active.args = {
   count: 5,
-  default: 'Active Tasks',
 };
 
 export const Overflow = Template.bind({});
 Overflow.args = {
-  count: 120,
-  max: 99,
-  default: 'Mentions',
+  count: 100,
 };

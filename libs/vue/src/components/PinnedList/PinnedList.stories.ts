@@ -1,44 +1,53 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import PinnedList from './PinnedList.vue';
 
 export default {
-  title: 'Lists/PinnedList',
+  title: 'component/Lists/PinnedList',
   component: PinnedList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
+    items: { control: 'object' },
+    selectedItem: { control: 'number' },
   },
-};
+} as Meta<typeof PinnedList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof PinnedList> = (args) => ({
   components: { PinnedList },
   setup() {
     return { args };
   },
-  template: '<PinnedList v-bind="args" />',
+  template: `
+    <PinnedList v-bind="args" @update:selectedItem="args.selectedItem = $event" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { id: 1, name: 'Item 1', pinned: false },
-    { id: 2, name: 'Item 2', pinned: true },
-    { id: 3, name: 'Item 3', pinned: false },
+    { id: 1, label: 'Item 1', pinned: false },
+    { id: 2, label: 'Item 2', pinned: true },
+    { id: 3, label: 'Item 3', pinned: false },
   ],
+  selectedItem: 1,
 };
 
 export const Pinned = Template.bind({});
 Pinned.args = {
+  ...Default.args,
   items: [
-    { id: 1, name: 'Item 1', pinned: true },
-    { id: 2, name: 'Item 2', pinned: true },
+    { id: 1, label: 'Item 1', pinned: true },
+    { id: 2, label: 'Item 2', pinned: true },
+    { id: 3, label: 'Item 3', pinned: false },
   ],
 };
 
 export const Unpinned = Template.bind({});
 Unpinned.args = {
+  ...Default.args,
   items: [
-    { id: 1, name: 'Item 1', pinned: false },
-    { id: 2, name: 'Item 2', pinned: false },
+    { id: 1, label: 'Item 1', pinned: false },
+    { id: 2, label: 'Item 2', pinned: false },
+    { id: 3, label: 'Item 3', pinned: false },
   ],
 };
 
@@ -46,11 +55,13 @@ export const Hover = Template.bind({});
 Hover.args = {
   ...Default.args,
 };
+Hover.play = async ({ args, canvasElement }) => {
+  const item = canvasElement.querySelector('.pinned-list-item:nth-child(2)');
+  item.dispatchEvent(new Event('mouseover'));
+};
 
 export const Selected = Template.bind({});
 Selected.args = {
-  items: [
-    { id: 1, name: 'Item 1', pinned: true },
-    { id: 2, name: 'Item 2', pinned: false },
-  ],
+  ...Default.args,
+  selectedItem: 2,
 };

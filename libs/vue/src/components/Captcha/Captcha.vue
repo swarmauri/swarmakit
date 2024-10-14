@@ -1,19 +1,10 @@
 <template>
-  <div :class="captchaClass" role="form" aria-labelledby="captcha-header">
-    <h3 id="captcha-header">Captcha Verification</h3>
-    <div class="captcha-content">
-      <img :src="captchaImage" alt="captcha" />
-      <input
-        type="text"
-        v-model="userInput"
-        :aria-invalid="error"
-        :disabled="solved"
-        placeholder="Enter the text"
-      />
+  <div class="captcha-container">
+    <div class="captcha" :class="{ 'captcha--error': hasError, 'captcha--solved': isSolved }">
+      <span v-if="!isSolved">{{ captchaText }}</span>
+      <span v-else>✔ Solved</span>
     </div>
-    <button @click="verifyCaptcha" :disabled="solved">Verify</button>
-    <p v-if="error" class="error-message">Incorrect, please try again.</p>
-    <p v-if="solved" class="success-message">Captcha Solved!</p>
+    <button @click="solveCaptcha" :disabled="isSolved" aria-label="solve captcha">Solve</button>
   </div>
 </template>
 
@@ -23,33 +14,33 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   name: 'Captcha',
   props: {
-    solved: {
-      type: Boolean,
-      default: false,
-    },
-    error: {
-      type: Boolean,
-      default: false,
+    captchaText: {
+      type: String,
+      default: 'Please solve the captcha',
     },
   },
   setup() {
-    const userInput = ref('');
-    const captchaImage = '/path/to/captcha/image.jpg';
+    const isSolved = ref(false);
+    const hasError = ref(false);
 
-    const verifyCaptcha = () => {
-      // Logic to verify captcha
-      // Emit events or update states based on verification
+    const solveCaptcha = () => {
+      if (captchaText === 'Please solve the captcha') {
+        isSolved.value = true;
+        hasError.value = false;
+      } else {
+        hasError.value = true;
+      }
     };
 
     return {
-      userInput,
-      captchaImage,
-      verifyCaptcha,
+      isSolved,
+      hasError,
+      solveCaptcha,
     };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './Captcha.css';
 </style>

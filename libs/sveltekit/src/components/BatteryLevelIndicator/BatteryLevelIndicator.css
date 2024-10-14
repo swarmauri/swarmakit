@@ -1,36 +1,47 @@
-.battery-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 40px;
-  border-radius: 6px;
-  background-color: #cfd8dc;
-  color: #000;
-  font-size: 0.875rem;
-  font-weight: 600;
+:root {
+  --battery-border-color: #333333;
+  --full-color: #4caf50;
+  --low-color: #ffeb3b;
+  --critical-color: #f44336;
+  --charging-color: #2196f3;
+  --battery-height: 20px;
+  --battery-width: 100px;
+  --border-radius: 4px;
 }
 
-.battery-indicator.charging {
-  background-color: #4caf50;
-  color: #fff;
+.battery {
+  border: 2px solid var(--battery-border-color);
+  border-radius: var(--border-radius);
+  width: var(--battery-width);
+  height: var(--battery-height);
+  position: relative;
 }
 
-.battery-indicator.full {
-  background-color: #4caf50;
-  color: #fff;
+.battery::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  right: -6px;
+  width: 4px;
+  height: 50%;
+  background: var(--battery-border-color);
+  border-radius: 2px;
 }
 
-.battery-indicator.low {
-  background-color: #ff9800;
-  color: #fff;
+.level {
+  height: 100%;
+  background-color: var(--full-color);
+  border-radius: calc(var(--border-radius) - 2px);
 }
 
-.battery-indicator.critical {
-  background-color: #f44336;
-  color: #fff;
+.battery.low .level {
+  background-color: var(--low-color);
 }
 
-.icon {
-  margin-right: 5px;
+.battery.critical .level {
+  background-color: var(--critical-color);
+}
+
+.battery.charging .level {
+  background-color: var(--charging-color);
 }

@@ -1,20 +1,19 @@
 <template>
-  <div class="selectable-list" role="region" aria-label="Selectable List with Item Details">
-    <ul class="list" role="list">
+  <div class="selectable-list">
+    <ul class="selectable-list-items">
       <li
         v-for="item in items"
         :key="item.id"
-        class="list-item"
-        :class="{ selected: selectedItem === item.id }"
-        @click="toggleSelect(item.id)"
-        role="listitem"
-        :aria-expanded="openedDetails === item.id"
+        :class="['selectable-list-item', { selected: item.id === selectedItem, disabled: disabled }]"
+        @click="toggleSelection(item.id)"
       >
-        <div class="item-header">{{ item.name }}</div>
-        <button class="details-button" @click.stop="toggleDetails(item.id)">
-          {{ openedDetails === item.id ? 'Close Details' : 'Open Details' }}
-        </button>
-        <div v-if="openedDetails === item.id" class="item-details">
+        <div class="item-content">
+          {{ item.label }}
+          <button @click.stop="toggleDetails(item.id)" class="details-button" :aria-expanded="item.id === openDetails ? 'true' : 'false'">
+            {{ item.id === openDetails ? 'Hide Details' : 'Show Details' }}
+          </button>
+        </div>
+        <div v-if="item.id === openDetails" class="item-details">
           {{ item.details }}
         </div>
       </li>
@@ -27,7 +26,7 @@ import { defineComponent, ref } from 'vue';
 
 interface ListItem {
   id: number;
-  name: string;
+  label: string;
   details: string;
 }
 
@@ -38,24 +37,68 @@ export default defineComponent({
       type: Array as () => ListItem[],
       required: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup() {
     const selectedItem = ref<number | null>(null);
-    const openedDetails = ref<number | null>(null);
+    const openDetails = ref<number | null>(null);
 
-    const toggleSelect = (itemId: number) => {
-      selectedItem.value = selectedItem.value === itemId ? null : itemId;
+    const toggleSelection = (id: number) => {
+      if (!disabled) {
+        selectedItem.value = selectedItem.value === id ? null : id;
+      }
     };
 
-    const toggleDetails = (itemId: number) => {
-      openedDetails.value = openedDetails.value === itemId ? null : itemId;
+    const toggleDetails = (id: number) => {
+      openDetails.value = openDetails.value === id ? null : id;
     };
 
-    return { selectedItem, openedDetails, toggleSelect, toggleDetails };
+    return { selectedItem, openDetails, toggleSelection, toggleDetails };
   },
 });
 </script>
 
-<style lang="css">
-@import './SelectableListWithItemDetails.css';
+<style scoped lang="css">
+.selectable-list {
+  border: var(--list-border, 1px solid #ddd);
+  border-radius: var(--list-border-radius, 4px);
+}
+
+.selectable-list-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selectable-list-item {
+  padding: var(--list-item-padding, 10px 15px);
+  margin: 4px 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.selectable-list-item.selected {
+  background-color: var(--selected-bg, #d0eaff);
+}
+
+.selectable-list-item.disabled {
+  color: var(--disabled-color, #ccc);
+  cursor: not-allowed;
+}
+
+.item-details {
+  padding: var(--details-padding, 8px 12px);
+  background-color: var(--details-bg, #f8f9fa);
+}
+
+.details-button {
+  background: none;
+  border: none;
+  color: var(--button-color, #007bff);
+  cursor: pointer;
+  padding: 0;
+}
 </style>

@@ -1,20 +1,32 @@
 import DatePicker from './DatePicker.vue';
 
 export default {
-  title: 'Forms/DatePicker',
   component: DatePicker,
+  title: 'component/Forms/DatePicker',
   tags: ['autodocs'],
   argTypes: {
-    modelValue: { control: 'text' },
-    startDate: { control: 'text' },
-    endDate: { control: 'text' },
-    disabled: { control: 'boolean' },
-    range: { control: 'boolean' },
-    timePicker: { control: 'boolean' },
+    startDate: {
+      control: { type: 'date' },
+    },
+    endDate: {
+      control: { type: 'date' },
+    },
+    selectedTime: {
+      control: { type: 'time' },
+    },
+    isDateRange: {
+      control: { type: 'boolean' },
+    },
+    isTimePicker: {
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { DatePicker },
   setup() {
     return { args };
@@ -22,27 +34,37 @@ const Template = (args: any) => ({
   template: '<DatePicker v-bind="args" />',
 });
 
+export const Default = Template.bind({});
+Default.args = {
+  startDate: '',
+  endDate: '',
+  selectedTime: '',
+  isDateRange: false,
+  isTimePicker: false,
+  disabled: false,
+};
+
 export const SingleDate = Template.bind({});
 SingleDate.args = {
-  modelValue: '',
+  startDate: new Date().toISOString().split('T')[0],
+  isDateRange: false,
+  isTimePicker: false,
   disabled: false,
-  range: false,
-  timePicker: false,
 };
 
 export const DateRange = Template.bind({});
 DateRange.args = {
-  startDate: '',
-  endDate: '',
+  startDate: new Date().toISOString().split('T')[0],
+  endDate: new Date().toISOString().split('T')[0],
+  isDateRange: true,
+  isTimePicker: false,
   disabled: false,
-  range: true,
-  timePicker: false,
 };
 
 export const TimePicker = Template.bind({});
 TimePicker.args = {
-  modelValue: '',
+  selectedTime: '12:00',
+  isDateRange: false,
+  isTimePicker: true,
   disabled: false,
-  range: false,
-  timePicker: true,
 };

@@ -1,35 +1,55 @@
 import BadgeWithCounts from './BadgeWithCounts.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/BadgeWithCounts',
+const meta: Meta<BadgeWithCounts> = {
+  title: 'component/Indicators/BadgeWithCounts',
   component: BadgeWithCounts,
   tags: ['autodocs'],
-};
-
-export const Default = {
-  args: {
-    count: 0,
-    maxCount: 99,
+  argTypes: {
+    count: { control: 'number' },
+    maxCount: { control: 'number' },
   },
+  parameters: {
+    layout: 'centered',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
 };
 
-export const Zero = {
-  args: {
-    count: 0,
-    maxCount: 99,
-  },
-};
+export default meta;
 
-export const Active = {
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
     count: 5,
     maxCount: 99,
-  },
+  }
 };
 
-export const Overflow = {
+export const Zero: Story = {
+  args: {
+    count: 0,
+    maxCount: 99,
+  }
+};
+
+export const Active: Story = {
+  args: {
+    count: 42,
+    maxCount: 99,
+  }
+};
+
+export const Overflow: Story = {
   args: {
     count: 150,
     maxCount: 99,
-  },
+  }
 };

@@ -1,27 +1,43 @@
+:root {
+  --item-bg: #fff;
+  --item-hover-bg: #f0f0f0;
+  --item-selected-bg: #007bff;
+  --item-disabled-bg: #e0e0e0;
+  --text-color: #333;
+  --selected-text-color: #fff;
+  --border-color: #ccc;
+}
+
 .multiselect-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
-.multiselect-item {
-  padding: 8px;
-  margin: 4px 0;
+.list-item {
+  padding: 10px;
+  background-color: var(--item-bg);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
   cursor: pointer;
-  background-color: #f0f0f0;
-  border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
-.multiselect-item:hover:not(.selected) {
-  background-color: #e0e0e0;
+.list-item:hover {
+  background-color: var(--item-hover-bg);
 }
 
-.multiselect-item.selected {
-  background-color: #007bff;
-  color: #ffffff;
+.list-item.selected {
+  background-color: var(--item-selected-bg);
+  color: var(--selected-text-color);
 }
 
-.multiselect-list[aria-disabled='true'] .multiselect-item {
+.list-item[aria-disabled="true"] {
+  background-color: var(--item-disabled-bg);
   cursor: not-allowed;
-  opacity: 0.5;
+}
+
+.list-item:last-child {
+  border-bottom: none;
 }

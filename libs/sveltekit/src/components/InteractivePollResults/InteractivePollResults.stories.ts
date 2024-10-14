@@ -1,55 +1,67 @@
 import InteractivePollResults from './InteractivePollResults.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/InteractivePollResults',
+const meta: Meta<InteractivePollResults> = {
+  title: 'component/Indicators/InteractivePollResults',
   component: InteractivePollResults,
   tags: ['autodocs'],
-};
-
-export const Default = {
-  args: {
-    options: [
-      { id: 1, text: 'Option A', votes: 10 },
-      { id: 2, text: 'Option B', votes: 20 },
-      { id: 3, text: 'Option C', votes: 5 },
-    ],
-    totalVotes: 35,
-    isClosed: false,
+  argTypes: {
+    options: { control: 'object' },
+    totalVotes: { control: 'number' },
   },
+  parameters: {
+    layout: 'centered',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
 };
 
-export const LiveResults = {
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
     options: [
-      { id: 1, text: 'Option A', votes: 15 },
-      { id: 2, text: 'Option B', votes: 25 },
-      { id: 3, text: 'Option C', votes: 10 },
+      { label: 'Option A', votes: 50 },
+      { label: 'Option B', votes: 30 },
     ],
-    totalVotes: 50,
-    isClosed: false,
-  },
+    totalVotes: 80,
+  }
 };
 
-export const Completed = {
+export const LiveResults: Story = {
   args: {
     options: [
-      { id: 1, text: 'Option A', votes: 30 },
-      { id: 2, text: 'Option B', votes: 50 },
-      { id: 3, text: 'Option C', votes: 20 },
-    ],
-    totalVotes: 100,
-    isClosed: true,
-  },
-};
-
-export const Closed = {
-  args: {
-    options: [
-      { id: 1, text: 'Option A', votes: 30 },
-      { id: 2, text: 'Option B', votes: 50 },
-      { id: 3, text: 'Option C', votes: 20 },
+      { label: 'Option A', votes: 70 },
+      { label: 'Option B', votes: 30 },
     ],
     totalVotes: 100,
-    isClosed: true,
-  },
+  }
+};
+
+export const Completed: Story = {
+  args: {
+    options: [
+      { label: 'Option A', votes: 120 },
+      { label: 'Option B', votes: 80 },
+    ],
+    totalVotes: 200,
+  }
+};
+
+export const Closed: Story = {
+  args: {
+    options: [
+      { label: 'Option A', votes: 50 },
+      { label: 'Option B', votes: 50 },
+    ],
+    totalVotes: 100,
+  }
 };

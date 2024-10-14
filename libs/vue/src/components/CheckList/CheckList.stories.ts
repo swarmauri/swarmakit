@@ -1,21 +1,25 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import CheckList from './CheckList.vue';
 
 export default {
-  title: 'Lists/CheckList',
+  title: 'component/Lists/CheckList',
   component: CheckList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    'item-checked': { action: 'item-checked' },
+    items: {
+      control: 'object',
+    },
   },
-};
+} as Meta<typeof CheckList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof CheckList> = (args) => ({
   components: { CheckList },
   setup() {
     return { args };
   },
-  template: '<CheckList v-bind="args" @item-checked="args[\'item-checked\']" />',
+  template: `
+    <CheckList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
@@ -29,31 +33,27 @@ Default.args = {
 export const Checked = Template.bind({});
 Checked.args = {
   items: [
-    { label: 'Item 1', checked: true, indeterminate: false, disabled: false },
-    { label: 'Item 2', checked: false, indeterminate: false, disabled: false },
+    { label: 'Checked Item', checked: true, indeterminate: false, disabled: false },
   ],
 };
 
 export const Unchecked = Template.bind({});
 Unchecked.args = {
   items: [
-    { label: 'Item 1', checked: false, indeterminate: false, disabled: false },
-    { label: 'Item 2', checked: false, indeterminate: false, disabled: false },
+    { label: 'Unchecked Item', checked: false, indeterminate: false, disabled: false },
   ],
 };
 
 export const PartiallyChecked = Template.bind({});
 PartiallyChecked.args = {
   items: [
-    { label: 'Item 1', checked: false, indeterminate: true, disabled: false },
-    { label: 'Item 2', checked: false, indeterminate: false, disabled: false },
+    { label: 'Partially Checked Item', checked: false, indeterminate: true, disabled: false },
   ],
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   items: [
-    { label: 'Item 1', checked: false, indeterminate: false, disabled: true },
-    { label: 'Item 2', checked: true, indeterminate: false, disabled: true },
+    { label: 'Disabled Item', checked: false, indeterminate: false, disabled: true },
   ],
 };

@@ -1,31 +1,53 @@
 import ActivityIndicators from './ActivityIndicators.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-export default {
-  title: 'Indicators/ActivityIndicators',
+const meta: Meta<ActivityIndicators> = {
+  title: 'component/Indicators/ActivityIndicators',
   component: ActivityIndicators,
   tags: ['autodocs'],
+  argTypes: {
+    state: { 
+      control: { type: 'select' },
+      options: ['loading', 'success', 'error']
+    },
+  },
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
 };
 
-export const Default = {
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
-    type: 'loading',
-  },
+    state: 'loading',
+  }
 };
 
-export const Loading = {
+export const Loading: Story = {
   args: {
-    type: 'loading',
-  },
+    state: 'loading',
+  }
 };
 
-export const Success = {
+export const Success: Story = {
   args: {
-    type: 'success',
-  },
+    state: 'success',
+  }
 };
 
-export const Error = {
+export const Error: Story = {
   args: {
-    type: 'error',
-  },
+    state: 'error',
+  }
 };

@@ -1,20 +1,23 @@
 <template>
   <div class="file-input-container">
-    <input
-      type="file"
-      :disabled="disabled"
-      @change="handleFileChange"
-      :aria-disabled="disabled"
+    <input 
+      type="file" 
+      :disabled="disabled" 
+      @change="handleFileUpload" 
+      aria-label="Upload File"
+      :aria-disabled="disabled.toString()"
     />
-    <div v-if="error" class="error-message">{{ error }}</div>
-    <div v-if="previewUrl" class="preview">
-      <img :src="previewUrl" alt="File preview" />
+    <div v-if="preview" class="preview-container">
+      <img :src="preview" alt="File Preview" class="preview-image"/>
+    </div>
+    <div v-if="error" class="error-message" role="alert">
+      {{ error }}
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'FileInputWithPreview',
@@ -23,36 +26,34 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    error: {
-      type: String,
-      default: '',
-    },
   },
-  emits: ['fileUploaded'],
-  setup(_, { emit }) {
-    const previewUrl = ref<string | null>(null);
+  setup() {
+    const preview = ref<string | null>(null);
+    const error = ref<string | null>(null);
 
-    const handleFileChange = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      const file = target.files ? target.files[0] : null;
-      if (file && !_.disabled) {
+    const handleFileUpload = (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      const file = input.files ? input.files[0] : null;
+
+      if (file) {
         const reader = new FileReader();
-        reader.onload = (e) => {
-          previewUrl.value = e.target?.result as string;
-          emit('fileUploaded', file);
+        reader.onload = () => {
+          preview.value = reader.result as string;
+          error.value = null;
+        };
+        reader.onerror = () => {
+          error.value = 'Error loading file.';
+          preview.value = null;
         };
         reader.readAsDataURL(file);
       }
     };
 
-    return {
-      previewUrl,
-      handleFileChange,
-    };
+    return { preview, error, handleFileUpload };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './FileInputWithPreview.css';
 </style>

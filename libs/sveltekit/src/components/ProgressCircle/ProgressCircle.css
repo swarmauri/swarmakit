@@ -1,26 +1,42 @@
+:root {
+  --circle-background-color: #e0e0e0;
+  --circle-progress-color: #76c7c0;
+  --circle-complete-color: #4caf50;
+  --circle-incomplete-color: #f44336;
+  --circle-paused-color: #ff9800;
+  --circle-active-color: #2196f3;
+}
+
 .progress-circle {
-  width: 100px;
-  height: 100px;
+  transform: rotate(-90deg);
 }
 
-.circle-bg {
+.background {
   fill: none;
-  stroke: #e0e0e0;
-  stroke-width: 2.8;
+  stroke: var(--circle-background-color);
+  stroke-width: 10;
 }
 
-.circle {
+.progress {
   fill: none;
-  stroke-width: 2.8;
-  stroke-linecap: round;
-  stroke: #76c7c0;
-  transition: stroke-dasharray 0.3s ease;
+  stroke: var(--circle-progress-color);
+  stroke-width: 10;
+  transition: stroke-dashoffset 0.35s;
+  transform-origin: center;
 }
 
-.progress-circle[aria-valuenow='100'] .circle {
-  stroke: #4caf50;
+[data-state='complete'] .progress {
+  stroke: var(--circle-complete-color);
 }
 
-.progress-circle[data-status='paused'] .circle {
-  stroke: #ff9800;
+[data-state='incomplete'] .progress {
+  stroke: var(--circle-incomplete-color);
+}
+
+[data-state='paused'] .progress {
+  stroke: var(--circle-paused-color);
+}
+
+[data-state='active'] .progress {
+  stroke: var(--circle-active-color);
 }

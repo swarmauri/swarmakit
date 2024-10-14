@@ -1,47 +1,34 @@
 <script lang="ts">
-  export let tasks: { id: number; text: string; completed: boolean }[] = [];
+  export interface Task {
+    id: number;
+    label: string;
+    completed: boolean;
+  }
 
-  const toggleTaskCompletion = (taskId: number) => {
-    tasks = tasks.map(task =>
+  export let tasks: Task[] = [];
+  export let ariaLabel: string = 'Task Completion Checklist';
+
+  function toggleTaskCompletion(taskId: number) {
+    tasks = tasks.map(task => 
       task.id === taskId ? { ...task, completed: !task.completed } : task
     );
-  };
-
-  const isPartiallyComplete = () =>
-    tasks.some(task => task.completed) && tasks.some(task => !task.completed);
+  }
 </script>
 
-<ul class={isPartiallyComplete() ? 'partially-complete' : ''}>
-  {#each tasks as task}
+<ul class="checklist" aria-label={ariaLabel}>
+  {#each tasks as { id, label, completed }}
     <li>
-      <input
-        type="checkbox"
-        bind:checked={task.completed}
-        on:change={() => toggleTaskCompletion(task.id)}
-        id={`task-${task.id}`}
-        aria-checked={task.completed ? 'true' : 'false'}
+      <input 
+        type="checkbox" 
+        id={"task-" + id} 
+        checked={completed} 
+        on:change={() => toggleTaskCompletion(id)} 
       />
-      <label for={`task-${task.id}`}>{task.text}</label>
+      <label for={"task-" + id}>{label}</label>
     </li>
   {/each}
 </ul>
 
 <style lang="css">
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    margin: 5px 0;
-  }
-
-  .partially-complete {
-    border-left: 4px solid orange;
-    padding-left: 10px;
-  }
-
-  input[type='checkbox'] {
-    margin-right: 10px;
-  }
+  @import './TaskCompletionCheckList.css';
 </style>

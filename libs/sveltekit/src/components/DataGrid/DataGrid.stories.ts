@@ -1,64 +1,98 @@
 import DataGrid from './DataGrid.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-export default {
-  title: 'Lists/DataGrid',
+const meta: Meta<DataGrid> = {
+  title: 'component/Lists/DataGrid',
   component: DataGrid,
   tags: ['autodocs'],
+  argTypes: {
+    columns: { control: 'object' },
+    rows: { control: 'object' },
+    pageSize: { control: 'number' },
+    searchQuery: { control: 'text' },
+    resizable: { control: 'boolean' }
+  },
+  parameters: {
+    layout: 'centered',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
 };
 
-export const Default = {
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
-    columns: ['Name', 'Age', 'Email'],
-    data: [
-      { Name: 'Alice', Age: 30, Email: 'alice@example.com' },
-      { Name: 'Bob', Age: 25, Email: 'bob@example.com' },
-      { Name: 'Charlie', Age: 35, Email: 'charlie@example.com' },
+    columns: [
+      { id: 'id', label: 'ID' },
+      { id: 'name', label: 'Name' },
+      { id: 'age', label: 'Age' }
     ],
-    currentPage: 1,
-    pageSize: 10,
-    searchTerm: '',
-  },
-};
-
-export const Paginated = {
-  args: {
-    columns: ['Name', 'Age', 'Email'],
-    data: Array.from({ length: 50 }, (_, i) => ({
-      Name: `Person ${i + 1}`,
-      Age: 20 + (i % 30),
-      Email: `person${i + 1}@example.com`,
-    })),
-    currentPage: 1,
-    pageSize: 10,
-    searchTerm: '',
-  },
-};
-
-export const Search = {
-  args: {
-    columns: ['Name', 'Age', 'Email'],
-    data: [
-      { Name: 'Alice', Age: 30, Email: 'alice@example.com' },
-      { Name: 'Bob', Age: 25, Email: 'bob@example.com' },
-      { Name: 'Charlie', Age: 35, Email: 'charlie@example.com' },
+    rows: [
+      { id: 1, name: 'John Doe', age: 28 },
+      { id: 2, name: 'Jane Smith', age: 34 },
+      { id: 3, name: 'Alice Johnson', age: 45 }
     ],
-    currentPage: 1,
     pageSize: 10,
-    searchTerm: 'Alice',
-  },
+    searchQuery: '',
+    resizable: false
+  }
 };
 
-export const Resizable = {
+export const Paginated: Story = {
   args: {
-    columns: ['Name', 'Age', 'Email'],
-    data: [
-      { Name: 'Alice', Age: 30, Email: 'alice@example.com' },
-      { Name: 'Bob', Age: 25, Email: 'bob@example.com' },
-      { Name: 'Charlie', Age: 35, Email: 'charlie@example.com' },
+    columns: [
+      { id: 'id', label: 'ID' },
+      { id: 'name', label: 'Name' },
+      { id: 'age', label: 'Age' }
     ],
-    currentPage: 1,
+    rows: Array.from({ length: 30 }, (_, i) => ({ id: i + 1, name: `User ${i + 1}`, age: 20 + i })),
+    pageSize: 5,
+    searchQuery: '',
+    resizable: false
+  }
+};
+
+export const Search: Story = {
+  args: {
+    columns: [
+      { id: 'id', label: 'ID' },
+      { id: 'name', label: 'Name' },
+      { id: 'age', label: 'Age' }
+    ],
+    rows: [
+      { id: 1, name: 'John Doe', age: 28 },
+      { id: 2, name: 'Jane Smith', age: 34 },
+      { id: 3, name: 'Alice Johnson', age: 45 }
+    ],
     pageSize: 10,
-    searchTerm: '',
-    resizableColumns: true,
-  },
+    searchQuery: 'Jane',
+    resizable: false
+  }
+};
+
+export const Resizable: Story = {
+  args: {
+    columns: [
+      { id: 'id', label: 'ID' },
+      { id: 'name', label: 'Name' },
+      { id: 'age', label: 'Age' }
+    ],
+    rows: [
+      { id: 1, name: 'John Doe', age: 28 },
+      { id: 2, name: 'Jane Smith', age: 34 },
+      { id: 3, name: 'Alice Johnson', age: 45 }
+    ],
+    pageSize: 10,
+    searchQuery: '',
+    resizable: true
+  }
 };

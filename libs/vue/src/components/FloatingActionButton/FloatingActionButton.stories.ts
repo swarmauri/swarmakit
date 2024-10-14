@@ -1,16 +1,13 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import FloatingActionButton from './FloatingActionButton.vue';
 
 export default {
-  title: 'Miscellaneous/FloatingActionButton',
+  title: 'component/Miscellaneous/FloatingActionButton',
   component: FloatingActionButton,
   tags: ['autodocs'],
-  argTypes: {
-    isExpanded: { control: 'boolean' },
-    hover: { control: 'boolean' },
-  },
-};
+} as Meta<typeof FloatingActionButton>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof FloatingActionButton> = (args) => ({
   components: { FloatingActionButton },
   setup() {
     return { args };
@@ -19,16 +16,10 @@ const Template = (args: any) => ({
 });
 
 export const Collapsed = Template.bind({});
-Collapsed.args = {
-  isExpanded: false,
-};
+Collapsed.args = { isExpanded: false };
 
 export const Expanded = Template.bind({});
-Expanded.args = {
-  isExpanded: true,
-};
+Expanded.args = { isExpanded: true };
 
 export const Hover = Template.bind({});
-Hover.args = {
-  hover: true,
-};
+Hover.args = {};

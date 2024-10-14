@@ -1,59 +1,60 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ActionableList from './ActionableList.vue';
 
 export default {
-  title: 'Lists/ActionableList',
+  title: 'component/Lists/ActionableList',
   component: ActionableList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
-    'action-triggered': { action: 'action-triggered' },
+    items: {
+      control: 'object',
+    },
   },
-};
+} as Meta<typeof ActionableList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ActionableList> = (args) => ({
   components: { ActionableList },
   setup() {
     return { args };
   },
-  template: '<ActionableList v-bind="args" @action-triggered="args[\'action-triggered\']" />',
+  template: `
+    <ActionableList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { label: 'Item 1', disabled: false, loading: false },
-    { label: 'Item 2', disabled: false, loading: false },
+    { label: 'Item 1', actionLabel: 'Action', disabled: false, loading: false },
+    { label: 'Item 2', actionLabel: 'Action', disabled: false, loading: false },
+    { label: 'Item 3', actionLabel: 'Action', disabled: false, loading: false },
   ],
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
   items: [
-    { label: 'Item 1', disabled: false, loading: false },
-    { label: 'Item 2', disabled: false, loading: false },
+    { label: 'Hover over me', actionLabel: 'Action', disabled: false, loading: false },
   ],
 };
 
 export const ActionTriggered = Template.bind({});
 ActionTriggered.args = {
   items: [
-    { label: 'Item 1', disabled: false, loading: false },
-    { label: 'Item 2', disabled: false, loading: false },
+    { label: 'Item with action triggered', actionLabel: 'Action', disabled: false, loading: false },
   ],
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   items: [
-    { label: 'Item 1', disabled: true, loading: false },
-    { label: 'Item 2', disabled: true, loading: false },
+    { label: 'Disabled Item', actionLabel: 'Action', disabled: true, loading: false },
   ],
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
   items: [
-    { label: 'Item 1', disabled: false, loading: true },
-    { label: 'Item 2', disabled: false, loading: true },
+    { label: 'Loading Item', actionLabel: 'Action', disabled: false, loading: true },
   ],
 };

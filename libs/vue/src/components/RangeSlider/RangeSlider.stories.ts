@@ -1,21 +1,23 @@
 import RangeSlider from './RangeSlider.vue';
 
 export default {
-  title: 'Forms/RangeSlider',
   component: RangeSlider,
+  title: 'component/Forms/RangeSlider',
   tags: ['autodocs'],
   argTypes: {
-    label: { control: 'text' },
-    id: { control: 'text' },
-    min: { control: 'number' },
-    max: { control: 'number' },
-    step: { control: 'number' },
-    modelValue: { control: 'number' },
-    disabled: { control: 'boolean' },
+    min: { control: { type: 'number' } },
+    max: { control: { type: 'number' } },
+    value: { control: { type: 'number' } },
+    step: { control: { type: 'number' } },
+    disabled: { control: { type: 'boolean' } },
+    label: { control: { type: 'text' } },
+    labelPosition: { 
+      control: { type: 'select', options: ['left', 'center', 'right'] }
+    },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { RangeSlider },
   setup() {
     return { args };
@@ -25,66 +27,45 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Volume',
-  id: 'default-slider',
   min: 0,
   max: 100,
+  value: 50,
   step: 1,
-  modelValue: 50,
   disabled: false,
+  label: 'Volume',
+  labelPosition: 'right',
 };
 
 export const Min = Template.bind({});
 Min.args = {
-  label: 'Volume',
-  id: 'min-slider',
-  min: 0,
-  max: 100,
-  step: 1,
-  modelValue: 0,
-  disabled: false,
+  ...Default.args,
+  value: 0,
 };
 
 export const Max = Template.bind({});
 Max.args = {
-  label: 'Volume',
-  id: 'max-slider',
-  min: 0,
-  max: 100,
-  step: 1,
-  modelValue: 100,
-  disabled: false,
+  ...Default.args,
+  value: 100,
 };
 
 export const Hover = Template.bind({});
+Hover.parameters = {
+  pseudo: { hover: true },
+};
 Hover.args = {
-  label: 'Volume',
-  id: 'hover-slider',
-  min: 0,
-  max: 100,
-  step: 1,
-  modelValue: 50,
-  disabled: false,
+  ...Default.args,
 };
 
 export const Active = Template.bind({});
+Active.parameters = {
+  pseudo: { active: true },
+};
 Active.args = {
-  label: 'Volume',
-  id: 'active-slider',
-  min: 0,
-  max: 100,
-  step: 1,
-  modelValue: 75,
-  disabled: false,
+  ...Default.args,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Volume',
-  id: 'disabled-slider',
-  min: 0,
-  max: 100,
-  step: 1,
-  modelValue: 50,
+  ...Default.args,
   disabled: true,
 };

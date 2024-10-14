@@ -1,49 +1,39 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import SignalStrengthIndicator from './SignalStrengthIndicator.vue';
 
 export default {
-  title: 'Indicators/SignalStrengthIndicator',
+  title: 'component/Indicators/SignalStrengthIndicator',
   component: SignalStrengthIndicator,
   tags: ['autodocs'],
   argTypes: {
-    strength: {
-      control: { type: 'number', min: 0, max: 5 },
-      description: 'The current signal strength value',
-    },
-    state: {
-      control: { type: 'select', options: ['full', 'weak', 'none'] },
-      description: 'The current state of the signal strength',
-    },
+    strength: { control: 'number' },
   },
-};
+} as Meta<typeof SignalStrengthIndicator>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof SignalStrengthIndicator> = (args) => ({
   components: { SignalStrengthIndicator },
   setup() {
     return { args };
   },
-  template: '<SignalStrengthIndicator v-bind="args" />',
+  template: `<SignalStrengthIndicator v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   strength: 3,
-  state: 'weak',
 };
 
 export const FullSignal = Template.bind({});
 FullSignal.args = {
   strength: 5,
-  state: 'full',
 };
 
 export const WeakSignal = Template.bind({});
 WeakSignal.args = {
-  strength: 2,
-  state: 'weak',
+  strength: 1,
 };
 
 export const NoSignal = Template.bind({});
 NoSignal.args = {
   strength: 0,
-  state: 'none',
 };

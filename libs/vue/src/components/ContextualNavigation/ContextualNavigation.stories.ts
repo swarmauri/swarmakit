@@ -1,54 +1,49 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ContextualNavigation from './ContextualNavigation.vue';
 
 export default {
-  title: 'Navigation/ContextualNavigation',
+  title: 'component/Navigation/ContextualNavigation',
   component: ContextualNavigation,
   tags: ['autodocs'],
-  argTypes: {
-    navigationItems: { control: 'object' },
-  },
-};
+} as Meta<typeof ContextualNavigation>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ContextualNavigation> = (args) => ({
   components: { ContextualNavigation },
   setup() {
     return { args };
   },
-  template: `
-    <ContextualNavigation v-bind="args" @navigate="args.navigateToItem = $event" />
-  `,
+  template: '<ContextualNavigation v-bind="args" />',
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  navigationItems: [
-    { label: 'Dashboard' },
-    { label: 'Settings' },
-    { label: 'Profile' },
-    { label: 'Help' },
+  menuItems: [
+    { name: 'Profile', link: '/profile' },
+    { name: 'Settings', link: '/settings' },
+    { name: 'Logout', link: '/logout' },
   ],
 };
 
 export const ContextTriggered = Template.bind({});
 ContextTriggered.args = {
-  navigationItems: [
-    { label: 'Dashboard' },
-    { label: 'Settings' },
-    { label: 'Profile' },
-    { label: 'Help' },
+  menuItems: [
+    { name: 'Profile', link: '/profile' },
+    { name: 'Settings', link: '/settings' },
+    { name: 'Logout', link: '/logout' },
   ],
 };
-ContextTriggered.play = async ({ args, canvasElement }) => {
-  const canvas = within(canvasElement);
-  await userEvent.click(canvas.getByRole('button', { name: /toggle navigation/i }));
+ContextTriggered.play = async ({ canvasElement }) => {
+  const button = canvasElement.querySelector('.contextual-toggle');
+  if (button) {
+    button.click();
+  }
 };
 
 export const Dismissed = Template.bind({});
 Dismissed.args = {
-  navigationItems: [
-    { label: 'Dashboard' },
-    { label: 'Settings' },
-    { label: 'Profile' },
-    { label: 'Help' },
+  menuItems: [
+    { name: 'Profile', link: '/profile' },
+    { name: 'Settings', link: '/settings' },
+    { name: 'Logout', link: '/logout' },
   ],
 };

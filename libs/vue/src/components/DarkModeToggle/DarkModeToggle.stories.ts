@@ -1,15 +1,13 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import DarkModeToggle from './DarkModeToggle.vue';
 
 export default {
-  title: 'Miscellaneous/DarkModeToggle',
+  title: 'component/Miscellaneous/DarkModeToggle',
   component: DarkModeToggle,
   tags: ['autodocs'],
-  argTypes: {
-    isDarkMode: { control: 'boolean' },
-  },
-};
+} as Meta<typeof DarkModeToggle>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof DarkModeToggle> = (args) => ({
   components: { DarkModeToggle },
   setup() {
     return { args };
@@ -24,6 +22,4 @@ export const LightMode = Template.bind({});
 LightMode.args = {};
 
 export const DarkMode = Template.bind({});
-DarkMode.args = {
-  isDarkMode: true,
-};
+DarkMode.args = {};

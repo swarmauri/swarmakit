@@ -1,15 +1,16 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AudioPlayerAdvanced from './AudioPlayerAdvanced.vue';
 
 export default {
-  title: 'Media/AudioPlayerAdvanced',
+  title: 'component/Media/AudioPlayerAdvanced',
   component: AudioPlayerAdvanced,
   tags: ['autodocs'],
   argTypes: {
     src: { control: 'text' },
   },
-};
+} as Meta<typeof AudioPlayerAdvanced>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof AudioPlayerAdvanced> = (args) => ({
   components: { AudioPlayerAdvanced },
   setup() {
     return { args };
@@ -19,35 +20,35 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'sample-audio.mp3',
+  src: 'path/to/audio.mp3',
 };
 
 export const Play = Template.bind({});
 Play.args = {
-  src: 'sample-audio.mp3',
+  ...Default.args,
 };
 
 export const Pause = Template.bind({});
 Pause.args = {
-  src: 'sample-audio.mp3',
+  ...Default.args,
 };
 
 export const Seek = Template.bind({});
 Seek.args = {
-  src: 'sample-audio.mp3',
+  ...Default.args,
 };
 
 export const Mute = Template.bind({});
 Mute.args = {
-  src: 'sample-audio.mp3',
+  ...Default.args,
 };
 
 export const VolumeControl = Template.bind({});
 VolumeControl.args = {
-  src: 'sample-audio.mp3',
+  ...Default.args,
 };
 
 export const SpeedControl = Template.bind({});
 SpeedControl.args = {
-  src: 'sample-audio.mp3',
+  ...Default.args,
 };

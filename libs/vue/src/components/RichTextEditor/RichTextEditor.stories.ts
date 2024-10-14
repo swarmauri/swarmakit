@@ -1,16 +1,15 @@
 import RichTextEditor from './RichTextEditor.vue';
 
 export default {
-  title: 'Forms/RichTextEditor',
   component: RichTextEditor,
+  title: 'component/Forms/RichTextEditor',
   tags: ['autodocs'],
   argTypes: {
-    modelValue: { control: 'text' },
-    readOnly: { control: 'boolean' },
+    readonly: { control: { type: 'boolean' } },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { RichTextEditor },
   setup() {
     return { args };
@@ -20,18 +19,15 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  modelValue: '<p>This is some rich text</p>',
-  readOnly: false,
+  readonly: false,
 };
 
 export const Editing = Template.bind({});
 Editing.args = {
-  modelValue: '<p>Edit this text</p>',
-  readOnly: false,
+  readonly: false,
 };
 
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
-  modelValue: '<p>This text is read-only</p>',
-  readOnly: true,
+  readonly: true,
 };

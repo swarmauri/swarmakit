@@ -1,55 +1,25 @@
-.multiselect-list {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 10px;
+:root {
+  --list-item-padding: 8px;
+  --list-item-border: 1px solid #ccc;
+  --selected-bg: #d1e7dd;
+  --selected-color: #0f5132;
+  --disabled-bg: #f8f9fa;
+  --disabled-color: #6c757d;
+  --hover-bg: #e2e6ea;
 }
 
-.list-item {
-  padding: 8px;
-  margin-bottom: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.list-item.selected {
-  background-color: #007bff;
-  color: white;
-  border-color: #0056b3;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.list-item:hover {
-  background-color: #f0f0f0;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.list-item[aria-disabled='true'] {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
-}
-
-@media (max-width: 600px) {
-  .multiselect-list {
-    font-size: 12px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .multiselect-list {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  .multiselect-list {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 1201px) {
-  .multiselect-list {
-    font-size: 18px;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

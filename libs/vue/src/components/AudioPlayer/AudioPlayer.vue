@@ -1,29 +1,27 @@
 <template>
-  <div class="audio-player" role="region" aria-label="Audio Player">
-    <audio ref="audio" :src="src" @timeupdate="updateProgress" @ended="onAudioEnd" />
-    <button @click="togglePlay" aria-pressed="isPlaying" class="control-button">
+  <div class="audio-player" role="region" aria-label="Audio player">
+    <audio ref="audioElement" :src="src" @loadeddata="onLoadedData"></audio>
+    <button @click="togglePlay" class="control-button" aria-label="Play/Pause">
       {{ isPlaying ? 'Pause' : 'Play' }}
     </button>
-    <button @click="toggleMute" aria-pressed="isMuted" class="control-button">
+    <button @click="toggleMute" class="control-button" aria-label="Mute/Unmute">
       {{ isMuted ? 'Unmute' : 'Mute' }}
     </button>
     <input
       type="range"
+      class="volume-control"
       min="0"
-      max="100"
+      max="1"
+      step="0.1"
       v-model="volume"
       @input="changeVolume"
-      aria-label="Volume Control"
-      class="volume-slider"
+      aria-label="Volume control"
     />
-    <div class="progress-bar" role="progressbar" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">
-      <div class="progress" :style="{ width: progress + '%' }"></div>
-    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'AudioPlayer',
@@ -34,53 +32,66 @@ export default defineComponent({
     },
   },
   setup() {
-    const audio = ref<HTMLAudioElement | null>(null);
+    const audioElement = ref<HTMLAudioElement | null>(null);
     const isPlaying = ref(false);
     const isMuted = ref(false);
-    const volume = ref(100);
-    const progress = ref(0);
+    const volume = ref(1);
 
     const togglePlay = () => {
-      if (audio.value) {
+      if (audioElement.value) {
         if (isPlaying.value) {
-          audio.value.pause();
+          audioElement.value.pause();
         } else {
-          audio.value.play();
+          audioElement.value.play();
         }
         isPlaying.value = !isPlaying.value;
       }
     };
 
     const toggleMute = () => {
-      if (audio.value) {
-        isMuted.value = !isMuted.value;
-        audio.value.muted = isMuted.value;
+      if (audioElement.value) {
+        audioElement.value.muted = !audioElement.value.muted;
+        isMuted.value = audioElement.value.muted;
       }
     };
 
     const changeVolume = () => {
-      if (audio.value) {
-        audio.value.volume = volume.value / 100;
+      if (audioElement.value) {
+        audioElement.value.volume = volume.value;
       }
     };
 
-    const updateProgress = () => {
-      if (audio.value) {
-        progress.value = (audio.value.currentTime / audio.value.duration) * 100;
+    const onLoadedData = () => {
+      if (audioElement.value) {
+        volume.value = audioElement.value.volume;
       }
     };
 
-    const onAudioEnd = () => {
-      isPlaying.value = false;
-    };
-
-    watch(volume, changeVolume);
-
-    return { audio, isPlaying, togglePlay, isMuted, toggleMute, volume, progress };
+    return { isPlaying, isMuted, volume, togglePlay, toggleMute, changeVolume, onLoadedData };
   },
 });
 </script>
 
-<style lang="css">
-@import './AudioPlayer.css';
+<style scoped lang="css">
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--player-bg-color);
+  border-radius: 5px;
+}
+
+.control-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.volume-control {
+  width: 100px;
+}
 </style>

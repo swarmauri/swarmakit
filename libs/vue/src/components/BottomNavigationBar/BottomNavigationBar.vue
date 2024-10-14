@@ -1,11 +1,16 @@
 <template>
-  <nav class="bottom-navigation" aria-label="Bottom Navigation">
-    <ul>
-      <li v-for="(item, index) in items" :key="item.label" :class="{ selected: index === selectedIndex, disabled: item.disabled }" role="button" :aria-disabled="item.disabled" :aria-selected="index === selectedIndex">
-        <button @click="selectItem(index)" :disabled="item.disabled" @mouseover="hoverIndex = index" @mouseleave="hoverIndex = null">
-          <span class="icon" :class="{ hover: hoverIndex === index }">{{ item.icon }}</span>
-          <span class="label">{{ item.label }}</span>
-        </button>
+  <nav class="bottom-navigation-bar" role="navigation" aria-label="Bottom Navigation">
+    <ul class="nav-items">
+      <li 
+        v-for="item in items" 
+        :key="item.label" 
+        :class="{ selected: item.selected, disabled: item.disabled }"
+        @mouseover="item.disabled ? null : onHover(item)"
+        @click="item.disabled ? null : onSelect(item)"
+        :aria-disabled="item.disabled"
+        tabindex="0"
+      >
+        <span>{{ item.label }}</span>
       </li>
     </ul>
   </nav>
@@ -14,39 +19,66 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 
-interface NavigationItem {
-  icon: string;
+interface NavItem {
   label: string;
-  disabled?: boolean;
+  selected: boolean;
+  disabled: boolean;
 }
 
 export default defineComponent({
   name: 'BottomNavigationBar',
   props: {
     items: {
-      type: Array as PropType<NavigationItem[]>,
+      type: Array as PropType<NavItem[]>,
       required: true,
     },
-    selectedIndex: {
-      type: Number as PropType<number>,
-      default: 0,
-    },
-  },
-  data() {
-    return {
-      hoverIndex: null as number | null,
-    };
   },
   methods: {
-    selectItem(index: number) {
-      if (!this.items[index].disabled) {
-        this.$emit('update:selectedIndex', index);
-      }
+    onSelect(item: NavItem) {
+      this.$emit('update:items', this.items.map(i => ({
+        ...i,
+        selected: i.label === item.label,
+      })));
+    },
+    onHover(item: NavItem) {
+      // Logic for hover state can be added here
     },
   },
 });
 </script>
 
-<style lang="css">
-@import './BottomNavigationBar.css';
+<style scoped lang="css">
+.bottom-navigation-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--nav-bg, #fff);
+  padding: 10px 0;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.nav-items li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-items li.selected {
+  background-color: var(--nav-selected-bg, #007bff);
+  color: var(--nav-selected-color, #fff);
+}
+
+.nav-items li:hover:not(.disabled) {
+  background-color: var(--nav-hover-bg, #e0e0e0);
+}
+
+.nav-items li.disabled {
+  cursor: not-allowed;
+  color: var(--nav-disabled-color, #ccc);
+}
 </style>

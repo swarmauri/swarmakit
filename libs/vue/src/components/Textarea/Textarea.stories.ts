@@ -1,16 +1,16 @@
 import Textarea from './Textarea.vue';
 
 export default {
-  title: 'Forms/Textarea',
   component: Textarea,
+  title: 'component/Forms/Textarea',
   tags: ['autodocs'],
   argTypes: {
-    placeholder: { control: 'text' },
-    disabled: { control: 'boolean' },
+    placeholder: { control: { type: 'text' } },
+    disabled: { control: { type: 'boolean' } },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { Textarea },
   setup() {
     return { args };

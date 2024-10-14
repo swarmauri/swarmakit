@@ -1,19 +1,17 @@
 import Button from './Button.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: 'Buttons/Button',
+  title: 'component/Buttons/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    variant: {
-      control: { type: 'select', options: ['primary', 'secondary'] },
-    },
+    type: { control: { type: 'select', options: ['primary', 'secondary'] } },
     disabled: { control: 'boolean' },
-    active: { control: 'boolean' },
   },
-};
+} as Meta<typeof Button>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Button> = (args) => ({
   components: { Button },
   setup() {
     return { args };
@@ -23,34 +21,36 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  variant: 'primary',
+  type: 'primary',
   disabled: false,
-  active: false,
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  variant: 'primary',
+  type: 'primary',
+  disabled: false,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  variant: 'secondary',
+  type: 'secondary',
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+  type: 'primary',
   disabled: true,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  variant: 'primary',
+  type: 'primary',
   disabled: false,
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  variant: 'primary',
-  active: true,
+  type: 'primary',
+  disabled: false,
 };

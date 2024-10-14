@@ -1,25 +1,24 @@
-.notification-bell {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  width: 2rem;
-  height: 2rem;
+:root {
+  --bell-icon-size: 24px;
+  --bell-icon-color: #000;
+  --bell-icon-notification-color: #ff0000;
+  --bell-icon-dismissed-color: #ccc;
+  --notification-dot-size: 8px;
+  --notification-dot-color: #ff0000;
 }
 
-.bell-icon {
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.notification-dot {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0.5rem;
-  height: 0.5rem;
-  background-color: red;
-  border-radius: 50%;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
+}
+
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

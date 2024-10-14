@@ -1,19 +1,16 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import PodcastPlayer from './PodcastPlayer.vue';
 
 export default {
-  title: 'Media/PodcastPlayer',
+  title: 'component/Media/PodcastPlayer',
   component: PodcastPlayer,
   tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: ['Playing', 'Paused', 'Episode List', 'Downloading'],
-    },
     episodes: { control: 'array' },
   },
-};
+} as Meta<typeof PodcastPlayer>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof PodcastPlayer> = (args) => ({
   components: { PodcastPlayer },
   setup() {
     return { args };
@@ -23,24 +20,29 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'Paused',
-  episodes: ['Episode 1', 'Episode 2', 'Episode 3'],
+  episodes: [
+    { title: 'Episode 1: Introduction', url: '#' },
+    { title: 'Episode 2: Deep Dive', url: '#' },
+    { title: 'Episode 3: Expert Interview', url: '#' },
+  ],
 };
 
 export const Playing = Template.bind({});
 Playing.args = {
-  state: 'Playing',
-  episodes: ['Episode 1', 'Episode 2', 'Episode 3'],
+  ...Default.args,
+};
+
+export const Paused = Template.bind({});
+Paused.args = {
+  ...Default.args,
 };
 
 export const EpisodeList = Template.bind({});
 EpisodeList.args = {
-  state: 'Episode List',
-  episodes: ['Episode 1', 'Episode 2', 'Episode 3'],
+  ...Default.args,
 };
 
 export const Downloading = Template.bind({});
 Downloading.args = {
-  state: 'Downloading',
-  episodes: ['Episode 1', 'Episode 2', 'Episode 3'],
+  ...Default.args,
 };

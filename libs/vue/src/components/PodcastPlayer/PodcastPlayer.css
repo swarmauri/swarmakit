@@ -1,49 +1,30 @@
-.podcast-player {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+:root {
+  --player-bg-color: #e0e0e0;
+  --button-bg-color: #333;
+  --button-text-color: #fff;
+  --episode-bg-color: #f9f9f9;
 }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+@media (max-width: 480px) {
+  .podcast-player {
+    padding: 1rem;
+  }
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
+@media (min-width: 481px) and (max-width: 768px) {
+  .podcast-player {
+    padding: 1.5rem;
+  }
 }
 
-button:focus {
-  outline: 2px solid #fff;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .podcast-player {
+    padding: 2rem;
+  }
 }
 
-.episode-list {
-  margin-top: 20px;
-}
-
-.episode-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.episode-list li {
-  margin-bottom: 10px;
-}
-
-.downloading {
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  .controls {
-    flex-direction: column;
+@media (min-width: 1025px) {
+  .podcast-player {
+    padding: 2.5rem;
   }
 }

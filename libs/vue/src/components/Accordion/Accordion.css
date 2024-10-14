@@ -1,30 +1,29 @@
-.accordion {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 8px;
+:root {
+  --accordion-border: 1px solid #ccc;
+  --accordion-margin: 10px 0;
+  --accordion-border-radius: 4px;
+  --accordion-header-bg: #f1f1f1;
+  --accordion-header-color: #333;
+  --accordion-header-padding: 10px;
+  --accordion-header-font-size: 16px;
+  --accordion-header-hover-bg: #ddd;
+  --accordion-content-padding: 10px;
+  --accordion-content-bg: #fff;
+  --accordion-content-border-top: 1px solid #ccc;
 }
 
-.accordion-header {
-  width: 100%;
-  background-color: #f9f9f9;
-  padding: 12px;
-  font-size: 16px;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.accordion-header:hover {
-  background-color: #e2e2e2;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.accordion-content {
-  padding: 12px;
-  background-color: white;
-  border-top: 1px solid #ccc;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
+}
+
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

@@ -1,6 +1,6 @@
 <template>
-  <div :class="['skeleton', { active: !loading }]" role="status" aria-live="polite">
-    <div v-if="loading" class="skeleton-block"></div>
+  <div class="skeleton-loading" :aria-busy="loading">
+    <div v-if="loading" class="skeleton"></div>
     <slot v-else></slot>
   </div>
 </template>
@@ -19,6 +19,24 @@ export default defineComponent({
 });
 </script>
 
-<style lang="css">
-@import './SkeletonLoading.css';
+<style scoped lang="css">
+.skeleton-loading {
+  display: inline-block;
+  width: 100%;
+}
+
+.skeleton {
+  height: 20px;
+  background-color: var(--skeleton-bg, #e0e0e0);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
 </style>

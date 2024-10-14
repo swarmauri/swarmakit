@@ -1,26 +1,35 @@
+:root {
+  --button-bg: #f0f0f0;
+  --button-bg-hover: #e0e0e0;
+  --button-bg-disabled: #d0d0d0;
+  --input-border: #ccc;
+}
+
 .number-input {
   display: flex;
   align-items: center;
 }
 
-.number-input button {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
+button {
+  background-color: var(--button-bg);
+  border: none;
+  padding: 0.5rem;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
-.number-input button:disabled {
-  background-color: #e0e0e0;
+button:hover:not(:disabled) {
+  background-color: var(--button-bg-hover);
+}
+
+button:disabled {
+  background-color: var(--button-bg-disabled);
   cursor: not-allowed;
 }
 
-.number-input input[type="number"] {
-  width: 60px;
+input[type="number"] {
+  width: 3rem;
   text-align: center;
-  padding: 5px;
-  border: 1px solid #ccc;
-  margin: 0 5px;
-  font-size: 16px;
+  border: 1px solid var(--input-border);
+  margin: 0 0.5rem;
 }

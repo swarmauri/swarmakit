@@ -1,45 +1,58 @@
 import IconButton from './IconButton.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
 
-export default {
-  title: 'Buttons/IconButton',
+const meta: Meta<IconButton> = {
+  title: 'component/Buttons/IconButton',
   component: IconButton,
   tags: ['autodocs'],
-};
-
-export const Default = {
-  args: {
-    icon: 'path/to/icon.svg',
-    label: 'Icon Button',
-    disabled: false,
-  },
-};
-
-export const Active = {
-  args: {
-    icon: 'path/to/icon.svg',
-    label: 'Active Icon Button',
-    disabled: false,
+  argTypes: {
+    icon: { control: 'text' },
+    disabled: { control: 'boolean' },
+    onClick: { action: 'clicked' },
   },
   parameters: {
-    pseudo: { active: true },
-  },
+    layout: 'centered',
+    viewport: {
+      viewports: {
+        smallMobile: { name: 'Small Mobile', styles: { width: '320px', height: '568px' } },
+        largeMobile: { name: 'Large Mobile', styles: { width: '414px', height: '896px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1024px', height: '768px' } },
+      }
+    }
+  }
 };
 
-export const Hover = {
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
     icon: 'path/to/icon.svg',
-    label: 'Hover Icon Button',
     disabled: false,
-  },
-  parameters: {
-    pseudo: { hover: true },
-  },
+    ariaLabel: 'Default Icon Button',
+  }
 };
 
-export const Disabled = {
+export const Active: Story = {
   args: {
     icon: 'path/to/icon.svg',
-    label: 'Disabled Icon Button',
+    ariaLabel: 'Active Icon Button',
+  }
+};
+
+export const Hover: Story = {
+  args: {
+    icon: 'path/to/icon.svg',
+    ariaLabel: 'Hover Icon Button',
+  }
+};
+
+export const Disabled: Story = {
+  args: {
+    icon: 'path/to/icon.svg',
     disabled: true,
-  },
+    ariaLabel: 'Disabled Icon Button',
+  }
 };

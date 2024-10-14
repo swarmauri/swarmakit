@@ -1,53 +1,29 @@
-.embedded-media-iframe {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  background-color: #000;
+:root {
+  --iframe-bg-color: #e0e0e0;
+  --button-bg-color: rgba(0, 0, 0, 0.5);
+  --button-text-color: #fff;
 }
 
-.embedded-media-iframe.fullscreen {
-  height: 100vh;
-  width: 100vw;
-}
-
-.embedded-media-iframe.buffering:before {
-  content: 'Buffering...';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.5em;
-  z-index: 1;
-}
-
-.embedded-media-iframe iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-@media (max-width: 600px) {
-  .embedded-media-iframe {
-    height: 200px;
+@media (max-width: 480px) {
+  .fullscreen-btn {
+    font-size: 1.2rem;
   }
 }
 
-@media (min-width: 601px) and (max-width: 900px) {
-  .embedded-media-iframe {
-    height: 250px;
+@media (min-width: 481px) and (max-width: 768px) {
+  .fullscreen-btn {
+    font-size: 1.5rem;
   }
 }
 
-@media (min-width: 901px) and (max-width: 1200px) {
-  .embedded-media-iframe {
-    height: 300px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .fullscreen-btn {
+    font-size: 1.8rem;
   }
 }
 
-@media (min-width: 1201px) {
-  .embedded-media-iframe {
-    height: 350px;
+@media (min-width: 1025px) {
+  .fullscreen-btn {
+    font-size: 2rem;
   }
 }

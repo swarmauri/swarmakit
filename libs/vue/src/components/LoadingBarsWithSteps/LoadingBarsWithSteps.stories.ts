@@ -1,27 +1,22 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import LoadingBarsWithSteps from './LoadingBarsWithSteps.vue';
 
 export default {
-  title: 'Indicators/LoadingBarsWithSteps',
+  title: 'component/Indicators/LoadingBarsWithSteps',
   component: LoadingBarsWithSteps,
   tags: ['autodocs'],
   argTypes: {
-    steps: {
-      control: { type: 'object' },
-      description: 'Array of steps with labels',
-    },
-    activeStep: {
-      control: { type: 'number' },
-      description: 'Current active step',
-    },
+    steps: { control: 'object' },
+    currentStep: { control: 'number' },
   },
-};
+} as Meta<typeof LoadingBarsWithSteps>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof LoadingBarsWithSteps> = (args) => ({
   components: { LoadingBarsWithSteps },
   setup() {
     return { args };
   },
-  template: '<LoadingBarsWithSteps v-bind="args" />',
+  template: `<LoadingBarsWithSteps v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
@@ -30,25 +25,24 @@ Default.args = {
     { id: 1, label: 'Step 1' },
     { id: 2, label: 'Step 2' },
     { id: 3, label: 'Step 3' },
-    { id: 4, label: 'Step 4' },
   ],
-  activeStep: 1,
+  currentStep: 1,
 };
 
 export const StepActive = Template.bind({});
 StepActive.args = {
   ...Default.args,
-  activeStep: 2,
+  currentStep: 1,
 };
 
 export const StepCompleted = Template.bind({});
 StepCompleted.args = {
   ...Default.args,
-  activeStep: 4,
+  currentStep: 3,
 };
 
 export const StepInactive = Template.bind({});
 StepInactive.args = {
   ...Default.args,
-  activeStep: 0,
+  currentStep: 0,
 };

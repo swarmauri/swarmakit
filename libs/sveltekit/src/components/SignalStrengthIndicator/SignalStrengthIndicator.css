@@ -1,32 +1,47 @@
+:root {
+  --bar-color: #e0e0e0;
+  --bar-active-color: #4caf50;
+  --bar-weak-color: #ff9800;
+}
+
 .signal-strength-indicator {
   display: flex;
-  gap: 2px;
   align-items: flex-end;
+  gap: 0.2rem;
 }
 
 .bar {
-  width: 6px;
-  height: 12px;
-  background-color: #e0e0e0;
-  transition: background-color 0.2s, height 0.2s;
+  width: 0.4rem;
+  background-color: var(--bar-color);
+  transition: background-color 0.3s;
 }
 
-.bar.active {
-  background-color: #4caf50;
+.bar1 {
+  height: 0.6rem;
 }
 
-.bar:nth-child(1).active {
-  height: 6px;
+.bar2 {
+  height: 1.2rem;
 }
 
-.bar:nth-child(2).active {
-  height: 12px;
+.bar3 {
+  height: 1.8rem;
 }
 
-.bar:nth-child(3).active {
-  height: 18px;
+.bar4 {
+  height: 2.4rem;
 }
 
-.bar:nth-child(4).active {
-  height: 24px;
+.bar5 {
+  height: 3rem;
+}
+
+[data-strength='full'] .bar {
+  background-color: var(--bar-active-color);
+}
+
+[data-strength='weak'] .bar1,
+[data-strength='weak'] .bar2,
+[data-strength='weak'] .bar3 {
+  background-color: var(--bar-weak-color);
 }

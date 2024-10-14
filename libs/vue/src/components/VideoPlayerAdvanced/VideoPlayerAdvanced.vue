@@ -1,96 +1,178 @@
 <template>
   <div class="video-player-advanced" role="region" aria-label="Advanced Video Player">
-    <video ref="videoRef" @play="onPlay" @pause="onPause" @waiting="onBuffering" @enterpictureinpicture="onPiP" controls>
-      <source :src="videoSource" type="video/mp4" />
-      <track v-if="subtitles" kind="subtitles" src="path/to/subtitles.vtt" srclang="en" label="English" default />
-      Your browser does not support the video tag.
+    <video
+      ref="videoElement"
+      :src="videoSrc"
+      @play="onPlay"
+      @pause="onPause"
+      @waiting="onBuffering"
+      @fullscreenchange="onFullscreenChange"
+      @enterpictureinpicture="onEnterPiP"
+      @leavepictureinpicture="onLeavePiP"
+      controls
+      class="video-element"
+    >
+      <track kind="subtitles" v-if="subtitlesSrc" :src="subtitlesSrc" default>
     </video>
     <div class="controls">
-      <button @click="togglePlayPause" aria-label="Play/Pause">
-        {{ state === 'Play' ? 'Pause' : 'Play' }}
+      <button @click="togglePlayPause" aria-label="Play/Pause" class="control-btn">
+        {{ isPlaying ? 'Pause' : 'Play' }}
       </button>
-      <button @click="toggleFullscreen" aria-label="Fullscreen">
-        Fullscreen
+      <button @click="toggleFullscreen" aria-label="Fullscreen" class="control-btn">
+        {{ isFullscreen ? 'Exit Fullscreen' : 'Fullscreen' }}
       </button>
-      <button @click="toggleSubtitles" aria-label="Subtitles">
-        {{ subtitles ? 'Subtitles Off' : 'Subtitles On' }}
+      <button @click="toggleSubtitles" aria-label="Subtitles" class="control-btn">
+        {{ areSubtitlesOn ? 'Subtitles Off' : 'Subtitles On' }}
       </button>
-      <button @click="togglePiP" aria-label="Picture in Picture">
-        PiP Mode
+      <button @click="togglePiP" aria-label="Picture in Picture" class="control-btn">
+        {{ isPiP ? 'Exit PiP' : 'PiP Mode' }}
       </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 
 export default defineComponent({
   name: 'VideoPlayerAdvanced',
   props: {
-    state: {
-      type: String,
-      default: 'Pause',
-    },
-    videoSource: {
+    videoSrc: {
       type: String,
       required: true,
     },
-    subtitles: {
-      type: Boolean,
-      default: false,
+    subtitlesSrc: {
+      type: String,
+      required: false,
     },
   },
   setup(props) {
-    const videoRef = ref<HTMLVideoElement | null>(null);
+    const isPlaying = ref(false);
+    const isFullscreen = ref(false);
+    const areSubtitlesOn = ref(true);
+    const isPiP = ref(false);
+    const videoElement = ref<HTMLVideoElement | null>(null);
+
+    onMounted(() => {
+      if (videoElement.value) {
+        videoElement.value.controls = false;
+      }
+    });
 
     const togglePlayPause = () => {
-      if (!videoRef.value) return;
-      if (videoRef.value.paused) {
-        videoRef.value.play();
-      } else {
-        videoRef.value.pause();
+      if (videoElement.value) {
+        if (videoElement.value.paused) {
+          videoElement.value.play();
+        } else {
+          videoElement.value.pause();
+        }
       }
     };
 
     const toggleFullscreen = () => {
-      if (!videoRef.value) return;
-      if (videoRef.value.requestFullscreen) {
-        videoRef.value.requestFullscreen();
+      if (videoElement.value) {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          videoElement.value.requestFullscreen();
+        }
       }
     };
 
     const toggleSubtitles = () => {
-      props.subtitles = !props.subtitles;
+      if (videoElement.value) {
+        const tracks = videoElement.value.textTracks;
+        for (let i = 0; i < tracks.length; i++) {
+          tracks[i].mode = areSubtitlesOn.value ? 'disabled' : 'showing';
+        }
+        areSubtitlesOn.value = !areSubtitlesOn.value;
+      }
     };
 
-    const togglePiP = () => {
-      if (videoRef.value && videoRef.value !== document.pictureInPictureElement) {
-        videoRef.value.requestPictureInPicture();
+    const togglePiP = async () => {
+      if (videoElement.value) {
+        try {
+          if (isPiP.value) {
+            await document.exitPictureInPicture();
+          } else {
+            await videoElement.value.requestPictureInPicture();
+          }
+        } catch (error) {
+          console.error('Failed to toggle PiP.', error);
+        }
       }
     };
 
     const onPlay = () => {
-      props.state = 'Play';
+      isPlaying.value = true;
     };
 
     const onPause = () => {
-      props.state = 'Pause';
+      isPlaying.value = false;
     };
 
     const onBuffering = () => {
-      props.state = 'Buffering';
+      isPlaying.value = false;
     };
 
-    const onPiP = () => {
-      props.state = 'PiP Mode';
+    const onFullscreenChange = () => {
+      isFullscreen.value = !!document.fullscreenElement;
     };
 
-    return { videoRef, togglePlayPause, toggleFullscreen, toggleSubtitles, togglePiP, onPlay, onPause, onBuffering, onPiP };
+    const onEnterPiP = () => {
+      isPiP.value = true;
+    };
+
+    const onLeavePiP = () => {
+      isPiP.value = false;
+    };
+
+    return {
+      isPlaying,
+      isFullscreen,
+      areSubtitlesOn,
+      isPiP,
+      videoElement,
+      togglePlayPause,
+      toggleFullscreen,
+      toggleSubtitles,
+      togglePiP,
+      onPlay,
+      onPause,
+      onBuffering,
+      onFullscreenChange,
+      onEnterPiP,
+      onLeavePiP,
+    };
   },
 });
 </script>
 
-<style lang="css">
-@import './VideoPlayerAdvanced.css';
+<style scoped lang="css">
+.video-player-advanced {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--player-bg-color);
+}
+
+.video-element {
+  width: 100%;
+  display: block;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.control-btn {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
 </style>

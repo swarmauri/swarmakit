@@ -1,17 +1,16 @@
 <template>
   <div class="radio-button-container">
-    <input
-      type="radio"
-      :id="id"
-      :name="name"
-      :value="value"
-      v-model="modelValue"
-      :disabled="disabled"
-      class="radio-button"
-      :aria-checked="modelValue === value"
-      :aria-disabled="disabled"
-    />
-    <label :for="id" class="radio-label">{{ label }}</label>
+    <label :class="{ disabled: disabled }">
+      <input 
+        type="radio" 
+        :checked="checked" 
+        :disabled="disabled" 
+        @change="onChange" 
+        aria-checked="checked" 
+        aria-disabled="disabled"
+      />
+      <span class="radio-label"><slot></slot></span>
+    </label>
   </div>
 </template>
 
@@ -21,34 +20,34 @@ import { defineComponent, PropType } from 'vue';
 export default defineComponent({
   name: 'RadioButton',
   props: {
-    label: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    value: {
-      type: String,
-      required: true,
-    },
-    modelValue: {
-      type: String as PropType<string | null>,
+    checked: {
+      type: Boolean,
+      default: false,
     },
     disabled: {
       type: Boolean,
       default: false,
     },
+    value: {
+      type: String as PropType<string>,
+      required: true,
+    },
+    name: {
+      type: String as PropType<string>,
+      required: true,
+    },
   },
-  emits: ['update:modelValue'],
+  emits: ['update:checked'],
+  methods: {
+    onChange(event: Event) {
+      if (!this.disabled) {
+        this.$emit('update:checked', (event.target as HTMLInputElement).checked);
+      }
+    },
+  },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './RadioButton.css';
 </style>

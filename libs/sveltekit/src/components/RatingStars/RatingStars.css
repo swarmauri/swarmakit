@@ -1,27 +1,33 @@
+:root {
+  --star-color: #e0e0e0;
+  --star-filled-color: #ffc107;
+  --star-hover-color: #ffeb3b;
+  --star-selected-color: #fdd835;
+}
+
 .rating-stars {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-flex;
+  gap: 0.5rem;
 }
 
 .star {
-  width: 24px;
-  height: 24px;
-  fill: #ccc;
+  font-size: 2rem;
+  color: var(--star-color);
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: fill 0.2s;
+  transition: color 0.3s;
 }
 
-.star:hover,
-.star.hover {
-  fill: #ffc107;
+.star.filled {
+  color: var(--star-filled-color);
 }
 
-.star.selected {
-  fill: #ff9800;
+[data-state='hover'] .star:hover,
+[data-state='hover'] .star:hover ~ .star {
+  color: var(--star-hover-color);
 }
 
-.rating-stars[aria-disabled='true'] .star {
-  cursor: default;
-  fill: #e0e0e0;
+[data-state='selected'] .star.filled {
+  color: var(--star-selected-color);
 }

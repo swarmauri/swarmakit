@@ -1,26 +1,27 @@
-.badge-with-counts {
+:root {
+  --zero-bg-color: #e0e0e0;
+  --active-bg-color: #ff5733;
+  --text-color: #ffffff;
+  --padding: 0.5rem;
+  --border-radius: 12px;
+  --font-size: 0.875rem;
+}
+
+.badge {
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  color: var(--text-color);
   display: inline-block;
-  padding: 0.5em;
-  border-radius: 12px;
-  background-color: #ff9800;
-  color: #fff;
-  font-size: 0.875rem;
-  font-weight: 600;
-  min-width: 24px;
   text-align: center;
+  min-width: 2rem;
+  line-height: 1.5;
 }
 
-.count.zero {
-  background-color: #e0e0e0;
-  color: #333;
+.badge.zero {
+  background-color: var(--zero-bg-color);
 }
 
-.count.active {
-  background-color: #ff9800;
-  color: #fff;
-}
-
-.count.overflow {
-  background-color: #f44336;
-  color: #fff;
+.badge.active {
+  background-color: var(--active-bg-color);
 }

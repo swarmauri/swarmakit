@@ -1,55 +1,26 @@
-.cardbased-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+:root {
+  --card-gap: 10px;
+  --card-bg: #fff;
+  --card-border: 1px solid #ddd;
+  --card-padding: 15px;
+  --card-hover-bg: #f0f0f0;
+  --card-selected-border-color: #007bff;
+  --card-title-font-size: 16px;
+  --card-description-font-size: 14px;
 }
 
-.card-item {
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-  cursor: pointer;
-  outline: none;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.card-item:hover {
-  background-color: #f9f9f9;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.card-item.selected {
-  background-color: #e0f7fa;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.card-item.disabled {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.card-item:focus {
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-}
-
-@media (max-width: 600px) {
-  .cardbased-list {
-    padding: 8px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .cardbased-list {
-    padding: 12px;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  .cardbased-list {
-    padding: 16px;
-  }
-}
-
-@media (min-width: 1201px) {
-  .cardbased-list {
-    padding: 20px;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

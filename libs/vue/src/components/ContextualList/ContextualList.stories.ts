@@ -1,43 +1,47 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ContextualList from './ContextualList.vue';
 
 export default {
-  title: 'Lists/ContextualList',
+  title: 'component/Lists/ContextualList',
   component: ContextualList,
   tags: ['autodocs'],
   argTypes: {
-    buttonText: { control: 'text' },
-    items: { control: 'object' },
+    items: {
+      control: 'object',
+    },
   },
-};
+} as Meta<typeof ContextualList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ContextualList> = (args) => ({
   components: { ContextualList },
   setup() {
     return { args };
   },
-  template: '<ContextualList v-bind="args" />',
+  template: `
+    <ContextualList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  buttonText: 'Open List',
-  items: ['Action 1', 'Action 2', 'Action 3'],
+  items: [
+    { label: 'Item 1', actionTriggered: false, dismissed: false },
+    { label: 'Item 2', actionTriggered: false, dismissed: false },
+  ],
 };
 
 export const ActionTriggered = Template.bind({});
 ActionTriggered.args = {
-  buttonText: 'Open List',
-  items: ['Action 1', 'Action 2', 'Action 3'],
-};
-ActionTriggered.parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  items: [
+    { label: 'Item 1', actionTriggered: true, dismissed: false },
+    { label: 'Item 2', actionTriggered: false, dismissed: false },
+  ],
 };
 
 export const Dismissed = Template.bind({});
 Dismissed.args = {
-  buttonText: 'Open List',
-  items: ['Action 1', 'Action 2', 'Action 3'],
-};
-Dismissed.parameters = {
-  pseudo: { dismissed: true },
+  items: [
+    { label: 'Item 1', actionTriggered: false, dismissed: true },
+    { label: 'Item 2', actionTriggered: false, dismissed: false },
+  ],
 };

@@ -1,54 +1,31 @@
-.bottom-navigation {
-  display: flex;
-  justify-content: space-around;
-  background-color: #ffffff;
-  border-top: 1px solid #e0e0e0;
-  padding: 10px 0;
+:root {
+  --nav-bg: #fff;
+  --nav-selected-bg: #007bff;
+  --nav-selected-color: #fff;
+  --nav-hover-bg: #e0e0e0;
+  --nav-disabled-color: #ccc;
 }
 
-.bottom-navigation ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  width: 100%;
+@media (max-width: 480px) {
+  .nav-items li {
+    padding: 8px;
+  }
 }
 
-.bottom-navigation li {
-  flex: 1;
-  text-align: center;
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav-items li {
+    padding: 10px;
+  }
 }
 
-.bottom-navigation button {
-  background: none;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-items li {
+    padding: 12px;
+  }
 }
 
-.bottom-navigation button:hover .icon.hover {
-  color: #007bff;
-}
-
-.bottom-navigation .selected .icon {
-  color: #007bff;
-}
-
-.bottom-navigation .disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.bottom-navigation .icon {
-  font-size: 24px;
-}
-
-.bottom-navigation .label {
-  font-size: 12px;
-  margin-top: 4px;
+@media (min-width: 1025px) {
+  .nav-items li {
+    padding: 14px;
+  }
 }

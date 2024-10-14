@@ -1,17 +1,18 @@
 import ValidationMessages from './ValidationMessages.vue';
 
 export default {
-  title: 'Forms/ValidationMessages',
   component: ValidationMessages,
+  title: 'component/Forms/ValidationMessages',
   tags: ['autodocs'],
   argTypes: {
-    type: {
-      control: { type: 'select', options: ['success', 'error', 'warning'] },
+    type: { 
+      control: { type: 'select' }, 
+      options: ['success', 'error', 'warning'] 
     },
   },
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { ValidationMessages },
   setup() {
     return { args };

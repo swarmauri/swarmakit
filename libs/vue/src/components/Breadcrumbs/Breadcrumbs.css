@@ -1,24 +1,31 @@
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
+:root {
+  --font-size: 16px;
+  --breadcrumb-color: #333;
+  --breadcrumb-link-color: #007bff;
+  --breadcrumb-separator: 10px;
+  --active-breadcrumb-color: #000;
 }
 
-.breadcrumbs ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
+@media (max-width: 480px) {
+  .breadcrumbs {
+    font-size: 14px;
+  }
 }
 
-.breadcrumbs li {
-  cursor: pointer;
+@media (min-width: 481px) and (max-width: 768px) {
+  .breadcrumbs {
+    font-size: 15px;
+  }
 }
 
-.breadcrumbs .separator {
-  margin: 0 8px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .breadcrumbs {
+    font-size: 16px;
+  }
 }
 
-.breadcrumbs .active span {
-  font-weight: bold;
+@media (min-width: 1025px) {
+  .breadcrumbs {
+    font-size: 18px;
+  }
 }

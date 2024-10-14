@@ -1,54 +1,68 @@
 <template>
   <div class="rating-stars" role="radiogroup" aria-label="Rating">
-    <span 
-      v-for="star in 5" 
-      :key="star" 
-      :class="['star', { selected: star <= rating, hover: star <= hoverValue }]" 
-      @click="selectRating(star)" 
-      @mouseover="setHover(star)" 
-      @mouseleave="setHover(0)" 
-      role="radio" 
-      :aria-checked="star === rating"
-      :tabindex="star === 1 ? 0 : -1"
+    <button
+      v-for="star in stars"
+      :key="star"
+      type="button"
+      class="star"
+      :class="{ active: star <= currentRating, hover: star <= hoverRating }"
+      :aria-checked="star === currentRating"
+      :aria-label="`${star} Star${star > 1 ? 's' : ''}`"
+      @click="selectRating(star)"
+      @mouseenter="setHoverRating(star)"
+      @mouseleave="setHoverRating(0)"
     >
       ★
-    </span>
+    </button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'RatingStars',
   props: {
-    modelValue: {
-      type: Number as PropType<number>,
-      required: true,
+    maxStars: {
+      type: Number,
+      default: 5,
     },
-    state: {
-      type: String as PropType<'hover' | 'selected' | 'inactive'>,
-      default: 'inactive',
+    initialRating: {
+      type: Number,
+      default: 0,
+    },
+    inactive: {
+      type: Boolean,
+      default: false,
     },
   },
-  setup(props, { emit }) {
-    const rating = ref(props.modelValue);
-    const hoverValue = ref(0);
+  setup(props) {
+    const currentRating = ref(props.initialRating);
+    const hoverRating = ref(0);
 
-    const selectRating = (value: number) => {
-      rating.value = value;
-      emit('update:modelValue', value);
+    const selectRating = (rating: number) => {
+      if (!props.inactive) {
+        currentRating.value = rating;
+      }
     };
 
-    const setHover = (value: number) => {
-      hoverValue.value = value;
+    const setHoverRating = (rating: number) => {
+      if (!props.inactive) {
+        hoverRating.value = rating;
+      }
     };
 
-    return { rating, hoverValue, selectRating, setHover };
+    return {
+      currentRating,
+      hoverRating,
+      selectRating,
+      setHoverRating,
+      stars: Array.from({ length: props.maxStars }, (_, i) => i + 1),
+    };
   },
 });
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 @import './RatingStars.css';
 </style>

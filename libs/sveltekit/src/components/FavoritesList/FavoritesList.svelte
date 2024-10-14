@@ -1,69 +1,38 @@
 <script lang="ts">
-  export let items: Array<{ title: string; starred: boolean }> = [];
-  export let selectedItemIndex: number | null = null;
+  import { writable } from 'svelte/store';
 
-  function toggleStar(index: number) {
-    items = items.map((item, i) => ({
-      ...item,
-      starred: i === index ? !item.starred : item.starred
-    }));
-  }
+  export let items: { id: string; label: string; isFavorite: boolean }[] = [];
 
-  function selectItem(index: number) {
-    selectedItemIndex = index;
-  }
+  let selectedItemId = writable<string | null>(null);
+
+  const toggleFavorite = (id: string) => {
+    items = items.map(item => item.id === id ? { ...item, isFavorite: !item.isFavorite } : item);
+  };
+
+  const selectItem = (id: string) => {
+    selectedItemId.set(id);
+  };
 </script>
 
 <ul class="favorites-list">
-  {#each items as item, index}
-    <li
-      class="list-item"
-      class:selected={selectedItemIndex === index}
-      on:click={() => selectItem(index)}
+  {#each items as item (item.id)}
+    <li 
+      class="list-item" 
+      class:selected={item.id === $selectedItemId}
+      on:click={() => selectItem(item.id)}
     >
-      <span>{item.title}</span>
-      <button
-        class="star-button"
-        on:click|stopPropagation={() => toggleStar(index)}
-        aria-label={item.starred ? 'Unstar item' : 'Star item'}
-        aria-pressed={item.starred}
+      <span>{item.label}</span>
+      <button 
+        class="favorite-toggle" 
+        aria-label="Toggle Favorite"
+        on:click|stopPropagation={() => toggleFavorite(item.id)}
       >
-        {item.starred ? '★' : '☆'}
+        {item.isFavorite ? '★' : '☆'}
       </button>
     </li>
   {/each}
 </ul>
 
 <style lang="css">
-  .favorites-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .list-item {
-    border: 1px solid #ddd;
-    margin-bottom: 5px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f9f9f9;
-    cursor: pointer;
-  }
-
-  .list-item:hover {
-    background-color: #f1f1f1;
-  }
-
-  .list-item.selected {
-    background-color: #e0e0e0;
-  }
-
-  .star-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
+  @import './FavoritesList.css';
 </style>

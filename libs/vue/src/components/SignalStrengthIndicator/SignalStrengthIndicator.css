@@ -1,36 +1,22 @@
-.signal-strength {
-  display: flex;
-  align-items: flex-end;
+:root {
+  --signal-indicator-gap: 2px;
+  --signal-indicator-bar-width: 6px;
+  --signal-indicator-active-color: #4caf50;
+  --signal-indicator-inactive-color: #dcdcdc;
 }
 
-.bar {
-  width: 10px;
-  height: 10px;
-  background-color: #d3d3d3;
-  margin: 0 2px;
-  transition: background-color 0.2s, height 0.2s;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.bar.active {
-  background-color: #4caf50;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.bar:nth-child(1) {
-  height: 20%;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.bar:nth-child(2) {
-  height: 40%;
-}
-
-.bar:nth-child(3) {
-  height: 60%;
-}
-
-.bar:nth-child(4) {
-  height: 80%;
-}
-
-.bar:nth-child(5) {
-  height: 100%;
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

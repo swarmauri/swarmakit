@@ -1,70 +1,23 @@
-.contextual-list {
-  position: relative;
-  display: inline-block;
+:root {
+  --list-item-margin-bottom: 10px;
+  --list-item-padding: 10px;
+  --list-item-background: #fff;
+  --list-item-border: 1px solid #ccc;
+  --action-triggered-background: #e0f7fa;
 }
 
-.trigger-button {
-  background-color: #007bff;
-  border: none;
-  color: white;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.trigger-button:hover {
-  background-color: #0056b3;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.list {
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 5px 0;
-  margin: 0;
-  list-style: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.list-item {
-  padding: 8px 12px;
-}
-
-.list-item button {
-  background: none;
-  border: none;
-  color: #333;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-}
-
-.list-item button:hover {
-  background-color: #f3f3f3;
-}
-
-@media (max-width: 600px) {
-  .trigger-button {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .trigger-button {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  .trigger-button {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 1201px) {
-  .trigger-button {
-    font-size: 18px;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

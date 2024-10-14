@@ -1,68 +1,25 @@
-.favorites-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+:root {
+  --item-margin: 5px 0;
+  --item-padding: 10px;
+  --item-border: 1px solid #ccc;
+  --hover-background-color: #f0f0f0;
+  --selected-background-color: #e0e0e0;
+  --item-header-font-weight: bold;
+  --star-button-font-size: 1.5em;
 }
 
-.list-item {
-  border: 1px solid #ccc;
-  margin-bottom: 5px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+@media (max-width: 480px) {
+  /* small mobile styles */
 }
 
-.list-item:hover {
-  background-color: #f0f0f0;
+@media (min-width: 481px) and (max-width: 768px) {
+  /* large mobile styles */
 }
 
-.list-item.selected {
-  background-color: #e0e0ff;
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* tablet styles */
 }
 
-.list-item.starred .star-button {
-  color: gold;
-}
-
-.star-button {
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
-.item-header {
-  font-weight: bold;
-}
-
-.item-content {
-  display: none;
-  margin-top: 10px;
-}
-
-@media (max-width: 600px) {
-  .list-item {
-    font-size: 12px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .list-item {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  .list-item {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 1201px) {
-  .list-item {
-    font-size: 18px;
-  }
+@media (min-width: 1025px) {
+  /* desktop styles */
 }

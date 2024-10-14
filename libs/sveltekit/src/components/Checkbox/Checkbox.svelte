@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let label: string = "Checkbox";
+  export let label: string;
   export let checked: boolean = false;
   export let disabled: boolean = false;
 
@@ -10,37 +10,19 @@
   }
 </script>
 
-<div class="checkbox">
+<div class="checkbox-container">
   <input
     type="checkbox"
-    id="checkbox"
     bind:checked
     disabled={disabled}
-    aria-disabled={disabled}
+    id="checkbox"
     aria-checked={checked}
+    aria-disabled={disabled}
+    on:change={toggleCheck}
   />
-  <label for="checkbox" on:click={toggleCheck} class:disabled>{label}</label>
+  <label for="checkbox">{label}</label>
 </div>
 
 <style lang="css">
-  .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-  }
-
-  label {
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  label.disabled {
-    color: #aaa;
-    cursor: not-allowed;
-  }
+  @import './Checkbox.css';
 </style>

@@ -1,49 +1,57 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import Stepper from './Stepper.vue';
 
 export default {
-  title: 'Indicators/Stepper',
+  title: 'component/Indicators/Stepper',
   component: Stepper,
   tags: ['autodocs'],
   argTypes: {
-    currentStep: {
-      control: { type: 'number' },
-      description: 'The current active step',
-    },
-    totalSteps: {
-      control: { type: 'number' },
-      description: 'Total number of steps',
+    steps: {
+      control: 'array',
     },
   },
-};
+} as Meta<typeof Stepper>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof Stepper> = (args) => ({
   components: { Stepper },
   setup() {
     return { args };
   },
-  template: '<Stepper v-bind="args" />',
+  template: `<Stepper v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  currentStep: 1,
-  totalSteps: 3,
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'active' },
+    { label: 'Step 3', status: 'disabled' },
+  ],
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  currentStep: 3,
-  totalSteps: 3,
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'completed' },
+    { label: 'Step 3', status: 'completed' },
+  ],
 };
 
 export const Active = Template.bind({});
 Active.args = {
-  currentStep: 2,
-  totalSteps: 3,
+  steps: [
+    { label: 'Step 1', status: 'active' },
+    { label: 'Step 2', status: 'active' },
+    { label: 'Step 3', status: 'active' },
+  ],
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  currentStep: 0,
-  totalSteps: 3,
+  steps: [
+    { label: 'Step 1', status: 'disabled' },
+    { label: 'Step 2', status: 'disabled' },
+    { label: 'Step 3', status: 'disabled' },
+  ],
 };

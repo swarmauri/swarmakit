@@ -1,61 +1,30 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
-  export let items: Array<{ id: number; name: string; selected: boolean }> = [];
+  export let items: { id: string; label: string; selected: boolean }[] = [];
   export let disabled: boolean = false;
 
-  const dispatch = createEventDispatcher();
-
-  function selectItem(itemId: number) {
+  const handleSelect = (id: string) => {
     if (!disabled) {
-      const updatedItems = items.map(item =>
-        item.id === itemId ? { ...item, selected: true } : { ...item, selected: false }
+      items = items.map(item =>
+        item.id === id ? { ...item, selected: !item.selected } : item
       );
-      dispatch('update', updatedItems);
     }
-  }
+  };
 </script>
 
-<ol class="numbered-list" aria-disabled={disabled}>
-  {#each items as item (item.id)}
+<ol class="numbered-list">
+  {#each items as { id, label, selected } (id)}
     <li
-      class="numbered-item"
-      class:selected={item.selected}
-      on:click={() => selectItem(item.id)}
-      aria-selected={item.selected}
-      tabindex="0"
-      on:keydown={(e) => e.key === 'Enter' && selectItem(item.id)}
+      class={`list-item ${selected ? 'selected' : ''}`}
+      on:click={() => handleSelect(id)}
+      aria-selected={selected}
+      aria-disabled={disabled}
+      tabindex={disabled ? -1 : 0}
     >
-      {item.name}
+      {label}
     </li>
   {/each}
 </ol>
 
 <style lang="css">
-  .numbered-list {
-    padding: 0;
-    margin: 0;
-  }
-
-  .numbered-item {
-    padding: 8px;
-    margin: 4px 0;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border-radius: 4px;
-  }
-
-  .numbered-item:hover:not(.selected) {
-    background-color: #e0e0e0;
-  }
-
-  .numbered-item.selected {
-    background-color: #007bff;
-    color: #ffffff;
-  }
-
-  .numbered-list[aria-disabled='true'] .numbered-item {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+  @import './NumberedList.css';
 </style>

@@ -1,32 +1,32 @@
+:root {
+  --loading-bg-color: #e0e0e0;
+  --success-bg-color: #d4edda;
+  --error-bg-color: #f8d7da;
+  --loading-text-color: #6c757d;
+  --success-text-color: #155724;
+  --error-text-color: #721c24;
+  --padding: 1rem;
+  --border-radius: 4px;
+}
+
 .activity-indicator {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  margin: 0.5rem 0;
+  display: inline-block;
 }
 
-.spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  animation: spin 2s linear infinite;
+.activity-indicator.loading {
+  background-color: var(--loading-bg-color);
+  color: var(--loading-text-color);
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.activity-indicator.success {
+  background-color: var(--success-bg-color);
+  color: var(--success-text-color);
 }
 
-.success-icon {
-  color: #28a745;
-  font-size: 24px;
-}
-
-.error-icon {
-  color: #dc3545;
-  font-size: 24px;
+.activity-indicator.error {
+  background-color: var(--error-bg-color);
+  color: var(--error-text-color);
 }

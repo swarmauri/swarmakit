@@ -1,19 +1,16 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import MediaGallery from './MediaGallery.vue';
 
 export default {
-  title: 'Media/MediaGallery',
+  title: 'component/Media/MediaGallery',
   component: MediaGallery,
   tags: ['autodocs'],
   argTypes: {
-    state: {
-      control: 'select',
-      options: ['Thumbnail', 'Expanded', 'Slideshow', 'Zoom In/Out', 'Next/Previous'],
-    },
     images: { control: 'array' },
   },
-};
+} as Meta<typeof MediaGallery>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof MediaGallery> = (args) => ({
   components: { MediaGallery },
   setup() {
     return { args };
@@ -23,50 +20,35 @@ const Template = (args: any) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'Thumbnail',
   images: [
-    'https://www.example.com/image1.jpg',
-    'https://www.example.com/image2.jpg',
-    'https://www.example.com/image3.jpg',
+    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/160',
+    'https://via.placeholder.com/170',
+    'https://via.placeholder.com/180',
   ],
+};
+
+export const Thumbnail = Template.bind({});
+Thumbnail.args = {
+  ...Default.args,
 };
 
 export const Expanded = Template.bind({});
 Expanded.args = {
-  state: 'Expanded',
-  images: [
-    'https://www.example.com/image1.jpg',
-    'https://www.example.com/image2.jpg',
-    'https://www.example.com/image3.jpg',
-  ],
+  ...Default.args,
 };
 
 export const Slideshow = Template.bind({});
 Slideshow.args = {
-  state: 'Slideshow',
-  images: [
-    'https://www.example.com/image1.jpg',
-    'https://www.example.com/image2.jpg',
-    'https://www.example.com/image3.jpg',
-  ],
+  ...Default.args,
 };
 
 export const ZoomInOut = Template.bind({});
 ZoomInOut.args = {
-  state: 'Zoom In/Out',
-  images: [
-    'https://www.example.com/image1.jpg',
-    'https://www.example.com/image2.jpg',
-    'https://www.example.com/image3.jpg',
-  ],
+  ...Default.args,
 };
 
 export const NextPrevious = Template.bind({});
 NextPrevious.args = {
-  state: 'Next/Previous',
-  images: [
-    'https://www.example.com/image1.jpg',
-    'https://www.example.com/image2.jpg',
-    'https://www.example.com/image3.jpg',
-  ],
+  ...Default.args,
 };

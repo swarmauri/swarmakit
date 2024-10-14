@@ -1,39 +1,50 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import FavoritesList from './FavoritesList.vue';
 
 export default {
-  title: 'Lists/FavoritesList',
+  title: 'component/Lists/FavoritesList',
   component: FavoritesList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'object' },
+    items: { control: 'array' },
   },
-};
+} as Meta<typeof FavoritesList>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof FavoritesList> = (args) => ({
   components: { FavoritesList },
   setup() {
     return { args };
   },
-  template: '<FavoritesList v-bind="args" />',
+  template: `
+    <FavoritesList v-bind="args" />
+  `,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { title: 'Item 1', content: 'Content for item 1' },
-    { title: 'Item 2', content: 'Content for item 2' },
-    { title: 'Item 3', content: 'Content for item 3' },
+    { title: 'Item 1', starred: false },
+    { title: 'Item 2', starred: true },
+    { title: 'Item 3', starred: false },
   ],
 };
 
 export const Starred = Template.bind({});
 Starred.args = {
-  ...Default.args,
+  items: [
+    { title: 'Item 1', starred: true },
+    { title: 'Item 2', starred: true },
+    { title: 'Item 3', starred: true },
+  ],
 };
 
 export const Unstarred = Template.bind({});
 Unstarred.args = {
-  ...Default.args,
+  items: [
+    { title: 'Item 1', starred: false },
+    { title: 'Item 2', starred: false },
+    { title: 'Item 3', starred: false },
+  ],
 };
 
 export const Hover = Template.bind({});

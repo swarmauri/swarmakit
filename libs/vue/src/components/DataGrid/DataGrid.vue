@@ -1,35 +1,26 @@
 <template>
-  <div class="data-grid" role="grid" aria-rowcount="items.length">
-    <div class="grid-header" role="row">
-      <div
-        v-for="column in columns"
-        :key="column"
-        class="grid-header-cell"
-        role="columnheader"
-        @mousedown="initResize"
-      >
-        {{ column }}
-      </div>
+  <div class="data-grid" role="grid">
+    <div class="search-bar" v-if="searchEnabled">
+      <input type="text" v-model="searchQuery" placeholder="Search..." aria-label="Search Data Grid" />
     </div>
-    <div
-      v-for="(item, rowIndex) in paginatedItems"
-      :key="rowIndex"
-      class="grid-row"
-      role="row"
-    >
-      <div
-        v-for="column in columns"
-        :key="column"
-        class="grid-cell"
-        role="gridcell"
-      >
-        {{ item[column] }}
-      </div>
-    </div>
-    <div v-if="isPaginated" class="pagination-controls">
-      <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
-      <span>Page {{ currentPage }} of {{ totalPages }}</span>
-      <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+    <table>
+      <thead>
+        <tr>
+          <th v-for="(header, index) in headers" :key="index" :style="{ width: resizable ? 'auto' : 'initial' }">
+            {{ header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+          <td v-for="(cell, cellIndex) in row" :key="cellIndex">{{ cell }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination" v-if="paginationEnabled">
+      <button @click="prevPage" :disabled="page === 1" aria-label="Previous Page">Previous</button>
+      <span>Page {{ page }} of {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="page === totalPages" aria-label="Next Page">Next</button>
     </div>
   </div>
 </template>
@@ -37,68 +28,90 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 
-interface Item {
-  [key: string]: string;
-}
-
 export default defineComponent({
   name: 'DataGrid',
   props: {
-    columns: {
+    headers: {
       type: Array as () => string[],
-      default: () => [],
+      required: true,
     },
-    items: {
-      type: Array as () => Item[],
-      default: () => [],
+    data: {
+      type: Array as () => Array<Array<string>>,
+      required: true,
     },
-    isPaginated: {
+    paginationEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    searchEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    resizable: {
       type: Boolean,
       default: false,
     },
     itemsPerPage: {
       type: Number,
-      default: 5,
+      default: 10,
     },
   },
   setup(props) {
-    const currentPage = ref(1);
+    const page = ref(1);
+    const searchQuery = ref('');
 
-    const totalPages = computed(() => {
-      return Math.ceil(props.items.length / props.itemsPerPage);
+    const filteredData = computed(() => {
+      let filtered = props.data;
+      if (props.searchEnabled && searchQuery.value) {
+        filtered = filtered.filter(row =>
+          row.some(cell => cell.toLowerCase().includes(searchQuery.value.toLowerCase()))
+        );
+      }
+      if (props.paginationEnabled) {
+        const start = (page.value - 1) * props.itemsPerPage;
+        return filtered.slice(start, start + props.itemsPerPage);
+      }
+      return filtered;
     });
 
-    const paginatedItems = computed(() => {
-      if (!props.isPaginated) return props.items;
-      const start = (currentPage.value - 1) * props.itemsPerPage;
-      const end = start + props.itemsPerPage;
-      return props.items.slice(start, end);
-    });
+    const totalPages = computed(() => Math.ceil(props.data.length / props.itemsPerPage));
 
     const prevPage = () => {
-      if (currentPage.value > 1) currentPage.value -= 1;
+      if (page.value > 1) page.value -= 1;
     };
 
     const nextPage = () => {
-      if (currentPage.value < totalPages.value) currentPage.value += 1;
+      if (page.value < totalPages.value) page.value += 1;
     };
 
-    const initResize = (e: MouseEvent) => {
-      // Resizing logic can be implemented here
-    };
-
-    return {
-      currentPage,
-      totalPages,
-      paginatedItems,
-      prevPage,
-      nextPage,
-      initResize,
-    };
+    return { page, searchQuery, filteredData, totalPages, prevPage, nextPage };
   },
 });
 </script>
 
-<style lang="css">
-@import './DataGrid.css';
+<style scoped lang="css">
+.data-grid {
+  overflow-x: auto;
+}
+
+.search-bar {
+  margin-bottom: var(--search-bar-margin-bottom, 10px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: var(--cell-padding, 10px);
+  border: var(--cell-border, 1px solid #ccc);
+  text-align: left;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--pagination-margin-top, 10px);
+}
 </style>

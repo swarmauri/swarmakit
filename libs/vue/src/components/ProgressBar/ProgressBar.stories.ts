@@ -1,27 +1,22 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ProgressBar from './ProgressBar.vue';
 
 export default {
-  title: 'Indicators/ProgressBar',
+  title: 'component/Indicators/ProgressBar',
   component: ProgressBar,
   tags: ['autodocs'],
   argTypes: {
-    progress: {
-      control: { type: 'number', min: 0, max: 100 },
-      description: 'The current progress value',
-    },
-    disabled: {
-      control: { type: 'boolean' },
-      description: 'Indicates if the progress bar is disabled',
-    },
+    progress: { control: 'number' },
+    disabled: { control: 'boolean' },
   },
-};
+} as Meta<typeof ProgressBar>;
 
-const Template = (args: any) => ({
+const Template: StoryFn<typeof ProgressBar> = (args) => ({
   components: { ProgressBar },
   setup() {
     return { args };
   },
-  template: '<ProgressBar v-bind="args" />',
+  template: `<ProgressBar v-bind="args" />`,
 });
 
 export const Default = Template.bind({});
@@ -38,13 +33,13 @@ Complete.args = {
 
 export const Incomplete = Template.bind({});
 Incomplete.args = {
-  progress: 25,
+  progress: 0,
   disabled: false,
 };
 
 export const Hover = Template.bind({});
 Hover.args = {
-  progress: 50,
+  progress: 70,
   disabled: false,
 };
 
