@@ -30,10 +30,10 @@ jobs:
           pnpm install
 
       # This step specifically builds the SvelteKit project and regenerates .svelte-kit
-      - name: Build SvelteKit Project
-        working-directory: libs/sveltekit
-        run: |
-          pnpm run build
+      # - name: Build SvelteKit Project
+      #   working-directory: libs/sveltekit
+      #   run: |
+      #     pnpm run build
 
       # Debugging step to check if .svelte-kit was created
       - name: Check .svelte-kit folder

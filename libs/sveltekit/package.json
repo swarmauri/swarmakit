@@ -1,5 +1,5 @@
 {
-  "name": "@swarmakit/sveltekit",
+  "name": "@swarmaurijs/swarmakit/sveltekit",
   "version": "0.0.1",
   "private": false,
   "type": "module",
