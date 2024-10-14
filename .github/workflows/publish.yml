@@ -72,4 +72,25 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       # Publish React Package
-      - name: Publish React
+      - name: Publish React Package
+        run: |
+          cd libs/react
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Publish SvelteKit Package (after .svelte-kit has been generated in the build step)
+      - name: Publish SvelteKit Package
+        run: |
+          cd libs/sveltekit
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Publish Vue Package
+      - name: Publish Vue Package
+        run: |
+          cd libs/vue
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
