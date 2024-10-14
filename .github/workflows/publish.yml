@@ -67,6 +67,13 @@ jobs:
       - name: Set up NPM auth token
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
+      # Publish the Monorepo (root package)
+      - name: Publish Monorepo Root Package
+        run: |
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       # Publish React Package
       - name: Publish React Package
         run: |
