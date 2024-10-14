@@ -8,7 +8,7 @@
     "libs/sveltekit"
   ],
   "dependencies": {
-    "@swarmakit/react": "file:libs/react",   // Reference the sub-packages via their file paths
+    "@swarmakit/react": "file:libs/react",
     "@swarmakit/vue": "file:libs/vue",
     "@swarmakit/sveltekit": "file:libs/sveltekit"
   },
