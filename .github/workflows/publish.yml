@@ -29,7 +29,20 @@ jobs:
         run: |
           pnpm install
 
-      - name: Build Packages
+      # This step specifically builds the SvelteKit project and regenerates .svelte-kit
+      - name: Build SvelteKit Project
+        working-directory: libs/sveltekit
+        run: |
+          pnpm run build
+
+      # Debugging step to check if .svelte-kit was created
+      - name: Check .svelte-kit folder
+        working-directory: libs/sveltekit
+        run: |
+          ls -la .svelte-kit || echo ".svelte-kit folder not found!"
+
+      # Build all packages (React, SvelteKit, Vue)
+      - name: Build All Packages
         run: |
           pnpm -r run build
 
@@ -58,23 +71,5 @@ jobs:
       - name: Set up NPM auth token
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      - name: Publish React Package
-        run: |
-          cd libs/react
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # - name: Publish SvelteKit Package
-      #   run: |
-      #     cd libs/sveltekit
-      #     npm publish --access public
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish Vue Package
-        run: |
-          cd libs/vue
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Publish React Package
+      - name: Publish React
