@@ -4,12 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SvelteKit App</title>
-    <sveltekit:head />
+    <!-- This is where SvelteKit will inject the dynamic head content -->
+    %sveltekit.head%
   </head>
 
   <body>
     <div id="svelte">
-      <sveltekit:body />
+      <!-- This is where SvelteKit will inject the dynamic body content -->
+      %sveltekit.body%
     </div>
   </body>
 </html>
