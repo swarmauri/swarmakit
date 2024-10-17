@@ -1,168 +1,70 @@
 <template>
-  <div>
-    <h2>Event Scheduler</h2>
-
-    <!-- Display feedback message -->
-    <p v-if="feedbackMessage">{{ feedbackMessage }}</p>
-
-    <!-- Render each event directly in the AdminViewScheduler component -->
-    <div v-for="event in events" :key="event.id" class="event">
-      <div v-if="!isEditing(event.id)">
-        <h3>{{ event.title }}</h3>
-        <p>{{ event.date }}</p>
-        <button @click="startEdit(event.id)">Edit</button>
-        <button @click="handleDeleteEvent(event.id)">Delete</button>
-      </div>
-      <div v-else>
-        <input v-model="editedTitle" placeholder="Edit title" />
-        <input v-model="editedDate" type="date" placeholder="Edit date" />
-        <button @click="saveEdit(event.id)">Save</button>
-        <button @click="cancelEdit">Cancel</button>
-      </div>
-    </div>
-
-    <button @click="handleAddNewEvent({ id: newEventId, title: 'New Event', date: '2024-11-01' })">
-      Add New Event
+  <div class="accordion" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+    <button
+      class="accordion-header"
+      :aria-expanded="isOpen"
+      @click="toggleAccordion"
+      :class="{ hovered: isHovered }"
+    >
+      <slot name="header"></slot>
     </button>
+    <div v-if="isOpen" class="accordion-content">
+      <slot name="content"></slot>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Event } from '../types/types'; // Import the Event type from types.ts
 
 export default defineComponent({
-  name: 'AdminViewScheduler',
+  name: 'Accordion',
   props: {
-    feedbackMessage: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    addNewEvent: {
-      type: Function as () => (event: Event) => void,
-      required: false,
-      default: (event: Event) => {
-        console.log('Default addNewEvent function', event);
-      },
-    },
-    editEvent: {
-      type: Function as () => (event: Event) => void,
-      required: false,
-      default: (event: Event) => {
-        console.log(`Default editEvent function: Editing ${event.title}`);
-      },
-    },
-    deleteEvent: {
-      type: Function as () => (eventId: number) => void,
-      required: false,
-      default: (eventId: number) => {
-        console.log(`Default deleteEvent function: Deleting event with id ${eventId}`);
-      },
+    defaultOpen: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
-    const events = ref<Event[]>([
-      { id: 1, title: 'Team Meeting', date: '2024-10-21' },
-      { id: 2, title: 'Project Deadline', date: '2024-10-25' },
-    ]);
+    const isOpen = ref(props.defaultOpen);
+    const isHovered = ref(false);
 
-    // For tracking the current event being edited
-    const currentEditingId = ref<number | null>(null);
-    const editedTitle = ref<string>('');
-    const editedDate = ref<string>('');
-
-    // Generate new event IDs
-    const newEventId = ref(events.value.length + 1);
-
-    // Add a new event
-    const handleAddNewEvent = (event: Event) => {
-      props.addNewEvent(event);
-      events.value.push(event);
-      newEventId.value++;
+    const toggleAccordion = () => {
+      isOpen.value = !isOpen.value;
     };
 
-    // Edit an event
-    const handleEditEvent = (event: Event) => {
-      const index = events.value.findIndex((e) => e.id === event.id);
-      if (index !== -1) {
-        events.value[index] = { ...event };
-        props.editEvent(event);
-      }
-    };
-
-    // Delete an event
-    const handleDeleteEvent = (eventId: number) => {
-      events.value = events.value.filter((event) => event.id !== eventId);
-      props.deleteEvent(eventId);
-    };
-
-    // Start editing an event
-    const startEdit = (eventId: number) => {
-      currentEditingId.value = eventId;
-      const event = events.value.find((e) => e.id === eventId);
-      if (event) {
-        editedTitle.value = event.title;
-        editedDate.value = event.date;
-      }
-    };
-
-    // Save the edited event
-    const saveEdit = (eventId: number) => {
-      if (currentEditingId.value === eventId) {
-        handleEditEvent({
-          id: eventId,
-          title: editedTitle.value,
-          date: editedDate.value,
-        });
-        currentEditingId.value = null;
-      }
-    };
-
-    // Cancel the editing process
-    const cancelEdit = () => {
-      currentEditingId.value = null;
-    };
-
-    // Check if an event is being edited
-    const isEditing = (eventId: number) => {
-      return currentEditingId.value === eventId;
-    };
-
-    return {
-      events,
-      newEventId,
-      editedTitle,
-      editedDate,
-      feedbackMessage: props.feedbackMessage,
-      handleAddNewEvent,
-      handleEditEvent,
-      handleDeleteEvent,
-      startEdit,
-      saveEdit,
-      cancelEdit,
-      isEditing,
-    };
+    return { isOpen, toggleAccordion, isHovered };
   },
 });
 </script>
 
-<style scoped>
-.event {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
+<style scoped lang="css">
+.accordion {
+  border: var(--accordion-border, 1px solid #ccc);
+  margin: var(--accordion-margin, 10px 0);
+  border-radius: var(--accordion-border-radius, 4px);
 }
 
-.event h3 {
-  margin: 0;
+.accordion-header {
+  background-color: var(--accordion-header-bg, #f1f1f1);
+  color: var(--accordion-header-color, #333);
+  padding: var(--accordion-header-padding, 10px);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--accordion-header-font-size, 16px);
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
 }
 
-.event p {
-  margin: 5px 0;
+.accordion-header.hovered {
+  background-color: var(--accordion-header-hover-bg, #ddd);
 }
 
-button {
-  margin-right: 5px;
+.accordion-content {
+  padding: var(--accordion-content-padding, 10px);
+  background-color: var(--accordion-content-bg, #fff);
+  border-top: var(--accordion-content-border-top, 1px solid #ccc);
 }
 </style>
