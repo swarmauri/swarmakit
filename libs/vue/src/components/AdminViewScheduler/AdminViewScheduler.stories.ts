@@ -1,34 +1,75 @@
-import { Meta, StoryFn } from '@storybook/vue3';
-import AdminViewScheduler from './AdminViewScheduler.vue';
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 
-export default {
-  title: 'component/Scheduling/AdminViewScheduler',
-  component: AdminViewScheduler,
-  tags: ['autodocs']
-} as Meta<typeof AdminViewScheduler>;
-
-const Template: StoryFn<typeof AdminViewScheduler> = (args) => ({
-  components: { AdminViewScheduler },
-  setup() {
-    return { args };
+export default defineComponent({
+  name: 'AdminViewScheduler',
+  props: {
+    feedbackMessage: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    addNewEvent: {
+      type: Function,
+      required: false,
+      default: () => {
+        console.log('Default addNewEvent function');
+      },
+    },
+    editEvent: {
+      type: Function,
+      required: false,
+      default: (event) => {
+        console.log(`Default editEvent function: Editing ${event.title}`);
+      },
+    },
+    deleteEvent: {
+      type: Function,
+      required: false,
+      default: (eventId) => {
+        console.log(`Default deleteEvent function: Deleting event with id ${eventId}`);
+      },
+    },
   },
-  template: '<AdminViewScheduler v-bind="args" />',
+  setup(props) {
+    const events = ref([
+      { id: 1, title: 'Team Meeting', date: '2024-10-21' },
+      // other events...
+    ]);
+
+    const handleAddNewEvent = () => {
+      props.addNewEvent();
+    };
+
+    const handleEditEvent = (event) => {
+      props.editEvent(event);
+    };
+
+    const handleDeleteEvent = (eventId) => {
+      props.deleteEvent(eventId);
+    };
+
+    return {
+      events,
+      feedbackMessage: props.feedbackMessage,
+      handleAddNewEvent,
+      handleEditEvent,
+      handleDeleteEvent,
+    };
+  },
 });
+</script>
 
-export const Default = Template.bind({});
-Default.args = {};
+<template>
+  <div>
+    <!-- Display feedback message -->
+    <p>{{ feedbackMessage }}</p>
 
-export const EventAdded = Template.bind({});
-EventAdded.args = {
-  feedbackMessage: 'Event added successfully!'
-};
+    <!-- Example buttons to trigger events -->
+    <button @click="handleAddNewEvent">Add New Event</button>
+    <button @click="handleEditEvent({ id: 1, title: 'Team Meeting', date: '2024-10-21' })">Edit Event</button>
+    <button @click="handleDeleteEvent(1)">Delete Event</button>
 
-export const EventEdited = Template.bind({});
-EventEdited.args = {
-  feedbackMessage: 'Event "Team Meeting" edited successfully!'
-};
-
-export const EventDeleted = Template.bind({});
-EventDeleted.args = {
-  feedbackMessage: 'Event deleted successfully!'
-};
+    <!-- Other UI parts of AdminViewScheduler... -->
+  </div>
+</template>
