@@ -1,15 +1,34 @@
+<template>
+  <div>
+    <h2>Event Scheduler</h2>
+
+    <!-- Display feedback message -->
+    <p v-if="feedbackMessage">{{ feedbackMessage }}</p>
+
+    <!-- Render each event using the Event component -->
+    <Event
+      v-for="event in events"
+      :key="event.id"
+      :event="event"
+      @edit="handleEditEvent"
+      @delete="handleDeleteEvent"
+    />
+
+    <button @click="handleAddNewEvent({ id: newEventId, title: 'New Event', date: '2024-11-01' })">
+      Add New Event
+    </button>
+  </div>
+</template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import Event from './Event.vue'; // Import the Event component
 
-// Define an Event type
-interface Event {
-  id: number;
-  title: string;
-  date: string;
-}
+
 
 export default defineComponent({
   name: 'AdminViewScheduler',
+  components: { Event },
   props: {
     feedbackMessage: {
       type: String,
@@ -41,23 +60,34 @@ export default defineComponent({
   setup(props) {
     const events = ref<Event[]>([
       { id: 1, title: 'Team Meeting', date: '2024-10-21' },
-      // other events...
+      { id: 2, title: 'Project Deadline', date: '2024-10-25' },
     ]);
+
+    // Generate a new event ID for simplicity
+    const newEventId = ref(events.value.length + 1);
 
     const handleAddNewEvent = (event: Event) => {
       props.addNewEvent(event);
+      events.value.push(event);
+      newEventId.value++;
     };
 
-    const handleEditEvent = (event: Event) => {
-      props.editEvent(event);
+    const handleEditEvent = (updatedEvent: Event) => {
+      const index = events.value.findIndex(event => event.id === updatedEvent.id);
+      if (index !== -1) {
+        events.value[index] = updatedEvent;
+      }
+      props.editEvent(updatedEvent);
     };
 
     const handleDeleteEvent = (eventId: number) => {
+      events.value = events.value.filter(event => event.id !== eventId);
       props.deleteEvent(eventId);
     };
 
     return {
       events,
+      newEventId,
       feedbackMessage: props.feedbackMessage,
       handleAddNewEvent,
       handleEditEvent,
@@ -66,3 +96,4 @@ export default defineComponent({
   },
 });
 </script>
+
