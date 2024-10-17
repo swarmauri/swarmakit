@@ -9,7 +9,8 @@ export default {
     images: { control: 'array' },
     rotationSpeed: { control: 'number' },
   },
-} as Meta<typeof DegreeImageViewer>;
+} as unknown as Meta<typeof DegreeImageViewer>; // Cast to unknown first, then Meta
+
 
 const Template: StoryFn<typeof DegreeImageViewer> = (args) => ({
   components: { DegreeImageViewer },
