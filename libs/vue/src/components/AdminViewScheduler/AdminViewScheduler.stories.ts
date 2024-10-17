@@ -1,56 +1,110 @@
-import { Meta, StoryFn } from '@storybook/vue3';
-import AdminViewScheduler from './AdminViewScheduler.vue';
+<script lang="ts">
+import { defineComponent, ref, PropType } from 'vue'; // Ensure 'PropType' is imported
 import { Event } from '../types/types'; // Ensure this path is correct
 
-export default {
-  title: 'Components/AdminViewScheduler',
-  component: AdminViewScheduler,
-  argTypes: {
+export default defineComponent({
+  name: 'AdminViewScheduler',
+  props: {
     feedbackMessage: {
-      control: 'text',
-      description: 'A message to show feedback for any action',
+      type: String,
+      required: false,
+      default: '',
     },
-    addNewEvent: { action: 'addNewEvent' }, // Add action handlers for events
-    editEvent: { action: 'editEvent' },
-    deleteEvent: { action: 'deleteEvent' },
+    addNewEvent: {
+      type: Function as PropType<(event: Event) => void>,
+      required: false,
+      default: (event: Event) => {
+        console.log('Default addNewEvent function', event);
+      },
+    },
+    editEvent: {
+      type: Function as PropType<(event: Event) => void>,
+      required: false,
+      default: (event: Event) => {
+        console.log(`Default editEvent function: Editing ${event.title}`);
+      },
+    },
+    deleteEvent: {
+      type: Function as PropType<(eventId: number) => void>,
+      required: false,
+      default: (eventId: number) => {
+        console.log(`Default deleteEvent function: Deleting event with id ${eventId}`);
+      },
+    },
   },
-} as Meta<typeof AdminViewScheduler>;
+  setup(props) {
+    const events = ref<Event[]>([
+      { id: 1, title: 'Team Meeting', date: '2024-10-21' },
+      { id: 2, title: 'Project Deadline', date: '2024-10-25' },
+    ]);
 
-const Template: StoryFn<typeof AdminViewScheduler> = (args) => ({
-  components: { AdminViewScheduler },
-  setup() {
-    return { args };
+    const currentEditingId = ref<number | null>(null);
+    const editedTitle = ref<string>('');
+    const editedDate = ref<string>('');
+
+    const newEventId = ref(events.value.length + 1);
+
+    const handleAddNewEvent = (event: Event) => {
+      props.addNewEvent(event);
+      events.value.push(event);
+      newEventId.value++;
+    };
+
+    const handleEditEvent = (event: Event) => {
+      const index = events.value.findIndex((e) => e.id === event.id);
+      if (index !== -1) {
+        events.value[index] = { ...event };
+        props.editEvent(event);
+      }
+    };
+
+    const handleDeleteEvent = (eventId: number) => {
+      events.value = events.value.filter((event) => event.id !== eventId);
+      props.deleteEvent(eventId);
+    };
+
+    const startEdit = (eventId: number) => {
+      currentEditingId.value = eventId;
+      const event = events.value.find((e) => e.id === eventId);
+      if (event) {
+        editedTitle.value = event.title;
+        editedDate.value = event.date;
+      }
+    };
+
+    const saveEdit = (eventId: number) => {
+      if (currentEditingId.value === eventId) {
+        handleEditEvent({
+          id: eventId,
+          title: editedTitle.value,
+          date: editedDate.value,
+        });
+        currentEditingId.value = null;
+      }
+    };
+
+    const cancelEdit = () => {
+      currentEditingId.value = null;
+    };
+
+    const isEditing = (eventId: number) => {
+      return currentEditingId.value === eventId;
+    };
+
+    return {
+      events,
+      newEventId,
+      editedTitle,
+      editedDate,
+      feedbackMessage: props.feedbackMessage,
+      handleAddNewEvent,
+      handleEditEvent,
+      handleDeleteEvent,
+      startEdit,
+      saveEdit,
+      cancelEdit,
+      isEditing,
+    };
   },
-  template: '<AdminViewScheduler v-bind="args" @addNewEvent="args.addNewEvent" @editEvent="args.editEvent" @deleteEvent="args.deleteEvent" />',
 });
-
-export const Default = Template.bind({});
-Default.args = {
-  feedbackMessage: '',
-};
-
-export const WithEvents = Template.bind({});
-WithEvents.args = {
-  feedbackMessage: 'Events loaded successfully!',
-  addNewEvent: (event: Event) => console.log('Event added:', event),
-  editEvent: (event: Event) => console.log('Event edited:', event),
-  deleteEvent: (eventId: number) => console.log('Event deleted:', eventId),
-};
-
-export const EventAdded = Template.bind({});
-EventAdded.args = {
-  feedbackMessage: 'Event added successfully!',
-  addNewEvent: (event: Event) => console.log('Custom addNewEvent:', event),
-};
-
-export const EventEdited = Template.bind({});
-EventEdited.args = {
-  feedbackMessage: 'Event edited successfully!',
-  editEvent: (event: Event) => console.log('Custom editEvent:', event),
-};
-
-export const EventDeleted = Template.bind({});
-EventDeleted.args = {
-  feedbackMessage: 'Event deleted successfully!',
-  deleteEvent: (eventId: number) => console.log('Custom deleteEvent:', eventId),
-};
+</script>

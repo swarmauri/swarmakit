@@ -1,6 +1,35 @@
+<template>
+  <div>
+    <h2>Event Scheduler</h2>
+
+    <!-- Display feedback message -->
+    <p v-if="feedbackMessage">{{ feedbackMessage }}</p>
+
+    <!-- Render each event directly in the AdminViewScheduler component -->
+    <div v-for="event in events" :key="event.id" class="event">
+      <div v-if="!isEditing(event.id)">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.date }}</p>
+        <button @click="startEdit(event.id)">Edit</button>
+        <button @click="handleDeleteEvent(event.id)">Delete</button>
+      </div>
+      <div v-else>
+        <input v-model="editedTitle" placeholder="Edit title" />
+        <input v-model="editedDate" type="date" placeholder="Edit date" />
+        <button @click="saveEdit(event.id)">Save</button>
+        <button @click="cancelEdit">Cancel</button>
+      </div>
+    </div>
+
+    <button @click="handleAddNewEvent({ id: newEventId, title: 'New Event', date: '2024-11-01' })">
+      Add New Event
+    </button>
+  </div>
+</template>
+
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { Event } from '../types/types'; // Ensure this file exists
+import { defineComponent, ref, PropType } from 'vue'; // Ensure 'PropType' is imported
+import { Event } from '../types/types'; // Ensure this path is correct
 
 export default defineComponent({
   name: 'AdminViewScheduler',
@@ -108,3 +137,23 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.event {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.event h3 {
+  margin: 0;
+}
+
+.event p {
+  margin: 5px 0;
+}
+
+button {
+  margin-right: 5px;
+}
+</style>
