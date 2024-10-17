@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AdminViewScheduler from './AdminViewScheduler.vue';
-import { Event } from '../types/types'; // Import Event type
+import { Event } from '../types/types'; // Ensure this path is correct
 
 export default {
   title: 'Components/AdminViewScheduler',
@@ -32,7 +32,6 @@ Default.args = {
 export const WithEvents = Template.bind({});
 WithEvents.args = {
   feedbackMessage: 'Events loaded successfully!',
-  // Provide initial event data
   addNewEvent: (event: Event) => console.log('Event added:', event),
   editEvent: (event: Event) => console.log('Event edited:', event),
   deleteEvent: (eventId: number) => console.log('Event deleted:', eventId),

@@ -1,35 +1,6 @@
-<template>
-  <div>
-    <h2>Event Scheduler</h2>
-
-    <!-- Display feedback message -->
-    <p v-if="feedbackMessage">{{ feedbackMessage }}</p>
-
-    <!-- Render each event directly in the AdminViewScheduler component -->
-    <div v-for="event in events" :key="event.id" class="event">
-      <div v-if="!isEditing(event.id)">
-        <h3>{{ event.title }}</h3>
-        <p>{{ event.date }}</p>
-        <button @click="startEdit(event.id)">Edit</button>
-        <button @click="handleDeleteEvent(event.id)">Delete</button>
-      </div>
-      <div v-else>
-        <input v-model="editedTitle" placeholder="Edit title" />
-        <input v-model="editedDate" type="date" placeholder="Edit date" />
-        <button @click="saveEdit(event.id)">Save</button>
-        <button @click="cancelEdit">Cancel</button>
-      </div>
-    </div>
-
-    <button @click="handleAddNewEvent({ id: newEventId, title: 'New Event', date: '2024-11-01' })">
-      Add New Event
-    </button>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Event } from '../types/types'; // Import the Event type from types.ts
+import { Event } from '../types/types'; // Ensure this file exists
 
 export default defineComponent({
   name: 'AdminViewScheduler',
@@ -40,21 +11,21 @@ export default defineComponent({
       default: '',
     },
     addNewEvent: {
-      type: Function as () => (event: Event) => void,
+      type: Function as PropType<(event: Event) => void>,
       required: false,
       default: (event: Event) => {
         console.log('Default addNewEvent function', event);
       },
     },
     editEvent: {
-      type: Function as () => (event: Event) => void,
+      type: Function as PropType<(event: Event) => void>,
       required: false,
       default: (event: Event) => {
         console.log(`Default editEvent function: Editing ${event.title}`);
       },
     },
     deleteEvent: {
-      type: Function as () => (eventId: number) => void,
+      type: Function as PropType<(eventId: number) => void>,
       required: false,
       default: (eventId: number) => {
         console.log(`Default deleteEvent function: Deleting event with id ${eventId}`);
@@ -67,22 +38,18 @@ export default defineComponent({
       { id: 2, title: 'Project Deadline', date: '2024-10-25' },
     ]);
 
-    // For tracking the current event being edited
     const currentEditingId = ref<number | null>(null);
     const editedTitle = ref<string>('');
     const editedDate = ref<string>('');
 
-    // Generate new event IDs
     const newEventId = ref(events.value.length + 1);
 
-    // Add a new event
     const handleAddNewEvent = (event: Event) => {
       props.addNewEvent(event);
       events.value.push(event);
       newEventId.value++;
     };
 
-    // Edit an event
     const handleEditEvent = (event: Event) => {
       const index = events.value.findIndex((e) => e.id === event.id);
       if (index !== -1) {
@@ -91,13 +58,11 @@ export default defineComponent({
       }
     };
 
-    // Delete an event
     const handleDeleteEvent = (eventId: number) => {
       events.value = events.value.filter((event) => event.id !== eventId);
       props.deleteEvent(eventId);
     };
 
-    // Start editing an event
     const startEdit = (eventId: number) => {
       currentEditingId.value = eventId;
       const event = events.value.find((e) => e.id === eventId);
@@ -107,7 +72,6 @@ export default defineComponent({
       }
     };
 
-    // Save the edited event
     const saveEdit = (eventId: number) => {
       if (currentEditingId.value === eventId) {
         handleEditEvent({
@@ -119,12 +83,10 @@ export default defineComponent({
       }
     };
 
-    // Cancel the editing process
     const cancelEdit = () => {
       currentEditingId.value = null;
     };
 
-    // Check if an event is being edited
     const isEditing = (eventId: number) => {
       return currentEditingId.value === eventId;
     };
@@ -146,23 +108,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.event {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.event h3 {
-  margin: 0;
-}
-
-.event p {
-  margin: 5px 0;
-}
-
-button {
-  margin-right: 5px;
-}
-</style>
