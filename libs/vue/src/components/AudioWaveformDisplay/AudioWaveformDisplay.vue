@@ -60,18 +60,20 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      if (audioElement.value) {
-        audioElement.value.addEventListener('loadeddata', onLoadedData);
-        audioElement.value.addEventListener('timeupdate', () => {
-          currentTime.value = audioElement.value.currentTime;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.addEventListener('loadeddata', onLoadedData);
+        audio.addEventListener('timeupdate', () => {
+          currentTime.value = audio.currentTime;
         });
       }
-      // Placeholder for drawing waveform
-      if (waveformCanvas.value) {
-        const ctx = waveformCanvas.value.getContext('2d');
+
+      const canvas = waveformCanvas.value;
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
         if (ctx) {
           ctx.fillStyle = 'var(--waveform-color)';
-          ctx.fillRect(0, 0, waveformCanvas.value.width, waveformCanvas.value.height);
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
       }
     });
