@@ -63,16 +63,16 @@ export default defineComponent({
       const img = document.querySelector('.image-container img') as HTMLImageElement;
       img.style.transform = `scale(1)`;
     };
-
-  const onMouseDown = (event: MouseEvent) => {
-    event.preventDefault();  // Prevent default text selection
-    stopRotation();
-  };
   
-  const onTouchStart = (event: TouchEvent) => {
-    event.preventDefault();  // Prevent scrolling or default touch behavior
-    stopRotation();
-  };
+    const onMouseDown = (event: MouseEvent) => {
+      event.preventDefault();  // Prevent default text selection
+      stopRotation();
+    };
+    
+    const onTouchStart = (event: TouchEvent) => {
+      event.preventDefault();  // Prevent scrolling or default touch behavior
+      stopRotation();
+    };
 
     onMounted(() => {
       loading.value = false;
