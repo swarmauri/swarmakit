@@ -38,34 +38,39 @@ export default defineComponent({
     const volume = ref(1);
 
     const togglePlay = () => {
-      if (audioElement.value !== null) {
+      const audio = audioElement.value;
+      if (audio) {
         if (isPlaying.value) {
-          audioElement.value.pause();
+          audio.pause();
         } else {
-          audioElement.value.play();
+          audio.play();
         }
         isPlaying.value = !isPlaying.value;
       }
     };
 
     const toggleMute = () => {
-      if (audioElement.value !== null) {
-        audioElement.value.muted = !audioElement.value.muted;
-        isMuted.value = audioElement.value.muted;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.muted = !audio.muted;
+        isMuted.value = audio.muted;
       }
     };
 
     const changeVolume = () => {
-      if (audioElement.value !== null) {
-        audioElement.value.volume = volume.value;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.volume = volume.value;
       }
     };
 
     const onLoadedData = () => {
-      if (audioElement.value !== null) {
-        volume.value = audioElement.value.volume;
+      const audio = audioElement.value;
+      if (audio) {
+        volume.value = audio.volume;
       }
     };
+
 
     return { isPlaying, isMuted, volume, togglePlay, toggleMute, changeVolume, onLoadedData };
   },
