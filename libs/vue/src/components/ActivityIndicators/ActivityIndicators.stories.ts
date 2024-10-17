@@ -15,7 +15,7 @@ export default {
       control: 'text',
     },
   },
-} as Meta<typeof ActivityIndicators>; // Explicit type for Meta
+} as Meta<typeof ActivityIndicators>;
 
 // Define the template with explicit type for args
 const Template: StoryFn<typeof ActivityIndicators> = (args) => ({
@@ -23,7 +23,7 @@ const Template: StoryFn<typeof ActivityIndicators> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<ActivityIndicators v-bind="args" />',
+  template: '<ActivityIndicators v-bind="args" />', // Use v-bind to bind all props
 });
 
 export const Default = Template.bind({});
