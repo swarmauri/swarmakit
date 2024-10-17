@@ -1,17 +1,19 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AdminViewScheduler from './AdminViewScheduler.vue';
-
-// Define an Event type (this can be shared from the component)
-interface Event {
-  id: number;
-  title: string;
-  date: string;
-}
+import { Event } from '../types/types'; // Import Event type
 
 export default {
-  title: 'component/Scheduling/AdminViewScheduler',
+  title: 'Components/AdminViewScheduler',
   component: AdminViewScheduler,
-  tags: ['autodocs'],
+  argTypes: {
+    feedbackMessage: {
+      control: 'text',
+      description: 'A message to show feedback for any action',
+    },
+    addNewEvent: { action: 'addNewEvent' }, // Add action handlers for events
+    editEvent: { action: 'editEvent' },
+    deleteEvent: { action: 'deleteEvent' },
+  },
 } as Meta<typeof AdminViewScheduler>;
 
 const Template: StoryFn<typeof AdminViewScheduler> = (args) => ({
@@ -19,32 +21,37 @@ const Template: StoryFn<typeof AdminViewScheduler> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<AdminViewScheduler v-bind="args" />',
+  template: '<AdminViewScheduler v-bind="args" @addNewEvent="args.addNewEvent" @editEvent="args.editEvent" @deleteEvent="args.deleteEvent" />',
 });
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  feedbackMessage: '',
+};
+
+export const WithEvents = Template.bind({});
+WithEvents.args = {
+  feedbackMessage: 'Events loaded successfully!',
+  // Provide initial event data
+  addNewEvent: (event: Event) => console.log('Event added:', event),
+  editEvent: (event: Event) => console.log('Event edited:', event),
+  deleteEvent: (eventId: number) => console.log('Event deleted:', eventId),
+};
 
 export const EventAdded = Template.bind({});
 EventAdded.args = {
   feedbackMessage: 'Event added successfully!',
-  addNewEvent: (event: Event) => {
-    console.log('Custom addNewEvent function called', event);
-  },
+  addNewEvent: (event: Event) => console.log('Custom addNewEvent:', event),
 };
 
 export const EventEdited = Template.bind({});
 EventEdited.args = {
-  feedbackMessage: 'Event "Team Meeting" edited successfully!',
-  editEvent: (event: Event) => {
-    console.log(`Custom editEvent function called for event: ${event.title}`);
-  },
+  feedbackMessage: 'Event edited successfully!',
+  editEvent: (event: Event) => console.log('Custom editEvent:', event),
 };
 
 export const EventDeleted = Template.bind({});
 EventDeleted.args = {
   feedbackMessage: 'Event deleted successfully!',
-  deleteEvent: (eventId: number) => {
-    console.log(`Custom deleteEvent function called for event ID: ${eventId}`);
-  },
+  deleteEvent: (eventId: number) => console.log('Custom deleteEvent:', eventId),
 };
