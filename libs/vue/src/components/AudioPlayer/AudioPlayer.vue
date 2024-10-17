@@ -71,7 +71,6 @@ export default defineComponent({
       }
     };
 
-
     return { isPlaying, isMuted, volume, togglePlay, toggleMute, changeVolume, onLoadedData };
   },
 });
