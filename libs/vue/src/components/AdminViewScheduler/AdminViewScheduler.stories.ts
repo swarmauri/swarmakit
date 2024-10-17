@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AdminViewScheduler from './AdminViewScheduler.vue';
-import { Event } from '../types/types'; // Ensure this path is correct
+import { Event } from '../../types/types'; // Ensure this path is correct
 
 export default {
   title: 'Components/AdminViewScheduler',
