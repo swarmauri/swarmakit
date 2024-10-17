@@ -1,6 +1,13 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
+// Define an Event type
+interface Event {
+  id: number;
+  title: string;
+  date: string;
+}
+
 export default defineComponent({
   name: 'AdminViewScheduler',
   props: {
@@ -10,42 +17,42 @@ export default defineComponent({
       default: '',
     },
     addNewEvent: {
-      type: Function,
+      type: Function as () => (event: Event) => void,
       required: false,
-      default: () => {
-        console.log('Default addNewEvent function');
+      default: (event: Event) => {
+        console.log('Default addNewEvent function', event);
       },
     },
     editEvent: {
-      type: Function,
+      type: Function as () => (event: Event) => void,
       required: false,
-      default: (event) => {
+      default: (event: Event) => {
         console.log(`Default editEvent function: Editing ${event.title}`);
       },
     },
     deleteEvent: {
-      type: Function,
+      type: Function as () => (eventId: number) => void,
       required: false,
-      default: (eventId) => {
+      default: (eventId: number) => {
         console.log(`Default deleteEvent function: Deleting event with id ${eventId}`);
       },
     },
   },
   setup(props) {
-    const events = ref([
+    const events = ref<Event[]>([
       { id: 1, title: 'Team Meeting', date: '2024-10-21' },
       // other events...
     ]);
 
-    const handleAddNewEvent = () => {
-      props.addNewEvent();
+    const handleAddNewEvent = (event: Event) => {
+      props.addNewEvent(event);
     };
 
-    const handleEditEvent = (event) => {
+    const handleEditEvent = (event: Event) => {
       props.editEvent(event);
     };
 
-    const handleDeleteEvent = (eventId) => {
+    const handleDeleteEvent = (eventId: number) => {
       props.deleteEvent(eventId);
     };
 
@@ -59,17 +66,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<template>
-  <div>
-    <!-- Display feedback message -->
-    <p>{{ feedbackMessage }}</p>
-
-    <!-- Example buttons to trigger events -->
-    <button @click="handleAddNewEvent">Add New Event</button>
-    <button @click="handleEditEvent({ id: 1, title: 'Team Meeting', date: '2024-10-21' })">Edit Event</button>
-    <button @click="handleDeleteEvent(1)">Delete Event</button>
-
-    <!-- Other UI parts of AdminViewScheduler... -->
-  </div>
-</template>
