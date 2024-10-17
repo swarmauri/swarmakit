@@ -64,13 +64,15 @@ export default defineComponent({
       img.style.transform = `scale(1)`;
     };
 
-    const onMouseDown = (event: MouseEvent) => {
-      stopRotation();
-    };
-
-    const onTouchStart = (event: TouchEvent) => {
-      stopRotation();
-    };
+  const onMouseDown = (event: MouseEvent) => {
+    event.preventDefault();  // Prevent default text selection
+    stopRotation();
+  };
+  
+  const onTouchStart = (event: TouchEvent) => {
+    event.preventDefault();  // Prevent scrolling or default touch behavior
+    stopRotation();
+  };
 
     onMounted(() => {
       loading.value = false;
