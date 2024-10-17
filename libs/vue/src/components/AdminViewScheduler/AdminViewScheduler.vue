@@ -28,8 +28,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType } from 'vue'; // Ensure 'PropType' is imported
-import { Event } from '../types/types'; // Ensure this path is correct
+import { defineComponent, ref, PropType } from 'vue';
+import { Event } from '../../types/types'; // Ensure this path is correct
 
 export default defineComponent({
   name: 'AdminViewScheduler',
@@ -80,7 +80,7 @@ export default defineComponent({
     };
 
     const handleEditEvent = (event: Event) => {
-      const index = events.value.findIndex((e) => e.id === event.id);
+      const index = events.value.findIndex((e: Event) => e.id === event.id);
       if (index !== -1) {
         events.value[index] = { ...event };
         props.editEvent(event);
@@ -94,7 +94,7 @@ export default defineComponent({
 
     const startEdit = (eventId: number) => {
       currentEditingId.value = eventId;
-      const event = events.value.find((e) => e.id === eventId);
+      const event: Event | undefined = events.value.find((e: Event) => e.id === eventId);
       if (event) {
         editedTitle.value = event.title;
         editedDate.value = event.date;
