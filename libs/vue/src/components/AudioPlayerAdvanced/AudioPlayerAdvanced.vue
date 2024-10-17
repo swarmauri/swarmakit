@@ -53,52 +53,59 @@ export default defineComponent({
     const playbackRates = [0.5, 1, 1.5, 2];
 
     const togglePlay = () => {
-      if (audioElement.value) {
+      const audio = audioElement.value;
+      if (audio) {
         if (isPlaying.value) {
-          audioElement.value.pause();
+          audio.pause();
         } else {
-          audioElement.value.play();
+          audio.play();
         }
         isPlaying.value = !isPlaying.value;
       }
     };
 
     const toggleMute = () => {
-      if (audioElement.value) {
-        audioElement.value.muted = !audioElement.value.muted;
-        isMuted.value = audioElement.value.muted;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.muted = !audio.muted;
+        isMuted.value = audio.muted;
       }
     };
 
     const changeVolume = () => {
-      if (audioElement.value) {
-        audioElement.value.volume = volume.value;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.volume = volume.value;
       }
     };
 
     const seekAudio = () => {
-      if (audioElement.value) {
-        audioElement.value.currentTime = currentTime.value;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.currentTime = currentTime.value;
       }
     };
 
     const changeSpeed = () => {
-      if (audioElement.value) {
-        audioElement.value.playbackRate = playbackRate.value;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.playbackRate = playbackRate.value;
       }
     };
 
     const onLoadedData = () => {
-      if (audioElement.value) {
-        volume.value = audioElement.value.volume;
-        duration.value = audioElement.value.duration;
+      const audio = audioElement.value;
+      if (audio) {
+        volume.value = audio.volume;
+        duration.value = audio.duration;
       }
     };
 
     onMounted(() => {
-      if (audioElement.value) {
-        audioElement.value.addEventListener('timeupdate', () => {
-          currentTime.value = audioElement.value.currentTime;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.addEventListener('timeupdate', () => {
+          currentTime.value = audio.currentTime;
         });
       }
     });
