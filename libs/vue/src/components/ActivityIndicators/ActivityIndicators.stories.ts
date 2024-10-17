@@ -1,5 +1,7 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import ActivityIndicators from './ActivityIndicators.vue';
 
+// Define the metadata for the story
 export default {
   component: ActivityIndicators,
   title: 'component/Indicators/ActivityIndicators',
@@ -13,9 +15,10 @@ export default {
       control: 'text',
     },
   },
-};
+} as Meta<typeof ActivityIndicators>; // Explicit type for Meta
 
-const Template = (args) => ({
+// Define the template with explicit type for args
+const Template: StoryFn<typeof ActivityIndicators> = (args) => ({
   components: { ActivityIndicators },
   setup() {
     return { args };
