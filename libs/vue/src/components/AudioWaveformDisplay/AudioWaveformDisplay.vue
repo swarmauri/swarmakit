@@ -1,18 +1,33 @@
 <template>
-  <div class="audio-waveform-display" role="region" aria-label="Audio waveform display">
-    <canvas ref="waveformCanvas" aria-label="Waveform visualization"></canvas>
-    <div v-if="isLoading" class="loading" aria-live="polite">Loading...</div>
+  <div class="audio-player-advanced" role="region" aria-label="Advanced audio player">
+    <audio ref="audioElement" :src="src" @loadeddata="onLoadedData"></audio>
     <button @click="togglePlay" class="control-button" aria-label="Play/Pause">
       {{ isPlaying ? 'Pause' : 'Play' }}
     </button>
+    <button @click="toggleMute" class="control-button" aria-label="Mute/Unmute">
+      {{ isMuted ? 'Unmute' : 'Mute' }}
+    </button>
     <input
       type="range"
-      class="scrub-bar"
+      class="volume-control"
+      min="0"
+      max="1"
+      step="0.1"
+      v-model="volume"
+      @input="changeVolume"
+      aria-label="Volume control"
+    />
+    <input
+      type="range"
+      class="seek-bar"
       :max="duration"
       v-model="currentTime"
-      @input="scrubAudio"
-      aria-label="Scrubbing control"
+      @input="seekAudio"
+      aria-label="Seek control"
     />
+    <select v-model="playbackRate" @change="changeSpeed" aria-label="Playback speed control">
+      <option v-for="rate in playbackRates" :key="rate" :value="rate">{{ rate }}x</option>
+    </select>
   </div>
 </template>
 
@@ -20,7 +35,7 @@
 import { defineComponent, ref, onMounted } from 'vue';
 
 export default defineComponent({
-  name: 'AudioWaveformDisplay',
+  name: 'AudioPlayerAdvanced',
   props: {
     src: {
       type: String,
@@ -29,86 +44,98 @@ export default defineComponent({
   },
   setup() {
     const audioElement = ref<HTMLAudioElement | null>(null);
-    const waveformCanvas = ref<HTMLCanvasElement | null>(null);
     const isPlaying = ref(false);
-    const isLoading = ref(true);
+    const isMuted = ref(false);
+    const volume = ref(1);
     const currentTime = ref(0);
     const duration = ref(0);
+    const playbackRate = ref(1);
+    const playbackRates = [0.5, 1, 1.5, 2];
 
     const togglePlay = () => {
-      if (audioElement.value) {
+      const audio = audioElement.value;
+      if (audio) {
         if (isPlaying.value) {
-          audioElement.value!.pause();
+          audio.pause();
         } else {
-          audioElement.value!.play();
+          audio.play();
         }
         isPlaying.value = !isPlaying.value;
       }
     };
 
     const toggleMute = () => {
-      audioElement.value!.muted = !audioElement.value!.muted;
-      isMuted.value = audioElement.value!.muted;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.muted = !audio.muted;
+        isMuted.value = audio.muted;
+      }
     };
 
     const changeVolume = () => {
-      audioElement.value!.volume = volume.value;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.volume = volume.value;
+      }
     };
 
     const seekAudio = () => {
-      audioElement.value!.currentTime = currentTime.value;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.currentTime = currentTime.value;
+      }
     };
 
     const changeSpeed = () => {
-      audioElement.value!.playbackRate = playbackRate.value;
+      const audio = audioElement.value;
+      if (audio) {
+        audio.playbackRate = playbackRate.value;
+      }
     };
 
     const onLoadedData = () => {
-      volume.value = audioElement.value!.volume;
-      duration.value = audioElement.value!.duration;
-    };
-
+      const audio = audioElement.value;
+      if (audio) {
+        volume.value = audio.volume;
+        duration.value = audio.duration;
+      }
     };
 
     onMounted(() => {
       const audio = audioElement.value;
       if (audio) {
-        audio.addEventListener('loadeddata', onLoadedData);
         audio.addEventListener('timeupdate', () => {
           currentTime.value = audio.currentTime;
         });
-      }
-
-      const canvas = waveformCanvas.value;
-      if (canvas) {
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.fillStyle = 'var(--waveform-color)';
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
       }
     });
 
     return {
       isPlaying,
-      isLoading,
+      isMuted,
+      volume,
       currentTime,
       duration,
+      playbackRate,
+      playbackRates,
       togglePlay,
-      scrubAudio,
+      toggleMute,
+      changeVolume,
+      seekAudio,
+      changeSpeed,
+      onLoadedData,
     };
   },
 });
 </script>
 
 <style scoped lang="css">
-.audio-waveform-display {
+.audio-player-advanced {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 10px;
   padding: 10px;
-  background-color: var(--waveform-bg-color);
+  background-color: var(--player-bg-color);
   border-radius: 5px;
 }
 
@@ -121,11 +148,14 @@ export default defineComponent({
   border-radius: 3px;
 }
 
-.scrub-bar {
-  width: 100%;
+.volume-control,
+.seek-bar {
+  width: 100px;
 }
 
-.loading {
-  color: var(--loading-text-color);
+select {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid var(--button-bg-color);
 }
 </style>
