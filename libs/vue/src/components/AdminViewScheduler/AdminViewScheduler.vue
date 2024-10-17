@@ -1,34 +1,16 @@
-<template>
-  <div>
-    <h2>Event Scheduler</h2>
-
-    <!-- Display feedback message -->
-    <p v-if="feedbackMessage">{{ feedbackMessage }}</p>
-
-    <!-- Render each event using the Event component -->
-    <Event
-      v-for="event in events"
-      :key="event.id"
-      :event="event"
-      @edit="handleEditEvent"
-      @delete="handleDeleteEvent"
-    />
-
-    <button @click="handleAddNewEvent({ id: newEventId, title: 'New Event', date: '2024-11-01' })">
-      Add New Event
-    </button>
-  </div>
-</template>
-
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import Event from './Event.vue'; // Import the Event component
+import { defineComponent, ref, PropType } from 'vue';
+import { Event } from './types'; // Assuming Event is imported from a shared type file or defined locally
 
-
+// Define an Event type if not already defined globally
+interface Event {
+  id: number;
+  title: string;
+  date: string;
+}
 
 export default defineComponent({
   name: 'AdminViewScheduler',
-  components: { Event },
   props: {
     feedbackMessage: {
       type: String,
@@ -36,21 +18,21 @@ export default defineComponent({
       default: '',
     },
     addNewEvent: {
-      type: Function as () => (event: Event) => void,
+      type: Function as PropType<(event: Event) => void>, // Correctly typed function
       required: false,
       default: (event: Event) => {
         console.log('Default addNewEvent function', event);
       },
     },
     editEvent: {
-      type: Function as () => (event: Event) => void,
+      type: Function as PropType<(event: Event) => void>, // Correctly typed function
       required: false,
       default: (event: Event) => {
         console.log(`Default editEvent function: Editing ${event.title}`);
       },
     },
     deleteEvent: {
-      type: Function as () => (eventId: number) => void,
+      type: Function as PropType<(eventId: number) => void>, // Correctly typed function for eventId
       required: false,
       default: (eventId: number) => {
         console.log(`Default deleteEvent function: Deleting event with id ${eventId}`);
@@ -60,34 +42,29 @@ export default defineComponent({
   setup(props) {
     const events = ref<Event[]>([
       { id: 1, title: 'Team Meeting', date: '2024-10-21' },
-      { id: 2, title: 'Project Deadline', date: '2024-10-25' },
+      // Other events can be added here
     ]);
 
-    // Generate a new event ID for simplicity
-    const newEventId = ref(events.value.length + 1);
-
     const handleAddNewEvent = (event: Event) => {
-      props.addNewEvent(event);
-      events.value.push(event);
-      newEventId.value++;
+      if (props.addNewEvent) {
+        props.addNewEvent(event);
+      }
     };
 
-    const handleEditEvent = (updatedEvent: Event) => {
-      const index = events.value.findIndex(event => event.id === updatedEvent.id);
-      if (index !== -1) {
-        events.value[index] = updatedEvent;
+    const handleEditEvent = (event: Event) => {
+      if (props.editEvent) {
+        props.editEvent(event);
       }
-      props.editEvent(updatedEvent);
     };
 
     const handleDeleteEvent = (eventId: number) => {
-      events.value = events.value.filter(event => event.id !== eventId);
-      props.deleteEvent(eventId);
+      if (props.deleteEvent) {
+        props.deleteEvent(eventId);
+      }
     };
 
     return {
       events,
-      newEventId,
       feedbackMessage: props.feedbackMessage,
       handleAddNewEvent,
       handleEditEvent,
@@ -96,4 +73,3 @@ export default defineComponent({
   },
 });
 </script>
-
