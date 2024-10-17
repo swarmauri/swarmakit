@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, computed } from 'vue';
+import { defineComponent, computed } from 'vue'; // Removed the unused PropType import
 
 export default defineComponent({
   name: 'BadgeWithCounts',
