@@ -38,25 +38,36 @@ export default defineComponent({
     const togglePlay = () => {
       if (audioElement.value) {
         if (isPlaying.value) {
-          audioElement.value.pause();
+          audioElement.value!.pause();
         } else {
-          audioElement.value.play();
+          audioElement.value!.play();
         }
         isPlaying.value = !isPlaying.value;
       }
     };
 
-    const scrubAudio = () => {
-      if (audioElement.value) {
-        audioElement.value.currentTime = currentTime.value;
-      }
+    const toggleMute = () => {
+      audioElement.value!.muted = !audioElement.value!.muted;
+      isMuted.value = audioElement.value!.muted;
+    };
+
+    const changeVolume = () => {
+      audioElement.value!.volume = volume.value;
+    };
+
+    const seekAudio = () => {
+      audioElement.value!.currentTime = currentTime.value;
+    };
+
+    const changeSpeed = () => {
+      audioElement.value!.playbackRate = playbackRate.value;
     };
 
     const onLoadedData = () => {
-      if (audioElement.value) {
-        duration.value = audioElement.value.duration;
-        isLoading.value = false;
-      }
+      volume.value = audioElement.value!.volume;
+      duration.value = audioElement.value!.duration;
+    };
+
     };
 
     onMounted(() => {
