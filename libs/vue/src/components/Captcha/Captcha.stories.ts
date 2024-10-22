@@ -1,4 +1,5 @@
 import Captcha from './Captcha.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   component: Captcha,
@@ -9,9 +10,9 @@ export default {
       control: { type: 'text' },
     },
   },
-};
+} as Meta;
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { Captcha },
   setup() {
     return { args };
