@@ -20,6 +20,7 @@ export default defineComponent({
 
     const startExport = async (format: ExportFormat) => {
       if (!props.dataAvailable || isExporting.value) return;
+      console.log(format);
       
       isExporting.value = true;
       try {
