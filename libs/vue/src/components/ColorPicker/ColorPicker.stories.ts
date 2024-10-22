@@ -1,5 +1,5 @@
 import ColorPicker from './ColorPicker.vue';
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   title: 'component/Drawing/ColorPicker',
@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { ColorPicker },
   setup() {
     return { args };
