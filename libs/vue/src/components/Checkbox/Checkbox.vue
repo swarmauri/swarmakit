@@ -4,9 +4,9 @@
       type="checkbox" 
       :checked="checked" 
       :disabled="disabled" 
-      @change="$emit('update:checked', $event.target.checked)" 
-      :aria-checked="checked.toString()" 
-      :aria-disabled="disabled.toString()"
+      @change="$emit('update:checked', ($event.target as HTMLInputElement).checked)" 
+      :aria-checked="checked" 
+      :aria-disabled="disabled"
     />
     <label :class="{ 'checkbox--disabled': disabled }">
       <slot />
