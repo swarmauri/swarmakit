@@ -1,4 +1,5 @@
 import Checkbox from './Checkbox.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   component: Checkbox,
@@ -12,9 +13,9 @@ export default {
       control: { type: 'boolean' },
     },
   },
-};
+} as Meta;
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { Checkbox },
   setup() {
     return { args };
