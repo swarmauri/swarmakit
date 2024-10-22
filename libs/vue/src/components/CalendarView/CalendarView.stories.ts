@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import CalendarView from './CalendarView.vue';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 } as Meta<typeof CalendarView>;
 
-const Template: Story<typeof CalendarView> = (args) => ({
+const Template: StoryFn<typeof CalendarView> = (args) => ({
   components: { CalendarView },
   setup() {
     return { args };
