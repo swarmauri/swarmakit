@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import CardFooter from './CardFooter.vue';
 
 export default {
@@ -12,7 +12,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { CardFooter },
   setup() {
     return { args };
