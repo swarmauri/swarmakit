@@ -33,7 +33,7 @@ ContextTriggered.args = {
   ],
 };
 ContextTriggered.play = async ({ canvasElement }) => {
-  const button = canvasElement.querySelector('.contextual-toggle');
+  const button = canvasElement.querySelector('.contextual-toggle') as HTMLButtonElement;
   if (button) {
     button.click();
   }
