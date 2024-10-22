@@ -1,12 +1,13 @@
 import DataFilterPanel from './DataFilterPanel.vue';
+import { Meta, StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'components/Data/DataFilterPanel',
   component: DataFilterPanel,
   tags: ['autodocs'],
-};
+} as Meta
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { DataFilterPanel },
   setup() {
     return { args };
