@@ -19,12 +19,12 @@ export default defineComponent({
       default: 'Please solve the captcha',
     },
   },
-  setup() {
+  setup(props) {
     const isSolved = ref(false);
     const hasError = ref(false);
 
     const solveCaptcha = () => {
-      if (captchaText === 'Please solve the captcha') {
+      if (props.captchaText === 'Please solve the captcha') {
         isSolved.value = true;
         hasError.value = false;
       } else {
