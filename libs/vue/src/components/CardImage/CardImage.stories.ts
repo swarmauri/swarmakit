@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import CardImage from './CardImage.vue';
 
 export default {
@@ -18,7 +18,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { CardImage },
   setup() {
     return { args };
