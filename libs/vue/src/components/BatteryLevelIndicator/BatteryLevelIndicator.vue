@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, computed } from 'vue';
+import { defineComponent,computed } from 'vue';
 
 export default defineComponent({
   name: 'BatteryLevelIndicator',
