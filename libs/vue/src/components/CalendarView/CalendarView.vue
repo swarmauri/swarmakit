@@ -23,8 +23,17 @@ import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
   name: 'CalendarView',
-  setup() {
-    const currentView = ref<'day' | 'week' | 'month' | 'year' | 'agenda'>('month');
+  props: {
+    currentView: {
+      type: String,
+      required:true,
+      validator:(value:string) => {
+        return ['day','week','month','year','agenda'].includes(value);
+      }
+    }
+  },
+  setup(props) {
+    const currentView = ref(props.currentView);
     const currentViewTitle = computed(() => {
       switch (currentView.value) {
         case 'day': return 'Day View';
