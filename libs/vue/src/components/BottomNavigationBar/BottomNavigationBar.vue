@@ -42,6 +42,7 @@ export default defineComponent({
     },
     onHover(item: NavItem) {
       // Logic for hover state can be added here
+      console.log(`${item.label} is hovered`);
     },
   },
 });
