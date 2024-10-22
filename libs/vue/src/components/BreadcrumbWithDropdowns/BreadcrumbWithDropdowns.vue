@@ -6,7 +6,7 @@
           v-if="!crumb.dropdown" 
           :class="{ 'breadcrumb-link': crumb.link }"
           @click="crumb.link ? navigateTo(crumb.link) : null"
-          :aria-current="index === breadcrumbs.length - 1 ? 'page' : null"
+          :aria-current="index === breadcrumbs.length - 1 ? 'page' : undefined"
         >
           {{ crumb.name }}
         </span>
