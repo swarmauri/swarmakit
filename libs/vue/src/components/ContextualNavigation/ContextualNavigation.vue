@@ -1,6 +1,6 @@
 <template>
   <div class="contextual-navigation" :aria-hidden="!isVisible">
-    <button @click="toggleMenu" class="contextual-toggle" aria-expanded="isVisible">
+    <button @click="toggleMenu" class="contextual-toggle" :aria-expanded="isVisible">
       <span v-if="isVisible">Close Menu</span>
       <span v-else>Open Menu</span>
     </button>
