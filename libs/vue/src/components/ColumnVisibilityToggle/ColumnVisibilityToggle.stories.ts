@@ -1,12 +1,13 @@
 import ColumnVisibilityToggle from './ColumnVisibilityToggle.vue';
+import { Meta , StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'components/Data/ColumnVisibilityToggle',
   component: ColumnVisibilityToggle,
   tags: ['autodocs'],
-};
+} as Meta
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { ColumnVisibilityToggle },
   setup() {
     return { args };
