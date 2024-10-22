@@ -1,12 +1,13 @@
 import DataExportButton from './DataExportButton.vue';
+import { Meta,StoryFn } from '@storybook/vue3'
 
 export default {
   title: 'components/Data/DataExportButton',
   component: DataExportButton,
   tags: ['autodocs'],
-};
+} as Meta;
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { DataExportButton },
   setup() {
     return { args };
