@@ -35,12 +35,12 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     const hoveredIndex = ref<number | null>(null);
     const selectedIndex = ref<number | null>(null);
 
     const selectCard = (index: number) => {
-      if (!cards[index].disabled) {
+      if (props.cards[index].disabled) {
         selectedIndex.value = index;
       }
     };
