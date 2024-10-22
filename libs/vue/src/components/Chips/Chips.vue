@@ -8,7 +8,7 @@
       @click="toggleSelect(index)"
       role="listitem"
       tabindex="0"
-      aria-pressed="chip.selected"
+      :aria-pressed="chip.selected"
     >
       <span>{{ chip.label }}</span>
       <button
