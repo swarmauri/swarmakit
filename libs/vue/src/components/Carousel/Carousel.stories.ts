@@ -37,7 +37,7 @@ AutoPlay.args = {
 export const Paused = Template.bind({});
 Paused.args = {
   ...Default.args,
-  interval: null,
+  interval: undefined,
 };
 
 export const Hover = Template.bind({});
