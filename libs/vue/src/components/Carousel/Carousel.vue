@@ -6,7 +6,7 @@
         :key="index"
         class="carousel-item"
         :class="{ active: index === currentIndex }"
-        aria-hidden="index !== currentIndex"
+        :aria-hidden="index !== currentIndex"
       >
         <img :src="slide.src" :alt="slide.alt" />
       </div>
