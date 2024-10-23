@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import DealerButton from './DealerButton.vue';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { DealerButton },
   setup() {
     return { args };
