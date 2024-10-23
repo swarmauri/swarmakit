@@ -6,7 +6,7 @@ export default {
   component: ExpandableList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
+    items: { control: 'object' },
   },
 } as Meta<typeof ExpandableList>;
 
