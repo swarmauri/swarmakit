@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 
 interface Event {
   id: number;
@@ -29,6 +29,15 @@ interface Event {
 
 export default defineComponent({
   name: 'DragAndDropScheduler',
+  props: {
+    events: {
+      type: Array as PropType<Event[]>,
+      requried:true,
+      default:[
+        { id: 1, title: 'Default Meeting', position: 0, duration: 60, isDragging: false }
+      ],
+    }
+  },
   setup() {
     const timeSlots = Array.from({ length: 24 }, (_, i) => i);
     const events = ref<Event[]>([
