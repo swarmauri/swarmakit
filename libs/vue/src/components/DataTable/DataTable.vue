@@ -43,6 +43,7 @@ export default defineComponent({
 
     const toggleSort = (columnKey: string) => {
       // Sorting logic
+      console.log(columnKey);
     };
 
     return {
@@ -55,7 +56,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="data-table" aria-busy="loading.toString()">
+  <div class="data-table" :aria-busy="loading">
     <table>
       <thead>
         <tr>
