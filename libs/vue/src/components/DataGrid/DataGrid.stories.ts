@@ -5,15 +5,7 @@ export default {
   title: 'component/Lists/DataGrid',
   component: DataGrid,
   tags: ['autodocs'],
-  argTypes: {
-    headers: { control: 'array' },
-    data: { control: 'array' },
-    paginationEnabled: { control: 'boolean' },
-    searchEnabled: { control: 'boolean' },
-    resizable: { control: 'boolean' },
-    itemsPerPage: { control: 'number' },
-  },
-} as Meta<typeof DataGrid>;
+} as Meta;
 
 const Template: StoryFn<typeof DataGrid> = (args) => ({
   components: { DataGrid },
