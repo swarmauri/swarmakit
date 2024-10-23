@@ -33,7 +33,7 @@ Expanded.args = {
   ],
 };
 Expanded.play = async ({ canvasElement }) => {
-  const button = canvasElement.querySelector('.dropdown-toggle');
+  const button:HTMLElement = canvasElement.querySelector('.dropdown-toggle') as HTMLElement;
   if (button) {
     button.click();
   }
