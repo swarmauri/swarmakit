@@ -6,7 +6,7 @@
       :disabled="disabled" 
       @input="updateStartDate" 
       aria-label="Start Date"
-      :aria-disabled="disabled.toString()"
+      :aria-disabled="disabled"
     />
     <input 
       v-if="isDateRange" 
@@ -15,7 +15,7 @@
       :disabled="disabled" 
       @input="updateEndDate" 
       aria-label="End Date"
-      :aria-disabled="disabled.toString()"
+      :aria-disabled="disabled"
     />
     <input 
       v-if="isTimePicker" 
@@ -24,7 +24,7 @@
       :disabled="disabled" 
       @input="updateTime" 
       aria-label="Time Picker"
-      :aria-disabled="disabled.toString()"
+      :aria-disabled="disabled"
     />
   </div>
 </template>
