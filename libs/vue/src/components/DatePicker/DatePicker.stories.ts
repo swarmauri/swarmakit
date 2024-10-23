@@ -1,32 +1,13 @@
 import DatePicker from './DatePicker.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: DatePicker,
   title: 'component/Forms/DatePicker',
   tags: ['autodocs'],
-  argTypes: {
-    startDate: {
-      control: { type: 'date' },
-    },
-    endDate: {
-      control: { type: 'date' },
-    },
-    selectedTime: {
-      control: { type: 'time' },
-    },
-    isDateRange: {
-      control: { type: 'boolean' },
-    },
-    isTimePicker: {
-      control: { type: 'boolean' },
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
-  },
-};
+} as Meta;
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { DatePicker },
   setup() {
     return { args };
