@@ -6,7 +6,7 @@
       :disabled="disabled" 
       @input="updateDate" 
       aria-label="Select Date"
-      :aria-disabled="disabled.toString()"
+      :aria-disabled="disabled"
     />
     <input 
       type="time" 
@@ -14,7 +14,7 @@
       :disabled="disabled" 
       @input="updateTime" 
       aria-label="Select Time"
-      :aria-disabled="disabled.toString()"
+      :aria-disabled="disabled"
     />
   </div>
 </template>
