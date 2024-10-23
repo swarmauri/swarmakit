@@ -1,20 +1,13 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import EmojiReactionPoll from './EmojiReactionPoll.vue';
 
 export default {
   title: 'component/Polls/EmojiReactionPoll',
   component: EmojiReactionPoll,
   tags: ['autodocs'],
-  argTypes: {
-    question: { control: 'text' },
-    emojis: { control: 'array' },
-    initialSelection: { control: 'number' },
-    isDisabled: { control: 'boolean' },
-    showResults: { control: 'boolean' },
-  },
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { EmojiReactionPoll },
   setup() {
     return { args };
