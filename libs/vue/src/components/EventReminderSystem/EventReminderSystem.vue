@@ -32,7 +32,7 @@
       </div>
     </form>
 
-    <div v-if="feedbackMessage" class="feedback">{{ feedbackMessage }}</div>
+    <div v-if="localFeedbackMessage" class="feedback">{{ localFeedbackMessage }}</div>
   </div>
 </template>
 
@@ -46,7 +46,13 @@ interface Event {
 
 export default defineComponent({
   name: 'EventReminderSystem',
-  setup() {
+  props: {
+    feedbackMessage: {
+      type: String,
+      default:'',
+    },
+  },
+  setup(props) {
     const events = ref<Event[]>([
       { id: '1', title: 'Team Meeting' },
       { id: '2', title: 'Project Deadline' },
@@ -59,15 +65,15 @@ export default defineComponent({
       method: ''
     });
 
-    const feedbackMessage = ref('');
+    const localFeedbackMessage = ref(props.feedbackMessage);
 
     const setReminder = () => {
-      feedbackMessage.value = `Reminder set for "${form.value.event}" via ${form.value.method}.`;
+      localFeedbackMessage.value = `Reminder set for "${form.value.event}" via ${form.value.method}.`;
       clearForm();
     };
 
     const cancelReminder = () => {
-      feedbackMessage.value = `Reminder for "${form.value.event}" canceled.`;
+      localFeedbackMessage.value = `Reminder for "${form.value.event}" canceled.`;
       clearForm();
     };
 
@@ -82,7 +88,7 @@ export default defineComponent({
     return {
       events,
       form,
-      feedbackMessage,
+      localFeedbackMessage,
       setReminder,
       cancelReminder
     };
