@@ -1,23 +1,13 @@
 import DateAndTimePicker from './DateAndTimePicker.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: DateAndTimePicker,
   title: 'component/Forms/DateAndTimePicker',
   tags: ['autodocs'],
-  argTypes: {
-    selectedDate: {
-      control: { type: 'date' },
-    },
-    selectedTime: {
-      control: { type: 'time' },
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
-  },
-};
+} as Meta;
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { DateAndTimePicker },
   setup() {
     return { args };
