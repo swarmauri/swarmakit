@@ -1,12 +1,13 @@
 import DataImportDialog from './DataImportDialog.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'components/Data/DataImportDialog',
   component: DataImportDialog,
   tags: ['autodocs'],
-};
+} as Meta
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { DataImportDialog },
   setup() {
     return { args };
