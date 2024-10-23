@@ -1,12 +1,13 @@
 import EditableDataTable from './EditableDataTable.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'components/Data/EditableDataTable',
   component: EditableDataTable,
   tags: ['autodocs'],
-};
+} as Meta;
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { EditableDataTable },
   setup() {
     return { args };

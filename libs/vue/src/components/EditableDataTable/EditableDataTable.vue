@@ -63,6 +63,7 @@ export default defineComponent({
       toggleEditRow,
       saveRow,
       deleteRow,
+      editedRows,
     };
   },
 });
