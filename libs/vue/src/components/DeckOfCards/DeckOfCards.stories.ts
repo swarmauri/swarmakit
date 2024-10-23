@@ -1,16 +1,13 @@
 import DeckOfCards from './DeckOfCards.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'component/Cards/DeckOfCards',
   component: DeckOfCards,
   tags: ['autodocs'],
-  argTypes: {
-    cards: { control: 'array' },
-    overlap: { control: 'number' },
-  },
-};
+} as Meta; 
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { DeckOfCards },
   setup() {
     return { args };
