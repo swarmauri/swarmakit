@@ -12,18 +12,39 @@ const Template: StoryFn<typeof EventFilterBar> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<EventFilterBar v-bind="args" />',
+  template: '<EventFilterBar />',
 });
 
 export const Default = Template.bind({});
 Default.args = {};
 
-export const FilterApplied = Template.bind({});
-FilterApplied.args = {
-  activeFilters: 'category: Conference, location: New York'
+
+export const WithFilters = Template.bind({});
+WithFilters.play = async ({ canvasElement }) => {
+  const filterBar = canvasElement.querySelector('.event-filter-bar');
+  if (filterBar) {
+    const categorySelect = filterBar.querySelector('#category') as HTMLSelectElement;
+    const locationInput = filterBar.querySelector('#location') as HTMLInputElement;
+    
+    if (categorySelect) {
+      categorySelect.value = 'Conference';
+      categorySelect.dispatchEvent(new Event('change'));
+    }
+    
+    if (locationInput) {
+      locationInput.value = 'New York';
+      locationInput.dispatchEvent(new Event('input'));
+    }
+  }
 };
 
-export const FilterCleared = Template.bind({});
-FilterCleared.args = {
-  activeFilters: ''
+export const Cleared = Template.bind({});
+Cleared.play = async ({ canvasElement }) => {
+  const filterBar = canvasElement.querySelector('.event-filter-bar');
+  if (filterBar) {
+    const clearButton = filterBar.querySelector('button[type="button"]') as HTMLButtonElement;
+    if (clearButton) {
+      clearButton.click();
+    }
+  }
 };
