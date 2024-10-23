@@ -1,5 +1,5 @@
 import EraserTool from './EraserTool.vue';
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   title: 'component/Drawing/EraserTool',
@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { EraserTool },
   setup() {
     return { args };
