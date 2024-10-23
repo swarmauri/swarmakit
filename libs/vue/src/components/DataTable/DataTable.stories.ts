@@ -1,12 +1,13 @@
 import DataTable from './DataTable.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'components/Data/DataTable',
   component: DataTable,
   tags: ['autodocs'],
-};
+}as Meta;
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { DataTable },
   setup() {
     return { args };
