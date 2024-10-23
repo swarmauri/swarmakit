@@ -32,7 +32,7 @@ export default defineComponent({
       default: 10,
     },
   },
-  setup() {
+  setup(props) {
     const draggedCardIndex = ref<number | null>(null);
 
     const onDragStart = (index: number) => {
@@ -41,8 +41,8 @@ export default defineComponent({
 
     const onDrop = (index: number) => {
       if (draggedCardIndex.value !== null && draggedCardIndex.value !== index) {
-        const [draggedCard] = cards.value.splice(draggedCardIndex.value, 1);
-        cards.value.splice(index, 0, draggedCard);
+        const [draggedCard] = props.cards.splice(draggedCardIndex.value, 1);
+        props.cards.splice(index, 0, draggedCard);
       }
       draggedCardIndex.value = null;
     };
