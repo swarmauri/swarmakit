@@ -1,17 +1,13 @@
 import DiscardPile from './DiscardPile.vue';
+import {Meta,StoryFn} from '@storybook/vue3';
 
 export default {
   title: 'component/Cards/DiscardPile',
   component: DiscardPile,
   tags: ['autodocs'],
-  argTypes: {
-    cards: { control: 'object' },
-    maxCards: { control: 'number' },
-    overlapOffset: { control: 'number' },
-  },
-};
+} as Meta
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { DiscardPile },
   setup() {
     return { args };
