@@ -5,7 +5,7 @@
       :src="src"
       frameborder="0"
       allowfullscreen
-      aria-busy="isBuffering"
+      :aria-busy="isBuffering"
       @load="handleLoad"
     ></iframe>
     <button v-if="!isFullscreen" @click="toggleFullscreen" aria-label="Enter fullscreen" class="fullscreen-btn">⤢</button>
