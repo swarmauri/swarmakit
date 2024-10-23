@@ -1,12 +1,13 @@
 import DataSummary from './DataSummary.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'components/Data/DataSummary',
   component: DataSummary,
   tags: ['autodocs'],
-};
+} as Meta
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args) => ({
   components: { DataSummary },
   setup() {
     return { args };
