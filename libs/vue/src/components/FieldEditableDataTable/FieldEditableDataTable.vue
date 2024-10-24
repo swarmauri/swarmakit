@@ -58,7 +58,7 @@ export default defineComponent({
 
 <template>
   <div class="field-editable-data-table" role="table">
-    <div role="row" v-for="(row, index) in data" :key="row.id" class="table-row">
+    <div role="row" v-for="(row) in data" :key="row.id" class="table-row">
       <div role="cell" class="table-cell" v-for="(value, key) in row" :key="key">
         <template v-if="editingField && editingField.rowId === row.id && editingField.field === key">
           <textarea v-if="key === 'description'" v-model="fieldValues[key]" aria-label="Edit description"></textarea>
@@ -67,7 +67,7 @@ export default defineComponent({
           <button @click="discardChanges">Cancel</button>
         </template>
         <template v-else>
-          <span @click="editField(row.id, key)" class="editable-field">{{ value }}</span>
+          <span @click="editField(row.id, key.toString())" class="editable-field">{{ value }}</span>
         </template>
       </div>
     </div>
