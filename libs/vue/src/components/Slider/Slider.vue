@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Slider',
@@ -45,7 +45,7 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const updateValue = (event: Event) => {
       const newValue = (event.target as HTMLInputElement).valueAsNumber;
       emit('update:value', newValue);
