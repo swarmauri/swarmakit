@@ -24,9 +24,13 @@ export default defineComponent({
       type: Array as () => string[],
       default: () => [],
     },
+    query:{
+      type:String,
+      default:'',
+    },
   },
   setup(props) {
-    const query = ref('');
+    const query = ref(props.query);
 
     const filteredResults = computed(() =>
       props.options.filter(option =>
