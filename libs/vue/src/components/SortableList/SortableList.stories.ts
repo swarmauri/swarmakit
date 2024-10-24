@@ -35,9 +35,11 @@ export const Dragging = Template.bind({});
 Dragging.args = {
   ...Default.args,
 };
-Dragging.play = async ({ args, canvasElement }) => {
-  const item = canvasElement.querySelector('li');
-  item.dispatchEvent(new DragEvent('dragstart'));
+Dragging.play = async ({ canvasElement }) => {
+  const item = canvasElement.querySelector('li') as HTMLElement;
+  if(item){
+    item.dispatchEvent(new DragEvent('dragstart'));
+  }
 };
 
 export const Sorted = Template.bind({});
