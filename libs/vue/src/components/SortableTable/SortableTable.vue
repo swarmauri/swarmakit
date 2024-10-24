@@ -57,7 +57,7 @@ export default defineComponent({
   },
   setup(props) {
     const sortKey = ref<string | null>(null);
-    const sortDirection = ref<1 | -1>(1);
+    const sortDirection = ref<1 | -1 | number>(1);
     const filterText = ref<string>("");
     const selectedRow = ref<number | null>(null);
 
@@ -88,8 +88,8 @@ export default defineComponent({
 
       if (sortKey.value) {
         filteredData.sort((a, b) => {
-          const aValue = a[sortKey.value];
-          const bValue = b[sortKey.value];
+          const aValue = a[sortKey.value!];
+          const bValue = b[sortKey.value!];
           if (aValue < bValue) return -1 * sortDirection.value;
           if (aValue > bValue) return 1 * sortDirection.value;
           return 0;
