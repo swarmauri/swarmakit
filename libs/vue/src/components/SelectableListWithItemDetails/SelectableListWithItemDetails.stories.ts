@@ -35,8 +35,8 @@ export const ItemSelected = Template.bind({});
 ItemSelected.args = {
   ...Default.args,
 };
-ItemSelected.play = async ({ args, canvasElement }) => {
-  const item = canvasElement.querySelector('.selectable-list-item:nth-child(2)');
+ItemSelected.play = async ({ canvasElement }) => {
+  const item = canvasElement.querySelector('.selectable-list-item:nth-child(2)') as HTMLElement;
   item.click();
 };
 
@@ -44,8 +44,8 @@ export const ItemDeselected = Template.bind({});
 ItemDeselected.args = {
   ...Default.args,
 };
-ItemDeselected.play = async ({ args, canvasElement }) => {
-  const item = canvasElement.querySelector('.selectable-list-item:nth-child(2)');
+ItemDeselected.play = async ({ canvasElement }) => {
+  const item = canvasElement.querySelector('.selectable-list-item:nth-child(2)') as HTMLElement;
   item.click();
   item.click();
 };
@@ -54,8 +54,8 @@ export const DetailsOpened = Template.bind({});
 DetailsOpened.args = {
   ...Default.args,
 };
-DetailsOpened.play = async ({ args, canvasElement }) => {
-  const button = canvasElement.querySelector('.selectable-list-item:nth-child(2) .details-button');
+DetailsOpened.play = async ({ canvasElement }) => {
+  const button = canvasElement.querySelector('.selectable-list-item:nth-child(2) .details-button') as HTMLElement;
   button.click();
 };
 
@@ -63,8 +63,8 @@ export const DetailsClosed = Template.bind({});
 DetailsClosed.args = {
   ...Default.args,
 };
-DetailsClosed.play = async ({ args, canvasElement }) => {
-  const button = canvasElement.querySelector('.selectable-list-item:nth-child(2) .details-button');
+DetailsClosed.play = async ({ canvasElement }) => {
+  const button = canvasElement.querySelector('.selectable-list-item:nth-child(2) .details-button') as HTMLElement;
   button.click();
-  button.click();
+  button.click();  
 };
