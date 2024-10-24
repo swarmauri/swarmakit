@@ -33,19 +33,23 @@ export const ItemSelected = Template.bind({});
 ItemSelected.args = {
   ...Default.args,
 };
-ItemSelected.play = async ({ args, canvasElement }) => {
-  const item = canvasElement.querySelector('.list-item:nth-child(1)');
-  item.click();
+ItemSelected.play = async ({ canvasElement }) => {
+  const item = canvasElement.querySelector('.list-item:nth-child(1)') as HTMLElement;
+  if(item){
+    item.click();
+  }
 };
 
 export const ItemDeselected = Template.bind({});
 ItemDeselected.args = {
   ...Default.args,
 };
-ItemDeselected.play = async ({ args, canvasElement }) => {
-  const item = canvasElement.querySelector('.list-item:nth-child(1)');
-  item.click();
-  item.click();
+ItemDeselected.play = async ({ canvasElement }) => {
+  const item = canvasElement.querySelector('.list-item:nth-child(1)') as HTMLElement;
+  if(item){
+    item.click();
+    item.click();
+  }
 };
 
 export const Disabled = Template.bind({});
@@ -61,7 +65,7 @@ export const Hover = Template.bind({});
 Hover.args = {
   ...Default.args,
 };
-Hover.play = async ({ args, canvasElement }) => {
-  const item = canvasElement.querySelector('.list-item:nth-child(1)');
+Hover.play = async ({ canvasElement }) => {
+  const item = canvasElement.querySelector('.list-item:nth-child(1)') as HTMLElement;
   item.dispatchEvent(new Event('mouseover'));
 };
