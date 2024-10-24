@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref} from 'vue';
 
 interface ListItem {
   id: number;
@@ -38,7 +38,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const hoveredItem = ref<number | null>(null);
 
     const selectItem = (id: number) => {
