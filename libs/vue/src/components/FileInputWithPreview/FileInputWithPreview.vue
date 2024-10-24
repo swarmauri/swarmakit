@@ -5,7 +5,7 @@
       :disabled="disabled" 
       @change="handleFileUpload" 
       aria-label="Upload File"
-      :aria-disabled="disabled.toString()"
+      :aria-disabled="disabled"
     />
     <div v-if="preview" class="preview-container">
       <img :src="preview" alt="File Preview" class="preview-image"/>
