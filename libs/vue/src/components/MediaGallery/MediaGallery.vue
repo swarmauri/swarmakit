@@ -31,7 +31,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     const viewMode = ref<'thumbnail' | 'expanded'>('thumbnail');
     const currentIndex = ref(0);
     const isSlideshow = ref(false);
@@ -47,11 +47,11 @@ export default defineComponent({
     };
 
     const nextImage = () => {
-      currentIndex.value = (currentIndex.value + 1) % images.value.length;
+      currentIndex.value = (currentIndex.value + 1) % props.images.length;
     };
 
     const previousImage = () => {
-      currentIndex.value = (currentIndex.value - 1 + images.value.length) % images.value.length;
+      currentIndex.value = (currentIndex.value - 1 + props.images.length) % props.images.length;
     };
 
     const toggleSlideshow = () => {

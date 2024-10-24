@@ -40,9 +40,9 @@ export default defineComponent({
     },
   },
   emits: ['update:selectedOptions'],
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const selectedOptions = ref<string[]>([]);
-
+    
     const handleChange = () => {
       emit('update:selectedOptions', selectedOptions.value);
     };

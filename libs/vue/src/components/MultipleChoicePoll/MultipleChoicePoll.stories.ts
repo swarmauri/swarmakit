@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import MultipleChoicePoll from './MultipleChoicePoll.vue';
 
 export default {
@@ -7,13 +7,13 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     question: { control: 'text' },
-    options: { control: 'array' },
+    options: { control: 'object' },
     isDisabled: { control: 'boolean' },
     showResults: { control: 'boolean' },
   },
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { MultipleChoicePoll },
   setup() {
     return { args };
