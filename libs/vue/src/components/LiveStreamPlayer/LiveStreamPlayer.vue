@@ -68,6 +68,10 @@ export default defineComponent({
       muted,
       buffering,
       toggleMute,
+      onPlay,
+      onPause,
+      onBuffering,
+      onVolumeChange,
     };
   },
 });
