@@ -1,7 +1,7 @@
 <template>
   <ol class="numbered-list" role="list" aria-label="Numbered Items">
     <li
-      v-for="(item, index) in items"
+      v-for="(item) in items"
       :key="item.value"
       :class="['list-item', { selected: selectedItem === item.value, disabled: item.disabled }]"
       @click="selectItem(item)"
