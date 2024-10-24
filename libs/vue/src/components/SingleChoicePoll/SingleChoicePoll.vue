@@ -9,7 +9,7 @@
         v-model="selectedOption"
         :disabled="isDisabled"
         @change="handleChange"
-        aria-checked="selectedOption === option"
+        :aria-checked="selectedOption === option"
       />
       <label :for="option">{{ option }}</label>
     </div>
@@ -40,7 +40,7 @@ export default defineComponent({
     },
   },
   emits: ['update:selectedOption'],
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const selectedOption = ref<string | null>(null);
 
     const handleChange = () => {
