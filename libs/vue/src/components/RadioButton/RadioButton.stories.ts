@@ -1,4 +1,5 @@
 import RadioButton from './RadioButton.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: RadioButton,
@@ -12,9 +13,9 @@ export default {
       control: { type: 'boolean' },
     },
   },
-};
+} as Meta<typeof RadioButton>
 
-const Template = (args) => ({
+const Template:StoryFn<typeof RadioButton> = (args) => ({
   components: { RadioButton },
   setup() {
     return { args };
