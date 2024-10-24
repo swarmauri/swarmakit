@@ -26,6 +26,8 @@ export default defineComponent({
 
     const startMovingGuide = (index: number) => {
       // Logic to start moving guide
+      console.log(index)
+      
     };
 
     const addGuide = (x: number, y: number) => {
