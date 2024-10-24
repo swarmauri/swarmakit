@@ -1,12 +1,13 @@
 import FieldEditableDataTable from './FieldEditableDataTable.vue';
+import {Meta,StoryFn} from '@storybook/vue3';
 
 export default {
   title: 'components/Data/FieldEditableDataTable',
   component: FieldEditableDataTable,
   tags: ['autodocs'],
-};
+} as Meta;
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { FieldEditableDataTable },
   setup() {
     return { args };
