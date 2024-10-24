@@ -1,4 +1,5 @@
 import FileUpload from './FileUpload.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: FileUpload,
@@ -9,9 +10,9 @@ export default {
       control: { type: 'boolean' },
     },
   },
-};
+}as Meta;
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { FileUpload },
   setup() {
     return { args };
