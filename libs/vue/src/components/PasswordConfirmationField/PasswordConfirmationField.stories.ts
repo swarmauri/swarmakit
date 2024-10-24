@@ -1,4 +1,5 @@
 import PasswordConfirmationField from './PasswordConfirmationField.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: PasswordConfirmationField,
@@ -9,9 +10,9 @@ export default {
       control: { type: 'boolean' },
     },
   },
-};
+} as Meta<typeof PasswordConfirmationField>
 
-const Template = (args) => ({
+const Template:StoryFn<typeof PasswordConfirmationField> = (args) => ({
   components: { PasswordConfirmationField },
   setup() {
     return { args };
