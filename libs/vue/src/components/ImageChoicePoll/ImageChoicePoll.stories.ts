@@ -30,7 +30,7 @@ Default.args = {
     { image: 'link-to-image-2.jpg', alt: 'Image 2' },
     { image: 'link-to-image-3.jpg', alt: 'Image 3' }
   ],
-  initialValue: null,
+  initialValue: undefined,
   resultsVisible: false,
   disabled: false
 };
