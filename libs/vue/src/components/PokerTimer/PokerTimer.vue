@@ -42,7 +42,7 @@ export default defineComponent({
       isPaused.value = !isPaused.value;
     };
 
-    let intervalId: number;
+    let intervalId: ReturnType<typeof setInterval>;
     onMounted(() => {
       intervalId = setInterval(tick, 1000);
     });
