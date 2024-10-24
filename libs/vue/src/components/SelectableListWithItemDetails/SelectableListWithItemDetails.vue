@@ -42,12 +42,12 @@ export default defineComponent({
       default: false,
     },
   },
-  setup() {
+  setup(props) {
     const selectedItem = ref<number | null>(null);
     const openDetails = ref<number | null>(null);
 
     const toggleSelection = (id: number) => {
-      if (!disabled) {
+      if (!props.disabled) {
         selectedItem.value = selectedItem.value === id ? null : id;
       }
     };
