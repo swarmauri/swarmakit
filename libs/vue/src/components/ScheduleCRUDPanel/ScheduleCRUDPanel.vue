@@ -47,7 +47,13 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'ScheduleCRUDPanel',
-  setup() {
+  props: {
+    feedbackMessageProp: {
+      type:String,
+      default:'',
+    }
+  },
+  setup(props) {
     const form = ref({
       title: '',
       date: '',
@@ -57,7 +63,7 @@ export default defineComponent({
       participants: ''
     });
 
-    const feedbackMessage = ref('');
+    const feedbackMessage = ref(props.feedbackMessageProp);
 
     const handleSubmit = () => {
       feedbackMessage.value = `Event "${form.value.title}" created successfully.`;

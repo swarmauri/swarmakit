@@ -20,15 +20,15 @@ Default.args = {};
 
 export const EventCreated = Template.bind({});
 EventCreated.args = {
-  feedbackMessage: 'Event "Meeting with Team" created successfully.'
+  feedbackMessageProp: 'Event "Meeting with Team" created successfully.'
 };
 
 export const EventUpdated = Template.bind({});
 EventUpdated.args = {
-  feedbackMessage: 'Event "Project Deadline" updated successfully.'
+  feedbackMessageProp: 'Event "Project Deadline" updated successfully.'
 };
 
 export const EventDeleted = Template.bind({});
 EventDeleted.args = {
-  feedbackMessage: 'Event "Client Call" deleted successfully.'
+  feedbackMessageProp: 'Event "Client Call" deleted successfully.'
 };
