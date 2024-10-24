@@ -55,9 +55,11 @@ export const Hover = Template.bind({});
 Hover.args = {
   ...Default.args,
 };
-Hover.play = async ({ args, canvasElement }) => {
+Hover.play = async ({ canvasElement }) => {
   const item = canvasElement.querySelector('.pinned-list-item:nth-child(2)');
-  item.dispatchEvent(new Event('mouseover'));
+  if(item){
+    item.dispatchEvent(new Event('mouseover'));
+  }
 };
 
 export const Selected = Template.bind({});
