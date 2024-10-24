@@ -31,8 +31,8 @@ export const Loading = Template.bind({});
 Loading.args = {
   ...Default.args,
 };
-Loading.play = async ({ args, canvasElement }) => {
-  const button = canvasElement.querySelector('.load-more-button');
+Loading.play = async ({ canvasElement }) => {
+  const button = canvasElement.querySelector('.load-more-button') as HTMLElement;
   button.click();
 };
 
@@ -41,7 +41,7 @@ EndOfList.args = {
   items: Array.from({ length: 5 }, (_, i) => `Item ${i + 1}`),
   batchSize: 5,
 };
-EndOfList.play = async ({ args, canvasElement }) => {
-  const button = canvasElement.querySelector('.load-more-button');
+EndOfList.play = async ({ canvasElement }) => {
+  const button = canvasElement.querySelector('.load-more-button') as HTMLElement;
   button.click();
 };
