@@ -1,4 +1,5 @@
 import SearchInputWithFilterOptions from './SearchInputWithFilterOptions.vue';
+import {Meta, StoryFn} from '@storybook/vue3';
 
 export default {
   component: SearchInputWithFilterOptions,
@@ -10,9 +11,9 @@ export default {
     filtersActive: { control: { type: 'boolean' } },
     noResults: { control: { type: 'boolean' } },
   },
-};
+} as Meta<typeof SearchInputWithFilterOptions>
 
-const Template = (args) => ({
+const Template:StoryFn<typeof SearchInputWithFilterOptions> = (args) => ({
   components: { SearchInputWithFilterOptions },
   setup() {
     return { args };
