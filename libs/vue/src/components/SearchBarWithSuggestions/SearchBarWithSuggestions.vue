@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
   name: 'SearchBarWithSuggestions',
@@ -41,6 +41,7 @@ export default defineComponent({
       filteredSuggestions,
       showSuggestions,
       handleSearch,
+      updateSuggestions,
     };
   },
 });
