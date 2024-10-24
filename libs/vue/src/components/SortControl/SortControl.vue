@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'SortControl',
@@ -48,7 +48,7 @@ export default defineComponent({
       class="sort-button"
       :class="{ disabled: disabled }"
       @click="toggleSort(column)"
-      aria-disabled="disabled"
+      :aria-disabled="disabled"
       role="button"
     >
       {{ column }} <span>{{ getSortIcon(column) }}</span>
