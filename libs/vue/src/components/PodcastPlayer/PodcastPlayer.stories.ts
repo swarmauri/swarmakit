@@ -6,7 +6,7 @@ export default {
   component: PodcastPlayer,
   tags: ['autodocs'],
   argTypes: {
-    episodes: { control: 'array' },
+    episodes: { control: 'object' },
   },
 } as Meta<typeof PodcastPlayer>;
 
