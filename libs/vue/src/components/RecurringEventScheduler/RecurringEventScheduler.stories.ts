@@ -20,15 +20,15 @@ Default.args = {};
 
 export const EventCreated = Template.bind({});
 EventCreated.args = {
-  feedbackMessage: 'Event created successfully!'
+  feedbackMessageProp: 'Event created successfully!'
 };
 
 export const RecurrenceSet = Template.bind({});
 RecurrenceSet.args = {
-  feedbackMessage: 'Recurrence set: weekly from 2023-11-01 to 2023-12-01'
+  feedbackMessageProp: 'Recurrence set: weekly from 2023-11-01 to 2023-12-01'
 };
 
 export const RecurrenceEnded = Template.bind({});
 RecurrenceEnded.args = {
-  feedbackMessage: 'Recurrence ended on 2023-12-01'
+  feedbackMessageProp: 'Recurrence ended on 2023-12-01'
 };
