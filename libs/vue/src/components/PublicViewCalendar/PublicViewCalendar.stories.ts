@@ -23,7 +23,7 @@ ViewOnly.args = {};
 
 export const EventDetailsShown = Template.bind({});
 EventDetailsShown.args = {
-  selectedEvent: {
+  selectedEventProp: {
     id: 1,
     title: 'Project Meeting',
     description: 'Discussing project scope.',
@@ -35,5 +35,5 @@ EventDetailsShown.args = {
 
 export const FilterApplied = Template.bind({});
 FilterApplied.args = {
-  selectedCategory: 'Work'
+  selectedCategoryProp: 'Work'
 };

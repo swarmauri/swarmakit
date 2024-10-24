@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref, computed, PropType } from 'vue';
 
 interface Event {
   id: number;
@@ -45,7 +45,17 @@ interface Event {
 
 export default defineComponent({
   name: 'PublicViewCalendar',
-  setup() {
+  props: {
+    selectedCategoryProp: {
+      type: String,
+      default:''
+    },
+    selectedEventProp: { 
+      type: Object as PropType<Event | null>,
+      default:null,
+    }
+  },
+  setup(props) {
     const events = ref<Event[]>([
       { id: 1, title: 'Project Meeting', description: 'Discussing project scope.', category: 'Work', location: 'Room 101', date: '2023-11-01' },
       { id: 2, title: 'Yoga Class', description: 'Morning yoga session.', category: 'Health', location: 'Gym', date: '2023-11-02' }
@@ -55,7 +65,7 @@ export default defineComponent({
     const locations = ref([...new Set(events.value.map(event => event.location))]);
     const selectedCategory = ref('');
     const selectedLocation = ref('');
-    const selectedEvent = ref<Event | null>(null);
+    const selectedEvent = ref<Event | null>(props.selectedEventProp);
 
     const filteredEvents = computed(() => {
       return events.value.filter(event => {
