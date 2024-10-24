@@ -32,8 +32,8 @@ export const GroupExpanded = Template.bind({});
 GroupExpanded.args = {
   ...Default.args,
 };
-GroupExpanded.play = async ({ args, canvasElement }) => {
-  const headers = canvasElement.querySelectorAll('.group-header');
+GroupExpanded.play = async ({ canvasElement }) => {
+  const headers = canvasElement.querySelectorAll('.group-header') as NodeListOf<HTMLElement>;
   headers.forEach(header => header.click());
 };
 
@@ -41,8 +41,8 @@ export const GroupCollapsed = Template.bind({});
 GroupCollapsed.args = {
   ...Default.args,
 };
-GroupCollapsed.play = async ({ args, canvasElement }) => {
-  const headers = canvasElement.querySelectorAll('.group-header');
+GroupCollapsed.play = async ({ canvasElement }) => {
+  const headers = canvasElement.querySelectorAll('.group-header') as NodeListOf<HTMLElement>;
   headers.forEach(header => header.click());
   headers.forEach(header => header.click());
 };
@@ -56,7 +56,7 @@ export const ItemSelected = Template.bind({});
 ItemSelected.args = {
   ...Default.args,
 };
-ItemSelected.play = async ({ args, canvasElement }) => {
-  const items = canvasElement.querySelectorAll('.list-item');
+ItemSelected.play = async ({ canvasElement }) => {
+  const items = canvasElement.querySelectorAll('.list-item') as NodeListOf<HTMLElement>;
   items[0].click();
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="hand" :class="{ full: isFull, maxLimit: maxLimitReached }">
     <div
-      v-for="(card, index) in hand"
+      v-for="(card) in hand"
       :key="card.id"
       class="card"
       :class="{ selected: selectedCards.includes(card.id) }"

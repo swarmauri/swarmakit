@@ -1,4 +1,5 @@
 import HandOfCards from './HandOfCards.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'component/Cards/HandOfCards',
@@ -8,9 +9,9 @@ export default {
     cards: { control: 'object' },
     maxCards: { control: 'number' },
   },
-};
+} as Meta <typeof HandOfCards>
 
-const Template = (args) => ({
+const Template:StoryFn<typeof HandOfCards> = (args) => ({
   components: { HandOfCards },
   setup() {
     return { args };
