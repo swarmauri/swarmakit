@@ -3,7 +3,7 @@
     class="notification"
     :class="notificationType"
     role="alert"
-    v-if="!isDismissed"
+    v-if="!localIsDismissed"
   >
     <span>{{ message }}</span>
     <button class="close-btn" @click="dismiss" aria-label="Dismiss notification">✖</button>
@@ -24,15 +24,19 @@ export default defineComponent({
       type: String,
       default: 'This is a notification message.',
     },
+    isDismissed: {
+      type: Boolean,
+      default: false,
+    }
   },
-  setup() {
-    const isDismissed = ref(false);
+  setup(props) {
+    const localIsDismissed = ref(props.isDismissed);
 
     const dismiss = () => {
-      isDismissed.value = true;
+      localIsDismissed.value = true;
     };
 
-    return { isDismissed, dismiss };
+    return { localIsDismissed, dismiss };
   },
 });
 </script>
