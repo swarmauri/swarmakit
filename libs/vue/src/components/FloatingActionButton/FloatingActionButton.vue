@@ -2,11 +2,11 @@
   <button
     class="floating-action-button"
     @click="toggleExpand"
-    :aria-expanded="isExpanded"
+    :aria-expanded="localIsExpanded"
   >
-    <span v-if="isExpanded" aria-hidden="true">✖</span>
+    <span v-if="localIsExpanded" aria-hidden="true">✖</span>
     <span v-else aria-hidden="true">+</span>
-    <span class="sr-only">{{ isExpanded ? 'Close menu' : 'Open menu' }}</span>
+    <span class="sr-only">{{ localIsExpanded ? 'Close menu' : 'Open menu' }}</span>
   </button>
 </template>
 
@@ -15,14 +15,20 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'FloatingActionButton',
-  setup() {
-    const isExpanded = ref(false);
+  props: {
+    isExpanded: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(props) {
+    const localIsExpanded = ref(props.isExpanded);
 
     const toggleExpand = () => {
-      isExpanded.value = !isExpanded.value;
+      localIsExpanded.value = !localIsExpanded.value;
     };
 
-    return { isExpanded, toggleExpand };
+    return { localIsExpanded, toggleExpand };
   },
 });
 </script>
