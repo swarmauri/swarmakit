@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import PokerTable from './PokerTable.vue';
 
 export default {
@@ -10,7 +10,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { PokerTable },
   setup() {
     return { args };
