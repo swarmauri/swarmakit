@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     question: { control: 'text' },
-    initialResponses: { control: 'array' },
+    initialResponses: { control: 'object' },
     resultsVisible: { control: 'boolean' },
     disabled: { control: 'boolean' },
   }
