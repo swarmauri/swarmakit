@@ -1,4 +1,5 @@
 import NumberInputWithIncrement from './NumberInputWithIncrement.vue';
+import { Meta, StoryFn } from '@storybook/vue3'
 
 export default {
   component: NumberInputWithIncrement,
@@ -15,9 +16,9 @@ export default {
       control: { type: 'boolean' },
     },
   },
-};
+} as Meta;
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { NumberInputWithIncrement },
   setup() {
     return { args };
