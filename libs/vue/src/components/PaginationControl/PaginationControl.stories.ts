@@ -1,12 +1,13 @@
 import PaginationControl from './PaginationControl.vue';
+import {Meta,StoryFn} from '@storybook/vue3';
 
 export default {
   title: 'components/Data/PaginationControl',
   component: PaginationControl,
   tags: ['autodocs'],
-};
+} as Meta<typeof PaginationControl>;
 
-const Template = (args: any) => ({
+const Template:StoryFn<typeof PaginationControl> = (args: any) => ({
   components: { PaginationControl },
   setup() {
     return { args };
