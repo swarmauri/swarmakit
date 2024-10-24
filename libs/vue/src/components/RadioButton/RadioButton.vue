@@ -6,8 +6,8 @@
         :checked="checked" 
         :disabled="disabled" 
         @change="onChange" 
-        aria-checked="checked" 
-        aria-disabled="disabled"
+        :aria-checked="checked" 
+        :aria-disabled="disabled"
       />
       <span class="radio-label"><slot></slot></span>
     </label>
