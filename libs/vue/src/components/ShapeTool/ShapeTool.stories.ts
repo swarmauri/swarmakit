@@ -1,5 +1,5 @@
 import ShapeTool from './ShapeTool.vue';
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   title: 'component/Drawing/ShapeTool',
@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { ShapeTool },
   setup() {
     return { args };
