@@ -1,4 +1,5 @@
 import RichTextEditor from './RichTextEditor.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: RichTextEditor,
@@ -7,9 +8,9 @@ export default {
   argTypes: {
     readonly: { control: { type: 'boolean' } },
   },
-};
+} as Meta<typeof RichTextEditor>
 
-const Template = (args) => ({
+const Template:StoryFn<typeof RichTextEditor> = (args) => ({
   components: { RichTextEditor },
   setup() {
     return { args };
