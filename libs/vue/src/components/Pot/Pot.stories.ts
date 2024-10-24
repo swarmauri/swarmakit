@@ -9,7 +9,7 @@ export default {
     layout: 'centered',
   },
   argTypes: {
-    chips: { control: 'array' },
+    chips: { control: 'object' },
     totalChips: { control: 'number' },
     isWon: { control: 'boolean' },
   },
