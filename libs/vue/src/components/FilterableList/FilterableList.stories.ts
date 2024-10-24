@@ -6,7 +6,7 @@ export default {
   component: FilterableList,
   tags: ['autodocs'],
   argTypes: {
-    items: { control: 'array' },
+    items: { control: 'object' },
   },
 } as Meta<typeof FilterableList>;
 
@@ -31,8 +31,10 @@ FilterApplied.args = {
 };
 FilterApplied.play = async ({ canvasElement }) => {
   const input = canvasElement.querySelector('input');
-  input.value = 'Banana';
-  input.dispatchEvent(new Event('input'));
+  if(input){
+    input.value = 'Banana';
+    input.dispatchEvent(new Event('input'));
+  }
 };
 
 export const NoResults = Template.bind({});
@@ -41,8 +43,10 @@ NoResults.args = {
 };
 NoResults.play = async ({ canvasElement }) => {
   const input = canvasElement.querySelector('input');
-  input.value = 'Zucchini';
-  input.dispatchEvent(new Event('input'));
+  if(input){
+    input.value = 'Zucchini';
+    input.dispatchEvent(new Event('input'));
+  }
 };
 
 export const ClearFilter = Template.bind({});
@@ -51,8 +55,10 @@ ClearFilter.args = {
 };
 ClearFilter.play = async ({ canvasElement }) => {
   const input = canvasElement.querySelector('input');
-  input.value = 'Banana';
-  input.dispatchEvent(new Event('input'));
-  const button = canvasElement.querySelector('button');
+  if(input){
+    input.value = 'Banana';
+    input.dispatchEvent(new Event('input'));
+  }
+  const button = canvasElement.querySelector('button') as HTMLElement;
   button.click();
 };
