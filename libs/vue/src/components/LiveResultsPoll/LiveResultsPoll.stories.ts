@@ -30,7 +30,7 @@ Default.args = {
     { text: 'Option 2', votes: 20 },
     { text: 'Option 3', votes: 30 }
   ],
-  initialValue: null,
+  initialValue: undefined,
   liveResultsVisible: false,
   closed: false
 };
