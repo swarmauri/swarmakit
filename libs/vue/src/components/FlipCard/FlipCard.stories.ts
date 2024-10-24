@@ -1,4 +1,5 @@
 import FlipCard from './FlipCard.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'component/Cards/FlipCard',
@@ -7,9 +8,9 @@ export default {
   argTypes: {
     disabled: { control: 'boolean' },
   },
-};
+} as Meta;
 
-const Template = (args) => ({
+const Template:StoryFn = (args) => ({
   components: { FlipCard },
   setup() {
     return { args };
