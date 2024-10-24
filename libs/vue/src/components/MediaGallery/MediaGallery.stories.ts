@@ -6,7 +6,7 @@ export default {
   component: MediaGallery,
   tags: ['autodocs'],
   argTypes: {
-    images: { control: 'array' },
+    images: { control: 'object' },
   },
 } as Meta<typeof MediaGallery>;
 
