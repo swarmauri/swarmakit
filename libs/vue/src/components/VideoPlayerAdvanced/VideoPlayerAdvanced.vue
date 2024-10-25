@@ -46,7 +46,7 @@ export default defineComponent({
       required: false,
     },
   },
-  setup(props) {
+  setup() {
     const isPlaying = ref(false);
     const isFullscreen = ref(false);
     const areSubtitlesOn = ref(true);
