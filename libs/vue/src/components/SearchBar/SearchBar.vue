@@ -31,12 +31,13 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const isFocused = ref(props.isFocused)
     const handleFocus = () => {
-      props.isFocused = true;
+      isFocused.value = true;
     };
 
     const handleBlur = () => {
-      props.isFocused = false;
+    isFocused.value = false;
     };
 
     return { handleFocus, handleBlur };
