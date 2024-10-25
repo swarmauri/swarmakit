@@ -9,9 +9,9 @@ export default {
     layout: 'centered',
   },
   argTypes: {
-    communityCards: { control: 'array' },
-    playerCards: { control: 'array' },
-    winningCards: { control: 'array' },
+    communityCards: { control: 'object' },
+    playerCards: { control: 'object' },
+    winningCards: { control: 'object' },
     isHidden: { control: 'boolean' },
   },
 } as Meta<typeof WinningHandDisplay>;
