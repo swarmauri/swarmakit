@@ -1,4 +1,5 @@
 import ValidationMessages from './ValidationMessages.vue';
+import {Meta,StoryFn} from '@storybook/vue3';
 
 export default {
   component: ValidationMessages,
@@ -10,9 +11,9 @@ export default {
       options: ['success', 'error', 'warning'] 
     },
   },
-};
+} as Meta<typeof ValidationMessages>
 
-const Template = (args) => ({
+const Template:StoryFn<typeof ValidationMessages> = (args) => ({
   components: { ValidationMessages },
   setup() {
     return { args };
