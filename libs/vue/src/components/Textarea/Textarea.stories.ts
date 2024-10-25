@@ -1,4 +1,5 @@
 import Textarea from './Textarea.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: Textarea,
@@ -8,9 +9,9 @@ export default {
     placeholder: { control: { type: 'text' } },
     disabled: { control: { type: 'boolean' } },
   },
-};
+} as Meta <typeof Textarea>;
 
-const Template = (args) => ({
+const Template:StoryFn<typeof Textarea> = (args) => ({
   components: { Textarea },
   setup() {
     return { args };

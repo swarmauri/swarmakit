@@ -26,7 +26,7 @@ export default defineComponent({
     },
   },
   emits: ['input'],
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const text = ref('');
 
     const onInput = () => {
