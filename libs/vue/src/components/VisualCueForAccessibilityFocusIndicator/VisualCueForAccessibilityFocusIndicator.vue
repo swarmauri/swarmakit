@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent,ref } from 'vue';
 
 export default defineComponent({
   name: 'VisualCueForAccessibilityFocusIndicator',
@@ -20,12 +20,13 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const isFocused = ref(props.isFocused);
     const handleFocus = () => {
-      props.isFocused = true;
+      isFocused.value = true;
     };
 
     const handleBlur = () => {
-      props.isFocused = false;
+      isFocused.value = false;
     };
 
     return { handleFocus, handleBlur };
