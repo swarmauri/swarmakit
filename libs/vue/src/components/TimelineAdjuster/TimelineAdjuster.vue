@@ -26,10 +26,16 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'TimelineAdjuster',
-  setup() {
+  props:{
+    feedbackMessage: {
+      type:String,
+      default: '',
+    }
+  },
+  setup(props) {
     const zoomLevel = ref(1);
     const timelineOffset = ref(0);
-    const feedbackMessage = ref('');
+    const feedbackMessage = ref(props.feedbackMessage);
     const isDragging = ref(false);
     const startDragX = ref(0);
     const hours = Array.from({ length: 24 }, (_, i) => i);
