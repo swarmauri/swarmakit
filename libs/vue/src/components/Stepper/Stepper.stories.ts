@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     steps: {
-      control: 'array',
+      control: 'object',
     },
   },
 } as Meta<typeof Stepper>;
