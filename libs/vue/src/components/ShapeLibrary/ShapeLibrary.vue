@@ -45,6 +45,7 @@ export default defineComponent({
 
     const onDragStart = (shape: Shape) => {
       // Logic to handle drag start
+      console.log(shape)
     };
 
     return {
