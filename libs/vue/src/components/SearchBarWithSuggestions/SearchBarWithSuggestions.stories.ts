@@ -1,12 +1,13 @@
 import SearchBarWithSuggestions from './SearchBarWithSuggestions.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   title: 'components/Data/SearchBarWithSuggestions',
   component: SearchBarWithSuggestions,
   tags: ['autodocs'],
-};
+} as Meta<typeof SearchBarWithSuggestions>
 
-const Template = (args: any) => ({
+const Template:StoryFn<typeof SearchBarWithSuggestions> = (args) => ({
   components: { SearchBarWithSuggestions },
   setup() {
     return { args };
