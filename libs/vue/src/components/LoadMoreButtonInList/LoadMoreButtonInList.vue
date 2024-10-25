@@ -10,7 +10,7 @@
       @click="loadMore"
       :disabled="isLoading"
       class="load-more-button"
-      aria-busy="isLoading"
+      :aria-busy="isLoading"
     >
       <span v-if="isLoading">Loading...</span>
       <span v-else>Load More</span>
