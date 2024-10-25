@@ -1,4 +1,5 @@
 import RangeSlider from './RangeSlider.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: RangeSlider,
@@ -15,9 +16,9 @@ export default {
       control: { type: 'select', options: ['left', 'center', 'right'] }
     },
   },
-};
+} as Meta<typeof RangeSlider>
 
-const Template = (args) => ({
+const Template:StoryFn<typeof RangeSlider> = (args) => ({
   components: { RangeSlider },
   setup() {
     return { args };
