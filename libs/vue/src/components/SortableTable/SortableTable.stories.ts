@@ -39,26 +39,32 @@ export const Sorting = Template.bind({});
 Sorting.args = {
   ...Default.args,
 };
-Sorting.play = async ({ args, canvasElement }) => {
-  const th = canvasElement.querySelector('th');
-  th.click();
+Sorting.play = async ({ canvasElement }) => {
+  const th = canvasElement.querySelector('th') as HTMLElement;
+  if(th){
+    th.click();
+  }
 };
 
 export const Filtering = Template.bind({});
 Filtering.args = {
   ...Default.args,
 };
-Filtering.play = async ({ args, canvasElement }) => {
-  const input = canvasElement.querySelector('.filter-input');
-  input.value = 'Alice';
-  input.dispatchEvent(new Event('input'));
+Filtering.play = async ({ canvasElement }) => {
+  const input = canvasElement.querySelector('.filter-input') as HTMLInputElement;
+  if(input){
+    input.value = 'Alice';
+    input.dispatchEvent(new Event('input')); 
+  }
 };
 
 export const RowSelection = Template.bind({});
 RowSelection.args = {
   ...Default.args,
 };
-RowSelection.play = async ({ args, canvasElement }) => {
-  const row = canvasElement.querySelector('tbody tr:nth-child(1)');
-  row.click();
+RowSelection.play = async ({ canvasElement }) => {
+  const row = canvasElement.querySelector('tbody tr:nth-child(1)') as HTMLElement;
+  if(row){
+    row.click();
+  }
 };

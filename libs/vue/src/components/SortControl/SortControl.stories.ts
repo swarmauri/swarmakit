@@ -1,12 +1,13 @@
 import SortControl from './SortControl.vue';
+import {Meta,StoryFn} from '@storybook/vue3';
 
 export default {
   title: 'components/Data/SortControl',
   component: SortControl,
   tags: ['autodocs'],
-};
+} as Meta;
 
-const Template = (args: any) => ({
+const Template:StoryFn = (args: any) => ({
   components: { SortControl },
   setup() {
     return { args };
