@@ -32,7 +32,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup() {
     const isPlaying = ref(false);
     const isFullscreen = ref(false);
     const videoElement = ref<HTMLVideoElement | null>(null);
