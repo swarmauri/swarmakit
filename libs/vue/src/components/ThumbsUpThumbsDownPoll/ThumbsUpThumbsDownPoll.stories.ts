@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3';
 import ThumbsUpThumbsDownPoll from './ThumbsUpThumbsDownPoll.vue';
 
 export default {
@@ -13,7 +13,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { ThumbsUpThumbsDownPoll },
   setup() {
     return { args };
