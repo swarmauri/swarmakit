@@ -1,4 +1,5 @@
 import ToggleSwitch from './ToggleSwitch.vue';
+import {Meta,StoryFn} from '@storybook/vue3'
 
 export default {
   component: ToggleSwitch,
@@ -8,9 +9,9 @@ export default {
     checked: { control: { type: 'boolean' } },
     disabled: { control: { type: 'boolean' } },
   },
-};
+} as Meta<typeof ToggleSwitch>;
 
-const Template = (args) => ({
+const Template:StoryFn<typeof ToggleSwitch> = (args) => ({
   components: { ToggleSwitch },
   setup() {
     return { args };
