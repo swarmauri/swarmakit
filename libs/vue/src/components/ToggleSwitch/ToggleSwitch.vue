@@ -5,7 +5,7 @@
       :checked="checked" 
       :disabled="disabled" 
       @change="onToggle" 
-      aria-checked="checked"
+      :aria-checked="checked"
       role="switch"
     />
     <span class="slider"></span>
@@ -28,7 +28,7 @@ export default defineComponent({
     },
   },
   emits: ['change'],
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const onToggle = (event: Event) => {
       emit('change', (event.target as HTMLInputElement).checked);
     };
