@@ -69,7 +69,7 @@ npm install
 
 replacing `my-svelte-app` with your project's name
 
-## Install Swarmakit Libraries
+## 3. Install Swarmakit Libraries
 
 Install the Swarmakit component libraries for each framework as needed:
 
