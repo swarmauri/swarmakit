@@ -66,7 +66,7 @@ export default tseslint.config({
 
 ## Installation
 
-Install the library through npm:
+Install the `@swarmakit/react` library through npm:
 
 ```bash
 npm install @swarmakit/react
@@ -99,7 +99,7 @@ cd my-react-app
 
 ### Importing Components and Basic Usage in React
 
-1. **Import Components:** To use a component in your application, import it from the library as shown below:
+1. **Import Components:** To use a component in your application, import it from the `@swarmakit/react` library as shown below:
 
     ```javascript
     import { ComponentName } from '@swarmakit/react'
