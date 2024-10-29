@@ -70,4 +70,4 @@ cd my-vue-app
    <template>
    ```
 
-3. **Available Components:** Swarmakit Vue includes a vast library of components. See the full list in the [components folder on GitHub](https://github.com/swarmauri/swarmakit/tree/master/libs/vue/src/components).
+>**Available Components:** Swarmakit Vue includes a vast library of components. See the full list in the [components folder on GitHub](https://github.com/swarmauri/swarmakit/tree/master/libs/vue/src/components).
