@@ -117,4 +117,4 @@ cd my-react-app
    }
    ```
 
-3. **Available Components:** Swarmakit React includes a vast library of components. See the full list in the [stories folder on GitHub](https://github.com/swarmauri/swarmakit/tree/master/libs/react/src/stories).
+> **Available Components:** Swarmakit React includes a vast library of components. See the full list in the [stories folder on GitHub](https://github.com/swarmauri/swarmakit/tree/master/libs/react/src/stories).
