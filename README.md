@@ -85,4 +85,4 @@ For framework specific setup and best practices please refer to their specific d
 
 # Want to help?
 
-If you want to contribute to Swarmakit, read up on our [guidelines for contributing](https://github.com/swarmauri/swarmauri-sdk/blob/master/contributing.md) that will help you get started.
+If you want to contribute to Swarmakit, read up on our [guidelines for contributing](https://github.com/swarmauri/swarmakit/blob/master/CONTRIBUTING.md) that will help you get started.
