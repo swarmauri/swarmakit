@@ -21,7 +21,7 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 
 ## Installation
 
-Install the library through npm:
+Install the `@swarmakit/vue` library through npm:
 
 ```bash
 npm install @swarmakit/vue
