@@ -6,10 +6,10 @@ export default {
   component: DegreeImageViewer,
   tags: ['autodocs'],
   argTypes: {
-    images: { control: 'array' },
+    images: { control: 'object' },
     rotationSpeed: { control: 'number' },
   },
-} as unknown as Meta<typeof DegreeImageViewer>; // Cast to unknown first, then Meta
+} as Meta<typeof DegreeImageViewer>; // Cast to unknown first, then Meta
 
 
 const Template: StoryFn<typeof DegreeImageViewer> = (args) => ({
