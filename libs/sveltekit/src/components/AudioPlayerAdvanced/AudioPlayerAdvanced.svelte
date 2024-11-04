@@ -8,6 +8,7 @@
   export let playbackRate: number = 1;
 
   let audioElement: HTMLAudioElement;
+  let duration:number = 0;
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -42,6 +43,9 @@
   onMount(() => {
     audioElement.volume = volume;
     audioElement.playbackRate = playbackRate;
+    audioElement.addEventListener('loadedmetadata', () => {
+      duration = audioElement.duration;
+    });
   });
 </script>
 
@@ -53,7 +57,7 @@
   <button on:click={toggleMute} on:keydown={(e) => e.key === 'Enter' && toggleMute()} aria-label={isMuted ? 'Unmute' : 'Mute'}>
     {#if isMuted}Unmute{:else}Mute{/if}
   </button>
-  <input type="range" min="0" max="{audioElement.duration}" step="0.1" on:input={handleSeek} aria-label="Seek Control" />
+  <input type="range" min="0" max="{duration}" step="0.1" on:input={handleSeek} aria-label="Seek Control" />
   <input type="range" min="0" max="1" step="0.01" value={volume} on:input={handleVolumeChange} aria-label="Volume Control" />
   <input type="range" min="0.5" max="2" step="0.1" value={playbackRate} on:input={handlePlaybackRateChange} aria-label="Speed Control" />
 </div>
