@@ -1,5 +1,5 @@
 import DegreeImageViewer from './360-DegreeImageViewer.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Media/360-DegreeImageViewer',
@@ -7,7 +7,7 @@ const meta: Meta = {
   tags: ['autodocs'],
   argTypes: {
     imageUrls: {
-      control: { type: 'array' },
+      control: { type: 'object' },
     },
     isLoading: {
       control: { type: 'boolean' },
@@ -23,7 +23,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   Component: DegreeImageViewer,
   props: args,
 });
