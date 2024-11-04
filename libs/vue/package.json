@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "quill": "^2.0.2",
     "vue": "^3.5.10"
   },
   "devDependencies": {
