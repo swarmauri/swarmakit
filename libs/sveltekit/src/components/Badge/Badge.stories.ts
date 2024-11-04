@@ -1,5 +1,5 @@
 import Badge from './Badge.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta,StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Badge> = {
   title: 'component/Indicators/Badge',
@@ -27,25 +27,25 @@ const meta: Meta<Badge> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn = (args)=>({
+  Component: Badge,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    type: 'default',
-    label: 'Default Badge',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  type:'default',
+  label:'Default Badge.',
 };
 
-export const Notification: Story = {
-  args: {
-    type: 'notification',
-    label: '3',
-  }
+export const Notification = Template.bind({});
+Notification.args = {
+  type:'notification',
+  label:'3',
 };
 
-export const StatusIndicator: Story = {
-  args: {
-    type: 'status',
-    label: 'Online',
-  }
+export const StatusIndicator = Template.bind({});
+StatusIndicator.args = {
+  type:'status',
+  label:'Online',
 };
