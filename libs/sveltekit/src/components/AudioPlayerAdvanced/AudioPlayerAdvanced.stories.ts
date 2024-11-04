@@ -1,5 +1,5 @@
 import AudioPlayerAdvanced from './AudioPlayerAdvanced.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Media/AudioPlayerAdvanced',
@@ -26,7 +26,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   Component: AudioPlayerAdvanced,
   props: args,
 });
