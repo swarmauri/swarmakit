@@ -1,5 +1,5 @@
 import Accordion from './Accordion.svelte';
-import type { Meta, StoryObj, StoryFn } from '@storybook/svelte';
+import type { Meta,StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Accordion> = {
   title: 'component/Lists/Accordion',
@@ -24,8 +24,6 @@ const meta: Meta<Accordion> = {
 };
 
 export default meta;
-
-type Story = StoryObj<typeof meta>;
 
 const Template:StoryFn = (args) => ({
   Component: Accordion,
