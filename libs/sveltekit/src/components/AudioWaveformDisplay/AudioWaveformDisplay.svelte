@@ -3,7 +3,7 @@
 
   export let src: string = '';
   export let isPlaying: boolean = false;
-  export let isLoading: boolean = false;
+  export const isLoading: boolean = false;
   export let currentTime: number = 0;
   export let duration: number = 0;
 
