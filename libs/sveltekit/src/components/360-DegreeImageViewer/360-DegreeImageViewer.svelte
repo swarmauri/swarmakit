@@ -7,7 +7,7 @@
   export let isZoomed: boolean = false;
 
   let currentIndex = 0;
-  let interval: NodeJS.Timer;
+  let interval: ReturnType<typeof setInterval>;
   let zoomLevel = 1;
 
   const startRotation = () => {
@@ -33,7 +33,7 @@
   });
 </script>
 
-<div class="viewer-container" aria-label="360 Degree Image Viewer" role="region" tabindex="0" on:click={toggleZoom} on:keydown={(e) => e.key === 'Enter' && toggleZoom()}>
+<div role="button" class="viewer-container" aria-label="360 Degree Image Viewer" tabindex="0" on:click={toggleZoom} on:keydown={(e) => e.key === 'Enter' && toggleZoom()}>
   {#if isLoading}
     <div class="loading" role="status" aria-live="polite">Loading...</div>
   {:else}
