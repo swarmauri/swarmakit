@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  vue-storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - LIBRARY=vue
+    expose:
+      - 80
+    networks:
+      - dockernet
+
+  sveltekit-storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - LIBRARY=sveltekit
+    expose:
+      - 80
+    networks:
+      - dockernet
+
+  react-storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - LIBRARY=react
+    expose:
+      - 80
+    networks:
+      - dockernet
+
+  nginxproxymanager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    expose:
+      - 81
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - ./mnt/data/nginx-proxy-manager:/data
+      - ./mnt/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    networks:
+      - dockernet
+
+networks:
+  dockernet:
+    driver: bridge
+
