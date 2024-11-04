@@ -18,7 +18,7 @@
     {title}
   </button>
   {#if isOpen}
-    <div id="accordion-content" class="accordion-content" tabindex="0">
+    <div id="accordion-content" class="accordion-content">
       {content}
     </div>
   {/if}
