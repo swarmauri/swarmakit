@@ -1,5 +1,5 @@
 import ActivityIndicators from './ActivityIndicators.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta,StoryFn } from '@storybook/svelte';
 
 const meta: Meta<ActivityIndicators> = {
   title: 'component/Indicators/ActivityIndicators',
@@ -26,28 +26,27 @@ const meta: Meta<ActivityIndicators> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn = (args) => ({
+  Component: ActivityIndicators,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    state: 'loading',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  state: 'loading',
 };
 
-export const Loading: Story = {
-  args: {
-    state: 'loading',
-  }
+export const Loading = Template.bind({});
+Loading.args = {
+  state:'loading',
 };
 
-export const Success: Story = {
-  args: {
-    state: 'success',
-  }
+export const Success = Template.bind({});
+Success.args = {
+  state:'success',
 };
 
-export const Error: Story = {
-  args: {
-    state: 'error',
-  }
+export const Error = Template.bind({});
+Error.args = {
+  state:'error',
 };
