@@ -1,5 +1,5 @@
 import Accordion from './Accordion.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryObj, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Accordion> = {
   title: 'component/Lists/Accordion',
@@ -27,37 +27,38 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    isOpen: false,
-    title: 'Accordion Title',
-    content: 'Accordion content goes here.'
-  }
-};
+const Template:StoryFn = (args) => ({
+  Component: Accordion,
+  props:args,
+})
 
-export const Open: Story = {
-  args: {
-    isOpen: true,
-    title: 'Accordion Title',
-    content: 'Accordion content goes here.'
-  }
-};
+export const Default = Template.bind({});
+Default.args = {
+  isOpen:false,
+  title:'Accordion Title',
+  content:'Accordion content goes here.'
+}
 
-export const Closed: Story = {
-  args: {
-    isOpen: false,
-    title: 'Accordion Title',
-    content: 'Accordion content goes here.'
-  }
-};
+export const Open = Template.bind({});
+Open.args = {
+  isOpen:true,
+  title:'Accordion Title',
+  content:'Accordion content goes here.'
+}
 
-export const Hover: Story = {
-  args: {
-    isOpen: false,
-    title: 'Accordion Title',
-    content: 'Accordion content goes here.'
-  },
-  parameters: {
-    pseudo: { hover: true }
-  }
+export const Closed = Template.bind({});
+Closed.args = {
+  isOpen:false,
+  title:'Accordion Title',
+  content:'Accordion content goes here.'
+}
+
+export const Hover = Template.bind({});
+Hover.args = {
+  isOpen:false,
+  title: 'Accordion Title',
+  content: 'Accordion content goes here.'
 };
+Hover.parameters = {
+  pseudo:{hover:true}
+}
