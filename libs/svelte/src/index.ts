@@ -33,7 +33,7 @@ export { default as ImageSlider } from './components/ImageSlider/ImageSlider.sve
 export { default as InteractivePollResults } from './components/InteractivePollResults/InteractivePollResults.svelte';
 export { default as LoadingBarsWithSteps } from './components/LoadingBarsWithSteps/LoadingBarsWithSteps.svelte';
 export { default as LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner.svelte';
-export { default as LoadmorebuttoninList } from './components/LoadmorebuttoninList/LoadmorebuttoninList.svelte';
+
 export { default as MultiselectList } from './components/MultiselectList/MultiselectList.svelte';
 export { default as NotificationBellIcon } from './components/NotificationBellIcon/NotificationBellIcon.svelte';
 export { default as NumberedList } from './components/NumberedList/NumberedList.svelte';
