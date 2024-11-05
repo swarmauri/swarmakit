@@ -1,5 +1,5 @@
 import BadgeWithCounts from './BadgeWithCounts.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryObj, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<BadgeWithCounts> = {
   title: 'component/Indicators/BadgeWithCounts',
@@ -26,30 +26,31 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    count: 5,
-    maxCount: 99,
-  }
+const Template:StoryFn = (args) => ({
+  Component: BadgeWithCounts,
+  props:args,
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  count: 0,
+  maxCount: 99,
 };
 
-export const Zero: Story = {
-  args: {
-    count: 0,
-    maxCount: 99,
-  }
+export const Zero = Template.bind({});
+Zero.args = {
+  count: 0,
+  maxCount: 99,
 };
 
-export const Active: Story = {
-  args: {
-    count: 42,
-    maxCount: 99,
-  }
-};
+export const Active = Template.bind({});
+Active.args = {
+  count: 43,
+  maxCount: 99,
+}
 
-export const Overflow: Story = {
-  args: {
-    count: 150,
-    maxCount: 99,
-  }
-};
+export const Overflow = Template.bind({});
+Overflow.args = {
+  count: 150,
+  maxCount: 99, 
+}
