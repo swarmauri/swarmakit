@@ -14,6 +14,9 @@
       class="card {card.selected ? 'selected' : ''} {card.disabled ? 'disabled' : ''}" 
       on:click={() => selectCard(card)} 
       aria-disabled={card.disabled}
+      role ='button'
+      tabindex = "0"
+      on:keydown={(e)=> e.key === 'Enter' && selectCard(card)} 
     >
       <h2>{card.title}</h2>
       <p>{card.description}</p>
