@@ -1,5 +1,4 @@
 export { default as CheckList } from './components/CheckList/CheckList.svelte';
-export { default as DegreeImageViewer } from './components/360-DegreeImageViewer/360-DegreeImageViewer.svelte';
 export { default as Accordion } from './components/Accordion/Accordion.svelte';
 export { default as ActionableList } from './components/ActionableList/ActionableList.svelte';
 export { default as ActivityIndicators } from './components/ActivityIndicators/ActivityIndicators.svelte';
