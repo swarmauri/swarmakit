@@ -46,7 +46,7 @@ export { default as ProgressCircle } from './components/ProgressCircle/ProgressC
 export { default as RadioButton } from './components/RadioButton/RadioButton.svelte';
 export { default as RangeSlider } from './components/RangeSlider/RangeSlider.svelte';
 export { default as RatingStars } from './components/RatingStars/RatingStars.svelte';
-export { default as RichTextEditor } from './components/RichTextEditor/RichTextEditor.svelte';
+//export { default as RichTextEditor } from './components/RichTextEditor/RichTextEditor.svelte';
 export { default as ScrollableList } from './components/ScrollableList/ScrollableList.svelte';
 export { default as SearchBar } from './components/SearchBar/SearchBar.svelte';
 export { default as SearchInputWithFilterOptions } from './components/SearchInputWithFilterOptions/SearchInputWithFilterOptions.svelte';
