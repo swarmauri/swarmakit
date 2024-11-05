@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/sveltekit";
+import type { StorybookConfig } from "@storybook/svelte";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|ts|svelte)"],
@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
   ],
   framework: {
-    name: "@storybook/sveltekit",
+    name: "@storybook/svelte",
     options: {},
   },
 };
