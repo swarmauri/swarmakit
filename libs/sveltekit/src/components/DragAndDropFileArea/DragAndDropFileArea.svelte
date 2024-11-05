@@ -50,7 +50,8 @@
   on:dragover={handleDragOver}
   on:dragleave={handleDragLeave}
   on:drop={handleDrop}
-  role="region"
+  aria-disabled={disabled}
+  role="group"
 >
   <input
     type="file"
