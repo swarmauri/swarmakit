@@ -1,5 +1,5 @@
 import BatteryLevelIndicator from './BatteryLevelIndicator.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<BatteryLevelIndicator> = {
   title: 'component/Indicators/BatteryLevelIndicator',
@@ -24,39 +24,37 @@ const meta: Meta<BatteryLevelIndicator> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn = (args) => ({
+  Component: BatteryLevelIndicator,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    level: 50,
-    isCharging: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  level:50,
+  isCharging:false,
 };
 
-export const Charging: Story = {
-  args: {
-    level: 50,
-    isCharging: true,
-  }
+export const Charging = Template.bind({});
+Charging.args = {
+  level:50,
+  isCharging:true,
 };
 
-export const Full: Story = {
-  args: {
-    level: 100,
-    isCharging: false,
-  }
+export const Full = Template.bind({});
+Full.args = {
+  level:100,
+  isCharging:false,
 };
 
-export const LowBattery: Story = {
-  args: {
-    level: 20,
-    isCharging: false,
-  }
+export const LowBattery = Template.bind({});
+LowBattery.args = {
+  level:20,
+  isCharging:false,
 };
 
-export const Critical: Story = {
-  args: {
-    level: 5,
-    isCharging: false,
-  }
+export const Critical = Template.bind({});
+Critical.args = {
+  level:5,
+  isCharging:false,
 };
