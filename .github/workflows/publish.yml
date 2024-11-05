@@ -90,6 +90,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # Publish Svelte Package
+      - name: Publish Svelte Package
+        run: |
+          cd libs/svelte
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       # Publish Vue Package
       - name: Publish Vue Package
         run: |
@@ -97,3 +105,5 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
