@@ -1,5 +1,5 @@
 import ColorPicker from './ColorPicker.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<ColorPicker> = {
   title: 'component/Forms/ColorPicker',
@@ -24,25 +24,25 @@ const meta: Meta<ColorPicker> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<ColorPicker> = (args) => ({
+  Component: ColorPicker,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    color: '#000000',
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  'color': '#000000',
+  disabled:false,
 };
 
-export const Selected: Story = {
-  args: {
-    color: '#ff5733',
-    disabled: false,
-  }
+export const Selected = Template.bind({});
+Selected.args = {
+  color:'#ff5733',
+  disabled:false,
 };
 
-export const Disabled: Story = {
-  args: {
-    color: '#000000',
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  color:'#000000',
+  disabled:true,
 };
