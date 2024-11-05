@@ -1,5 +1,5 @@
 import BadgeWithCounts from './BadgeWithCounts.svelte';
-import type { Meta, StoryObj, StoryFn } from '@storybook/svelte';
+import type { Meta,StoryFn } from '@storybook/svelte';
 
 const meta: Meta<BadgeWithCounts> = {
   title: 'component/Indicators/BadgeWithCounts',
@@ -23,8 +23,6 @@ const meta: Meta<BadgeWithCounts> = {
 };
 
 export default meta;
-
-type Story = StoryObj<typeof meta>;
 
 const Template:StoryFn = (args) => ({
   Component: BadgeWithCounts,
