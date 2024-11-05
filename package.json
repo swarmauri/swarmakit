@@ -5,12 +5,12 @@
   "workspaces": [
     "libs/react",
     "libs/vue",
-    "libs/sveltekit"
+    "libs/svelte"
   ],
   "dependencies": {
     "@swarmakit/react": "file:libs/react",
     "@swarmakit/vue": "file:libs/vue",
-    "@swarmakit/sveltekit": "file:libs/sveltekit"
+    "@swarmakit/svelte": "file:libs/svelte"
   },
   "scripts": {
     "build": "pnpm -r run build",
