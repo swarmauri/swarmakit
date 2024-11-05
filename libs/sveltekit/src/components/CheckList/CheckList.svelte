@@ -24,8 +24,9 @@
         on:change={() => toggleCheck(item)} 
         disabled={item.disabled}
         aria-checked={item.partiallyChecked ? 'mixed' : item.checked}
+        id={`checkbox-${item.id}`}
       />
-      <label>{item.label}</label>
+      <label for={`checkbox-${item.id}`}>{item.label}</label>
     </li>
   {/each}
 </ul>
