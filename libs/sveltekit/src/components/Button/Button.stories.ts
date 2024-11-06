@@ -1,5 +1,5 @@
 import Button from './Button.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Button> = {
   title: 'component/Buttons/Button',
@@ -26,45 +26,44 @@ const meta: Meta<Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Button> = (args) => ({
+  Component:Button,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    label: 'Button',
-    type: 'primary',
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  label:'Button',
+  type:'primary',
+  disabled:false,
 };
 
-export const Primary: Story = {
-  args: {
-    label: 'Primary Button',
-    type: 'primary',
-  }
+export const Primary = Template.bind({});
+Primary.args = {
+  label:'Primary Button',
+  type:'primary',
+  disabled:false,
 };
 
-export const Secondary: Story = {
-  args: {
-    label: 'Secondary Button',
-    type: 'secondary',
-  }
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label:'Secondary Button',
+  type:'secondary',
+  disabled:false,
 };
 
-export const Disabled: Story = {
-  args: {
-    label: 'Disabled Button',
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label:'Disabled Button',
+  disabled:true,
 };
 
-export const Hover: Story = {
-  args: {
-    label: 'Hover Button',
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  label:'Hover Button',
 };
 
-export const Active: Story = {
-  args: {
-    label: 'Active Button',
-  }
+export const Active = Template.bind({});
+Active.args = {
+  label:'Active Button',
 };
