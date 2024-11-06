@@ -1,5 +1,5 @@
 import DateAndTimePicker from './DateAndTimePicker.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<DateAndTimePicker> = {
   title: 'component/Forms/DateAndTimePicker',
@@ -25,36 +25,35 @@ const meta: Meta<DateAndTimePicker> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<DateAndTimePicker> = (args) => ({
+  Component: DateAndTimePicker,
+  props: args,
+});
 
-export const Default: Story = {
-  args: {
-    date: '',
-    time: '',
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  date: '',
+  time: '',
+  disabled:false,
 };
 
-export const DateSelected: Story = {
-  args: {
-    date: '2023-10-01',
-    time: '',
-    disabled: false,
-  }
+export const DateSelected = Template.bind({});
+DateSelected.args = {
+  date: '2023-10-01',
+  time: '',
+  disabled:false,
 };
 
-export const TimeSelected: Story = {
-  args: {
-    date: '',
-    time: '12:00',
-    disabled: false,
-  }
+export const TimeSelected = Template.bind({});
+TimeSelected.args = {
+  date: '',
+  time: '12:00',
+  disabled:false,
 };
 
-export const Disabled: Story = {
-  args: {
-    date: '',
-    time: '',
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  date: '',
+  time: '',
+  disabled:true,
 };
