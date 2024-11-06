@@ -1,5 +1,6 @@
 import FilterableList from './FilterableList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
+import { userEvent, within } from '@storybook/test'
 
 const meta: Meta<FilterableList> = {
   title: 'component/Lists/FilterableList',
@@ -23,45 +24,44 @@ const meta: Meta<FilterableList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<FilterableList> = (args) => ({
+  Component:FilterableList,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry']
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'],
 };
 
-export const FilterApplied: Story = {
-  args: {
-    items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry']
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByPlaceholderText('Filter items...');
-    await userEvent.type(input, 'Ba');
-  }
+export const FilterApplied = Template.bind({});
+FilterApplied.args = {
+  items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'],
+};
+FilterApplied.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+  const input = canvas.getByPlaceholderText('Filter items...');
+  await userEvent.type(input, 'Ba');
 };
 
-export const NoResults: Story = {
-  args: {
-    items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry']
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByPlaceholderText('Filter items...');
-    await userEvent.type(input, 'Zucchini');
-  }
+export const NoResults = Template.bind({});
+NoResults.args = {
+  items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'],
+};
+NoResults.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+  const input = canvas.getByPlaceholderText('Filter items...');
+  await userEvent.type(input, 'Zucchini');
 };
 
-export const ClearFilter: Story = {
-  args: {
-    items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry']
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByPlaceholderText('Filter items...');
-    await userEvent.type(input, 'Ch');
-    const clearButton = canvas.getByRole('button', { name: 'Clear filter' });
-    await userEvent.click(clearButton);
-  }
+export const ClearFilter = Template.bind({});
+ClearFilter.args = {
+  items: ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'],
+};
+ClearFilter.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+  const input = canvas.getByPlaceholderText('Filter items...');
+  await userEvent.type(input, 'Ch');
+  const clearButton = canvas.getByRole('button', { name: 'Clear filter' });
+  await userEvent.click(clearButton);
 };
