@@ -1,7 +1,7 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
 
-  export interface Group {
+  interface Group {
     title: string;
     items: string[];
     expanded?: boolean;
@@ -31,7 +31,10 @@
             <li 
               class:selected={selectedItem === item} 
               on:click={() => selectItem(item)} 
-              on:mouseover={() => selectItem(item)}>
+              on:keydown={(e)=>{if(e.key === 'Enter' || e.key === ' '){selectItem(item)}}}
+              on:mouseover={() => selectItem(item)}
+              on:focus= {()=> selectItem(item)}
+              role='menuitem'>
               {item}
             </li>
           {/each}
