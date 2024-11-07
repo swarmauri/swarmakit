@@ -1,5 +1,5 @@
 import ImageSlider from './ImageSlider.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Media/ImageSlider',
@@ -7,7 +7,7 @@ const meta: Meta = {
   tags: ['autodocs'],
   argTypes: {
     images: {
-      control: { type: 'array' },
+      control: { type: 'object' },
     },
     activeIndex: {
       control: { type: 'number' },
@@ -17,7 +17,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   Component: ImageSlider,
   props: args,
 });

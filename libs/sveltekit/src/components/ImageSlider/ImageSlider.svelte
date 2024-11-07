@@ -19,7 +19,7 @@
   };
 </script>
 
-<div class="image-slider" role="region" aria-label="Image Slider" tabindex="0" on:keydown={handleKeydown}>
+<div class="image-slider" role="menu" aria-label="Image Slider" tabindex="0" on:keydown={handleKeydown}>
   {#if images.length > 0}
     <img src={images[activeIndex]} alt={`Image ${activeIndex + 1}`} class="slider-image" />
     <div class="controls">
