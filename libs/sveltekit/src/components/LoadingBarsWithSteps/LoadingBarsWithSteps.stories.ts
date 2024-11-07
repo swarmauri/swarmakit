@@ -1,5 +1,5 @@
 import LoadingBarsWithSteps from './LoadingBarsWithSteps.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<LoadingBarsWithSteps> = {
   title: 'component/Indicators/LoadingBarsWithSteps',
@@ -23,44 +23,43 @@ const meta: Meta<LoadingBarsWithSteps> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<LoadingBarsWithSteps> = (args) => ({
+  Component:LoadingBarsWithSteps,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'active' },
-      { label: 'Step 2', status: 'inactive' },
-      { label: 'Step 3', status: 'inactive' },
-    ],
-  }
+export const Default = Template.bind({});
+Default.args = {
+  steps: [
+    { label: 'Step 1', status: 'active' },
+    { label: 'Step 2', status: 'inactive' },
+    { label: 'Step 3', status: 'inactive' },
+  ],
 };
 
-export const StepActive: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'completed' },
-      { label: 'Step 2', status: 'active' },
-      { label: 'Step 3', status: 'inactive' },
-    ],
-  }
+export const StepActive = Template.bind({});
+StepActive.args = {
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'active' },
+    { label: 'Step 3', status: 'inactive' },
+  ],
 };
 
-export const StepCompleted: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'completed' },
-      { label: 'Step 2', status: 'completed' },
-      { label: 'Step 3', status: 'active' },
-    ],
-  }
+export const StepCompleted = Template.bind({});
+StepCompleted.args = {
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'completed' },
+    { label: 'Step 3', status: 'active' },
+  ],
 };
 
-export const StepInactive: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'completed' },
-      { label: 'Step 2', status: 'completed' },
-      { label: 'Step 3', status: 'inactive' },
-    ],
-  }
+export const StepInActive = Template.bind({});
+StepInActive.args = {
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'completed' },
+    { label: 'Step 3', status: 'inactive' },
+  ],
 };

@@ -1,5 +1,5 @@
 <script lang="ts">
-  export type Step = {
+  type Step = {
     label: string;
     status: 'active' | 'completed' | 'inactive';
   };
