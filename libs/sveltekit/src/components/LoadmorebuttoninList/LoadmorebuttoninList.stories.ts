@@ -1,5 +1,5 @@
-import LoadMoreButtonInList from './LoadMoreButtonInList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import LoadMoreButtonInList from './LoadMoreButtonInList.svelte'
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<LoadMoreButtonInList> = {
   title: 'component/Lists/LoadMoreButtonInList',
@@ -26,28 +26,28 @@ const meta: Meta<LoadMoreButtonInList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<LoadMoreButtonInList> = (args) => ({
+  Component: LoadMoreButtonInList,
+  props: args,
+});
 
-export const Default: Story = {
-  args: {
+export const Default  = Template.bind({});
+Default.args = {
     items: ['Item 1', 'Item 2', 'Item 3'],
     isLoading: false,
     isEndOfList: false
-  }
 };
 
-export const Loading: Story = {
-  args: {
+export const Loading  = Template.bind({});
+Loading.args = {
     items: ['Item 1', 'Item 2', 'Item 3'],
     isLoading: true,
     isEndOfList: false
-  }
 };
 
-export const EndOfList: Story = {
-  args: {
+export const EndOfList  = Template.bind({});
+EndOfList.args = {
     items: ['Item 1', 'Item 2', 'Item 3'],
     isLoading: false,
     isEndOfList: true
-  }
 };
