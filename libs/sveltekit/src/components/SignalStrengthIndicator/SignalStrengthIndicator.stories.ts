@@ -1,5 +1,5 @@
 import SignalStrengthIndicator from './SignalStrengthIndicator.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<SignalStrengthIndicator> = {
   title: 'component/Indicators/SignalStrengthIndicator',
@@ -23,28 +23,27 @@ const meta: Meta<SignalStrengthIndicator> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<SignalStrengthIndicator> = (args) => ({
+  Component:SignalStrengthIndicator,
+  props:args,
+}); 
 
-export const Default: Story = {
-  args: {
-    strength: 'none',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  strength: 'none',
 };
 
-export const FullSignal: Story = {
-  args: {
-    strength: 'full',
-  }
+export const FullSignal = Template.bind({});
+FullSignal.args = {
+  strength: 'full',
 };
 
-export const WeakSignal: Story = {
-  args: {
-    strength: 'weak',
-  }
+export const WeakSignal = Template.bind({});
+WeakSignal.args = {
+  strength: 'weak',
 };
 
-export const NoSignal: Story = {
-  args: {
-    strength: 'none',
-  }
+export const NoSignal = Template.bind({});
+NoSignal.args = {
+  strength: 'none',
 };
