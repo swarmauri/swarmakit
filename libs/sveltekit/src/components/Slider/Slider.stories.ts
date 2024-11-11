@@ -1,5 +1,5 @@
 import Slider from './Slider.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Slider> = {
   title: 'component/Input/Slider',
@@ -27,44 +27,43 @@ const meta: Meta<Slider> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Slider> = (args) => ({
+  Component: Slider,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    value: 50,
-    min: 0,
-    max: 100,
-    isDisabled: false,
-    step: 1
-  }
+export const Default = Template.bind({});
+Default.args = {
+  value: 50,
+  min: 0,
+  max: 100,
+  isDisabled: false,
+  step: 1
 };
 
-export const Min: Story = {
-  args: {
-    value: 0,
-    min: 0,
-    max: 100,
-    isDisabled: false,
-    step: 1
-  }
+export const Min = Template.bind({});
+Min.args = {
+  value: 0,
+  min: 0,
+  max: 100,
+  isDisabled: false,
+  step: 1
 };
 
-export const Max: Story = {
-  args: {
-    value: 100,
-    min: 0,
-    max: 100,
-    isDisabled: false,
-    step: 1
-  }
+export const Max = Template.bind({});
+Max.args = {
+  value: 100,
+  min: 0,
+  max: 100,
+  isDisabled: false,
+  step: 1
 };
 
-export const Disabled: Story = {
-  args: {
-    value: 50,
-    min: 0,
-    max: 100,
-    isDisabled: true,
-    step: 1
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  value: 50,
+  min: 0,
+  max: 100,
+  isDisabled: true,
+  step: 1
 };
