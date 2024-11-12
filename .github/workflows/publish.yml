@@ -2,8 +2,6 @@ name: Build and Publish Monorepo
 
 on:
   push:
-    branches:
-      - master
     tags:
       - 'v*'
   workflow_dispatch:
