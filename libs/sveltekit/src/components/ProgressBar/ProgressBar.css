@@ -7,7 +7,7 @@
 }
 
 .progress-bar-container {
-  width: 90vw;
+  width: 100%;
   background-color: var(--progress-bar-background);
   border-radius: 8px;
   overflow: hidden;
