@@ -1,5 +1,5 @@
 <script lang="ts">
-  export interface Task {
+  interface Task {
     id: number;
     label: string;
     completed: boolean;
