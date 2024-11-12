@@ -70,14 +70,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Publish SvelteKit Package (after .svelte-kit has been generated in the build step)
-      - name: Publish SvelteKit Package
-        run: |
-          cd libs/sveltekit
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       # Publish Svelte Package
       - name: Publish Svelte Package
         run: |
