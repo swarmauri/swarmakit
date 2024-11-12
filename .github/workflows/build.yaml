@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    tags:
-      - 'v*'
   workflow_dispatch:
 
 jobs:
@@ -27,12 +25,6 @@ jobs:
       - name: Install Dependencies
         run: |
           pnpm install
-
-      # This step specifically builds the SvelteKit project and regenerates .svelte-kit
-      # - name: Build SvelteKit Project
-      #   working-directory: libs/sveltekit
-      #   run: |
-      #     pnpm run build
 
       # Debugging step to check if .svelte-kit was created
       - name: Check .svelte-kit folder
