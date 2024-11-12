@@ -26,18 +26,6 @@ jobs:
         run: |
           pnpm install
 
-      # This step specifically builds the SvelteKit project and regenerates .svelte-kit
-      # - name: Build SvelteKit Project
-      #   working-directory: libs/sveltekit
-      #   run: |
-      #     pnpm run build
-
-      # Debugging step to check if .svelte-kit was created
-      - name: Check .svelte-kit folder
-        working-directory: libs/sveltekit
-        run: |
-          ls -la .svelte-kit || echo ".svelte-kit folder not found!"
-
       # Build all packages (React, SvelteKit, Vue)
       - name: Build All Packages
         run: |
