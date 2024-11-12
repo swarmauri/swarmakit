@@ -1,7 +1,7 @@
 name: Build and Install Repositories
 
 on:
-  push:
+  pull:
     branches:
       - master
   workflow_dispatch:
