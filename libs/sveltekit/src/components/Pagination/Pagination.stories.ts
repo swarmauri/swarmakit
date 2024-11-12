@@ -1,5 +1,5 @@
 import Pagination from './Pagination.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Pagination> = {
   title: 'component/Lists/Pagination',
@@ -25,36 +25,35 @@ const meta: Meta<Pagination> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Pagination> = (args) => ({
+  Component: Pagination,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    totalItems: 50,
-    itemsPerPage: 10,
-    currentPage: 1
-  }
+export const Default = Template.bind({});
+Default.args = {
+  totalItems: 50,
+  itemsPerPage: 10,
+  currentPage: 1 
 };
 
-export const Active: Story = {
-  args: {
-    totalItems: 50,
-    itemsPerPage: 10,
-    currentPage: 3
-  }
+export const Active = Template.bind({});
+Active.args = {
+  totalItems: 50,
+  itemsPerPage: 10,
+  currentPage: 3
 };
 
-export const Inactive: Story = {
-  args: {
-    totalItems: 50,
-    itemsPerPage: 10,
-    currentPage: 1
-  }
+export const Inactive = Template.bind({});
+Inactive.args = {
+  totalItems: 50,
+  itemsPerPage: 10,
+  currentPage: 1
 };
 
-export const Hover: Story = {
-  args: {
-    totalItems: 50,
-    itemsPerPage: 10,
-    currentPage: 2
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  totalItems: 50,
+  itemsPerPage: 10,
+  currentPage: 2
 };
