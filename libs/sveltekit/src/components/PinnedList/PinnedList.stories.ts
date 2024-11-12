@@ -1,5 +1,5 @@
 import PinnedList from './PinnedList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<PinnedList> = {
   title: 'component/Lists/PinnedList',
@@ -24,59 +24,58 @@ const meta: Meta<PinnedList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<PinnedList> = (args) => ({
+  Component: PinnedList,
+  props: args,
+}); 
 
-export const Default: Story = {
-  args: {
-    items: [
-      { id: 1, text: 'Item 1', pinned: false },
-      { id: 2, text: 'Item 2', pinned: false },
-      { id: 3, text: 'Item 3', pinned: false }
-    ],
-    selectedItem: null
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items: [
+    { id: 1, text: 'Item 1', pinned: false },
+    { id: 2, text: 'Item 2', pinned: false },
+    { id: 3, text: 'Item 3', pinned: false }
+  ],
+  selectedItem: null
 };
 
-export const Pinned: Story = {
-  args: {
-    items: [
-      { id: 1, text: 'Item 1', pinned: true },
-      { id: 2, text: 'Item 2', pinned: false },
-      { id: 3, text: 'Item 3', pinned: false }
-    ],
-    selectedItem: null
-  }
+export const Pinned = Template.bind({});
+Pinned.args = {
+  items: [
+    { id: 1, text: 'Item 1', pinned: true },
+    { id: 2, text: 'Item 2', pinned: false },
+    { id: 3, text: 'Item 3', pinned: false }
+  ],
+  selectedItem: null
 };
 
-export const Unpinned: Story = {
-  args: {
-    items: [
-      { id: 1, text: 'Item 1', pinned: false },
-      { id: 2, text: 'Item 2', pinned: false },
-      { id: 3, text: 'Item 3', pinned: false }
-    ],
-    selectedItem: null
-  }
+export const Unpinned = Template.bind({});
+Unpinned.args = {
+  items: [
+    { id: 1, text: 'Item 1', pinned: false },
+    { id: 2, text: 'Item 2', pinned: false },
+    { id: 3, text: 'Item 3', pinned: false }
+  ],
+  selectedItem: null
 };
 
-export const Hover: Story = {
-  args: {
-    items: [
-      { id: 1, text: 'Item 1', pinned: false },
-      { id: 2, text: 'Item 2', pinned: false },
-      { id: 3, text: 'Item 3', pinned: false }
-    ],
-    selectedItem: null
-  }
+
+export const Hover = Template.bind({});
+Hover.args = {
+  items: [
+    { id: 1, text: 'Item 1', pinned: false },
+    { id: 2, text: 'Item 2', pinned: false },
+    { id: 3, text: 'Item 3', pinned: false }
+  ],
+  selectedItem: null
 };
 
-export const Selected: Story = {
-  args: {
-    items: [
-      { id: 1, text: 'Item 1', pinned: false },
-      { id: 2, text: 'Item 2', pinned: false },
-      { id: 3, text: 'Item 3', pinned: false }
-    ],
-    selectedItem: 2
-  }
+export const selectedItem = Template.bind({});
+selectedItem.args = {
+  items: [
+    { id: 1, text: 'Item 1', pinned: false },
+    { id: 2, text: 'Item 2', pinned: false },
+    { id: 3, text: 'Item 3', pinned: false }
+  ],
+  selectedItem: 2,
 };
