@@ -37,7 +37,7 @@ Default.args = {
 
 export const NodeExpanded = Template.bind({});
 NodeExpanded.args = {
-  nodes: sampleNodes.map((node, i) => ({ ...node, expanded: true })),
+  nodes: sampleNodes.map((node, i) => ({ ...node, expanded: i === 0 })),
 };
 
 export const NodeCollapsed = Template.bind({});
