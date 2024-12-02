@@ -1,4 +1,6 @@
 <script lang="ts">
+  import TreeviewList from './TreeviewList.svelte';
+
   export let nodes: { label: string, children?: any[], expanded: boolean, selected: boolean }[] = [];
 
   function toggleNode(index: number) {
@@ -18,15 +20,19 @@
 
 <ul class="treeview" role="tree">
   {#each nodes as { label, children, expanded, selected }, index}
-    <li class="tree-node" role="treeitem" aria-expanded={expanded} tabindex="0">
+    <li class="tree-node">
       <div
         class="node-content"
         class:expanded={expanded}
         class:selected={selected}
+        role="treeitem"
+        aria-expanded={expanded} 
+        tabindex="0" 
+        aria-selected={selected}
         on:click={() => toggleNode(index)}
         on:keydown={(event) => event.key === 'Enter' && toggleNode(index)}
       >
-        <span on:click={() => selectNode(index)} on:keydown={(event) => event.key === ' ' && selectNode(index)}>{label}</span>
+        <span role="treeitem" aria-expanded={expanded} tabindex="0" aria-selected={selected} on:click={() => selectNode(index)} on:keydown={(event) => event.key === ' ' && selectNode(index)}>{label}</span>
       </div>
       {#if expanded && children}
         <ul role="group">
