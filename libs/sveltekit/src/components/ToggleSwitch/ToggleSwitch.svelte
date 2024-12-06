@@ -3,7 +3,7 @@
   export let disabled: boolean = false;
 
   function toggle() {
-    if (!disabled) {
+    if (disabled) {
       checked = !checked;
     }
   }
