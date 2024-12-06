@@ -1,5 +1,5 @@
 import TreeviewList from './TreeviewList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Lists/TreeviewList',
@@ -7,14 +7,14 @@ const meta: Meta = {
   tags: ['autodocs'],
   argTypes: {
     nodes: {
-      control: { type: 'array' },
+      control: { type: 'object' },
     },
   },
 };
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   Component: TreeviewList,
   props: args,
 });
