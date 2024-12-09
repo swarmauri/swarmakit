@@ -20,7 +20,7 @@ export { default as CountdownTimer } from './components/CountdownTimer/Countdown
 export { default as DataGrid } from './components/DataGrid/DataGrid.svelte';
 export { default as DateAndTimePicker } from './components/DateAndTimePicker/DateAndTimePicker.svelte';
 export { default as DatePicker } from './components/DatePicker/DatePicker.svelte';
-export { default as _360_DegreeImageViewer } from './components/360-DegreeImageViewer/360-DegreeImageViewer.svelte';
+export { default as ThreeSixtyDegreeImageViewer } from './components/360-DegreeImageViewer/ThreeSixtyDegreeImageViewer.svelte';
 export { default as DragAndDropFileArea } from './components/DragAndDropFileArea/DragAndDropFileArea.svelte';
 export { default as EmbeddedMediaIframe } from './components/EmbeddedMediaIframe/EmbeddedMediaIframe.svelte';
 export { default as ExpandableList } from './components/ExpandableList/ExpandableList.svelte';
