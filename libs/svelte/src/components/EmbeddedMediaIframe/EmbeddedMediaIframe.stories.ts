@@ -1,5 +1,5 @@
 import EmbeddedMediaIframe from './EmbeddedMediaIframe.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Media/EmbeddedMediaIframe',
@@ -20,7 +20,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn<EmbeddedMediaIframe> = (args) => ({
   Component: EmbeddedMediaIframe,
   props: args,
 });

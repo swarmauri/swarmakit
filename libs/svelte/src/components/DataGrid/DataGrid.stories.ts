@@ -1,5 +1,5 @@
 import DataGrid from './DataGrid.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<DataGrid> = {
   title: 'component/Lists/DataGrid',
@@ -27,72 +27,71 @@ const meta: Meta<DataGrid> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<DataGrid> = (args) => ({
+  Component: DataGrid,
+  props: args,
+});
 
-export const Default: Story = {
-  args: {
-    columns: [
-      { id: 'id', label: 'ID' },
-      { id: 'name', label: 'Name' },
-      { id: 'age', label: 'Age' }
-    ],
-    rows: [
-      { id: 1, name: 'John Doe', age: 28 },
-      { id: 2, name: 'Jane Smith', age: 34 },
-      { id: 3, name: 'Alice Johnson', age: 45 }
-    ],
-    pageSize: 10,
-    searchQuery: '',
-    resizable: false
-  }
+export const Default = Template.bind({});
+Default.args = {
+  columns: [
+    { id: 'id', label: 'ID' },
+    { id: 'name', label: 'Name' },
+    { id: 'age', label: 'Age' }
+  ],
+  rows: [
+    { id: 1, name: 'John Doe', age: 28 },
+    { id: 2, name: 'Jane Smith', age: 34 },
+    { id: 3, name: 'Alice Johnson', age: 45 }
+  ],
+  pageSize:10,
+  searchQuery:'',
+  resizable:false,
 };
 
-export const Paginated: Story = {
-  args: {
-    columns: [
-      { id: 'id', label: 'ID' },
-      { id: 'name', label: 'Name' },
-      { id: 'age', label: 'Age' }
-    ],
-    rows: Array.from({ length: 30 }, (_, i) => ({ id: i + 1, name: `User ${i + 1}`, age: 20 + i })),
-    pageSize: 5,
-    searchQuery: '',
-    resizable: false
-  }
+export const Paginated = Template.bind({});
+Paginated.args = {
+  columns: [
+    { id: 'id', label: 'ID' },
+    { id: 'name', label: 'Name' },
+    { id: 'age', label: 'Age' }
+  ],
+  rows: Array.from({ length: 30 }, (_, i) => ({ id: i + 1, name: `User ${i + 1}`, age: 20 + i })),
+  pageSize:5,
+  searchQuery:'',
+  resizable:false,
 };
 
-export const Search: Story = {
-  args: {
-    columns: [
-      { id: 'id', label: 'ID' },
-      { id: 'name', label: 'Name' },
-      { id: 'age', label: 'Age' }
-    ],
-    rows: [
-      { id: 1, name: 'John Doe', age: 28 },
-      { id: 2, name: 'Jane Smith', age: 34 },
-      { id: 3, name: 'Alice Johnson', age: 45 }
-    ],
-    pageSize: 10,
-    searchQuery: 'Jane',
-    resizable: false
-  }
+export const Search = Template.bind({});
+Search.args = {
+  columns: [
+    { id: 'id', label: 'ID' },
+    { id: 'name', label: 'Name' },
+    { id: 'age', label: 'Age' }
+  ],
+  rows: [
+    { id: 1, name: 'John Doe', age: 28 },
+    { id: 2, name: 'Jane Smith', age: 34 },
+    { id: 3, name: 'Alice Johnson', age: 45 }
+  ],
+  pageSize:5,
+  searchQuery:'Jane',
+  resizable:false,
 };
 
-export const Resizable: Story = {
-  args: {
-    columns: [
-      { id: 'id', label: 'ID' },
-      { id: 'name', label: 'Name' },
-      { id: 'age', label: 'Age' }
-    ],
-    rows: [
-      { id: 1, name: 'John Doe', age: 28 },
-      { id: 2, name: 'Jane Smith', age: 34 },
-      { id: 3, name: 'Alice Johnson', age: 45 }
-    ],
-    pageSize: 10,
-    searchQuery: '',
-    resizable: true
-  }
+export const Resizable = Template.bind({});
+Resizable.args = {
+  columns: [
+    { id: 'id', label: 'ID' },
+    { id: 'name', label: 'Name' },
+    { id: 'age', label: 'Age' }
+  ],
+  rows: [
+    { id: 1, name: 'John Doe', age: 28 },
+    { id: 2, name: 'Jane Smith', age: 34 },
+    { id: 3, name: 'Alice Johnson', age: 45 }
+  ],
+  pageSize:5,
+  searchQuery:'',
+  resizable:true,
 };

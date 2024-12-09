@@ -1,5 +1,5 @@
 import DatePicker from './DatePicker.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<DatePicker> = {
   title: 'component/Forms/DatePicker',
@@ -27,26 +27,26 @@ const meta: Meta<DatePicker> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<DatePicker> = (args) => ({
+  Component: DatePicker,
+  props:args,
+});
 
-export const SingleDate: Story = {
-  args: {
-    date: '',
-    mode: 'single',
-  }
+export const SingleDate = Template.bind({});
+SingleDate.args = {
+  date:'',
+  mode:'single',
 };
 
-export const DateRange: Story = {
-  args: {
-    startDate: '',
-    endDate: '',
-    mode: 'range',
-  }
+export const DateRange = Template.bind({});
+DateRange.args = {
+  startDate:'',
+  endDate:'',
+  mode:'range',
 };
 
-export const TimePicker: Story = {
-  args: {
-    time: '',
-    mode: 'time',
-  }
+export const TimePicker = Template.bind({});
+TimePicker.args = {
+  time:'',
+  mode:'time',
 };

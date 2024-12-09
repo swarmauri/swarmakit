@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { writable } from 'svelte/store';
+  import { writable,get } from 'svelte/store';
 
   export let images: string[] = [];
   export let autoPlay: boolean = false;

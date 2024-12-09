@@ -1,5 +1,5 @@
 import ToggleSwitch from './ToggleSwitch.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<ToggleSwitch> = {
   title: 'component/Forms/ToggleSwitch',
@@ -24,32 +24,32 @@ const meta: Meta<ToggleSwitch> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<ToggleSwitch> = (args) => ({
+  Component: ToggleSwitch,
+  props:args
+});
 
-export const Default: Story = {
-  args: {
-    checked: false,
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  checked: false,
+  disabled: false,
 };
 
-export const On: Story = {
-  args: {
-    checked: true,
-    disabled: false,
-  }
+
+export const On = Template.bind({});
+On.args = {
+  checked: true,
+  disabled: false,
 };
 
-export const Off: Story = {
-  args: {
-    checked: false,
-    disabled: false,
-  }
+export const Off = Template.bind({});
+Off.args = {
+  checked: false,
+  disabled: false,
 };
 
-export const Disabled: Story = {
-  args: {
-    checked: false,
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  checked: false,
+  disabled: true,
 };

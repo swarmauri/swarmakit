@@ -1,5 +1,5 @@
 import CollapsibleMenuList from './CollapsibleMenuList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<CollapsibleMenuList> = {
   title: 'component/Lists/CollapsibleMenuList',
@@ -23,54 +23,53 @@ const meta: Meta<CollapsibleMenuList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<CollapsibleMenuList> = (args) => ({
+  Component: CollapsibleMenuList,
+  props: args,
+});
 
-export const Default: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Menu 1' },
-      { id: 2, label: 'Menu 2' },
-      { id: 3, label: 'Menu 3' }
-    ]
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items: [
+    { id: 1, label: 'Menu 1' },
+    { id: 2, label: 'Menu 2' },
+    { id: 3, label: 'Menu 3' }
+  ],
 };
 
-export const Expanded: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Menu 1', expanded: true },
-      { id: 2, label: 'Menu 2' },
-      { id: 3, label: 'Menu 3', expanded: true }
-    ]
-  }
+export const Expanded = Template.bind({});
+Expanded.args = {
+  items: [
+    { id: 1, label: 'Menu 1' , expanded:true , },
+    { id: 2, label: 'Menu 2'},
+    { id: 3, label: 'Menu 3', expanded:true ,},
+  ],
 };
 
-export const Collapsed: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Menu 1', expanded: false },
-      { id: 2, label: 'Menu 2', expanded: false },
-      { id: 3, label: 'Menu 3', expanded: false }
-    ]
-  }
+export const Collapsed = Template.bind({});
+Collapsed.args = {
+  items: [
+    { id: 1, label: 'Menu 1', expanded:false },
+    { id: 2, label: 'Menu 2', expanded:false },
+    { id: 3, label: 'Menu 3', expanded:false },
+  ],
 };
 
-export const Hover: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Menu 1' },
-      { id: 2, label: 'Menu 2', expanded: true },
-      { id: 3, label: 'Menu 3' }
-    ]
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  items: [
+    { id: 1, label: 'Menu 1' },
+    { id: 2, label: 'Menu 2',expanded: true,},
+    { id: 3, label: 'Menu 3' }
+  ],
 };
 
-export const Active: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Menu 1', active: true },
-      { id: 2, label: 'Menu 2' },
-      { id: 3, label: 'Menu 3' }
-    ]
-  }
+
+export const Active = Template.bind({});
+Active.args = {
+  items: [
+    { id: 1, label: 'Menu 1', active:true,},
+    { id: 2, label: 'Menu 2'},
+    { id: 3, label: 'Menu 3'},
+  ],
 };

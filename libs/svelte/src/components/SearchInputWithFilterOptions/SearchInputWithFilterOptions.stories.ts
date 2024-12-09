@@ -1,5 +1,5 @@
 import SearchInputWithFilterOptions from './SearchInputWithFilterOptions.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<SearchInputWithFilterOptions> = {
   title: 'component/Forms/SearchInputWithFilterOptions',
@@ -7,8 +7,8 @@ const meta: Meta<SearchInputWithFilterOptions> = {
   tags: ['autodocs'],
   argTypes: {
     query: { control: 'text' },
-    filters: { control: 'array' },
-    activeFilters: { control: 'array' },
+    filters: { control: 'object' },
+    activeFilters: { control: 'object' },
     disabled: { control: 'boolean' },
   },
   parameters: {
@@ -26,49 +26,47 @@ const meta: Meta<SearchInputWithFilterOptions> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<SearchInputWithFilterOptions> = (args) => ({
+  Component:SearchInputWithFilterOptions,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    query: '',
-    filters: ['Option 1', 'Option 2', 'Option 3'],
-    activeFilters: [],
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  query: '',
+  filters: ['Option 1', 'Option 2', 'Option 3'],
+  activeFilters: [],
+  disabled: false,
 };
 
-export const Searching: Story = {
-  args: {
-    query: 'Search term',
-    filters: ['Option 1', 'Option 2', 'Option 3'],
-    activeFilters: [],
-    disabled: false,
-  }
+export const Searching = Template.bind({});
+Searching.args = {
+  query: 'Search Term',
+  filters: ['Option 1', 'Option 2', 'Option 3'],
+  activeFilters: [],
+  disabled: false,
 };
 
-export const FiltersActive: Story = {
-  args: {
-    query: '',
-    filters: ['Option 1', 'Option 2', 'Option 3'],
-    activeFilters: ['Option 1', 'Option 2'],
-    disabled: false,
-  }
+export const FiltersActive = Template.bind({});
+FiltersActive.args = {
+  query: '',
+  filters: ['Option 1', 'Option 2', 'Option 3'],
+  activeFilters: ['Option 1', 'Option 2'],
+  disabled: false,
 };
 
-export const NoResults: Story = {
-  args: {
-    query: 'No results term',
-    filters: ['Option 1', 'Option 2', 'Option 3'],
-    activeFilters: [],
-    disabled: false,
-  }
+export const NoResults = Template.bind({});
+NoResults.args = {
+  query: 'No results term',
+  filters: ['Option 1', 'Option 2', 'Option 3'],
+  activeFilters: [],
+  disabled: false,
 };
 
-export const Disabled: Story = {
-  args: {
-    query: '',
-    filters: ['Option 1', 'Option 2', 'Option 3'],
-    activeFilters: [],
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  query: '',
+  filters: ['Option 1', 'Option 2', 'Option 3'],
+  activeFilters: [],
+  disabled: false,
 };

@@ -1,5 +1,5 @@
 import SystemAlertGlobalNotificationBar from './SystemAlertGlobalNotificationBar.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<SystemAlertGlobalNotificationBar> = {
   title: 'component/Indicators/SystemAlertGlobalNotificationBar',
@@ -27,39 +27,37 @@ const meta: Meta<SystemAlertGlobalNotificationBar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<SystemAlertGlobalNotificationBar> = (args) => ({
+  Component: SystemAlertGlobalNotificationBar,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    message: 'This is an information alert!',
-    type: 'info'
-  }
+export const Default = Template.bind({});
+Default.args = {
+  message: 'This is an information alert!',
+  type: 'info'
 };
 
-export const Success: Story = {
-  args: {
-    message: 'Operation completed successfully!',
-    type: 'success'
-  }
+export const Success = Template.bind({});
+Success.args = {
+  message: 'Operation completed successfully!',
+  type: 'success'
 };
 
-export const Error: Story = {
-  args: {
-    message: 'An error has occurred!',
-    type: 'error'
-  }
+export const Error = Template.bind({});
+Error.args = {
+  message: 'An error has occured!',
+  type: 'error'
 };
 
-export const Warning: Story = {
-  args: {
-    message: 'Please be aware of the following warning.',
-    type: 'warning'
-  }
+export const Warning = Template.bind({});
+Warning.args = {
+  message: 'Please be aware of the following warning!',
+  type: 'warning'
 };
 
-export const Info: Story = {
-  args: {
-    message: 'This is an information alert!',
-    type: 'info'
-  }
+export const Info = Template.bind({});
+Info.args = {
+message: 'This is an information alert!',
+  type: 'info'
 };

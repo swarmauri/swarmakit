@@ -11,16 +11,13 @@
   class="rating-stars"
   role="radiogroup"
   aria-label={ariaLabel}
-  aria-valuenow={rating}
-  aria-valuemin="0"
-  aria-valuemax={maxRating}
   data-state={state}
 >
   {#each stars as star}
     <button
-      type="button"
+      role="radio"
       class="star {(star <= rating) ? 'filled' : ''}"
-      aria-pressed={star === rating}
+      aria-checked={star === rating}
       aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
       on:click={() => (rating = star)}
     >

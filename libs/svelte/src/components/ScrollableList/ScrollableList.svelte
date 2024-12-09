@@ -1,5 +1,5 @@
 <script lang="ts">
-  export type ListItem = {
+  type ListItem = {
     id: number;
     text: string;
   };
@@ -22,7 +22,7 @@
   on:scroll={onScroll}
   aria-disabled={disabled}
   tabindex={disabled ? -1 : 0}
-  role="list"
+  role="menu"
 >
   {#each items as item (item.id)}
     <div class="list-item" role="listitem">{item.text}</div>
