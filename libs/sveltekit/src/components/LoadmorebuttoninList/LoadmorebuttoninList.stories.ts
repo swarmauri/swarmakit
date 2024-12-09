@@ -1,4 +1,4 @@
-import LoadMoreButtonInList from './LoadMoreButtonInList.svelte'
+import LoadMoreButtonInList from './LoadmorebuttoninList.svelte'
 import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<LoadMoreButtonInList> = {
