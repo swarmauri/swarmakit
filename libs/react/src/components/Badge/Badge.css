@@ -1,0 +1,54 @@
+<style scoped>
+  .badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .default {
+    background-color: var(--default-background-color);
+    color: var(--default-text-color);
+  }
+
+  .notification {
+    background-color: var(--notification-background-color);
+    color: var(--notification-text-color);
+  }
+
+  .status-indicator {
+    background-color: var(--status-indicator-background-color);
+    color: var(--status-indicator-text-color);
+  }
+
+  @media (max-width: 600px) {
+    .badge {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .badge {
+      font-size: 13px;
+      padding: 5px 9px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .badge {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .badge {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+  }
+</style>
