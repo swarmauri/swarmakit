@@ -1,0 +1,71 @@
+<style scoped>
+  .skeleton-pinned-message {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    margin: var(--skeleton-margin, 10px 0);
+  }
+
+  .skeleton-header {
+    width: var(--skeleton-header-width, 80%);
+    height: var(--skeleton-header-height, 20px);
+    background-color: var(--skeleton-bg-color, #e0e0e0);
+    margin-bottom: var(--skeleton-header-margin-bottom, 8px);
+    border-radius: var(--skeleton-border-radius, 4px);
+    animation: skeleton-pulse 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-body {
+    width: var(--skeleton-body-width, 100%);
+    height: var(--skeleton-body-height, 15px);
+    background-color: var(--skeleton-bg-color, #e0e0e0);
+    border-radius: var(--skeleton-border-radius, 4px);
+    animation: skeleton-pulse 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-pinned-message.hidden {
+    opacity: 0;
+  }
+
+  @keyframes skeleton-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .skeleton-header {
+      width: var(--skeleton-header-width-sm, 70%);
+      height: var(--skeleton-header-height-sm, 18px);
+    }
+
+    .skeleton-body {
+      height: var(--skeleton-body-height-sm, 12px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .skeleton-header {
+      width: var(--skeleton-header-width-md, 75%);
+      height: var(--skeleton-header-height-md, 19px);
+    }
+
+    .skeleton-body {
+      height: var(--skeleton-body-height-md, 13px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .skeleton-header {
+      width: var(--skeleton-header-width-lg, 80%);
+      height: var(--skeleton-header-height-lg, 20px);
+    }
+
+    .skeleton-body {
+      height: var(--skeleton-body-height-lg, 15px);
+    }
+  }
+</style>
