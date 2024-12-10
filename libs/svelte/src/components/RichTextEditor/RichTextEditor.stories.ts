@@ -1,5 +1,5 @@
 import RichTextEditor from './RichTextEditor.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<RichTextEditor> = {
   title: 'component/Forms/RichTextEditor',
@@ -24,25 +24,25 @@ const meta: Meta<RichTextEditor> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<RichTextEditor> = (args) => ({
+  Component: RichTextEditor,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    content: '<p>Start writing...</p>',
-    readOnly: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  content: '<p>Start writing...</p>',
+  readOnly: false,
 };
 
-export const Editing: Story = {
-  args: {
-    content: '<p>Edit this text.</p>',
-    readOnly: false,
-  }
+export const Editing = Template.bind({});
+Editing.args = {
+  content: '<p>Edit this text.</p>',
+  readOnly: false,
 };
 
-export const ReadOnly: Story = {
-  args: {
-    content: '<p>This text is read-only.</p>',
-    readOnly: true,
-  }
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  content: '<p>This text is read-only.</p>',
+  readOnly: true,
 };

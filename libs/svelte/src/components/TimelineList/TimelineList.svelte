@@ -19,6 +19,7 @@
         tabindex="0"
         on:click={() => handleClick(index)}
         on:keydown={(event) => event.key === 'Enter' && handleClick(index)}
+        role='button'
       >
         <h3>{title}</h3>
         <p>{description}</p>

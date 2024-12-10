@@ -1,5 +1,5 @@
 <script lang="ts">
-  export type ListItem = {
+  type ListItem = {
     id: number;
     text: string;
     pinned: boolean;
@@ -22,7 +22,10 @@
     <li
       class="list-item {item.pinned ? 'pinned' : ''} {selectedItem === item.id ? 'selected' : ''}"
       on:click={() => selectItem(item.id)}
+      on:keydown={(e)=>{if(e.key === 'Enter' || e.key === ' '){selectItem(item.id)}}}
       aria-selected={selectedItem === item.id}
+      tabindex ="0"
+      role="tab"
     >
       <span class="item-text">{item.text}</span>
       <button

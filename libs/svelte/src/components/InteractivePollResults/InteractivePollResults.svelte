@@ -1,5 +1,5 @@
 <script lang="ts">
-  export type PollOption = {
+  type PollOption = {
     label: string;
     votes: number;
   };

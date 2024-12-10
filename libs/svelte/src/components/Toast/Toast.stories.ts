@@ -1,5 +1,5 @@
 import Toast from './Toast.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Toast> = {
   title: 'component/Indicators/Toast',
@@ -25,52 +25,50 @@ const meta: Meta<Toast> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Toast> = (args) => ({
+  Component: Toast,
+  props:args,
+}) 
 
-export const Default: Story = {
-  args: {
-    message: 'This is a default toast message.',
-    type: 'info',
-    visible: true
-  }
+export const Default = Template.bind ({});
+Default.args = {
+  message: 'This is a default toast message.',
+  type: 'info',
+  visible: true
+}
+
+export const Success = Template.bind ({});
+Success.args = {
+  message: 'Operation completed successfully!',
+  type: 'success',
+  visible: true
 };
 
-export const Success: Story = {
-  args: {
-    message: 'Operation completed successfully!',
-    type: 'success',
-    visible: true
-  }
+
+export const Error = Template.bind ({});
+Error.args = {
+  message: 'There was an error processing your request.',
+  type: 'error',
+  visible: true
 };
 
-export const Error: Story = {
-  args: {
-    message: 'There was an error processing your request.',
-    type: 'error',
-    visible: true
-  }
+export const Warning = Template.bind ({});
+Warning.args = {
+  message: 'This is a warning message.',
+  type: 'warning',
+  visible: true
 };
 
-export const Warning: Story = {
-  args: {
-    message: 'This is a warning message.',
-    type: 'warning',
-    visible: true
-  }
+export const Info = Template.bind ({});
+Info.args = {
+  message: 'This is some informative text.',
+  type: 'info',
+  visible: true
 };
 
-export const Info: Story = {
-  args: {
-    message: 'This is some informative text.',
-    type: 'info',
-    visible: true
-  }
-};
-
-export const Dismissed: Story = {
-  args: {
-    message: 'This message has been dismissed.',
-    type: 'info',
-    visible: false
-  }
+export const Dismissed = Template.bind ({});
+Dismissed.args = {
+  message: 'This message has been dismissed.',
+  type: 'info',
+  visible: false
 };

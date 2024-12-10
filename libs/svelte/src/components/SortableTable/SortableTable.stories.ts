@@ -1,8 +1,8 @@
 import SortableTable from './SortableTable.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 import type { TableColumn, TableRow } from './SortableTable.svelte';
 
-const meta: Meta = {
+const meta: Meta<SortableTable> = {
   title: 'Components/Lists/SortableTable',
   component: SortableTable,
   tags: ['autodocs'],
@@ -18,7 +18,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   Component: SortableTable,
   props: args,
 });

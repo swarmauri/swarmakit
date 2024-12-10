@@ -20,6 +20,7 @@ export { default as CountdownTimer } from './components/CountdownTimer/Countdown
 export { default as DataGrid } from './components/DataGrid/DataGrid.svelte';
 export { default as DateAndTimePicker } from './components/DateAndTimePicker/DateAndTimePicker.svelte';
 export { default as DatePicker } from './components/DatePicker/DatePicker.svelte';
+export { default as ThreeSixtyDegreeImageViewer } from './components/360-DegreeImageViewer/ThreeSixtyDegreeImageViewer.svelte';
 export { default as DragAndDropFileArea } from './components/DragAndDropFileArea/DragAndDropFileArea.svelte';
 export { default as EmbeddedMediaIframe } from './components/EmbeddedMediaIframe/EmbeddedMediaIframe.svelte';
 export { default as ExpandableList } from './components/ExpandableList/ExpandableList.svelte';
@@ -33,6 +34,7 @@ export { default as ImageSlider } from './components/ImageSlider/ImageSlider.sve
 export { default as InteractivePollResults } from './components/InteractivePollResults/InteractivePollResults.svelte';
 export { default as LoadingBarsWithSteps } from './components/LoadingBarsWithSteps/LoadingBarsWithSteps.svelte';
 export { default as LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner.svelte';
+export { default as LoadmorebuttoninList } from './components/LoadmorebuttoninList/LoadmorebuttoninList.svelte';
 
 export { default as MultiselectList } from './components/MultiselectList/MultiselectList.svelte';
 export { default as NotificationBellIcon } from './components/NotificationBellIcon/NotificationBellIcon.svelte';

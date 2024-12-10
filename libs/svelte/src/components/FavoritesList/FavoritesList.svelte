@@ -20,6 +20,9 @@
       class="list-item" 
       class:selected={item.id === $selectedItemId}
       on:click={() => selectItem(item.id)}
+      on:keydown={(e)=>{if(e.key === 'Enter' || e.key === ' ') {selectItem(item.id)}}}
+      role="menuitem"
+      tabindex='0'
     >
       <span>{item.label}</span>
       <button 

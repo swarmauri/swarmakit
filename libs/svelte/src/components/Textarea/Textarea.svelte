@@ -13,8 +13,7 @@
   on:input={handleInput}
   disabled={disabled}
   aria-label="Textarea"
->
-</textarea>
+></textarea>
 
 <style lang="css">
   @import './Textarea.css';

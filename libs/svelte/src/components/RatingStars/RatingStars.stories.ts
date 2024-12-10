@@ -1,5 +1,5 @@
 import RatingStars from './RatingStars.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<RatingStars> = {
   title: 'component/Indicators/RatingStars',
@@ -24,32 +24,31 @@ const meta: Meta<RatingStars> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<RatingStars> = (args) => ({
+  Component:RatingStars,
+  props:args,
+}); 
 
-export const Default: Story = {
-  args: {
-    rating: 3,
-    state: 'inactive',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  rating:3,
+  state:'inactive',
 };
 
-export const Hover: Story = {
-  args: {
-    rating: 3,
-    state: 'hover',
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  rating:3,
+  state:'hover',
 };
 
-export const Selected: Story = {
-  args: {
-    rating: 4,
-    state: 'selected',
-  }
+export const Selected = Template.bind({});
+Selected.args = {
+  rating:4,
+  state:'selected',
 };
 
-export const Inactive: Story = {
-  args: {
-    rating: 0,
-    state: 'inactive',
-  }
+export const Inactive = Template.bind({});
+Inactive.args = {
+  rating:0,
+  state:'inactive',
 };

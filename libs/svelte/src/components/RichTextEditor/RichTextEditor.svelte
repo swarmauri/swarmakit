@@ -32,7 +32,7 @@
       readOnly
     });
 
-    quill.setContents(quill.clipboard.convert(content));
+    quill.setContents(quill.clipboard.convert({html:content}));
 
     quill.on('text-change', () => {
       content = quill.root.innerHTML;

@@ -26,9 +26,10 @@
   on:dragover={handleDragOver}
   on:drop={handleDrop}
   aria-label="File Upload"
+  role='group'
 >
   {#if isDragAndDrop}
-    <div class="drop-area" tabindex="0">
+    <div class="drop-area" tabindex="-1">
       Drag and drop files here or click to browse
     </div>
   {/if}

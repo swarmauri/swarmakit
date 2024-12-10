@@ -1,5 +1,5 @@
 import ContextualList from './ContextualList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<ContextualList> = {
   title: 'component/Lists/ContextualList',
@@ -24,37 +24,37 @@ const meta: Meta<ContextualList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<ContextualList> = (args) => ({
+  Component: ContextualList,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1' },
-      { id: 2, label: 'Item 2' },
-      { id: 3, label: 'Item 3' }
-    ],
-    visible: true
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items: [
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' }
+  ],
+  visible: true,
 };
 
-export const ActionTriggered: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1', actionTriggered: true },
-      { id: 2, label: 'Item 2' },
-      { id: 3, label: 'Item 3' }
-    ],
-    visible: true
-  }
+export const ActionTriggered = Template.bind({});
+ActionTriggered.args = {
+  items: [
+    { id: 1, label: 'Item 1',actionTriggered:true, },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' }
+  ],
+  visible:true,
 };
 
-export const Dismissed: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1' },
-      { id: 2, label: 'Item 2' },
-      { id: 3, label: 'Item 3' }
-    ],
-    visible: false
-  }
+export const Dismissed = Template.bind({});
+Dismissed.args = {
+  items: [
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' }
+  ],
+  visible:false,
 };

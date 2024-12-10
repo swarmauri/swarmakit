@@ -51,6 +51,7 @@
   on:dragleave={handleDragLeave}
   on:drop={handleDrop}
   aria-disabled={disabled}
+  role="group"
 >
   <input
     type="file"

@@ -1,5 +1,5 @@
 import RadioButton from './RadioButton.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<RadioButton> = {
   title: 'component/Forms/RadioButton',
@@ -25,36 +25,35 @@ const meta: Meta<RadioButton> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<RadioButton> = (args) => ({
+  Component:RadioButton,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    selected: false,
-    disabled: false,
-    label: 'Default',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  selected: false,
+  disabled: false,
+  label: 'Default',
 };
 
-export const Selected: Story = {
-  args: {
-    selected: true,
-    disabled: false,
-    label: 'Selected',
-  }
+export const Selected = Template.bind({});
+Selected.args = {
+  selected: true,
+  disabled: false,
+  label: 'Selected',
 };
 
-export const Unselected: Story = {
-  args: {
-    selected: false,
-    disabled: false,
-    label: 'Unselected',
-  }
+export const UnSelected = Template.bind({});
+UnSelected.args = {
+  selected: false,
+  disabled: false,
+  label: 'Unselected',
 };
 
-export const Disabled: Story = {
-  args: {
-    selected: false,
-    disabled: true,
-    label: 'Disabled',
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  selected: false,
+  disabled: true,
+  label: 'Disabled',
 };

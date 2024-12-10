@@ -1,5 +1,5 @@
 import StatusDots from './StatusDots.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<StatusDots> = {
   title: 'component/Indicators/StatusDots',
@@ -23,34 +23,32 @@ const meta: Meta<StatusDots> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<StatusDots> = (args) => ({
+  Component:StatusDots,
+  props:args,
+}); 
 
-export const Default: Story = {
-  args: {
-    status: 'offline',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  status: 'offline',
 };
 
-export const Online: Story = {
-  args: {
-    status: 'online',
-  }
+export const Online = Template.bind({});
+Online.args = {
+  status: 'online',
 };
 
-export const Offline: Story = {
-  args: {
-    status: 'offline',
-  }
+export const Offline = Template.bind({});
+Offline.args = {
+  status: 'offline',
 };
 
-export const Busy: Story = {
-  args: {
-    status: 'busy',
-  }
+export const Busy = Template.bind({});
+Busy.args = {
+  status: 'busy',
 };
 
-export const Idle: Story = {
-  args: {
-    status: 'idle',
-  }
+export const Idle = Template.bind({});
+Idle.args = {
+  status: 'idle',
 };

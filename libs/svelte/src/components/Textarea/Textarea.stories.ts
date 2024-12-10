@@ -1,5 +1,5 @@
 import Textarea from './Textarea.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Textarea> = {
   title: 'component/Forms/Textarea',
@@ -24,18 +24,19 @@ const meta: Meta<Textarea> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Textarea> = (args) => ({
+  Component:Textarea,
+  props:args,
+}); 
 
-export const Default: Story = {
-  args: {
-    value: '',
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  value: '',
+  disabled: false,
 };
 
-export const Disabled: Story = {
-  args: {
-    value: 'This textarea is disabled',
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  value:'This textarea is disabled',
+  disabled: true,
 };

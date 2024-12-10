@@ -1,5 +1,5 @@
 import DragAndDropFileArea from './DragAndDropFileArea.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<DragAndDropFileArea> = {
   title: 'component/Forms/DragAndDropFileArea',
@@ -26,67 +26,63 @@ const meta: Meta<DragAndDropFileArea> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<DragAndDropFileArea> = (args) => ({
+  Component: DragAndDropFileArea,
+  props: args,
+});
 
-export const Default: Story = {
-  args: {
-    disabled: false,
-    multiple: true,
-    acceptedTypes: '',
-    errorMessage: '',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  disabled: false,
+  multiple: true,
+  acceptedTypes:'',
+  errorMessage:'',
 };
 
-export const Dragging: Story = {
-  args: {
-    disabled: false,
-    multiple: true,
-    acceptedTypes: '',
-    errorMessage: '',
-  }
+export const Dragging = Template.bind({});
+Dragging.args = {
+  disabled: false,
+  multiple: true,
+  acceptedTypes:'',
+  errorMessage:'',
 };
 
-export const FileHover: Story = {
-  args: {
-    disabled: false,
-    multiple: true,
-    acceptedTypes: '',
-    errorMessage: '',
-  }
+export const FileHover = Template.bind({});
+FileHover.args = {
+  disabled: false,
+  multiple: true,
+  acceptedTypes:'',
+  errorMessage:'',
 };
 
-export const FileDropped: Story = {
-  args: {
-    disabled: false,
-    multiple: true,
-    acceptedTypes: '',
-    errorMessage: '',
-  }
+export const FileDropped = Template.bind({});
+FileDropped.args = {
+  disabled: false,
+  multiple: true,
+  acceptedTypes:'',
+  errorMessage:'',
 };
 
-export const FileUploading: Story = {
-  args: {
-    disabled: false,
-    multiple: true,
-    acceptedTypes: '',
-    errorMessage: '',
-  }
+export const FileUploading = Template.bind({});
+FileUploading.args = {
+  disabled: true,
+  multiple: true,
+  acceptedTypes:'',
+  errorMessage:'',
 };
 
-export const Error: Story = {
-  args: {
-    disabled: false,
-    multiple: true,
-    acceptedTypes: '',
-    errorMessage: 'Invalid file type.',
-  }
+export const Error = Template.bind({});
+Error.args = {
+  disabled: false,
+  multiple: true,
+  acceptedTypes:'',
+  errorMessage:'Invalid file type.',
 };
 
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    multiple: false,
-    acceptedTypes: '',
-    errorMessage: '',
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+  multiple: true,
+  acceptedTypes:'',
+  errorMessage:'',
 };

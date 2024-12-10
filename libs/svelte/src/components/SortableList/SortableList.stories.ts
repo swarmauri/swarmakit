@@ -1,5 +1,5 @@
 import SortableList from './SortableList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn} from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Lists/SortableList',
@@ -7,7 +7,7 @@ const meta: Meta = {
   tags: ['autodocs'],
   argTypes: {
     items: {
-      control: { type: 'array' },
+      control: { type: 'object' },
     },
     disabled: {
       control: { type: 'boolean' },
@@ -17,7 +17,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn<SortableList> = (args) => ({
   Component: SortableList,
   props: args,
 });

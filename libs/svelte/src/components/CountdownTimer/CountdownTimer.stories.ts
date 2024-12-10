@@ -1,5 +1,5 @@
 import CountdownTimer from './CountdownTimer.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<CountdownTimer> = {
   title: 'component/Indicators/CountdownTimer',
@@ -24,32 +24,31 @@ const meta: Meta<CountdownTimer> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<CountdownTimer> = (args) => ({
+  Component: CountdownTimer,
+  props: args,
+});
 
-export const Default: Story = {
-  args: {
-    duration: 60,
-    autoStart: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  duration:60,
+  autoStart:false,
 };
 
-export const Running: Story = {
-  args: {
-    duration: 60,
-    autoStart: true,
-  }
+export const Running = Template.bind({});
+Running.args = {
+  duration:60,
+  autoStart:true,
 };
 
-export const Paused: Story = {
-  args: {
-    duration: 60,
-    autoStart: false,
-  }
+export const Paused = Template.bind({});
+Default.args = {
+  duration:60,
+  autoStart:false,
 };
 
-export const Completed: Story = {
-  args: {
-    duration: 0,
-    autoStart: false,
-  }
+export const Completed = Template.bind({});
+Completed.args = {
+  duration:0,
+  autoStart:false,
 };

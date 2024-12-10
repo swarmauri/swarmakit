@@ -2,7 +2,7 @@
   export let isFocused: boolean = false;
 </script>
 
-<div class="focus-indicator" tabindex="0" class:is-focused={isFocused} aria-label="Focus indicator">
+<div class="focus-indicator" class:is-focused={isFocused} aria-label="Focus indicator">
   <p>Focus Indicator</p>
 </div>
 

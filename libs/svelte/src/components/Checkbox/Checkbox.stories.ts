@@ -1,5 +1,5 @@
 import Checkbox from './Checkbox.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Checkbox> = {
   title: 'component/Forms/Checkbox',
@@ -25,36 +25,35 @@ const meta: Meta<Checkbox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Checkbox> = (args) => ({
+  Component:Checkbox,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    label: 'Accept terms and conditions',
-    checked: false,
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  label: 'Accept terms and conditions',
+  checked: false,
+  disabled: false,
 };
 
-export const Checked: Story = {
-  args: {
-    label: 'Accept terms and conditions',
-    checked: true,
-    disabled: false,
-  }
+export const Checked = Template.bind({});
+Checked.args = {
+  label: 'Accept terms and conditions',
+  checked: true,
+  disabled: false,
 };
 
-export const Unchecked: Story = {
-  args: {
-    label: 'Accept terms and conditions',
-    checked: false,
-    disabled: false,
-  }
+export const Unchecked = Template.bind({});
+Unchecked.args = {
+  label: 'Accept terms and conditions',
+  checked: false,
+  disabled: false,
 };
 
-export const Disabled: Story = {
-  args: {
-    label: 'Accept terms and conditions',
-    checked: false,
-    disabled: true,
-  }
-};
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: 'Accept terms and conditions',
+  checked: false,
+  disabled: true,
+}

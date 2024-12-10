@@ -1,5 +1,5 @@
 import ProgressBar from './ProgressBar.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn, StoryObj } from '@storybook/svelte';
 
 const meta: Meta<ProgressBar> = {
   title: 'component/Indicators/ProgressBar',
@@ -24,39 +24,37 @@ const meta: Meta<ProgressBar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<ProgressBar> = (args) => ({
+  Component:ProgressBar,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    progress: 50,
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  progress: 50,
+  disabled: false,
 };
 
-export const Complete: Story = {
-  args: {
-    progress: 100,
-    disabled: false,
-  }
+export const Complete = Template.bind({});
+Complete.args = {
+  progress: 100,
+  disabled: false,
 };
 
-export const Incomplete: Story = {
-  args: {
-    progress: 25,
-    disabled: false,
-  }
+export const Incomplete = Template.bind({});
+Incomplete.args = {
+  progress: 25,
+  disabled: false,
 };
 
-export const Hover: Story = {
-  args: {
-    progress: 70,
-    disabled: false,
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  progress: 70,
+  disabled: false,
 };
 
-export const Disabled: Story = {
-  args: {
-    progress: 50,
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  progress: 50,
+  disabled: true,
 };

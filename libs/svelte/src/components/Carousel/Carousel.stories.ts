@@ -1,5 +1,5 @@
 import Carousel from './Carousel.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Media/Carousel',
@@ -7,7 +7,7 @@ const meta: Meta = {
   tags: ['autodocs'],
   argTypes: {
     images: {
-      control: { type: 'array' },
+      control: { type: 'object' },
     },
     autoPlay: {
       control: { type: 'boolean' },
@@ -20,7 +20,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn<Carousel> = (args) => ({
   Component: Carousel,
   props: args,
 });

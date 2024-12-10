@@ -1,5 +1,6 @@
 import ExpandableList from './ExpandableList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
+import { userEvent, within } from '@storybook/test';
 
 const meta: Meta<ExpandableList> = {
   title: 'component/Lists/ExpandableList',
@@ -23,66 +24,68 @@ const meta: Meta<ExpandableList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<ExpandableList> = (args) => ({
+  Component:ExpandableList,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    items: [
-      { id: '1', label: 'Item 1', content: 'Content of Item 1' },
-      { id: '2', label: 'Item 2', content: 'Content of Item 2' },
-      { id: '3', label: 'Item 3', content: 'Content of Item 3' }
-    ]
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items: [
+    { id: '1', label: 'Item 1', content: 'Content of Item 1' },
+    { id: '2', label: 'Item 2', content: 'Content of Item 2' },
+    { id: '3', label: 'Item 3', content: 'Content of Item 3' }
+  ]
 };
 
-export const ItemExpanded: Story = {
-  args: {
-    items: [
-      { id: '1', label: 'Item 1', content: 'Content of Item 1' },
-      { id: '2', label: 'Item 2', content: 'Content of Item 2' },
-      { id: '3', label: 'Item 3', content: 'Content of Item 3' }
-    ]
-  },
-  play: async ({ args, canvasElement }) => {
-    const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByText('Item 1'));
-  }
+export const ItemExpanded = Template.bind({});
+ItemExpanded.args = {
+  items: [
+    { id: '1', label: 'Item 1', content: 'Content of Item 1' },
+    { id: '2', label: 'Item 2', content: 'Content of Item 2' },
+    { id: '3', label: 'Item 3', content: 'Content of Item 3' }
+  ]
+};
+ItemExpanded.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+  const firstItem = await canvas.getByText('Item 1');
+  await userEvent.click(firstItem);
+
 };
 
-export const ItemCollapsed: Story = {
-  args: {
-    items: [
-      { id: '1', label: 'Item 1', content: 'Content of Item 1' },
-      { id: '2', label: 'Item 2', content: 'Content of Item 2' },
-      { id: '3', label: 'Item 3', content: 'Content of Item 3' }
-    ]
-  }
+export const ItemCollapsed = Template.bind({});
+ItemCollapsed.args = {
+  items:[
+    { id: '1', label: 'Item 1', content: 'Content of Item 1' },
+    { id: '2', label: 'Item 2', content: 'Content of Item 2' },
+    { id: '3', label: 'Item 3', content: 'Content of Item 3' },
+  ],
 };
 
-export const Hover: Story = {
-  args: {
-    items: [
-      { id: '1', label: 'Item 1', content: 'Content of Item 1' },
-      { id: '2', label: 'Item 2', content: 'Content of Item 2' },
-      { id: '3', label: 'Item 3', content: 'Content of Item 3' }
-    ]
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await userEvent.hover(canvas.getByText('Item 1'));
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  items: [
+    { id: '1', label: 'Item 1', content: 'Content of Item 1' },
+    { id: '2', label: 'Item 2', content: 'Content of Item 2' },
+    { id: '3', label: 'Item 3', content: 'Content of Item 3' }
+  ]
+}
+Hover.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+  const firstItem = canvas.getByText('Item 1')
+  await userEvent.hover(firstItem);
 };
 
-export const Selected: Story = {
-  args: {
-    items: [
-      { id: '1', label: 'Item 1', content: 'Content of Item 1' },
-      { id: '2', label: 'Item 2', content: 'Content of Item 2' },
-      { id: '3', label: 'Item 3', content: 'Content of Item 3' }
-    ]
-  },
-  play: async ({ args, canvasElement }) => {
-    const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByText('Item 2'));
-  }
+export const Selected = Template.bind({});
+Selected.args = {
+  items: [
+    { id: '1', label: 'Item 1', content: 'Content of Item 1' },
+    { id: '2', label: 'Item 2', content: 'Content of Item 2' },
+    { id: '3', label: 'Item 3', content: 'Content of Item 3' }
+  ],
+};
+Selected.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+  const secondItem = await canvas.getByText('Item 2');
+  await userEvent.click(secondItem);
 };

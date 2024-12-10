@@ -1,5 +1,5 @@
 import ProgressCircle from './ProgressCircle.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<ProgressCircle> = {
   title: 'component/Indicators/ProgressCircle',
@@ -24,46 +24,43 @@ const meta: Meta<ProgressCircle> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<ProgressCircle> = (args) => ({
+  Component: ProgressCircle,
+  props:args,
+}); 
 
-export const Default: Story = {
-  args: {
-    progress: 50,
-    state: 'in-progress',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  progress: 50,
+  state: 'in-progress',
 };
 
-export const Complete: Story = {
-  args: {
-    progress: 100,
-    state: 'complete',
-  }
+export const Complete = Template.bind({});
+Complete.args = {
+  progress: 100,
+  state: 'complete',
 };
 
-export const Incomplete: Story = {
-  args: {
-    progress: 0,
-    state: 'incomplete',
-  }
+export const InComplete = Template.bind({});
+InComplete.args = {
+  progress: 0,
+  state: 'incomplete',
 };
 
-export const InProgress: Story = {
-  args: {
-    progress: 50,
-    state: 'in-progress',
-  }
+export const InProgress = Template.bind({});
+InProgress.args = {
+  progress: 50,
+  state: 'in-progress',
 };
 
-export const Paused: Story = {
-  args: {
-    progress: 50,
-    state: 'paused',
-  }
+export const Paused = Template.bind({});
+Paused.args = {
+  progress: 50,
+  state: 'paused',
 };
 
-export const Active: Story = {
-  args: {
-    progress: 75,
-    state: 'active',
-  }
+export const Active = Template.bind({});
+Active.args = {
+  progress: 75,
+  state: 'active',
 };

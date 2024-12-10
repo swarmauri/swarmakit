@@ -13,9 +13,10 @@
 
 <div class="range-slider" aria-disabled={disabled} style={`justify-content: ${labelPosition}`}>
   {#if labelPosition === 'left'}
-    <label>{label}</label>
+    <label for="range-slider-input">{label}</label>
   {/if}
   <input
+    id="range-slider-input"
     type="range"
     min={min}
     max={max}
@@ -28,10 +29,10 @@
     aria-label={label}
   />
   {#if labelPosition === 'center'}
-    <label>{label}</label>
+    <label for="range-slider-input">{label}</label>
   {/if}
   {#if labelPosition === 'right'}
-    <label>{label}</label>
+    <label for="range-slider-input">{label}</label>
   {/if}
 </div>
 

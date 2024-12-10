@@ -46,7 +46,7 @@
       on:dragover={(event) => handleDragOver(event, index)}
       on:drop={handleDrop}
       tabindex="0"
-      role="listitem"
+      role="menuitem"
       aria-grabbed={draggingIndex === index ? 'true' : 'false'}
       aria-disabled={disabled}
     >

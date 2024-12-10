@@ -32,7 +32,7 @@
         <li>{item}</li>
       {/each}
     {:else}
-      <li>No results found</li>
+      <li class="no-results">No results found</li>
     {/if}
   </ul>
 </div>

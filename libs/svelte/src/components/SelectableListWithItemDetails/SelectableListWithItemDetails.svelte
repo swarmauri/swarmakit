@@ -1,5 +1,5 @@
 <script lang="ts">
-  export type ListItem = {
+  type ListItem = {
     id: number;
     text: string;
     details: string;
@@ -24,8 +24,9 @@
     <div
       class="list-item {selectedItemId === item.id ? 'selected' : ''}"
       on:click={() => toggleSelection(item.id)}
-      role="listitem"
-      aria-selected={selectedItemId === item.id}
+      on:keydown={(e)=>{if(e.key === 'Enter' || e.key === ' '){toggleSelection(item.id)}}}
+      role="menuitem"
+      aria-current={selectedItemId === item.id}
       tabindex="0"
     >
       {item.text}

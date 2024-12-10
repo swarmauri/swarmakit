@@ -1,5 +1,5 @@
 import IconButton from './IconButton.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<IconButton> = {
   title: 'component/Buttons/IconButton',
@@ -25,34 +25,33 @@ const meta: Meta<IconButton> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<IconButton> = (args) => ({
+  Component:IconButton,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    icon: 'path/to/icon.svg',
-    disabled: false,
-    ariaLabel: 'Default Icon Button',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  icon: 'path/to/icon.svg',
+  disabled: false,
+  ariaLabel: 'Default Icon Button',
 };
 
-export const Active: Story = {
-  args: {
-    icon: 'path/to/icon.svg',
-    ariaLabel: 'Active Icon Button',
-  }
+export const Active = Template.bind({});
+Active.args = {
+  icon: 'path/to/icon.svg',
+  ariaLabel: 'Active Icon Button',
 };
 
-export const Hover: Story = {
-  args: {
-    icon: 'path/to/icon.svg',
-    ariaLabel: 'Hover Icon Button',
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  icon: 'path/to/icon.svg',
+  ariaLabel: 'Hover Icon Button',
 };
 
-export const Disabled: Story = {
-  args: {
-    icon: 'path/to/icon.svg',
-    disabled: true,
-    ariaLabel: 'Disabled Icon Button',
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  icon: 'path/to/icon.svg',
+  disabled: true,
+  ariaLabel: 'Disabled Icon Button',
 };

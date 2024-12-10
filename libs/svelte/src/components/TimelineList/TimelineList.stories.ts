@@ -1,5 +1,5 @@
 import TimelineList from './TimelineList.svelte';
-import type { Meta, Story } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta = {
   title: 'Components/Lists/TimelineList',
@@ -7,14 +7,14 @@ const meta: Meta = {
   tags: ['autodocs'],
   argTypes: {
     events: {
-      control: { type: 'array' },
+      control: { type: 'object' },
     },
   },
 };
 
 export default meta;
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   Component: TimelineList,
   props: args,
 });

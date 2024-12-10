@@ -14,7 +14,7 @@
         if (timeLeft > 0) {
           timeLeft -= 1;
         } else {
-          clearInterval(interval);
+          clearInterval(interval!);
           interval = null;
         }
       }, 1000);
