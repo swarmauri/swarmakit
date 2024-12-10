@@ -1,0 +1,53 @@
+<style scoped>
+  .bubble-chart {
+    width: 100%;
+    height: 100%;
+    border: var(--chart-border, 1px solid #ccc);
+    background-color: var(--chart-bg-color, #f9f9f9);
+    position: relative;
+  }
+
+  .chart-loading,
+  .chart-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--chart-font-size, 16px);
+    color: var(--chart-text-color, #666);
+  }
+
+  .bubble-chart.rendered .bubble {
+    fill: var(--bubble-color, #007bff);
+  }
+
+  .bubble-chart.zoomed .bubble {
+    transform: scale(var(--zoom-scale, 1.2));
+  }
+
+  .bubble-chart.tooltipVisible .bubble:hover {
+    fill: var(--tooltip-color, #17a2b8);
+  }
+
+  .bubble-chart.highlighted .bubble:focus {
+    stroke: var(--highlight-color, #ffc107);
+    stroke-width: var(--highlight-width, 2px);
+  }
+
+  @media (max-width: 576px) {
+    .bubble-chart {
+      height: var(--chart-height-sm, 200px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .bubble-chart {
+      height: var(--chart-height-md, 300px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .bubble-chart {
+      height: var(--chart-height-lg, 400px);
+    }
+  }
+</style>
