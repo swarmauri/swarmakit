@@ -1,0 +1,28 @@
+<style scoped>
+  .zoom-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--zoom-controls-gap, 0.5rem);
+  }
+
+  .zoom-button {
+    width: var(--zoom-button-width, 40px);
+    height: var(--zoom-button-height, 40px);
+    background-color: var(--zoom-button-bg, #fff);
+    border: 1px solid var(--zoom-button-border, #ccc);
+    border-radius: var(--zoom-button-radius, 50%);
+    font-size: var(--zoom-button-font-size, 1rem);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .zoom-button:hover {
+    background-color: var(--zoom-button-hover-bg, #f0f0f0);
+    border-color: var(--zoom-button-hover-border, #bbb);
+  }
+
+  .zoom-button:disabled {
+    background-color: var(--zoom-button-disabled-bg, #e9ecef);
+    cursor: not-allowed;
+  }
+</style>
