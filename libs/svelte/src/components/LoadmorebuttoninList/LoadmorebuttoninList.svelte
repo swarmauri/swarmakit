@@ -37,5 +37,5 @@
 </div>
 
 <style lang="css">
-  @import './LoadMoreButtonInList.css';
+  @import './LoadmorebuttoninList.css';
 </style>
