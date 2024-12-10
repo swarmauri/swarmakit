@@ -1,0 +1,46 @@
+<style scoped>
+  .carousel {
+    position: relative;
+    width: var(--carousel-width, 100%);
+    max-width: var(--carousel-max-width, 600px);
+    overflow: hidden;
+    border-radius: var(--carousel-border-radius, 8px);
+  }
+
+  .carousel-image {
+    width: 100%;
+    display: block;
+    transition: opacity 0.5s ease;
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--control-bg, rgba(0, 0, 0, 0.5));
+    color: var(--control-color, #fff);
+    border: none;
+    padding: var(--control-padding, 10px);
+    cursor: pointer;
+    border-radius: var(--control-border-radius, 50%);
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel-control:hover {
+    background-color: var(--control-hover-bg, rgba(0, 0, 0, 0.7));
+  }
+
+  .carousel-control.prev {
+    left: var(--control-prev-left, 10px);
+  }
+
+  .carousel-control.next {
+    right: var(--control-next-right, 10px);
+  }
+
+  @media (max-width: 600px) {
+    .carousel {
+      max-width: 100%;
+    }
+  }
+</style>
