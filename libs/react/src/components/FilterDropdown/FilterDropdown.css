@@ -1,0 +1,58 @@
+<style scoped>
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-toggle {
+    background-color: var(--dropdown-toggle-bg, #007bff);
+    color: var(--dropdown-toggle-color, #fff);
+    padding: var(--dropdown-toggle-padding, 0.5rem 1rem);
+    border: none;
+    cursor: pointer;
+  }
+
+  .dropdown-toggle:disabled {
+    background-color: var(--dropdown-toggle-disabled-bg, #ccc);
+    cursor: not-allowed;
+  }
+
+  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--dropdown-menu-bg, #fff);
+    border: 1px solid var(--dropdown-menu-border, #ccc);
+    padding: var(--dropdown-menu-padding, 0.5rem);
+    min-width: var(--dropdown-menu-width, 150px);
+    z-index: 1000;
+  }
+
+  .dropdown-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--dropdown-option-margin-bottom, 0.5rem);
+  }
+
+  .dropdown-option input {
+    margin-right: var(--dropdown-option-input-margin, 0.5rem);
+  }
+
+  .dropdown-option label {
+    color: var(--dropdown-option-label-color, #333);
+  }
+
+  .dropdown-menu button {
+    margin-top: var(--dropdown-menu-button-margin-top, 0.5rem);
+    background-color: var(--dropdown-button-bg, #007bff);
+    color: var(--dropdown-button-color, #fff);
+    border: none;
+    padding: var(--dropdown-button-padding, 0.5rem 1rem);
+    cursor: pointer;
+  }
+
+  .dropdown-menu button:disabled {
+    background-color: var(--dropdown-button-disabled-bg, #ccc);
+    cursor: not-allowed;
+  }
+</style>
