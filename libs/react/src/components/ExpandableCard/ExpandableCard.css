@@ -1,0 +1,36 @@
+<style scoped>
+  .expandable-card {
+    border: var(--card-border, 1px solid #ccc);
+    border-radius: var(--card-border-radius, 8px);
+    overflow: hidden;
+    box-shadow: var(--card-box-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: max-height 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--card-background-color, #fff);
+    max-height: var(--card-collapsed-height, 50px);
+    cursor: pointer;
+  }
+
+  .expandable-card.expanded {
+    max-height: var(--card-expanded-height, 200px);
+  }
+
+  .expandable-card-header {
+    padding: var(--card-header-padding, 16px);
+    background-color: var(--card-header-background-color, #f7f7f7);
+    transition: background-color 0.3s;
+  }
+
+  .expandable-card-title {
+    margin: 0;
+    font-size: var(--card-title-font-size, 1.2rem);
+    color: var(--card-title-color, #333);
+  }
+
+  .expandable-card-content {
+    padding: var(--card-content-padding, 16px);
+  }
+
+  .expandable-card:hover {
+    box-shadow: var(--card-hover-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+</style>
