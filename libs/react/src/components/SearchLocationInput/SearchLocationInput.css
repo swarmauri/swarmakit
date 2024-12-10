@@ -1,0 +1,51 @@
+<style scoped>
+  .search-location-input {
+    position: relative;
+    max-width: var(--input-max-width, 100%);
+  }
+
+  .search-location-input input {
+    width: 100%;
+    padding: var(--input-padding, 0.5rem);
+    border: var(--input-border, 1px solid #ced4da);
+    border-radius: var(--input-radius, 0.25rem);
+    font-size: var(--input-font-size, 1rem);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .search-location-input input:focus {
+    border-color: var(--input-focus-border, #80bdff);
+    box-shadow: var(--input-focus-shadow, 0 0 0 0.2rem rgba(0, 123, 255, 0.25));
+    outline: none;
+  }
+
+  .search-location-input input.disabled {
+    background-color: var(--input-disabled-bg, #e9ecef);
+    cursor: not-allowed;
+  }
+
+  .search-location-input ul {
+    list-style: none;
+    margin: 0;
+    padding: var(--suggestions-padding, 0.5rem);
+    background-color: var(--suggestions-bg, #fff);
+    border: var(--suggestions-border, 1px solid #ced4da);
+    border-radius: var(--suggestions-radius, 0.25rem);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: var(--suggestions-shadow, 0 4px 6px rgba(0, 0, 0, 0.1));
+    z-index: 1000;
+  }
+
+  .search-location-input li {
+    padding: var(--suggestion-padding, 0.5rem);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .search-location-input li:hover {
+    background-color: var(--suggestion-hover-bg, #f8f9fa);
+  }
+</style>
