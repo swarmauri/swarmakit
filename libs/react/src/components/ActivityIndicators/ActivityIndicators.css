@@ -1,0 +1,55 @@
+<style scoped>
+  .activity-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s;
+  }
+
+  .loading {
+    background-color: var(--loading-background-color);
+    color: var(--loading-text-color);
+  }
+
+  .success {
+    background-color: var(--success-background-color);
+    color: var(--success-text-color);
+  }
+
+  .error {
+    background-color: var(--error-background-color);
+    color: var(--error-text-color);
+  }
+
+  @media (max-width: 600px) {
+    .activity-indicator {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .activity-indicator {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .activity-indicator {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .activity-indicator {
+      width: 50px;
+      height: 50px;
+    }
+  }
+</style>
