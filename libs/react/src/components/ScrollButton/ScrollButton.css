@@ -1,0 +1,43 @@
+<style scoped>
+  .scroll-button {
+    font-size: var(--scroll-button-font-size, 16px);
+    color: var(--scroll-button-color, #fff);
+    background-color: var(--scroll-button-bg, #3498db);
+    border: none;
+    padding: var(--scroll-button-padding, 10px 20px);
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    opacity: 1;
+  }
+
+  .scroll-button.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .scroll-button.hovered {
+    background-color: var(--scroll-button-hover-bg, #2980b9);
+  }
+
+  .scroll-button.clicked {
+    background-color: var(--scroll-button-clicked-bg, #1abc9c);
+  }
+
+  @media (max-width: 576px) {
+    .scroll-button {
+      font-size: var(--scroll-button-font-size-sm, 14px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .scroll-button {
+      font-size: var(--scroll-button-font-size-md, 15px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .scroll-button {
+      font-size: var(--scroll-button-font-size-lg, 16px);
+    }
+  }
+</style>
