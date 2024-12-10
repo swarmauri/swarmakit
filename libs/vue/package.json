@@ -2,8 +2,17 @@
   "name": "@swarmakit/vue",
   "private": false,
   "version": "0.0.10",
-
   "type": "module",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
@@ -13,6 +22,7 @@
   },
   "dependencies": {
     "quill": "^2.0.2",
+    "vite-plugin-dts": "^4.3.0",
     "vue": "^3.5.10"
   },
   "devDependencies": {
@@ -25,6 +35,7 @@
     "@storybook/test": "^8.3.5",
     "@storybook/vue3": "^8.3.5",
     "@storybook/vue3-vite": "^8.3.5",
+    "@types/node": "^22.10.1",
     "@types/quill": "^2.0.14",
     "@vitejs/plugin-vue": "^5.1.4",
     "storybook": "^8.3.5",
