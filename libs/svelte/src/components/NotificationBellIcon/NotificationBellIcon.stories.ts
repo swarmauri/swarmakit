@@ -1,5 +1,5 @@
 import NotificationBellIcon from './NotificationBellIcon.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<NotificationBellIcon> = {
   title: 'component/Indicators/NotificationBellIcon',
@@ -24,32 +24,31 @@ const meta: Meta<NotificationBellIcon> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<NotificationBellIcon> = (args) => ({
+  Component: NotificationBellIcon,
+  props:args,
+}); 
 
-export const Default: Story = {
-  args: {
-    hasNotifications: false,
-    dismissed: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  hasNotifications:false,
+  dismissed:false,
 };
 
-export const NoNotifications: Story = {
-  args: {
-    hasNotifications: false,
-    dismissed: true,
-  }
+export const NoNotifications = Template.bind({});
+NoNotifications.args = {
+  hasNotifications:false,
+  dismissed:true,
 };
 
-export const NewNotifications: Story = {
-  args: {
-    hasNotifications: true,
-    dismissed: false,
-  }
+export const NewNotifications = Template.bind({});
+NewNotifications.args = {
+  hasNotifications:true,
+  dismissed:false,
 };
 
-export const Dismissed: Story = {
-  args: {
-    hasNotifications: true,
-    dismissed: true,
-  }
+export const Dismissed = Template.bind({});
+Dismissed.args = {
+  hasNotifications:true,
+  dismissed:true,
 };

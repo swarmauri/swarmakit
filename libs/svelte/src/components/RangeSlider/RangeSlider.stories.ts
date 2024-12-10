@@ -1,5 +1,5 @@
 import RangeSlider from './RangeSlider.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<RangeSlider> = {
   title: 'component/Forms/RangeSlider',
@@ -28,70 +28,67 @@ const meta: Meta<RangeSlider> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<RangeSlider> = (args) => ({
+  Component:RangeSlider,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    min: 0,
-    max: 100,
-    value: 50,
-    disabled: false,
-    label: 'Default',
-    labelPosition: 'right',
-  }
+export const Default = Template.bind({});
+Default.args = {
+  min: 0,
+  max: 100,
+  value: 50,
+  disabled: false,
+  label: 'Default',
+  labelPosition: 'right',
 };
 
-export const Min: Story = {
-  args: {
-    min: 0,
-    max: 100,
-    value: 0,
-    disabled: false,
-    label: 'Min',
-    labelPosition: 'right',
-  }
+export const Min = Template.bind({});
+Min.args = {
+  min: 0,
+  max: 100,
+  value: 0,
+  disabled: false,
+  label: 'Min',
+  labelPosition: 'right',
 };
 
-export const Max: Story = {
-  args: {
-    min: 0,
-    max: 100,
-    value: 100,
-    disabled: false,
-    label: 'Max',
-    labelPosition: 'right',
-  }
+export const Max = Template.bind({});
+Max.args = {
+  min: 0,
+  max: 100,
+  value: 100,
+  disabled: false,
+  label: 'Max',
+  labelPosition: 'right',
 };
 
-export const Hover: Story = {
-  args: {
-    min: 0,
-    max: 100,
-    value: 50,
-    disabled: false,
-    label: 'Hover',
-    labelPosition: 'right',
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  min: 0,
+  max: 100,
+  value: 50,
+  disabled: false,
+  label: 'Hover',
+  labelPosition: 'right',
 };
 
-export const Active: Story = {
-  args: {
-    min: 0,
-    max: 100,
-    value: 75,
-    disabled: false,
-    label: 'Active',
-    labelPosition: 'right',
-  }
+export const Active = Template.bind({});
+Active.args = {
+  min: 0,
+  max: 100,
+  value: 75,
+  disabled: false,
+  label: 'Active',
+  labelPosition: 'right',
 };
 
-export const Disabled: Story = {
-  args: {
-    min: 0,
-    max: 100,
-    value: 50,
-    disabled: true,
-    label: 'Disabled',
-    labelPosition: 'right',
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  min: 0,
+  max: 100,
+  value: 50,
+  disabled: true,
+  label: 'Disabled',
+  labelPosition: 'right',
 };

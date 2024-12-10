@@ -1,5 +1,5 @@
 import ScrollableList from './ScrollableList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<ScrollableList> = {
   title: 'component/Lists/ScrollableList',
@@ -24,39 +24,37 @@ const meta: Meta<ScrollableList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<ScrollableList> = (args) => ({
+  Component:ScrollableList,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
-    disabled: false
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+  disabled: false
 };
 
-export const Scrolling: Story = {
-  args: {
-    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
-    disabled: false
-  }
+export const Scrolling = Template.bind({});
+Scrolling.args = {
+  items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+  disabled: false
 };
 
-export const EndOfList: Story = {
-  args: {
-    items: Array.from({ length: 5 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
-    disabled: false
-  }
+export const EndOfList = Template.bind({});
+EndOfList.args = {
+  items: Array.from({ length: 5 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+  disabled: false
 };
 
-export const Hover: Story = {
-  args: {
-    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
-    disabled: false
-  }
+export const Hover = Template.bind({});
+Hover.args = {
+  items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+  disabled: false
 };
 
-export const Disabled: Story = {
-  args: {
-    items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
-    disabled: true
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  items: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, text: `Item ${i + 1}` })),
+  disabled: true
 };

@@ -1,6 +1,4 @@
-<script lang="ts">
-  import { writable } from 'svelte/store';
-
+<script context="module" lang="ts">
   export type TableColumn = {
     key: string;
     label: string;
@@ -10,6 +8,11 @@
   export type TableRow = {
     [key: string]: string | number | boolean;
   };
+</script>
+
+
+<script lang="ts">
+  import { writable } from 'svelte/store';
 
   export let columns: TableColumn[] = [];
   export let rows: TableRow[] = [];
@@ -55,7 +58,7 @@
     aria-label="Filter rows"
   />
 </div>
-<table class="sortable-table" role="table">
+<table class="sortable-table">
   <thead>
     <tr>
       {#each columns as column}
@@ -63,7 +66,7 @@
           on:click={() => column.sortable && sortRows(column.key)}
           on:keydown={(e) => e.key === "Enter" && column.sortable && sortRows(column.key)}
           tabindex="0"
-          aria-sort={sortKey === column.key ? sortOrder : 'none'}
+          aria-sort={sortKey === column.key ? (sortOrder === 'asc' ? 'ascending' : 'descending') : 'none'}
           role="columnheader"
           class:sortable={column.sortable}
         >
@@ -77,7 +80,6 @@
       <tr
         on:click={() => selectRow(row)}
         on:keydown={(e) => e.key === "Enter" && selectRow(row)}
-        role="row"
         tabindex="0"
       >
         {#each columns as column}

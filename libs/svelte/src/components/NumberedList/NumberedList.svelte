@@ -19,6 +19,8 @@
       aria-selected={selected}
       aria-disabled={disabled}
       tabindex={disabled ? -1 : 0}
+      on:keydown={(e)=>{if(e.key === 'Enter' || e.key === ' '){handleSelect(id)}}}
+      role="tab"
     >
       {label}
     </li>

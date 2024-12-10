@@ -1,5 +1,5 @@
 import PasswordConfirmationField from './PasswordConfirmationField.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<PasswordConfirmationField> = {
   title: 'component/Forms/PasswordConfirmationField',
@@ -25,36 +25,35 @@ const meta: Meta<PasswordConfirmationField> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<PasswordConfirmationField> = (args) => ({
+  Component: PasswordConfirmationField,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    password: '',
-    confirmPassword: '',
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  password: '',
+  confirmPassword: '',
+  disabled: false,
 };
 
-export const Matching: Story = {
-  args: {
-    password: 'password123',
-    confirmPassword: 'password123',
-    disabled: false,
-  }
+export const Matching = Template.bind({});
+Matching.args = {
+  password: 'password123',
+  confirmPassword: 'password123',
+  disabled: false,
 };
 
-export const NotMatching: Story = {
-  args: {
-    password: 'password123',
-    confirmPassword: 'password321',
-    disabled: false,
-  }
+export const NotMatching = Template.bind({});
+NotMatching.args = {
+  password: 'password123',
+  confirmPassword: 'password222',
+  disabled: false,
 };
 
-export const Disabled: Story = {
-  args: {
-    password: 'password123',
-    confirmPassword: 'password123',
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  password: 'password123',
+  confirmPassword: 'password123',
+  disabled: true,
 };

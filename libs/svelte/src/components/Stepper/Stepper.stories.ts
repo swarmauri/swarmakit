@@ -1,5 +1,5 @@
 import Stepper from './Stepper.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Stepper> = {
   title: 'component/Indicators/Stepper',
@@ -23,44 +23,43 @@ const meta: Meta<Stepper> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Stepper> = (args) => ({
+  Component:Stepper,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'completed' },
-      { label: 'Step 2', status: 'active' },
-      { label: 'Step 3', status: 'disabled' },
-    ],
-  }
+export const Default = Template.bind({});
+Default.args = {
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'active' },
+    { label: 'Step 3', status: 'disabled' },
+  ],
 };
 
-export const Completed: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'completed' },
-      { label: 'Step 2', status: 'completed' },
-      { label: 'Step 3', status: 'completed' },
-    ],
-  }
+export const Completed = Template.bind({});
+Completed.args = {
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'completed' },
+    { label: 'Step 3', status: 'completed' },
+  ],
 };
 
-export const Active: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'completed' },
-      { label: 'Step 2', status: 'active' },
-      { label: 'Step 3', status: 'disabled' },
-    ],
-  }
+export const Active = Template.bind({});
+Active.args = {
+  steps: [
+    { label: 'Step 1', status: 'completed' },
+    { label: 'Step 2', status: 'active' },
+    { label: 'Step 3', status: 'disabled' },
+  ],
 };
 
-export const Disabled: Story = {
-  args: {
-    steps: [
-      { label: 'Step 1', status: 'disabled' },
-      { label: 'Step 2', status: 'disabled' },
-      { label: 'Step 3', status: 'disabled' },
-    ],
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  steps: [
+    { label: 'Step 1', status: 'disabled' },
+    { label: 'Step 2', status: 'disabled' },
+    { label: 'Step 3', status: 'disabled' },
+  ],
 };

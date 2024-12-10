@@ -1,5 +1,5 @@
 import CheckList from './CheckList.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<CheckList> = {
   title: 'component/Lists/CheckList',
@@ -23,54 +23,52 @@ const meta: Meta<CheckList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<CheckList>  = (args) => ({
+  Component: CheckList,
+  props: args,
+});
 
-export const Default: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1' },
-      { id: 2, label: 'Item 2' },
-      { id: 3, label: 'Item 3' }
-    ]
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items : [
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
+  ],
 };
 
-export const Checked: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1', checked: true },
-      { id: 2, label: 'Item 2' },
-      { id: 3, label: 'Item 3', checked: true }
-    ]
-  }
+export const Checked = Template.bind({});
+Checked.args = {
+  items : [
+    { id: 1, label: 'Item 1', checked:true, },
+    { id: 2, label: 'Item 2', checked:false, },
+    { id: 3, label: 'Item 3' , checked:true, },
+  ],
 };
 
-export const Unchecked: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1', checked: false },
-      { id: 2, label: 'Item 2', checked: false },
-      { id: 3, label: 'Item 3', checked: false }
-    ]
-  }
+export const UnChecked = Template.bind({});
+UnChecked.args = {
+  items : [
+    { id: 1, label: 'Item 1', checked:false, },
+    { id: 2, label: 'Item 2', checked:false, },
+    { id: 3, label: 'Item 3' , checked:false, },
+  ],
 };
 
-export const PartiallyChecked: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1', partiallyChecked: true },
-      { id: 2, label: 'Item 2' },
-      { id: 3, label: 'Item 3', partiallyChecked: true }
-    ]
-  }
+export const PartiallyChecked = Template.bind({});
+PartiallyChecked.args = {
+  items : [
+    { id: 1, label: 'Item 1', partiallyChecked:true, },
+    { id: 2, label: 'Item 2', partiallyChecked:false, },
+    { id: 3, label: 'Item 3' , partiallyChecked:true, },
+  ],
 };
 
-export const Disabled: Story = {
-  args: {
-    items: [
-      { id: 1, label: 'Item 1', disabled: true },
-      { id: 2, label: 'Item 2' },
-      { id: 3, label: 'Item 3', disabled: true }
-    ]
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  items : [
+    { id: 1, label: 'Item 1', disabled:true, },
+    { id: 2, label: 'Item 2', disabled:false, },
+    { id: 3, label: 'Item 3' , disabled:true, },
+  ],
 };

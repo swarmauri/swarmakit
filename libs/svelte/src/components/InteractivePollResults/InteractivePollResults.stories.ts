@@ -1,5 +1,5 @@
 import InteractivePollResults from './InteractivePollResults.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<InteractivePollResults> = {
   title: 'component/Indicators/InteractivePollResults',
@@ -24,44 +24,44 @@ const meta: Meta<InteractivePollResults> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<InteractivePollResults> = (args) => ({
+  Component: InteractivePollResults,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    options: [
-      { label: 'Option A', votes: 50 },
-      { label: 'Option B', votes: 30 },
-    ],
-    totalVotes: 80,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  options: [
+    { label: 'Option B', votes: 30 },
+    { label: 'Option A', votes: 50 },
+  ],
+  totalVotes: 80,
 };
 
-export const LiveResults: Story = {
-  args: {
-    options: [
-      { label: 'Option A', votes: 70 },
-      { label: 'Option B', votes: 30 },
-    ],
-    totalVotes: 100,
-  }
+
+export const LiveResults = Template.bind({});
+LiveResults.args = {
+  options: [
+    { label: 'Option B', votes: 70 },
+    { label: 'Option A', votes: 30 },
+  ],
+  totalVotes: 100,
 };
 
-export const Completed: Story = {
-  args: {
-    options: [
-      { label: 'Option A', votes: 120 },
-      { label: 'Option B', votes: 80 },
-    ],
-    totalVotes: 200,
-  }
+export const Completed = Template.bind({});
+Completed.args = {
+  options: [
+    { label: 'Option B', votes: 120 },
+    { label: 'Option A', votes: 80 },
+  ],
+  totalVotes: 200,
 };
 
-export const Closed: Story = {
-  args: {
-    options: [
-      { label: 'Option A', votes: 50 },
-      { label: 'Option B', votes: 50 },
-    ],
-    totalVotes: 100,
-  }
+export const Closed = Template.bind({});
+Closed.args = {
+  options: [
+    { label: 'Option B', votes: 50 },
+    { label: 'Option A', votes: 50 },
+  ],
+  totalVotes: 100,
 };

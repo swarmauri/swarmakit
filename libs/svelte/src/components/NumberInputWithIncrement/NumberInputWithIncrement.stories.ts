@@ -1,5 +1,6 @@
+import { userEvent, within } from '@storybook/test';
 import NumberInputWithIncrement from './NumberInputWithIncrement.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<NumberInputWithIncrement> = {
   title: 'component/Forms/NumberInputWithIncrement',
@@ -27,44 +28,56 @@ const meta: Meta<NumberInputWithIncrement> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<NumberInputWithIncrement> = (args) => ({
+  Component:NumberInputWithIncrement,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    value: 0,
-    min: 0,
-    max: 100,
-    step: 1,
-    disabled: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  value: 0,
+  min: 0,
+  max: 100,
+  step: 1,
+  disabled: false,
 };
 
-export const Increment: Story = {
-  args: {
-    value: 5,
-    min: 0,
-    max: 10,
-    step: 1,
-    disabled: false,
-  }
+export const Increment = Template.bind({});
+Increment.args = {
+  value: 5,
+  min: 0,
+  max: 10,
+  step: 1,
+  disabled: false,
+};
+Increment.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+
+  const incrementButton = await canvas.getByText('+');
+
+  await userEvent.click(incrementButton);
 };
 
-export const Decrement: Story = {
-  args: {
-    value: 5,
-    min: 0,
-    max: 10,
-    step: 1,
-    disabled: false,
-  }
+export const Decrement = Template.bind({});
+Decrement.args = {
+  value: 5,
+  min: 0,
+  max: 10,
+  step: 1,
+  disabled: false,
+};
+Decrement.play = async({canvasElement}) => {
+  const canvas = within(canvasElement);
+
+  const decrementButton = await canvas.getByText('-');
+  await userEvent.click(decrementButton)
 };
 
-export const Disabled: Story = {
-  args: {
-    value: 5,
-    min: 0,
-    max: 10,
-    step: 1,
-    disabled: true,
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  value: 5,
+  min: 0,
+  max: 10,
+  step: 1,
+  disabled: true,
 };

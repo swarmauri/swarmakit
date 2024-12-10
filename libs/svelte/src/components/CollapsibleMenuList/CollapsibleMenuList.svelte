@@ -18,8 +18,18 @@
       on:click={() => setActive(item)}
       on:mouseenter={() => item.expanded = true}
       on:mouseleave={() => item.expanded = false}
+      role="menuitem"
+      on:keydown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          setActive(item);
+          e.preventDefault(); // Prevent scrolling when space is pressed
+        }
+      }}
     >
-      <div class="menu-label" on:click={() => toggleExpand(item)}>
+      <div class="menu-label" on:click={() => toggleExpand(item)} role="button" tabindex='0' on:keydown={(e)=> {if (e.key === 'Enter' || e.key === ''){
+        toggleExpand(item);
+        e.preventDefault();
+      }}}>
         {item.label}
       </div>
       {#if item.expanded}

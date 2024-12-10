@@ -1,5 +1,5 @@
 import SelectableListWithItemDetails from './SelectableListWithItemDetails.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<SelectableListWithItemDetails> = {
   title: 'component/Lists/SelectableListWithItemDetails',
@@ -25,64 +25,62 @@ const meta: Meta<SelectableListWithItemDetails> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<SelectableListWithItemDetails> = (args) => ({
+  Component:SelectableListWithItemDetails,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    items: Array.from({ length: 5 }, (_, i) => ({
-      id: i + 1,
-      text: `Item ${i + 1}`,
-      details: `Details for Item ${i + 1}`
-    })),
-    selectedItemId: null,
-    detailsOpen: false
-  }
+export const Default = Template.bind({});
+Default.args = {
+  items: Array.from({ length: 5 }, (_, i) => ({
+    id: i + 1,
+    text: `Item ${i + 1}`,
+    details: `Details for Item ${i + 1}`
+  })),
+  selectedItemId: null,
+  detailsOpen: false
 };
 
-export const ItemSelected: Story = {
-  args: {
-    items: Array.from({ length: 5 }, (_, i) => ({
-      id: i + 1,
-      text: `Item ${i + 1}`,
-      details: `Details for Item ${i + 1}`
-    })),
-    selectedItemId: 1,
-    detailsOpen: false
-  }
+export const ItemSelected = Template.bind({});
+ItemSelected.args = {
+  items: Array.from({ length: 5 }, (_, i) => ({
+    id: i + 1,
+    text: `Item ${i + 1}`,
+    details: `Details for Item ${i + 1}`
+  })),
+  selectedItemId: 1,
+  detailsOpen: false
 };
 
-export const ItemDeselected: Story = {
-  args: {
-    items: Array.from({ length: 5 }, (_, i) => ({
-      id: i + 1,
-      text: `Item ${i + 1}`,
-      details: `Details for Item ${i + 1}`
-    })),
-    selectedItemId: null,
-    detailsOpen: false
-  }
+export const ItemDeselected = Template.bind({});
+ItemDeselected.args = {
+  items: Array.from({ length: 5 }, (_, i) => ({
+    id: i + 1,
+    text: `Item ${i + 1}`,
+    details: `Details for Item ${i + 1}`
+  })),
+  selectedItemId: null,
+  detailsOpen: false
 };
 
-export const DetailsOpened: Story = {
-  args: {
-    items: Array.from({ length: 5 }, (_, i) => ({
-      id: i + 1,
-      text: `Item ${i + 1}`,
-      details: `Details for Item ${i + 1}`
-    })),
-    selectedItemId: 1,
-    detailsOpen: true
-  }
+export const DetailsOpened = Template.bind({});
+DetailsOpened.args = {
+  items: Array.from({ length: 5 }, (_, i) => ({
+    id: i + 1,
+    text: `Item ${i + 1}`,
+    details: `Details for Item ${i + 1}`
+  })),
+  selectedItemId: 1,
+  detailsOpen: true
 };
 
-export const DetailsClosed: Story = {
-  args: {
-    items: Array.from({ length: 5 }, (_, i) => ({
-      id: i + 1,
-      text: `Item ${i + 1}`,
-      details: `Details for Item ${i + 1}`
-    })),
-    selectedItemId: 1,
-    detailsOpen: false
-  }
+export const DetailsClosed = Template.bind({});
+DetailsClosed.args = {
+  items: Array.from({ length: 5 }, (_, i) => ({
+    id: i + 1,
+    text: `Item ${i + 1}`,
+    details: `Details for Item ${i + 1}`
+  })),
+  selectedItemId: 1,
+  detailsOpen: false
 };

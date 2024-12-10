@@ -1,5 +1,5 @@
 import Upload from './Upload.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Upload> = {
   title: 'component/Indicators/Upload',
@@ -25,52 +25,49 @@ const meta: Meta<Upload> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Upload> = (args) => ({
+  Component: Upload,
+  props:args,
+}); 
 
-export const Default: Story = {
-  args: {
-    fileName: 'example.txt',
-    status: 'uploading',
-    progress: 50
-  }
+export const Default = Template.bind({});
+Default.args = {
+  fileName: 'example.txt',
+  status: 'uploading',
+  progress: 50
 };
 
-export const Uploading: Story = {
-  args: {
-    fileName: 'uploading_file.txt',
-    status: 'uploading',
-    progress: 30
-  }
+export const Uploading = Template.bind({});
+Uploading.args = {
+  fileName: 'example.txt',
+  status: 'uploading',
+  progress: 50
 };
 
-export const Downloading: Story = {
-  args: {
-    fileName: 'downloading_file.txt',
-    status: 'downloading',
-    progress: 60
-  }
+export const Downloading = Template.bind({});
+Downloading.args = {
+  fileName: 'downloading_file.txt',
+  status: 'downloading',
+  progress: 60
 };
 
-export const Completed: Story = {
-  args: {
-    fileName: 'completed_file.txt',
-    status: 'completed',
-    progress: 100
-  }
+export const Completed = Template.bind({});
+Completed.args = {
+  fileName: 'completed_file.txt',
+  status: 'completed',
+  progress: 100
 };
 
-export const Paused: Story = {
-  args: {
-    fileName: 'paused_file.txt',
-    status: 'paused',
-    progress: 70
-  }
+export const Paused = Template.bind({});
+Paused.args = {
+  fileName: 'paused_file.txt',
+  status: 'paused',
+  progress: 70
 };
 
-export const Failed: Story = {
-  args: {
-    fileName: 'failed_file.txt',
-    status: 'failed',
-    progress: 0
-  }
+export const Failed = Template.bind({});
+Failed.args = {
+  fileName: 'paused_file.txt',
+  status: 'paused',
+  progress: 70
 };

@@ -1,5 +1,5 @@
 import SearchBar from './SearchBar.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<SearchBar> = {
   title: 'component/Input/SearchBar',
@@ -25,36 +25,35 @@ const meta: Meta<SearchBar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<SearchBar> = (args) => ({
+  Component:SearchBar,
+  props:args,
+});
 
-export const Default: Story = {
-  args: {
-    isFocused: false,
-    isDisabled: false,
-    placeholder: 'Search...'
-  }
+export const Default = Template.bind({});
+Default.args = {
+  isFocused: false,
+  isDisabled: false,
+  placeholder: 'Search...'
 };
 
-export const Focused: Story = {
-  args: {
-    isFocused: true,
-    isDisabled: false,
-    placeholder: 'Search...'
-  }
+export const Focused = Template.bind({});
+Focused.args = {
+  isFocused: true,
+  isDisabled: false,
+  placeholder: 'Search...'
 };
 
-export const Unfocused: Story = {
-  args: {
-    isFocused: false,
-    isDisabled: false,
-    placeholder: 'Search...'
-  }
+export const UnFocused = Template.bind({});
+UnFocused.args = {
+  isFocused: false,
+  isDisabled: false,
+  placeholder: 'Search...'
 };
 
-export const Disabled: Story = {
-  args: {
-    isFocused: false,
-    isDisabled: true,
-    placeholder: 'Search...'
-  }
+export const Disabled = Template.bind({});
+Disabled.args = {
+  isFocused: false,
+  isDisabled: true,
+  placeholder: 'Search...'
 };

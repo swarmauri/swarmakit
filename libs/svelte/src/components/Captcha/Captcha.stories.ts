@@ -1,5 +1,5 @@
 import Captcha from './Captcha.svelte';
-import type { Meta, StoryObj } from '@storybook/svelte';
+import type { Meta, StoryFn } from '@storybook/svelte';
 
 const meta: Meta<Captcha> = {
   title: 'component/Forms/Captcha',
@@ -26,27 +26,27 @@ const meta: Meta<Captcha> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+const Template:StoryFn<Captcha> = (args) => ({
+  Component: Captcha,
+  props:args
+});
 
-export const Default: Story = {
-  args: {
-    question: 'What is 2 + 2?',
-    errorMessage: '',
-    solved: false,
-  }
+export const Default = Template.bind({});
+Default.args = {
+  question: 'What is 2 + 2 ?',
+  errorMessage: '',
+  solved:false,
 };
 
-export const Solved: Story = {
-  args: {
-    question: 'What is 2 + 2?',
-    solved: true,
-  }
+export const Solved = Template.bind({});
+Solved.args = {
+  question: 'What is 2 + 2 ?',
+  solved:true,
 };
 
-export const Error: Story = {
-  args: {
-    question: 'What is 2 + 2?',
-    errorMessage: 'Incorrect answer, please try again.',
-    solved: false,
-  }
+export const Error = Template.bind({});
+Error.args = {
+  question: 'What is 2 + 2 ?',
+  errorMessage: 'Incorrect answer, please try again',
+  solved:false,
 };
