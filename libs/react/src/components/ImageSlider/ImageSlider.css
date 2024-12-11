@@ -1,0 +1,46 @@
+<style scoped>
+  .image-slider {
+    position: relative;
+    width: var(--slider-width, 100%);
+    max-width: var(--slider-max-width, 600px);
+    height: var(--slider-height, 400px);
+    overflow: hidden;
+  }
+
+  .slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .prev-button,
+  .next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--button-bg, rgba(0, 0, 0, 0.5));
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    cursor: pointer;
+  }
+
+  .prev-button {
+    left: 10px;
+  }
+
+  .next-button {
+    right: 10px;
+  }
+
+  .prev-button:hover,
+  .next-button:hover {
+    background-color: var(--button-hover-bg, rgba(0, 0, 0, 0.7));
+  }
+
+  @media (max-width: 600px) {
+    .image-slider {
+      max-width: 100%;
+    }
+  }
+</style>
