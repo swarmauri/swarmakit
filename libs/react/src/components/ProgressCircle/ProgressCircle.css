@@ -1,0 +1,64 @@
+<style scoped>
+  .progress-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .progress-circle-bg {
+    stroke: var(--progress-circle-bg-color, #e0e0e0);
+  }
+
+  .progress-circle-fill {
+    stroke: var(--progress-circle-fill-color, #76c7c0);
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+  }
+
+  .complete .progress-circle-fill {
+    stroke: var(--progress-circle-complete-color, #4caf50);
+  }
+
+  .incomplete .progress-circle-fill {
+    stroke: var(--progress-circle-incomplete-color, #f44336);
+  }
+
+  .in-progress .progress-circle-fill {
+    stroke: var(--progress-circle-in-progress-color, #ff9800);
+  }
+
+  .paused .progress-circle-fill {
+    stroke: var(--progress-circle-paused-color, #9e9e9e);
+  }
+
+  .active .progress-circle-fill {
+    stroke: var(--progress-circle-active-color, #2196f3);
+  }
+
+  @media (max-width: 600px) {
+    .progress-circle {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .progress-circle {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .progress-circle {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .progress-circle {
+      width: 120px;
+      height: 120px;
+    }
+  }
+</style>
