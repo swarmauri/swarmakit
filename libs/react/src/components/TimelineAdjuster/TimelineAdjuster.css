@@ -1,0 +1,66 @@
+<style scoped>
+  .timeline-adjuster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--timeline-adjuster-padding, 20px);
+    background-color: var(--timeline-adjuster-bg, #f2f2f2);
+    border-radius: var(--timeline-adjuster-border-radius, 8px);
+  }
+
+  .zoom-controls {
+    display: flex;
+    gap: var(--zoom-controls-gap, 10px);
+    margin-bottom: var(--zoom-controls-margin-bottom, 20px);
+  }
+
+  .zoom-controls button {
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .zoom-controls button:hover {
+    background-color: var(--button-hover-bg, #0056b3);
+  }
+
+  .timeline-view {
+    width: 100%;
+    height: var(--timeline-view-height, 200px);
+    background-color: var(--timeline-view-bg, #fff);
+    border: 1px solid var(--timeline-view-border, #e0e0e0);
+    border-radius: var(--timeline-view-border-radius, 4px);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .drag-indicator {
+    display: flex;
+    gap: var(--drag-indicator-gap, 10px);
+    margin-top: var(--drag-indicator-margin-top, 20px);
+  }
+
+  .drag-indicator button {
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .drag-indicator button:hover {
+    background-color: var(--button-hover-bg, #0056b3);
+  }
+
+  @media (max-width: 600px) {
+    .timeline-adjuster {
+      padding: var(--timeline-adjuster-padding-mobile, 10px);
+    }
+  }
+</style>
