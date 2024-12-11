@@ -1,0 +1,56 @@
+<style scoped>
+  .context-menu {
+    position: absolute;
+    display: none;
+    background: var(--context-menu-bg, #fff);
+    box-shadow: var(--context-menu-shadow, 0 2px 10px rgba(0, 0, 0, 0.15));
+    border-radius: var(--context-menu-radius, 4px);
+    z-index: 1000;
+  }
+
+  .context-menu.visible {
+    display: block;
+  }
+
+  .menu-options {
+    list-style: none;
+    padding: var(--menu-options-padding, 8px 0);
+    margin: 0;
+  }
+
+  .menu-option {
+    margin: var(--menu-option-margin, 0);
+  }
+
+  .option-button {
+    width: 100%;
+    padding: var(--option-button-padding, 12px 16px);
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .option-button:hover {
+    background: var(--option-button-hover-bg, #f0f0f0);
+  }
+
+  @media (max-width: 576px) {
+    .option-button {
+      padding: var(--option-button-padding-sm, 10px 14px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .option-button {
+      padding: var(--option-button-padding-md, 11px 15px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .option-button {
+      padding: var(--option-button-padding-lg, 12px 16px);
+    }
+  }
+</style>
