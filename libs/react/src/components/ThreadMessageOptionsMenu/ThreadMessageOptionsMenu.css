@@ -1,0 +1,64 @@
+<style scoped>
+  .options-menu-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .options-button {
+    background-color: var(--button-bg-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: var(--button-padding, 8px 16px);
+    cursor: pointer;
+    border-radius: var(--button-border-radius, 4px);
+  }
+
+  .options-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--menu-bg-color, #fff);
+    border: 1px solid var(--menu-border-color, #ccc);
+    border-radius: var(--menu-border-radius, 4px);
+    box-shadow: var(--menu-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
+    margin-top: 8px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .option-item {
+    padding: var(--option-item-padding, 8px 16px);
+    cursor: pointer;
+  }
+
+  .option-item:hover {
+    background-color: var(--option-item-hover-bg-color, #f1f1f1);
+  }
+
+  @media (max-width: 576px) {
+    .options-button {
+      padding: var(--button-padding-sm, 6px 12px);
+    }
+    .option-item {
+      padding: var(--option-item-padding-sm, 6px 12px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .options-button {
+      padding: var(--button-padding-md, 8px 16px);
+    }
+    .option-item {
+      padding: var(--option-item-padding-md, 8px 16px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .options-button {
+      padding: var(--button-padding-lg, 10px 20px);
+    }
+    .option-item {
+      padding: var(--option-item-padding-lg, 10px 20px);
+    }
+  }
+</style>

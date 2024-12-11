@@ -1,0 +1,43 @@
+<style scoped>
+  .send-button {
+    padding: var(--button-padding, 10px 20px);
+    font-size: var(--button-font-size, 14px);
+    background-color: var(--button-bg-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    border-radius: var(--button-border-radius, 5px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .send-button:disabled {
+    background-color: var(--button-disabled-bg-color, #ccc);
+    cursor: not-allowed;
+  }
+
+  .send-button:hover:enabled {
+    background-color: var(--button-hover-bg-color, #0056b3);
+  }
+
+  .send-button:active:enabled {
+    background-color: var(--button-active-bg-color, #004494);
+  }
+
+  @media (max-width: 576px) {
+    .send-button {
+      font-size: var(--button-font-size-sm, 12px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .send-button {
+      font-size: var(--button-font-size-md, 14px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .send-button {
+      font-size: var(--button-font-size-lg, 16px);
+    }
+  }
+</style>

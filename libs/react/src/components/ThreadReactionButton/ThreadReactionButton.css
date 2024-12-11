@@ -1,0 +1,42 @@
+<style scoped>
+  .thread-reaction-button {
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: var(--button-padding, 8px 16px);
+    font-size: var(--button-font-size, 14px);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .thread-reaction-button[aria-disabled="true"] {
+    background-color: var(--button-disabled-background-color, #ccc);
+    cursor: not-allowed;
+  }
+
+  .thread-reaction-button:hover:not([aria-disabled="true"]) {
+    background-color: var(--button-hover-background-color, #0056b3);
+  }
+
+  .thread-reaction-button:active:not([aria-disabled="true"]) {
+    transform: scale(0.98);
+  }
+
+  @media (max-width: 576px) {
+    .thread-reaction-button {
+      font-size: var(--button-font-size-sm, 12px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .thread-reaction-button {
+      font-size: var(--button-font-size-md, 14px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .thread-reaction-button {
+      font-size: var(--button-font-size-lg, 16px);
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+<style scoped>
+  .thread-reply-indicator {
+    background-color: var(--indicator-background-color, #007bff);
+    color: var(--indicator-text-color, #fff);
+    border-radius: var(--indicator-border-radius, 12px);
+    padding: var(--indicator-padding, 6px 12px);
+    font-size: var(--indicator-font-size, 14px);
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+  }
+
+  .thread-reply-indicator.visible {
+    opacity: 1;
+  }
+
+  .thread-reply-indicator:hover {
+    background-color: var(--indicator-hover-background-color, #0056b3);
+  }
+
+  .thread-reply-indicator.clicked {
+    background-color: var(--indicator-clicked-background-color, #004085);
+  }
+
+  @media (max-width: 576px) {
+    .thread-reply-indicator {
+      font-size: var(--indicator-font-size-sm, 12px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .thread-reply-indicator {
+      font-size: var(--indicator-font-size-md, 14px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .thread-reply-indicator {
+      font-size: var(--indicator-font-size-lg, 16px);
+    }
+  }
+</style>
