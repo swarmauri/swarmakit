@@ -1,0 +1,47 @@
+<style scoped>
+  .message-reactions {
+    display: inline-block;
+    font-size: var(--message-reactions-font-size, 16px);
+    color: var(--message-reactions-color, #333);
+    padding: var(--message-reactions-padding, 5px);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .message-reactions.unavailable {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .message-reactions.available,
+  .message-reactions.hovered,
+  .message-reactions.clicked {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .message-reactions.hovered {
+    transform: scale(1.1);
+  }
+
+  .message-reactions.clicked {
+    color: var(--message-reactions-clicked-color, #e74c3c);
+  }
+
+  @media (max-width: 576px) {
+    .message-reactions {
+      font-size: var(--message-reactions-font-size-sm, 14px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .message-reactions {
+      font-size: var(--message-reactions-font-size-md, 15px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .message-reactions {
+      font-size: var(--message-reactions-font-size-lg, 16px);
+    }
+  }
+</style>

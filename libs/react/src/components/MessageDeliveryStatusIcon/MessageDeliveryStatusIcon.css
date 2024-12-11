@@ -1,0 +1,40 @@
+<style scoped>
+  .status-icon {
+    font-size: var(--status-icon-font-size, 24px);
+    transition: color 0.2s ease;
+  }
+
+  .status-icon.sent {
+    color: var(--status-icon-sent-color, #3498db);
+  }
+
+  .status-icon.delivered {
+    color: var(--status-icon-delivered-color, #2ecc71);
+  }
+
+  .status-icon.failed {
+    color: var(--status-icon-failed-color, #e74c3c);
+  }
+
+  .status-icon.read {
+    color: var(--status-icon-read-color, #9b59b6);
+  }
+
+  @media (max-width: 576px) {
+    .status-icon {
+      font-size: var(--status-icon-font-size-sm, 20px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .status-icon {
+      font-size: var(--status-icon-font-size-md, 22px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .status-icon {
+      font-size: var(--status-icon-font-size-lg, 24px);
+    }
+  }
+</style>
