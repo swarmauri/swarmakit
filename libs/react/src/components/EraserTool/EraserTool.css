@@ -1,0 +1,38 @@
+<style scoped>
+  .eraser-tool {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: var(--eraser-tool-border, 1px solid #ccc);
+    border-radius: var(--eraser-tool-border-radius, 4px);
+    background-color: var(--eraser-tool-background-color, #fff);
+  }
+
+  .eraser-tool.active {
+    border-color: var(--eraser-tool-active-border-color, #dc3545);
+  }
+
+  .eraser-toggle {
+    background-color: var(--button-background-color, #dc3545);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+
+  .eraser-toggle:hover {
+    background-color: var(--button-hover-background-color, #c82333);
+  }
+
+  .eraser-settings label {
+    margin-bottom: 8px;
+  }
+
+  .eraser-settings input[type="range"] {
+    width: 100%;
+  }
+</style>

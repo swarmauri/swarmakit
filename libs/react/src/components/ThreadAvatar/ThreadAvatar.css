@@ -1,0 +1,64 @@
+<style scoped>
+  .avatar-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .avatar-image {
+    width: var(--avatar-size, 50px);
+    height: var(--avatar-size, 50px);
+    border-radius: 50%;
+    display: block;
+  }
+
+  .status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: var(--status-indicator-size, 10px);
+    height: var(--status-indicator-size, 10px);
+    border-radius: 50%;
+    border: 2px solid var(--status-indicator-border-color, #fff);
+  }
+
+  .online .status-indicator {
+    background-color: var(--status-indicator-online-color, #28a745);
+  }
+
+  .offline .status-indicator {
+    background-color: var(--status-indicator-offline-color, #6c757d);
+  }
+
+  .active .status-indicator {
+    background-color: var(--status-indicator-active-color, #007bff);
+  }
+
+  .away .status-indicator {
+    background-color: var(--status-indicator-away-color, #ffc107);
+  }
+
+  .busy .status-indicator {
+    background-color: var(--status-indicator-busy-color, #dc3545);
+  }
+
+  @media (max-width: 576px) {
+    .avatar-image {
+      width: var(--avatar-size-sm, 40px);
+      height: var(--avatar-size-sm, 40px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .avatar-image {
+      width: var(--avatar-size-md, 50px);
+      height: var(--avatar-size-md, 50px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .avatar-image {
+      width: var(--avatar-size-lg, 60px);
+      height: var(--avatar-size-lg, 60px);
+    }
+  }
+</style>

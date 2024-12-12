@@ -1,0 +1,52 @@
+<style scoped>
+  .skeleton-scroll-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    margin: var(--skeleton-margin, 10px);
+  }
+
+  .skeleton-circle {
+    width: var(--skeleton-circle-size, 40px);
+    height: var(--skeleton-circle-size, 40px);
+    background-color: var(--skeleton-bg-color, #e0e0e0);
+    border-radius: 50%;
+    animation: skeleton-pulse 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-scroll-button.hidden {
+    opacity: 0;
+  }
+
+  @keyframes skeleton-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .skeleton-circle {
+      width: var(--skeleton-circle-size-sm, 30px);
+      height: var(--skeleton-circle-size-sm, 30px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .skeleton-circle {
+      width: var(--skeleton-circle-size-md, 35px);
+      height: var(--skeleton-circle-size-md, 35px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .skeleton-circle {
+      width: var(--skeleton-circle-size-lg, 40px);
+      height: var(--skeleton-circle-size-lg, 40px);
+    }
+  }
+</style>

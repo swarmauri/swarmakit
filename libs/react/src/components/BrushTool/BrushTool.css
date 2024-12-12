@@ -1,0 +1,38 @@
+<style scoped>
+  .brush-tool {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: var(--brush-tool-border, 1px solid #ccc);
+    border-radius: var(--brush-tool-border-radius, 4px);
+    background-color: var(--brush-tool-background-color, #fff);
+  }
+
+  .brush-tool.active {
+    border-color: var(--brush-tool-active-border-color, #007bff);
+  }
+
+  .brush-toggle {
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+
+  .brush-toggle:hover {
+    background-color: var(--button-hover-background-color, #0056b3);
+  }
+
+  .brush-settings label {
+    margin-bottom: 8px;
+  }
+
+  .brush-settings input[type="range"] {
+    width: 100%;
+  }
+</style>

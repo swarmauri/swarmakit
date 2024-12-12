@@ -1,0 +1,42 @@
+<style scoped>
+  .send-button {
+    padding: var(--button-padding, 10px 20px);
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    background-color: var(--button-bg-color, #007bff);
+    color: var(--button-text-color, #fff);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .send-button.enabled:hover {
+    background-color: var(--button-hover-bg-color, #0056b3);
+  }
+
+  .send-button.disabled {
+    background-color: var(--button-disabled-bg-color, #ccc);
+    cursor: not-allowed;
+  }
+
+  .send-button:active {
+    background-color: var(--button-click-bg-color, #004085);
+  }
+
+  @media (max-width: 576px) {
+    .send-button {
+      padding: var(--button-padding-sm, 8px 16px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .send-button {
+      padding: var(--button-padding-md, 9px 18px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .send-button {
+      padding: var(--button-padding-lg, 10px 20px);
+    }
+  }
+</style>
