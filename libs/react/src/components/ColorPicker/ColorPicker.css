@@ -1,0 +1,64 @@
+<style scoped>
+  .color-picker {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: var(--color-picker-border, 1px solid #ccc);
+    border-radius: var(--color-picker-border-radius, 4px);
+    background-color: var(--color-picker-background-color, #fff);
+  }
+
+  .color-picker.active {
+    border-color: var(--color-picker-active-border-color, #007bff);
+  }
+
+  .color-toggle {
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+
+  .color-toggle:hover {
+    background-color: var(--button-hover-background-color, #0056b3);
+  }
+
+  .color-settings input[type="color"],
+  .color-settings input[type="text"] {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .add-history {
+    background-color: var(--add-history-button-background-color, #28a745);
+    color: var(--add-history-button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--add-history-button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+
+  .add-history:hover {
+    background-color: var(--add-history-button-hover-background-color, #218838);
+  }
+
+  .color-history {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .color-history-item {
+    width: 24px;
+    height: 24px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: var(--color-history-item-border-radius, 3px);
+  }
+</style>
