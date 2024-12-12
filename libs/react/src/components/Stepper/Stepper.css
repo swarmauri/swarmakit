@@ -1,0 +1,54 @@
+<style scoped>
+  .stepper {
+    display: flex;
+    gap: var(--stepper-gap, 8px);
+  }
+
+  .step {
+    width: var(--step-width, 20px);
+    height: var(--step-height, 20px);
+    border-radius: 50%;
+    background-color: var(--step-color, #e0e0e0);
+    transition: background-color 0.3s ease;
+  }
+
+  .step.completed {
+    background-color: var(--step-completed-color, #00ff00);
+  }
+
+  .step.active {
+    background-color: var(--step-active-color, #0000ff);
+  }
+
+  .step.disabled {
+    background-color: var(--step-disabled-color, #c0c0c0);
+  }
+
+  @media (max-width: 600px) {
+    .step {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .step {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .step {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .step {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>
