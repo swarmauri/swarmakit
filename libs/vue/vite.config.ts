@@ -1,24 +1,17 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    dts({
-      insertTypesEntry: true,
-    }),
-  ],
+  plugins: [vue(), dts()],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: './src/index.ts', // Use the newly created `src/index.ts`
       name: 'SwarmakitVue',
-      formats: ['es', 'umd'],
-      fileName: (format) => `index.${format === 'es' ? 'js' : 'umd.cjs'}`,
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
+      // Exclude Vue from the bundle
       external: ['vue'],
       output: {
         globals: {
