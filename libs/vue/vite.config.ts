@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      outputDir: 'dist', // Ensure declaration files are written to `dist`
+      outDir: 'dist', // Correct property to specify declaration output directory
       include: ['./src/**/*.ts', './src/**/*.vue'], // Include .ts and .vue files
     }),
   ],
