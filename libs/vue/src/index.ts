@@ -85,7 +85,6 @@ export { default as LoadMoreButtonInList } from './components/LoadMoreButtonInLi
 export { default as LoadingBarsWithSteps } from './components/LoadingBarsWithSteps/LoadingBarsWithSteps.vue';
 export { default as LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner.vue';
 export { default as MediaGallery } from './components/MediaGallery/MediaGallery.vue';
-// export all remaining components here
 export { default as MultipleChoicePoll } from './components/MultipleChoicePoll/MultipleChoicePoll.vue';
 export { default as MultiselectList } from './components/MultiselectList/MultiselectList.vue';
 export { default as Notification } from './components/Notification/Notification.vue';

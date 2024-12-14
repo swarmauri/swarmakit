@@ -1,7 +1,21 @@
 {
-  "files": [],
+  "files": [], // This remains empty for project references
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "include": ["src/**/*.ts", "src/**/*.vue"], // Add this to include .ts and .vue files
+  "compilerOptions": {
+    "declaration": true, // Enable .d.ts file generation
+    "declarationDir": "./dist", // Output directory for .d.ts files
+    "emitDeclarationOnly": true, // Prevent emitting JS files (only declarations)
+    "skipLibCheck": true, // Avoid issues with dependency .d.ts files
+    "strict": true, // Enable TypeScript's strict mode
+    "module": "ESNext", // Module type for ES6+
+    "moduleResolution": "Node", // Resolve node_modules correctly
+    "jsx": "preserve", // Preserve JSX for Vue components
+    "esModuleInterop": true, // Support ES modules with interop
+    "resolveJsonModule": true, // If JSON imports are used
+    "isolatedModules": true // Required for Vue SFC with TypeScript
+  }
 }
