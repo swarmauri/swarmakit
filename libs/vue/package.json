@@ -1,7 +1,7 @@
 {
   "name": "@swarmakit/vue",
   "private": false,
-  "version": "0.0.13",
+  "version": "0.0.14",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -22,7 +22,9 @@
     "prepublishOnly": "npm run build"
   },
   "files": [
-    "dist/**/*",
+    "dist/index.es.js",
+    "dist/index.umd.js",
+    "dist/index.d.ts",
     "README.md"
   ],
   "dependencies": {
