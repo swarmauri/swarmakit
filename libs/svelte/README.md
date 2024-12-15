@@ -1,4 +1,4 @@
-# create-svelte
+# Svelte + TypeScript + Vite
 
 <div style="text-align: center;">
 
@@ -7,50 +7,19 @@
 ![npm downloads](https://img.shields.io/npm/dt/@swarmakit/svelte.svg)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build and Publish Monorepo](https://github.com/swarmauri/swarmakit/actions/workflows/publish.yml/badge.svg)](https://github.com/swarmauri/swarmakit/actions/workflows/publish.yml)
+
 </div>
 
 <div style="text-align: center;">
 
 ![Static Badge](https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&labelColor=black)
 ![Static Badge](https://img.shields.io/badge/TypeScript-1D4ED8?style=for-the-badge&logo=typescript&labelColor=black)
+
 </div>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This template should help get you started developing with Svelte and TypeScript in Vite.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Everything you need to build a Svelte and TypeScript project, powered by [`Svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
 ## Installation
 
@@ -66,32 +35,47 @@ Node.js and npm should be installed. You can verify installation with:
 
 ```bash
 node -v
-npm -v 
+npm -v
+````
+
+### Setting Up a Vite + Svelte Project (If you haven't already)
+
+To initialize a Vite project for Svelte with Typescript, run:
+
+```bash
+npm create vite@latest my-svelte-app -- --template svelte-ts
+```
+
+replacing `my-svelte-app` with your project name.
+
+Then, navigate to your project folder:
+
+```bash
+cd my-svelte-app
 ```
 
 ### Importing Components and Basic Usage in Svelte
 
 1. **Import Components:** To use a component in your Svelte files, import it from the `@swarmakit/svelte` library as shown below:
 
-    ```html
-    <script>
-        import { ComponentName } from '@swarmakit/svelte'
-    </script>
-    ```
+   ```html
+   <script>
+     import { ComponentName } from "@swarmakit/svelte";
+   </script>
+   ```
 
 2. **Example Usage in a Svelte File:** Use the imported component within your Svelte file:
 
    ```html
-    <script>
-        import { ComponentName } from '@swarmakit/svelte';
+   <script>
+     import { ComponentName } from "@swarmakit/svelte";
 
-        const exampleProp = "Example text";
-    </script>
+     const exampleProp = "Example text";
+   </script>
 
-    <main>
-        <ComponentName propName={exampleProp} />
-    </main>
+   <main>
+     <ComponentName propName="{exampleProp}" />
+   </main>
    ```
 
 > **Available Components:** Swarmakit Sveltekit includes a vast library of components. See the full list in the [components folder on GitHub](https://github.com/swarmauri/swarmakit/tree/master/libs/svelte/src/components).
-
