@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "downlevelIteration": true,
-    "module": "esnext",
+    "target": "ES2015",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "strict": true,
-    "jsx": "preserve",
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "declaration": true, // Required for dts plugin
+    "declarationDir": "./dist", // Align with dts plugin
+    "outDir": "./dist",
+    "jsx": "preserve"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
