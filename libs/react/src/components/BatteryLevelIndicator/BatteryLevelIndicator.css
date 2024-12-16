@@ -1,0 +1,50 @@
+<style scoped>
+  .battery-level-indicator {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--battery-text-color);
+  }
+
+  .battery-icon {
+    width: 50px;
+    height: 20px;
+    border: 2px solid var(--battery-border-color);
+    position: relative;
+    margin-right: 10px;
+  }
+
+  .battery-level {
+    height: 100%;
+    background-color: var(--battery-level-color);
+    transition: width 0.3s;
+  }
+
+  .battery-status {
+    font-weight: bold;
+  }
+  
+  @media (max-width: 600px) {
+    .battery-level-indicator {
+      font-size: 12px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .battery-level-indicator {
+      font-size: 13px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .battery-level-indicator {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .battery-level-indicator {
+      font-size: 14px;
+    }
+  }
+</style>

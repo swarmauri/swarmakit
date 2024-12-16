@@ -1,0 +1,44 @@
+<style scoped>
+  .attachment-icon {
+    padding: var(--icon-padding, 10px);
+    border: none;
+    border-radius: var(--icon-border-radius, 50%);
+    background-color: var(--icon-bg-color, transparent);
+    color: var(--icon-color, #333);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: var(--icon-size, 24px);
+  }
+
+  .attachment-icon.enabled:hover {
+    background-color: var(--icon-hover-bg-color, #f0f0f0);
+    color: var(--icon-hover-color, #007bff);
+  }
+
+  .attachment-icon.disabled {
+    color: var(--icon-disabled-color, #ccc);
+    cursor: not-allowed;
+  }
+
+  .attachment-icon:active {
+    background-color: var(--icon-click-bg-color, #e0e0e0);
+  }
+
+  @media (max-width: 576px) {
+    .attachment-icon {
+      font-size: var(--icon-size-sm, 20px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .attachment-icon {
+      font-size: var(--icon-size-md, 22px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .attachment-icon {
+      font-size: var(--icon-size-lg, 24px);
+    }
+  }
+</style>

@@ -1,0 +1,40 @@
+<style scoped>
+  .date-time-picker {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--date-time-picker-border-color);
+    padding: 5px;
+    border-radius: 4px;
+    background-color: var(--date-time-picker-bg-color);
+    transition: opacity 0.3s;
+  }
+
+  .date-time-picker:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 600px) {
+    .date-time-picker {
+      height: 35px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .date-time-picker {
+      height: 40px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .date-time-picker {
+      height: 45px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .date-time-picker {
+      height: 50px;
+    }
+  }
+</style>

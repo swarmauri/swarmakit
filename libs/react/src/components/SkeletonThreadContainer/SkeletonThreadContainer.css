@@ -1,0 +1,47 @@
+<style scoped>
+  .skeleton-thread-container {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .skeleton-thread {
+    height: var(--skeleton-thread-height, 12px);
+    background-color: var(--skeleton-bg-color, #e0e0e0);
+    margin: var(--skeleton-thread-margin, 8px 0);
+    border-radius: var(--skeleton-border-radius, 4px);
+    animation: skeleton-pulse 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-thread-container.hidden {
+    opacity: 0;
+  }
+
+  @keyframes skeleton-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .skeleton-thread {
+      height: var(--skeleton-thread-height-sm, 10px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .skeleton-thread {
+      height: var(--skeleton-thread-height-md, 12px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .skeleton-thread {
+      height: var(--skeleton-thread-height-lg, 14px);
+    }
+  }
+</style>

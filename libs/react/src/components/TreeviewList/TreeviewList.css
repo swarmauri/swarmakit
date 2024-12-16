@@ -1,0 +1,58 @@
+<style scoped>
+  .treeview-list {
+    list-style: none;
+    padding-left: var(--treeview-padding, 10px);
+  }
+
+  .tree-node {
+    margin-bottom: var(--tree-node-margin, 5px);
+  }
+
+  .tree-label {
+    cursor: pointer;
+    padding: var(--tree-label-padding, 5px);
+    border-radius: var(--tree-label-radius, 3px);
+    transition: background-color 0.3s;
+  }
+
+  .tree-label.selected {
+    background-color: var(--selected-bg-color, #007bff);
+    color: var(--selected-color, #fff);
+  }
+
+  .tree-label:hover {
+    background-color: var(--hover-bg-color, #f1f1f1);
+  }
+
+  .toggle {
+    margin-right: var(--toggle-margin, 5px);
+  }
+
+  .tree-children {
+    padding-left: var(--tree-children-padding, 15px);
+  }
+
+  @media (max-width: 600px) {
+    .tree-label {
+      padding: var(--tree-label-padding-mobile, 4px);
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .tree-label {
+      padding: var(--tree-label-padding-tablet, 5px);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .tree-label {
+      padding: var(--tree-label-padding-large-tablet, 6px);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .tree-label {
+      padding: var(--tree-label-padding-desktop, 7px);
+    }
+  }
+</style>

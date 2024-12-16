@@ -1,0 +1,56 @@
+<style scoped>
+  .area-chart {
+    width: 100%;
+    height: 100%;
+    border: var(--chart-border, 1px solid #ccc);
+    background-color: var(--chart-bg-color, #f9f9f9);
+    position: relative;
+  }
+
+  .chart-loading,
+  .chart-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--chart-font-size, 16px);
+    color: var(--chart-text-color, #666);
+  }
+
+  .area-chart.rendered .chart-area {
+    fill: var(--chart-area-color, #007bff);
+  }
+
+  .area-chart.stacked .chart-area {
+    fill-opacity: var(--stacked-opacity, 0.8);
+  }
+
+  .area-chart.hovered .chart-area:hover {
+    fill: var(--hover-color, #17a2b8);
+  }
+
+  .area-chart.clicked .chart-area:active {
+    fill: var(--click-color, #28a745);
+  }
+
+  .area-chart.tooltipVisible .chart-area:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 576px) {
+    .area-chart {
+      height: var(--chart-height-sm, 200px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .area-chart {
+      height: var(--chart-height-md, 300px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .area-chart {
+      height: var(--chart-height-lg, 400px);
+    }
+  }
+</style>

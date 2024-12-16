@@ -1,0 +1,51 @@
+<style scoped>
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--video-width, 100%);
+    max-width: var(--video-max-width, 800px);
+    margin: auto;
+    position: relative;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: var(--button-hover-bg, #0056b3);
+  }
+
+  .status {
+    background-color: var(--status-bg, #f3f3f3);
+    color: var(--status-color, #333);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .error {
+    background-color: var(--error-bg, #ff4d4d);
+    color: var(--error-color, #fff);
+  }
+
+  @media (max-width: 600px) {
+    .video-container {
+      max-width: 100%;
+    }
+  }
+</style>

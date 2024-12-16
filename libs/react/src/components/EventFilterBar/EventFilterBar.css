@@ -1,0 +1,42 @@
+<style scoped>
+  .event-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--filter-bar-gap, 10px);
+    padding: var(--filter-bar-padding, 15px);
+    background-color: var(--filter-bar-bg, #fafafa);
+    border-radius: var(--filter-bar-border-radius, 8px);
+  }
+
+  select, input {
+    padding: var(--input-padding, 8px);
+    border: 1px solid var(--input-border-color, #ccc);
+    border-radius: var(--input-border-radius, 4px);
+    flex: 1;
+    min-width: 150px;
+  }
+
+  button {
+    background-color: var(--button-bg, #ff6f61);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 8px);
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: var(--button-hover-bg, #e65c54);
+  }
+
+  @media (max-width: 768px) {
+    .event-filter-bar {
+      flex-direction: column;
+    }
+
+    select, input, button {
+      width: 100%;
+    }
+  }
+</style>

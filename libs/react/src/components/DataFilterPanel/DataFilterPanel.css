@@ -1,0 +1,80 @@
+<style scoped>
+  .data-filter-panel {
+    border: var(--panel-border, 1px solid #ddd);
+    border-radius: var(--panel-border-radius, 4px);
+    padding: var(--panel-padding, 10px);
+    margin: var(--panel-margin, 20px 0);
+    background-color: var(--panel-background-color, #f9f9f9);
+  }
+
+  .toggle-button {
+    margin-bottom: var(--toggle-button-margin-bottom, 10px);
+    padding: var(--toggle-button-padding, 8px 16px);
+    background-color: var(--toggle-button-background-color, #007BFF);
+    color: var(--toggle-button-color, white);
+    border: none;
+    border-radius: var(--toggle-button-border-radius, 4px);
+    cursor: pointer;
+  }
+
+  .toggle-button:disabled {
+    background-color: var(--toggle-button-disabled-background-color, #c0c0c0);
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: var(--filters-gap, 10px);
+  }
+
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-item label {
+    margin-bottom: var(--label-margin-bottom, 5px);
+  }
+
+  .filter-item input, .filter-item select {
+    padding: var(--input-padding, 5px);
+    border: var(--input-border, 1px solid #ddd);
+    border-radius: var(--input-border-radius, 4px);
+  }
+
+  .filter-item input:disabled, .filter-item select:disabled {
+    background-color: var(--input-disabled-background-color, #e9ecef);
+  }
+
+  .filter-actions {
+    display: flex;
+    gap: var(--actions-gap, 10px);
+  }
+
+  .filter-actions button {
+    padding: var(--button-padding, 5px 10px);
+    font-size: var(--button-font-size, 14px);
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    background-color: var(--button-background-color, #28a745);
+    color: var(--button-color, white);
+  }
+
+  .filter-actions button:hover {
+    background-color: var(--button-hover-background-color, #218838);
+  }
+
+  .filter-actions button:disabled {
+    background-color: var(--button-disabled-background-color, #c0c0c0);
+  }
+
+  .collapsed .filters {
+    display: none;
+  }
+  
+  .disabled {
+    opacity: 0.5;
+  }
+
+</style>
