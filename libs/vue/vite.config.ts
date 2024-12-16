@@ -6,15 +6,16 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      outDir: 'dist', // Correct property to specify declaration output directory
-      include: ['./src/**/*.ts', './src/**/*.vue'], // Include .ts and .vue files
+      outDir: './dist', // Ensure this is a valid relative path
+      include: ['./src'], // Include files within the `src` directory
     }),
   ],
   build: {
     lib: {
       entry: './src/index.ts', // Main entry file
       name: 'SwarmakitVue',
-      fileName: (format) => `index.${format}.js`,
+      formats: ['es', 'cjs', 'umd'], // Generate ES, CommonJS, and UMD formats
+      fileName: (format) => `index.${format}.js`, // Simplified filename logic
     },
     rollupOptions: {
       external: ['vue'], // Exclude Vue from the bundle
@@ -24,6 +25,6 @@ export default defineConfig({
         },
       },
     },
-    outDir: 'dist', // Ensure output is in `dist`
+    outDir: './dist', // Ensure output is in `dist`
   },
 });
