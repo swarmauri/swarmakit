@@ -14,7 +14,12 @@ export default defineConfig({
     lib: {
       entry: './src/index.ts', // Main entry file
       name: 'SwarmakitVue',
-      fileName: (format) => `index.${format}.js`,
+      formats: ['es', 'cjs', 'umd'], // Generate ES, CommonJS, and UMD formats
+      fileName: (format) => {
+        if (format === 'es') return 'index.es.js';
+        if (format === 'cjs') return 'index.cjs.js';
+        if (format === 'umd') return 'index.umd.js';
+      },
     },
     rollupOptions: {
       external: ['vue'], // Exclude Vue from the bundle
