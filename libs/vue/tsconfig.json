@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "downlevelIteration": true,
+    "module": "esnext",
     "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
