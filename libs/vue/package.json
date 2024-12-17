@@ -25,15 +25,7 @@
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build"
   },
-  "files": [
-    "dist/index.es.js",
-    "dist/index.umd.js",
-    "dist/index.d.ts",
-    "dist/vue.css",
-    "README.md"
-  ],
   "dependencies": {
-    "vue": "^3.5.13",
     "quill": "^2.0.2"
   },
   "devDependencies": {
