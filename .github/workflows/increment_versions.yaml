@@ -25,7 +25,7 @@ jobs:
 
       - name: Increment Version
         run: |
-          PACKAGE_FILES=("path/to/file1/package.json" "path/to/file2/package.json" "path/to/file3/package.json" "path/to/file4/package.json")
+          PACKAGE_FILES=("package.json" "libs/react/package.json" "libs/vue/package.json" "libs/svelte/package.json")
 
           for file in "${PACKAGE_FILES[@]}"; do
             echo "Updating version in $file"
