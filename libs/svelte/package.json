@@ -11,6 +11,10 @@
       "import": "./dist/index.esm.js"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swarmauri/swarmakit"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
