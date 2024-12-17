@@ -1,6 +1,6 @@
 {
   "name": "swarmakit",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "private": false,
   "workspaces": [
     "libs/react",
@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/swarmauri/swarmakit"
+    "url": "https://github.com/swarmauri/swarmakit.git"
   },
   "dependencies": {
     "@swarmakit/react": "file:libs/react",
@@ -24,7 +24,7 @@
     "format": "pnpm -r run format"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",     
+    "typescript": "^5.0.0",
     "storybook": "^8.3.5"
   }
 }
