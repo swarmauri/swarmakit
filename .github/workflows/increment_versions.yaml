@@ -6,42 +6,36 @@ on:
 jobs:
   increment-version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allow write access to repository contents
+
     steps:
-      # Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
-      # Setup Node.js environment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Choose a Node version
+          node-version: '18'
 
-      # Install jq for JSON manipulation (if not already installed)
       - name: Install jq
         run: sudo apt-get install jq
 
-      # Increment version in multiple package.json files
       - name: Increment Version
         run: |
-          # Define paths to package.json files
-          PACKAGE_FILES=("package.json" "libs/vue/package.json" "libs/react/package.json" "libs/svelte/package.json")
+          PACKAGE_FILES=("path/to/file1/package.json" "path/to/file2/package.json" "path/to/file3/package.json" "path/to/file4/package.json")
 
-          # Loop through and increment version
           for file in "${PACKAGE_FILES[@]}"; do
             echo "Updating version in $file"
-
-            # Extract current version, increment it (patch), and update package.json
             CURRENT_VERSION=$(jq -r '.version' "$file")
             NEW_VERSION=$(node -p "v='$CURRENT_VERSION'.split('.'); v[2]++; v.join('.')")
 
             echo "Incrementing version: $CURRENT_VERSION -> $NEW_VERSION"
-
-            # Update version in package.json
             jq ".version=\"$NEW_VERSION\"" "$file" > tmp.json && mv tmp.json "$file"
           done
 
-      # Commit and push changes
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions"
