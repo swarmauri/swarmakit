@@ -1,0 +1,83 @@
+<style scoped>
+  .toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: var(--toggle-background-color);
+    position: relative;
+    transition: background-color 0.3s;
+  }
+
+  .switch {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: var(--toggle-switch-color);
+    position: absolute;
+    top: 1px;
+    transition: left 0.3s;
+  }
+
+  .on {
+    left: calc(100% - 24px);
+    background-color: var(--toggle-on-color);
+  }
+
+  .off {
+    left: 1px;
+    background-color: var(--toggle-off-color);
+  }
+
+  .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--toggle-disabled-background-color);
+  }
+
+  @media (max-width: 600px) {
+    .toggle-switch {
+      width: 40px;
+      height: 20px;
+    }
+    .switch {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .toggle-switch {
+      width: 45px;
+      height: 22px;
+    }
+    .switch {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .toggle-switch {
+      width: 50px;
+      height: 25px;
+    }
+    .switch {
+      width: 23px;
+      height: 23px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .toggle-switch {
+      width: 50px;
+      height: 25px;
+    }
+    .switch {
+      width: 23px;
+      height: 23px;
+    }
+  }
+</style>
