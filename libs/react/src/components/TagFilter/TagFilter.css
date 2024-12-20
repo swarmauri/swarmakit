@@ -1,0 +1,30 @@
+<style scoped>
+  .tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tag-gap, 0.5rem);
+  }
+
+  .tag {
+    padding: var(--tag-padding, 0.5rem 1rem);
+    border: 1px solid var(--tag-border, #ddd);
+    border-radius: var(--tag-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .active {
+    background-color: var(--tag-active-bg, #007bff);
+    color: var(--tag-active-color, #fff);
+  }
+
+  .inactive {
+    background-color: var(--tag-inactive-bg, #f8f9fa);
+    color: var(--tag-inactive-color, #212529);
+  }
+
+  .tag:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--tag-focus-shadow, rgba(0, 123, 255, 0.25));
+  }
+</style>
