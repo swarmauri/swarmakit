@@ -1,0 +1,54 @@
+<style scoped>
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--typing-indicator-margin, 10px);
+  }
+
+  .dot {
+    width: var(--dot-size, 8px);
+    height: var(--dot-size, 8px);
+    background-color: var(--dot-color, #bbb);
+    border-radius: 50%;
+    margin: var(--dot-margin, 3px);
+    animation: dot-blink 1.5s infinite;
+  }
+
+  .typing .dot {
+    background-color: var(--dot-typing-color, #000);
+  }
+
+  @keyframes dot-blink {
+    0%, 20%, 50%, 80%, 100% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.2);
+    }
+    60% {
+      transform: scale(0.8);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .dot {
+      width: var(--dot-size-sm, 6px);
+      height: var(--dot-size-sm, 6px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .dot {
+      width: var(--dot-size-md, 7px);
+      height: var(--dot-size-md, 7px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .dot {
+      width: var(--dot-size-lg, 8px);
+      height: var(--dot-size-lg, 8px);
+    }
+  }
+</style>

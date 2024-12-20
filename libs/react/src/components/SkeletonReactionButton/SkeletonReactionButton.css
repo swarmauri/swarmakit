@@ -1,0 +1,51 @@
+<style scoped>
+  .skeleton-reaction-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .skeleton-button {
+    width: var(--skeleton-button-width, 40px);
+    height: var(--skeleton-button-height, 40px);
+    background-color: var(--skeleton-bg-color, #e0e0e0);
+    border-radius: 50%;
+    animation: skeleton-pulse 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-reaction-button.hidden {
+    opacity: 0;
+  }
+
+  @keyframes skeleton-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .skeleton-button {
+      width: var(--skeleton-button-width-sm, 30px);
+      height: var(--skeleton-button-height-sm, 30px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .skeleton-button {
+      width: var(--skeleton-button-width-md, 35px);
+      height: var(--skeleton-button-height-md, 35px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .skeleton-button {
+      width: var(--skeleton-button-width-lg, 40px);
+      height: var(--skeleton-button-height-lg, 40px);
+    }
+  }
+</style>

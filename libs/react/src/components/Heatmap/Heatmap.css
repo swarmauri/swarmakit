@@ -1,0 +1,53 @@
+<style scoped>
+  .heatmap {
+    width: 100%;
+    height: 100%;
+    border: var(--heatmap-border, 1px solid #ccc);
+    background-color: var(--heatmap-bg-color, #f9f9f9);
+    position: relative;
+  }
+
+  .heatmap-loading,
+  .heatmap-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--heatmap-font-size, 16px);
+    color: var(--heatmap-text-color, #666);
+  }
+
+  .heatmap.rendered .cell {
+    fill: var(--heatmap-cell-color, #007bff);
+  }
+
+  .heatmap.zoomed .cell {
+    transform: scale(var(--zoom-scale, 1.2));
+  }
+
+  .heatmap.tooltipVisible .cell:hover {
+    fill: var(--tooltip-color, #17a2b8);
+  }
+
+  .heatmap.hovered .cell:focus {
+    stroke: var(--hover-color, #ffc107);
+    stroke-width: var(--hover-width, 2px);
+  }
+
+  @media (max-width: 576px) {
+    .heatmap {
+      height: var(--heatmap-height-sm, 200px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .heatmap {
+      height: var(--heatmap-height-md, 300px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .heatmap {
+      height: var(--heatmap-height-lg, 400px);
+    }
+  }
+</style>

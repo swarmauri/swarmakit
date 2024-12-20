@@ -1,0 +1,48 @@
+<style scoped>
+  .validation-message {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+  }
+
+  .success {
+    background-color: var(--success-background-color);
+    color: var(--success-text-color);
+  }
+
+  .error {
+    background-color: var(--error-background-color);
+    color: var(--error-text-color);
+  }
+
+  .warning {
+    background-color: var(--warning-background-color);
+    color: var(--warning-text-color);
+  }
+
+  @media (max-width: 600px) {
+    .validation-message {
+      font-size: 12px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .validation-message {
+      font-size: 13px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .validation-message {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .validation-message {
+      font-size: 14px;
+    }
+  }
+</style>

@@ -1,0 +1,53 @@
+<style scoped>
+  .message-options-menu {
+    display: inline-block;
+    font-size: var(--message-options-menu-font-size, 14px);
+    color: var(--message-options-menu-color, #333);
+    padding: var(--message-options-menu-padding, 5px);
+    transition: opacity 0.2s ease;
+  }
+
+  .message-options-menu.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .message-options-menu.visible,
+  .message-options-menu.clicked {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .message-options-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .message-options-menu li {
+    padding: var(--message-options-menu-item-padding, 5px);
+    cursor: pointer;
+  }
+
+  .message-options-menu.clicked {
+    color: var(--message-options-menu-clicked-color, #e74c3c);
+  }
+
+  @media (max-width: 576px) {
+    .message-options-menu {
+      font-size: var(--message-options-menu-font-size-sm, 12px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .message-options-menu {
+      font-size: var(--message-options-menu-font-size-md, 13px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .message-options-menu {
+      font-size: var(--message-options-menu-font-size-lg, 14px);
+    }
+  }
+</style>

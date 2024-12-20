@@ -1,0 +1,34 @@
+<style scoped>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--timeline-gap, 1rem);
+    padding: var(--timeline-padding, 1rem);
+    background-color: var(--timeline-bg, #f9f9f9);
+  }
+
+  .timeline-empty {
+    text-align: center;
+    color: var(--timeline-empty-color, #999);
+    font-style: italic;
+  }
+
+  .timeline-event {
+    display: flex;
+    gap: var(--timeline-event-gap, 0.5rem);
+    align-items: center;
+    background-color: var(--timeline-event-bg, #fff);
+    padding: var(--timeline-event-padding, 0.5rem);
+    border-radius: var(--timeline-event-border-radius, 4px);
+    box-shadow: var(--timeline-event-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  .timeline-time {
+    font-weight: bold;
+    color: var(--timeline-time-color, #333);
+  }
+
+  .timeline-content {
+    color: var(--timeline-content-color, #666);
+  }
+</style>

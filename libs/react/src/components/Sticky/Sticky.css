@@ -1,0 +1,50 @@
+<style scoped>
+  .sticky-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--sticky-bg, #fff);
+    border-bottom: var(--sticky-border-bottom, 1px solid #ccc);
+    transition: all 0.3s ease;
+  }
+
+  .sticky-header.scrolled {
+    background: var(--sticky-scrolled-bg, #f0f0f0);
+  }
+
+  .sticky-header.collapsed {
+    height: var(--sticky-height-collapsed, 50px);
+  }
+
+  .toggle-button {
+    width: 100%;
+    padding: var(--toggle-button-padding, 10px);
+    background: var(--toggle-button-bg, #f7f7f7);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .sticky-content {
+    padding: var(--sticky-content-padding, 10px);
+  }
+
+  @media (max-width: 576px) {
+    .sticky-header {
+      height: var(--sticky-height-sm, 60px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .sticky-header {
+      height: var(--sticky-height-md, 70px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .sticky-header {
+      height: var(--sticky-height-lg, 80px);
+    }
+  }
+</style>

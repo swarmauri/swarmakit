@@ -1,0 +1,56 @@
+<style scoped>
+  .donut-chart {
+    width: 100%;
+    height: 100%;
+    border: var(--donut-chart-border, 1px solid #ccc);
+    background-color: var(--donut-chart-bg-color, #f9f9f9);
+    position: relative;
+  }
+
+  .donut-chart-loading,
+  .donut-chart-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--donut-chart-font-size, 16px);
+    color: var(--donut-chart-text-color, #666);
+  }
+
+  .donut-chart.rendered .segment {
+    fill: var(--donut-chart-segment-color, #007bff);
+  }
+
+  .donut-chart.hovered .segment:hover {
+    fill: var(--hover-color, #ffc107);
+  }
+
+  .donut-chart.clicked .segment:active {
+    fill: var(--clicked-color, #28a745);
+  }
+
+  .donut-chart.tooltipVisible .segment:hover {
+    fill: var(--tooltip-color, #17a2b8);
+  }
+
+  .donut-chart.exploded .segment {
+    transform: translateY(var(--explode-translate, -10px));
+  }
+
+  @media (max-width: 576px) {
+    .donut-chart {
+      height: var(--donut-chart-height-sm, 200px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .donut-chart {
+      height: var(--donut-chart-height-md, 300px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .donut-chart {
+      height: var(--donut-chart-height-lg, 400px);
+    }
+  }
+</style>

@@ -1,0 +1,61 @@
+<style scoped>
+  .scrollable-horizontal-navigation {
+    overflow-x: auto;
+    white-space: nowrap;
+    background: var(--nav-bg, #fff);
+    border-bottom: var(--nav-border-bottom, 1px solid #ccc);
+  }
+
+  .nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-item {
+    padding: var(--nav-item-padding, 10px 20px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-item button {
+    background: none;
+    border: none;
+    color: var(--nav-item-color, #333);
+    font-size: var(--nav-item-font-size, 16px);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .nav-item:hover {
+    background: var(--nav-item-hover-bg, #f0f0f0);
+  }
+
+  .nav-item.active {
+    background: var(--nav-item-active-bg, #ddd);
+  }
+
+  .nav-item.active button {
+    color: var(--nav-item-active-color, #000);
+  }
+
+  @media (max-width: 576px) {
+    .nav-item {
+      font-size: var(--nav-item-font-size-sm, 14px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .nav-item {
+      font-size: var(--nav-item-font-size-md, 15px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .nav-item {
+      font-size: var(--nav-item-font-size-lg, 16px);
+    }
+  }
+</style>

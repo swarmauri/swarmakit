@@ -1,0 +1,50 @@
+<style scoped>
+  .command-palette {
+    width: var(--palette-width, 300px);
+    background-color: var(--palette-bg, #f9f9f9);
+    border: var(--palette-border, 1px solid #ccc);
+    border-radius: var(--palette-radius, 4px);
+    padding: var(--palette-padding, 8px);
+  }
+
+  .command-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .command-list li {
+    padding: var(--command-padding, 8px);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .command-list li:hover {
+    background-color: var(--command-hover-bg, #e0e0e0);
+  }
+
+  .command-list li.active {
+    background-color: var(--command-active-bg, #b0bec5);
+    color: var(--command-active-color, #fff);
+  }
+
+  button {
+    margin-bottom: var(--button-margin, 8px);
+    padding: var(--button-padding, 8px 16px);
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    border: none;
+    border-radius: var(--button-radius, 4px);
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: var(--button-hover-bg, #0056b3);
+  }
+
+  @media (max-width: 600px) {
+    .command-palette {
+      width: var(--palette-mobile-width, 100%);
+    }
+  }
+</style>

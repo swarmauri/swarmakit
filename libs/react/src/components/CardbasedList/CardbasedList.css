@@ -1,0 +1,99 @@
+<style scoped>
+  .cardbased-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--card-gap, 16px);
+  }
+
+  .card-item {
+    background: var(--card-bg, #fff);
+    border: var(--card-border, 1px solid #ddd);
+    border-radius: var(--card-border-radius, 8px);
+    padding: var(--card-padding, 16px);
+    box-shadow: var(--card-box-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .card-item.disabled {
+    background: var(--card-disabled-bg, #f0f0f0);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .card-item.selected {
+    border-color: var(--card-selected-border-color, #007bff);
+  }
+
+  .card-title {
+    font-size: var(--card-title-font-size, 18px);
+    margin: 0 0 8px 0;
+  }
+
+  .card-description {
+    font-size: var(--card-description-font-size, 14px);
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .card-item {
+      padding: 12px;
+    }
+
+    .card-title {
+      font-size: 16px;
+    }
+
+    .card-description {
+      font-size: 12px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    .card-item {
+      padding: 14px;
+    }
+
+    .card-title {
+      font-size: 17px;
+    }
+
+    .card-description {
+      font-size: 13px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .card-item {
+      padding: 15px;
+    }
+
+    .card-title {
+      font-size: 18px;
+    }
+
+    .card-description {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .card-item {
+      padding: 16px;
+    }
+
+    .card-title {
+      font-size: 19px;
+    }
+
+    .card-description {
+      font-size: 15px;
+    }
+  }
+</style>

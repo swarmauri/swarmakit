@@ -1,0 +1,23 @@
+<style scoped>
+  .map-compass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--compass-size, 50px);
+    height: var(--compass-size, 50px);
+    background-color: var(--compass-bg, #fff);
+    border: var(--compass-border, 1px solid #ced4da);
+    border-radius: 50%;
+    box-shadow: var(--compass-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s;
+  }
+
+  .map-compass.hidden {
+    display: none;
+  }
+
+  .compass-icon {
+    font-size: var(--compass-icon-size, 24px);
+    transition: transform 0.3s;
+  }
+</style>

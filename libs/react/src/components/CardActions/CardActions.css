@@ -1,0 +1,43 @@
+<style scoped>
+  .card-actions-container {
+    display: flex;
+    gap: var(--action-button-gap, 8px);
+  }
+
+  .card-action-button {
+    padding: var(--action-button-padding, 10px 20px);
+    background-color: var(--action-button-bg-color, #007bff);
+    border: none;
+    border-radius: var(--action-button-border-radius, 4px);
+    color: var(--action-button-text-color, #fff);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .card-action-button:hover:not(:disabled) {
+    background-color: var(--action-button-hover-bg-color, #0056b3);
+  }
+
+  .card-action-button:disabled {
+    background-color: var(--action-button-disabled-bg-color, #c0c0c0);
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 576px) {
+    .card-action-button {
+      padding: var(--action-button-padding-mobile, 8px 16px);
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    .card-action-button {
+      padding: var(--action-button-padding-tablet, 9px 18px);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .card-action-button {
+      padding: var(--action-button-padding-desktop, 10px 20px);
+    }
+  }
+</style>
