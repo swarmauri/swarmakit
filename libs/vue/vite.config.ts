@@ -1,14 +1,18 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
+import { resolve } from 'path';
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     dts({
+      outDir: 'dist',
       insertTypesEntry: true,
+      include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'],
+      tsconfigPath: './tsconfig.app.json',
     }),
   ],
   build: {
@@ -16,7 +20,6 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'SwarmakitVue',
       formats: ['es', 'umd'],
-      fileName: (format) => `index.${format === 'es' ? 'js' : 'umd.cjs'}`,
     },
     rollupOptions: {
       external: ['vue'],
