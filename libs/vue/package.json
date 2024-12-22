@@ -6,12 +6,20 @@
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "sideEffects": [
-    "*.vue"
-  ],
+  "style": "./dist/style.css",
   "exports": {
-    "./Accordion": "./src/components/Accordion/Accordion.vue"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/swarmauri/swarmakit.git",
@@ -42,10 +50,10 @@
     "@types/quill": "^2.0.14",
     "@vitejs/plugin-vue": "^5.2.1",
     "storybook": "^8.3.5",
-    "typescript": "^5.5.3",
-    "vite": "^6.0.1",
-    "vue-tsc": "^2.1.10",
-    "vite-plugin-dts": "^4.3.0"
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vite-plugin-dts": "^4.4.0",
+    "vue-tsc": "^2.1.10"
   },
   "peerDependencies": {
     "vue": "^3.5.10"
