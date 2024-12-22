@@ -1,13 +1,13 @@
 {
   "name": "@swarmakit/vue",
   "private": false,
-  "version": "0.0.20",
+  "version": "0.0.21",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": [
-      "*.vue"
+    "*.vue"
   ],
   "exports": {
     "./Accordion": "./src/components/Accordion/Accordion.vue"
