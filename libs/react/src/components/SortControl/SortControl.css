@@ -1,0 +1,31 @@
+.sort-control {
+    display: flex;
+    gap: var(--sort-control-gap, 10px)
+    }
+.sort-button {
+    border-radius: var(--sort-button-border-radius, 4px);
+    background-color: var(--sort-button-background-color, #fff);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center
+    }
+.sort-button:hover {
+    background-color: var(--sort-button-hover-background-color, #f0f0f0)
+    }
+.sort-button.asc .sort-indicator::after {
+    content: "▲";
+    margin-left: var(--sort-indicator-margin-left, 5px)
+    }
+.sort-button.desc .sort-indicator::after {
+    content: "▼";
+    margin-left: var(--sort-indicator-margin-left, 5px)
+    }
+.sort-indicator {
+    margin-left: var(--sort-indicator-margin-left, 5px);
+    color: var(--sort-indicator-color, #000)
+    }
+.sort-button:disabled {
+    background-color: var(--sort-button-disabled-background-color, #e0e0e0);
+    cursor: not-allowed
+    }

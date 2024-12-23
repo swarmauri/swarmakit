@@ -1,0 +1,45 @@
+.product-card {
+    border-radius: var(--card-border-radius, 8px);
+    overflow: hidden;
+    transition: all 0.3s;
+    background-color: var(--card-background-color, #fff);
+    position: relative
+    }
+.product-card-badge {
+    position: absolute;
+    top: var(--card-badge-top, 10px);
+    left: var(--card-badge-left, 10px);
+    background-color: var(--card-badge-color, red);
+    color: var(--card-badge-text-color, #fff);
+    border-radius: var(--card-badge-border-radius, 5px);
+    font-size: var(--card-badge-font-size, 0.8rem)
+    }
+.product-card-image {
+    width: 100%;
+    height: var(--card-image-height, 150px);
+    object-fit: cover
+    }
+.product-card-details {
+    padding: var(--card-padding, 16px);
+    text-align: center
+    }
+.product-card-name {
+    font-size: var(--card-name-font-size, 1.2rem);
+    margin-bottom: var(--card-name-margin-bottom, 8px)
+    }
+.product-card-price {
+    font-size: var(--card-price-font-size, 1rem);
+    color: var(--card-price-color, #333);
+    margin-bottom: var(--card-price-margin-bottom, 16px)
+    }
+.product-card-button {
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    border-radius: var(--button-border-radius, 5px);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.product-card-button:hover {
+    background-color: var(--button-hover-background-color, #0056b3)
+    }

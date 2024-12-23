@@ -1,0 +1,45 @@
+.discard-pile {
+    position: relative;
+    width: var(--pile-width, 110px);
+    height: var(--pile-height, 150px);
+    display: flex;
+    align-items: center;
+    justify-content: center
+    }
+.cards-stack {
+    position: relative
+    }
+.card {
+    position: absolute;
+    transition: transform 0.3s ease
+    }
+.card-svg {
+    width: var(--card-width, 100px);
+    height: var(--card-height, 140px)
+    }
+.card-border {
+    fill: var(--card-background-color, #fff);
+    stroke: var(--card-border-color, #000);
+    stroke-width: 2
+    }
+.card-value, .card-suit {
+    font-size: var(--card-text-size, 12px);
+    fill: var(--card-text-color, #000)
+    }
+.empty-cue, .full-cue {
+    font-size: var(--cue-text-size, 14px);
+    color: var(--cue-text-color, #666)
+    }
+.hovered {
+    border-color: var(--hovered-border-color, blue)
+    }
+@media (max-width: 480px) {
+    .discard-pile {
+        width: var(--pile-width-mobile, 90px);
+        height: var(--pile-height-mobile, 130px)
+        }
+    .card-svg {
+        width: var(--card-width-mobile, 80px);
+        height: var(--card-height-mobile, 110px)
+        }
+    }

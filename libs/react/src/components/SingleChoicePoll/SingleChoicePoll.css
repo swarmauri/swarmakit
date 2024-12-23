@@ -1,0 +1,46 @@
+.single-choice-poll {
+    padding: var(--poll-padding, 20px);
+    border-radius: var(--poll-border-radius, 5px);
+    max-width: var(--poll-max-width, 400px)
+    }
+.poll-question {
+    font-size: var(--question-font-size, 18px);
+    margin-bottom: var(--question-margin-bottom, 10px)
+    }
+.poll-options {
+    list-style-type: none;
+    padding: 0
+    }
+.poll-option {
+    margin-bottom: var(--option-margin-bottom, 5px)
+    }
+.poll-option label {
+    cursor: pointer;
+    font-size: var(--option-font-size, 16px)
+    }
+.poll-option input[type="radio"] {
+    margin-right: var(--radio-margin-right, 10px)
+    }
+.results-bar {
+    display: block;
+    height: var(--results-bar-height, 10px);
+    background-color: var(--results-bar-color, #4caf50);
+    margin-top: var(--results-bar-margin-top, 5px);
+    border-radius: var(--results-bar-radius, 3px)
+    }
+.disabled label {
+    cursor: not-allowed;
+    opacity: var(--disabled-opacity, 0.6)
+    }
+@media (max-width: 480px) {
+    .single-choice-poll {
+        padding: var(--poll-padding-mobile, 15px);
+        max-width: var(--poll-max-width-mobile, 100%)
+        }
+    .poll-question {
+        font-size: var(--question-font-size-mobile, 16px)
+        }
+    .poll-option label {
+        font-size: var(--option-font-size-mobile, 14px)
+        }
+    }

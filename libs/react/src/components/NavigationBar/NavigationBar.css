@@ -1,0 +1,52 @@
+.navigation-bar {
+    background: var(--nav-bg, #333);
+    color: var(--nav-color, #fff)
+    }
+.nav-toggle {
+    background: var(--nav-toggle-bg, #444);
+    color: var(--nav-toggle-color, #fff);
+    padding: var(--nav-toggle-padding, 10px);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+.nav-toggle:hover {
+    background: var(--nav-toggle-hover-bg, #555)
+    }
+.nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none
+    }
+.nav-items.expanded {
+    display: block
+    }
+.nav-item {
+    padding: var(--nav-item-padding, 10px)
+    }
+.nav-item button {
+    background: none;
+    border: none;
+    color: var(--nav-item-color, #fff);
+    cursor: pointer;
+    transition: color 0.3s ease
+    }
+.nav-item button:hover {
+    color: var(--nav-item-hover-color, #ddd)
+    }
+@media (max-width: 576px) {
+    .nav-toggle {
+        padding: var(--nav-toggle-padding-sm, 8px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .nav-toggle {
+        padding: var(--nav-toggle-padding-md, 9px)
+        }
+    }
+@media (min-width: 769px) {
+    .nav-toggle {
+        padding: var(--nav-toggle-padding-lg, 10px)
+        }
+    }

@@ -1,0 +1,36 @@
+.text-tool {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: var(--text-tool-border-radius, 4px);
+    background-color: var(--text-tool-background-color, #f9f9f9)
+    }
+.text-tool.active {
+    background-color: var(--text-tool-active-background-color, #e0f7fa)
+    }
+textarea {
+    width: 100%;
+    height: 60px;
+    resize: none;
+    font-family: inherit;
+    border-radius: var(--textarea-border-radius, 4px)
+    }
+select, input[type="number"], input[type="color"] {
+    width: 100%;
+    padding: 5px;
+    border-radius: var(--input-border-radius, 4px)
+    }
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+button:disabled {
+    background-color: var(--button-disabled-background-color, #d3d3d3);
+    cursor: not-allowed
+    }

@@ -1,0 +1,39 @@
+.chat-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+    }
+.chat-item {
+    padding: var(--chat-item-padding, 10px);
+    cursor: pointer;
+    transition: background-color 0.2s ease
+    }
+.chat-item.selected {
+    background-color: var(--chat-item-selected-bg, #f0f0f0)
+    }
+.chat-name {
+    font-weight: var(--chat-name-font-weight, bold)
+    }
+.chat-last-message {
+    color: var(--chat-last-message-color, #666)
+    }
+.chat-list-empty {
+    text-align: center;
+    color: var(--chat-list-empty-color, #999);
+    padding: var(--chat-item-padding, 10px)
+    }
+@media (max-width: 576px) {
+    .chat-item {
+        font-size: var(--chat-item-font-size-sm, 14px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .chat-item {
+        font-size: var(--chat-item-font-size-md, 16px)
+        }
+    }
+@media (min-width: 769px) {
+    .chat-item {
+        font-size: var(--chat-item-font-size-lg, 18px)
+        }
+    }

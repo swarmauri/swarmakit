@@ -1,0 +1,22 @@
+.banner {
+    padding: var(--banner-padding, 16px);
+    background-color: var(--banner-bg-color, #007bff);
+    color: var(--banner-text-color, #fff);
+    border-radius: var(--banner-border-radius, 4px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+    }
+.banner.hidden {
+    display: none
+    }
+.banner button {
+    background: var(--button-bg-color, #fff);
+    color: var(--button-text-color, #007bff);
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer
+    }
+.banner button:hover {
+    background: var(--button-hover-bg-color, #e0e0e0)
+    }

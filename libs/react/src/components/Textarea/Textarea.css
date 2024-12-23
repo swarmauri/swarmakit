@@ -1,0 +1,35 @@
+.custom-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--input-border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    resize: vertical
+    }
+.custom-textarea:disabled {
+    background-color: var(--disabled-background-color);
+    color: var(--disabled-text-color);
+    border-color: var(--disabled-border-color);
+    opacity: 0.5
+    }
+@media (max-width: 600px) {
+    .custom-textarea {
+        font-size: 14px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .custom-textarea {
+        font-size: 15px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .custom-textarea {
+        font-size: 16px
+        }
+    }
+@media (min-width: 1025px) {
+    .custom-textarea {
+        font-size: 16px
+        }
+    }

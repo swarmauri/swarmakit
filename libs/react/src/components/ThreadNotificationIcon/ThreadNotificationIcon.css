@@ -1,0 +1,29 @@
+.thread-notification-icon {
+    font-size: var(--icon-font-size, 24px);
+    color: var(--icon-color, #000);
+    transition: color 0.3s ease
+    }
+.thread-notification-icon.enabled {
+    color: var(--icon-enabled-color, #28a745)
+    }
+.thread-notification-icon.disabled {
+    color: var(--icon-disabled-color, #6c757d)
+    }
+.thread-notification-icon.muted {
+    color: var(--icon-muted-color, #ffc107)
+    }
+@media (max-width: 576px) {
+    .thread-notification-icon {
+        font-size: var(--icon-font-size-sm, 20px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .thread-notification-icon {
+        font-size: var(--icon-font-size-md, 22px)
+        }
+    }
+@media (min-width: 769px) {
+    .thread-notification-icon {
+        font-size: var(--icon-font-size-lg, 24px)
+        }
+    }

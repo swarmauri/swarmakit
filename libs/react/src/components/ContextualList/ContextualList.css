@@ -1,0 +1,43 @@
+.contextual-list {
+    list-style: none;
+    padding: 0;
+    margin: 0
+    }
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--list-item-padding, 10px);
+    background-color: var(--list-item-bg, #f9f9f9);
+    margin-bottom: var(--list-item-margin-bottom, 8px)
+    }
+.action-button, .dismiss-button {
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.action-button:hover, .dismiss-button:hover {
+    background-color: var(--button-hover-bg, #0056b3)
+    }
+@media (max-width: 600px) {
+    .list-item {
+        font-size: 14px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .list-item {
+        font-size: 15px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .list-item {
+        font-size: 16px
+        }
+    }
+@media (min-width: 1025px) {
+    .list-item {
+        font-size: 17px
+        }
+    }

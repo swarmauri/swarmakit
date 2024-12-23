@@ -1,0 +1,15 @@
+.map-scale-indicator {
+    padding: var(--scale-indicator-padding, 10px);
+    background-color: var(--scale-indicator-bg, rgba(0, 0, 0, 0.7));
+    color: var(--scale-indicator-color, #fff);
+    border-radius: var(--scale-indicator-border-radius, 5px);
+    font-size: var(--scale-indicator-font-size, 14px);
+    transition: opacity 0.3s;
+    opacity: 1
+    }
+.map-scale-indicator.hidden {
+    opacity: 0
+    }
+.map-scale-indicator.updating {
+    background-color: var(--scale-indicator-updating-bg, rgba(255, 193, 7, 0.7))
+    }

@@ -1,0 +1,41 @@
+.histogram {
+    width: 100%;
+    height: 100%;
+    background-color: var(--histogram-bg-color, #f9f9f9);
+    position: relative
+    }
+.histogram-loading, .histogram-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--histogram-font-size, 16px);
+    color: var(--histogram-text-color, #666)
+    }
+.histogram.rendered .bar {
+    fill: var(--histogram-bar-color, #007bff)
+    }
+.histogram.zoomed .bar {
+    transform: scale(var(--zoom-scale, 1.2))
+    }
+.histogram.tooltipVisible .bar:hover {
+    fill: var(--tooltip-color, #17a2b8)
+    }
+.histogram.hovered .bar:focus {
+    stroke: var(--hover-color, #ffc107);
+    stroke-width: var(--hover-width, 2px)
+    }
+@media (max-width: 576px) {
+    .histogram {
+        height: var(--histogram-height-sm, 200px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .histogram {
+        height: var(--histogram-height-md, 300px)
+        }
+    }
+@media (min-width: 769px) {
+    .histogram {
+        height: var(--histogram-height-lg, 400px)
+        }
+    }

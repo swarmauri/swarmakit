@@ -1,0 +1,31 @@
+.map-legend {
+    background-color: var(--map-legend-bg, #fff);
+    border-radius: var(--map-legend-border-radius, 8px);
+    padding: var(--map-legend-padding, 10px);
+    max-height: var(--map-legend-max-height, 200px);
+    overflow-y: auto;
+    transition: max-height 0.3s ease
+    }
+.map-legend.hidden {
+    display: none
+    }
+.map-legend.collapsed {
+    max-height: var(--map-legend-collapsed-height, 50px)
+    }
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--legend-item-margin-bottom, 8px)
+    }
+.legend-item:last-child {
+    margin-bottom: 0
+    }
+.symbol {
+    display: inline-block;
+    width: var(--symbol-width, 20px);
+    text-align: center;
+    margin-right: var(--symbol-margin-right, 10px)
+    }
+.description {
+    flex-grow: 1
+    }

@@ -1,0 +1,23 @@
+.unread-message-counter {
+    background-color: var(--counter-background-color, #f00);
+    color: var(--counter-text-color, #fff);
+    border-radius: var(--counter-border-radius, 12px);
+    display: inline-block;
+    font-size: var(--counter-font-size, 14px);
+    font-weight: var(--counter-font-weight, bold)
+    }
+@media (max-width: 576px) {
+    .unread-message-counter {
+        font-size: var(--font-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .unread-message-counter {
+        font-size: var(--font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .unread-message-counter {
+        font-size: var(--font-size-lg, 16px)
+        }
+    }

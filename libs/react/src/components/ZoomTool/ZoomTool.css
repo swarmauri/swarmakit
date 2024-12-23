@@ -1,0 +1,25 @@
+.zoom-tool {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: var(--zoom-tool-border-radius, 4px);
+    background-color: var(--zoom-tool-background-color, #f9f9f9)
+    }
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+button:disabled {
+    background-color: var(--button-disabled-background-color, #d3d3d3);
+    cursor: not-allowed
+    }
+.zoom-level {
+    font-weight: bold;
+    color: var(--zoom-level-color, #333)
+    }

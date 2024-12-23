@@ -1,0 +1,41 @@
+.contextual-navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    max-width: 80%;
+    background-color: var(--contextual-navigation-bg-color, #fff);
+    transition: transform 0.3s ease;
+    transform: translatex(100%);
+    z-index: 1000
+    }
+.contextual-navigation.open {
+    transform: translatex(0)
+    }
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin: var(--contextual-navigation-close-btn-margin, 10px)
+    }
+.navigation-item {
+    padding: var(--navigation-item-padding, 10px);
+    text-align: left
+    }
+.navigation-item button {
+    background: none;
+    border: none;
+    color: var(--navigation-item-color, #007bff);
+    font-size: var(--navigation-item-font-size, 16px);
+    cursor: pointer;
+    transition: color 0.3s ease
+    }
+.navigation-item button:hover {
+    color: var(--navigation-item-hover-color, #0056b3)
+    }
+@media (max-width: 600px) {
+    .contextual-navigation {
+        width: 100%
+        }
+    }

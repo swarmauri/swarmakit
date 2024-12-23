@@ -1,0 +1,36 @@
+.focus-indicator {
+    border-radius: var(--focus-indicator-border-radius, 5px);
+    transition: box-shadow 0.3s ease;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center
+    }
+.focused {
+    background-color: var(--focus-indicator-focused-bg, #e0f7fa);
+    color: var(--focus-indicator-focused-color, #007bff)
+    }
+.unfocused {
+    background-color: var(--focus-indicator-unfocused-bg, #f8f9fa);
+    color: var(--focus-indicator-unfocused-color, #6c757d)
+    }
+@media (max-width: 600px) {
+    .focus-indicator {
+        padding: 8px 16px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .focus-indicator {
+        padding: 9px 18px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .focus-indicator {
+        padding: 10px 20px
+        }
+    }
+@media (min-width: 1025px) {
+    .focus-indicator {
+        padding: 12px 24px
+        }
+    }
