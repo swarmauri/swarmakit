@@ -1,0 +1,42 @@
+.shape-tool {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border-radius: var(--shape-tool-border-radius, 4px);
+    background-color: var(--shape-tool-background-color, #fff)
+    }
+.shape-tool.active {
+    border-color: var(--shape-tool-active-border-color, #007bff)
+    }
+.shape-toggle {
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px
+    }
+.shape-toggle:hover {
+    background-color: var(--button-hover-background-color, #0056b3)
+    }
+.shape-settings label {
+    margin-bottom: 8px
+    }
+.shape-settings input[type="range"], .shape-settings select {
+    width: 100%
+    }
+.draw-button {
+    background-color: var(--draw-button-background-color, #28a745);
+    color: var(--draw-button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--draw-button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+.draw-button:hover {
+    background-color: var(--draw-button-hover-background-color, #218838)
+    }

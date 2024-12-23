@@ -1,0 +1,40 @@
+.progress-bar {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: var(--progress-bar-bg, #e0e0e0);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background-color 0.3s ease
+    }
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--progress-bar-fill-color, #76c7c0);
+    transition: width 0.3s ease
+    }
+.progress-bar:hover:not(.disabled) {
+    background-color: var(--progress-bar-hover-bg, #d0d0d0)
+    }
+.disabled {
+    background-color: var(--progress-bar-disabled-bg, #f0f0f0)
+    }
+@media (max-width: 600px) {
+    .progress-bar {
+        height: 16px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .progress-bar {
+        height: 18px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .progress-bar {
+        height: 20px
+        }
+    }
+@media (min-width: 1025px) {
+    .progress-bar {
+        height: 24px
+        }
+    }

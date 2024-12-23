@@ -1,0 +1,42 @@
+.thread-container {
+    padding: var(--thread-padding, 15px);
+    background-color: var(--thread-bg, #fff);
+    border: 1px solid var(--thread-border-color, #ddd);
+    border-radius: var(--thread-border-radius, 10px);
+    margin-bottom: var(--thread-margin-bottom, 10px);
+    transition: background-color 0.3s ease, color 0.3s ease
+    }
+.thread-container.open {
+    border-color: var(--open-border-color, #28a745)
+    }
+.thread-container.closed {
+    border-color: var(--closed-border-color, #dc3545)
+    }
+.thread-container.expanded {
+    background-color: var(--expanded-bg, #f0f8ff)
+    }
+.thread-container.collapsed {
+    background-color: var(--collapsed-bg, #f8f8f8)
+    }
+.thread-container button {
+    background: none;
+    border: none;
+    color: var(--button-text-color, #007bff);
+    cursor: pointer;
+    font-size: var(--button-font-size, 14px)
+    }
+@media (max-width: 576px) {
+    .thread-container {
+        font-size: var(--thread-font-size-sm, 14px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .thread-container {
+        font-size: var(--thread-font-size-md, 16px)
+        }
+    }
+@media (min-width: 769px) {
+    .thread-container {
+        font-size: var(--thread-font-size-lg, 18px)
+        }
+    }

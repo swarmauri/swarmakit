@@ -1,0 +1,45 @@
+.pie-chart {
+    width: 100%;
+    height: 100%;
+    background-color: var(--chart-bg-color, #f9f9f9);
+    position: relative
+    }
+.chart-loading, .chart-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--chart-font-size, 16px);
+    color: var(--chart-text-color, #666)
+    }
+.pie-chart.rendered .chart-slice {
+    fill: var(--chart-slice-color, #007bff)
+    }
+.pie-chart.hovered .chart-slice:hover {
+    fill: var(--hovered-slice-color, #17a2b8);
+    cursor: pointer
+    }
+.pie-chart.clicked .chart-slice:active {
+    fill: var(--clicked-slice-color, #dc3545)
+    }
+.pie-chart.donut .chart-slice {
+    stroke: var(--donut-hole-color, #fff);
+    stroke-width: var(--donut-hole-width, 30)
+    }
+.pie-chart.exploded .chart-slice {
+    transform: translate(var(--explode-offset-x, 10px), var(--explode-offset-y, 10px))
+    }
+@media (max-width: 576px) {
+    .pie-chart {
+        height: var(--chart-height-sm, 200px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .pie-chart {
+        height: var(--chart-height-md, 300px)
+        }
+    }
+@media (min-width: 769px) {
+    .pie-chart {
+        height: var(--chart-height-lg, 400px)
+        }
+    }

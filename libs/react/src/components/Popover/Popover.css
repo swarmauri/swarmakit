@@ -1,0 +1,30 @@
+.popover-container {
+    position: relative;
+    display: inline-block
+    }
+.popover-trigger {
+    cursor: pointer
+    }
+.popover-content {
+    position: absolute;
+    background-color: var(--popover-bg, #fff);
+    color: var(--popover-color, #333);
+    border-radius: var(--popover-radius, 5px);
+    padding: var(--popover-padding, 10px);
+    z-index: 100
+    }
+@media (max-width: 576px) {
+    .popover-content {
+        font-size: var(--popover-font-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .popover-content {
+        font-size: var(--popover-font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .popover-content {
+        font-size: var(--popover-font-size-lg, 16px)
+        }
+    }

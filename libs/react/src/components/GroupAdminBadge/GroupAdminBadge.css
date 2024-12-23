@@ -1,0 +1,27 @@
+.group-admin-badge {
+    font-size: var(--badge-font-size, 12px);
+    background-color: var(--badge-bg-color, #4caf50);
+    color: var(--badge-text-color, #fff);
+    border-radius: var(--badge-border-radius, 10px);
+    display: inline-block;
+    transition: opacity 0.3s ease
+    }
+.group-admin-badge.hidden {
+    opacity: 0;
+    pointer-events: none
+    }
+@media (max-width: 576px) {
+    .group-admin-badge {
+        font-size: var(--badge-font-size-sm, 10px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .group-admin-badge {
+        font-size: var(--badge-font-size-md, 12px)
+        }
+    }
+@media (min-width: 769px) {
+    .group-admin-badge {
+        font-size: var(--badge-font-size-lg, 14px)
+        }
+    }

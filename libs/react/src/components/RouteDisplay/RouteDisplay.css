@@ -1,0 +1,29 @@
+.route-display {
+    padding: var(--route-display-padding, 10px);
+    border-radius: var(--route-display-border-radius, 5px);
+    font-size: var(--route-display-font-size, 14px);
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+    }
+.route-display .status {
+    font-weight: bold;
+    margin-left: 10px
+    }
+.route-display.planned {
+    background-color: var(--route-display-planned-bg, #d1ecf1);
+    color: var(--route-display-planned-color, #0c5460)
+    }
+.route-display.in-progress {
+    background-color: var(--route-display-in-progress-bg, #fff3cd);
+    color: var(--route-display-in-progress-color, #856404)
+    }
+.route-display.completed {
+    background-color: var(--route-display-completed-bg, #d4edda);
+    color: var(--route-display-completed-color, #155724)
+    }
+.route-display.error {
+    background-color: var(--route-display-error-bg, #f8d7da);
+    color: var(--route-display-error-color, #721c24)
+    }

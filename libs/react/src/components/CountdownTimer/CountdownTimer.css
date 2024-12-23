@@ -1,0 +1,56 @@
+.countdown-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: var(--timer-text-color)
+    }
+.timer-display {
+    font-size: 24px;
+    margin-bottom: 10px
+    }
+.timer-controls button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer
+    }
+.timer-controls button:disabled {
+    background-color: var(--button-disabled-background-color);
+    cursor: not-allowed
+    }
+@media (max-width: 600px) {
+    .countdown-timer {
+        font-size: 14px
+        }
+    .timer-display {
+        font-size: 20px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .countdown-timer {
+        font-size: 15px
+        }
+    .timer-display {
+        font-size: 22px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .countdown-timer {
+        font-size: 16px
+        }
+    .timer-display {
+        font-size: 24px
+        }
+    }
+@media (min-width: 1025px) {
+    .countdown-timer {
+        font-size: 16px
+        }
+    .timer-display {
+        font-size: 24px
+        }
+    }

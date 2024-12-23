@@ -1,0 +1,28 @@
+.map-layer-toggle {
+    background-color: var(--toggle-bg, #f8f9fa);
+    border-radius: var(--toggle-radius, 0.25rem);
+    font-size: var(--toggle-font-size, 1rem);
+    color: var(--toggle-text-color, #343a40);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s
+    }
+.map-layer-toggle.active {
+    background-color: var(--toggle-active-bg, #007bff);
+    color: var(--toggle-active-text, #fff)
+    }
+.map-layer-toggle.inactive {
+    background-color: var(--toggle-inactive-bg, #e9ecef)
+    }
+.map-layer-toggle.hovered {
+    background-color: var(--toggle-hover-bg, #0056b3);
+    color: var(--toggle-hover-text, #fff)
+    }
+.map-layer-toggle.disabled {
+    background-color: var(--toggle-disabled-bg, #6c757d);
+    color: var(--toggle-disabled-text, #ccc);
+    cursor: not-allowed;
+    opacity: 0.6
+    }
+.map-layer-toggle:focus {
+    outline-offset: var(--toggle-focus-offset, 2px)
+    }

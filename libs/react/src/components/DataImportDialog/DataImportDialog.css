@@ -1,0 +1,55 @@
+.data-import-dialog {
+    display: flex;
+    flex-direction: column;
+    width: var(--dialog-width, 400px);
+    background-color: var(--dialog-background-color, #fff);
+    border: 1px solid var(--dialog-border-color, #ccc);
+    border-radius: var(--dialog-border-radius, 8px);
+    padding: var(--dialog-padding, 16px)
+    }
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--dialog-header-margin-bottom, 16px)
+    }
+.close-button {
+    background: none;
+    border: none;
+    font-size: var(--close-button-font-size, 1.5rem);
+    cursor: pointer
+    }
+.dialog-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--body-gap, 12px)
+    }
+.progress-indicator {
+    color: var(--progress-indicator-color, #007bff)
+    }
+.import-message {
+    color: var(--import-message-color, #f00)
+    }
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--footer-gap, 8px);
+    margin-top: var(--footer-margin-top, 16px)
+    }
+button {
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-color, #fff);
+    transition: background-color 0.3s ease
+    }
+button:disabled {
+    background-color: var(--button-disabled-background-color, #ccc);
+    cursor: not-allowed
+    }
+@media (max-width: 600px) {
+    .data-import-dialog {
+        width: var(--dialog-width-mobile, 300px)
+        }
+    }

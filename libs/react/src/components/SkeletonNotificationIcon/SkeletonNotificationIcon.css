@@ -1,0 +1,40 @@
+.skeleton-notification-icon {
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.3s ease
+    }
+.skeleton-icon {
+    width: var(--skeleton-icon-size, 20px);
+    height: var(--skeleton-icon-size, 20px);
+    background-color: var(--skeleton-bg-color, #e0e0e0);
+    border-radius: 50%;
+    animation: skeleton-pulse 1.5s infinite ease-in-out
+    }
+.skeleton-notification-icon.hidden {
+    opacity: 0
+    }
+@keyframes skeleton-pulse {
+    0%, 100% {
+        opacity: 1;
+        } 50% {
+        opacity: 0.4;
+        }
+    }
+@media (max-width: 576px) {
+    .skeleton-icon {
+        width: var(--skeleton-icon-size-sm, 15px);
+        height: var(--skeleton-icon-size-sm, 15px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .skeleton-icon {
+        width: var(--skeleton-icon-size-md, 18px);
+        height: var(--skeleton-icon-size-md, 18px)
+        }
+    }
+@media (min-width: 769px) {
+    .skeleton-icon {
+        width: var(--skeleton-icon-size-lg, 20px);
+        height: var(--skeleton-icon-size-lg, 20px)
+        }
+    }

@@ -1,0 +1,65 @@
+.mega-menu {
+    position: relative
+    }
+.mega-menu-toggle {
+    background: var(--mega-menu-toggle-bg, #007bff);
+    color: var(--mega-menu-toggle-color, #fff);
+    padding: var(--mega-menu-toggle-padding, 10px);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+.mega-menu-toggle:hover {
+    background: var(--mega-menu-toggle-hover-bg, #0056b3)
+    }
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--menu-content-bg, #fff);
+    width: 100%
+    }
+.menu-content.expanded {
+    display: block
+    }
+.menu-item {
+    padding: var(--menu-item-padding, 10px);
+    border-bottom: 1px solid var(--menu-item-border, #f0f0f0)
+    }
+.menu-item button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    color: var(--menu-item-color, #333);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease
+    }
+.menu-item button:hover {
+    background: var(--menu-item-hover-bg, #f0f0f0);
+    color: var(--menu-item-hover-color, #007bff)
+    }
+.sub-menu {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px
+    }
+.sub-menu button {
+    padding: var(--sub-menu-item-padding, 8px)
+    }
+@media (max-width: 576px) {
+    .mega-menu-toggle {
+        padding: var(--mega-menu-toggle-padding-sm, 8px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .mega-menu-toggle {
+        padding: var(--mega-menu-toggle-padding-md, 9px)
+        }
+    }
+@media (min-width: 769px) {
+    .mega-menu-toggle {
+        padding: var(--mega-menu-toggle-padding-lg, 10px)
+        }
+    }

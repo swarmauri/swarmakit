@@ -1,0 +1,37 @@
+.sankey-diagram {
+    width: 100%;
+    height: 100%;
+    background-color: var(--sankey-diagram-bg-color, #f9f9f9);
+    position: relative
+    }
+.sankey-diagram-loading, .sankey-diagram-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--sankey-diagram-font-size, 16px);
+    color: var(--sankey-diagram-text-color, #666)
+    }
+.sankey-diagram.rendered .link {
+    stroke: var(--sankey-diagram-link-color, #007bff)
+    }
+.sankey-diagram.tooltipVisible .link:hover {
+    stroke: var(--tooltip-color, #17a2b8)
+    }
+.sankey-diagram.hovered .link {
+    stroke: var(--hover-color, #28a745)
+    }
+@media (max-width: 576px) {
+    .sankey-diagram {
+        height: var(--sankey-diagram-height-sm, 200px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .sankey-diagram {
+        height: var(--sankey-diagram-height-md, 300px)
+        }
+    }
+@media (min-width: 769px) {
+    .sankey-diagram {
+        height: var(--sankey-diagram-height-lg, 400px)
+        }
+    }

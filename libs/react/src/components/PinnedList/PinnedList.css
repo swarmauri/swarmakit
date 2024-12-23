@@ -1,0 +1,29 @@
+.pinned-list {
+    list-style: none;
+    padding: 0;
+    margin: 0
+    }
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s
+    }
+.list-item.pinned {
+    background-color: var(--pinned-bg-color, #ffeb3b)
+    }
+.list-item.unpinned {
+    background-color: var(--unpinned-bg-color, #fff)
+    }
+.list-item.selected {
+    background-color: var(--selected-bg-color, #c8e6c9)
+    }
+.list-item:hover {
+    background-color: var(--hover-bg-color, #f1f1f1)
+    }
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--button-text-color, #007bff)
+    }

@@ -1,0 +1,33 @@
+.signal-strength-indicator {
+    display: flex;
+    gap: 4px
+    }
+.signal-bar {
+    width: 8px;
+    height: 20px;
+    background-color: var(--signal-inactive-color, #c0c0c0);
+    transition: background-color 0.3s ease
+    }
+.signal-bar.active {
+    background-color: var(--signal-active-color, #0f0)
+    }
+@media (max-width: 600px) {
+    .signal-bar {
+        height: 15px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .signal-bar {
+        height: 18px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .signal-bar {
+        height: 20px
+        }
+    }
+@media (min-width: 1025px) {
+    .signal-bar {
+        height: 25px
+        }
+    }

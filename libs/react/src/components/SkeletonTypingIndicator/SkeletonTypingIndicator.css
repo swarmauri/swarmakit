@@ -1,0 +1,48 @@
+.skeleton-typing-indicator {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease
+    }
+.skeleton-dot {
+    width: var(--skeleton-dot-size, 8px);
+    height: var(--skeleton-dot-size, 8px);
+    background-color: var(--skeleton-bg-color, #e0e0e0);
+    border-radius: 50%;
+    margin: 0 var(--skeleton-dot-margin, 4px);
+    animation: skeleton-bounce 1.5s infinite ease-in-out both
+    }
+.skeleton-typing-indicator.hidden {
+    opacity: 0
+    }
+.skeleton-dot:nth-child(1) {
+    animation-delay: -0.32s
+    }
+.skeleton-dot:nth-child(2) {
+    animation-delay: -0.16s
+    }
+@keyframes skeleton-bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+        } 40% {
+        transform: scale(1);
+        }
+    }
+@media (max-width: 576px) {
+    .skeleton-dot {
+        width: var(--skeleton-dot-size-sm, 6px);
+        height: var(--skeleton-dot-size-sm, 6px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .skeleton-dot {
+        width: var(--skeleton-dot-size-md, 8px);
+        height: var(--skeleton-dot-size-md, 8px)
+        }
+    }
+@media (min-width: 769px) {
+    .skeleton-dot {
+        width: var(--skeleton-dot-size-lg, 10px);
+        height: var(--skeleton-dot-size-lg, 10px)
+        }
+    }
