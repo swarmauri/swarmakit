@@ -1,38 +1,28 @@
-<style scoped>
-  .typing-status {
+.typing-status {
     font-size: var(--typing-status-font-size, 14px);
     color: var(--typing-status-color, #666);
-    margin: var(--typing-status-margin, 5px 0);
-    transition: opacity 0.3s ease;
-  }
-
-  .typing-status.hidden {
+    transition: opacity 0.3s ease
+    }
+.typing-status.hidden {
     opacity: 0;
-    visibility: hidden;
-  }
-
-  .typing-status.visible,
-  .typing-status.typing,
-  .typing-status.paused {
+    visibility: hidden
+    }
+.typing-status.visible, .typing-status.typing, .typing-status.paused {
     opacity: 1;
-    visibility: visible;
-  }
-
-  @media (max-width: 576px) {
-    .typing-status {
-      font-size: var(--typing-status-font-size-sm, 12px);
+    visibility: visible
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
+@media (max-width: 576px) {
     .typing-status {
-      font-size: var(--typing-status-font-size-md, 13px);
+        font-size: var(--typing-status-font-size-sm, 12px)
+        }
     }
-  }
-
-  @media (min-width: 769px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .typing-status {
-      font-size: var(--typing-status-font-size-lg, 14px);
+        font-size: var(--typing-status-font-size-md, 13px)
+        }
     }
-  }
-</style>
+@media (min-width: 769px) {
+    .typing-status {
+        font-size: var(--typing-status-font-size-lg, 14px)
+        }
+    }

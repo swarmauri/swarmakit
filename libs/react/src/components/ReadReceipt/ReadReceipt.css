@@ -1,52 +1,42 @@
-<style scoped>
-  .read-receipt {
+.read-receipt {
     display: inline-block;
     width: var(--receipt-size, 16px);
-    height: var(--receipt-size, 16px);
-  }
-
-  .status-icon {
+    height: var(--receipt-size, 16px)
+    }
+.status-icon {
     width: 100%;
     height: 100%;
     display: block;
     border-radius: 50%;
-    background-color: var(--status-unseen-color, #9e9e9e);
-  }
-
-  .status-icon.seen {
-    background-color: var(--status-seen-color, #4caf50);
-  }
-
-  .status-icon.unseen {
-    background-color: var(--status-unseen-color, #9e9e9e);
-  }
-
-  .status-icon.delivered {
-    background-color: var(--status-delivered-color, #2196f3);
-  }
-
-  .status-icon.failed {
-    background-color: var(--status-failed-color, #f44336);
-  }
-
-  @media (max-width: 576px) {
-    .read-receipt {
-      width: var(--receipt-size-sm, 12px);
-      height: var(--receipt-size-sm, 12px);
+    background-color: var(--status-unseen-color, #9e9e9e)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .read-receipt {
-      width: var(--receipt-size-md, 14px);
-      height: var(--receipt-size-md, 14px);
+.status-icon.seen {
+    background-color: var(--status-seen-color, #4caf50)
     }
-  }
-
-  @media (min-width: 769px) {
-    .read-receipt {
-      width: var(--receipt-size-lg, 16px);
-      height: var(--receipt-size-lg, 16px);
+.status-icon.unseen {
+    background-color: var(--status-unseen-color, #9e9e9e)
     }
-  }
-</style>
+.status-icon.delivered {
+    background-color: var(--status-delivered-color, #2196f3)
+    }
+.status-icon.failed {
+    background-color: var(--status-failed-color, #f44336)
+    }
+@media (max-width: 576px) {
+    .read-receipt {
+        width: var(--receipt-size-sm, 12px);
+        height: var(--receipt-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .read-receipt {
+        width: var(--receipt-size-md, 14px);
+        height: var(--receipt-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .read-receipt {
+        width: var(--receipt-size-lg, 16px);
+        height: var(--receipt-size-lg, 16px)
+        }
+    }

@@ -1,28 +1,21 @@
-<style scoped>
-  .container {
+.container {
     padding: var(--container-padding, 16px);
-    margin: 0 auto;
-    transition: var(--container-transition, all 0.3s ease);
-  }
-
-  .container.fluid {
+    margin: 0 auto
+    }
+.container.fluid {
     width: 100%;
-    max-width: var(--container-fluid-max-width, 100%);
-  }
-
-  .container.fixed {
-    width: var(--container-fixed-width, 1200px);
-  }
-
-  .container.centered {
+    max-width: var(--container-fluid-max-width, 100%)
+    }
+.container.fixed {
+    width: var(--container-fixed-width, 1200px)
+    }
+.container.centered {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: var(--container-centered-width, 100%);
-  }
-
-  .container.fullWidth {
+    width: var(--container-centered-width, 100%)
+    }
+.container.fullWidth {
     width: 100vw;
-    margin: 0;
-  }
-</style>
+    margin: 0
+    }

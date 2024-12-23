@@ -1,66 +1,53 @@
-<style scoped>
-  .load-more-button-in-list {
+.load-more-button-in-list {
     width: 100%;
     max-width: var(--load-more-list-max-width, 400px);
-    margin: 0 auto;
-  }
-
-  ul {
+    margin: 0 auto
+    }
+ul {
     list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    padding: var(--list-item-padding, 10px);
-    border-bottom: var(--list-item-border-bottom, 1px solid #ddd);
-  }
-
-  button {
+    padding: 0
+    }
+li {
+    padding: var(--list-item-padding, 10px)
+    }
+button {
     width: 100%;
     padding: var(--button-padding, 10px);
     background-color: var(--button-bg-color, #007bff);
     color: var(--button-text-color, #fff);
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  button:disabled {
+    transition: background-color 0.3s
+    }
+button:disabled {
     background-color: var(--button-disabled-bg-color, #ddd);
-    cursor: not-allowed;
-  }
-
-  button:hover:not(:disabled) {
-    background-color: var(--button-hover-bg-color, #0056b3);
-  }
-
-  .end-of-list {
+    cursor: not-allowed
+    }
+button:hover:not(:disabled) {
+    background-color: var(--button-hover-bg-color, #0056b3)
+    }
+.end-of-list {
     padding: var(--end-of-list-padding, 10px);
     text-align: center;
-    color: var(--end-of-list-text-color, #666);
-  }
-
-  @media (max-width: 600px) {
-    .load-more-button-in-list {
-      max-width: 100%;
+    color: var(--end-of-list-text-color, #666)
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (max-width: 600px) {
     .load-more-button-in-list {
-      max-width: 350px;
+        max-width: 100%
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .load-more-button-in-list {
-      max-width: 400px;
+        max-width: 350px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .load-more-button-in-list {
-      max-width: 450px;
+        max-width: 400px
+        }
     }
-  }
-</style>
+@media (min-width: 1025px) {
+    .load-more-button-in-list {
+        max-width: 450px
+        }
+    }

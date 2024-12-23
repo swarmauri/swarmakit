@@ -1,0 +1,48 @@
+.number-input {
+    display: flex;
+    align-items: center
+    }
+button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: 1px solid var(--button-border-color);
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+button:disabled {
+    background-color: var(--button-disabled-bg-color);
+    cursor: not-allowed
+    }
+input[type="number"] {
+    width: 60px;
+    text-align: center;
+    border: 1px solid var(--input-border-color);
+    margin: 0 8px;
+    padding: 4px;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color)
+    }
+@media (max-width: 600px) {
+    .number-input {
+        flex-direction: column
+        }
+    input[type="number"] {
+        margin: 8px 0
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .number-input {
+        flex-direction: row
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .number-input {
+        flex-direction: row
+        }
+    }
+@media (min-width: 1025px) {
+    .number-input {
+        flex-direction: row
+        }
+    }

@@ -1,28 +1,24 @@
-<style scoped>
-  .card-image-container {
+.card-image-container {
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-radius: var(--image-border-radius, 8px);
-  }
-
-  .card-image {
+    border-radius: var(--image-border-radius, 8px)
+    }
+.card-image {
     width: 100%;
     height: auto;
-    display: block;
-  }
-
-  .image-caption {
+    display: block
+    }
+.image-caption {
     text-align: center;
     padding: var(--caption-padding, 10px);
     background-color: var(--caption-bg-color, rgba(0, 0, 0, 0.7));
     color: var(--caption-text-color, #fff);
     position: absolute;
     bottom: 0;
-    width: 100%;
-  }
-
-  .image-overlay {
+    width: 100%
+    }
+.image-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -34,28 +30,23 @@
     background-color: var(--overlay-bg-color, rgba(0, 0, 0, 0.5));
     color: var(--overlay-text-color, #fff);
     opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .card-image-container:hover .image-overlay {
-    opacity: 1;
-  }
-
-  @media (max-width: 576px) {
-    .card-image {
-      height: var(--image-height-mobile, auto);
+    transition: opacity 0.3s
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .card-image {
-      height: var(--image-height-tablet, auto);
+.card-image-container:hover .image-overlay {
+    opacity: 1
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .card-image {
-      height: var(--image-height-desktop, auto);
+        height: var(--image-height-mobile, auto)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .card-image {
+        height: var(--image-height-tablet, auto)
+        }
+    }
+@media (min-width: 769px) {
+    .card-image {
+        height: var(--image-height-desktop, auto)
+        }
+    }

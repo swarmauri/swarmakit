@@ -1,31 +1,22 @@
-<style scoped>
-  .card {
+.card {
     padding: var(--card-padding, 16px);
     background-color: var(--card-bg-color, #fff);
     border-radius: var(--card-border-radius, 8px);
-    box-shadow: var(--card-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
-    transition: var(--card-transition, all 0.3s ease);
-    cursor: pointer;
-  }
-
-  .card.hidden {
-    display: none;
-  }
-
-  .card.hovered:hover {
-    background-color: var(--card-hover-bg-color, #f0f0f0);
-  }
-
-  .card.clicked {
-    background-color: var(--card-clicked-bg-color, #e0e0e0);
-  }
-
-  .card.collapsed {
+    cursor: pointer
+    }
+.card.hidden {
+    display: none
+    }
+.card.hovered:hover {
+    background-color: var(--card-hover-bg-color, #f0f0f0)
+    }
+.card.clicked {
+    background-color: var(--card-clicked-bg-color, #e0e0e0)
+    }
+.card.collapsed {
     max-height: var(--card-collapsed-height, 50px);
-    overflow: hidden;
-  }
-
-  .card.expanded {
-    max-height: var(--card-expanded-height, 200px);
-  }
-</style>
+    overflow: hidden
+    }
+.card.expanded {
+    max-height: var(--card-expanded-height, 200px)
+    }

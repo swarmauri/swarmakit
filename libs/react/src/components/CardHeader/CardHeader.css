@@ -1,42 +1,33 @@
-<style scoped>
-  .card-header {
+.card-header {
     display: flex;
     align-items: center;
     padding: var(--header-padding, 15px);
     background-color: var(--header-bg-color, #f5f5f5);
-    border-bottom: var(--header-border-bottom, 1px solid #ddd);
-    transition: background-color 0.3s;
-  }
-
-  .card-header:hover {
-    background-color: var(--header-hover-bg-color, #e0e0e0);
-  }
-
-  .header-image {
+    transition: background-color 0.3s
+    }
+.card-header:hover {
+    background-color: var(--header-hover-bg-color, #e0e0e0)
+    }
+.header-image {
     width: var(--image-width, 50px);
     height: var(--image-height, 50px);
     border-radius: var(--image-border-radius, 5px);
-    margin-right: var(--image-margin-right, 10px);
-  }
-
-  .header-icon {
+    margin-right: var(--image-margin-right, 10px)
+    }
+.header-icon {
     font-size: var(--icon-size, 24px);
-    margin-right: var(--icon-margin-right, 10px);
-  }
-
-  .header-text {
+    margin-right: var(--icon-margin-right, 10px)
+    }
+.header-text {
     display: flex;
-    flex-direction: column;
-  }
-
-  .header-title {
+    flex-direction: column
+    }
+.header-title {
     font-size: var(--title-font-size, 18px);
-    margin: 0;
-  }
-
-  .header-subtitle {
+    margin: 0
+    }
+.header-subtitle {
     font-size: var(--subtitle-font-size, 14px);
     color: var(--subtitle-color, #555);
-    margin: 0;
-  }
-</style>
+    margin: 0
+    }

@@ -1,37 +1,29 @@
-<style scoped>
-  .message-input {
+.message-input {
     width: 100%;
     padding: var(--input-padding, 10px);
     font-size: var(--input-font-size, 14px);
-    border: var(--input-border, 1px solid #ccc);
     border-radius: var(--input-border-radius, 5px);
     outline: none;
-    transition: border-color 0.3s ease;
-  }
-
-  .message-input:focus {
-    border-color: var(--input-focus-border-color, #007bff);
-  }
-
-  .message-input::placeholder {
-    color: var(--input-placeholder-color, #888);
-  }
-
-  @media (max-width: 576px) {
-    .message-input {
-      font-size: var(--input-font-size-sm, 12px);
+    transition: border-color 0.3s ease
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .message-input {
-      font-size: var(--input-font-size-md, 14px);
+.message-input:focus {
+    border-color: var(--input-focus-border-color, #007bff)
     }
-  }
-
-  @media (min-width: 769px) {
-    .message-input {
-      font-size: var(--input-font-size-lg, 16px);
+.message-input::placeholder {
+    color: var(--input-placeholder-color, #888)
     }
-  }
-</style>
+@media (max-width: 576px) {
+    .message-input {
+        font-size: var(--input-font-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .message-input {
+        font-size: var(--input-font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .message-input {
+        font-size: var(--input-font-size-lg, 16px)
+        }
+    }

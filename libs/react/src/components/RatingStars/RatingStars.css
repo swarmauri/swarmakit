@@ -1,49 +1,39 @@
-<style scoped>
-  .rating-stars {
+.rating-stars {
     display: flex;
-    align-items: center;
-  }
-
-  .star {
+    align-items: center
+    }
+.star {
     font-size: 2rem;
     cursor: pointer;
     color: var(--star-inactive-color, #c0c0c0);
-    transition: color 0.3s ease;
-  }
-
-  .star.hover {
-    color: var(--star-hover-color, #ffcc00);
-  }
-
-  .star.selected {
-    color: var(--star-selected-color, #ffcc00);
-  }
-
-  .star.inactive {
-    color: var(--star-inactive-color, #c0c0c0);
-  }
-
-  @media (max-width: 600px) {
-    .star {
-      font-size: 1.5rem;
+    transition: color 0.3s ease
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
-    .star {
-      font-size: 1.8rem;
+.star.hover {
+    color: var(--star-hover-color, #fc0)
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .star {
-      font-size: 2rem;
+.star.selected {
+    color: var(--star-selected-color, #fc0)
     }
-  }
-
-  @media (min-width: 1025px) {
-    .star {
-      font-size: 2.5rem;
+.star.inactive {
+    color: var(--star-inactive-color, #c0c0c0)
     }
-  }
-</style>
+@media (max-width: 600px) {
+    .star {
+        font-size: 1.5rem
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .star {
+        font-size: 1.8rem
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .star {
+        font-size: 2rem
+        }
+    }
+@media (min-width: 1025px) {
+    .star {
+        font-size: 2.5rem
+        }
+    }

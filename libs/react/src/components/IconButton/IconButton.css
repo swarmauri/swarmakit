@@ -1,5 +1,4 @@
-<style scoped>
-  .icon-button {
+.icon-button {
     background-color: transparent;
     border: none;
     padding: 10px;
@@ -7,44 +6,36 @@
     transition: color 0.3s;
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-
-  .icon-button:hover {
-    color: var(--hover-color);
-  }
-
-  .icon-button:active {
-    color: var(--active-color);
-  }
-
-  .icon-button:disabled {
+    justify-content: center
+    }
+.icon-button:hover {
+    color: var(--hover-color)
+    }
+.icon-button:active {
+    color: var(--active-color)
+    }
+.icon-button:disabled {
     color: var(--disabled-color);
     cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  @media (max-width: 600px) {
-    .icon-button {
-      padding: 8px;
+    opacity: 0.5
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (max-width: 600px) {
     .icon-button {
-      padding: 9px;
+        padding: 8px
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .icon-button {
-      padding: 10px;
+        padding: 9px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .icon-button {
-      padding: 10px;
+        padding: 10px
+        }
     }
-  }
-</style>
+@media (min-width: 1025px) {
+    .icon-button {
+        padding: 10px
+        }
+    }

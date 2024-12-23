@@ -1,0 +1,30 @@
+.split-view {
+    display: flex;
+    width: 100%;
+    height: 100%
+    }
+.left-pane, .right-pane {
+    overflow: hidden
+    }
+.left-pane {
+    background-color: var(--split-view-left-bg, #f0f0f0)
+    }
+.right-pane {
+    background-color: var(--split-view-right-bg, #fff)
+    }
+.split-view.hidden .left-pane, .split-view.hidden .right-pane {
+    display: none
+    }
+.split-view.collapsed .left-pane {
+    flex-basis: 0
+    }
+.split-view.collapsed .right-pane {
+    flex-basis: 100%
+    }
+.resizer {
+    width: var(--split-view-resizer-width, 5px);
+    background-color: var(--split-view-resizer-bg, #ccc);
+    cursor: col-resize;
+    position: relative;
+    z-index: 1
+    }

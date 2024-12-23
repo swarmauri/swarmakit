@@ -1,61 +1,50 @@
-<style scoped>
-  .wizard-navigation {
+.wizard-navigation {
     display: flex;
     justify-content: space-between;
-    background: var(--wizard-bg, #fff);
-  }
-
-  .step-list {
+    background: var(--wizard-bg, #fff)
+    }
+.step-list {
     display: flex;
     padding: 0;
     margin: 0;
     list-style: none;
-    width: 100%;
-  }
-
-  .step-item {
+    width: 100%
+    }
+.step-item {
     flex: 1;
     text-align: center;
-    position: relative;
-  }
-
-  .step-button {
+    position: relative
+    }
+.step-button {
     width: 100%;
     padding: var(--step-button-padding, 10px);
     border: none;
     background: var(--step-button-bg, #f7f7f7);
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .step-item.completed .step-button {
-    background: var(--step-button-completed-bg, #4caf50);
-  }
-
-  .step-item.current .step-button {
-    background: var(--step-button-current-bg, #2196f3);
-  }
-
-  .step-item.disabled .step-button {
+    transition: background-color 0.3s ease
+    }
+.step-item.completed .step-button {
+    background: var(--step-button-completed-bg, #4caf50)
+    }
+.step-item.current .step-button {
+    background: var(--step-button-current-bg, #2196f3)
+    }
+.step-item.disabled .step-button {
     background: var(--step-button-disabled-bg, #e0e0e0);
-    cursor: not-allowed;
-  }
-
-  @media (max-width: 576px) {
-    .step-button {
-      padding: var(--step-button-padding-sm, 8px);
+    cursor: not-allowed
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
+@media (max-width: 576px) {
     .step-button {
-      padding: var(--step-button-padding-md, 12px);
+        padding: var(--step-button-padding-sm, 8px)
+        }
     }
-  }
-
-  @media (min-width: 769px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .step-button {
-      padding: var(--step-button-padding-lg, 14px);
+        padding: var(--step-button-padding-md, 12px)
+        }
     }
-  }
-</style>
+@media (min-width: 769px) {
+    .step-button {
+        padding: var(--step-button-padding-lg, 14px)
+        }
+    }

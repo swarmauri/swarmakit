@@ -1,5 +1,4 @@
-<style scoped>
-  .badge-with-counts {
+.badge-with-counts {
     display: inline-block;
     padding: 5px 10px;
     border-radius: 12px;
@@ -8,34 +7,29 @@
     text-align: center;
     background-color: var(--badge-background-color);
     color: var(--badge-text-color);
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  @media (max-width: 600px) {
-    .badge-with-counts {
-      font-size: 12px;
-      padding: 4px 8px;
+    transition: background-color 0.3s, color 0.3s
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (max-width: 600px) {
     .badge-with-counts {
-      font-size: 13px;
-      padding: 5px 9px;
+        font-size: 12px;
+        padding: 4px 8px
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .badge-with-counts {
-      font-size: 14px;
-      padding: 5px 10px;
+        font-size: 13px;
+        padding: 5px 9px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .badge-with-counts {
-      font-size: 14px;
-      padding: 5px 10px;
+        font-size: 14px;
+        padding: 5px 10px
+        }
     }
-  }
-</style>
+@media (min-width: 1025px) {
+    .badge-with-counts {
+        font-size: 14px;
+        padding: 5px 10px
+        }
+    }

@@ -1,53 +1,42 @@
-<style scoped>
-  .chat-window {
-    border: var(--chat-window-border, 1px solid #ccc);
+.chat-window {
     background-color: var(--chat-window-bg-color, #fff);
     transition: all 0.3s ease;
-    overflow: hidden;
-  }
-
-  .chat-window.open {
+    overflow: hidden
+    }
+.chat-window.open {
     width: var(--chat-window-width-open, 300px);
-    height: var(--chat-window-height-open, 400px);
-  }
-
-  .chat-window.closed {
+    height: var(--chat-window-height-open, 400px)
+    }
+.chat-window.closed {
     width: var(--chat-window-width-closed, 0);
-    height: var(--chat-window-height-closed, 0);
-  }
-
-  .chat-window.minimized {
+    height: var(--chat-window-height-closed, 0)
+    }
+.chat-window.minimized {
     width: var(--chat-window-width-minimized, 300px);
-    height: var(--chat-window-height-minimized, 50px);
-  }
-
-  .chat-window.maximized {
+    height: var(--chat-window-height-minimized, 50px)
+    }
+.chat-window.maximized {
     width: var(--chat-window-width-maximized, 100%);
-    height: var(--chat-window-height-maximized, 100%);
-  }
-
-  .chat-content {
-    padding: var(--chat-content-padding, 10px);
-  }
-
-  @media (max-width: 576px) {
-    .chat-window.open {
-      width: var(--chat-window-width-open-sm, 250px);
-      height: var(--chat-window-height-open-sm, 350px);
+    height: var(--chat-window-height-maximized, 100%)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .chat-window.open {
-      width: var(--chat-window-width-open-md, 280px);
-      height: var(--chat-window-height-open-md, 380px);
+.chat-content {
+    padding: var(--chat-content-padding, 10px)
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .chat-window.open {
-      width: var(--chat-window-width-open-lg, 300px);
-      height: var(--chat-window-height-open-lg, 400px);
+        width: var(--chat-window-width-open-sm, 250px);
+        height: var(--chat-window-height-open-sm, 350px)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .chat-window.open {
+        width: var(--chat-window-width-open-md, 280px);
+        height: var(--chat-window-height-open-md, 380px)
+        }
+    }
+@media (min-width: 769px) {
+    .chat-window.open {
+        width: var(--chat-window-width-open-lg, 300px);
+        height: var(--chat-window-height-open-lg, 400px)
+        }
+    }

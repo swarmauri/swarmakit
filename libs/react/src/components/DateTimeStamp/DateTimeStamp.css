@@ -1,36 +1,28 @@
-<style scoped>
-  .date-time-stamp {
+.date-time-stamp {
     font-size: var(--date-time-stamp-font-size, 14px);
     color: var(--date-time-stamp-color, #666);
-    margin: var(--date-time-stamp-margin, 5px 0);
-    transition: opacity 0.3s ease;
-  }
-
-  .date-time-stamp.hidden {
+    transition: opacity 0.3s ease
+    }
+.date-time-stamp.hidden {
     opacity: 0;
-    visibility: hidden;
-  }
-
-  .date-time-stamp.displayed {
+    visibility: hidden
+    }
+.date-time-stamp.displayed {
     opacity: 1;
-    visibility: visible;
-  }
-
-  @media (max-width: 576px) {
-    .date-time-stamp {
-      font-size: var(--date-time-stamp-font-size-sm, 12px);
+    visibility: visible
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
+@media (max-width: 576px) {
     .date-time-stamp {
-      font-size: var(--date-time-stamp-font-size-md, 13px);
+        font-size: var(--date-time-stamp-font-size-sm, 12px)
+        }
     }
-  }
-
-  @media (min-width: 769px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .date-time-stamp {
-      font-size: var(--date-time-stamp-font-size-lg, 14px);
+        font-size: var(--date-time-stamp-font-size-md, 13px)
+        }
     }
-  }
-</style>
+@media (min-width: 769px) {
+    .date-time-stamp {
+        font-size: var(--date-time-stamp-font-size-lg, 14px)
+        }
+    }

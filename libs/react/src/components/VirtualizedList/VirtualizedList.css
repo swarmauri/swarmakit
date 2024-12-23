@@ -1,44 +1,33 @@
-<style scoped>
-  .virtualized-list {
+.virtualized-list {
     height: var(--list-height, 400px);
     overflow-y: auto;
-    border: var(--list-border, 1px solid #ddd);
-    padding: var(--list-padding, 10px);
-  }
-
-  .list-item {
-    padding: var(--item-padding, 10px);
-    border-bottom: var(--item-border, 1px solid #eee);
-  }
-
-  .loading,
-  .end-of-list {
+    padding: var(--list-padding, 10px)
+    }
+.list-item {
+    padding: var(--item-padding, 10px)
+    }
+.loading, .end-of-list {
     text-align: center;
     font-weight: var(--loading-font-weight, bold);
-    padding: var(--loading-padding, 10px);
-  }
-
-  @media (max-width: 600px) {
-    .list-item {
-      padding: var(--item-padding-mobile, 8px);
+    padding: var(--loading-padding, 10px)
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (max-width: 600px) {
     .list-item {
-      padding: var(--item-padding-tablet, 10px);
+        padding: var(--item-padding-mobile, 8px)
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .list-item {
-      padding: var(--item-padding-large-tablet, 12px);
+        padding: var(--item-padding-tablet, 10px)
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .list-item {
-      padding: var(--item-padding-desktop, 14px);
+        padding: var(--item-padding-large-tablet, 12px)
+        }
     }
-  }
-</style>
+@media (min-width: 1025px) {
+    .list-item {
+        padding: var(--item-padding-desktop, 14px)
+        }
+    }

@@ -1,50 +1,40 @@
-<style scoped>
-  .captcha {
+.captcha {
     display: flex;
-    gap: 10px;
-  }
-
-  .captcha-button {
+    gap: 10px
+    }
+.captcha-button {
     background-color: var(--button-bg-color);
     border: solid 1px var(--button-border-color);
     padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .captcha-button:hover {
-    background-color: var(--button-hover-bg-color);
-  }
-
-  .solved .captcha-button {
-    background-color: var(--solved-bg-color);
-  }
-
-  .error .captcha-button {
-    background-color: var(--error-bg-color);
-  }
-
-  @media (max-width: 600px) {
-    .captcha {
-      flex-direction: column;
+    transition: background-color 0.3s
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
-    .captcha {
-      flex-direction: row;
+.captcha-button:hover {
+    background-color: var(--button-hover-bg-color)
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .captcha {
-      flex-direction: row;
+.solved .captcha-button {
+    background-color: var(--solved-bg-color)
     }
-  }
-
-  @media (min-width: 1025px) {
-    .captcha {
-      flex-direction: row;
+.error .captcha-button {
+    background-color: var(--error-bg-color)
     }
-  }
-</style>
+@media (max-width: 600px) {
+    .captcha {
+        flex-direction: column
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .captcha {
+        flex-direction: row
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .captcha {
+        flex-direction: row
+        }
+    }
+@media (min-width: 1025px) {
+    .captcha {
+        flex-direction: row
+        }
+    }

@@ -1,57 +1,46 @@
-<style scoped>
-  .checklist {
+.checklist {
     list-style: none;
     padding: 0;
-    margin: 0;
-  }
-
-  .check-item {
+    margin: 0
+    }
+.check-item {
     display: flex;
     align-items: center;
-    margin-bottom: var(--check-item-margin-bottom, 8px);
-  }
-
-  .check-item input[type='checkbox'] {
+    margin-bottom: var(--check-item-margin-bottom, 8px)
+    }
+.check-item input[type="checkbox"] {
     margin-right: var(--check-item-checkbox-margin-right, 8px);
+    cursor: pointer
+    }
+.check-item label {
     cursor: pointer;
-  }
-
-  .check-item label {
-    cursor: pointer;
-    font-size: var(--check-item-label-font-size, 16px);
-  }
-
-  .check-item.disabled input[type='checkbox'] {
+    font-size: var(--check-item-label-font-size, 16px)
+    }
+.check-item.disabled input[type="checkbox"] {
     cursor: not-allowed;
-    opacity: 0.6;
-  }
-
-  .check-item.disabled label {
+    opacity: 0.6
+    }
+.check-item.disabled label {
     cursor: not-allowed;
-    opacity: 0.6;
-  }
-
-  @media (max-width: 600px) {
-    .check-item label {
-      font-size: 14px;
+    opacity: 0.6
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (max-width: 600px) {
     .check-item label {
-      font-size: 15px;
+        font-size: 14px
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .check-item label {
-      font-size: 16px;
+        font-size: 15px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .check-item label {
-      font-size: 17px;
+        font-size: 16px
+        }
     }
-  }
-</style>
+@media (min-width: 1025px) {
+    .check-item label {
+        font-size: 17px
+        }
+    }

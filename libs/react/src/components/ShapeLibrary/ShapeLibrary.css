@@ -1,0 +1,40 @@
+.shape-library {
+    width: 100%;
+    padding: var(--library-padding, 10px);
+    background-color: var(--library-background-color, #f9f9f9);
+    border-radius: var(--library-border-radius, 4px)
+    }
+.search-input {
+    width: 100%;
+    padding: var(--input-padding, 8px);
+    margin-bottom: var(--input-margin-bottom, 10px);
+    border-radius: var(--input-border-radius, 4px)
+    }
+.shapes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--shape-gap, 10px)
+    }
+.shape-item {
+    width: var(--shape-item-width, 80px);
+    height: var(--shape-item-height, 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--shape-item-border-radius, 4px);
+    cursor: pointer;
+    background-color: var(--shape-item-background-color, #fff)
+    }
+.shape-item:hover {
+    background-color: var(--shape-item-hover-background-color, #e6e6e6)
+    }
+svg {
+    width: var(--svg-width, 60px);
+    height: var(--svg-height, 60px)
+    }
+span {
+    margin-top: var(--shape-name-margin-top, 5px);
+    font-size: var(--shape-name-font-size, 12px);
+    color: var(--shape-name-color, #333)
+    }

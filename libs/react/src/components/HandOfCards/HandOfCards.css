@@ -1,60 +1,47 @@
-<style scoped>
-  .hand-container {
+.hand-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-
-  .limit-notification {
+    align-items: center
+    }
+.limit-notification {
     color: var(--limit-notification-color, red);
-    margin-bottom: var(--notification-margin-bottom, 10px);
-  }
-
-  .hand-of-cards {
+    margin-bottom: var(--notification-margin-bottom, 10px)
+    }
+.hand-of-cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: var(--card-gap, 10px);
-  }
-
-  .card {
+    gap: var(--card-gap, 10px)
+    }
+.card {
     cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-
-  .selected {
-    transform: translateY(-10px);
-    border: var(--selected-card-border, 2px solid blue);
-  }
-
-  .unselected {
-    border: none;
-  }
-
-  .card-svg {
+    transition: transform 0.3s ease
+    }
+.selected {
+    transform: translatey(-10px)
+    }
+.unselected {
+    border: none
+    }
+.card-svg {
     width: var(--card-width, 100px);
-    height: var(--card-height, 140px);
-  }
-
-  .card-border {
+    height: var(--card-height, 140px)
+    }
+.card-border {
     fill: var(--card-background-color, #fff);
     stroke: var(--card-border-color, #000);
-    stroke-width: 2;
-  }
-
-  .card-value, .card-suit {
+    stroke-width: 2
+    }
+.card-value, .card-suit {
     font-size: var(--card-text-size, 12px);
-    fill: var(--card-text-color, #000);
-  }
-
-  @media (max-width: 480px) {
+    fill: var(--card-text-color, #000)
+    }
+@media (max-width: 480px) {
     .hand-of-cards {
-      gap: var(--card-gap-mobile, 5px);
-    }
-
+        gap: var(--card-gap-mobile, 5px)
+        }
     .card-svg {
-      width: var(--card-width-mobile, 70px);
-      height: var(--card-height-mobile, 98px);
+        width: var(--card-width-mobile, 70px);
+        height: var(--card-height-mobile, 98px)
+        }
     }
-  }
-</style>

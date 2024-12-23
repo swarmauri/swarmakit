@@ -1,31 +1,21 @@
-<style scoped>
-  .section {
+.section {
     padding: var(--section-padding, 16px);
     background-color: var(--section-bg-color, #f8f9fa);
-    border: var(--section-border, 1px solid #ddd);
     border-radius: var(--section-border-radius, 4px);
-    margin-bottom: var(--section-margin-bottom, 16px);
-    transition: var(--section-transition, all 0.3s ease);
-  }
-
-  .section header {
+    margin-bottom: var(--section-margin-bottom, 16px)
+    }
+.section header {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: var(--header-padding, 8px 0);
-  }
-
-  .section .content {
-    transition: var(--content-transition, max-height 0.3s ease);
-    overflow: hidden;
-  }
-
-  .section.collapsed .content {
-    max-height: 0;
-  }
-
-  .section.expanded .content {
-    max-height: var(--content-max-height, 200px);
-  }
-</style>
+    align-items: center
+    }
+.section .content {
+    overflow: hidden
+    }
+.section.collapsed .content {
+    max-height: 0
+    }
+.section.expanded .content {
+    max-height: var(--content-max-height, 200px)
+    }

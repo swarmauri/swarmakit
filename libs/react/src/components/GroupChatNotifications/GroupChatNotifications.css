@@ -1,41 +1,33 @@
-<style scoped>
-  .group-chat-notifications {
+.group-chat-notifications {
     padding: var(--notification-padding, 10px);
     font-size: var(--notification-font-size, 14px);
     border-radius: var(--notification-border-radius, 5px);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .group-chat-notifications.enabled {
+    transition: background-color 0.3s ease, color 0.3s ease
+    }
+.group-chat-notifications.enabled {
     background-color: var(--notification-bg-enabled, #4caf50);
-    color: var(--notification-text-enabled, #fff);
-  }
-
-  .group-chat-notifications.disabled {
+    color: var(--notification-text-enabled, #fff)
+    }
+.group-chat-notifications.disabled {
     background-color: var(--notification-bg-disabled, #f44336);
-    color: var(--notification-text-disabled, #fff);
-  }
-
-  .group-chat-notifications.muted {
+    color: var(--notification-text-disabled, #fff)
+    }
+.group-chat-notifications.muted {
     background-color: var(--notification-bg-muted, #ff9800);
-    color: var(--notification-text-muted, #fff);
-  }
-
-  @media (max-width: 576px) {
-    .group-chat-notifications {
-      font-size: var(--notification-font-size-sm, 12px);
+    color: var(--notification-text-muted, #fff)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
+@media (max-width: 576px) {
     .group-chat-notifications {
-      font-size: var(--notification-font-size-md, 14px);
+        font-size: var(--notification-font-size-sm, 12px)
+        }
     }
-  }
-
-  @media (min-width: 769px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .group-chat-notifications {
-      font-size: var(--notification-font-size-lg, 16px);
+        font-size: var(--notification-font-size-md, 14px)
+        }
     }
-  }
-</style>
+@media (min-width: 769px) {
+    .group-chat-notifications {
+        font-size: var(--notification-font-size-lg, 16px)
+        }
+    }

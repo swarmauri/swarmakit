@@ -1,56 +1,45 @@
-<style scoped>
-  .collapsible-menu-list {
+.collapsible-menu-list {
     list-style: none;
     padding: 0;
-    margin: 0;
-  }
-
-  .menu-item {
-    margin-bottom: var(--menu-item-margin-bottom, 8px);
-  }
-
-  .menu-label {
+    margin: 0
+    }
+.menu-item {
+    margin-bottom: var(--menu-item-margin-bottom, 8px)
+    }
+.menu-label {
     padding: var(--menu-label-padding, 10px);
     background-color: var(--menu-label-bg, #f4f4f4);
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .menu-label:hover {
-    background-color: var(--menu-label-hover-bg, #e0e0e0);
-  }
-
-  .menu-item.active .menu-label {
-    background-color: var(--menu-label-active-bg, #d0d0d0);
-  }
-
-  .menu-content {
+    transition: background-color 0.3s
+    }
+.menu-label:hover {
+    background-color: var(--menu-label-hover-bg, #e0e0e0)
+    }
+.menu-item.active .menu-label {
+    background-color: var(--menu-label-active-bg, #d0d0d0)
+    }
+.menu-content {
     padding: var(--menu-content-padding, 10px);
-    background-color: var(--menu-content-bg, #ffffff);
-    border: 1px solid var(--menu-content-border-color, #cccccc);
-  }
-
-  @media (max-width: 600px) {
-    .menu-label {
-      font-size: 14px;
+    background-color: var(--menu-content-bg, #fff);
+    border: 1px solid var(--menu-content-border-color, #ccc)
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (max-width: 600px) {
     .menu-label {
-      font-size: 15px;
+        font-size: 14px
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .menu-label {
-      font-size: 16px;
+        font-size: 15px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .menu-label {
-      font-size: 17px;
+        font-size: 16px
+        }
     }
-  }
-</style>
+@media (min-width: 1025px) {
+    .menu-label {
+        font-size: 17px
+        }
+    }
