@@ -1,3 +1,4 @@
+
 <template>
   <div class="deck" role="list" aria-label="Deck of Cards">
     <div 
@@ -52,20 +53,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="css">
-.deck {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: var(--deck-width, 300px);
-  height: var(--deck-height, 400px);
-}
 
-.card {
-  position: absolute;
-  width: 100%;
-  height: var(--card-height, 100%);
-  transition: transform 0.3s ease;
-  box-shadow: var(--card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1));
-}
+
+
+<style scoped lang="css">
+@import './DeckOfCards.css';
 </style>

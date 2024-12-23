@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="shape-tool" :class="{ active: isActive }">
     <button @click="toggleActive" :aria-pressed="isActive" class="shape-button">Shape Tool</button>
@@ -55,24 +57,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.shape-tool {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.shape-tool.active .shape-button {
-  border: 2px solid var(--shape-tool-active-border);
-}
 
-.shape-settings {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
 
-.shape-button {
-  cursor: pointer;
-}
+<style scoped lang="css">
+@import './ShapeTool.css';
 </style>

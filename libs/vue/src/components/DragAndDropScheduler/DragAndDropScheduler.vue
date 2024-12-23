@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="scheduler" role="application" aria-label="Drag and Drop Scheduler">
     <div class="time-slot" v-for="slot in timeSlots" :key="slot" aria-label="Time Slot">
@@ -63,6 +65,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './DragAndDropScheduler.css';
 </style>

@@ -1,3 +1,4 @@
+
 <template>
   <div class="password-confirmation-container">
     <input 
@@ -41,6 +42,9 @@ export default defineComponent({
   },
 });
 </script>
+
+
+
 
 <style scoped lang="css">
 @import './PasswordConfirmationField.css';

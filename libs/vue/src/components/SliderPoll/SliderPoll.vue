@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="slider-poll">
     <label :for="id" class="slider-label">{{ question }}</label>
@@ -72,31 +74,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.slider-poll {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 16px;
-}
 
-.slider-label {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
 
-.slider {
-  width: 100%;
-  max-width: 300px;
-  margin: 10px 0;
-}
 
-.slider:disabled {
-  opacity: 0.5;
-}
-
-.results {
-  font-size: 0.9rem;
-  color: var(--primary-color);
-}
+<style scoped lang="css">
+@import './SliderPoll.css';
 </style>

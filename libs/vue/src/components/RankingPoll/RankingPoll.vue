@@ -1,3 +1,5 @@
+
+
 <template>
   <div role="list" aria-labelledby="poll-question" class="ranking-poll">
     <p id="poll-question">{{ question }}</p>
@@ -63,22 +65,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.ranking-poll {
-  margin: 16px;
-}
 
-.rank-option {
-  padding: 8px;
-  margin-bottom: 4px;
-  background-color: var(--secondary-color);
-  color: #fff;
-  border-radius: 4px;
-  cursor: grab;
-  user-select: none;
-}
 
-.rank-option:focus {
-  outline: 2px solid var(--primary-color);
-}
+
+<style scoped lang="css">
+@import './RankingPoll.css';
 </style>

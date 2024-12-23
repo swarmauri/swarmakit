@@ -1,3 +1,4 @@
+
 <template>
   <div class="countdown-timer" role="timer" :aria-live="isCompleted ? 'off' : 'assertive'">
     <span :class="timerState">{{ formattedTime }}</span>
@@ -64,32 +65,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.countdown-timer {
-  display: flex;
-  align-items: center;
-  font-size: var(--timer-font-size, 24px);
-  color: var(--timer-text-color, #000);
-}
-
-.running {
-  color: var(--running-color, #007bff);
-}
-
-.paused {
-  color: var(--paused-color, #ff9900);
-}
-
-.completed {
-  color: var(--completed-color, #28a745);
-}
-
-button {
-  margin-left: 10px;
-  padding: var(--button-padding, 5px 10px);
-  background-color: var(--button-bg-color, #f0f0f0);
-  border: none;
-  border-radius: var(--button-border-radius, 5px);
-  cursor: pointer;
-}
+@import './CountdownTimer.css';
 </style>

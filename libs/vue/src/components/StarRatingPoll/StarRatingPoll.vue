@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="star-rating-poll" role="radiogroup" aria-labelledby="poll-question">
     <p id="poll-question">{{ question }}</p>
@@ -62,31 +64,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.star-rating-poll {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 16px;
-}
 
-.stars {
-  display: flex;
-}
 
-.star {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--secondary-color);
-}
 
-.star.filled {
-  color: var(--primary-color);
-}
-
-.star:focus {
-  outline: 2px solid var(--primary-color);
-}
+<style scoped lang="css">
+@import './StarRatingPoll.css';
 </style>

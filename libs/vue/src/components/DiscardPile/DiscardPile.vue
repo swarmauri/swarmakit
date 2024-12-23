@@ -1,3 +1,4 @@
+
 <template>
   <div
     class="discard-pile"
@@ -69,35 +70,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.discard-pile {
-  position: relative;
-  width: var(--pile-width, 150px);
-  height: var(--pile-height, 200px);
-  border: var(--pile-border, 2px dashed #ccc);
-  border-radius: var(--pile-border-radius, 5px);
-  background-color: var(--pile-bg-color, #f9f9f9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card {
-  position: absolute;
-  transition: transform 0.2s;
-  border-radius: var(--card-border-radius, 5px);
-  box-shadow: var(--card-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
-}
-
-.discard-pile.hovered {
-  border-color: var(--pile-hover-border-color, #007bff);
-  background-color: var(--pile-hover-bg-color, #e6f7ff);
-}
-
-.empty-notification,
-.full-notification {
-  position: absolute;
-  color: var(--notification-color, #ff6f61);
-  font-size: var(--notification-font-size, 14px);
-}
+@import './DiscardPile.css';
 </style>

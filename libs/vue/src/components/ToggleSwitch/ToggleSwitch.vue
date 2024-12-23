@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="toggle-switch">
     <input 
@@ -40,6 +42,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './ToggleSwitch.css';
 </style>

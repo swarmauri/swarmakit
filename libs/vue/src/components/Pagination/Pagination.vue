@@ -1,3 +1,4 @@
+
 <template>
   <nav class="pagination" aria-label="Pagination Navigation">
     <ul class="pagination-list">
@@ -49,33 +50,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.pagination {
-  display: flex;
-  justify-content: center;
-}
-
-.pagination-list {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.pagination-item {
-  padding: var(--pagination-item-padding, 8px 12px);
-  margin: 0 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  border-radius: var(--pagination-border-radius, 4px);
-}
-
-.pagination-item.active {
-  background-color: var(--active-bg, #007bff);
-  color: var(--active-color, #fff);
-}
-
-.pagination-item:hover:not(.active) {
-  background-color: var(--hover-bg, #e9ecef);
-}
+@import './Pagination.css';
 </style>

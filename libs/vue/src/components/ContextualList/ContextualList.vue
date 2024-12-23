@@ -1,3 +1,4 @@
+
 <template>
   <div class="contextual-list" role="list">
     <div
@@ -44,25 +45,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.contextual-list {
-  padding: 0;
-}
-
-.list-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: var(--list-item-margin-bottom, 10px);
-  padding: var(--list-item-padding, 10px);
-  background-color: var(--list-item-background, #fff);
-  border: var(--list-item-border, 1px solid #ccc);
-}
-
-.list-item.actionTriggered {
-  background-color: var(--action-triggered-background, #e0f7fa);
-}
-
-.list-item.dismissed {
-  display: none;
-}
+@import './ContextualList.css';
 </style>

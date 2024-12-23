@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="emoji-reaction-poll" role="radiogroup" aria-labelledby="poll-question">
     <p id="poll-question">{{ question }}</p>
@@ -62,32 +64,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.emoji-reaction-poll {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 16px;
-}
 
-.emojis {
-  display: flex;
-}
 
-.emoji {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0 5px;
-  color: var(--secondary-color);
-}
 
-.emoji.selected {
-  color: var(--primary-color);
-}
-
-.emoji:focus {
-  outline: 2px solid var(--primary-color);
-}
+<style scoped lang="css">
+@import './EmojiReactionPoll.css';
 </style>

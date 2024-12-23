@@ -1,3 +1,4 @@
+
 <template>
   <div class="signal-strength-indicator" role="status" :aria-label="ariaLabel">
     <div
@@ -48,20 +49,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.signal-strength-indicator {
-  display: flex;
-  gap: var(--signal-indicator-gap, 2px);
-  align-items: flex-end;
-}
-
-.bar {
-  width: var(--signal-indicator-bar-width, 6px);
-  background-color: var(--signal-indicator-inactive-color, #dcdcdc);
-  transition: background-color 0.3s;
-}
-
-.bar.active {
-  background-color: var(--signal-indicator-active-color, #4caf50);
-}
+@import './SignalStrengthIndicator.css';
 </style>

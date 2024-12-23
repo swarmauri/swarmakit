@@ -25,3 +25,18 @@
     /* Styles for desktops */
   }
 }
+.brush-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.brush-tool.active {
+  border: 2px solid var(--brush-tool-active-border);
+}
+
+.brush-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

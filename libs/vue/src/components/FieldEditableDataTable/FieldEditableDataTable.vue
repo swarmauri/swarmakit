@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue';
 
@@ -75,49 +76,9 @@ export default defineComponent({
   </div>
 </template>
 
+
+
+
 <style scoped lang="css">
-.field-editable-data-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-}
-
-.table-cell {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  border-bottom: 1px solid var(--table-border);
-}
-
-.editable-field {
-  cursor: pointer;
-  padding: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.editable-field:hover {
-  background-color: var(--field-hover-bg);
-}
-
-textarea,
-input[type="text"] {
-  width: 100%;
-  padding: 4px;
-  margin-right: 8px;
-}
-
-button {
-  padding: 4px 8px;
-  margin-left: 4px;
-}
-
-.error-message {
-  color: var(--error-color);
-  margin-top: 12px;
-}
+@import './FieldEditableDataTable.css';
 </style>

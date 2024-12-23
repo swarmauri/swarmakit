@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="range-slider-container">
     <label 
@@ -72,6 +74,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './RangeSlider.css';
 </style>

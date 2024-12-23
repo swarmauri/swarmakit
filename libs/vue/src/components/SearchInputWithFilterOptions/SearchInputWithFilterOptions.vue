@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="search-container">
     <input 
@@ -67,6 +69,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './SearchInputWithFilterOptions.css';
 </style>

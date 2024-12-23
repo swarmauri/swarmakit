@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="color-picker" :class="{ active: isActive }">
     <button @click="toggleActive" :aria-pressed="isActive" class="color-button">Color Picker</button>
@@ -76,35 +78,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.color-picker {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.color-picker.active .color-button {
-  border: 2px solid var(--color-picker-active-border);
-}
 
-.color-settings {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
 
-.color-button {
-  cursor: pointer;
-}
-
-.color-history {
-  display: flex;
-  gap: 5px;
-}
-
-.color-swatch {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
+<style scoped lang="css">
+@import './ColorPicker.css';
 </style>

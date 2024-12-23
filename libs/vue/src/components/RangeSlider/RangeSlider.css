@@ -88,3 +88,4 @@ input[type="range"]:disabled::-webkit-slider-thumb {
     flex-direction: row;
   }
 }
+@import './RangeSlider.css';

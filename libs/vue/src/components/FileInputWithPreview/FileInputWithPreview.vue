@@ -1,3 +1,4 @@
+
 <template>
   <div class="file-input-container">
     <input 
@@ -53,6 +54,9 @@ export default defineComponent({
   },
 });
 </script>
+
+
+
 
 <style scoped lang="css">
 @import './FileInputWithPreview.css';

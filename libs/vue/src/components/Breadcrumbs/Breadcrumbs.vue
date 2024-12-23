@@ -1,3 +1,4 @@
+
 <template>
   <nav aria-label="Breadcrumb" class="breadcrumbs">
     <ol class="breadcrumbs-list">
@@ -55,31 +56,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  font-size: var(--font-size, 16px);
-  color: var(--breadcrumb-color, #333);
-}
-
-.breadcrumbs-list {
-  list-style: none;
-  display: flex;
-  padding: 0;
-}
-
-.breadcrumbs-item {
-  margin-right: var(--breadcrumb-separator, 10px);
-}
-
-.breadcrumbs-link {
-  cursor: pointer;
-  color: var(--breadcrumb-link-color, #007bff);
-}
-
-.breadcrumbs-item.active .breadcrumbs-link {
-  font-weight: bold;
-  color: var(--active-breadcrumb-color, #000);
-}
+@import './Breadcrumbs.css';
 </style>

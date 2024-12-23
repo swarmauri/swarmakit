@@ -1,3 +1,4 @@
+
 <template>
   <div class="checklist" role="group">
     <div
@@ -50,32 +51,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.checklist {
-  display: flex;
-  flex-direction: column;
-  gap: var(--checklist-gap, 10px);
-}
-
-.checklist-item {
-  display: flex;
-  align-items: center;
-}
-
-input[type='checkbox'] {
-  margin-right: var(--checkbox-margin-right, 8px);
-}
-
-input[type='checkbox']:checked + label {
-  font-weight: var(--checked-label-weight, bold);
-}
-
-input[type='checkbox']:indeterminate + label {
-  color: var(--indeterminate-label-color, #666);
-}
-
-input[type='checkbox']:disabled + label {
-  color: var(--disabled-label-color, #ccc);
-  cursor: not-allowed;
-}
+@import './CheckList.css';
 </style>

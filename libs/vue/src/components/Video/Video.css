@@ -26,3 +26,23 @@
     padding: 2.5rem;
   }
 }
+.video-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--video-bg-color);
+}
+
+.video-element {
+  width: 100%;
+  display: block;
+}
+
+.status {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.status-text {
+  color: var(--status-text-color);
+}

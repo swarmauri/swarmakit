@@ -1,3 +1,4 @@
+
 <template>
   <div class="filterable-list">
     <input
@@ -50,33 +51,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.filterable-list {
-  width: 100%;
-}
-
-.filter-input {
-  width: 100%;
-  padding: var(--input-padding, 10px);
-  margin-bottom: var(--input-margin-bottom, 10px);
-  border: var(--input-border, 1px solid #ccc);
-  border-radius: var(--input-border-radius, 4px);
-}
-
-.clear-button {
-  margin-bottom: var(--button-margin-bottom, 10px);
-  padding: var(--button-padding, 10px);
-  border: none;
-  background-color: var(--button-background-color, #f0f0f0);
-  cursor: pointer;
-}
-
-.list-item {
-  padding: var(--list-item-padding, 5px 0);
-  border-bottom: var(--list-item-border-bottom, 1px solid #ddd);
-}
-
-.no-results {
-  color: var(--no-results-color, #777);
-}
+@import './FilterableList.css';
 </style>

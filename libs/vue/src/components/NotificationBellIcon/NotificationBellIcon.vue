@@ -1,3 +1,4 @@
+
 <template>
   <div class="notification-bell" role="button" aria-label="Notification Bell">
     <svg
@@ -33,33 +34,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.notification-bell {
-  position: relative;
-  width: var(--bell-icon-size, 24px);
-  height: var(--bell-icon-size, 24px);
-  cursor: pointer;
-}
-
-.bell-icon {
-  fill: var(--bell-icon-color, #000);
-}
-
-.has-notifications {
-  fill: var(--bell-icon-notification-color, #ff0000);
-}
-
-.dismissed {
-  fill: var(--bell-icon-dismissed-color, #ccc);
-}
-
-.notification-dot {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: var(--notification-dot-size, 8px);
-  height: var(--notification-dot-size, 8px);
-  background-color: var(--notification-dot-color, #ff0000);
-  border-radius: 50%;
-}
+@import './NotificationBellIcon.css';
 </style>

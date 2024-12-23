@@ -1,3 +1,4 @@
+
 <template>
   <div class="hand" :class="{ full: isFull, maxLimit: maxLimitReached }">
     <div
@@ -59,35 +60,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.hand {
-  display: flex;
-  flex-direction: row;
-  gap: var(--hand-card-gap, 10px);
-  padding: var(--hand-padding, 10px);
-  background-color: var(--hand-bg-color, #f0f0f0);
-  border-radius: var(--hand-border-radius, 5px);
-}
-
-.card {
-  cursor: pointer;
-  transition: transform 0.2s;
-  box-shadow: var(--card-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
-  border-radius: var(--card-border-radius, 5px);
-}
-
-.card.selected {
-  transform: scale(1.1);
-  box-shadow: var(--card-selected-shadow, 0 6px 12px rgba(0, 0, 0, 0.2));
-}
-
-.hand.full {
-  background-color: var(--hand-full-bg-color, #d4edda);
-}
-
-.limit-notification {
-  color: var(--limit-notification-color, #ff6f61);
-  font-size: var(--limit-notification-font-size, 14px);
-  margin-left: var(--limit-notification-margin-left, 10px);
-}
+@import './HandOfCards.css';
 </style>

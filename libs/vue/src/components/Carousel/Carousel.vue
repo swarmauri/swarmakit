@@ -1,3 +1,4 @@
+
 <template>
   <div class="carousel" role="region" aria-label="Image carousel">
     <div class="carousel-inner" @mouseenter="pause" @mouseleave="autoPlay">
@@ -68,50 +69,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.carousel {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  background-color: var(--carousel-bg-color);
-}
-
-.carousel-inner {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.carousel-item {
-  min-width: 100%;
-  transition: opacity 0.5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.carousel-item.active {
-  opacity: 1;
-  position: relative;
-}
-
-.carousel-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: var(--control-bg-color);
-  color: var(--control-text-color);
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.carousel-control.prev {
-  left: 10px;
-}
-
-.carousel-control.next {
-  right: 10px;
-}
+@import './Carousel.css';
 </style>

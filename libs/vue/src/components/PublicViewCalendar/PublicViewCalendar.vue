@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="calendar" role="region" aria-label="Public Calendar">
     <div class="filter-options">
@@ -96,6 +98,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './PublicViewCalendar.css';
 </style>

@@ -1,3 +1,4 @@
+
 <template>
   <div :class="['activity-indicator', type]" role="status" aria-live="polite">
     <span v-if="type === 'loading'" class="spinner"></span>
@@ -24,6 +25,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './ActivityIndicators.css';
 </style>

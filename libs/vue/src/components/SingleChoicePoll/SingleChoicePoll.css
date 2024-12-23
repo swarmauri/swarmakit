@@ -16,3 +16,14 @@ label {
   margin-left: 8px;
   color: var(--secondary-color);
 }
+.poll {
+  margin: 16px;
+}
+
+.option {
+  margin-bottom: 8px;
+}
+
+input[type="radio"] {
+  accent-color: var(--primary-color);
+}

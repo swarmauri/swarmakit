@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 
@@ -68,42 +69,9 @@ export default defineComponent({
   </div>
 </template>
 
+
+
+
 <style scoped lang="css">
-.search-bar-with-suggestions {
-  --input-border-color: #cccccc;
-  --suggestion-bg: #ffffff;
-  --suggestion-hover-bg: #f0f0f0;
-  --no-results-color: #ff0000;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid var(--input-border-color);
-  border-radius: 4px;
-}
-
-.suggestions-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border: 1px solid var(--input-border-color);
-  border-top: none;
-}
-
-.suggestions-list li {
-  padding: 8px;
-  background-color: var(--suggestion-bg);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.suggestions-list li:hover {
-  background-color: var(--suggestion-hover-bg);
-}
-
-.no-results {
-  color: var(--no-results-color);
-  padding: 8px;
-}
+@import './SearchBarWithSuggestions.css';
 </style>

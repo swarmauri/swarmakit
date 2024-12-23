@@ -1,3 +1,4 @@
+
 <template>
   <div class="image-viewer" role="region" aria-label="360-degree image viewer">
     <div class="image-container" @mousedown="onMouseDown" @touchstart="onTouchStart">
@@ -85,43 +86,5 @@ export default defineComponent({
 </script>
 
 <style scoped lang="css">
-.image-viewer {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  overflow: hidden;
-  border: 1px solid var(--viewer-border-color);
-}
-
-.image-container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-container img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-.loading-indicator {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--loading-color);
-}
-
-.control-button {
-  margin: 10px;
-  padding: 5px 10px;
-  background-color: var(--button-bg-color);
-  border: none;
-  color: var(--button-text-color);
-  cursor: pointer;
-}
+@import './360-DegreeImageViewer.css';
 </style>

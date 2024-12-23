@@ -1,3 +1,4 @@
+
 <template>
   <div class="image-choice-poll" role="group" aria-labelledby="image-choice-poll-label">
     <div id="image-choice-poll-label" class="poll-label">{{ question }}</div>
@@ -69,51 +70,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.image-choice-poll {
-  padding: 1rem;
-  border: 1px solid var(--border-color, #ccc);
-  border-radius: 5px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.poll-label {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.option {
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-}
-
-.option.disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.option-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.selected .option-image {
-  border: 2px solid var(--selected-border-color, #007bff);
-}
-
-.result-display {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-}
+@import './ImageChoicePoll.css';
 </style>

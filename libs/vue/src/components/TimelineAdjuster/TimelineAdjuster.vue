@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="timeline-adjuster" role="region" aria-label="Timeline Adjuster">
     <div class="zoom-controls">
@@ -100,6 +102,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './TimelineAdjuster.css';
 </style>

@@ -1,3 +1,4 @@
+
 <template>
   <div class="community-cards" role="group" aria-label="Community Cards">
     <svg
@@ -34,56 +35,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-@media (max-width: 600px) {
-  .community-cards {
-    display: flex;
-    justify-content: space-around;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 768px) {
-  .community-cards {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .community-cards {
-    display: flex;
-    justify-content: space-evenly;
-  }
-}
-
-@media (min-width: 1025px) {
-  .community-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: var(--card-gap, 10px);
-  }
-}
-
-.card {
-  transition: transform 0.3s ease-in-out;
-}
-
-.card.dealt {
-  transform: rotateY(180deg);
-}
-
-.card.revealed {
-  transform: rotateY(0deg);
-}
-
-.card-background {
-  fill: var(--card-background-color, #ffffff);
-  stroke: var(--card-border-color, #000000);
-  stroke-width: 2;
-}
-
-.card-text {
-  fill: var(--card-text-color, #000000);
-  font-size: var(--card-text-size, 24px);
-}
+@import './CommunityCards.css';
 </style>

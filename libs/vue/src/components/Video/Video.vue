@@ -1,3 +1,4 @@
+
 <template>
   <div class="video-container" role="region" aria-label="Video Player">
     <video
@@ -60,25 +61,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.video-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: var(--video-bg-color);
-}
-
-.video-element {
-  width: 100%;
-  display: block;
-}
-
-.status {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.status-text {
-  color: var(--status-text-color);
-}
+@import './Video.css';
 </style>

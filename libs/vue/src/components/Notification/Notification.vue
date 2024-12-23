@@ -1,3 +1,4 @@
+
 <template>
   <div
     class="notification"
@@ -41,36 +42,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.notification {
-  padding: 15px;
-  border-radius: 5px;
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.notification.success {
-  background-color: var(--notification-success-bg, #d4edda);
-  color: var(--notification-success-color, #155724);
-}
-
-.notification.error {
-  background-color: var(--notification-error-bg, #f8d7da);
-  color: var(--notification-error-color, #721c24);
-}
-
-.notification.warning {
-  background-color: var(--notification-warning-bg, #fff3cd);
-  color: var(--notification-warning-color, #856404);
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font-size: 16px;
-}
+@import './Notification.css';
 </style>

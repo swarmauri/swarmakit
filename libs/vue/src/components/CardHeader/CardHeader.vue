@@ -1,3 +1,4 @@
+
 <template>
   <header class="card-header" :aria-label="ariaLabel">
     <img v-if="image" :src="image" alt="" class="card-header__image" />
@@ -39,40 +40,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.card-header {
-  display: flex;
-  align-items: center;
-  padding: var(--spacing-md);
-  background-color: var(--color-background);
-  border-bottom: var(--border-width) solid var(--color-border);
-}
-
-.card-header__image {
-  width: var(--image-size);
-  height: var(--image-size);
-  margin-right: var(--spacing-sm);
-  border-radius: var(--border-radius);
-  object-fit: cover;
-}
-
-.card-header__icon {
-  font-size: var(--icon-size);
-  margin-right: var(--spacing-sm);
-}
-
-.card-header__text {
-  flex-grow: 1;
-}
-
-.card-header__title {
-  font-size: var(--font-size-lg);
-  margin: 0;
-}
-
-.card-header__subtitle {
-  font-size: var(--font-size-md);
-  color: var(--color-text-secondary);
-  margin: 0;
-}
+@import './CardHeader.css';
 </style>

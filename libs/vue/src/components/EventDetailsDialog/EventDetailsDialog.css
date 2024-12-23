@@ -86,3 +86,4 @@ button {
     /* styles for desktop */
   }
 }
+@import './EventDetailsDialog.css';

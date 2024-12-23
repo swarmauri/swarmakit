@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="yes-no-poll" role="radiogroup" aria-labelledby="poll-question">
     <p id="poll-question">{{ question }}</p>
@@ -66,35 +68,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.yes-no-poll {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 16px;
-}
 
-.options {
-  display: flex;
-}
 
-.option {
-  font-size: 1.5rem;
-  background: none;
-  border: 1px solid var(--secondary-color);
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 0 5px;
-  padding: 8px 16px;
-  color: var(--secondary-color);
-}
 
-.option.selected {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-.option:focus {
-  outline: 2px solid var(--primary-color);
-}
+<style scoped lang="css">
+@import './YesNoPoll.css';
 </style>

@@ -1,3 +1,4 @@
+
 <template>
   <div class="expandable-list" role="list" aria-label="Expandable list">
     <div
@@ -47,28 +48,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.expandable-list {
-  list-style: none;
-  padding: 0;
-}
-
-.list-item {
-  margin: var(--item-margin, 5px 0);
-  padding: var(--item-padding, 10px);
-  border: var(--item-border, 1px solid #ccc);
-  cursor: pointer;
-}
-
-.list-item:hover {
-  background-color: var(--hover-background-color, #f0f0f0);
-}
-
-.item-header {
-  font-weight: var(--item-header-font-weight, bold);
-}
-
-.item-content {
-  margin-top: var(--item-content-margin-top, 5px);
-}
+@import './ExpandableList.css';
 </style>

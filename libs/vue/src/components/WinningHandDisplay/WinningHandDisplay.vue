@@ -1,3 +1,4 @@
+
 <template>
   <div class="winning-hand-display" :aria-label="'Winning Hand Display'" :class="{ hidden: isHidden }">
     <div class="cards">
@@ -37,34 +38,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.winning-hand-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--card-gap);
-  transition: opacity 0.3s;
-}
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--card-gap);
-}
-.card {
-  padding: var(--card-padding);
-  border: var(--card-border);
-  border-radius: var(--card-border-radius);
-  background-color: var(--card-bg-color);
-}
-.community-card {
-  background-color: var(--community-card-bg-color);
-}
-.winner {
-  border-color: var(--winner-border-color);
-}
+@import './WinningHandDisplay.css';
 </style>

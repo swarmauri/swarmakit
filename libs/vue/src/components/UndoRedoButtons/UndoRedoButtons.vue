@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="undo-redo-buttons">
     <button :disabled="!canUndo" @click="undo" aria-label="Undo" :class="{ active: canUndo }">Undo</button>
@@ -40,27 +42,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.undo-redo-buttons {
-  display: flex;
-  gap: 10px;
-}
 
-button {
-  cursor: pointer;
-  padding: 8px 16px;
-  border: none;
-  background-color: var(--button-bg);
-  color: var(--button-text-color);
-  transition: background-color 0.3s;
-}
 
-button:disabled {
-  background-color: var(--button-disabled-bg);
-  cursor: not-allowed;
-}
 
-button.active {
-  background-color: var(--button-active-bg);
-}
+<style scoped lang="css">
+@import './UndoRedoButtons.css';
 </style>

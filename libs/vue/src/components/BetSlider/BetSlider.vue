@@ -1,3 +1,4 @@
+
 <template>
   <div class="bet-slider" :aria-label="'Bet Slider'">
     <input
@@ -65,24 +66,8 @@ export default defineComponent({
 });
 </script>
 
+
+
 <style scoped lang="css">
-.bet-slider {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--slider-gap);
-}
-.slider {
-  width: 100%;
-  margin: var(--slider-margin);
-}
-.bet-input {
-  width: var(--input-width);
-  padding: var(--input-padding);
-  font-size: var(--input-font-size);
-}
-.feedback {
-  color: var(--feedback-color);
-  font-size: var(--feedback-font-size);
-}
+@import './BetSlider.css';
 </style>

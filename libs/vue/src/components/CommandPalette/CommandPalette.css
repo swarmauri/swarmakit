@@ -33,3 +33,47 @@
     --input-radius: 4.5px;
   }
 }
+.command-palette {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background-color: var(--palette-bg-color, #fff);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--palette-radius, 8px);
+  padding: 20px;
+  z-index: 1000;
+}
+
+.command-palette-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.command-palette-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--input-border-color, #ccc);
+  border-radius: var(--input-radius, 4px);
+}
+
+.command-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.command-list li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.command-list li.active {
+  background-color: var(--command-active-bg-color, #e0e0e0);
+}

@@ -1,3 +1,4 @@
+
 <template>
   <div class="poker-timer" :aria-label="'Poker Timer'">
     <div :class="['timer-display', { 'time-running-out': timeRunningOut }]">
@@ -62,22 +63,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.poker-timer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--timer-gap);
-}
-.timer-display {
-  font-size: var(--timer-font-size);
-  color: var(--timer-color);
-}
-.time-running-out {
-  color: var(--timer-warning-color);
-}
-.timer-button {
-  padding: var(--button-padding);
-  font-size: var(--button-font-size);
-}
+@import './PokerTimer.css';
 </style>

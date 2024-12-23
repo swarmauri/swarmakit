@@ -1,3 +1,4 @@
+
 <template>
   <div class="search-autocomplete">
     <input
@@ -47,35 +48,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.search-autocomplete {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-}
-
-.results-list {
-  position: absolute;
-  width: 100%;
-  background-color: var(--results-bg, white);
-  border: 1px solid var(--results-border, #ccc);
-  z-index: 10;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.results-list li {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.results-list li:hover {
-  background-color: var(--results-hover-bg, #f0f0f0);
-}
-
-.no-results {
-  color: var(--no-results-color, #ff0000);
-  margin-top: 5px;
-}
+@import './SearchWithAutocomplete.css';
 </style>

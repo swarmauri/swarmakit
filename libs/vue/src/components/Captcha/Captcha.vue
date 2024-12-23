@@ -1,3 +1,4 @@
+
 <template>
   <div class="captcha-container">
     <div class="captcha" :class="{ 'captcha--error': hasError, 'captcha--solved': isSolved }">
@@ -40,6 +41,9 @@ export default defineComponent({
   },
 });
 </script>
+
+
+
 
 <style scoped lang="css">
 @import './Captcha.css';

@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 
@@ -61,36 +62,9 @@ export default defineComponent({
   </div>
 </template>
 
+
+
+
 <style scoped lang="css">
-.pagination-control {
-  --button-bg: #007bff;
-  --button-color: #ffffff;
-  --button-disabled-bg: #d6d6d6;
-  --button-disabled-color: #8a8a8a;
-  --highlight-color: #28a745;
-}
-
-button {
-  background-color: var(--button-bg);
-  color: var(--button-color);
-  border: none;
-  padding: 5px 10px;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: var(--button-disabled-bg);
-  color: var(--button-disabled-color);
-  cursor: not-allowed;
-}
-
-span {
-  color: var(--highlight-color);
-  margin: 0 10px;
-}
-
-select {
-  margin-left: 10px;
-}
+@import './PaginationControl.css';
 </style>

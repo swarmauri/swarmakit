@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 
@@ -55,16 +56,9 @@ export default defineComponent({
   </div>
 </template>
 
-<style scoped lang="css">
-.data-summary {
-  padding: 16px;
-  border: 1px solid var(--summary-border-color);
-  border-radius: 8px;
-  background-color: var(--summary-bg);
-}
 
-.error-message {
-  color: var(--error-color);
-  font-weight: bold;
-}
+
+
+<style scoped lang="css">
+@import './DataSummary.css';
 </style>

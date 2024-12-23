@@ -1,3 +1,4 @@
+
 <template>
   <div class="selectable-list">
     <ul class="selectable-list-items">
@@ -61,44 +62,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.selectable-list {
-  border: var(--list-border, 1px solid #ddd);
-  border-radius: var(--list-border-radius, 4px);
-}
-
-.selectable-list-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.selectable-list-item {
-  padding: var(--list-item-padding, 10px 15px);
-  margin: 4px 0;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.selectable-list-item.selected {
-  background-color: var(--selected-bg, #d0eaff);
-}
-
-.selectable-list-item.disabled {
-  color: var(--disabled-color, #ccc);
-  cursor: not-allowed;
-}
-
-.item-details {
-  padding: var(--details-padding, 8px 12px);
-  background-color: var(--details-bg, #f8f9fa);
-}
-
-.details-button {
-  background: none;
-  border: none;
-  color: var(--button-color, #007bff);
-  cursor: pointer;
-  padding: 0;
-}
+@import './SelectableListWithItemDetails.css';
 </style>

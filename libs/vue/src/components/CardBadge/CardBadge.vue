@@ -1,3 +1,4 @@
+
 <template>
   <span :class="['card-badge', statusClass]" @mouseover="isHovered = true" @mouseleave="isHovered = false">
     {{ content }}
@@ -35,31 +36,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.card-badge {
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius);
-  font-size: var(--font-size-sm);
-  transition: background-color 0.3s;
-}
-
-.badge-default {
-  background-color: var(--color-gray-light);
-  color: var(--color-text-dark);
-}
-
-.badge-active {
-  background-color: var(--color-success);
-  color: var(--color-text-light);
-}
-
-.badge-inactive {
-  background-color: var(--color-warning);
-  color: var(--color-text-dark);
-}
-
-.badge-hovered {
-  background-color: var(--color-primary-hover);
-}
+@import './CardBadge.css';
 </style>

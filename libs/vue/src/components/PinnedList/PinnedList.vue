@@ -1,3 +1,4 @@
+
 <template>
   <ul class="pinned-list">
     <li
@@ -50,31 +51,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.pinned-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.pinned-list-item {
-  padding: var(--list-item-padding, 10px 15px);
-  margin: 4px 0;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  border-radius: var(--list-border-radius, 4px);
-}
-
-.pinned-list-item.pinned {
-  background-color: var(--pinned-bg, #ffc107);
-}
-
-.pinned-list-item.selected {
-  background-color: var(--selected-bg, #007bff);
-  color: var(--selected-color, #fff);
-}
-
-.pinned-list-item.hover:not(.selected) {
-  background-color: var(--hover-bg, #e9ecef);
-}
+@import './PinnedList.css';
 </style>

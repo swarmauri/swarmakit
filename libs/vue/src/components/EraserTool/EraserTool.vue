@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="eraser-tool" :class="{ active: isActive }">
     <button @click="toggleActive" :aria-pressed="isActive" class="eraser-button">Eraser Tool</button>
@@ -30,24 +32,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.eraser-tool {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.eraser-tool.active .eraser-button {
-  border: 2px solid var(--eraser-tool-active-border);
-}
 
-.eraser-settings {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
 
-.eraser-button {
-  cursor: pointer;
-}
+<style scoped lang="css">
+@import './EraserTool.css';
 </style>

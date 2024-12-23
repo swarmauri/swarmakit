@@ -32,3 +32,42 @@
     --chip-padding: 12px;
   }
 }
+.pot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--pot-gap);
+  transition: background-color 0.3s;
+}
+.won {
+  background-color: var(--pot-won-bg-color);
+}
+.chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--chip-gap);
+}
+.empty {
+  opacity: 0.5;
+}
+.chip-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chip {
+  padding: var(--chip-padding);
+  border: var(--chip-border);
+  border-radius: var(--chip-border-radius);
+  background-color: var(--chip-bg-color);
+}
+.total {
+  font-weight: bold;
+}
+.chip-move-enter-active, .chip-move-leave-active {
+  transition: transform 0.5s;
+}
+.chip-move-enter, .chip-move-leave-to {
+  transform: translateY(-20px);
+}

@@ -1,3 +1,5 @@
+
+
 <template>
   <div role="group" aria-labelledby="poll-question" class="poll">
     <p id="poll-question">{{ question }}</p>
@@ -55,16 +57,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.poll {
-  margin: 16px;
-}
 
-.option {
-  margin-bottom: 8px;
-}
 
-input[type="checkbox"] {
-  accent-color: var(--primary-color);
-}
+
+<style scoped lang="css">
+@import './MultipleChoicePoll.css';
 </style>

@@ -1,3 +1,4 @@
+
 <template>
   <div class="live-stream-player" role="region" aria-label="Live Stream Player">
     <video
@@ -77,42 +78,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.live-stream-player {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: var(--player-bg-color);
-}
-
-video {
-  width: 100%;
-  height: auto;
-  background-color: var(--video-bg-color);
-}
-
-.buffering-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--buffering-text-color);
-  font-size: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-
-.mute-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
+@import './LiveStreamPlayer.css';
 </style>

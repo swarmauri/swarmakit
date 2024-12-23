@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="shape-library">
     <input
@@ -57,31 +59,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.shape-library {
-  padding: 10px;
-  background-color: var(--library-bg);
-}
 
-.shape-list {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.shape-item {
-  margin: 5px;
-  cursor: grab;
-}
 
-.shape-item img {
-  width: 50px;
-  height: 50px;
-}
-
-input[type='text'] {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid var(--input-border);
-}
+<style scoped lang="css">
+@import './ShapeLibrary.css';
 </style>

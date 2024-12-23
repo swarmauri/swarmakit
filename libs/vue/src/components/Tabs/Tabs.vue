@@ -1,3 +1,4 @@
+
 <template>
   <div class="tabs" role="tablist">
     <button
@@ -52,30 +53,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.tabs {
-  display: flex;
-  border-bottom: var(--tabs-border);
-}
-
-.tabs button {
-  padding: 10px 20px;
-  background-color: var(--tab-bg);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.tabs button.active {
-  background-color: var(--tab-active-bg);
-}
-
-.tabs button.disabled {
-  background-color: var(--tab-disabled-bg);
-  cursor: not-allowed;
-}
-
-.tabs button:hover:not(.active):not(.disabled) {
-  background-color: var(--tab-hover-bg);
-}
+@import './Tabs.css';
 </style>

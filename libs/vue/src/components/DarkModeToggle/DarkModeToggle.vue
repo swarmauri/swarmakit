@@ -1,3 +1,4 @@
+
 <template>
   <button
     class="dark-mode-toggle"
@@ -28,28 +29,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.dark-mode-toggle {
-  background-color: var(--toggle-bg-color, #f0f0f0);
-  border: none;
-  border-radius: var(--toggle-radius, 50%);
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.dark-mode-toggle:focus {
-  outline: 2px solid var(--toggle-focus-color, #000);
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
+@import './DarkModeToggle.css';
 </style>
