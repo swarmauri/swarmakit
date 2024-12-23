@@ -19,9 +19,6 @@ export default defineComponent({
 });
 </script>
 
-
-
-
 <style scoped lang="css">
 @import './App.css';
 </style>
