@@ -1,3 +1,4 @@
+
 <template>
   <div class="image-slider" @mouseenter="setHover(true)" @mouseleave="setHover(false)">
     <div class="slider-images">
@@ -52,53 +53,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.image-slider {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  background-color: var(--slider-bg-color);
-}
-
-.slider-images {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.slider-image {
-  flex: 0 0 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.slider-image.active {
-  opacity: 1;
-}
-
-.slider-image.hover {
-  filter: brightness(0.8);
-}
-
-.prev-btn, .next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 2rem;
-}
-
-.prev-btn {
-  left: 10px;
-}
-
-.next-btn {
-  right: 10px;
-}
+@import './ImageSlider.css';
 </style>

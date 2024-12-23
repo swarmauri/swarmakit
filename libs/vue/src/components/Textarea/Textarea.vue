@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="textarea-container">
     <textarea 
@@ -41,6 +43,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './Textarea.css';
 </style>

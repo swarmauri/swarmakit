@@ -1,3 +1,4 @@
+
 <template>
   <div class="virtualized-list" role="list" @scroll="onScroll">
     <div
@@ -68,25 +69,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.virtualized-list {
-  height: 400px;
-  overflow-y: auto;
-  border: 1px solid var(--list-border-color);
-}
-
-.list-item {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  border-bottom: 1px solid var(--item-border-color);
-}
-
-.loading-indicator,
-.end-of-list {
-  text-align: center;
-  padding: 10px;
-  color: var(--indicator-color);
-}
+@import './VirtualizedList.css';
 </style>

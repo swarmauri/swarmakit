@@ -1,3 +1,5 @@
+
+
 <template>
   <transition name="fade">
     <div v-if="isOpen" class="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
@@ -69,6 +71,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './EventDetailsDialog.css';
 </style>

@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="event-reminder-system" role="region" aria-label="Event Reminder System">
     <form @submit.prevent="setReminder">
@@ -96,6 +98,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './EventReminderSystem.css';
 </style>

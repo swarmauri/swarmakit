@@ -21,3 +21,14 @@
 @media (min-width: 1025px) {
   /* desktop styles */
 }
+.status-dots {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dot {
+  width: var(--status-dot-size, 12px);
+  height: var(--status-dot-size, 12px);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}

@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="editor-container">
     <div 
@@ -43,6 +45,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './RichTextEditor.css';
 </style>

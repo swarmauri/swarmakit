@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="canvas-container" @mousedown="startDrawing" @mouseup="stopDrawing" @mousemove="draw" @touchstart="startDrawing" @touchend="stopDrawing" @touchmove="draw">
     <canvas ref="canvas" :width="canvasWidth" :height="canvasHeight" aria-label="Interactive Drawing Canvas"></canvas>
@@ -84,24 +86,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.canvas-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
 
-canvas {
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--canvas-border-color);
-}
 
-.controls {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  gap: 10px;
-}
+
+<style scoped lang="css">
+@import './Canvas.css';
 </style>

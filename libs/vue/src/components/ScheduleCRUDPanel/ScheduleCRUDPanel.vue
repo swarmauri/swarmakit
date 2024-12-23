@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="schedule-crud-panel" role="region" aria-label="Schedule CRUD Panel">
     <form @submit.prevent="handleSubmit">
@@ -101,6 +103,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './ScheduleCRUDPanel.css';
 </style>

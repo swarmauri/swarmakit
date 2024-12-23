@@ -1,3 +1,5 @@
+
+
 <template>
   <button
     :class="['icon-button', buttonState, { disabled }]"
@@ -43,6 +45,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './IconButton.css';
 </style>

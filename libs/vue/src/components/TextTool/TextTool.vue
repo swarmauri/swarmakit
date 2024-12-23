@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="text-tool">
     <button @click="toggleActive" :class="{ active: isActive }" aria-label="Text Tool">Text Tool</button>
@@ -54,41 +56,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.text-tool {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-button {
-  cursor: pointer;
-  padding: 8px 16px;
-  border: none;
-  background-color: var(--button-bg);
-  color: var(--button-text-color);
-  transition: background-color 0.3s;
-}
 
-button.active {
-  background-color: var(--button-active-bg);
-}
 
-.text-options {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label, select, input {
-  margin-bottom: 5px;
-  color: var(--label-text-color);
-}
-
-input[type="color"] {
-  border: none;
-  width: 50px;
-  height: 30px;
-}
+<style scoped lang="css">
+@import './TextTool.css';
 </style>

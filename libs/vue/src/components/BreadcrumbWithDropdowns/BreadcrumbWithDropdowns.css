@@ -31,3 +31,53 @@
     font-size: 18px;
   }
 }
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size, 16px);
+  color: var(--breadcrumb-color, #333);
+}
+
+.breadcrumb-list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.breadcrumb-item {
+  margin-right: var(--breadcrumb-separator, 10px);
+  position: relative;
+}
+
+.breadcrumb-link {
+  cursor: pointer;
+  color: var(--breadcrumb-link-color, #007bff);
+}
+
+.dropdown button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--breadcrumb-link-color, #007bff);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--dropdown-bg, #fff);
+  border: 1px solid var(--dropdown-border-color, #ccc);
+  list-style: none;
+  padding: 5px 0;
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: var(--dropdown-hover-bg, #f1f1f1);
+}

@@ -1,3 +1,4 @@
+
 <template>
   <div class="live-results-poll" role="group" aria-labelledby="live-results-poll-label">
     <div id="live-results-poll-label" class="poll-label">{{ question }}</div>
@@ -78,47 +79,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.live-results-poll {
-  padding: 1rem;
-  border: 1px solid var(--border-color, #ccc);
-  border-radius: 5px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.poll-label {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.option {
-  border: 1px solid var(--option-border-color, #ddd);
-  background: var(--option-bg, #f9f9f9);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.option.disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.selected {
-  background: var(--selected-bg-color, #e0f7fa);
-}
-
-.result-percentage {
-  font-size: 0.8rem;
-  color: var(--result-percentage-color, #555);
-}
+@import './LiveResultsPoll.css';
 </style>

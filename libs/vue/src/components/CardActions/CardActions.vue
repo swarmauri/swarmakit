@@ -1,3 +1,4 @@
+
 <template>
   <div class="card-actions">
     <button
@@ -38,28 +39,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.card-actions {
-  display: flex;
-  gap: var(--spacing-md);
-}
-
-button {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: none;
-  border-radius: var(--border-radius);
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button.hovered {
-  background-color: var(--color-primary-hover);
-}
-
-button.disabled {
-  background-color: var(--color-disabled);
-  cursor: not-allowed;
-}
+@import './CardActions.css';
 </style>

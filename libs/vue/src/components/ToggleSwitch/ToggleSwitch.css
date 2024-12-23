@@ -100,3 +100,4 @@ input:disabled + .slider {
     width: 16px;
   }
 }
+@import './ToggleSwitch.css';

@@ -1,3 +1,4 @@
+
 <template>
   <div 
     class="file-upload-container" 
@@ -61,6 +62,9 @@ export default defineComponent({
   },
 });
 </script>
+
+
+
 
 <style scoped lang="css">
 @import './FileUpload.css';

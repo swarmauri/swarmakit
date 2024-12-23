@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="thumbs-poll" role="radiogroup" aria-labelledby="poll-question">
     <p id="poll-question">{{ question }}</p>
@@ -66,32 +68,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.thumbs-poll {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 16px;
-}
 
-.thumbs {
-  display: flex;
-}
 
-.thumb {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0 5px;
-  color: var(--secondary-color);
-}
 
-.thumb.selected {
-  color: var(--primary-color);
-}
-
-.thumb:focus {
-  outline: 2px solid var(--primary-color);
-}
+<style scoped lang="css">
+@import './ThumbsUpThumbsDownPoll.css';
 </style>

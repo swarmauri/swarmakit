@@ -1,3 +1,5 @@
+
+
 <template>
   <button
     :class="['button', buttonType, { disabled }]"
@@ -47,6 +49,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './Button.css';
 </style>

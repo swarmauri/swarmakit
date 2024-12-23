@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
@@ -67,33 +68,9 @@ export default defineComponent({
   </div>
 </template>
 
+
+
+
 <style scoped lang="css">
-.data-import-dialog {
-  padding: 16px;
-  background-color: var(--dialog-bg);
-}
-
-input[type="file"] {
-  margin-bottom: 12px;
-}
-
-button {
-  padding: 8px 16px;
-  background-color: var(--button-bg);
-  color: var(--button-color);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:disabled {
-  background-color: var(--button-disabled-bg);
-  cursor: not-allowed;
-}
-
-.progress-indicator,
-.success-message,
-.error-message {
-  margin-top: 12px;
-}
+@import './DataImportDialog.css';
 </style>

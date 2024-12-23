@@ -1,3 +1,4 @@
+
 <template>
   <div class="media-gallery" role="region" aria-label="Media Gallery">
     <div class="thumbnail-view" v-if="viewMode === 'thumbnail'">
@@ -99,60 +100,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.media-gallery {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: var(--gallery-bg-color);
-}
-
-.thumbnail-view {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.thumbnail {
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  cursor: pointer;
-}
-
-.expanded-view {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.expanded-image {
-  max-width: 100%;
-  max-height: 80vh;
-  cursor: pointer;
-}
-
-.nav-btn {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: none;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.control-btn {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: none;
-  padding: 0.5rem;
-  margin: 0 0.5rem;
-  cursor: pointer;
-}
+@import './MediaGallery.css';
 </style>

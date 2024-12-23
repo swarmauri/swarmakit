@@ -1,3 +1,4 @@
+
 <template>
   <div id="app">
     <h1>Hello, Vue with Vite and TypeScript!</h1>
@@ -18,8 +19,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-h1 {
-  color: #42b983;
-}
+<style scoped lang="css">
+@import './App.css';
 </style>

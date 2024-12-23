@@ -19,3 +19,25 @@
 @media (min-width: 1025px) {
   /* desktop styles */
 }
+.sortable-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sortable-list li {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: var(--list-item-bg);
+  border: var(--list-item-border);
+  cursor: move;
+}
+
+.sortable-list li.dragging {
+  opacity: 0.5;
+}
+
+.sortable-list[aria-disabled="true"] li {
+  cursor: not-allowed;
+  background-color: var(--list-item-disabled-bg);
+}

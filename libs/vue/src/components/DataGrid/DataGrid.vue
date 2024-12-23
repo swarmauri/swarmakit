@@ -1,3 +1,4 @@
+
 <template>
   <div class="data-grid" role="grid">
     <div class="search-bar" v-if="searchEnabled">
@@ -89,29 +90,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.data-grid {
-  overflow-x: auto;
-}
-
-.search-bar {
-  margin-bottom: var(--search-bar-margin-bottom, 10px);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: var(--cell-padding, 10px);
-  border: var(--cell-border, 1px solid #ccc);
-  text-align: left;
-}
-
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  margin-top: var(--pagination-margin-top, 10px);
-}
+@import './DataGrid.css';
 </style>

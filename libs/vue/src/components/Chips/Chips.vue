@@ -1,3 +1,4 @@
+
 <template>
   <div class="chip-container" role="list">
     <div
@@ -67,41 +68,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.chip-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--chip-gap, 8px);
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--chip-padding, 8px 12px);
-  border-radius: var(--chip-radius, 16px);
-  background-color: var(--chip-bg-color, #e0e0e0);
-  color: var(--chip-text-color, #333);
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.chip.selectable:hover {
-  background-color: var(--chip-hover-bg-color, #d0d0d0);
-}
-
-.chip[aria-pressed="true"] {
-  background-color: var(--chip-selected-bg-color, #b0b0b0);
-}
-
-.remove-button {
-  margin-left: var(--chip-remove-margin, 8px);
-  background: none;
-  border: none;
-  color: var(--chip-remove-color, #666);
-  cursor: pointer;
-}
-
-.remove-button:hover {
-  color: var(--chip-remove-hover-color, #333);
-}
+@import './Chips.css';
 </style>

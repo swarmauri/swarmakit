@@ -6,3 +6,29 @@
 .star-rating-poll {
   font-family: Arial, sans-serif;
 }
+.star-rating-poll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px;
+}
+
+.stars {
+  display: flex;
+}
+
+.star {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+.star.filled {
+  color: var(--primary-color);
+}
+
+.star:focus {
+  outline: 2px solid var(--primary-color);
+}

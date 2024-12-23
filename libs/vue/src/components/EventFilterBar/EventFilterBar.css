@@ -76,3 +76,4 @@ button {
     /* styles for desktop */
   }
 }
+@import './EventFilterBar.css';

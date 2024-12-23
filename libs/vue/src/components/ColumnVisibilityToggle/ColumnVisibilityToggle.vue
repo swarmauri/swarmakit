@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent} from 'vue';
 
@@ -34,22 +35,9 @@ export default defineComponent({
   </div>
 </template>
 
+
+
+
 <style scoped lang="css">
-.column-visibility-toggle {
-  padding: 16px;
-  background-color: var(--toggle-bg);
-}
-
-button {
-  padding: 8px;
-  margin: 4px 0;
-  border: none;
-  background-color: var(--button-bg);
-  color: var(--button-color);
-  transition: background-color 0.3s ease;
-}
-
-button[aria-pressed="true"] {
-  background-color: var(--button-active-bg);
-}
+@import './ColumnVisibilityToggle.css';
 </style>

@@ -1,3 +1,4 @@
+
 <template>
   <ul class="collapsible-menu-list" role="menu">
     <li
@@ -60,37 +61,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.collapsible-menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-item {
-  margin-bottom: var(--menu-item-margin-bottom, 10px);
-}
-
-.menu-button {
-  background: none;
-  border: none;
-  text-align: left;
-  width: 100%;
-  padding: var(--menu-button-padding, 10px);
-  cursor: pointer;
-}
-
-.menu-item.expanded .menu-button {
-  font-weight: var(--expanded-font-weight, bold);
-}
-
-.menu-item.active .menu-button {
-  background-color: var(--active-background-color, #f0f0f0);
-}
-
-.submenu {
-  list-style: none;
-  padding-left: var(--submenu-padding-left, 20px);
-  margin: 0;
-}
+@import './CollapsibleMenuList.css';
 </style>

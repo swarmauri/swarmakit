@@ -25,3 +25,22 @@
     /* Styles for desktops */
   }
 }
+.shape-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shape-tool.active .shape-button {
+  border: 2px solid var(--shape-tool-active-border);
+}
+
+.shape-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.shape-button {
+  cursor: pointer;
+}

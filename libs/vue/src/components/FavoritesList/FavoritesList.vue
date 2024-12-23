@@ -1,3 +1,4 @@
+
 <template>
   <div class="favorites-list" role="list" aria-label="Favorites list">
     <div
@@ -55,37 +56,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.favorites-list {
-  list-style: none;
-  padding: 0;
-}
-
-.list-item {
-  margin: var(--item-margin, 5px 0);
-  padding: var(--item-padding, 10px);
-  border: var(--item-border, 1px solid #ccc);
-  cursor: pointer;
-}
-
-.list-item.selected {
-  background-color: var(--selected-background-color, #e0e0e0);
-}
-
-.list-item.hover {
-  background-color: var(--hover-background-color, #f0f0f0);
-}
-
-.item-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: var(--item-header-font-weight, bold);
-}
-
-.star-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: var(--star-button-font-size, 1.5em);
-}
+@import './FavoritesList.css';
 </style>

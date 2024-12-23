@@ -20,3 +20,18 @@
 @media (min-width: 1025px) {
   /* desktop styles */
 }
+.signal-strength-indicator {
+  display: flex;
+  gap: var(--signal-indicator-gap, 2px);
+  align-items: flex-end;
+}
+
+.bar {
+  width: var(--signal-indicator-bar-width, 6px);
+  background-color: var(--signal-indicator-inactive-color, #dcdcdc);
+  transition: background-color 0.3s;
+}
+
+.bar.active {
+  background-color: var(--signal-indicator-active-color, #4caf50);
+}

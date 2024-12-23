@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 
@@ -79,38 +80,9 @@ export default defineComponent({
   </div>
 </template>
 
+
+
+
 <style scoped lang="css">
-.data-table {
-  --table-width: 100%;
-  --table-border-color: #ddd;
-  --table-header-bg: #f9f9f9;
-  --table-header-text-color: #333;
-  --table-row-hover-bg: #f1f1f1;
-}
-
-table {
-  width: var(--table-width);
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 8px;
-  border: 1px solid var(--table-border-color);
-}
-
-th {
-  background-color: var(--table-header-bg);
-  color: var(--table-header-text-color);
-}
-
-tr:hover {
-  background-color: var(--table-row-hover-bg);
-}
-
-.pagination-controls {
-  margin-top: 16px;
-  display: flex;
-  justify-content: space-between;
-}
+@import './DataTable.css';
 </style>

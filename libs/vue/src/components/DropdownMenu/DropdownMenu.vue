@@ -1,3 +1,4 @@
+
 <template>
   <div class="dropdown-menu">
     <button @click="toggleDropdown" class="dropdown-toggle" :aria-expanded="isExpanded">
@@ -54,51 +55,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.dropdown-menu {
-  position: relative;
-  font-size: var(--font-size, 16px);
-}
-
-.dropdown-toggle {
-  background-color: var(--toggle-bg-color, #007bff);
-  color: var(--toggle-text-color, #fff);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: var(--button-font-size, 16px);
-}
-
-.dropdown-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--menu-bg-color, #fff);
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 200px;
-}
-
-.dropdown-list li {
-  padding: 10px;
-}
-
-.dropdown-list a {
-  color: var(--menu-link-color, #007bff);
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-list a:hover {
-  background-color: var(--hover-bg-color, #f0f0f0);
-}
-
-.dropdown-list a.active {
-  font-weight: bold;
-  background-color: var(--active-bg-color, #e0e0e0);
-}
+@import './DropdownMenu.css';
 </style>

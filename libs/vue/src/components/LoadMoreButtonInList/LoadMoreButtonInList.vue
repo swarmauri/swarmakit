@@ -1,3 +1,4 @@
+
 <template>
   <div class="load-more-button-in-list">
     <ul class="item-list" role="list" aria-label="Items">
@@ -61,38 +62,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.load-more-button-in-list {
-  width: 100%;
-}
-
-.item-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.list-item {
-  padding: var(--list-item-padding, 8px);
-  border-bottom: var(--list-item-border, 1px solid #ccc);
-}
-
-.load-more-button {
-  margin-top: var(--button-margin-top, 10px);
-  padding: var(--button-padding, 10px);
-  background-color: var(--button-bg, #007bff);
-  color: var(--button-color, #fff);
-  border: none;
-  cursor: pointer;
-}
-
-.load-more-button:disabled {
-  background-color: var(--button-disabled-bg, #cccccc);
-  cursor: not-allowed;
-}
-
-.end-of-list-message {
-  margin-top: var(--end-message-margin-top, 10px);
-  color: var(--end-message-color, #999);
-}
+@import './LoadMoreButtonInList.css';
 </style>

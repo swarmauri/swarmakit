@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="ruler-and-guides">
     <div class="ruler" ref="horizontalRuler" aria-label="Horizontal Ruler"></div>
@@ -53,29 +55,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.ruler-and-guides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
 
-.ruler {
-  position: absolute;
-  background-color: var(--ruler-bg);
-}
 
-.guides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
 
-.guide {
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  background-color: var(--guide-color);
-  cursor: pointer;
-}
+<style scoped lang="css">
+@import './RulerAndGuides.css';
 </style>

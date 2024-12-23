@@ -1,3 +1,4 @@
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
@@ -56,30 +57,9 @@ export default defineComponent({
   </div>
 </template>
 
+
+
+
 <style scoped lang="css">
-.sort-control {
-  display: flex;
-  gap: 10px;
-}
-
-.sort-button {
-  padding: 8px;
-  border: 1px solid var(--button-border-color);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.sort-button:hover {
-  background-color: var(--button-hover-bg);
-}
-
-.sort-button.disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.sort-button span {
-  margin-left: 5px;
-}
+@import './SortControl.css';
 </style>

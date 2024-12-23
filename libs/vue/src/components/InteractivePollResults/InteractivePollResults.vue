@@ -1,3 +1,4 @@
+
 <template>
   <div class="poll-results" role="region" aria-live="polite">
     <h2>{{ title }}</h2>
@@ -42,36 +43,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.poll-results {
-  font-size: var(--poll-font-size, 16px);
-  color: var(--poll-text-color, #000);
-}
-
-.option-text {
-  margin-right: 10px;
-}
-
-.progress-bar {
-  display: inline-block;
-  width: calc(var(--progress) + 2px);
-  height: var(--progress-bar-height, 20px);
-  background-color: var(--progress-bar-color, #007bff);
-  position: relative;
-  overflow: hidden;
-}
-
-.percentage {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--percentage-text-color, #fff);
-}
-
-.poll-status {
-  margin-top: 10px;
-  font-weight: bold;
-  color: var(--status-text-color, #ff0000);
-}
+@import './InteractivePollResults.css';
 </style>

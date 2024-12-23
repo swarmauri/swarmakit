@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <h2>Event Scheduler</h2>
@@ -138,22 +139,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.event {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
 
-.event h3 {
-  margin: 0;
-}
 
-.event p {
-  margin: 5px 0;
-}
 
-button {
-  margin-right: 5px;
-}
+<style scoped lang="css">
+@import './AdminViewScheduler.css';
 </style>

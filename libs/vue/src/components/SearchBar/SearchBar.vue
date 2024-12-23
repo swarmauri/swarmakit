@@ -1,3 +1,4 @@
+
 <template>
   <div class="search-bar" :class="{ focused: isFocused, disabled: isDisabled }">
     <input
@@ -45,29 +46,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.search-bar {
-  display: flex;
-  align-items: center;
-  padding: var(--search-bar-padding, 8px);
-  border: var(--search-bar-border, 1px solid #ccc);
-  border-radius: var(--search-bar-border-radius, 4px);
-  background-color: var(--search-bar-bg, #fff);
-  transition: border-color 0.3s ease;
-}
-
-.search-bar input {
-  flex: 1;
-  border: none;
-  outline: none;
-  padding: var(--search-bar-input-padding, 8px);
-}
-
-.search-bar.focused {
-  border-color: var(--search-bar-focused-border-color, #007bff);
-}
-
-.search-bar.disabled {
-  background-color: var(--search-bar-disabled-bg, #f0f0f0);
-}
+@import './SearchBar.css';
 </style>

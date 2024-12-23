@@ -1,3 +1,4 @@
+
 <template>
   <div
     class="progress-circle"
@@ -42,43 +43,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.progress-circle {
-  width: var(--progress-circle-size, 100px);
-  height: var(--progress-circle-size, 100px);
-}
-
-.circular-chart {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.circle-bg {
-  fill: none;
-  stroke: var(--progress-circle-bg-color, #e0e0e0);
-  stroke-width: 3.8;
-}
-
-.circle {
-  fill: none;
-  stroke-width: 2.8;
-  stroke-linecap: round;
-  transition: stroke-dasharray 0.3s;
-}
-
-.progress-circle[aria-valuenow="100"] .circle {
-  stroke: var(--progress-circle-complete-color, #76c7c0);
-}
-
-.progress-circle[aria-valuenow="0"] .circle {
-  stroke: var(--progress-circle-incomplete-color, #ff6f61);
-}
-
-.progress-circle[status="paused"] .circle {
-  stroke: var(--progress-circle-paused-color, #f9a825);
-}
-
-.progress-circle[status="active"] .circle {
-  stroke: var(--progress-circle-active-color, #76c7c0);
-}
+@import './ProgressCircle.css';
 </style>

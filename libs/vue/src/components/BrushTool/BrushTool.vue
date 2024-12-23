@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="brush-tool" :class="{ active: isActive }">
     <button @click="toggleActive" :aria-pressed="isActive">Brush Tool</button>
@@ -40,20 +42,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.brush-tool {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.brush-tool.active {
-  border: 2px solid var(--brush-tool-active-border);
-}
 
-.brush-settings {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
+
+<style scoped lang="css">
+@import './BrushTool.css';
 </style>

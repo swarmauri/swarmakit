@@ -1,3 +1,5 @@
+
+
 <template>
   <div :class="['validation-message', type]" role="alert" aria-live="assertive">
     <slot />
@@ -19,6 +21,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './ValidationMessages.css';
 </style>

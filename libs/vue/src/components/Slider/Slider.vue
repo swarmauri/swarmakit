@@ -1,3 +1,4 @@
+
 <template>
   <div class="slider-container" :class="{ disabled: isDisabled }">
     <input
@@ -56,27 +57,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.slider-container {
-  display: flex;
-  align-items: center;
-  padding: var(--slider-padding, 8px);
-  margin: var(--slider-margin, 8px 0);
-}
-
-.slider-container input[type="range"] {
-  flex: 1;
-  margin-right: var(--slider-input-margin-right, 8px);
-  accent-color: var(--slider-accent-color, #007bff);
-}
-
-.slider-container.disabled input[type="range"] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.slider-value {
-  font-size: var(--slider-value-font-size, 14px);
-  color: var(--slider-value-color, #333);
-}
+@import './Slider.css';
 </style>

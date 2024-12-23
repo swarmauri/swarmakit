@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="recurring-event-scheduler" role="region" aria-label="Recurring Event Scheduler">
     <div class="recurrence-settings">
@@ -57,6 +59,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './RecurringEventScheduler.css';
 </style>

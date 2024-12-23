@@ -1,3 +1,4 @@
+
 <template>
   <div class="multiselect-list" role="listbox" aria-multiselectable="true">
     <ul class="item-list" role="list" aria-label="Selectable Items">
@@ -53,36 +54,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.multiselect-list {
-  width: 100%;
-}
-
-.item-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.list-item {
-  padding: var(--list-item-padding, 8px);
-  border-bottom: var(--list-item-border, 1px solid #ccc);
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.list-item.selected {
-  background-color: var(--selected-bg, #d1e7dd);
-  color: var(--selected-color, #0f5132);
-}
-
-.list-item.disabled {
-  background-color: var(--disabled-bg, #f8f9fa);
-  color: var(--disabled-color, #6c757d);
-  cursor: not-allowed;
-}
-
-.list-item:hover:not(.disabled) {
-  background-color: var(--hover-bg, #e2e6ea);
-}
+@import './MultiselectList.css';
 </style>

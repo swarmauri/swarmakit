@@ -1,3 +1,4 @@
+
 <template>
   <div class="grouped-list">
     <div
@@ -60,38 +61,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.grouped-list {
-  width: 100%;
-}
-
-.group {
-  margin-bottom: var(--group-margin-bottom, 20px);
-}
-
-.group-header {
-  cursor: pointer;
-  background-color: var(--group-header-bg, #f5f5f5);
-  padding: var(--group-header-padding, 10px);
-  border: var(--group-header-border, 1px solid #ccc);
-}
-
-.group-items {
-  list-style-type: none;
-  padding: 0;
-}
-
-.list-item {
-  padding: var(--list-item-padding, 8px);
-  cursor: pointer;
-  background-color: var(--list-item-bg, #fff);
-}
-
-.list-item:hover {
-  background-color: var(--list-item-hover-bg, #e0e0e0);
-}
-
-.list-item.selected {
-  background-color: var(--list-item-selected-bg, #d0d0d0);
-}
+@import './GroupedList.css';
 </style>

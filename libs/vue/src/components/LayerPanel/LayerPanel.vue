@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="layer-panel">
     <h2>Layers</h2>
@@ -69,29 +71,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.layer-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.active {
-  border: 2px solid var(--layer-panel-active-border);
-}
 
-ul {
-  list-style: none;
-  padding: 0;
-}
 
-li {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-button {
-  cursor: pointer;
-}
+<style scoped lang="css">
+@import './LayerPanel.css';
 </style>

@@ -87,3 +87,4 @@ button[aria-pressed="true"] {
     padding: 0.5rem;
   }
 }
+@import './SearchInputWithFilterOptions.css';

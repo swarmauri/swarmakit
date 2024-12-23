@@ -1,3 +1,4 @@
+
 <template>
   <div
     class="flip-card"
@@ -44,46 +45,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.flip-card {
-  width: var(--flip-card-width, 300px);
-  height: var(--flip-card-height, 200px);
-  perspective: 1000px;
-  border-radius: var(--flip-card-border-radius, 10px);
-  transition: transform 0.6s;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  border-radius: inherit;
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--flip-card-bg-color, #f0f0f0);
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
-}
-
-.flip-card.disabled {
-  cursor: not-allowed;
-}
-
-.flip-card:not(.disabled):hover {
-  cursor: pointer;
-}
+@import './FlipCard.css';
 </style>

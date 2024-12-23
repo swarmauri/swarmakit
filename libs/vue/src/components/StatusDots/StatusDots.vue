@@ -1,3 +1,4 @@
+
 <template>
   <div class="status-dots" role="status" :aria-label="ariaLabel">
     <span :class="['dot', status]" :style="{ backgroundColor: statusColor }"></span>
@@ -55,16 +56,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="css">
-.status-dots {
-  display: inline-flex;
-  align-items: center;
-}
 
-.dot {
-  width: var(--status-dot-size, 12px);
-  height: var(--status-dot-size, 12px);
-  border-radius: 50%;
-  transition: background-color 0.3s;
-}
+
+
+<style scoped lang="css">
+@import './StatusDots.css';
 </style>

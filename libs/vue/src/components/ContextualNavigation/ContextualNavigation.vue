@@ -1,3 +1,4 @@
+
 <template>
   <div class="contextual-navigation" :aria-hidden="!isVisible">
     <button @click="toggleMenu" class="contextual-toggle" :aria-expanded="isVisible">
@@ -44,47 +45,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.contextual-navigation {
-  position: relative;
-  font-size: var(--font-size, 16px);
-}
-
-.contextual-toggle {
-  background-color: var(--toggle-bg-color, #007bff);
-  color: var(--toggle-text-color, #fff);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: var(--button-font-size, 16px);
-}
-
-.contextual-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--menu-bg-color, #fff);
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.contextual-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.contextual-menu li {
-  padding: 10px;
-}
-
-.contextual-menu a {
-  color: var(--menu-link-color, #007bff);
-  text-decoration: none;
-}
-
-.contextual-menu a:hover {
-  text-decoration: underline;
-}
+@import './ContextualNavigation.css';
 </style>

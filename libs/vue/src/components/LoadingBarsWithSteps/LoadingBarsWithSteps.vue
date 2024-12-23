@@ -1,3 +1,4 @@
+
 <template>
   <div class="loading-bars" role="progressbar" aria-valuemin="0" :aria-valuenow="currentStep" :aria-valuemax="steps.length">
     <ul>
@@ -44,42 +45,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.loading-bars {
-  display: flex;
-  font-size: var(--loading-font-size, 14px);
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  flex: 1;
-  margin-right: 10px;
-  position: relative;
-}
-
-.step-bar {
-  height: var(--step-bar-height, 5px);
-  background-color: var(--step-bar-bg, #ccc);
-  width: var(--progress);
-  transition: width 0.3s ease;
-}
-
-.active .step-bar {
-  background-color: var(--active-step-bar-color, #007bff);
-}
-
-.completed .step-bar {
-  background-color: var(--completed-step-bar-color, #28a745);
-}
-
-.step-label {
-  margin-top: 5px;
-  text-align: center;
-  display: block;
-}
+@import './LoadingBarsWithSteps.css';
 </style>

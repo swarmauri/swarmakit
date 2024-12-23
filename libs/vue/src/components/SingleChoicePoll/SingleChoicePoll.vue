@@ -1,3 +1,4 @@
+
 <template>
   <div role="group" aria-labelledby="poll-question" class="poll">
     <p id="poll-question">{{ question }}</p>
@@ -55,16 +56,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.poll {
-  margin: 16px;
-}
-
-.option {
-  margin-bottom: 8px;
-}
-
-input[type="radio"] {
-  accent-color: var(--primary-color);
-}
+@import './SingleChoicePoll.css';
 </style>

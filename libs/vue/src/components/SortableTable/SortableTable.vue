@@ -1,3 +1,4 @@
+
 <template>
   <div class="sortable-table">
     <input 
@@ -104,58 +105,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.sortable-table {
-  --table-border: 1px solid #ccc;
-  --selected-row-bg: #f0f8ff;
-  --table-row-hover-bg: #f5f5f5;
-  --sort-icon-color: #007bff;
-  --filter-input-border: 1px solid #ddd;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 8px 12px;
-  border: var(--table-border);
-  text-align: left;
-  cursor: pointer;
-}
-
-th {
-  position: relative;
-}
-
-th span {
-  position: absolute;
-  right: 10px;
-  color: var(--sort-icon-color);
-}
-
-th span.asc::after {
-  content: '▲';
-}
-
-th span.desc::after {
-  content: '▼';
-}
-
-tr:hover {
-  background-color: var(--table-row-hover-bg);
-}
-
-tr.selected {
-  background-color: var(--selected-row-bg);
-}
-
-.filter-input {
-  margin-bottom: 10px;
-  padding: 6px;
-  border: var(--filter-input-border);
-  width: 100%;
-  box-sizing: border-box;
-}
+@import './SortableTable.css';
 </style>

@@ -25,3 +25,4 @@
 .icon {
   font-size: var(--icon-size, 24px);
 }
+@import './IconButton.css';

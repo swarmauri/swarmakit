@@ -1,3 +1,4 @@
+
 <template>
   <div class="video-player" role="region" aria-label="Video Player">
     <video
@@ -94,31 +95,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.video-player {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: var(--player-bg-color);
-}
-
-.video-element {
-  width: 100%;
-  display: block;
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.control-btn {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: none;
-  padding: 0.5rem;
-  margin: 0 0.5rem;
-  cursor: pointer;
-}
+@import './VideoPlayer.css';
 </style>

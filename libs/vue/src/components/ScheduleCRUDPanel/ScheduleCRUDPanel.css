@@ -78,3 +78,4 @@ button {
     /* styles for desktop */
   }
 }
+@import './ScheduleCRUDPanel.css';

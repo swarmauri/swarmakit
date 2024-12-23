@@ -1,3 +1,4 @@
+
 <template>
   <div class="rating-stars" role="radiogroup" aria-label="Rating">
     <button
@@ -62,6 +63,9 @@ export default defineComponent({
   },
 });
 </script>
+
+
+
 
 <style scoped lang="css">
 @import './RatingStars.css';

@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="event-filter-bar" role="toolbar" aria-label="Event Filter Bar">
     <form @submit.prevent="applyFilters">
@@ -86,6 +88,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+
+
+
+<style scoped lang="css">
 @import './EventFilterBar.css';
 </style>

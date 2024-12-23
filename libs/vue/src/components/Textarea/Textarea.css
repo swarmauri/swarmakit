@@ -48,3 +48,4 @@ textarea:disabled {
     padding: 0.5rem;
   }
 }
+@import './Textarea.css';

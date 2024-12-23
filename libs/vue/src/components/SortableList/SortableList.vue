@@ -1,3 +1,4 @@
+
 <template>
   <ul class="sortable-list" :aria-disabled="disabled">
     <li 
@@ -57,27 +58,9 @@ export default defineComponent({
 });
 </script>
 
+
+
+
 <style scoped lang="css">
-.sortable-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sortable-list li {
-  padding: 10px;
-  margin: 5px 0;
-  background-color: var(--list-item-bg);
-  border: var(--list-item-border);
-  cursor: move;
-}
-
-.sortable-list li.dragging {
-  opacity: 0.5;
-}
-
-.sortable-list[aria-disabled="true"] li {
-  cursor: not-allowed;
-  background-color: var(--list-item-disabled-bg);
-}
+@import './SortableList.css';
 </style>
