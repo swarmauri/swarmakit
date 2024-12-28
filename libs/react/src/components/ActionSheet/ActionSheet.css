@@ -1,73 +1,60 @@
-<style scoped>
-  .action-sheet {
+.action-sheet {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     transition: transform 0.3s ease;
     background: var(--action-sheet-bg, #fff);
-    z-index: 1000;
-  }
-
-  .action-sheet.open {
-    transform: translateY(0);
-  }
-
-  .action-sheet.closed {
-    transform: translateY(100%);
-  }
-
-  .action-sheet-backdrop {
+    z-index: 1000
+    }
+.action-sheet.open {
+    transform: translatey(0)
+    }
+.action-sheet.closed {
+    transform: translatey(100%)
+    }
+.action-sheet-backdrop {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--action-sheet-backdrop-bg, rgba(0, 0, 0, 0.5));
-  }
-
-  .action-sheet-content {
-    padding: var(--action-sheet-content-padding, 16px);
-  }
-
-  .action-list {
+    background: var(--action-sheet-backdrop-bg, rgba(0, 0, 0, 0.5))
+    }
+.action-sheet-content {
+    padding: var(--action-sheet-content-padding, 16px)
+    }
+.action-list {
     list-style: none;
     padding: 0;
-    margin: 0;
-  }
-
-  .action-item {
-    margin-bottom: var(--action-item-margin-bottom, 8px);
-  }
-
-  .action-button {
+    margin: 0
+    }
+.action-item {
+    margin-bottom: var(--action-item-margin-bottom, 8px)
+    }
+.action-button {
     width: 100%;
     padding: var(--action-button-padding, 12px);
     background: var(--action-button-bg, #f7f7f7);
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .action-button:hover {
-    background: var(--action-button-hover-bg, #e0e0e0);
-  }
-
-  @media (max-width: 576px) {
-    .action-sheet-content {
-      padding: var(--action-sheet-content-padding-sm, 12px);
+    transition: background-color 0.3s ease
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .action-sheet-content {
-      padding: var(--action-sheet-content-padding-md, 14px);
+.action-button:hover {
+    background: var(--action-button-hover-bg, #e0e0e0)
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .action-sheet-content {
-      padding: var(--action-sheet-content-padding-lg, 16px);
+        padding: var(--action-sheet-content-padding-sm, 12px)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-sheet-content {
+        padding: var(--action-sheet-content-padding-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .action-sheet-content {
+        padding: var(--action-sheet-content-padding-lg, 16px)
+        }
+    }

@@ -1,0 +1,50 @@
+.recurring-event-scheduler {
+    max-width: 600px;
+    margin: auto;
+    padding: var(--scheduler-padding, 20px);
+    background-color: var(--scheduler-bg, #f9f9f9);
+    border-radius: var(--scheduler-border-radius, 8px)
+    }
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-gap, 10px);
+    margin-bottom: var(--form-margin-bottom, 20px)
+    }
+.event-form input, .event-form select, .event-form textarea {
+    padding: var(--form-input-padding, 10px);
+    border: 1px solid var(--form-border, #ccc);
+    border-radius: var(--form-border-radius, 4px)
+    }
+.event-form button {
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.event-form button:hover {
+    background-color: var(--button-hover-bg, #0056b3)
+    }
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--event-gap, 10px)
+    }
+.event-item {
+    padding: var(--event-item-padding, 10px);
+    background-color: var(--event-item-bg, #fff);
+    border: 1px solid var(--event-item-border, #e0e0e0);
+    border-radius: var(--event-item-border-radius, 4px);
+    transition: background-color 0.3s
+    }
+.event-item:hover {
+    background-color: var(--event-item-hover-bg, #e6f7ff)
+    }
+@media (max-width: 600px) {
+    .recurring-event-scheduler {
+        padding: var(--scheduler-padding-mobile, 10px)
+        }
+    }

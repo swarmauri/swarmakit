@@ -1,57 +1,44 @@
-<style scoped>
-  .bar-chart {
+.bar-chart {
     width: 100%;
     height: 100%;
-    border: var(--chart-border, 1px solid #ccc);
     background-color: var(--chart-bg-color, #f9f9f9);
-    position: relative;
-  }
-
-  .chart-loading,
-  .chart-empty {
+    position: relative
+    }
+.chart-loading, .chart-empty {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: var(--chart-font-size, 16px);
-    color: var(--chart-text-color, #666);
-  }
-
-  .bar-chart.rendered .chart-bar {
-    fill: var(--chart-bar-color, #007bff);
-  }
-
-  .bar-chart.stacked .chart-bar {
-    fill: var(--stacked-bar-color, #28a745);
-  }
-
-  .bar-chart.grouped .chart-bar {
-    fill: var(--grouped-bar-color, #ffc107);
-  }
-
-  .bar-chart.hovered .chart-bar:hover {
+    color: var(--chart-text-color, #666)
+    }
+.bar-chart.rendered .chart-bar {
+    fill: var(--chart-bar-color, #007bff)
+    }
+.bar-chart.stacked .chart-bar {
+    fill: var(--stacked-bar-color, #28a745)
+    }
+.bar-chart.grouped .chart-bar {
+    fill: var(--grouped-bar-color, #ffc107)
+    }
+.bar-chart.hovered .chart-bar:hover {
     fill: var(--hovered-bar-color, #17a2b8);
-    cursor: pointer;
-  }
-
-  .bar-chart.clicked .chart-bar:active {
-    fill: var(--clicked-bar-color, #dc3545);
-  }
-
-  @media (max-width: 576px) {
-    .bar-chart {
-      height: var(--chart-height-sm, 200px);
+    cursor: pointer
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .bar-chart {
-      height: var(--chart-height-md, 300px);
+.bar-chart.clicked .chart-bar:active {
+    fill: var(--clicked-bar-color, #dc3545)
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .bar-chart {
-      height: var(--chart-height-lg, 400px);
+        height: var(--chart-height-sm, 200px)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .bar-chart {
+        height: var(--chart-height-md, 300px)
+        }
+    }
+@media (min-width: 769px) {
+    .bar-chart {
+        height: var(--chart-height-lg, 400px)
+        }
+    }

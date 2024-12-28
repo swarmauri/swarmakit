@@ -1,0 +1,26 @@
+.undo-redo-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    border-radius: var(--undo-redo-border-radius, 4px);
+    background-color: var(--undo-redo-background-color, #fff)
+    }
+.undo-button, .redo-button {
+    background-color: var(--button-background-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-grow: 1;
+    margin: 0 5px
+    }
+.undo-button.disabled, .redo-button.disabled {
+    background-color: var(--button-disabled-background-color, #d3d3d3);
+    cursor: not-allowed
+    }
+.undo-button.enabled:hover, .redo-button.enabled:hover {
+    background-color: var(--button-hover-background-color, #0056b3)
+    }

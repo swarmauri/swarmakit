@@ -1,7 +1,6 @@
-<style scoped>
-  .map-overlay {
+.map-overlay {
     background-color: var(--overlay-bg-color, rgba(0, 0, 0, 0.5));
-    color: var(--overlay-text-color, #ffffff);
+    color: var(--overlay-text-color, #fff);
     padding: var(--overlay-padding, 20px);
     border-radius: var(--overlay-border-radius, 10px);
     position: absolute;
@@ -12,14 +11,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease;
-  }
-
-  .map-overlay.hidden {
-    display: none;
-  }
-
-  .map-overlay.disabled {
-    opacity: 0.3;
-  }
-</style>
+    transition: opacity 0.3s ease
+    }
+.map-overlay.hidden {
+    display: none
+    }
+.map-overlay.disabled {
+    opacity: 0.3
+    }

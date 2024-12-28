@@ -1,5 +1,4 @@
-<style scoped>
-  .rich-text-editor {
+.rich-text-editor {
     border: 1px solid var(--border-color);
     padding: 8px;
     min-height: 200px;
@@ -7,39 +6,32 @@
     color: var(--text-color);
     font-family: var(--font-family);
     font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .rich-text-editor.read-only {
+    line-height: 1.5
+    }
+.rich-text-editor.read-only {
     background-color: var(--read-only-background-color);
-    cursor: not-allowed;
-  }
-
-  .public-DraftEditor-content {
-    min-height: 180px;
-  }
-
-  @media (max-width: 600px) {
-    .rich-text-editor {
-      font-size: 14px;
+    cursor: not-allowed
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
-    .rich-text-editor {
-      font-size: 15px;
+.public-DraftEditor-content {
+    min-height: 180px
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (max-width: 600px) {
     .rich-text-editor {
-      font-size: 16px;
+        font-size: 14px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .rich-text-editor {
-      font-size: 16px;
+        font-size: 15px
+        }
     }
-  }
-</style>
+@media (min-width: 769px) and (max-width: 1024px) {
+    .rich-text-editor {
+        font-size: 16px
+        }
+    }
+@media (min-width: 1025px) {
+    .rich-text-editor {
+        font-size: 16px
+        }
+    }

@@ -1,23 +1,16 @@
-<style scoped>
-  .toast {
-    padding: var(--toast-padding, 12px 24px);
+.toast {
     border-radius: var(--toast-border-radius, 4px);
     background-color: var(--toast-background-color, #333);
     color: var(--toast-color, #fff);
     opacity: 0;
-    transition: var(--toast-transition, opacity 0.3s ease);
     position: fixed;
     bottom: var(--toast-bottom, 20px);
     right: var(--toast-right, 20px);
-    z-index: 1000;
-  }
-
-  .toast.visible {
-    opacity: 1;
-  }
-
-  .toast.hidden,
-  .toast.dismissed {
-    display: none;
-  }
-</style>
+    z-index: 1000
+    }
+.toast.visible {
+    opacity: 1
+    }
+.toast.hidden, .toast.dismissed {
+    display: none
+    }

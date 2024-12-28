@@ -1,46 +1,35 @@
-<style scoped>
-  .search-bar-with-suggestions {
+.search-bar-with-suggestions {
     position: relative;
     width: 100%;
     max-width: var(--search-bar-max-width, 400px);
-    margin: 0 auto;
-  }
-
-  .search-bar-with-suggestions input {
+    margin: 0 auto
+    }
+.search-bar-with-suggestions input {
     width: 100%;
     padding: var(--input-padding, 10px);
-    border: var(--input-border, 1px solid #ccc);
     border-radius: var(--input-border-radius, 4px);
-    font-size: var(--input-font-size, 14px);
-  }
-
-  .suggestions-list {
+    font-size: var(--input-font-size, 14px)
+    }
+.suggestions-list {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    border: var(--suggestions-border, 1px solid #ccc);
     border-radius: var(--suggestions-border-radius, 4px);
     background-color: var(--suggestions-background-color, #fff);
-    box-shadow: var(--suggestions-box-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
     z-index: 10;
     max-height: var(--suggestions-max-height, 200px);
     overflow-y: auto;
-    transition: opacity 0.3s ease;
-  }
-
-  .suggestions-list li {
-    padding: var(--suggestions-item-padding, 8px 10px);
-    cursor: pointer;
-  }
-
-  .suggestions-list li:hover {
-    background-color: var(--suggestions-item-hover-background-color, #f0f0f0);
-  }
-
-  .no-results {
+    transition: opacity 0.3s ease
+    }
+.suggestions-list li {
+    cursor: pointer
+    }
+.suggestions-list li:hover {
+    background-color: var(--suggestions-item-hover-background-color, #f0f0f0)
+    }
+.no-results {
     color: var(--no-results-color, #999);
     text-align: center;
-    padding: var(--no-results-padding, 10px);
-  }
-</style>
+    padding: var(--no-results-padding, 10px)
+    }

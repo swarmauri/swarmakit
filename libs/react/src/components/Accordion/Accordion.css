@@ -1,9 +1,4 @@
-<style scoped>
-  .accordion {
-    border-bottom: var(--accordion-border, 1px solid #ddd);
-  }
-
-  .accordion-title {
+.accordion-title {
     width: 100%;
     background: var(--accordion-bg, #f7f7f7);
     padding: var(--accordion-padding, 10px);
@@ -12,56 +7,45 @@
     transition: background 0.3s ease;
     border: none;
     outline: none;
-    font-size: var(--accordion-font-size, 16px);
-  }
-
-  .accordion-content {
+    font-size: var(--accordion-font-size, 16px)
+    }
+.accordion-content {
     background: var(--accordion-content-bg, #fff);
     padding: var(--accordion-content-padding, 10px);
-    font-size: var(--accordion-content-font-size, 14px);
-  }
-
-  .accordion-title:hover {
-    background: var(--accordion-hover-bg, #e2e2e2);
-  }
-
-  @media (max-width: 600px) {
+    font-size: var(--accordion-content-font-size, 14px)
+    }
+.accordion-title:hover {
+    background: var(--accordion-hover-bg, #e2e2e2)
+    }
+@media (max-width: 600px) {
     .accordion-title {
-      font-size: 14px;
-    }
-
+        font-size: 14px
+        }
     .accordion-content {
-      font-size: 12px;
+        font-size: 12px
+        }
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .accordion-title {
-      font-size: 15px;
-    }
-
+        font-size: 15px
+        }
     .accordion-content {
-      font-size: 13px;
+        font-size: 13px
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .accordion-title {
-      font-size: 16px;
-    }
-
+        font-size: 16px
+        }
     .accordion-content {
-      font-size: 14px;
+        font-size: 14px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 1025px) {
     .accordion-title {
-      font-size: 17px;
-    }
-
+        font-size: 17px
+        }
     .accordion-content {
-      font-size: 15px;
+        font-size: 15px
+        }
     }
-  }
-</style>

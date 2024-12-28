@@ -1,52 +1,40 @@
-<style scoped>
-  .candlestick-chart {
+.candlestick-chart {
     width: 100%;
     height: 100%;
-    border: var(--candlestick-chart-border, 1px solid #ccc);
     background-color: var(--candlestick-chart-bg-color, #f9f9f9);
-    position: relative;
-  }
-
-  .candlestick-chart-loading,
-  .candlestick-chart-empty {
+    position: relative
+    }
+.candlestick-chart-loading, .candlestick-chart-empty {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: var(--candlestick-chart-font-size, 16px);
-    color: var(--candlestick-chart-text-color, #666);
-  }
-
-  .candlestick-chart.rendered .candle {
-    fill: var(--candlestick-chart-candle-color, #007bff);
-  }
-
-  .candlestick-chart.zoomed .candle {
-    transform: scale(var(--zoom-scale, 1.2));
-  }
-
-  .candlestick-chart.tooltipVisible .candle:hover {
-    fill: var(--tooltip-color, #17a2b8);
-  }
-
-  .candlestick-chart.hovered .candle {
-    fill: var(--hover-color, #28a745);
-  }
-
-  @media (max-width: 576px) {
-    .candlestick-chart {
-      height: var(--candlestick-chart-height-sm, 200px);
+    color: var(--candlestick-chart-text-color, #666)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .candlestick-chart {
-      height: var(--candlestick-chart-height-md, 300px);
+.candlestick-chart.rendered .candle {
+    fill: var(--candlestick-chart-candle-color, #007bff)
     }
-  }
-
-  @media (min-width: 769px) {
-    .candlestick-chart {
-      height: var(--candlestick-chart-height-lg, 400px);
+.candlestick-chart.zoomed .candle {
+    transform: scale(var(--zoom-scale, 1.2))
     }
-  }
-</style>
+.candlestick-chart.tooltipVisible .candle:hover {
+    fill: var(--tooltip-color, #17a2b8)
+    }
+.candlestick-chart.hovered .candle {
+    fill: var(--hover-color, #28a745)
+    }
+@media (max-width: 576px) {
+    .candlestick-chart {
+        height: var(--candlestick-chart-height-sm, 200px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .candlestick-chart {
+        height: var(--candlestick-chart-height-md, 300px)
+        }
+    }
+@media (min-width: 769px) {
+    .candlestick-chart {
+        height: var(--candlestick-chart-height-lg, 400px)
+        }
+    }

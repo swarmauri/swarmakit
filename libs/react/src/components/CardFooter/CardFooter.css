@@ -1,54 +1,42 @@
-<style scoped>
-  .card-footer {
+.card-footer {
     padding: var(--footer-padding, 15px);
     background-color: var(--footer-bg-color, #f8f9fa);
     display: flex;
-    align-items: center;
-    border-top: var(--footer-border-top, 1px solid #e9ecef);
-  }
-
-  .align-left {
-    justify-content: flex-start;
-  }
-
-  .align-center {
-    justify-content: center;
-  }
-
-  .align-right {
-    justify-content: flex-end;
-  }
-
-  button, a {
+    align-items: center
+    }
+.align-left {
+    justify-content: flex-start
+    }
+.align-center {
+    justify-content: center
+    }
+.align-right {
+    justify-content: flex-end
+    }
+button, a {
     margin-right: var(--element-margin-right, 10px);
-    padding: var(--element-padding, 5px 10px);
     background-color: var(--element-bg-color, #007bff);
     color: var(--element-text-color, #fff);
     border: none;
     border-radius: var(--element-border-radius, 5px);
     text-decoration: none;
-    cursor: pointer;
-  }
-
-  button:hover, a:hover {
-    background-color: var(--element-hover-bg-color, #0056b3);
-  }
-
-  @media (max-width: 576px) {
-    .card-footer {
-      padding: var(--footer-padding-mobile, 10px);
+    cursor: pointer
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .card-footer {
-      padding: var(--footer-padding-tablet, 12px);
+button:hover, a:hover {
+    background-color: var(--element-hover-bg-color, #0056b3)
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .card-footer {
-      padding: var(--footer-padding-desktop, 15px);
+        padding: var(--footer-padding-mobile, 10px)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .card-footer {
+        padding: var(--footer-padding-tablet, 12px)
+        }
+    }
+@media (min-width: 769px) {
+    .card-footer {
+        padding: var(--footer-padding-desktop, 15px)
+        }
+    }

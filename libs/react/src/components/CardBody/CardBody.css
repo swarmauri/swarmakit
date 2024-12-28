@@ -1,58 +1,46 @@
-<style scoped>
-  .card-body {
+.card-body {
     padding: var(--body-padding, 15px);
     background-color: var(--body-bg-color, #fff);
     overflow: hidden;
-    transition: max-height 0.3s, padding 0.3s;
-  }
-
-  .expandable {
+    transition: max-height 0.3s, padding 0.3s
+    }
+.expandable {
+    max-height: var(--collapsed-max-height, 60px)
+    }
+.expanded {
+    max-height: var(--expanded-max-height, 500px)
+    }
+.collapsed {
     max-height: var(--collapsed-max-height, 60px);
-  }
-
-  .expanded {
-    max-height: var(--expanded-max-height, 500px);
-  }
-
-  .collapsed {
-    max-height: var(--collapsed-max-height, 60px);
-    padding-bottom: var(--collapsed-padding-bottom, 0);
-  }
-
-  .content {
+    padding-bottom: var(--collapsed-padding-bottom, 0)
+    }
+.content {
     overflow-y: auto;
-    max-height: inherit;
-  }
-
-  button {
+    max-height: inherit
+    }
+button {
     margin-top: var(--button-margin-top, 10px);
     background-color: var(--button-bg-color, #007bff);
     color: var(--button-text-color, #fff);
     border: none;
-    padding: var(--button-padding, 5px 10px);
     cursor: pointer;
-    border-radius: var(--button-border-radius, 5px);
-  }
-
-  button:hover {
-    background-color: var(--button-hover-bg-color, #0056b3);
-  }
-
-  @media (max-width: 576px) {
-    .card-body {
-      padding: var(--body-padding-mobile, 10px);
+    border-radius: var(--button-border-radius, 5px)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .card-body {
-      padding: var(--body-padding-tablet, 12px);
+button:hover {
+    background-color: var(--button-hover-bg-color, #0056b3)
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .card-body {
-      padding: var(--body-padding-desktop, 15px);
+        padding: var(--body-padding-mobile, 10px)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .card-body {
+        padding: var(--body-padding-tablet, 12px)
+        }
+    }
+@media (min-width: 769px) {
+    .card-body {
+        padding: var(--body-padding-desktop, 15px)
+        }
+    }

@@ -1,5 +1,4 @@
-<style scoped>
-  .event-reminder-system {
+.event-reminder-system {
     padding: var(--reminder-system-padding, 20px);
     background-color: var(--reminder-system-bg, #f1f1f1);
     border-radius: var(--reminder-system-border-radius, 8px);
@@ -7,47 +6,40 @@
     flex-direction: column;
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .event-selection select, .reminder-settings input, .reminder-settings select {
+    margin: 0 auto
+    }
+.event-selection select, .reminder-settings input, .reminder-settings select {
     padding: var(--input-padding, 10px);
     border: 1px solid var(--input-border-color, #ccc);
     border-radius: var(--input-border-radius, 4px);
     width: 100%;
-    margin-bottom: var(--input-margin-bottom, 10px);
-  }
-
-  button {
+    margin-bottom: var(--input-margin-bottom, 10px)
+    }
+button {
     background-color: var(--button-bg, #007bff);
     color: var(--button-color, #fff);
     border: none;
     padding: var(--button-padding, 10px);
     border-radius: var(--button-border-radius, 4px);
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  button:hover {
-    background-color: var(--button-hover-bg, #0056b3);
-  }
-
-  .reminder-list {
+    transition: background-color 0.3s
+    }
+button:hover {
+    background-color: var(--button-hover-bg, #0056b3)
+    }
+.reminder-list {
     margin-top: var(--reminder-list-margin-top, 20px);
     border-top: 1px solid var(--reminder-list-border-color, #ddd);
-    padding-top: var(--reminder-list-padding-top, 10px);
-  }
-
-  .reminder-item {
+    padding-top: var(--reminder-list-padding-top, 10px)
+    }
+.reminder-item {
     display: flex;
     justify-content: space-between;
     padding: var(--reminder-item-padding, 10px);
-    border-bottom: 1px solid var(--reminder-item-border-color, #eee);
-  }
-
-  @media (max-width: 600px) {
-    .event-reminder-system {
-      padding: var(--reminder-system-padding-mobile, 10px);
+    border-bottom: 1px solid var(--reminder-item-border-color, #eee)
     }
-  }
-</style>
+@media (max-width: 600px) {
+    .event-reminder-system {
+        padding: var(--reminder-system-padding-mobile, 10px)
+        }
+    }

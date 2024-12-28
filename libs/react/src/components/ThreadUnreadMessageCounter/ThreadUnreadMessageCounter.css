@@ -1,36 +1,29 @@
-<style scoped>
-  .thread-unread-message-counter {
+.thread-unread-message-counter {
     background-color: var(--counter-background-color, #dc3545);
     color: var(--counter-text-color, #fff);
     border-radius: var(--counter-border-radius, 12px);
-    padding: var(--counter-padding, 4px 8px);
     font-size: var(--counter-font-size, 14px);
     display: inline-block;
     min-width: var(--counter-min-width, 24px);
     text-align: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .thread-unread-message-counter.visible {
-    opacity: 1;
-  }
-
-  @media (max-width: 576px) {
-    .thread-unread-message-counter {
-      font-size: var(--counter-font-size-sm, 12px);
+    transition: opacity 0.3s ease
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .thread-unread-message-counter {
-      font-size: var(--counter-font-size-md, 14px);
+.thread-unread-message-counter.visible {
+    opacity: 1
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .thread-unread-message-counter {
-      font-size: var(--counter-font-size-lg, 16px);
+        font-size: var(--counter-font-size-sm, 12px)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .thread-unread-message-counter {
+        font-size: var(--counter-font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .thread-unread-message-counter {
+        font-size: var(--counter-font-size-lg, 16px)
+        }
+    }

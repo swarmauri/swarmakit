@@ -1,0 +1,27 @@
+.embedded-media-iframe {
+    position: relative;
+    width: var(--iframe-width, 100%);
+    max-width: var(--iframe-max-width, 560px);
+    height: var(--iframe-height, auto);
+    border: var(--iframe-border, none)
+    }
+.iframe-content {
+    width: 100%;
+    height: 100%;
+    border: none
+    }
+.buffering-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--buffering-message-color, #fff);
+    background-color: var(--buffering-bg, rgba(0, 0, 0, 0.7));
+    padding: var(--buffering-padding, 10px);
+    border-radius: var(--buffering-border-radius, 5px)
+    }
+@media (max-width: 600px) {
+    .embedded-media-iframe {
+        max-width: 100%
+        }
+    }

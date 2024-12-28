@@ -1,0 +1,58 @@
+.sidebar-with-accordion-menus {
+    width: var(--sidebar-width, 250px);
+    background: var(--sidebar-bg, #fff)
+    }
+.accordion-menu {
+    margin-bottom: var(--accordion-menu-margin-bottom, 10px)
+    }
+.accordion-title {
+    width: 100%;
+    padding: var(--accordion-title-padding, 10px);
+    background: var(--accordion-title-bg, #f7f7f7);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+.menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0
+    }
+.menu-item {
+    padding: var(--menu-item-padding, 10px);
+    cursor: pointer
+    }
+.menu-item button {
+    background: none;
+    border: none;
+    color: var(--menu-item-color, #333);
+    font-size: var(--menu-item-font-size, 16px);
+    cursor: pointer;
+    transition: color 0.3s ease
+    }
+.menu-item.disabled button {
+    color: var(--menu-item-disabled-color, #aaa);
+    cursor: not-allowed
+    }
+.menu-item button:disabled {
+    cursor: not-allowed
+    }
+.accordion-title[aria-expanded="true"] {
+    background: var(--accordion-title-expanded-bg, #e0e0e0)
+    }
+@media (max-width: 576px) {
+    .sidebar-with-accordion-menus {
+        width: var(--sidebar-width-sm, 200px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .sidebar-with-accordion-menus {
+        width: var(--sidebar-width-md, 220px)
+        }
+    }
+@media (min-width: 769px) {
+    .sidebar-with-accordion-menus {
+        width: var(--sidebar-width-lg, 250px)
+        }
+    }

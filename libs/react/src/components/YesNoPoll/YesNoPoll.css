@@ -1,59 +1,46 @@
-<style scoped>
-  .yesno-poll {
+.yesno-poll {
     padding: var(--poll-padding, 20px);
-    border: var(--poll-border, 1px solid #ccc);
     border-radius: var(--poll-border-radius, 5px);
-    max-width: var(--poll-max-width, 400px);
-  }
-
-  .poll-question {
+    max-width: var(--poll-max-width, 400px)
+    }
+.poll-question {
     font-size: var(--question-font-size, 18px);
-    margin-bottom: var(--question-margin-bottom, 10px);
-  }
-
-  .vote-container {
+    margin-bottom: var(--question-margin-bottom, 10px)
+    }
+.vote-container {
     display: flex;
     justify-content: center;
-    margin-bottom: var(--container-margin-bottom, 10px);
-  }
-
-  .vote-button {
+    margin-bottom: var(--container-margin-bottom, 10px)
+    }
+.vote-button {
     font-size: var(--button-font-size, 16px);
     margin: 0 var(--button-margin, 5px);
     padding: var(--button-padding, 10px);
     cursor: pointer;
-    border: var(--button-border, 1px solid #007bff);
-    border-radius: var(--button-border-radius, 5px);
-  }
-
-  .vote-button.selected {
+    border-radius: var(--button-border-radius, 5px)
+    }
+.vote-button.selected {
     background-color: var(--button-selected-bg, #007bff);
-    color: var(--button-selected-color, #fff);
-  }
-
-  .vote-button.disabled {
+    color: var(--button-selected-color, #fff)
+    }
+.vote-button.disabled {
     cursor: not-allowed;
-    opacity: var(--disabled-opacity, 0.6);
-  }
-
-  .results {
+    opacity: var(--disabled-opacity, 0.6)
+    }
+.results {
     text-align: center;
-    font-size: var(--results-font-size, 16px);
-  }
-
-  @media (max-width: 480px) {
+    font-size: var(--results-font-size, 16px)
+    }
+@media (max-width: 480px) {
     .yesno-poll {
-      padding: var(--poll-padding-mobile, 15px);
-      max-width: var(--poll-max-width-mobile, 100%);
-    }
-
+        padding: var(--poll-padding-mobile, 15px);
+        max-width: var(--poll-max-width-mobile, 100%)
+        }
     .poll-question {
-      font-size: var(--question-font-size-mobile, 16px);
-    }
-
+        font-size: var(--question-font-size-mobile, 16px)
+        }
     .vote-button {
-      font-size: var(--button-font-size-mobile, 14px);
-      padding: var(--button-padding-mobile, 8px);
+        font-size: var(--button-font-size-mobile, 14px);
+        padding: var(--button-padding-mobile, 8px)
+        }
     }
-  }
-</style>

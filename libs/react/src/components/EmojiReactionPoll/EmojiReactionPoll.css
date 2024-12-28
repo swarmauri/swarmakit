@@ -1,56 +1,43 @@
-<style scoped>
-  .emoji-reaction-poll {
+.emoji-reaction-poll {
     padding: var(--poll-padding, 20px);
-    border: var(--poll-border, 1px solid #ccc);
     border-radius: var(--poll-border-radius, 5px);
-    max-width: var(--poll-max-width, 400px);
-  }
-
-  .poll-question {
+    max-width: var(--poll-max-width, 400px)
+    }
+.poll-question {
     font-size: var(--question-font-size, 18px);
-    margin-bottom: var(--question-margin-bottom, 10px);
-  }
-
-  .emoji-container {
+    margin-bottom: var(--question-margin-bottom, 10px)
+    }
+.emoji-container {
     display: flex;
     justify-content: center;
-    margin-bottom: var(--container-margin-bottom, 10px);
-  }
-
-  .emoji {
+    margin-bottom: var(--container-margin-bottom, 10px)
+    }
+.emoji {
     font-size: var(--emoji-font-size, 24px);
     cursor: pointer;
     margin: 0 var(--emoji-margin, 5px);
-    user-select: none;
-  }
-
-  .emoji.selected {
-    border: var(--emoji-selected-border, 2px solid #007bff);
-    border-radius: var(--emoji-border-radius, 50%);
-  }
-
-  .emoji.disabled {
+    user-select: none
+    }
+.emoji.selected {
+    border-radius: var(--emoji-border-radius, 50%)
+    }
+.emoji.disabled {
     cursor: not-allowed;
-    opacity: var(--disabled-opacity, 0.6);
-  }
-
-  .results {
+    opacity: var(--disabled-opacity, 0.6)
+    }
+.results {
     text-align: center;
-    font-size: var(--results-font-size, 16px);
-  }
-
-  @media (max-width: 480px) {
+    font-size: var(--results-font-size, 16px)
+    }
+@media (max-width: 480px) {
     .emoji-reaction-poll {
-      padding: var(--poll-padding-mobile, 15px);
-      max-width: var(--poll-max-width-mobile, 100%);
-    }
-
+        padding: var(--poll-padding-mobile, 15px);
+        max-width: var(--poll-max-width-mobile, 100%)
+        }
     .poll-question {
-      font-size: var(--question-font-size-mobile, 16px);
-    }
-
+        font-size: var(--question-font-size-mobile, 16px)
+        }
     .emoji {
-      font-size: var(--emoji-font-size-mobile, 20px);
+        font-size: var(--emoji-font-size-mobile, 20px)
+        }
     }
-  }
-</style>
