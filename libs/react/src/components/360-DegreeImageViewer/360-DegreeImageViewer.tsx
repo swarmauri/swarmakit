@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-interface ImageViewerProps {
+export interface ImageViewerProps {
   images: string[];
   isRotating: boolean;
   isZoomed: boolean;
