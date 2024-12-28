@@ -1,54 +1,52 @@
-<style scoped>
+.image-viewer {
+  width: var(--viewer-width, 100%);
+  height: var(--viewer-height, 400px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--viewer-border, 1px solid #ddd);
+  overflow: hidden;
+  position: relative;
+}
+
+.image-viewer img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.zoomed img {
+  transform: scale(var(--zoom-scale, 1.5));
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: var(--loading-font-weight, bold);
+}
+
+@media (max-width: 600px) {
   .image-viewer {
-    width: var(--viewer-width, 100%);
-    height: var(--viewer-height, 400px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: var(--viewer-border, 1px solid #ddd);
-    overflow: hidden;
-    position: relative;
+    height: var(--viewer-height-mobile, 300px);
   }
+}
 
-  .image-viewer img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
+@media (min-width: 601px) and (max-width: 768px) {
+  .image-viewer {
+    height: var(--viewer-height-tablet, 350px);
   }
+}
 
-  .zoomed img {
-    transform: scale(var(--zoom-scale, 1.5));
+@media (min-width: 769px) and (max-width: 1024px) {
+  .image-viewer {
+    height: var(--viewer-height-large-tablet, 400px);
   }
+}
 
-  .loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: var(--loading-font-weight, bold);
+@media (min-width: 1025px) {
+  .image-viewer {
+    height: var(--viewer-height-desktop, 500px);
   }
-
-  @media (max-width: 600px) {
-    .image-viewer {
-      height: var(--viewer-height-mobile, 300px);
-    }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
-    .image-viewer {
-      height: var(--viewer-height-tablet, 350px);
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .image-viewer {
-      height: var(--viewer-height-large-tablet, 400px);
-    }
-  }
-
-  @media (min-width: 1025px) {
-    .image-viewer {
-      height: var(--viewer-height-desktop, 500px);
-    }
-  }
-</style>
+}
