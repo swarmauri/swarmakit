@@ -1,0 +1,32 @@
+.member-mention {
+    background-color: var(--mention-bg, #e0e0e0);
+    border-radius: var(--mention-border-radius, 12px);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease
+    }
+.member-mention.visible {
+    visibility: visible;
+    color: var(--mention-text-color, #000)
+    }
+.member-mention.hidden {
+    visibility: hidden
+    }
+.member-mention.clicked {
+    background-color: var(--mention-bg-clicked, #007bff);
+    color: var(--mention-text-clicked, #fff)
+    }
+@media (max-width: 576px) {
+    .member-mention {
+        font-size: var(--mention-font-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .member-mention {
+        font-size: var(--mention-font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .member-mention {
+        font-size: var(--mention-font-size-lg, 16px)
+        }
+    }

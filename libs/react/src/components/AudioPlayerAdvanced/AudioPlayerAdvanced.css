@@ -1,35 +1,27 @@
-<style scoped>
-  .audio-player-advanced {
+.audio-player-advanced {
     display: flex;
     align-items: center;
     gap: var(--audio-player-advanced-gap, 10px);
     padding: var(--audio-player-advanced-padding, 10px);
     background-color: var(--audio-player-advanced-bg, #f4f4f4);
-    border: var(--audio-player-advanced-border, 1px solid #ddd);
-    border-radius: var(--audio-player-advanced-border-radius, 5px);
-  }
-
-  .audio-player-advanced button {
+    border-radius: var(--audio-player-advanced-border-radius, 5px)
+    }
+.audio-player-advanced button {
     background-color: var(--button-bg, #007bff);
     color: var(--button-color, #fff);
     border: none;
-    padding: var(--button-padding, 5px 10px);
     cursor: pointer;
     border-radius: var(--button-border-radius, 3px);
-    transition: background-color 0.3s ease;
-  }
-
-  .audio-player-advanced button:hover {
-    background-color: var(--button-hover-bg, #0056b3);
-  }
-
-  .audio-player-advanced input[type='range'] {
-    width: var(--control-width, 100px);
-  }
-
-  @media (max-width: 600px) {
-    .audio-player-advanced {
-      flex-direction: column;
+    transition: background-color 0.3s ease
     }
-  }
-</style>
+.audio-player-advanced button:hover {
+    background-color: var(--button-hover-bg, #0056b3)
+    }
+.audio-player-advanced input[type="range"] {
+    width: var(--control-width, 100px)
+    }
+@media (max-width: 600px) {
+    .audio-player-advanced {
+        flex-direction: column
+        }
+    }

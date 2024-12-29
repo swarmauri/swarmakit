@@ -1,61 +1,50 @@
-<style scoped>
-  .loading-spinner {
+.loading-spinner {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50px;
-    height: 50px;
-  }
-
-  .spinner {
+    height: 50px
+    }
+.spinner {
     animation: spin 1s linear infinite;
     width: 100%;
-    height: 100%;
-  }
-
-  .path {
+    height: 100%
+    }
+.path {
     stroke: var(--spinner-color, #000);
-    stroke-linecap: round;
-  }
-
-  .inactive .spinner {
-    display: none;
-  }
-
-  @keyframes spin {
+    stroke-linecap: round
+    }
+.inactive .spinner {
+    display: none
+    }
+@keyframes spin {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
+        } 100% {
+        transform: rotate(360deg);
+        }
     }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     .loading-spinner {
-      width: 30px;
-      height: 30px;
+        width: 30px;
+        height: 30px
+        }
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .loading-spinner {
-      width: 40px;
-      height: 40px;
+        width: 40px;
+        height: 40px
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .loading-spinner {
-      width: 50px;
-      height: 50px;
+        width: 50px;
+        height: 50px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 1025px) {
     .loading-spinner {
-      width: 50px;
-      height: 50px;
+        width: 50px;
+        height: 50px
+        }
     }
-  }
-</style>

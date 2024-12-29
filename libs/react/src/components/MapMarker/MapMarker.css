@@ -1,5 +1,4 @@
-<style scoped>
-  .map-marker {
+.map-marker {
     width: var(--marker-size, 20px);
     height: var(--marker-size, 20px);
     background-color: var(--marker-bg, #007bff);
@@ -10,37 +9,29 @@
     justify-content: center;
     color: var(--marker-text-color, #fff);
     font-size: var(--marker-font-size, 0.75rem);
-    transition: transform 0.3s, background-color 0.3s;
-  }
-
-  .map-marker.hovered {
+    transition: transform 0.3s, background-color 0.3s
+    }
+.map-marker.hovered {
     background-color: var(--marker-hover-bg, #0056b3);
-    transform: scale(1.1);
-  }
-
-  .map-marker.selected {
+    transform: scale(1.1)
+    }
+.map-marker.selected {
     background-color: var(--marker-selected-bg, #28a745);
-    transform: scale(1.2);
-  }
-
-  .map-marker.clustered {
+    transform: scale(1.2)
+    }
+.map-marker.clustered {
     background-color: var(--marker-clustered-bg, #ffc107);
-    transform: scale(1.3);
-  }
-
-  .map-marker.disabled {
+    transform: scale(1.3)
+    }
+.map-marker.disabled {
     background-color: var(--marker-disabled-bg, #6c757d);
     pointer-events: none;
-    opacity: 0.6;
-  }
-
-  .marker-label {
+    opacity: 0.6
+    }
+.marker-label {
     position: absolute;
     top: calc(100% + 0.5rem);
     background-color: var(--label-bg, #fff);
-    padding: var(--label-padding, 0.2rem 0.5rem);
     border-radius: var(--label-radius, 0.25rem);
-    box-shadow: var(--label-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
-    white-space: nowrap;
-  }
-</style>
+    white-space: nowrap
+    }

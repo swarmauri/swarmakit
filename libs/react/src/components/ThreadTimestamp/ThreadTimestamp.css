@@ -1,34 +1,27 @@
-<style scoped>
-  .thread-timestamp {
+.thread-timestamp {
     color: var(--timestamp-text-color, #999);
     font-size: var(--timestamp-font-size, 12px);
     display: inline-block;
-    transition: opacity 0.3s ease;
-  }
-
-  .thread-timestamp[aria-hidden="true"] {
-    opacity: 0;
-  }
-
-  .thread-timestamp[aria-hidden="false"] {
-    opacity: 1;
-  }
-
-  @media (max-width: 576px) {
-    .thread-timestamp {
-      font-size: var(--timestamp-font-size-sm, 10px);
+    transition: opacity 0.3s ease
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .thread-timestamp {
-      font-size: var(--timestamp-font-size-md, 12px);
+.thread-timestamp[aria-hidden="true"] {
+    opacity: 0
     }
-  }
-
-  @media (min-width: 769px) {
-    .thread-timestamp {
-      font-size: var(--timestamp-font-size-lg, 14px);
+.thread-timestamp[aria-hidden="false"] {
+    opacity: 1
     }
-  }
-</style>
+@media (max-width: 576px) {
+    .thread-timestamp {
+        font-size: var(--timestamp-font-size-sm, 10px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .thread-timestamp {
+        font-size: var(--timestamp-font-size-md, 12px)
+        }
+    }
+@media (min-width: 769px) {
+    .thread-timestamp {
+        font-size: var(--timestamp-font-size-lg, 14px)
+        }
+    }

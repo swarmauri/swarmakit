@@ -1,17 +1,14 @@
-<style scoped>
-  .search-with-autocomplete {
+.search-with-autocomplete {
     position: relative;
-    width: var(--search-width, 300px);
-  }
-
-  .search-with-autocomplete input {
+    width: var(--search-width, 300px)
+    }
+.search-with-autocomplete input {
     width: 100%;
     padding: var(--input-padding, 10px);
     border: 1px solid var(--input-border-color, #ccc);
-    border-radius: var(--input-border-radius, 4px);
-  }
-
-  .suggestions-list {
+    border-radius: var(--input-border-radius, 4px)
+    }
+.suggestions-list {
     position: absolute;
     width: 100%;
     background-color: var(--suggestions-bg-color, #fff);
@@ -22,22 +19,17 @@
     z-index: 1;
     margin-top: var(--suggestions-margin-top, 5px);
     list-style: none;
-    padding: 0;
-  }
-
-  .suggestions-list li {
-    padding: var(--suggestion-padding, 10px);
-    cursor: pointer;
-  }
-
-  .suggestions-list li:hover,
-  .suggestions-list li:focus {
-    background-color: var(--suggestion-hover-bg, #f0f0f0);
-  }
-
-  @media (max-width: 600px) {
-    .search-with-autocomplete {
-      width: var(--search-mobile-width, 100%);
+    padding: 0
     }
-  }
-</style>
+.suggestions-list li {
+    padding: var(--suggestion-padding, 10px);
+    cursor: pointer
+    }
+.suggestions-list li:hover, .suggestions-list li:focus {
+    background-color: var(--suggestion-hover-bg, #f0f0f0)
+    }
+@media (max-width: 600px) {
+    .search-with-autocomplete {
+        width: var(--search-mobile-width, 100%)
+        }
+    }

@@ -1,14 +1,12 @@
-<style scoped>
-  .interactive-media-map {
+.interactive-media-map {
     position: relative;
     width: var(--map-width, 100%);
     max-width: var(--map-max-width, 800px);
     height: var(--map-height, 500px);
     border: 1px solid var(--map-border-color, #ccc);
-    overflow: hidden;
-  }
-
-  .loading {
+    overflow: hidden
+    }
+.loading {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -16,30 +14,26 @@
     background-color: var(--loading-bg, rgba(255, 255, 255, 0.8));
     color: var(--loading-color, #000);
     padding: var(--loading-padding, 10px);
-    border-radius: var(--loading-border-radius, 5px);
-  }
-
-  .map {
+    border-radius: var(--loading-border-radius, 5px)
+    }
+.map {
     position: relative;
     width: 100%;
-    height: 100%;
-  }
-
-  .marker {
+    height: 100%
+    }
+.marker {
     position: absolute;
-    background-color: var(--marker-bg, #ff0000);
+    background-color: var(--marker-bg, #f00);
     color: var(--marker-color, #fff);
     padding: var(--marker-padding, 5px);
     border-radius: var(--marker-border-radius, 50%);
     cursor: pointer;
-    transform: translate(-50%, -50%);
-  }
-
-  .marker.selected {
-    background-color: var(--marker-selected-bg, #0000ff);
-  }
-
-  button {
+    transform: translate(-50%, -50%)
+    }
+.marker.selected {
+    background-color: var(--marker-selected-bg, #00f)
+    }
+button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -47,12 +41,10 @@
     color: var(--button-color, #fff);
     border: none;
     padding: var(--button-padding, 10px);
-    cursor: pointer;
-  }
-
-  @media (max-width: 600px) {
-    .interactive-media-map {
-      max-width: 100%;
+    cursor: pointer
     }
-  }
-</style>
+@media (max-width: 600px) {
+    .interactive-media-map {
+        max-width: 100%
+        }
+    }

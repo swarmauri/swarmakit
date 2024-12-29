@@ -1,52 +1,40 @@
-<style scoped>
-  .gauge-chart {
+.gauge-chart {
     width: 100%;
     height: 100%;
-    border: var(--gauge-chart-border, 1px solid #ccc);
     background-color: var(--gauge-chart-bg-color, #f9f9f9);
-    position: relative;
-  }
-
-  .gauge-chart-loading,
-  .gauge-chart-empty {
+    position: relative
+    }
+.gauge-chart-loading, .gauge-chart-empty {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: var(--gauge-chart-font-size, 16px);
-    color: var(--gauge-chart-text-color, #666);
-  }
-
-  .gauge-chart.rendered .needle {
-    stroke: var(--gauge-chart-needle-color, #007bff);
-  }
-
-  .gauge-chart.tooltipVisible .needle:hover {
-    stroke: var(--tooltip-color, #17a2b8);
-  }
-
-  .gauge-chart.max .needle {
-    stroke: var(--max-color, #dc3545);
-  }
-
-  .gauge-chart.min .needle {
-    stroke: var(--min-color, #28a745);
-  }
-
-  @media (max-width: 576px) {
-    .gauge-chart {
-      height: var(--gauge-chart-height-sm, 200px);
+    color: var(--gauge-chart-text-color, #666)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .gauge-chart {
-      height: var(--gauge-chart-height-md, 300px);
+.gauge-chart.rendered .needle {
+    stroke: var(--gauge-chart-needle-color, #007bff)
     }
-  }
-
-  @media (min-width: 769px) {
-    .gauge-chart {
-      height: var(--gauge-chart-height-lg, 400px);
+.gauge-chart.tooltipVisible .needle:hover {
+    stroke: var(--tooltip-color, #17a2b8)
     }
-  }
-</style>
+.gauge-chart.max .needle {
+    stroke: var(--max-color, #dc3545)
+    }
+.gauge-chart.min .needle {
+    stroke: var(--min-color, #28a745)
+    }
+@media (max-width: 576px) {
+    .gauge-chart {
+        height: var(--gauge-chart-height-sm, 200px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .gauge-chart {
+        height: var(--gauge-chart-height-md, 300px)
+        }
+    }
+@media (min-width: 769px) {
+    .gauge-chart {
+        height: var(--gauge-chart-height-lg, 400px)
+        }
+    }

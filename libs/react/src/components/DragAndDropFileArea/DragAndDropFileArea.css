@@ -1,5 +1,4 @@
-<style scoped>
-  .drag-and-drop-file-area {
+.drag-and-drop-file-area {
     width: 100%;
     height: 150px;
     border: 2px dashed var(--file-area-border-color);
@@ -9,52 +8,43 @@
     align-items: center;
     background-color: var(--file-area-bg-color);
     transition: background-color 0.3s, border-color 0.3s;
-    position: relative;
-  }
-
-  .drag-and-drop-file-area.dragging {
+    position: relative
+    }
+.drag-and-drop-file-area.dragging {
     border-color: var(--file-area-dragging-border-color);
-    background-color: var(--file-area-dragging-bg-color);
-  }
-
-  .drag-and-drop-file-area.disabled {
+    background-color: var(--file-area-dragging-bg-color)
+    }
+.drag-and-drop-file-area.disabled {
     opacity: 0.5;
     pointer-events: none;
-    cursor: not-allowed;
-  }
-
-  .error-message {
+    cursor: not-allowed
+    }
+.error-message {
     color: var(--file-area-error-color);
     position: absolute;
     top: 10px;
-    left: 10px;
-  }
-
-  input[type="file"] {
-    display: none;
-  }
-
-  @media (max-width: 600px) {
-    .drag-and-drop-file-area {
-      height: 120px;
+    left: 10px
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
-    .drag-and-drop-file-area {
-      height: 150px;
+input[type="file"] {
+    display: none
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (max-width: 600px) {
     .drag-and-drop-file-area {
-      height: 180px;
+        height: 120px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .drag-and-drop-file-area {
-      height: 200px;
+        height: 150px
+        }
     }
-  }
-</style>
+@media (min-width: 769px) and (max-width: 1024px) {
+    .drag-and-drop-file-area {
+        height: 180px
+        }
+    }
+@media (min-width: 1025px) {
+    .drag-and-drop-file-area {
+        height: 200px
+        }
+    }

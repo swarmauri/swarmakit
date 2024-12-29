@@ -1,64 +1,50 @@
-<style scoped>
-  .grouped-list {
+.grouped-list {
     width: 100%;
     max-width: var(--grouped-list-max-width, 400px);
-    margin: 0 auto;
-  }
-
-  .group {
-    margin-bottom: var(--group-margin-bottom, 10px);
-  }
-
-  .group-header {
+    margin: 0 auto
+    }
+.group {
+    margin-bottom: var(--group-margin-bottom, 10px)
+    }
+.group-header {
     background-color: var(--group-header-bg-color, #f5f5f5);
     padding: var(--group-header-padding, 10px);
     cursor: pointer;
-    font-weight: bold;
-    border: var(--group-header-border, 1px solid #ddd);
-  }
-
-  .list-item {
+    font-weight: bold
+    }
+.list-item {
     padding: var(--list-item-padding, 10px);
-    border-bottom: var(--list-item-border-bottom, 1px solid #ddd);
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .list-item:hover {
-    background-color: var(--list-item-hover-bg-color, #eaeaea);
-  }
-
-  .list-item.selected {
+    transition: background-color 0.3s
+    }
+.list-item:hover {
+    background-color: var(--list-item-hover-bg-color, #eaeaea)
+    }
+.list-item.selected {
     background-color: var(--list-item-selected-bg-color, #007bff);
-    color: var(--list-item-selected-text-color, #fff);
-  }
-
-  ul {
+    color: var(--list-item-selected-text-color, #fff)
+    }
+ul {
     list-style-type: none;
-    padding: 0;
-  }
-
-  @media (max-width: 600px) {
-    .grouped-list {
-      max-width: 100%;
+    padding: 0
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
+@media (max-width: 600px) {
     .grouped-list {
-      max-width: 350px;
+        max-width: 100%
+        }
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .grouped-list {
-      max-width: 400px;
+        max-width: 350px
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .grouped-list {
-      max-width: 450px;
+        max-width: 400px
+        }
     }
-  }
-</style>
+@media (min-width: 1025px) {
+    .grouped-list {
+        max-width: 450px
+        }
+    }

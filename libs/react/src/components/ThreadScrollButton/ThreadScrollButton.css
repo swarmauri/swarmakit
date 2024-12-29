@@ -1,44 +1,35 @@
-<style scoped>
-  .thread-scroll-button {
+.thread-scroll-button {
     background-color: var(--button-background-color, #28a745);
     color: var(--button-text-color, #fff);
     border: none;
-    padding: var(--button-padding, 8px 16px);
     font-size: var(--button-font-size, 14px);
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.2s ease;
     opacity: 0;
-    pointer-events: none;
-  }
-
-  .thread-scroll-button.visible {
+    pointer-events: none
+    }
+.thread-scroll-button.visible {
     opacity: 1;
-    pointer-events: auto;
-  }
-
-  .thread-scroll-button:hover:not([aria-hidden="true"]) {
-    background-color: var(--button-hover-background-color, #218838);
-  }
-
-  .thread-scroll-button:active:not([aria-hidden="true"]) {
-    transform: scale(0.98);
-  }
-
-  @media (max-width: 576px) {
-    .thread-scroll-button {
-      font-size: var(--button-font-size-sm, 12px);
+    pointer-events: auto
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .thread-scroll-button {
-      font-size: var(--button-font-size-md, 14px);
+.thread-scroll-button:hover:not([aria-hidden="true"]) {
+    background-color: var(--button-hover-background-color, #218838)
     }
-  }
-
-  @media (min-width: 769px) {
-    .thread-scroll-button {
-      font-size: var(--button-font-size-lg, 16px);
+.thread-scroll-button:active:not([aria-hidden="true"]) {
+    transform: scale(0.98)
     }
-  }
-</style>
+@media (max-width: 576px) {
+    .thread-scroll-button {
+        font-size: var(--button-font-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .thread-scroll-button {
+        font-size: var(--button-font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .thread-scroll-button {
+        font-size: var(--button-font-size-lg, 16px)
+        }
+    }

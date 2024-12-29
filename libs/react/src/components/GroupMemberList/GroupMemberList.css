@@ -1,11 +1,8 @@
-<style scoped>
-  .group-member-list {
-    border: var(--group-list-border, 1px solid #ccc);
+.group-member-list {
     border-radius: var(--group-list-border-radius, 4px);
-    padding: var(--group-list-padding, 10px);
-  }
-
-  .group-member-list button {
+    padding: var(--group-list-padding, 10px)
+    }
+.group-member-list button {
     display: block;
     width: 100%;
     background-color: var(--button-background-color, #007bff);
@@ -13,35 +10,28 @@
     padding: var(--button-padding, 10px);
     border: none;
     border-radius: var(--button-border-radius, 4px);
-    cursor: pointer;
-  }
-
-  .group-member-list ul {
+    cursor: pointer
+    }
+.group-member-list ul {
     margin-top: var(--list-margin-top, 10px);
     list-style-type: none;
-    padding: 0;
-  }
-
-  .group-member-list li {
-    padding: var(--list-item-padding, 5px);
-    border-bottom: var(--list-item-border, 1px solid #eee);
-  }
-
-  @media (max-width: 576px) {
-    .group-member-list {
-      font-size: var(--font-size-sm, 14px);
+    padding: 0
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .group-member-list {
-      font-size: var(--font-size-md, 16px);
+.group-member-list li {
+    padding: var(--list-item-padding, 5px)
     }
-  }
-
-  @media (min-width: 769px) {
+@media (max-width: 576px) {
     .group-member-list {
-      font-size: var(--font-size-lg, 18px);
+        font-size: var(--font-size-sm, 14px)
+        }
     }
-  }
-</style>
+@media (min-width: 577px) and (max-width: 768px) {
+    .group-member-list {
+        font-size: var(--font-size-md, 16px)
+        }
+    }
+@media (min-width: 769px) {
+    .group-member-list {
+        font-size: var(--font-size-lg, 18px)
+        }
+    }

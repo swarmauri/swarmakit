@@ -1,48 +1,37 @@
-<style scoped>
-  .tree-map {
+.tree-map {
     width: 100%;
     height: 100%;
-    border: var(--tree-map-border, 1px solid #ccc);
     background-color: var(--tree-map-bg-color, #f9f9f9);
-    position: relative;
-  }
-
-  .tree-map-loading,
-  .tree-map-empty {
+    position: relative
+    }
+.tree-map-loading, .tree-map-empty {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: var(--tree-map-font-size, 16px);
-    color: var(--tree-map-text-color, #666);
-  }
-
-  .tree-map.rendered .block {
-    fill: var(--tree-map-block-color, #007bff);
-  }
-
-  .tree-map.tooltipVisible .block:hover {
-    fill: var(--tooltip-color, #17a2b8);
-  }
-
-  .tree-map.hovered .block {
-    fill: var(--hover-color, #28a745);
-  }
-
-  @media (max-width: 576px) {
-    .tree-map {
-      height: var(--tree-map-height-sm, 200px);
+    color: var(--tree-map-text-color, #666)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .tree-map {
-      height: var(--tree-map-height-md, 300px);
+.tree-map.rendered .block {
+    fill: var(--tree-map-block-color, #007bff)
     }
-  }
-
-  @media (min-width: 769px) {
-    .tree-map {
-      height: var(--tree-map-height-lg, 400px);
+.tree-map.tooltipVisible .block:hover {
+    fill: var(--tooltip-color, #17a2b8)
     }
-  }
-</style>
+.tree-map.hovered .block {
+    fill: var(--hover-color, #28a745)
+    }
+@media (max-width: 576px) {
+    .tree-map {
+        height: var(--tree-map-height-sm, 200px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .tree-map {
+        height: var(--tree-map-height-md, 300px)
+        }
+    }
+@media (min-width: 769px) {
+    .tree-map {
+        height: var(--tree-map-height-lg, 400px)
+        }
+    }

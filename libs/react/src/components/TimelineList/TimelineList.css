@@ -1,61 +1,48 @@
-<style scoped>
-  .timeline-list {
+.timeline-list {
     display: flex;
     flex-direction: column;
-    padding: var(--timeline-padding, 10px);
-  }
-
-  .timeline-item {
+    padding: var(--timeline-padding, 10px)
+    }
+.timeline-item {
     display: flex;
     flex-direction: column;
     margin-bottom: var(--timeline-item-margin, 15px);
     padding: var(--timeline-item-padding, 10px);
-    border-left: var(--timeline-item-border, 2px solid #ddd);
-    transition: background-color 0.3s;
-  }
-
-  .timeline-item.active {
-    border-left-color: var(--active-border-color, #007bff);
-  }
-
-  .timeline-item.completed {
-    border-left-color: var(--completed-border-color, #28a745);
-  }
-
-  .timeline-item:hover:not(.active) {
-    background-color: var(--hover-bg-color, #f1f1f1);
-  }
-
-  .timeline-label {
+    transition: background-color 0.3s
+    }
+.timeline-item.active {
+    border-left-color: var(--active-border-color, #007bff)
+    }
+.timeline-item.completed {
+    border-left-color: var(--completed-border-color, #28a745)
+    }
+.timeline-item:hover:not(.active) {
+    background-color: var(--hover-bg-color, #f1f1f1)
+    }
+.timeline-label {
     font-weight: bold;
-    margin-bottom: var(--timeline-label-margin, 5px);
-  }
-
-  .timeline-content {
-    padding-left: var(--timeline-content-padding, 15px);
-  }
-
-  @media (max-width: 600px) {
-    .timeline-item {
-      padding: var(--timeline-item-padding-mobile, 8px);
+    margin-bottom: var(--timeline-label-margin, 5px)
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
-    .timeline-item {
-      padding: var(--timeline-item-padding-tablet, 9px);
+.timeline-content {
+    padding-left: var(--timeline-content-padding, 15px)
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (max-width: 600px) {
     .timeline-item {
-      padding: var(--timeline-item-padding-large-tablet, 10px);
+        padding: var(--timeline-item-padding-mobile, 8px)
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .timeline-item {
-      padding: var(--timeline-item-padding-desktop, 12px);
+        padding: var(--timeline-item-padding-tablet, 9px)
+        }
     }
-  }
-</style>
+@media (min-width: 769px) and (max-width: 1024px) {
+    .timeline-item {
+        padding: var(--timeline-item-padding-large-tablet, 10px)
+        }
+    }
+@media (min-width: 1025px) {
+    .timeline-item {
+        padding: var(--timeline-item-padding-desktop, 12px)
+        }
+    }

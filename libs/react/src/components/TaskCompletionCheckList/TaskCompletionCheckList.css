@@ -1,0 +1,41 @@
+.task-completion-checklist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+    }
+.checklist-item {
+    display: flex;
+    align-items: center;
+    padding: var(--checklist-item-padding, 10px);
+    margin-bottom: var(--checklist-item-margin-bottom, 5px);
+    transition: background-color 0.3s ease
+    }
+.checklist-item.checked {
+    background-color: var(--checklist-checked-color, #e0f7fa)
+    }
+.checklist-item.unchecked {
+    background-color: var(--checklist-unchecked-color, #fff)
+    }
+input[type="checkbox"] {
+    margin-right: var(--checkbox-margin-right, 10px)
+    }
+@media (max-width: 600px) {
+    .checklist-item {
+        padding: 8px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .checklist-item {
+        padding: 9px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .checklist-item {
+        padding: 10px
+        }
+    }
+@media (min-width: 1025px) {
+    .checklist-item {
+        padding: 12px
+        }
+    }

@@ -1,47 +1,38 @@
-<style scoped>
-  .skeleton-message-input-box {
+.skeleton-message-input-box {
     display: flex;
     flex-direction: column;
     opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  .skeleton-input {
+    transition: opacity 0.3s ease
+    }
+.skeleton-input {
     height: var(--skeleton-input-height, 40px);
     background-color: var(--skeleton-bg-color, #e0e0e0);
     border-radius: var(--skeleton-border-radius, 4px);
     animation: skeleton-pulse 1.5s infinite ease-in-out;
-    width: 100%;
-  }
-
-  .skeleton-message-input-box.hidden {
-    opacity: 0;
-  }
-
-  @keyframes skeleton-pulse {
+    width: 100%
+    }
+.skeleton-message-input-box.hidden {
+    opacity: 0
+    }
+@keyframes skeleton-pulse {
     0%, 100% {
-      opacity: 1;
+        opacity: 1;
+        } 50% {
+        opacity: 0.4;
+        }
     }
-    50% {
-      opacity: 0.4;
-    }
-  }
-
-  @media (max-width: 576px) {
+@media (max-width: 576px) {
     .skeleton-input {
-      height: var(--skeleton-input-height-sm, 36px);
+        height: var(--skeleton-input-height-sm, 36px)
+        }
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .skeleton-input {
-      height: var(--skeleton-input-height-md, 40px);
+        height: var(--skeleton-input-height-md, 40px)
+        }
     }
-  }
-
-  @media (min-width: 769px) {
+@media (min-width: 769px) {
     .skeleton-input {
-      height: var(--skeleton-input-height-lg, 44px);
+        height: var(--skeleton-input-height-lg, 44px)
+        }
     }
-  }
-</style>

@@ -1,39 +1,26 @@
-<style scoped>
-  .interactive-card {
-    border: var(--card-border, 1px solid #ccc);
+.interactive-card {
     border-radius: var(--card-border-radius, 8px);
-    box-shadow: var(--card-box-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
     background-color: var(--card-background-color, #fff);
     cursor: pointer;
-    opacity: 1;
-  }
-
-  .interactive-card.selected {
-    background-color: var(--card-selected-background-color, #e0f7fa);
-  }
-
-  .interactive-card.unselected:hover {
-    box-shadow: var(--card-hover-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.2));
-  }
-
-  .interactive-card.disabled {
+    opacity: 1
+    }
+.interactive-card.selected {
+    background-color: var(--card-selected-background-color, #e0f7fa)
+    }
+.interactive-card.disabled {
     cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  .interactive-card-header {
+    opacity: 0.5
+    }
+.interactive-card-header {
     padding: var(--card-header-padding, 16px);
-    background-color: var(--card-header-background-color, #f7f7f7);
-  }
-
-  .interactive-card-title {
+    background-color: var(--card-header-background-color, #f7f7f7)
+    }
+.interactive-card-title {
     margin: 0;
     font-size: var(--card-title-font-size, 1.2rem);
-    color: var(--card-title-color, #333);
-  }
-
-  .interactive-card-content {
-    padding: var(--card-content-padding, 16px);
-  }
-</style>
+    color: var(--card-title-color, #333)
+    }
+.interactive-card-content {
+    padding: var(--card-content-padding, 16px)
+    }

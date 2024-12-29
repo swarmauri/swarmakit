@@ -1,47 +1,35 @@
-<style scoped>
-  .breadcrumb {
+.breadcrumb {
     display: flex;
     gap: var(--breadcrumb-gap, 10px);
-    font-size: var(--breadcrumb-font-size, 14px);
-  }
-
-  .breadcrumb-item button {
+    font-size: var(--breadcrumb-font-size, 14px)
+    }
+.breadcrumb-item button {
     background: none;
     border: none;
     color: var(--breadcrumb-item-color, #007bff);
     cursor: pointer;
     position: relative;
-    transition: color 0.3s ease;
-  }
-
-  .breadcrumb-item button:hover {
-    color: var(--breadcrumb-item-hover-color, #0056b3);
-  }
-
-  .dropdown {
+    transition: color 0.3s ease
+    }
+.breadcrumb-item button:hover {
+    color: var(--breadcrumb-item-hover-color, #0056b3)
+    }
+.dropdown {
     position: absolute;
     top: 100%;
     left: 0;
     background-color: var(--dropdown-bg-color, #fff);
-    border: var(--dropdown-border, 1px solid #ccc);
-    box-shadow: var(--dropdown-shadow, 0px 4px 6px rgba(0, 0, 0, 0.1));
     z-index: 10;
-    list-style: none;
-    padding: var(--dropdown-padding, 8px 0);
-  }
-
-  .dropdown li {
-    padding: var(--dropdown-item-padding, 8px 16px);
-    cursor: pointer;
-  }
-
-  .dropdown li:hover {
-    background-color: var(--dropdown-item-hover-bg, #f0f0f0);
-  }
-
-  @media (max-width: 600px) {
-    .breadcrumb {
-      font-size: var(--breadcrumb-mobile-font-size, 12px);
+    list-style: none
     }
-  }
-</style>
+.dropdown li {
+    cursor: pointer
+    }
+.dropdown li:hover {
+    background-color: var(--dropdown-item-hover-bg, #f0f0f0)
+    }
+@media (max-width: 600px) {
+    .breadcrumb {
+        font-size: var(--breadcrumb-mobile-font-size, 12px)
+        }
+    }

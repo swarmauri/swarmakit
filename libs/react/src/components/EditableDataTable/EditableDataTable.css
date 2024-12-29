@@ -1,0 +1,53 @@
+.editable-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--table-font-size, 18px);
+    text-align: left
+    }
+.add-row-button {
+    margin-bottom: var(--button-margin-bottom, 10px);
+    background-color: var(--button-background-color, #28a745);
+    color: var(--button-color, white);
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer
+    }
+.add-row-button:hover {
+    background-color: var(--button-hover-background-color, #218838)
+    }
+table {
+    width: 100%
+    }
+th, td {
+    padding: var(--cell-padding, 8px)
+    }
+th {
+    background-color: var(--th-background-color, #f2f2f2)
+    }
+tr.editing {
+    background-color: var(--editing-row-background-color, #e9ecef)
+    }
+.row-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--actions-gap, 10px)
+    }
+button {
+    font-size: var(--button-font-size, 14px);
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    background-color: var(--button-background-color, #007BFF);
+    color: var(--button-color, white)
+    }
+button:hover {
+    background-color: var(--button-hover-background-color, #0056b3)
+    }
+input[type="text"], textarea {
+    width: 100%;
+    padding: var(--input-padding, 5px);
+    border-radius: var(--input-border-radius, 4px)
+    }
+textarea {
+    resize: vertical
+    }

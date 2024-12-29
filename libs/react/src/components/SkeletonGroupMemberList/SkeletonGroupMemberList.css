@@ -1,48 +1,39 @@
-<style scoped>
-  .skeleton-group-member-list {
+.skeleton-group-member-list {
     display: flex;
     flex-direction: column;
     gap: var(--skeleton-member-gap, 10px);
     opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  .skeleton-member {
+    transition: opacity 0.3s ease
+    }
+.skeleton-member {
     width: var(--skeleton-member-width, 100%);
     height: var(--skeleton-member-height, 20px);
     background-color: var(--skeleton-bg-color, #e0e0e0);
     border-radius: var(--skeleton-border-radius, 4px);
-    animation: skeleton-pulse 1.5s infinite ease-in-out;
-  }
-
-  .skeleton-group-member-list.hidden {
-    opacity: 0;
-  }
-
-  @keyframes skeleton-pulse {
+    animation: skeleton-pulse 1.5s infinite ease-in-out
+    }
+.skeleton-group-member-list.hidden {
+    opacity: 0
+    }
+@keyframes skeleton-pulse {
     0%, 100% {
-      opacity: 1;
+        opacity: 1;
+        } 50% {
+        opacity: 0.4;
+        }
     }
-    50% {
-      opacity: 0.4;
-    }
-  }
-
-  @media (max-width: 576px) {
+@media (max-width: 576px) {
     .skeleton-member {
-      height: var(--skeleton-member-height-sm, 15px);
+        height: var(--skeleton-member-height-sm, 15px)
+        }
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .skeleton-member {
-      height: var(--skeleton-member-height-md, 18px);
+        height: var(--skeleton-member-height-md, 18px)
+        }
     }
-  }
-
-  @media (min-width: 769px) {
+@media (min-width: 769px) {
     .skeleton-member {
-      height: var(--skeleton-member-height-lg, 20px);
+        height: var(--skeleton-member-height-lg, 20px)
+        }
     }
-  }
-</style>

@@ -1,13 +1,9 @@
-<style scoped>
-  .bottom-navigation-bar {
+.bottom-navigation-bar {
     display: flex;
     justify-content: space-around;
-    background-color: var(--nav-bar-bg-color, #fff);
-    padding: var(--nav-bar-padding, 10px 0);
-    border-top: var(--nav-bar-border, 1px solid #ccc);
-  }
-
-  .nav-item button {
+    background-color: var(--nav-bar-bg-color, #fff)
+    }
+.nav-item button {
     background: none;
     border: none;
     color: var(--nav-item-color, #000);
@@ -16,25 +12,15 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: color 0.3s ease;
-  }
-
-  .nav-item.selected button {
-    color: var(--nav-item-selected-color, #007bff);
-  }
-
-  .nav-item button:hover:not(:disabled) {
-    color: var(--nav-item-hover-color, #0056b3);
-  }
-
-  .nav-item.disabled button {
-    color: var(--nav-item-disabled-color, #ccc);
-    cursor: not-allowed;
-  }
-
-  @media (max-width: 600px) {
-    .bottom-navigation-bar {
-      padding: var(--nav-bar-mobile-padding, 8px 0);
+    transition: color 0.3s ease
     }
-  }
-</style>
+.nav-item.selected button {
+    color: var(--nav-item-selected-color, #007bff)
+    }
+.nav-item button:hover:not(:disabled) {
+    color: var(--nav-item-hover-color, #0056b3)
+    }
+.nav-item.disabled button {
+    color: var(--nav-item-disabled-color, #ccc);
+    cursor: not-allowed
+    }

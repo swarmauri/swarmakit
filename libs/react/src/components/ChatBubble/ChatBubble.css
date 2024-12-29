@@ -1,33 +1,26 @@
-<style scoped>
-  .chat-bubble {
+.chat-bubble {
     padding: var(--chat-bubble-padding, 10px);
     border-radius: var(--chat-bubble-radius, 15px);
     background-color: var(--chat-bubble-bg, #f1f1f1);
     color: var(--chat-bubble-color, #333);
     max-width: var(--chat-bubble-max-width, 300px);
     margin: var(--chat-bubble-margin, 5px);
-    transition: background-color 0.3s;
-  }
-
-  .chat-bubble.read {
-    background-color: var(--chat-bubble-read-bg, #d4edda);
-  }
-
-  .chat-bubble.unread {
-    background-color: var(--chat-bubble-unread-bg, #f8d7da);
-  }
-
-  .chat-bubble:hover {
-    background-color: var(--chat-bubble-hover-bg, #e2e3e5);
-  }
-
-  .chat-bubble:active {
-    background-color: var(--chat-bubble-active-bg, #c3e6cb);
-  }
-
-  @media (max-width: 600px) {
-    .chat-bubble {
-      max-width: var(--chat-bubble-mobile-max-width, 100%);
+    transition: background-color 0.3s
     }
-  }
-</style>
+.chat-bubble.read {
+    background-color: var(--chat-bubble-read-bg, #d4edda)
+    }
+.chat-bubble.unread {
+    background-color: var(--chat-bubble-unread-bg, #f8d7da)
+    }
+.chat-bubble:hover {
+    background-color: var(--chat-bubble-hover-bg, #e2e3e5)
+    }
+.chat-bubble:active {
+    background-color: var(--chat-bubble-active-bg, #c3e6cb)
+    }
+@media (max-width: 600px) {
+    .chat-bubble {
+        max-width: var(--chat-bubble-mobile-max-width, 100%)
+        }
+    }

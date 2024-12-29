@@ -1,52 +1,40 @@
-<style scoped>
-  .scrollable-list {
+.scrollable-list {
     max-height: var(--scrollable-list-max-height, 200px);
     overflow-y: auto;
     padding: var(--scrollable-list-padding, 10px);
-    border: var(--scrollable-list-border, 1px solid #ccc);
-    transition: background-color 0.3s;
-  }
-
-  .scrollable-list.scrolling {
-    background-color: var(--scrolling-bg-color, #e0f7fa);
-  }
-
-  .scrollable-list.disabled {
+    transition: background-color 0.3s
+    }
+.scrollable-list.scrolling {
+    background-color: var(--scrolling-bg-color, #e0f7fa)
+    }
+.scrollable-list.disabled {
     background-color: var(--disabled-bg-color, #f5f5f5);
-    pointer-events: none;
-  }
-
-  .list-item {
-    padding: var(--list-item-padding, 10px 15px);
+    pointer-events: none
+    }
+.list-item {
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .list-item:hover {
-    background-color: var(--hover-bg-color, #f1f1f1);
-  }
-
-  @media (max-width: 600px) {
-    .scrollable-list {
-      max-height: var(--scrollable-list-max-height-mobile, 150px);
+    transition: background-color 0.3s
     }
-  }
-
-  @media (min-width: 601px) and (max-width: 768px) {
-    .scrollable-list {
-      max-height: var(--scrollable-list-max-height-tablet, 170px);
+.list-item:hover {
+    background-color: var(--hover-bg-color, #f1f1f1)
     }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (max-width: 600px) {
     .scrollable-list {
-      max-height: var(--scrollable-list-max-height-large-tablet, 190px);
+        max-height: var(--scrollable-list-max-height-mobile, 150px)
+        }
     }
-  }
-
-  @media (min-width: 1025px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .scrollable-list {
-      max-height: var(--scrollable-list-max-height-desktop, 220px);
+        max-height: var(--scrollable-list-max-height-tablet, 170px)
+        }
     }
-  }
-</style>
+@media (min-width: 769px) and (max-width: 1024px) {
+    .scrollable-list {
+        max-height: var(--scrollable-list-max-height-large-tablet, 190px)
+        }
+    }
+@media (min-width: 1025px) {
+    .scrollable-list {
+        max-height: var(--scrollable-list-max-height-desktop, 220px)
+        }
+    }

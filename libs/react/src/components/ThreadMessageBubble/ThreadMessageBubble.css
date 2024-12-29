@@ -1,64 +1,51 @@
-<style scoped>
-  .message-bubble {
+.message-bubble {
     max-width: var(--bubble-max-width, 70%);
     padding: var(--bubble-padding, 10px);
     border-radius: var(--bubble-border-radius, 15px);
-    margin: var(--bubble-margin, 5px 0);
     position: relative;
     font-size: var(--bubble-font-size, 14px);
-    color: var(--bubble-text-color, #fff);
-  }
-
-  .message-bubble.sender {
+    color: var(--bubble-text-color, #fff)
+    }
+.message-bubble.sender {
     background-color: var(--sender-bg, #007bff);
-    align-self: flex-end;
-  }
-
-  .message-bubble.receiver {
+    align-self: flex-end
+    }
+.message-bubble.receiver {
     background-color: var(--receiver-bg, #f1f0f0);
     color: var(--receiver-text-color, #000);
-    align-self: flex-start;
-  }
-
-  .message-bubble.sent {
-    border: 1px solid var(--sent-border-color, #007bff);
-  }
-
-  .message-bubble.received {
-    border: 1px solid var(--received-border-color, #ccc);
-  }
-
-  .message-bubble.read {
-    opacity: 0.8;
-  }
-
-  .message-bubble.unread {
-    opacity: 1;
-  }
-
-  .timestamp {
+    align-self: flex-start
+    }
+.message-bubble.sent {
+    border: 1px solid var(--sent-border-color, #007bff)
+    }
+.message-bubble.received {
+    border: 1px solid var(--received-border-color, #ccc)
+    }
+.message-bubble.read {
+    opacity: 0.8
+    }
+.message-bubble.unread {
+    opacity: 1
+    }
+.timestamp {
     font-size: var(--timestamp-font-size, 12px);
     position: absolute;
     bottom: -15px;
     right: 10px;
-    color: var(--timestamp-color, #999);
-  }
-
-  @media (max-width: 576px) {
-    .message-bubble {
-      font-size: var(--bubble-font-size-sm, 12px);
+    color: var(--timestamp-color, #999)
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
+@media (max-width: 576px) {
     .message-bubble {
-      font-size: var(--bubble-font-size-md, 14px);
+        font-size: var(--bubble-font-size-sm, 12px)
+        }
     }
-  }
-
-  @media (min-width: 769px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .message-bubble {
-      font-size: var(--bubble-font-size-lg, 16px);
+        font-size: var(--bubble-font-size-md, 14px)
+        }
     }
-  }
-</style>
+@media (min-width: 769px) {
+    .message-bubble {
+        font-size: var(--bubble-font-size-lg, 16px)
+        }
+    }

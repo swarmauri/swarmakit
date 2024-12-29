@@ -1,5 +1,4 @@
-<style scoped>
-  .avatar {
+.avatar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,47 +7,39 @@
     background-color: var(--avatar-bg, #e0e0e0);
     color: var(--avatar-color, #fff);
     font-size: var(--avatar-font-size, 1rem);
-    text-transform: uppercase;
-  }
-
-  .avatar.small {
+    text-transform: uppercase
+    }
+.avatar.small {
     width: var(--avatar-small-size, 30px);
-    height: var(--avatar-small-size, 30px);
-  }
-
-  .avatar.medium {
+    height: var(--avatar-small-size, 30px)
+    }
+.avatar.medium {
     width: var(--avatar-medium-size, 50px);
-    height: var(--avatar-medium-size, 50px);
-  }
-
-  .avatar.large {
+    height: var(--avatar-medium-size, 50px)
+    }
+.avatar.large {
     width: var(--avatar-large-size, 70px);
-    height: var(--avatar-large-size, 70px);
-  }
-
-  img {
+    height: var(--avatar-large-size, 70px)
+    }
+img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-  }
-
-  .placeholder {
+    object-fit: cover
+    }
+.placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
-  }
-
-  @media (max-width: 600px) {
+    height: 100%
+    }
+@media (max-width: 600px) {
     .avatar.medium {
-      width: var(--avatar-small-size, 30px);
-      height: var(--avatar-small-size, 30px);
-    }
-
+        width: var(--avatar-small-size, 30px);
+        height: var(--avatar-small-size, 30px)
+        }
     .avatar.large {
-      width: var(--avatar-medium-size, 50px);
-      height: var(--avatar-medium-size, 50px);
+        width: var(--avatar-medium-size, 50px);
+        height: var(--avatar-medium-size, 50px)
+        }
     }
-  }
-</style>

@@ -1,41 +1,32 @@
-<style scoped>
-  .thread-read-receipt {
+.thread-read-receipt {
     font-size: var(--icon-font-size, 24px);
     color: var(--icon-color, #000);
-    transition: color 0.3s ease;
-  }
-
-  .thread-read-receipt.seen {
-    color: var(--icon-seen-color, #28a745);
-  }
-
-  .thread-read-receipt.unseen {
-    color: var(--icon-unseen-color, #6c757d);
-  }
-
-  .thread-read-receipt.delivered {
-    color: var(--icon-delivered-color, #007bff);
-  }
-
-  .thread-read-receipt.failed {
-    color: var(--icon-failed-color, #dc3545);
-  }
-
-  @media (max-width: 576px) {
-    .thread-read-receipt {
-      font-size: var(--icon-font-size-sm, 20px);
+    transition: color 0.3s ease
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .thread-read-receipt {
-      font-size: var(--icon-font-size-md, 22px);
+.thread-read-receipt.seen {
+    color: var(--icon-seen-color, #28a745)
     }
-  }
-
-  @media (min-width: 769px) {
-    .thread-read-receipt {
-      font-size: var(--icon-font-size-lg, 24px);
+.thread-read-receipt.unseen {
+    color: var(--icon-unseen-color, #6c757d)
     }
-  }
-</style>
+.thread-read-receipt.delivered {
+    color: var(--icon-delivered-color, #007bff)
+    }
+.thread-read-receipt.failed {
+    color: var(--icon-failed-color, #dc3545)
+    }
+@media (max-width: 576px) {
+    .thread-read-receipt {
+        font-size: var(--icon-font-size-sm, 20px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .thread-read-receipt {
+        font-size: var(--icon-font-size-md, 22px)
+        }
+    }
+@media (min-width: 769px) {
+    .thread-read-receipt {
+        font-size: var(--icon-font-size-lg, 24px)
+        }
+    }

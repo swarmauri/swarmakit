@@ -1,5 +1,4 @@
-<style scoped>
-  .current-location-button {
+.current-location-button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -9,25 +8,19 @@
     color: var(--button-color, #fff);
     border: none;
     border-radius: 50%;
-    box-shadow: var(--button-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
     transition: background-color 0.3s;
-    cursor: pointer;
-  }
-
-  .current-location-button:disabled {
+    cursor: pointer
+    }
+.current-location-button:disabled {
     background-color: var(--button-disabled-bg, #ced4da);
-    cursor: not-allowed;
-  }
-
-  .current-location-button.active {
-    background-color: var(--button-active-bg, #0056b3);
-  }
-
-  .current-location-button.searching {
-    background-color: var(--button-searching-bg, #ffc107);
-  }
-
-  .current-location-button:hover:not(:disabled) {
-    background-color: var(--button-hover-bg, #0056b3);
-  }
-</style>
+    cursor: not-allowed
+    }
+.current-location-button.active {
+    background-color: var(--button-active-bg, #0056b3)
+    }
+.current-location-button.searching {
+    background-color: var(--button-searching-bg, #ffc107)
+    }
+.current-location-button:hover:not(:disabled) {
+    background-color: var(--button-hover-bg, #0056b3)
+    }

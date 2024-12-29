@@ -1,42 +1,33 @@
-<style scoped>
-  .thread-pinned-message {
+.thread-pinned-message {
     padding: var(--message-padding, 10px);
     border-radius: var(--message-border-radius, 5px);
     transition: opacity 0.3s ease;
-    opacity: 1;
-  }
-
-  .thread-pinned-message.pinned {
-    background-color: var(--message-pinned-bg-color, #ffeb3b);
-  }
-
-  .thread-pinned-message.unpinned {
-    background-color: var(--message-unpinned-bg-color, #f5f5f5);
-  }
-
-  .thread-pinned-message.visible {
-    opacity: 1;
-  }
-
-  .thread-pinned-message.hidden {
-    opacity: 0;
-  }
-
-  @media (max-width: 576px) {
-    .thread-pinned-message {
-      font-size: var(--message-font-size-sm, 14px);
+    opacity: 1
     }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px) {
-    .thread-pinned-message {
-      font-size: var(--message-font-size-md, 16px);
+.thread-pinned-message.pinned {
+    background-color: var(--message-pinned-bg-color, #ffeb3b)
     }
-  }
-
-  @media (min-width: 769px) {
-    .thread-pinned-message {
-      font-size: var(--message-font-size-lg, 18px);
+.thread-pinned-message.unpinned {
+    background-color: var(--message-unpinned-bg-color, #f5f5f5)
     }
-  }
-</style>
+.thread-pinned-message.visible {
+    opacity: 1
+    }
+.thread-pinned-message.hidden {
+    opacity: 0
+    }
+@media (max-width: 576px) {
+    .thread-pinned-message {
+        font-size: var(--message-font-size-sm, 14px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .thread-pinned-message {
+        font-size: var(--message-font-size-md, 16px)
+        }
+    }
+@media (min-width: 769px) {
+    .thread-pinned-message {
+        font-size: var(--message-font-size-lg, 18px)
+        }
+    }
