@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-interface AudioPlayerAdvancedProps {
+export interface AudioPlayerAdvancedProps {
   src: string;
 }
 
