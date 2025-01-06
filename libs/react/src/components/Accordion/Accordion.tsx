@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface AccordionProps {
+export interface AccordionProps {
   title: string;
   content: string;
   isOpen?: boolean;
