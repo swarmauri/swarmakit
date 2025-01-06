@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import Avatar, { AvatarProps } from './Avatar';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AvatarProps> = (args) => <Avatar {...args} />;
+const Template: StoryFn<AvatarProps> = (args) => <Avatar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
