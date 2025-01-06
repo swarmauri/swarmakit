@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import AudioPlayer, { AudioPlayerProps } from './AudioPlayer';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AudioPlayerProps> = (args) => <AudioPlayer {...args} />;
+const Template: StoryFn<AudioPlayerProps> = (args) => <AudioPlayer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
