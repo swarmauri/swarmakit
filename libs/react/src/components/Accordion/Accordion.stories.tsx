@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Accordion from './Accordion';
+import { Meta, StoryFn } from '@storybook/react';
+import Accordion, { AccordionProps } from './Accordion';
 
 export default {
   title: 'component/Lists/Accordion',
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AccordionProps> = (args) => <Accordion {...args} />;
+const Template: StoryFn<AccordionProps> = (args) => <Accordion {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
