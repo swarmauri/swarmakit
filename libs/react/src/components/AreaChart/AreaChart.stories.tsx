@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import AreaChart, { AreaChartProps } from './AreaChart';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AreaChartProps> = (args) => <AreaChart {...args} />;
+const Template: StoryFn<AreaChartProps> = (args) => <AreaChart {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
