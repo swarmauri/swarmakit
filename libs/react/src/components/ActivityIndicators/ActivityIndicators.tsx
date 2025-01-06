@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ActivityIndicatorsProps {
+export interface ActivityIndicatorsProps {
   state: 'loading' | 'success' | 'error';
 }
 
