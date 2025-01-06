@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Badge from './Badge';
+import { Meta, StoryFn } from '@storybook/react';
+import Badge, { BadgeProps } from './Badge';
 
 export default {
   title: 'component/Indicators/Badge',
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story = (args) => <Badge {...args} />;
+const Template: StoryFn<BadgeProps> = (args) => <Badge {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
