@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface BannerProps {
+export interface BannerProps {
   state: 'displayed' | 'hidden' | 'withCTA' | 'dismissed';
   message: string;
   ctaLabel?: string;
