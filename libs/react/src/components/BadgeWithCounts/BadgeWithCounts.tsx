@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface BadgeWithCountsProps {
+export interface BadgeWithCountsProps {
   count: number;
   maxCount?: number;
 }
