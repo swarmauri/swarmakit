@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import BarChart, { BarChartProps } from './BarChart';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<BarChartProps> = (args) => <BarChart {...args} />;
+const Template: StoryFn<BarChartProps> = (args) => <BarChart {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
