@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import Banner, { BannerProps } from './Banner';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<BannerProps> = (args) => <Banner {...args} />;
+const Template: StoryFn<BannerProps> = (args) => <Banner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
