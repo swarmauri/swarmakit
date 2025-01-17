@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import ActionableList from './ActionableList';
+import { Meta, StoryFn } from '@storybook/react';
+import ActionableList,{ActionableListProps} from './ActionableList';
 
 export default {
   title: 'component/Lists/ActionableList',
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<ActionableListProps> = (args) => <ActionableList {...args} />;
+const Template: StoryFn<ActionableListProps> = (args) => <ActionableList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

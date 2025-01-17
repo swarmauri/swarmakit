@@ -7,7 +7,7 @@ interface ActionableListItem {
   disabled?: boolean;
 }
 
-interface ActionableListProps {
+export interface ActionableListProps {
   items: ActionableListItem[];
   onAction: (id: number) => void;
   isLoading?: boolean;
