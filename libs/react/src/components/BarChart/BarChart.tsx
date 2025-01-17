@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface BarChartProps {
+export interface BarChartProps {
   state: 'loading' | 'rendered' | 'empty' | 'stacked' | 'grouped' | 'hovered' | 'clicked';
   data: Array<{ category: string; value: number }>;
 }
@@ -14,11 +14,11 @@ const BarChart: React.FC<BarChartProps> = ({ state, data }) => {
     >
       {state === 'loading' && <div className="chart-loading">Loading...</div>}
       {state === 'empty' && <div className="chart-empty">No Data</div>}
-      {state === 'rendered' && /* Render the chart using data */}
-      {state === 'stacked' && /* Render stacked bars */}
-      {state === 'grouped' && /* Render grouped bars */}
-      {state === 'hovered' && /* Render chart with hover effect */}
-      {state === 'clicked' && /* Render chart with clicked bar */}
+      {state === 'rendered' && <div></div>}
+      {state === 'stacked' && <div></div>}
+      {state === 'grouped' && <div></div>}
+      {state === 'hovered' && <div></div>}
+      {state === 'clicked' && <div></div>}
     </div>
   );
 };

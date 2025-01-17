@@ -1,7 +1,7 @@
 import React from 'react';
 import './BasicCard.css';
 
-interface BasicCardProps {
+export interface BasicCardProps {
   header: string;
   body: string;
   footer: string;

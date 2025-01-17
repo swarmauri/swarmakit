@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import BasicCard, { BasicCardProps } from './BasicCard';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<BasicCardProps> = (args) => <BasicCard {...args} />;
+const Template: StoryFn<BasicCardProps> = (args) => <BasicCard {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
