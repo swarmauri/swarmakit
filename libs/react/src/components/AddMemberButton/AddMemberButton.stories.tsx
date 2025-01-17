@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import AddMemberButton, { AddMemberButtonProps } from './AddMemberButton';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AddMemberButtonProps> = (args) => <AddMemberButton {...args} />;
+const Template: StoryFn<AddMemberButtonProps> = (args) => <AddMemberButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

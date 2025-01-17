@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface AddMemberButtonProps {
+export interface AddMemberButtonProps {
   isEnabled: boolean;
   onClick: () => void;
 }
