@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface BadgeProps {
+export interface BadgeProps {
   state: 'default' | 'notification' | 'status-indicator';
   label: string;
 }
