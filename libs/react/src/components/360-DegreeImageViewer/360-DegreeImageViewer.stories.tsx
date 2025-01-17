@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import DegreeImageViewer, { ImageViewerProps } from './360-DegreeImageViewer';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<ImageViewerProps> = (args) => <DegreeImageViewer {...args} />;
+const Template: StoryFn<ImageViewerProps> = (args) => <DegreeImageViewer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
