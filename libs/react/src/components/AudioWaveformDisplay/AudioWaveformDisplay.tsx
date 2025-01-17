@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface AudioWaveformDisplayProps {
+export interface AudioWaveformDisplayProps {
   src: string;
 }
 

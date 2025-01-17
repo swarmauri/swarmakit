@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import AudioWaveformDisplay, { AudioWaveformDisplayProps } from './AudioWaveformDisplay';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AudioWaveformDisplayProps> = (args) => <AudioWaveformDisplay {...args} />;
+const Template: StoryFn<AudioWaveformDisplayProps> = (args) => <AudioWaveformDisplay {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
