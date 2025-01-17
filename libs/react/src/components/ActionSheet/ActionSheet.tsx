@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-interface ActionSheetProps {
+export interface ActionSheetProps {
   isOpen: boolean;
   onClose: () => void;
   actions: { label: string; onClick: () => void }[];
