@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import ActivityIndicators from './ActivityIndicators';
+import { Meta, StoryFn } from '@storybook/react';
+import ActivityIndicators, { ActivityIndicatorsProps } from './ActivityIndicators';
 
 export default {
   title: 'component/Indicators/ActivityIndicators',
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story = (args) => <ActivityIndicators {...args} />;
+const Template: StoryFn<ActivityIndicatorsProps> = (args) => <ActivityIndicators{...args} />;
 
 export const Loading = Template.bind({});
 Loading.args = {
