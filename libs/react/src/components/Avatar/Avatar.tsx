@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface AvatarProps {
+export interface AvatarProps {
   imageUrl?: string;
   altText: string;
   size?: 'small' | 'medium' | 'large';
