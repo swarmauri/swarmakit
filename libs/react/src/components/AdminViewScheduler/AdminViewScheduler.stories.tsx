@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import AdminViewScheduler, { AdminViewSchedulerProps } from './AdminViewScheduler';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AdminViewSchedulerProps> = (args) => <AdminViewScheduler {...args} />;
+const Template: StoryFn<AdminViewSchedulerProps> = (args) => <AdminViewScheduler {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -34,13 +34,13 @@ Default.args = {
 
 export const EventAdded = Template.bind({});
 EventAdded.args = {
-  initialEvents: [...Default.args.initialEvents],
+  initialEvents: [...(Default.args?.initialEvents || [])],
 };
 
 export const EventEdited = Template.bind({});
 EventEdited.args = {
   initialEvents: [
-    ...Default.args.initialEvents.map(event => 
+    ...(Default.args?.initialEvents || []).map(event => 
       event.id === '1' ? { ...event, title: 'Updated Team Meeting' } : event
     ),
   ],
@@ -48,5 +48,5 @@ EventEdited.args = {
 
 export const EventDeleted = Template.bind({});
 EventDeleted.args = {
-  initialEvents: Default.args.initialEvents.filter(event => event.id !== '1'),
+  initialEvents: (Default.args?.initialEvents || []).filter(event => event.id !== '1'),
 };

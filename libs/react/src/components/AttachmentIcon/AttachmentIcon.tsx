@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface AttachmentIconProps {
+export interface AttachmentIconProps {
   disabled?: boolean;
   onClick?: () => void;
 }

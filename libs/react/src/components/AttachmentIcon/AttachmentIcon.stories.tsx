@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import AttachmentIcon, { AttachmentIconProps } from './AttachmentIcon';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: Story<AttachmentIconProps> = (args) => <AttachmentIcon {...args} />;
+const Template: StoryFn<AttachmentIconProps> = (args) => <AttachmentIcon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};

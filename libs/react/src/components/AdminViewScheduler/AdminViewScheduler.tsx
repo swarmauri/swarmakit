@@ -10,7 +10,7 @@ interface Event {
   description: string;
 }
 
-interface AdminViewSchedulerProps {
+export interface AdminViewSchedulerProps {
   initialEvents: Event[];
 }
 
