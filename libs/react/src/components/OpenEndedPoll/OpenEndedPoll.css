@@ -1,0 +1,40 @@
+.open-ended-poll {
+    padding: var(--poll-padding, 20px);
+    border-radius: var(--poll-border-radius, 5px);
+    max-width: var(--poll-max-width, 600px)
+    }
+.poll-question {
+    font-size: var(--question-font-size, 18px);
+    margin-bottom: var(--question-margin-bottom, 10px)
+    }
+.response-input {
+    width: 100%;
+    height: var(--response-input-height, 100px);
+    padding: var(--response-input-padding, 10px);
+    border-radius: var(--response-input-border-radius, 5px);
+    margin-bottom: var(--response-input-margin-bottom, 10px)
+    }
+.submit-button {
+    border-radius: var(--submit-button-border-radius, 5px);
+    background-color: var(--submit-button-bg-color, #007bff);
+    color: var(--submit-button-text-color, #fff);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.submit-button:disabled {
+    background-color: var(--submit-button-disabled-bg-color, #ccc);
+    cursor: not-allowed
+    }
+@media (max-width: 480px) {
+    .open-ended-poll {
+        padding: var(--poll-padding-mobile, 15px);
+        max-width: var(--poll-max-width-mobile, 100%)
+        }
+    .poll-question {
+        font-size: var(--question-font-size-mobile, 16px)
+        }
+    .response-input {
+        height: var(--response-input-height-mobile, 80px)
+        }
+    }

@@ -1,0 +1,46 @@
+.dropdown-menu {
+    position: relative
+    }
+.dropdown-toggle {
+    background: var(--dropdown-toggle-bg, #007bff);
+    color: var(--dropdown-toggle-color, #fff);
+    padding: var(--dropdown-toggle-padding, 10px);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+.dropdown-toggle:hover {
+    background: var(--dropdown-toggle-hover-bg, #0056b3)
+    }
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--menu-list-bg, #fff);
+    display: none;
+    width: 200px
+    }
+.menu-list.expanded {
+    display: block
+    }
+.menu-item button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: var(--menu-item-padding, 10px);
+    color: var(--menu-item-color, #333);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease
+    }
+.menu-item button:hover {
+    background: var(--menu-item-hover-bg, #f0f0f0);
+    color: var(--menu-item-hover-color, #007bff)
+    }
+.menu-item button:active {
+    background: var(--menu-item-active-bg, #e0e0e0);
+    color: var(--menu-item-active-color, #0056b3)
+    }

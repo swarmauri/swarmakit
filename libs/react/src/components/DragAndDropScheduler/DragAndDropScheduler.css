@@ -1,0 +1,25 @@
+.scheduler {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    border: 1px solid var(--scheduler-border-color, #ccc)
+    }
+.event {
+    position: absolute;
+    height: var(--event-height, 40px);
+    background-color: var(--event-bg, #007bff);
+    color: var(--event-color, #fff);
+    border-radius: var(--event-border-radius, 4px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center
+    }
+.event.dragging {
+    opacity: 0.8
+    }
+@media (max-width: 600px) {
+    .event {
+        height: var(--event-height-mobile, 30px)
+        }
+    }

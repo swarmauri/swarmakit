@@ -1,0 +1,26 @@
+.column-visibility-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: var(--toggle-gap, 8px);
+    max-width: var(--toggle-max-width, 300px)
+    }
+.column-toggle-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--toggle-item-background-color, #f9f9f9);
+    padding: var(--toggle-item-padding, 8px);
+    border-radius: var(--toggle-item-border-radius, 4px);
+    transition: background-color 0.3s ease
+    }
+.column-toggle-item:hover {
+    background-color: var(--toggle-item-hover-background-color, #e0e0e0)
+    }
+input[type="checkbox"] {
+    margin-right: var(--checkbox-margin-right, 8px)
+    }
+@media (max-width: 600px) {
+    .column-visibility-toggle {
+        max-width: var(--toggle-max-width-mobile, 200px);
+        gap: var(--toggle-gap-mobile, 6px)
+        }
+    }

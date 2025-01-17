@@ -1,0 +1,47 @@
+.status-dots {
+    display: flex;
+    align-items: center
+    }
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--status-color, #c0c0c0);
+    transition: background-color 0.3s ease
+    }
+.status-dot.online {
+    background-color: var(--status-online-color, #0f0)
+    }
+.status-dot.offline {
+    background-color: var(--status-offline-color, #f00)
+    }
+.status-dot.busy {
+    background-color: var(--status-busy-color, #ffa500)
+    }
+.status-dot.idle {
+    background-color: var(--status-idle-color, #ff0)
+    }
+@media (max-width: 600px) {
+    .status-dot {
+        width: 8px;
+        height: 8px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .status-dot {
+        width: 9px;
+        height: 9px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .status-dot {
+        width: 10px;
+        height: 10px
+        }
+    }
+@media (min-width: 1025px) {
+    .status-dot {
+        width: 12px;
+        height: 12px
+        }
+    }

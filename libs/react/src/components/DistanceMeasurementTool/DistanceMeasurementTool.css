@@ -1,0 +1,31 @@
+.distance-tool {
+    padding: var(--distance-tool-padding, 10px);
+    border-radius: var(--distance-tool-border-radius, 5px);
+    font-size: var(--distance-tool-font-size, 14px);
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+    }
+.distance-tool .status {
+    font-weight: bold
+    }
+.distance-tool .distance {
+    margin-left: 10px
+    }
+.distance-tool.active {
+    background-color: var(--distance-tool-active-bg, #d1ecf1);
+    color: var(--distance-tool-active-color, #0c5460)
+    }
+.distance-tool.inactive {
+    background-color: var(--distance-tool-inactive-bg, #f8f9fa);
+    color: var(--distance-tool-inactive-color, #6c757d)
+    }
+.distance-tool.measuring {
+    background-color: var(--distance-tool-measuring-bg, #fff3cd);
+    color: var(--distance-tool-measuring-color, #856404)
+    }
+.distance-tool.completed {
+    background-color: var(--distance-tool-completed-bg, #d4edda);
+    color: var(--distance-tool-completed-color, #155724)
+    }

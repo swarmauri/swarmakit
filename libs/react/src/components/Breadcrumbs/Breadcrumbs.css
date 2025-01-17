@@ -1,0 +1,26 @@
+.breadcrumbs {
+    display: flex;
+    gap: var(--breadcrumbs-gap, 10px);
+    font-size: var(--breadcrumbs-font-size, 14px)
+    }
+.breadcrumb-item {
+    display: inline;
+    color: var(--breadcrumb-item-color, #007bff)
+    }
+.breadcrumb-item a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease
+    }
+.breadcrumb-item a:hover {
+    color: var(--breadcrumb-item-hover-color, #0056b3)
+    }
+.breadcrumb-item.active {
+    font-weight: bold;
+    color: var(--breadcrumb-active-color, #333)
+    }
+@media (max-width: 600px) {
+    .breadcrumbs {
+        font-size: var(--breadcrumbs-mobile-font-size, 12px)
+        }
+    }

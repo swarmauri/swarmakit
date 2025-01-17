@@ -1,0 +1,43 @@
+.message-bubble {
+    padding: var(--message-padding, 10px);
+    border-radius: var(--message-radius, 15px);
+    margin-bottom: var(--message-margin, 10px);
+    max-width: var(--message-max-width, 60%)
+    }
+.message-bubble-sender {
+    background-color: var(--sender-bg-color, #dcf8c6);
+    color: var(--sender-text-color, #000);
+    align-self: flex-end
+    }
+.message-bubble-receiver {
+    background-color: var(--receiver-bg-color, #fff);
+    color: var(--receiver-text-color, #000);
+    align-self: flex-start
+    }
+.message-status-sent {
+    border: 1px solid var(--status-sent-border, #34b7f1)
+    }
+.message-status-received {
+    border: 1px solid var(--status-received-border, #25d366)
+    }
+.message-status-read {
+    border: 1px solid var(--status-read-border, #128c7e)
+    }
+.message-status-unread {
+    border: 1px solid var(--status-unread-border, #f4f4f4)
+    }
+@media (max-width: 576px) {
+    .message-bubble {
+        font-size: var(--message-font-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .message-bubble {
+        font-size: var(--message-font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .message-bubble {
+        font-size: var(--message-font-size-lg, 16px)
+        }
+    }

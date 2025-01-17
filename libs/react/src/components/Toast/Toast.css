@@ -1,0 +1,16 @@
+.toast {
+    border-radius: var(--toast-border-radius, 4px);
+    background-color: var(--toast-background-color, #333);
+    color: var(--toast-color, #fff);
+    opacity: 0;
+    position: fixed;
+    bottom: var(--toast-bottom, 20px);
+    right: var(--toast-right, 20px);
+    z-index: 1000
+    }
+.toast.visible {
+    opacity: 1
+    }
+.toast.hidden, .toast.dismissed {
+    display: none
+    }

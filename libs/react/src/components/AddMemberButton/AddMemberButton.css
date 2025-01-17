@@ -1,0 +1,33 @@
+.add-member-button {
+    font-size: var(--button-font-size, 16px);
+    background-color: var(--button-bg-color, #4caf50);
+    color: var(--button-text-color, #fff);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+.add-member-button.disabled {
+    background-color: var(--button-disabled-bg-color, #ccc);
+    cursor: not-allowed
+    }
+.add-member-button:hover:enabled {
+    background-color: var(--button-hover-bg-color, #45a049)
+    }
+.add-member-button:active:enabled {
+    background-color: var(--button-active-bg-color, #388e3c)
+    }
+@media (max-width: 576px) {
+    .add-member-button {
+        font-size: var(--button-font-size-sm, 14px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .add-member-button {
+        font-size: var(--button-font-size-md, 16px)
+        }
+    }
+@media (min-width: 769px) {
+    .add-member-button {
+        font-size: var(--button-font-size-lg, 18px)
+        }
+    }

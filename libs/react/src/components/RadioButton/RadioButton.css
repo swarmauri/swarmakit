@@ -1,0 +1,37 @@
+.radio-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px
+    }
+input[type="radio"] {
+    margin-right: 8px;
+    accent-color: var(--primary-color)
+    }
+input:disabled {
+    accent-color: var(--disabled-color);
+    cursor: not-allowed
+    }
+.radio-label {
+    color: var(--text-color);
+    font-size: 14px
+    }
+@media (max-width: 600px) {
+    .radio-button {
+        width: 100%
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .radio-button {
+        width: 100%
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .radio-button {
+        width: 100%
+        }
+    }
+@media (min-width: 1025px) {
+    .radio-button {
+        width: 100%
+        }
+    }

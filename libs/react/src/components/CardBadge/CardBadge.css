@@ -1,0 +1,34 @@
+.card-badge {
+    display: inline-block;
+    border-radius: var(--badge-border-radius, 12px);
+    font-size: var(--badge-font-size, 14px);
+    text-align: center;
+    color: var(--badge-text-color, #fff)
+    }
+.card-badge-default {
+    background-color: var(--badge-default-bg-color, #777)
+    }
+.card-badge-active {
+    background-color: var(--badge-active-bg-color, #28a745)
+    }
+.card-badge-inactive {
+    background-color: var(--badge-inactive-bg-color, #6c757d)
+    }
+.card-badge-hovered {
+    background-color: var(--badge-hovered-bg-color, #17a2b8)
+    }
+@media (max-width: 576px) {
+    .card-badge {
+        font-size: var(--badge-font-size-mobile, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .card-badge {
+        font-size: var(--badge-font-size-tablet, 13px)
+        }
+    }
+@media (min-width: 769px) {
+    .card-badge {
+        font-size: var(--badge-font-size-desktop, 14px)
+        }
+    }

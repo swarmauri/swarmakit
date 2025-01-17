@@ -1,0 +1,35 @@
+.selectable-list {
+    padding: var(--selectable-list-padding, 10px)
+    }
+.list-item {
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.list-item.selected {
+    background-color: var(--selected-bg-color, #d1e7dd)
+    }
+.details {
+    margin-top: var(--details-margin-top, 10px);
+    padding: var(--details-padding, 10px);
+    background-color: var(--details-bg-color, #f8f9fa)
+    }
+@media (max-width: 600px) {
+    .selectable-list {
+        padding: var(--selectable-list-padding-mobile, 8px)
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .selectable-list {
+        padding: var(--selectable-list-padding-tablet, 9px)
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .selectable-list {
+        padding: var(--selectable-list-padding-large-tablet, 10px)
+        }
+    }
+@media (min-width: 1025px) {
+    .selectable-list {
+        padding: var(--selectable-list-padding-desktop, 12px)
+        }
+    }

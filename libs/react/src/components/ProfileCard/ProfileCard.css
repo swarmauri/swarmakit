@@ -1,0 +1,45 @@
+.profile-card {
+    border-radius: var(--card-border-radius, 8px);
+    overflow: hidden;
+    transition: all 0.3s;
+    background-color: var(--card-background-color, #fff)
+    }
+.profile-card-header {
+    position: relative;
+    padding: var(--card-header-padding, 16px);
+    text-align: center
+    }
+.profile-card-avatar {
+    border-radius: 50%;
+    width: var(--card-avatar-size, 80px);
+    height: var(--card-avatar-size, 80px)
+    }
+.profile-card-status {
+    position: absolute;
+    bottom: var(--card-status-position-bottom, 10px);
+    right: var(--card-status-position-right, 10px);
+    width: var(--card-status-size, 16px);
+    height: var(--card-status-size, 16px);
+    border-radius: 50%;
+    background-color: var(--card-status-color, green)
+    }
+.profile-card-status-online {
+    background-color: var(--card-status-online-color, green)
+    }
+.profile-card-status-offline {
+    background-color: var(--card-status-offline-color, gray)
+    }
+.profile-card-status-busy {
+    background-color: var(--card-status-busy-color, red)
+    }
+.profile-card-content {
+    padding: var(--card-padding, 16px)
+    }
+.profile-card-name {
+    font-size: var(--card-name-font-size, 1.5rem);
+    margin-bottom: var(--card-name-margin-bottom, 8px)
+    }
+.profile-card-additional-info {
+    font-size: var(--card-info-font-size, 1rem);
+    color: var(--card-info-text-color, #666)
+    }

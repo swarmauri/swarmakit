@@ -1,0 +1,23 @@
+.pagination-control {
+    display: flex;
+    align-items: center;
+    gap: var(--pagination-gap, 8px);
+    font-size: var(--pagination-font-size, 14px)
+    }
+.pagination-control button {
+    border-radius: var(--button-border-radius, 4px);
+    background-color: var(--button-background-color, #f0f0f0);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.pagination-control button:hover {
+    background-color: var(--button-hover-background-color, #e0e0e0)
+    }
+.pagination-control button:disabled {
+    background-color: var(--button-disabled-background-color, #c0c0c0);
+    cursor: not-allowed
+    }
+.pagination-control select {
+    border-radius: var(--select-border-radius, 4px);
+    background-color: var(--select-background-color, #fff)
+    }

@@ -1,0 +1,21 @@
+.section {
+    padding: var(--section-padding, 16px);
+    background-color: var(--section-bg-color, #f8f9fa);
+    border-radius: var(--section-border-radius, 4px);
+    margin-bottom: var(--section-margin-bottom, 16px)
+    }
+.section header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+    }
+.section .content {
+    overflow: hidden
+    }
+.section.collapsed .content {
+    max-height: 0
+    }
+.section.expanded .content {
+    max-height: var(--content-max-height, 200px)
+    }

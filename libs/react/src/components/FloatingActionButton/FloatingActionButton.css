@@ -1,0 +1,33 @@
+.fab {
+    position: fixed;
+    bottom: var(--fab-bottom, 20px);
+    right: var(--fab-right, 20px);
+    width: var(--fab-size, 56px);
+    height: var(--fab-size, 56px);
+    background-color: var(--fab-bg, #6200ea);
+    color: var(--fab-color, #fff);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fab-font-size, 24px);
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s
+    }
+.fab.collapsed {
+    transform: scale(1)
+    }
+.fab.expanded {
+    transform: scale(1.1)
+    }
+.fab:hover {
+    background-color: var(--fab-hover-bg, #3700b3)
+    }
+@media (max-width: 600px) {
+    .fab {
+        width: var(--fab-mobile-size, 48px);
+        height: var(--fab-mobile-size, 48px);
+        font-size: var(--fab-mobile-font-size, 20px)
+        }
+    }

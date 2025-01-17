@@ -1,0 +1,19 @@
+.card-actions-container {
+    display: flex;
+    gap: var(--action-button-gap, 8px)
+    }
+.card-action-button {
+    background-color: var(--action-button-bg-color, #007bff);
+    border: none;
+    border-radius: var(--action-button-border-radius, 4px);
+    color: var(--action-button-text-color, #fff);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.card-action-button:hover:not(:disabled) {
+    background-color: var(--action-button-hover-bg-color, #0056b3)
+    }
+.card-action-button:disabled {
+    background-color: var(--action-button-disabled-bg-color, #c0c0c0);
+    cursor: not-allowed
+    }

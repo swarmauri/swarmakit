@@ -1,0 +1,49 @@
+.filterable-list {
+    width: 100%;
+    max-width: var(--filterable-list-max-width, 400px);
+    margin: 0 auto
+    }
+input[type="text"] {
+    width: 100%;
+    padding: var(--input-padding, 8px);
+    margin-bottom: var(--input-margin-bottom, 10px);
+    border-radius: var(--input-border-radius, 4px)
+    }
+button {
+    background-color: var(--button-bg-color, #007bff);
+    color: var(--button-text-color, #fff);
+    border: none;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+button:hover {
+    background-color: var(--button-hover-bg-color, #0056b3)
+    }
+ul {
+    list-style-type: none;
+    padding: 0
+    }
+li {
+    padding: var(--list-item-padding, 10px)
+    }
+@media (max-width: 600px) {
+    .filterable-list {
+        max-width: 100%
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .filterable-list {
+        max-width: 350px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .filterable-list {
+        max-width: 400px
+        }
+    }
+@media (min-width: 1025px) {
+    .filterable-list {
+        max-width: 450px
+        }
+    }

@@ -1,0 +1,29 @@
+.ruler-and-guides {
+    position: relative;
+    width: 100%;
+    height: 100%
+    }
+.ruler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--ruler-height, 20px);
+    background-color: var(--ruler-background-color, #f0f0f0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+    }
+.guides {
+    position: relative;
+    width: 100%;
+    height: calc(100% - var(--ruler-height, 20px))
+    }
+.guide {
+    position: absolute;
+    top: 0;
+    width: var(--guide-width, 1px);
+    height: 100%;
+    background-color: var(--guide-color, #f00);
+    cursor: ew-resize
+    }

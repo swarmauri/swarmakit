@@ -1,0 +1,50 @@
+.playing-card {
+    perspective: var(--playing-card-perspective, 1000px);
+    width: var(--playing-card-width, 150px);
+    height: var(--playing-card-height, 210px);
+    border-radius: var(--playing-card-border-radius, 10px);
+    cursor: pointer;
+    transition: transform 0.6s ease
+    }
+.playing-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d
+    }
+.playing-card.face-up .playing-card-inner {
+    transform: rotatey(180deg)
+    }
+.playing-card-front, .playing-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--playing-card-border-radius, 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--playing-card-text-color, #000);
+    background-color: var(--playing-card-bg-color, #fff)
+    }
+.playing-card-back {
+    transform: rotatey(180deg);
+    background-image: var(--playing-card-back-pattern, url(pattern.png));
+    background-size: cover;
+    color: var(--playing-card-back-color, #000)
+    }
+.playing-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.5
+    }
+.playing-card:hover:not(.disabled) {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+    }
+@media (max-width: 480px) {
+    .playing-card {
+        width: var(--playing-card-width-mobile, 100px);
+        height: var(--playing-card-height-mobile, 140px)
+        }
+    }

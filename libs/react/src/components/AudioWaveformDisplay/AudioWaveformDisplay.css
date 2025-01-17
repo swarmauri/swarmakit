@@ -1,0 +1,35 @@
+.audio-waveform-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--waveform-display-padding, 10px);
+    background-color: var(--waveform-display-bg, #f4f4f4);
+    border-radius: var(--waveform-display-border-radius, 5px)
+    }
+.audio-waveform-display canvas {
+    background-color: var(--waveform-canvas-bg, #fff)
+    }
+.audio-waveform-display button {
+    margin-top: var(--waveform-button-margin-top, 10px);
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    border: none;
+    cursor: pointer;
+    border-radius: var(--button-border-radius, 3px);
+    transition: background-color 0.3s ease
+    }
+.audio-waveform-display button:hover {
+    background-color: var(--button-hover-bg, #0056b3)
+    }
+.audio-waveform-display .loading {
+    margin-top: var(--loading-margin-top, 10px);
+    color: var(--loading-color, #888)
+    }
+@media (max-width: 600px) {
+    .audio-waveform-display {
+        width: 100%
+        }
+    .audio-waveform-display canvas {
+        width: 100%
+        }
+    }

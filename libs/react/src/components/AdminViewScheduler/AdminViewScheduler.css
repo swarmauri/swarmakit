@@ -1,0 +1,70 @@
+.scheduler-container {
+    max-width: 800px;
+    margin: auto;
+    padding: var(--scheduler-padding, 20px);
+    background-color: var(--scheduler-bg, #f9f9f9);
+    border-radius: var(--scheduler-border-radius, 8px)
+    }
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-gap, 10px);
+    margin-bottom: var(--form-margin-bottom, 20px)
+    }
+.event-form input, .event-form textarea {
+    padding: var(--form-input-padding, 10px);
+    border: 1px solid var(--form-border, #ccc);
+    border-radius: var(--form-border-radius, 4px)
+    }
+.event-form button {
+    background-color: var(--button-bg, #28a745);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.event-form button:hover {
+    background-color: var(--button-hover-bg, #218838)
+    }
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--event-gap, 10px)
+    }
+.event-item {
+    padding: var(--event-item-padding, 10px);
+    background-color: var(--event-item-bg, #fff);
+    border: 1px solid var(--event-item-border, #e0e0e0);
+    border-radius: var(--event-item-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.event-item:hover {
+    background-color: var(--event-item-hover-bg, #e6f7ff)
+    }
+.event-details {
+    margin-top: var(--event-details-margin-top, 20px);
+    padding: var(--event-details-padding, 15px);
+    background-color: var(--event-details-bg, #fff);
+    border-radius: var(--event-details-border-radius, 4px)
+    }
+.event-details button {
+    margin-right: var(--button-margin-right, 10px);
+    background-color: var(--button-bg, #dc3545);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+.event-details button:hover {
+    background-color: var(--button-hover-bg, #c82333)
+    }
+@media (max-width: 600px) {
+    .scheduler-container {
+        padding: var(--scheduler-padding-mobile, 10px)
+        }
+    }

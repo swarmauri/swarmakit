@@ -1,0 +1,22 @@
+.dark-mode-toggle {
+    border: none;
+    border-radius: var(--toggle-radius, 5px);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s
+    }
+.dark-mode-toggle.light {
+    background-color: var(--toggle-light-bg, #fff);
+    color: var(--toggle-light-color, #000)
+    }
+.dark-mode-toggle.dark {
+    background-color: var(--toggle-dark-bg, #333);
+    color: var(--toggle-dark-color, #fff)
+    }
+.dark-mode-toggle:hover {
+    opacity: 0.8
+    }
+@media (max-width: 600px) {
+    .dark-mode-toggle {
+        width: var(--toggle-mobile-width, 100%)
+        }
+    }

@@ -1,0 +1,35 @@
+.sortable-table {
+    width: 100%;
+    border-collapse: collapse
+    }
+th, td {
+    padding: var(--table-cell-padding, 10px);
+    text-align: left
+    }
+th {
+    cursor: pointer;
+    background-color: var(--table-header-bg-color, #f1f1f1)
+    }
+tr.selected {
+    background-color: var(--selected-row-bg-color, #d1e7dd)
+    }
+@media (max-width: 600px) {
+    th, td {
+        padding: var(--table-cell-padding-mobile, 8px)
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    th, td {
+        padding: var(--table-cell-padding-tablet, 9px)
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    th, td {
+        padding: var(--table-cell-padding-large-tablet, 10px)
+        }
+    }
+@media (min-width: 1025px) {
+    th, td {
+        padding: var(--table-cell-padding-desktop, 12px)
+        }
+    }

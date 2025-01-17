@@ -1,0 +1,39 @@
+.pinned-message {
+    padding: var(--message-padding, 10px);
+    background-color: var(--message-bg, #f8f8f8);
+    border-radius: var(--message-border-radius, 8px);
+    margin-bottom: var(--message-margin-bottom, 8px);
+    transition: background-color 0.3s ease, color 0.3s ease
+    }
+.pinned-message.visible {
+    visibility: visible;
+    color: var(--message-text-color, #333)
+    }
+.pinned-message.hidden {
+    visibility: hidden
+    }
+.pinned-message.pinned {
+    border-left: 4px solid var(--pinned-border-color, #007bff)
+    }
+.pinned-message button {
+    background: none;
+    border: none;
+    color: var(--button-text-color, #007bff);
+    cursor: pointer;
+    font-size: var(--button-font-size, 14px)
+    }
+@media (max-width: 576px) {
+    .pinned-message {
+        font-size: var(--message-font-size-sm, 12px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .pinned-message {
+        font-size: var(--message-font-size-md, 14px)
+        }
+    }
+@media (min-width: 769px) {
+    .pinned-message {
+        font-size: var(--message-font-size-lg, 16px)
+        }
+    }

@@ -1,0 +1,38 @@
+.calendar-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+    }
+.view-selector {
+    display: flex;
+    justify-content: space-around;
+    padding: var(--view-selector-padding, 10px);
+    background-color: var(--view-selector-bg, #f5f5f5)
+    }
+.view-selector button {
+    border: none;
+    background-color: var(--button-bg, #007bff);
+    color: var(--button-color, #fff);
+    cursor: pointer;
+    border-radius: var(--button-border-radius, 4px)
+    }
+.calendar-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--calendar-content-margin-top, 10px)
+    }
+.event {
+    padding: var(--event-padding, 8px);
+    margin-bottom: var(--event-margin-bottom, 5px);
+    border: 1px solid var(--event-border-color, #ddd);
+    background-color: var(--event-bg, #e9ecef);
+    cursor: pointer
+    }
+@media (max-width: 600px) {
+    .view-selector {
+        flex-direction: column
+        }
+    .view-selector button {
+        margin-bottom: var(--button-margin-bottom-mobile, 5px)
+        }
+    }

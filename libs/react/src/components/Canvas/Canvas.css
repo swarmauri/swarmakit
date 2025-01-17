@@ -1,0 +1,26 @@
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+    }
+.drawing-canvas {
+    touch-action: none
+    }
+.clear-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--button-background-color, #f44336);
+    color: var(--button-text-color, #fff);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    }
+.clear-button:hover {
+    background-color: var(--button-hover-background-color, #d32f2f)
+    }

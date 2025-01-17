@@ -1,0 +1,49 @@
+.schedule-crud-panel {
+    padding: var(--crud-panel-padding, 20px);
+    background-color: var(--crud-panel-bg, #f9f9f9);
+    border-radius: var(--crud-panel-border-radius, 8px);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto
+    }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-gap, 10px)
+    }
+input[type="text"], input[type="date"], input[type="time"], textarea {
+    padding: var(--input-padding, 10px);
+    border: 1px solid var(--input-border-color, #ccc);
+    border-radius: var(--input-border-radius, 4px);
+    width: 100%
+    }
+button {
+    background-color: var(--button-bg, #28a745);
+    color: var(--button-color, #fff);
+    border: none;
+    padding: var(--button-padding, 10px);
+    border-radius: var(--button-border-radius, 4px);
+    cursor: pointer;
+    transition: background-color 0.3s
+    }
+button:hover {
+    background-color: var(--button-hover-bg, #218838)
+    }
+.event-list {
+    margin-top: var(--event-list-margin-top, 20px);
+    border-top: 1px solid var(--event-list-border-color, #ddd);
+    padding-top: var(--event-list-padding-top, 10px)
+    }
+.event-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--event-item-padding, 10px);
+    border-bottom: 1px solid var(--event-item-border-color, #eee)
+    }
+@media (max-width: 600px) {
+    .schedule-crud-panel {
+        padding: var(--crud-panel-padding-mobile, 10px)
+        }
+    }

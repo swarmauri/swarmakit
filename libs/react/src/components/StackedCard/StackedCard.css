@@ -1,0 +1,29 @@
+.stacked-card-container {
+    display: flex;
+    flex-direction: column
+    }
+.stacked-card-container.horizontal {
+    flex-direction: row
+    }
+.stacked-card {
+    border-radius: var(--card-border-radius, 8px);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    background-color: var(--card-background-color, #fff);
+    cursor: pointer;
+    margin-bottom: var(--card-spacing, 16px)
+    }
+.stacked-card.selected {
+    background-color: var(--card-selected-background-color, #e0f7fa)
+    }
+.stacked-card-header {
+    padding: var(--card-header-padding, 16px);
+    background-color: var(--card-header-background-color, #f7f7f7)
+    }
+.stacked-card-title {
+    margin: 0;
+    font-size: var(--card-title-font-size, 1.2rem);
+    color: var(--card-title-color, #333)
+    }
+.stacked-card-content {
+    padding: var(--card-content-padding, 16px)
+    }

@@ -1,0 +1,26 @@
+.group-chat-name {
+    font-size: var(--chat-name-font-size, 16px);
+    color: var(--chat-name-color, #333)
+    }
+.hidden {
+    display: none
+    }
+.edited {
+    font-style: italic;
+    color: var(--edited-color, #ff5722)
+    }
+@media (max-width: 576px) {
+    .group-chat-name {
+        font-size: var(--chat-name-font-size-sm, 14px)
+        }
+    }
+@media (min-width: 577px) and (max-width: 768px) {
+    .group-chat-name {
+        font-size: var(--chat-name-font-size-md, 16px)
+        }
+    }
+@media (min-width: 769px) {
+    .group-chat-name {
+        font-size: var(--chat-name-font-size-lg, 18px)
+        }
+    }

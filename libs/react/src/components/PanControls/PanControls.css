@@ -1,0 +1,24 @@
+.pan-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pan-controls-gap, 0.5rem)
+    }
+.horizontal-buttons {
+    display: flex;
+    gap: var(--pan-controls-horizontal-gap, 0.5rem)
+    }
+.pan-button {
+    width: var(--pan-button-width, 40px);
+    height: var(--pan-button-height, 40px);
+    background-color: var(--pan-button-bg, #fff);
+    border: 1px solid var(--pan-button-border, #ccc);
+    border-radius: var(--pan-button-radius, 50%);
+    font-size: var(--pan-button-font-size, 1rem);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s
+    }
+.pan-button:hover {
+    background-color: var(--pan-button-hover-bg, #f0f0f0);
+    border-color: var(--pan-button-hover-border, #bbb)
+    }

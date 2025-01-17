@@ -1,0 +1,38 @@
+.notification-bar {
+    border-radius: var(--notification-border-radius, 4px);
+    color: var(--notification-text-color, #fff);
+    margin-bottom: var(--notification-margin-bottom, 10px);
+    transition: background-color 0.3s ease
+    }
+.notification-bar.success {
+    background-color: var(--notification-success-color, #4caf50)
+    }
+.notification-bar.error {
+    background-color: var(--notification-error-color, #f44336)
+    }
+.notification-bar.warning {
+    background-color: var(--notification-warning-color, #ff9800)
+    }
+.notification-bar.info {
+    background-color: var(--notification-info-color, #2196f3)
+    }
+@media (max-width: 600px) {
+    .notification-bar {
+        padding: 8px 16px
+        }
+    }
+@media (min-width: 601px) and (max-width: 768px) {
+    .notification-bar {
+        padding: 9px 18px
+        }
+    }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .notification-bar {
+        padding: 10px 20px
+        }
+    }
+@media (min-width: 1025px) {
+    .notification-bar {
+        padding: 12px 24px
+        }
+    }
