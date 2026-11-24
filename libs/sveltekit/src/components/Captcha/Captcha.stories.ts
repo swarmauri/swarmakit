@@ -1,7 +1,7 @@
 import Captcha from './Captcha.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Captcha> = {
+const meta: Meta<typeof Captcha> = {
   title: 'component/Forms/Captcha',
   component: Captcha,
   tags: ['autodocs'],
@@ -26,7 +26,7 @@ const meta: Meta<Captcha> = {
 
 export default meta;
 
-const Template:StoryFn<Captcha> = (args) => ({
+const Template:StoryFn<typeof Captcha> = (args) => ({
   Component: Captcha,
   props:args
 });

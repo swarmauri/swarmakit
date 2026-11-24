@@ -1,7 +1,7 @@
 import PasswordConfirmationField from './PasswordConfirmationField.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<PasswordConfirmationField> = {
+const meta: Meta<typeof PasswordConfirmationField> = {
   title: 'component/Forms/PasswordConfirmationField',
   component: PasswordConfirmationField,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<PasswordConfirmationField> = {
 
 export default meta;
 
-const Template:StoryFn<PasswordConfirmationField> = (args) => ({
+const Template:StoryFn<typeof PasswordConfirmationField> = (args) => ({
   Component: PasswordConfirmationField,
   props:args,
 });

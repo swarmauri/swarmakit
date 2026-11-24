@@ -1,7 +1,7 @@
 import CardbasedList from './CardbasedList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<CardbasedList> = {
+const meta: Meta<typeof CardbasedList> = {
   title: 'component/Lists/CardbasedList',
   component: CardbasedList,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<CardbasedList> = {
 
 export default meta;
 
-const Template:StoryFn<CardbasedList> = (args) => ({
+const Template:StoryFn<typeof CardbasedList> = (args) => ({
   Component:CardbasedList,
   props:args,
 });

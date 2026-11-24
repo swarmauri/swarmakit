@@ -17,7 +17,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<SortableList> = (args) => ({
+const Template: StoryFn<typeof SortableList> = (args) => ({
   Component: SortableList,
   props: args,
 });

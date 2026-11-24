@@ -1,7 +1,7 @@
 import Textarea from './Textarea.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Textarea> = {
+const meta: Meta<typeof Textarea> = {
   title: 'component/Forms/Textarea',
   component: Textarea,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<Textarea> = {
 
 export default meta;
 
-const Template:StoryFn<Textarea> = (args) => ({
+const Template:StoryFn<typeof Textarea> = (args) => ({
   Component:Textarea,
   props:args,
 }); 

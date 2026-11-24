@@ -1,7 +1,7 @@
 import SignalStrengthIndicator from './SignalStrengthIndicator.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<SignalStrengthIndicator> = {
+const meta: Meta<typeof SignalStrengthIndicator> = {
   title: 'component/Indicators/SignalStrengthIndicator',
   component: SignalStrengthIndicator,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<SignalStrengthIndicator> = {
 
 export default meta;
 
-const Template:StoryFn<SignalStrengthIndicator> = (args) => ({
+const Template:StoryFn<typeof SignalStrengthIndicator> = (args) => ({
   Component:SignalStrengthIndicator,
   props:args,
 }); 

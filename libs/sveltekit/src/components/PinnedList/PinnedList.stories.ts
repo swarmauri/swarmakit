@@ -1,7 +1,7 @@
 import PinnedList from './PinnedList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<PinnedList> = {
+const meta: Meta<typeof PinnedList> = {
   title: 'component/Lists/PinnedList',
   component: PinnedList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<PinnedList> = {
 
 export default meta;
 
-const Template:StoryFn<PinnedList> = (args) => ({
+const Template:StoryFn<typeof PinnedList> = (args) => ({
   Component: PinnedList,
   props: args,
 }); 

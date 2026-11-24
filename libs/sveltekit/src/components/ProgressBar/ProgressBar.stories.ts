@@ -1,7 +1,7 @@
 import ProgressBar from './ProgressBar.svelte';
 import type { Meta, StoryFn, StoryObj } from '@storybook/svelte';
 
-const meta: Meta<ProgressBar> = {
+const meta: Meta<typeof ProgressBar> = {
   title: 'component/Indicators/ProgressBar',
   component: ProgressBar,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<ProgressBar> = {
 
 export default meta;
 
-const Template:StoryFn<ProgressBar> = (args) => ({
+const Template:StoryFn<typeof ProgressBar> = (args) => ({
   Component:ProgressBar,
   props:args,
 });

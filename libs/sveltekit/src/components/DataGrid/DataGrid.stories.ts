@@ -1,7 +1,7 @@
 import DataGrid from './DataGrid.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<DataGrid> = {
+const meta: Meta<typeof DataGrid> = {
   title: 'component/Lists/DataGrid',
   component: DataGrid,
   tags: ['autodocs'],
@@ -27,7 +27,7 @@ const meta: Meta<DataGrid> = {
 
 export default meta;
 
-const Template:StoryFn<DataGrid> = (args) => ({
+const Template:StoryFn<typeof DataGrid> = (args) => ({
   Component: DataGrid,
   props: args,
 });

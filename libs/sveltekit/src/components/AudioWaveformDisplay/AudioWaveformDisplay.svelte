@@ -11,7 +11,7 @@
   let audioElement: HTMLAudioElement;
   let audioContext: AudioContext;
   let analyser: AnalyserNode;
-  let dataArray: Uint8Array;
+  let dataArray: Uint8Array<ArrayBuffer>;
   let animationFrameId: number;
 
   const drawWaveform = () => {

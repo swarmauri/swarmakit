@@ -1,7 +1,7 @@
 import ActivityIndicators from './ActivityIndicators.svelte';
 import type { Meta,StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ActivityIndicators> = {
+const meta: Meta<typeof ActivityIndicators> = {
   title: 'component/Indicators/ActivityIndicators',
   component: ActivityIndicators,
   tags: ['autodocs'],

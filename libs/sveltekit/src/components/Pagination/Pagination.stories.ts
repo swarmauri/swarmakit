@@ -1,7 +1,7 @@
 import Pagination from './Pagination.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Pagination> = {
+const meta: Meta<typeof Pagination> = {
   title: 'component/Lists/Pagination',
   component: Pagination,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<Pagination> = {
 
 export default meta;
 
-const Template:StoryFn<Pagination> = (args) => ({
+const Template:StoryFn<typeof Pagination> = (args) => ({
   Component: Pagination,
   props:args,
 });

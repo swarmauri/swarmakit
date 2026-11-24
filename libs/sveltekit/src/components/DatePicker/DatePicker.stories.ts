@@ -1,7 +1,7 @@
 import DatePicker from './DatePicker.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<DatePicker> = {
+const meta: Meta<typeof DatePicker> = {
   title: 'component/Forms/DatePicker',
   component: DatePicker,
   tags: ['autodocs'],
@@ -27,7 +27,7 @@ const meta: Meta<DatePicker> = {
 
 export default meta;
 
-const Template:StoryFn<DatePicker> = (args) => ({
+const Template:StoryFn<typeof DatePicker> = (args) => ({
   Component: DatePicker,
   props:args,
 });

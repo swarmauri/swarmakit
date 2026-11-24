@@ -1,7 +1,7 @@
 import Checkbox from './Checkbox.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Checkbox> = {
+const meta: Meta<typeof Checkbox> = {
   title: 'component/Forms/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<Checkbox> = {
 
 export default meta;
 
-const Template:StoryFn<Checkbox> = (args) => ({
+const Template:StoryFn<typeof Checkbox> = (args) => ({
   Component:Checkbox,
   props:args,
 });

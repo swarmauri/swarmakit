@@ -2,7 +2,7 @@ import SortableTable from './SortableTable.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 import type { TableColumn, TableRow } from './SortableTable.svelte';
 
-const meta: Meta<SortableTable> = {
+const meta: Meta<typeof SortableTable> = {
   title: 'Components/Lists/SortableTable',
   component: SortableTable,
   tags: ['autodocs'],

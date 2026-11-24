@@ -1,7 +1,7 @@
 import LoadingBarsWithSteps from './LoadingBarsWithSteps.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<LoadingBarsWithSteps> = {
+const meta: Meta<typeof LoadingBarsWithSteps> = {
   title: 'component/Indicators/LoadingBarsWithSteps',
   component: LoadingBarsWithSteps,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<LoadingBarsWithSteps> = {
 
 export default meta;
 
-const Template:StoryFn<LoadingBarsWithSteps> = (args) => ({
+const Template:StoryFn<typeof LoadingBarsWithSteps> = (args) => ({
   Component:LoadingBarsWithSteps,
   props:args,
 });

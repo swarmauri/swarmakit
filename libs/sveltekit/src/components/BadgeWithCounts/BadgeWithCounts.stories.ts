@@ -1,7 +1,7 @@
 import BadgeWithCounts from './BadgeWithCounts.svelte';
 import type { Meta,StoryFn } from '@storybook/svelte';
 
-const meta: Meta<BadgeWithCounts> = {
+const meta: Meta<typeof BadgeWithCounts> = {
   title: 'component/Indicators/BadgeWithCounts',
   component: BadgeWithCounts,
   tags: ['autodocs'],

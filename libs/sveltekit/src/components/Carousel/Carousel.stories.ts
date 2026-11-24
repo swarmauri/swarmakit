@@ -20,7 +20,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<Carousel> = (args) => ({
+const Template: StoryFn<typeof Carousel> = (args) => ({
   Component: Carousel,
   props: args,
 });

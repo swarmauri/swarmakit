@@ -1,7 +1,7 @@
 import InteractivePollResults from './InteractivePollResults.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<InteractivePollResults> = {
+const meta: Meta<typeof InteractivePollResults> = {
   title: 'component/Indicators/InteractivePollResults',
   component: InteractivePollResults,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<InteractivePollResults> = {
 
 export default meta;
 
-const Template:StoryFn<InteractivePollResults> = (args) => ({
+const Template:StoryFn<typeof InteractivePollResults> = (args) => ({
   Component: InteractivePollResults,
   props:args,
 });

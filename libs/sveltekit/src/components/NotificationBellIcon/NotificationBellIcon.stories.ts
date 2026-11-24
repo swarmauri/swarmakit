@@ -1,7 +1,7 @@
 import NotificationBellIcon from './NotificationBellIcon.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<NotificationBellIcon> = {
+const meta: Meta<typeof NotificationBellIcon> = {
   title: 'component/Indicators/NotificationBellIcon',
   component: NotificationBellIcon,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<NotificationBellIcon> = {
 
 export default meta;
 
-const Template:StoryFn<NotificationBellIcon> = (args) => ({
+const Template:StoryFn<typeof NotificationBellIcon> = (args) => ({
   Component: NotificationBellIcon,
   props:args,
 }); 

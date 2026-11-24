@@ -1,8 +1,8 @@
 import ExpandableList from './ExpandableList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
-import { userEvent, within } from '@storybook/test';
+import { userEvent, within } from 'storybook/test';
 
-const meta: Meta<ExpandableList> = {
+const meta: Meta<typeof ExpandableList> = {
   title: 'component/Lists/ExpandableList',
   component: ExpandableList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<ExpandableList> = {
 
 export default meta;
 
-const Template:StoryFn<ExpandableList> = (args) => ({
+const Template:StoryFn<typeof ExpandableList> = (args) => ({
   Component:ExpandableList,
   props:args,
 });
