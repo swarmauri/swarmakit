@@ -1,7 +1,7 @@
 import NumberedList from './NumberedList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<NumberedList> = {
+const meta: Meta<typeof NumberedList> = {
   title: 'component/Lists/NumberedList',
   component: NumberedList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<NumberedList> = {
 
 export default meta;
 
-const Template:StoryFn<NumberedList> = (args) => ({
+const Template:StoryFn<typeof NumberedList> = (args) => ({
   Component:NumberedList,
   props:args,
 });

@@ -1,7 +1,7 @@
 import RadioButton from './RadioButton.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<RadioButton> = {
+const meta: Meta<typeof RadioButton> = {
   title: 'component/Forms/RadioButton',
   component: RadioButton,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<RadioButton> = {
 
 export default meta;
 
-const Template:StoryFn<RadioButton> = (args) => ({
+const Template:StoryFn<typeof RadioButton> = (args) => ({
   Component:RadioButton,
   props:args,
 });

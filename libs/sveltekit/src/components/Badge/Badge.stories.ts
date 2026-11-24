@@ -1,7 +1,7 @@
 import Badge from './Badge.svelte';
 import type { Meta,StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Badge> = {
+const meta: Meta<typeof Badge> = {
   title: 'component/Indicators/Badge',
   component: Badge,
   tags: ['autodocs'],

@@ -20,7 +20,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<EmbeddedMediaIframe> = (args) => ({
+const Template: StoryFn<typeof EmbeddedMediaIframe> = (args) => ({
   Component: EmbeddedMediaIframe,
   props: args,
 });

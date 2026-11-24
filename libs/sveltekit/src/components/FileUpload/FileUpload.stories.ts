@@ -1,7 +1,7 @@
 import FileUpload from './FileUpload.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<FileUpload> = {
+const meta: Meta<typeof FileUpload> = {
   title: 'component/Forms/FileUpload',
   component: FileUpload,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<FileUpload> = {
 
 export default meta;
 
-const Template:StoryFn<FileUpload> = (args) => ({
+const Template:StoryFn<typeof FileUpload> = (args) => ({
   Component:FileUpload,
   props:args,
 });

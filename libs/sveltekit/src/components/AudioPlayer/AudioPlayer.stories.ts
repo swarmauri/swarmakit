@@ -23,7 +23,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<AudioPlayer> = (args) => ({
+const Template: StoryFn<typeof AudioPlayer> = (args) => ({
   Component: AudioPlayer,
   props: args,
 });

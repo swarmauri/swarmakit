@@ -1,7 +1,7 @@
 import SearchInputWithFilterOptions from './SearchInputWithFilterOptions.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<SearchInputWithFilterOptions> = {
+const meta: Meta<typeof SearchInputWithFilterOptions> = {
   title: 'component/Forms/SearchInputWithFilterOptions',
   component: SearchInputWithFilterOptions,
   tags: ['autodocs'],
@@ -26,7 +26,7 @@ const meta: Meta<SearchInputWithFilterOptions> = {
 
 export default meta;
 
-const Template:StoryFn<SearchInputWithFilterOptions> = (args) => ({
+const Template:StoryFn<typeof SearchInputWithFilterOptions> = (args) => ({
   Component:SearchInputWithFilterOptions,
   props:args,
 });

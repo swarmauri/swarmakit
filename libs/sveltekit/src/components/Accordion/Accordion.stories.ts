@@ -1,7 +1,7 @@
 import Accordion from './Accordion.svelte';
 import type { Meta,StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Accordion> = {
+const meta: Meta<typeof Accordion> = {
   title: 'component/Lists/Accordion',
   component: Accordion,
   tags: ['autodocs'],

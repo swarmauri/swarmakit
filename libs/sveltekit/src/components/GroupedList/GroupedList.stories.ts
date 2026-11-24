@@ -1,8 +1,8 @@
 import GroupedList from './GroupedList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
-import {userEvent, within} from '@storybook/test';
+import {userEvent, within} from 'storybook/test';
 
-const meta: Meta<GroupedList> = {
+const meta: Meta<typeof GroupedList> = {
   title: 'component/Lists/GroupedList',
   component: GroupedList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<GroupedList> = {
 
 export default meta;
 
-const Template:StoryFn<GroupedList> = (args) => ({
+const Template:StoryFn<typeof GroupedList> = (args) => ({
   Component: GroupedList,
   props:args,
 });

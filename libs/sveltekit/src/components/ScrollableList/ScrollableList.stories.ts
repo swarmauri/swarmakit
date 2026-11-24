@@ -1,7 +1,7 @@
 import ScrollableList from './ScrollableList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ScrollableList> = {
+const meta: Meta<typeof ScrollableList> = {
   title: 'component/Lists/ScrollableList',
   component: ScrollableList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<ScrollableList> = {
 
 export default meta;
 
-const Template:StoryFn<ScrollableList> = (args) => ({
+const Template:StoryFn<typeof ScrollableList> = (args) => ({
   Component:ScrollableList,
   props:args,
 });

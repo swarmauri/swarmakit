@@ -1,7 +1,7 @@
 import SearchBar from './SearchBar.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<SearchBar> = {
+const meta: Meta<typeof SearchBar> = {
   title: 'component/Input/SearchBar',
   component: SearchBar,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<SearchBar> = {
 
 export default meta;
 
-const Template:StoryFn<SearchBar> = (args) => ({
+const Template:StoryFn<typeof SearchBar> = (args) => ({
   Component:SearchBar,
   props:args,
 });
