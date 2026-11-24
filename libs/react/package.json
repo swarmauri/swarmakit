@@ -48,5 +48,8 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
+  },
+  "overrides": {
+    "qs@>=6 <6.16.1": "6.16.1"
   }
 }
