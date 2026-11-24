@@ -26,5 +26,9 @@
   "devDependencies": {
     "typescript": "^5.0.0",
     "storybook": "^8.3.5"
+  },
+  "overrides": {
+    "uuid@<11.1.1": "11.1.1",
+    "minimatch@>=7 <11.0.1": "11.0.9"
   }
 }
