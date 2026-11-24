@@ -1,7 +1,7 @@
 import SystemAlertGlobalNotificationBar from './SystemAlertGlobalNotificationBar.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<SystemAlertGlobalNotificationBar> = {
+const meta: Meta<typeof SystemAlertGlobalNotificationBar> = {
   title: 'component/Indicators/SystemAlertGlobalNotificationBar',
   component: SystemAlertGlobalNotificationBar,
   tags: ['autodocs'],
@@ -27,7 +27,7 @@ const meta: Meta<SystemAlertGlobalNotificationBar> = {
 
 export default meta;
 
-const Template:StoryFn<SystemAlertGlobalNotificationBar> = (args) => ({
+const Template:StoryFn<typeof SystemAlertGlobalNotificationBar> = (args) => ({
   Component: SystemAlertGlobalNotificationBar,
   props:args,
 });

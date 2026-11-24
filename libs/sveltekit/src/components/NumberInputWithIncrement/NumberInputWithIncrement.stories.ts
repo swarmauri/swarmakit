@@ -1,8 +1,8 @@
-import { userEvent, within } from '@storybook/test';
+import { userEvent, within } from 'storybook/test';
 import NumberInputWithIncrement from './NumberInputWithIncrement.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<NumberInputWithIncrement> = {
+const meta: Meta<typeof NumberInputWithIncrement> = {
   title: 'component/Forms/NumberInputWithIncrement',
   component: NumberInputWithIncrement,
   tags: ['autodocs'],
@@ -28,7 +28,7 @@ const meta: Meta<NumberInputWithIncrement> = {
 
 export default meta;
 
-const Template:StoryFn<NumberInputWithIncrement> = (args) => ({
+const Template:StoryFn<typeof NumberInputWithIncrement> = (args) => ({
   Component:NumberInputWithIncrement,
   props:args,
 });

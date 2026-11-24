@@ -1,7 +1,7 @@
 import CheckList from './CheckList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<CheckList> = {
+const meta: Meta<typeof CheckList> = {
   title: 'component/Lists/CheckList',
   component: CheckList,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<CheckList> = {
 
 export default meta;
 
-const Template:StoryFn<CheckList>  = (args) => ({
+const Template:StoryFn<typeof CheckList>  = (args) => ({
   Component: CheckList,
   props: args,
 });

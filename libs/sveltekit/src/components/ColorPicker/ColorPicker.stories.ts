@@ -1,7 +1,7 @@
 import ColorPicker from './ColorPicker.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ColorPicker> = {
+const meta: Meta<typeof ColorPicker> = {
   title: 'component/Forms/ColorPicker',
   component: ColorPicker,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<ColorPicker> = {
 
 export default meta;
 
-const Template:StoryFn<ColorPicker> = (args) => ({
+const Template:StoryFn<typeof ColorPicker> = (args) => ({
   Component: ColorPicker,
   props:args,
 });

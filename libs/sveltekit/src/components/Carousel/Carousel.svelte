@@ -7,7 +7,7 @@
   export let autoPlayInterval: number = 3000;
 
   let currentIndex = 0;
-  let intervalId: NodeJS.Timeout;
+  let intervalId: ReturnType<typeof setInterval>;
   const isHovered = writable(false);
 
   const nextSlide = () => {

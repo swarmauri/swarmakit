@@ -21,7 +21,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<VirtualizedList> = (args) => ({
+const Template: StoryFn<typeof VirtualizedList> = (args) => ({
   Component: VirtualizedList,
   props: args,
 });

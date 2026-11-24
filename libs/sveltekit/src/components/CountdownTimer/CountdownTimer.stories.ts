@@ -1,7 +1,7 @@
 import CountdownTimer from './CountdownTimer.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<CountdownTimer> = {
+const meta: Meta<typeof CountdownTimer> = {
   title: 'component/Indicators/CountdownTimer',
   component: CountdownTimer,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<CountdownTimer> = {
 
 export default meta;
 
-const Template:StoryFn<CountdownTimer> = (args) => ({
+const Template:StoryFn<typeof CountdownTimer> = (args) => ({
   Component: CountdownTimer,
   props: args,
 });

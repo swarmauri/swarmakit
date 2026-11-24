@@ -1,7 +1,7 @@
 import VisualCueForAccessibilityFocusIndicator from './VisualCueForAccessibilityFocusIndicator.svelte';
 import type { Meta, StoryFn, StoryObj } from '@storybook/svelte';
 
-const meta: Meta<VisualCueForAccessibilityFocusIndicator> = {
+const meta: Meta<typeof VisualCueForAccessibilityFocusIndicator> = {
   title: 'component/Indicators/VisualCueForAccessibilityFocusIndicator',
   component: VisualCueForAccessibilityFocusIndicator,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<VisualCueForAccessibilityFocusIndicator> = {
 
 export default meta;
 
-const Template:StoryFn<VisualCueForAccessibilityFocusIndicator> = (args) => ({
+const Template:StoryFn<typeof VisualCueForAccessibilityFocusIndicator> = (args) => ({
   Component: VisualCueForAccessibilityFocusIndicator,
   props:args,
 });

@@ -1,7 +1,7 @@
 import ValidationMessages from './ValidationMessages.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ValidationMessages> = {
+const meta: Meta<typeof ValidationMessages> = {
   title: 'component/Forms/ValidationMessages',
   component: ValidationMessages,
   tags: ['autodocs'],
@@ -27,7 +27,7 @@ const meta: Meta<ValidationMessages> = {
 
 export default meta;
 
-const Template:StoryFn<ValidationMessages> = (args) => ({
+const Template:StoryFn<typeof ValidationMessages> = (args) => ({
   Component: ValidationMessages,
   props:args,
 });

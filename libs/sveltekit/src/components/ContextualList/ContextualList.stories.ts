@@ -1,7 +1,7 @@
 import ContextualList from './ContextualList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ContextualList> = {
+const meta: Meta<typeof ContextualList> = {
   title: 'component/Lists/ContextualList',
   component: ContextualList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<ContextualList> = {
 
 export default meta;
 
-const Template:StoryFn<ContextualList> = (args) => ({
+const Template:StoryFn<typeof ContextualList> = (args) => ({
   Component: ContextualList,
   props:args,
 });

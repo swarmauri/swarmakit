@@ -1,7 +1,7 @@
 import DateAndTimePicker from './DateAndTimePicker.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<DateAndTimePicker> = {
+const meta: Meta<typeof DateAndTimePicker> = {
   title: 'component/Forms/DateAndTimePicker',
   component: DateAndTimePicker,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<DateAndTimePicker> = {
 
 export default meta;
 
-const Template:StoryFn<DateAndTimePicker> = (args) => ({
+const Template:StoryFn<typeof DateAndTimePicker> = (args) => ({
   Component: DateAndTimePicker,
   props: args,
 });

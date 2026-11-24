@@ -1,7 +1,7 @@
 import LoadMoreButtonInList from './LoadmorebuttoninList.svelte'
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<LoadMoreButtonInList> = {
+const meta: Meta<typeof LoadMoreButtonInList> = {
   title: 'component/Lists/LoadMoreButtonInList',
   component: LoadMoreButtonInList,
   tags: ['autodocs'],
@@ -26,7 +26,7 @@ const meta: Meta<LoadMoreButtonInList> = {
 
 export default meta;
 
-const Template:StoryFn<LoadMoreButtonInList> = (args) => ({
+const Template:StoryFn<typeof LoadMoreButtonInList> = (args) => ({
   Component: LoadMoreButtonInList,
   props: args,
 });

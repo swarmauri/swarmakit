@@ -1,7 +1,7 @@
 import StatusDots from './StatusDots.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<StatusDots> = {
+const meta: Meta<typeof StatusDots> = {
   title: 'component/Indicators/StatusDots',
   component: StatusDots,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<StatusDots> = {
 
 export default meta;
 
-const Template:StoryFn<StatusDots> = (args) => ({
+const Template:StoryFn<typeof StatusDots> = (args) => ({
   Component:StatusDots,
   props:args,
 }); 
