@@ -1,7 +1,7 @@
 import CollapsibleMenuList from './CollapsibleMenuList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<CollapsibleMenuList> = {
+const meta: Meta<typeof CollapsibleMenuList> = {
   title: 'component/Lists/CollapsibleMenuList',
   component: CollapsibleMenuList,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<CollapsibleMenuList> = {
 
 export default meta;
 
-const Template:StoryFn<CollapsibleMenuList> = (args) => ({
+const Template:StoryFn<typeof CollapsibleMenuList> = (args) => ({
   Component: CollapsibleMenuList,
   props: args,
 });

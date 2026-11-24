@@ -1,7 +1,7 @@
 import ToggleSwitch from './ToggleSwitch.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ToggleSwitch> = {
+const meta: Meta<typeof ToggleSwitch> = {
   title: 'component/Forms/ToggleSwitch',
   component: ToggleSwitch,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<ToggleSwitch> = {
 
 export default meta;
 
-const Template:StoryFn<ToggleSwitch> = (args) => ({
+const Template:StoryFn<typeof ToggleSwitch> = (args) => ({
   Component: ToggleSwitch,
   props:args
 });

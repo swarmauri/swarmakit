@@ -1,7 +1,7 @@
 import IconButton from './IconButton.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<IconButton> = {
+const meta: Meta<typeof IconButton> = {
   title: 'component/Buttons/IconButton',
   component: IconButton,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<IconButton> = {
 
 export default meta;
 
-const Template:StoryFn<IconButton> = (args) => ({
+const Template:StoryFn<typeof IconButton> = (args) => ({
   Component:IconButton,
   props:args,
 });

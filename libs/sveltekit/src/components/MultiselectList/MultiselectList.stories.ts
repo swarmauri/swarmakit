@@ -1,7 +1,7 @@
 import MultiselectList from './MultiselectList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<MultiselectList> = {
+const meta: Meta<typeof MultiselectList> = {
   title: 'component/Lists/MultiselectList',
   component: MultiselectList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<MultiselectList> = {
 
 export default meta;
 
-const Template:StoryFn<MultiselectList> = (args) => ({
+const Template:StoryFn<typeof MultiselectList> = (args) => ({
   Component:MultiselectList,
   props:args,
 });

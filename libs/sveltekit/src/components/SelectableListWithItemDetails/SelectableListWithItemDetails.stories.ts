@@ -1,7 +1,7 @@
 import SelectableListWithItemDetails from './SelectableListWithItemDetails.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<SelectableListWithItemDetails> = {
+const meta: Meta<typeof SelectableListWithItemDetails> = {
   title: 'component/Lists/SelectableListWithItemDetails',
   component: SelectableListWithItemDetails,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<SelectableListWithItemDetails> = {
 
 export default meta;
 
-const Template:StoryFn<SelectableListWithItemDetails> = (args) => ({
+const Template:StoryFn<typeof SelectableListWithItemDetails> = (args) => ({
   Component:SelectableListWithItemDetails,
   props:args,
 });

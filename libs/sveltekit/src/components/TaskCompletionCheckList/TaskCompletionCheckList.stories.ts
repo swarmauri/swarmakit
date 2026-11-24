@@ -1,7 +1,7 @@
 import TaskCompletionCheckList from './TaskCompletionCheckList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<TaskCompletionCheckList> = {
+const meta: Meta<typeof TaskCompletionCheckList> = {
   title: 'component/Indicators/TaskCompletionCheckList',
   component: TaskCompletionCheckList,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<TaskCompletionCheckList> = {
 
 export default meta;
 
-const Template:StoryFn<TaskCompletionCheckList> = (args) => ({
+const Template:StoryFn<typeof TaskCompletionCheckList> = (args) => ({
   Component:TaskCompletionCheckList,
   props:args,
 });

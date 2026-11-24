@@ -1,7 +1,7 @@
 import LoadingSpinner from './LoadingSpinner.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<LoadingSpinner> = {
+const meta: Meta<typeof LoadingSpinner> = {
   title: 'component/Indicators/LoadingSpinner',
   component: LoadingSpinner,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<LoadingSpinner> = {
 
 export default meta;
 
-const Template:StoryFn<LoadingSpinner> = (args) => ({
+const Template:StoryFn<typeof LoadingSpinner> = (args) => ({
   Component: LoadingSpinner,
   props:args,
 }); 

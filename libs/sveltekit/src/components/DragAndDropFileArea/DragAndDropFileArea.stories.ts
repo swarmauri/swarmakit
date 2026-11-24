@@ -1,7 +1,7 @@
 import DragAndDropFileArea from './DragAndDropFileArea.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<DragAndDropFileArea> = {
+const meta: Meta<typeof DragAndDropFileArea> = {
   title: 'component/Forms/DragAndDropFileArea',
   component: DragAndDropFileArea,
   tags: ['autodocs'],
@@ -26,7 +26,7 @@ const meta: Meta<DragAndDropFileArea> = {
 
 export default meta;
 
-const Template:StoryFn<DragAndDropFileArea> = (args) => ({
+const Template:StoryFn<typeof DragAndDropFileArea> = (args) => ({
   Component: DragAndDropFileArea,
   props: args,
 });

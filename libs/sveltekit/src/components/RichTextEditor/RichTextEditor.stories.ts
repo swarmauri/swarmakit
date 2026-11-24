@@ -1,7 +1,7 @@
 import RichTextEditor from './RichTextEditor.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<RichTextEditor> = {
+const meta: Meta<typeof RichTextEditor> = {
   title: 'component/Forms/RichTextEditor',
   component: RichTextEditor,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<RichTextEditor> = {
 
 export default meta;
 
-const Template:StoryFn<RichTextEditor> = (args) => ({
+const Template:StoryFn<typeof RichTextEditor> = (args) => ({
   Component: RichTextEditor,
   props:args,
 });

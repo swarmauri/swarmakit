@@ -1,7 +1,7 @@
 import ProgressCircle from './ProgressCircle.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ProgressCircle> = {
+const meta: Meta<typeof ProgressCircle> = {
   title: 'component/Indicators/ProgressCircle',
   component: ProgressCircle,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<ProgressCircle> = {
 
 export default meta;
 
-const Template:StoryFn<ProgressCircle> = (args) => ({
+const Template:StoryFn<typeof ProgressCircle> = (args) => ({
   Component: ProgressCircle,
   props:args,
 }); 

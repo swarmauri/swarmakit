@@ -1,7 +1,7 @@
 import BatteryLevelIndicator from './BatteryLevelIndicator.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<BatteryLevelIndicator> = {
+const meta: Meta<typeof BatteryLevelIndicator> = {
   title: 'component/Indicators/BatteryLevelIndicator',
   component: BatteryLevelIndicator,
   tags: ['autodocs'],

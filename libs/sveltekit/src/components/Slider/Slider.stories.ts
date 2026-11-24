@@ -1,7 +1,7 @@
 import Slider from './Slider.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Slider> = {
+const meta: Meta<typeof Slider> = {
   title: 'component/Input/Slider',
   component: Slider,
   tags: ['autodocs'],
@@ -27,7 +27,7 @@ const meta: Meta<Slider> = {
 
 export default meta;
 
-const Template:StoryFn<Slider> = (args) => ({
+const Template:StoryFn<typeof Slider> = (args) => ({
   Component: Slider,
   props:args,
 });

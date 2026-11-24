@@ -1,8 +1,8 @@
 import FilterableList from './FilterableList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
-import { userEvent, within } from '@storybook/test'
+import { userEvent, within } from 'storybook/test'
 
-const meta: Meta<FilterableList> = {
+const meta: Meta<typeof FilterableList> = {
   title: 'component/Lists/FilterableList',
   component: FilterableList,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<FilterableList> = {
 
 export default meta;
 
-const Template:StoryFn<FilterableList> = (args) => ({
+const Template:StoryFn<typeof FilterableList> = (args) => ({
   Component:FilterableList,
   props:args,
 });

@@ -1,7 +1,7 @@
 import Toast from './Toast.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Toast> = {
+const meta: Meta<typeof Toast> = {
   title: 'component/Indicators/Toast',
   component: Toast,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<Toast> = {
 
 export default meta;
 
-const Template:StoryFn<Toast> = (args) => ({
+const Template:StoryFn<typeof Toast> = (args) => ({
   Component: Toast,
   props:args,
 }) 

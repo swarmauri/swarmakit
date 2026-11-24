@@ -1,7 +1,7 @@
 import ActionableList from './ActionableList.svelte';
 import type { Meta,StoryFn } from '@storybook/svelte';
 
-const meta: Meta<ActionableList> = {
+const meta: Meta<typeof ActionableList> = {
   title: 'component/Lists/ActionableList',
   component: ActionableList,
   tags: ['autodocs'],

@@ -1,7 +1,7 @@
 import RatingStars from './RatingStars.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<RatingStars> = {
+const meta: Meta<typeof RatingStars> = {
   title: 'component/Indicators/RatingStars',
   component: RatingStars,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta: Meta<RatingStars> = {
 
 export default meta;
 
-const Template:StoryFn<RatingStars> = (args) => ({
+const Template:StoryFn<typeof RatingStars> = (args) => ({
   Component:RatingStars,
   props:args,
 }); 

@@ -1,7 +1,7 @@
 import Stepper from './Stepper.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<Stepper> = {
+const meta: Meta<typeof Stepper> = {
   title: 'component/Indicators/Stepper',
   component: Stepper,
   tags: ['autodocs'],
@@ -23,7 +23,7 @@ const meta: Meta<Stepper> = {
 
 export default meta;
 
-const Template:StoryFn<Stepper> = (args) => ({
+const Template:StoryFn<typeof Stepper> = (args) => ({
   Component:Stepper,
   props:args,
 });

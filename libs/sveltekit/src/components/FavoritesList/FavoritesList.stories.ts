@@ -1,9 +1,9 @@
-import { userEvent } from '@storybook/test';
-import { within } from '@storybook/test';
+import { userEvent } from 'storybook/test';
+import { within } from 'storybook/test';
 import FavoritesList from './FavoritesList.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<FavoritesList> = {
+const meta: Meta<typeof FavoritesList> = {
   title: 'component/Lists/FavoritesList',
   component: FavoritesList,
   tags: ['autodocs'],
@@ -25,7 +25,7 @@ const meta: Meta<FavoritesList> = {
 
 export default meta;
 
-const Template:StoryFn<FavoritesList>  = (args) => ({
+const Template:StoryFn<typeof FavoritesList>  = (args) => ({
   Component:FavoritesList,
   props:args,
 });

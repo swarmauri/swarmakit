@@ -1,7 +1,7 @@
 import RangeSlider from './RangeSlider.svelte';
 import type { Meta, StoryFn } from '@storybook/svelte';
 
-const meta: Meta<RangeSlider> = {
+const meta: Meta<typeof RangeSlider> = {
   title: 'component/Forms/RangeSlider',
   component: RangeSlider,
   tags: ['autodocs'],
@@ -28,7 +28,7 @@ const meta: Meta<RangeSlider> = {
 
 export default meta;
 
-const Template:StoryFn<RangeSlider> = (args) => ({
+const Template:StoryFn<typeof RangeSlider> = (args) => ({
   Component:RangeSlider,
   props:args,
 });
