@@ -17,25 +17,17 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
+        with:
+          node-version: '24'
 
       - name: Install pnpm
-        run: |
-          npm install -g pnpm
+        run: npm install --global pnpm@11.25.0
 
       - name: Install Dependencies
-        run: |
-          pnpm install
+        run: pnpm install --no-frozen-lockfile --ignore-scripts
 
       # Build all packages (React, SvelteKit, Vue)
       - name: Build All Packages
         run: |
           pnpm -r run build
-
-      - name: Install pnpm
-        run: |
-          npm install -g pnpm
-
-      - name: Install Dependencies
-        run: |
-          pnpm install
 
